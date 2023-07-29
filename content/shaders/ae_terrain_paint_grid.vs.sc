@@ -1,0 +1,10 @@
+$input a_position, a_normal, a_texcoord0, a_texcoord1, a_texcoord2, a_texcoord3, a_texcoord4, a_texcoord5, a_texcoord6, a_texcoord7
+$output v_color0, v_texcoord0, v_texcoord1, v_texcoord2, v_texcoord3, v_texcoord4, v_texcoord5
+
+#include "common.h"
+
+void main()
+{
+	gl_Position = mul(u_modelViewProj, vec4(a_position, 1.0));
+	v_color0 = vec4(mul(u_model[0], vec4(a_position, 1.0)).xyz, 1.0);
+}

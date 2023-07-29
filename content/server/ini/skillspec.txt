@@ -1,0 +1,1826 @@
+ìŠ¤í‚¬ëª…	attribute	upgradable	check_range	target	range	requirement	condition	other_condition	arg1	arg2	arg3	arg4	arg_string	melee_attack	magic_attack	count	special_status	special_status_arg	move_pos	update_factor	reflect_melee_attack	reflect_magic_attack	reflect_heroic_attack	defense_melee_attack	defense_magic_attack	magic_resist_level_up	dispel_magic	transform_target	life_protection	dot	infect_around	add_spellcount	dmg_adjust	skill_factor_adjust	update_combat_point	regen_hp	convert_type	charge	skill_levelup	product	twice_packet	auto_attack	dynamic_target	action_on_action	at_field	summons	action_passive	duration_type	limited_max_level	release_target	visible_effect_type	game_bonus	item_use_type	cash	level_diff_type	detect	ride	game_effect	force	divide	resurrection	skill_union	target_restriction	disturb	downtime_id	downtime_duration	applied_cooldown_cap
+Dual Slash	1	1	1	1	202	1								101																																																					
+Power Rush																																																																			
+Big Wheel	1	1	1	101	304	1								101																																																					
+Speed Attack	10	1	2	100	1	1														10																					2																										
+Provoke	20	1		1	202	1														10																					2																										
+Zone Provoke	20	1		1	1304	1														10																					2																										
+Shield Bash	1	1	1	1	202	3	1000							101			1																								2																										
+Immortal Calling	10	1	2	100	1	1														10																					2																										
+Berserker	10	1	2	100	1	1														10																	1				2																										
+Combat Echo	10	1	2	100	303	1														10																					2																										
+Flame Core	3	1	1	1	202	1			3					101																											1																										
+Napalm Flame	21	1	1	1	202	1			3					101																10001		1									1																										
+Blaze Wall	3	1	1	1	404	1			3					101																											1																										
+Geo Shards	21	1	1	1	202	1			4					101						10												1									1																										
+Earthquake	4	1	1	101	304	1			4					101																											1																										
+Mass Snare	21	1	1	101	304	1			4					101						10												1									1																										
+Whirlwind	5	1	1	1	202	1			5					101																											1																										
+Hell Typhoon	5	1	1	1	1304	1			5					101																											1																										
+Wind Quake	21	1	1	101	304	1			5					101						10												1									1																										
+Water Spout	21	1	1	1	202	1			2					101						10										10001		1									1																										
+Acid Rain	21	1	1	101	304	1			2					101																10001		1									1																										
+Whirlpool	6	1	1	1	1304	1			2					101																											1																										
+Magic Bolt	2	1	1	1	202	1			1					101																											1																										
+Soul Chaos	2	1	1	101	304	1			1					101																											1																										
+Death Mark	21	1	1	1	202	1														10																					2																										
+Testament	10	1	2	100	1	1														10	8																				2																										
+Foot Assault																																																																			
+Wheel Kick																																																																			
+Free Will	10	1	2	100	1		1000										17			10																					2																										60
+Cease Pain																																																																			
+Mind Piece																																																																			
+Turn Undead																																																																			
+Cure	10	1	2	100	1	1	1000																				2														2																										
+Font of Life																																																																			
+Group Heal																																																																			
+Energy Burst																																																																			
+Mirror Damage																																																																			
+Power Blow																																																																			
+Natural Recovery																																																																			
+Dual Shot	1	1	1	1	202	1								101																											1																										
+Wind Arrow	5	1	1	1	202	1			5					101																											1																										
+Transform	10	1		100	1	1			96											10								0																																							
+Animal Soul	10	1	2	100	303	1														10																					2																										
+Forces of Nature	21	1	1	1	202	1								101						10												1									1																										
+Snare Shot	21	1	1	1	1304	1								101						10												1									1																										
+Pain Arrow	11	1	1	1	202	1								101																10001		1									1																										
+Arrow Hail	1	1	1	1	1304	1								101																											1																										
+Piercing Shot	1	1	1	1	1304	1								101																											1																										
+Triple Slash	1	1	1	1	202	1								101																																																					
+Cold Scorn																																																																			
+Bashing																																																																			
+Magic Spear																																																																			
+Kick Raid																																																																			
+Vital Wave																																																																			
+Fury Smash																																																																			
+Triple Shot	1	1	1	1	202	1								101																											1																										
+Linear Blow	1	1	1	1	1304	1								101																											2																										
+Defense Hold	9	1	2	111	211		1000													10	2																																														
+Supreme Damage	9	1	2	111	1		1000		5	150				106																																																					
+Red Heat	9	1	2	111	1															10																																															
+Counter Attack	9	1	2	111	1	8	1000		2															2																																											
+Sure Sight	9	1	2	111	1															10																																															
+Critical Hit	9	1	2	111	1		1000		3	150				106																																																					
+Sprite Protect	9	1	2	111	1															10																																															
+Evade	9	1	2	111	1															10																																															
+Power Up																																																																			
+Will Force																																																																			
+EnduranceNA																																																																			
+Cross Attack																																																																			
+Critical Spells	9	1	2	111	1		1000		1	150				106						10																																															
+Intense Magic	9	1	2	111	1		1000		1																									2																																	
+Mind Control	9	1	2	111	1															10																																															
+Hawk Eye	9	1	2	111	1				8											107														4																																	
+Death Strike	9	1	2	111	1		1000		2					107																																																					
+Dragon Divide	1	1	1	1	1304	1								101																																																					
+Brute																																																																			
+Summon Hero																																																																			
+Explosion Scroll	1	2	1	1	1304		1000							101						10																																															
+Acceleration																																																																			
+Fatal Swing																																																																			
+Heavy Counter Attack	9	1	2	111	1				5															2																																											
+Health Burst	9	1	2	111	1															10																																															
+Gale Arrow																																																																			
+Deep Pain																																																																			
+Beast Eye																																																																			
+Sour																																																																			
+Soul of Totem																																																																			
+Sinker																																																																			
+Arrow Rain																																																																			
+Epic Blow	9	1	2	111	1				5	150				106																																																					
+Mana Gain	9	1	2	111	1															10																																															
+Free Dodging	9	1	2	111	1															10																																															
+Phoenix	1	1	1	1	1304	1								101																											1																										
+Legend Take																																																																			
+Magic Lance																																																																			
+Breeze Hammer																																																																			
+Brilliant Charm	9	1	2	111	1				2	150																																																									
+Armageddon																																																																			
+Aqua Pillar																																																																			
+Armament	9	1	2	111	1															10																																															
+Geo Sprinter																																																																			
+Casting Mastery	9	1	2	111	1				100	85																								0																																	
+Craft Pain																																																																			
+Fire Burst																																																																			
+Grave Enter																																																																			
+Group Greater Heal																																																																			
+Divine Heal																																																																			
+Life Protection																																																																			
+Remedy																																																																			
+Revenging																																																																			
+Relief																																																																			
+Benediction Aura																																																																			
+Waking																																																																			
+Windmill Beat																																																																			
+Invisible Attack																																																																			
+Cross Smash																																																																			
+Power Rising																																																																			
+Font of Elixir																																																																			
+Peace Giving																																																																			
+<BOSS><Troll> Earth Lift	1	2	1	1	1404									101																																																					
+<BOSS><Hydra> Curse Circle	1	2	1	1	1304									101																																																					
+<BOSS><Skeleton Commander> Soul Burning																																																																			
+<BOSS><Wyvern> Lord Inferno	1	2	1	1	404									101																																																					
+<BOSS><Griffin> Lightdrop	1	2	1	1	1404									101																																																					
+<BOSS><Manticore> Magical Sign	1	2	1	1	1404									101																																																					
+Strike Of Death	1	1	1	1	202	1								101																											2																										
+Lethal Attack	10	1	2	100	1	1															4														2						2																										
+Hook	1	1	1	1	1304	1								101																											2																										
+Bellow	10	1	2	100	1	1														10				4																	2																										
+Resistance	10	1	2	100	1	1														10																					2																										
+Power Blade	10	1	2	100	1	5			1											107																					2																										
+Power Axe	10	1	2	100	1	6			2					106						107																					2																										
+Bludgeon	10	1	2	100	1	7			3											107																					2																										
+Brute Force	10	1	2	100	1	8			4											107																					2																										
+Faith Defender	10	1	2	100	1	3			5											107																					2																										
+Debilitate	20	1	1	1	202	1																													3						2																										
+Power Drain	20	1	1	1	202	1														10																					2																										
+Twin Hand	10	1	2	100	1	1																																			2																										
+Sacrifice	10	1	1	100	1	1								106						10																					2																										
+Third Attack																																																																			
+Razor Sharp	10	1	2	100	1	1														10																					2																										
+Body Break	20	1	1	1	1304	1														10																					2																										
+Panic	20	1	1	1	1202	1														10														9							2																										
+Vital Charge	50	1	2	100	1	1	1000																														1				2																										
+Burst Shot	1	1	1	1	1304	1								101																											1																										
+Magic Arrow	1	1	1	1	202	1	1000							101			1																								1																										
+Blinding Strike	11	1	1	1	202	1								101						10																					1																										
+Fire Shot	21	1	1	1	202	1								101																10001											1																										
+Nightwalk	10	1	2	100	1	1											6			10																					2																										
+Sharp Shooter	10	1	2	100	1	1														10																					2																										
+Misleader	10	1	2	100	1	1			2											10																					2																										
+Passing																																																																			
+Helpless	21	1	1	1	202	1								109						10														9							1																										
+Heavy Hand	21	1	1	1	1304	1								101						10																					1																										
+Power Bow	10	1	2	100	1	11			6											107																					2																										
+Power Crossbow	10	1	2	100	1	12			7											107																					2																										
+Far Sight	10	1	2	100	1	1			8											107														4							2																										
+Aggro Doll		1																																							2																										
+Rock skin	10	1	2	100	1	1														10																					2																										
+Hustler	10	1	2	100	1	1											7																								2									1																	
+Pulverize	21	1	1	1	1302	1	1000		50	400				109						10																					1																										
+Earth Attack	21	1	1	1	202	1								109						10																					1																										
+Defiance	10	1	2	100	1	1														10														2							2																										
+Reflection	10	1	2	100	1	1														10				4													2				2																										
+Confusion	21	1	1	1	202	1														10																					1																										
+Halt	21	1	1	1	202	1											9																	9							1																								1		1
+Stunner	10	1	2	100	1	1	1000													10	8																				2																										
+Mana Pull	10	1	2	100	1	1	1000													10																					2																										
+Vital Conversion	10	1	2	100	1	1														10																					2																										
+Life Restore	10	1	2	100	1	1														10																					2																										
+Demolition Song	1	1	1	1	202	1	1000							101			1																								2																										
+Penetrate Defense	20	1	1	1	1304	1														10														9							1																										
+Expert Skill	10	1	2	100	1	1														10																			1		2																										
+Grind Pull	21	1	1	1	202	1								101						10										10001											1																										
+Quagmire	21	1	1	1	202	1								101			3			10										10001											1																										
+Mana Sequence	1	1	1	1	202	1								101																											1																										
+Assimilate	10	1	2	100	1	1	1000																														1				2																										
+Optimum	10	1	2	100	211	1														10														2							2																										
+<BOSS><Goblin Chief> Confusion	1	2	1	1	1404									101																																																					
+<BOSS><Hobgoblin Chief> Scorn	1	2	1	1	304									101																																																					
+<BOSS><Viper King> Insanity	1	2	1	1	404									101																																																					
+<BOSS><Skeleton Commander> Summon Skeleton	1	2	1	1	1404									101																																																					
+<BOSS><Lizardman Lord> Destruction	1	2	1	1	1304									101																																																					
+<BOSS><Centaur Commander> Spear Blast	1	2	1	1	1404									101																																																					
+<BOSS><Zombie Lord> Apparition	1	2	1	1	304									101																																																					
+<BOSS><Harpy Queen> Storm	1	2	1	1	304									101																																																					
+<BOSS><Runebat Leader> Sonic Wave	1	2	1	1	1404									101																																																					
+<BOSS><Gigantic Spider Queen> Poison Web	1	2	1	1	304									101																																																					
+Chain Action	21	1	1	1	202	1								101			3			10																					1																										
+Poison Scroll	21	2	1	1	202		1000																							10001																																					
+Lightning Scroll	1	2	1	1	202		1000							101			1			10																																															
+<MOB>Magic Elemental Skill																																																																			
+<MOB>Water Elemental Skill																																																																			
+<MOB>Wind Elemental Skill																																																																			
+<MOB>Earth Elemental Skill																																																																			
+<MOB>Fire Elemental Skill																																																																			
+<MOB>Venom Elemental Skill																																																																			
+<MOB>Ice Elemental Skill																																																																			
+<MOB>Lightning Elemental Skill																																																																			
+Natural Warrior	10	1	2	100	1	1														10																					2																										
+Skinning	8	1	1	1	202	4			654		4	8000																												1																											
+Carving	8	1	1	1	202	4			654		4	8000																												1																											
+Cooking	8	1	2	100		4			655			8000																												1																											
+Mighty Counter Attack	9	1	2	111	1				10															2																																											
+Hell Strike	9	1	2	111	1				5					107																																																					
+Death Heat	9	1	2	111	1				7	200				106																																																					
+Predict	9	1	2	111	1															10																																															
+Sprite Shining	9	1	2	111	1															10																																															
+Chant Erection	9	1	2	111	1				4	180																																																									
+Santa's Socks2	10	2	2	100	1															10																																1															
+Physical Gain	9	1	2	111	1				100	105																																																									
+Mana Effect	9	1	2	111	1															10														2																																	
+Maximum Life Increase Skill Level 1	10	2	2	100	1															10																																															
+Maximum Life Increase Skill Level 2	10	2	2	100	1															10																																															
+Maximum Mana Increase Skill Level 1	10	2	2	100	1															10																																															
+Maximum Mana Increase Skill Level 2	10	2	2	100	1															10																																															
+Attack Power Increase Skill Level 1	10	2	2	100	1															10																																															
+Attack Power Increase Skill Level 2	10	2	2	100	1															10																																															
+Defense Power Increase Skill Level 1	10	2	2	100	1															10																																															
+Defense Power Increase Skill Level 2	10	2	2	100	1															10																																															
+Spirit Snap	9	1	2	111	1															10																																															
+Normal Attack	1	2	2	1	202																																					1																									
+Blade Sting	21	1	1	1	202	5								101																											2																										
+Stun Shock	1	1	1	1	202	7	1000							101			1																								2																										
+Swing shot	21	1	1	1	1304	8								101																											2																										
+Axe Smash	21	1	1	1	202	6								101																10001											2																										
+Spirit Shield	10	1	2	100	1	3			9											107																					2																										
+Stun Protection	10	1	2	100	1	3											8																								2																										
+Sprint	10	1	2	100	1	1														10																					2																										
+Charge Shot	1	1	1	1	1304	1								101																											1																										
+Sniper Shot	1	1	1	1	202	1								101																											1																										
+Poison Shot	21	1	1	1	202	1								101																10001											1																										
+Soul Breath	10	1	2	100	1	1														10																					2																										
+Dodge	9	1	2	111	1				1											10																																															
+Dash	9	1	2	111	1															10																																															
+Force	1	2	1	1	202	1								101																											1																										
+Power Staff	10	1	2	100	1	9			10											107																					2																										
+Power Wand	10	1	2	100	1	10			11											107																					2																										
+Small Movement Speed Potion	10	2	2	100	1															10																																															
+Medium Movement Speed Potion	10	2	2	100	1															10																																															
+Large Movement Speed Potion	10	2	2	100	1															10																																															
+Small Attack Speed Potion	10	2	2	100	1															10																																															
+Medium Attack Speed Potion	10	2	2	100	1															10																																															
+Large Attack Speed Potion	10	2	2	100	1															10																																															
+Maximum Life Increase Skill Level 3	10	2	2	100	1															10																																															
+Maximum Mana Increase Skill Level 3	10	2	2	100	1															10																																															
+Attack Power Increase Skill Level 3	10	2	2	100	1															10																																															
+Defense Power Increase Skill Level 3	10	2	2	100	1															10																																															
+Mana Replenishment Skill Level 1	10	2	2	100	1																															2																															
+Mana Replenishment Skill Level 2	10	2	2	100	1																															2																															
+Mana Replenishment Skill Level 3	10	2	2	100	1																															2																															
+Life Replenishment Skill Level 1	10	2	2	100	1																															1																															
+Life Replenishment Skill Level 2	10	2	2	100	1																															1																															
+Life Replenishment Skill Level 3	10	2	2	100	1																															1																															
+Fire Attack Skill Level 1	10	2	2	100	1															10																																															
+Fire Attack Skill Level 2	10	2	2	100	1															10																																															
+Water Attack Skill Level 1	10	2	2	100	1															10																																															
+Water Attack Skill Level 2	10	2	2	100	1															10																																															
+Wind Attack Skill Level 1	10	2	2	100	1															10																																															
+Wind Attack Skill Level 2	10	2	2	100	1															10																																															
+Earth Attack Skill Level 1	10	2	2	100	1															10																																															
+Earth Attack Skill Level 2	10	2	2	100	1															10																																															
+Magic Attack Skill Level 1	10	2	2	100	1															10																																															
+Magic Attack Skill Level 2	10	2	2	100	1															10																																															
+Fire Defense Skill Level 1	10	2	2	100	1															10																																															
+Fire Defense Skill Level 2	10	2	2	100	1															10																																															
+Water Defense Skill Level 1	10	2	2	100	1															10																																															
+Water Defense Skill Level 2	10	2	2	100	1															10																																															
+Wind Defense Skill Level 1	10	2	2	100	1															10																																															
+Wind Defense Skill Level 2	10	2	2	100	1															10																																															
+Earth Defense Skill Level 1	10	2	2	100	1															10																																															
+Earth Defense Skill Level 2	10	2	2	100	1															10																																															
+Magic Defense Skill Level 1	10	2	2	100	1															10																																															
+Magic Defense Skill Level 2	10	2	2	100	1															10																																															
+Cold Prayer Stone <Small>	10010	1	2	1	2												3			10																																	1														
+Cold Prayer Stone <Medium>	10010	1	2	1	2												3			10																																	1														
+Cold Prayer Stone <Large>	10010	1	2	1	2												3			10																																	1														
+Lightning Prayer Stone <Small>	10010	1	2	1	2												1																																				1														
+Lightning Prayer Stone <Medium>	10010	1	2	1	2												1																																				1														
+Lightning Prayer Stone <Large>	10010	1	2	1	2												1																																				1														
+Deadly Poison Prayer Stone <Small>	10020	1	2	1	2																									10001																							1														
+Deadly Poison Prayer Stone <Medium>	10020	1	2	1	2																									10001																							1														
+Deadly Poison Prayer Stone <Large>	10020	1	2	1	2																									10001																							1														
+Ransacking	8	1	1	1	202	4			654		4	8000																												1																											
+Alchemy	8	1	2	100		4			1016			8000																												1																											
+Invincible State	10	2	2	100	1																																																														
+Hell Bound	1	1	1	1	202	1								101																											1																										
+True Impact	21	1	1	1	202	1								101						10																					1																										
+Arrow Spear	1	1	1	1	1404	1								101																											1																										
+Jumping Shot	1	1	1	1	202	1								101																											1																										
+Third Strike																																																																			
+Power Glaive																																																																			
+Sniper	1	1	1	1	202	11								101																											1																										
+Chain Reaction	21	1	1	1	202	11								101			3			10																					2																										
+Sequence Attack	21	1	1	1	1304	1								101						10												1									1																										
+Time Attack	20	1	1	1	202	1																																			1			1																							
+Shadow Chaser	1	1	1	1	202	1								101																											1			2																							
+Elemental Core	21	1	1	1	1304	1	1000							109						10																					1																										
+Air Walk	10	1	2	100	1	1														10																					2																										
+Elemental Defense	10	1	2	100	1	1														10																					2																										
+Glaive																																																																			
+Mantle of Darkness																																																																			
+Mana Absorb	10	1	2	100	1	1	1000														8																				2																										
+Life Extinction	10	1	2	100	1	1	1000																														4				2																										
+Eternal Soul	10	1	2	100	1	1														10																					2																										
+Moonlight Fever	10	1	2	100	1	1			1											10																					2																										
+Bad Friends	10	1	2	100	1	1														10																					2																										
+Blind																																																																			
+Invisibility	10	1	2	100	1												10																								2																										
+Move Out																																																																			
+Optimize																																																																			
+Acute Shot	9	1	2	111	1															10																																															
+Moonlight Breath	9	1	2	111	1		1000		5	150				106						10																																															
+Mana Growth																																																																			
+Griolli	20210	1	2	100	1	1																																			2					1																					
+Tuuga	20210	1	2	100	1	1																																			2					1																					
+Silpid	20210	1	2	100	1	1																																			2					1																					
+Snow Hazard	21	1	1	1	1304	1	1000							101			1																								1																										
+Gradion	20210	1	2	100	1	1																																			2					1																					
+Mercury	20210	1	2	100	1	1																																			2					1																					
+Thunder Descent	1	1	1	1	1304	1								101						10																					2																										
+Poison Vapor	21	1	1	101	1304	1								101																10001											1																										
+Elemental Storm	1	1	1	1	1304	1								101																											2																										
+Venom	20210	1	2	100	1	1																																			2					1																					
+Cygnus	20210	1	2	100	1	1																																			2					1																					
+Silver	20210	1	2	100	1	1																																			2					1																					
+Increase Life																																																																			
+Moonlight Blessing	10	1	2	100	5	1														10																					2																										
+Good Trophy																																																																			
+Twist																																																																			
+Anti Critical																																																																			
+Adapted Soul																																																																			
+Soul Barrier	10	1	2	100	1	1	1000													10	2																				2																										
+Recall																																																																			
+Fairy Bless	10	1	2	100	1	1														10																					2																										
+Hyper Soul	10	1	2	100	501	1														10				4																	2																										
+Increase Gate	10	3	2	100	1	1																																			2					4			1																		
+Souless																																																																			
+Mutation	21	1	1	1	202	1								0														4						9							2																								6	25000	1
+Elemental Heal	9	1	2	111	1															10																										5																					
+Defense Sword																																																																			
+Defense Arrow																																																																			
+Recovery Time	9	1	2	111	1															10														6																																	
+<BOSS><Spriggan Lord> Spriggan	1	2	1	1	1304									101																																																					
+<BOSS><Marylith Princess> Queen of Water	1	2	1	1	1304									101																																																					
+<BOSS><Torge Lord> Earth Mind	1	2	1	1	1304									101																																																					
+<BOSS><Vampire Prince> Blood Sign	1	2	1	1	304									101																																																					
+<BOSS><Lamia Queen> Lamia Power	1	2	1	1	1304									101																																																					
+<BOSS><Ghoul King> Fog of Venom	1	2	1	1	304									101																																																					
+<BOSS><Gigantes> Explosion Flame	1	2	1	1	404									101																																																					
+Power Surge	9	1	2	111	1															10																																															
+Nimbleness	9	1	2	111	1															10																																															
+Endurance	9	1	2	111	1															10																																															
+Mind Boost	9	1	2	111	1															10																																															
+Intellect	9	1	2	111	1															10																																															
+Lordmark																																																																			
+Cold Prayer Stone <Option1>																																																																			
+Cold Prayer Stone <Option 2>																																																																			
+Lightning Prayer Stone <Option 1>																																																																			
+Lightning Prayer Stone <Option 2>																																																																			
+Deadly Poison Prayer Stone <Option 1>																																																																			
+Deadly Poison Prayer Stone <Option 2>																																																																			
+Critical Hit Prayer Stone <Small>																																																																			
+Critical Hit Prayer Stone <Medium>																																																																			
+Critical Hit Prayer Stone <Large>																																																																			
+Critical Hit Prayer Stone <Option 1>																																																																			
+Critical Hit Prayer Stone <Option 2>																																																																			
+Mortal Dagger	21	1	1	1	1304	1								101																																																					
+Lightning Trap	201	1	2	100	1	1																																			2					2																					
+Flame Force	10	1	2	100	1	1																																			2				10001																						
+Multi Strike	1	1	1	1	1304	13								101																											1		1																								
+<BOSS><Canedog Commander> Skill	1	2	1	1	1304									101																																																					
+<BOSS><Gnoll Boss> Skill	1	2	1	1	1404									101																																																					
+<BOSS><Bandillion Boss> Skill	1	2	1	1	1404									101																																																					
+<BOSS><Grippler King> Skill	1	2	1	1	304									101																																																					
+<BOSS><Total Broken> Skill	1	2	1	1	1304									101																																																					
+<BOSS><Bronze Dragon Cid> Skill	1	2	1	1	1304									101																																																					
+Lightning Strike	21	1	1	1	1304	1								101			3			10										10001											1																										
+Descent of Luna	10	1	2	100	501	1														10																					2																										
+Holy Ground	200	1	2	100	1	1																																			2					2																					
+Frost Armor	10	1	2	100	1	1														10																					2			3																							
+Intention	9	1	2	111	1															10				4																																											
+Life Grow	9	1	2	111	1															10																																															
+<BOSS><Vampire Queen> Approach Skill	1	2	1	1	304									101																																																					
+<BOSS><Vampire Queen> Range Skill	1	2	1	1	304									101																																																					
+<Summons>Lightning Trap	10	1	2	100	1																																								10002			2																			
+<Summons>Griolli	9	1	1	111	1															10																																															
+<Summons>Tuuga	10	1	2	100	1		1000					1								10																									10001			2																			
+<Summons>Silpid	9	1	1	111	1															10																																															
+<Summons>Gradion	9	1	1	111	1															10																																															
+<Summons>Mercury	9	1	1	111	1															10																																															
+<Summons>Venom	9	1	1	111	1															10																																															
+<Summons>Cygnus	9	1	1	111	1															10																																															
+<Summons>Silver	9	1	1	111	1															10																																															
+<Summons>Holy Ground	10	1	2	100	1																																								10003			2																			
+<Summons>Lightning Trap <Additional Effect>																																																					1														
+<Summons>Griolli <Additional Effect>	20	1	1	1	202															10																																	1														
+<Summons>Tuuga <Additional Effect>	20																																																				1														
+<Summons>Silpid <Additional Effect>	20	1	1	1	202															10																																	1														
+<Summons>Gradion <Additional Effect>	20	1	1	1	202															10																																	1														
+<Summons>Mercury <Additional Effect>	20	1	1	1	202												9			10																																	1														
+<Summons>Venom <Additional Effect>	20	1	1	1	202																									10001																							1														
+<Summons>Cygnus <Additional Effect>	20	1	1	1	202															10																																	1														
+<Summons>Silver <Additional Effect>	20	1	1	1	202												1																																				1														
+<Summons>Holy Ground <Additional Effect>	10	1	2	110	308																															3												1					1														
+Frost Armor <Additional Effect>	10	1	1	1	202	1	2000										3			10																																	1														
+<MOB>Magic Elemental Skill <Additional Effect>																																																																			
+<MOB>Water Elemental Skill <Additional Effect>																																																																			
+<MOB>Wind Elemental Skill <Additional Effect>																																																																			
+<MOB>Earth Elemental Skill <Additional Effect>																																																																			
+<MOB>Fire Elemental Skill <Additional Effect>																																																																			
+<MOB>Venom Elemental Skill <Additional Effect>																																																																			
+<MOB>Ice Elemental Skill <Additional Effect>																																																																			
+<MOB>Lightning Elemental Skill <Additional Effect>																																																																			
+Might	1	2	1	1	202	1								101																											1																										
+<BOSS><Pharaoh King> Skill	1	2	1	1	1404									101																																																					
+<BOSS><Euriale Lord> Skill	1	2	1	1	1304									101																																																					
+<BOSS><Hawkarrow King> Skill	1	2	1	1	1304									101																																																					
+<BOSS><Valor>Skill	1	2	1	1	1404									101																																																					
+Event Item01	10	2	2	100	1															10																																															
+Event Item02	10	2	2	100	1															10																																															
+Event Item03	10	2	2	100	1															10																																															
+Event Item04	10	2	2	100	1																																																														
+Event Item05	10	2	2	100	1																																																														
+Fine Bow	10	1	2	100	1	11			6											107																					2																										
+Fine Kataria	10	1	2	100	1	13			12											107																					2																										
+Fine Staff	20010	1	2	100	1	9			10											107																					2																										
+Fine Chakram	20010	1	2	100	1	14			13											107																					2																										
+Elemental Heal <Additional Effect>	10	1	2	111	5															10																												2					1														
+<MOB> Lich Approach Skill	1	2	1	1	202									101																																																					
+Paint With Blood	10	1	2	100	1	1	1000							106							4																				2																										
+Power Kataria	1	1	1	1	202	13								101																											2																										
+Defense Master	9	1	2	111	1															10																																															
+Combat Master	9	1	2	111	1															10																																															
+<BOSS><Valor> Skill2	1	2	1	1	1404									101																																																					
+<BOSS><Valor> Skill3	1	2	1	1	304									101																																																					
+<BOSS><Lequimes King> Skill	1	2	1	1	304									101																																																					
+<BOSS><Amblord> Skill	1	2	1	1	1304									101																																																					
+Firecracker																																																																			
+Warning																																																																			
+<BOSS><Mysterio> Plague of Sob	1	2	1	1	304									101																																																					
+<BOSS><Tara> Plague of Max	1	2	1	1	304									101																																																					
+<BOSS><Sparta> Spartan Training	1	2	1	1	1304									101																																																					
+<BOSS><Mortar> Corpse Miller	1	2	1	1	304									101																																																					
+<BOSS><Amantorg> Full Throttle	1	2	1	1	304									101																																																					
+<BOSS><Kobolt Dark Wizard> Brain Blizzard	1	2	1	1	1404									101																																																					
+Lucky Charm-Quantative System <30 Minutes>	10	2	2	100	1															10																												2			1			1													
+Lucky Charm-Quantative System <60 Minutes>	10	2	2	100	1															10																												2			1			1													
+Lucky Charm-Flat Sum System <1 Day>	10	2	2	100	1																																											2			1	3		1													
+Lucky Charm-Flat Sum System <3 Days>	10	2	2	100	1																																											2			1	3		1													
+Lucky Charm-Flat Sum System <14 Days>	10	2	2	100	1																																											2			1	3		1													
+Giant Potion	10	2	2	100	1															10																												2			1			1													
+Evasion Potion	10	2	2	100	1															10																												2			1			1													
+Extra-large Light Speed Potion	10	2	2	100	1															10																												2			1			1													
+Extra-large Quickness Potion	10	2	2	100	1															10																												2			1			1													
+Extra-large Defense Potion	10	2	2	100	1															10																												2			1			1													
+Lens Stone	10	2	2	100	1															10																								4				2			1		1	1													
+<BOSS><Fate Insect>Skill1	1	2	1	1	1404									101																																																					
+Fire Defense Skill Level 3	10	2	2	100	1															10																																															
+Fire Defense Skill Level 4	10	2	2	100	1															10																																															
+Water Defense Skill Level 3	10	2	2	100	1															10																																															
+Water Defense Skill Level 4	10	2	2	100	1															10																																															
+Wind Defense Skill Level 3	10	2	2	100	1															10																																															
+Wind Defense Skill Level 4	10	2	2	100	1															10																																															
+Earth Defense Skill Level 3	10	2	2	100	1															10																																															
+Earth Defense Skill Level 4	10	2	2	100	1															10																																															
+Magic Defense Skill Level 3	10	2	2	100	1															10																																															
+Magic Defense Skill Level 4	10	2	2	100	1															10																																															
+<BOSS><Fate Insect>Skill2	1	2	1	1	1304									101																																																					
+<BOSS><Fate Insect>Skill3	1	2	1	1	304									101																																																					
+Lucky Amulet - Fixed Price <7 days>	10	2	2	100	1																																											2			1	3		1													
+Evil Light	200	2	2	100	1																																				2					7													1								
+Lord Howling	10009	2	2	100	1																																																														
+Call Dragon	40	2	2	100	1																																				2																1										
+Call Royal Knight	210	2	2	100	1																																				2					1													1								
+Meteoric Shower	1	2	1	100	701									101																											2																		2								
+Improvement in Drop Rate	10	2	2	100	1																																											2			1	6		1													
+Day and Night	40	2	2	100	1																																				2																	1									
+<Summon> Evil Light																																																																			
+<Summon> Call Royal Knight																																																																			
+<MOB>Zebus Crusher Long Distance	1	2	1	1	1304									101																																																					
+<BOSS> <Blant Queen> Skill 1	1	2	1	1	1304									101																																																					
+Life Top Buff	10	3	2	10	602															10																								0				2	1																		
+Archon Guard Attack	1	3	1	1	611									101																																			1																		
+Guard Tower Attack	1	3	1	1	611									101																																			1																		
+Gate Keeper Titan	210	1	2	100	1	1																																								6													1								
+<Summon> Gate Keeper Titan																																																																			
+Looter Gargantua	210	1	2	100	1	1																																								6													1								
+<Summon> Looter Gargantia																																																																			
+Colossal	210	1	2	100	1	1																																								6													1								
+<Summon> Collossal																																																																			
+Critter	210	1	2	100	1	1																																								6													1								
+<Summon> Critter																																																																			
+<BOSS><Sand Ogre>Skill	1	2	1	1	1404									101																																																					
+<Di Kayn>PoisonCircle	1	2	1	1	304									101																																																					
+<Di Kayn>DeadlyRaise	1	2	1	1	1404									101																																																					
+<Di Kayn>DragonStorm																																																																			
+<Di Kayn>Warlord																																																																			
+<Summon>Warlord																																																																			
+<Trap>Ice Elemental1	1	2	1	1	1404									101																																																					
+<Trap>Ice Elemental2	1	2	1	1	1404									101																																																					
+<Trap>Ice Elemental3	1	2	1	1	1404									101																																																					
+<Trap>Ice Elemental4	1	2	1	1	1404									101																																																					
+<Trap>Ice Elemental5	1	2	1	1	1404									101																																																					
+<Trap>Ice Elemental6	1	2	1	1	1404									101																																																					
+<Trap>Ice Elemental7	1	2	1	1	1404									101																																																					
+<Trap>Ice Elemental8	1	2	1	1	1404									101																																																					
+<BOSS><Paingrow>CallofName	210	1	2	100	1	1																																								6													1								
+<BOSS><Paingrow>IceVoice	1	2	1	1	1404									101																																																					
+<BOSS><Paingrow>Blizzardra	1	2	1	1	304									101																																																					
+<Summon><Paingrow>CallofName																																																																			
+CloakofFire	10	2	2	100	1															10																												2						1													
+CloakofWater	10	2	2	100	1															10																												2						1													
+CloakofEarth	10	2	2	100	1															10																												2						1													
+CloakofAir	10	2	2	100	1															10																												2						1													
+CloakofMagic	10	2	2	100	1															10																												2						1													
+DetectSkill	20	2	2	100	302												11																																							1			1								
+PetAbnormalStatus																																																																			
+<BOSS><Circuitorder>LashVolt	1	2	1	1	1404									101																																																					
+<BOSS><Circuitorder>ThurnderOrb	1	2	1	1	1304									101																																																					
+<BOSS><Circuitorder>GreatCircuiit	1	2	1	1	1304									101																																																					
+Rain Control	40	2	2	100	1																																				2																	2									
+Snow Control	40	2	2	100	1																																				2																	4									
+ÅÚ·¹Æ÷Æ®																																																																			
+Capacitate	1	1	1	101	304	1								101																																																					
+Marching Song	10	1	2	100	303	1														10																					2																										
+Hold up The Colours	10	1	2	100	303	1														10																					2																										
+Divine Enhancement	10	1	2	100	303	1														10																					2																		0								
+Enervate	21	1	1	1	1304	1														10																					1																										
+Languish	21	1	1	1	1304	1														10															0						1																										
+Smart Rising																																																																			
+Ethereal Healing	10	1	2	100	303	1														10																					2																		2								
+Ethereal Vision	40	1	1	100	302	1																																			2															1			1								
+Wild Barrage	21	1	1	1	304	1								101						10																					2																										
+Elemental Support	10	1	2	100	303	1														10																					2																		2								
+Drum of War																																																																			
+Electrical Storm	21	1	1	1	1304	1								101						10																					2																										
+Explosive Bodkin	21	1	1	1	202	1								101						10																					2																										
+Sword Barrier																																																																			
+Firestorm	21	1	1	1	1304	1								101			3			10																					1																										
+Ethereal Impale	21	1	1	1	202	1								101						10																					2																										
+mental armor																																																																			
+Natural Toxin	21	1	1	1	202	1								101						10										10001											1																										
+Shadow Walker																																																																			
+Critical Elements	10	1	1	110	303	1	1000							106						10																					2																										
+Ancient's Favour	10	1	2	100	5	1														10																			2		2																										
+Temper Armour	10	1	2	100	303	1														10																					2																		2								
+Battle Cry	10	1	1	110	303	1														10																					2																										
+<Trap>Ice Elemental9	1	2	1	1	1404									101																																																					
+<Trap>Ice Elemental10	1	2	1	1	1404									101																																																					
+<Trap>Ice Elemental11	1	2	1	1	1404									101																																																					
+<Trap>Ice Elemental12	1	2	1	1	1404									101																																																					
+RaceWarBuff	10	2	2	100	1																																											2				1															
+Aftershock	21	1	1	1	1404	1								101						10																					2																										
+Solidarity	10	1	2	100	303	1														10																					2																		2								1
+Energy Barrier	10	1	2	100	1	1	1000										17			10																					2																										1
+Defence Weapon																																																																			
+Frontline Experience	9	1	2	111	1	3			5											107																																															
+Thunderbolt	21	1	1	1	1304	1								109						10																					1																										
+Flashfire	21	1	1	1	202	1								101						10																					2																										
+Assistance	50	1	1	1	2	1																					12			10001											1																										1
+Santa's Hat2	10	2	2	100	1															10																																4															
+Superior Marskmanship	9	1	2	111	1	11			6											107																																															
+Sudden Deluge	26	1	1	1	1304	1	1000							109						10																					1																										
+Vampiric Impact	1	1	1	1	202	1								101																							6				1																										
+Elemental Overcharge	10	1	2	100	303	1														10																					2																										
+Mental Severance	21	1	1	1	1302	1														10														9							1																										
+Superior Evocation	9	1	2	111	1	9			10											107																																															
+Seismic Shock	21	1	1	1	1304	1								101						10																					2																										
+Tribal Venom	21	1	1	1	2	1								101						10																					2																										
+Rallying Shout	10	1	1	110	303	1	1000							106																											2																										
+Steadfast	10	1	1	100	1	1														10																					2																										
+Weapon Mastery	9	1	2	111	1															10																																															
+Dark Arcane Charge	21	1	1	1	202	1								101						10																					1																										
+Subdue Prey	21	1	1	1	202	1														10														9							2																										
+Feeble Mind																																																																			
+Health Recovery																																																																			
+Arbalestier	9	1	2	111	1	12			7											107																																															
+Hell																																																																			
+Heaven																																																																			
+Low Wiz																																																																			
+Mislead																																																																			
+Unholy Casting	9	1	2	111	1	10			11											107																																															
+Elemental Fortitude	10	1	2	100	303	1														10																					2																										
+Angelic Might	10	1	2	100	303	1														10																					1																										
+Suggest Power																																																																			
+Dimension Work																																																																			
+Kataria Mastery	9	1	2	111	1	13			12											107																																															
+Admire Dread																																																																			
+Ancient's Haste	10	1	2	100	501	1														10	4																				2																										
+Ancient's Protection	10	1	2	100	501	1														10	8																				2																										
+Frozen Darts	21	1	1	1	202	1								101						10																					1																										
+Chakram Finesse	9	1	2	111	1	14			13											107																																															
+<Trap>Thunder_mirage	1	2	1	1	304									101																																																					
+<Trap>Thunder_thunder	1	2	1	1	304									101																																																					
+<Trap>Thunder_fence	1	2	1	1	404									101																																																					
+Compound Potion	10	2	2	100	1															10																												2			1			1													
+Intimidating Blow	21	1	1	1	202	1								101						10																					2																										
+Godlike Discipline	10	1	2	100	1	1	1000										13																								2																										70
+Divine Protection	10	1	2	100	303	1																																			2																			1							
+Arctic Strike	21	1	1	1	1304	1								101						10																					1																										
+Pressure Blast	21	1	1	1	1304	1								101						10																					1																										
+Restrain	21	1	1	1	202	1											14																	9							1																								3		
+Volatile Combustion	23	1	1	1	1304	1								101						10																					2																										
+Teachings of the Archmage	10	1	1	110	303	1														10																					2																										
+Antimagic	20	1	1	1	202	1			1																		16														1																										
+Sacrificial Blow	1	1	1	1	304	1								101																											2																										
+Martyr's Mark	10	1	2	100	303	1	1000																																		2																			2							
+Repress	20	1	1	1	202	1											15																								2																								4		
+Diminishing Hex	21	1	1	1	202	1														10														9							2																										
+Ethereal Refreshment	10	1	1	11	202	1														10																					1																						7				1
+Treat Party																																																																			
+Windstorm	21	1	1	1	1304	1								101						10																					2																										
+Time Cut																																																																			
+Narcolepsy	21	1	1	1	701	1											16																	9							2																										70
+Divine Lightning	21	1	1	1	1304	1								101						10																					1																										
+Elemental Favour	10	1	1	111	201	1	1000										5																								1																										1
+Concealment	10	1	1	111	702	1											10																								2																		2								
+Bomba	200	1	2	100	1	1																																			2					1																					
+Wind Shear	21	1	1	1	1304	1								101						10																					1																										
+Strike Mark	10	1	2	100	303	1														10																					2																										
+<Trap>Poison_gas	1	2	1	1	304									101																																																					
+<Trap>Poison_thorn	1	2	1	1	304									101																																																					
+<Trap>Poison_lake	1	2	1	1	304									101																																																					
+<BOSS><Dishope>VenomBreath	1	2	1	1	304									101																																																					
+<BOSS><Dishope>TrapVine	1	2	1	1	1404									101																																																					
+<BOSS><Dishope>PoisonEye	1	2	1	1	304									101																																																					
+AngelWing	10	2	2	100	1															10																												2						1													
+LordWing	10	2	2	100	1															10																												2						1													
+Defence Breaker	21	1	1	1	202	1								101						10																					2																										
+Unstable Energies	21	1	1	1	202	1								101						10																					1																										
+Aggression	10	1	1	110	303	1														10																					2																										
+Disentangle	50	1	1	111	2	1																					12														2																										1
+Cohesion	10	1	1	110	303	1														10																					2																										
+Elemental Affinity	10	1	1	110	303	1														10																					2																										
+Imposed Fatigue	61	1	1	1	701	1														10														9							2																										50
+Infection	21	1	1	1	1304	1								101						10										10001											2																										
+Legion of the Dead	210	1	2	100	1	1																																			2					1													1								
+Requiem	21	1	1	1	1304	1														10																					2																										
+Death Pact	10	1	2	100	5	1														10																			2		2																										
+Dark Metabolism	10	1	1	110	303	1														10																					2																										
+Wretched Cold	21	1	1	1	202	1								101						10																					1																										
+Lunar Blessing	10	1	1	110	303	1														10																					2																										
+Water Torpedo	21	1	1	1	1304	1								101						10																					1																										
+Energybolt	21	1	1	1	202	1								101						10																					1																										
+Spirit Smash	21	1	1	1	202	1								101						10																					1																										
+Ramda	210	2	2	100	1															10																										8		2						1					1								
+<Summon>Ramda																																																																			
+CloakofIce	10	2	2	100	1															10																												2						1													
+CloakofThunder	10	2	2	100	1															10																												2						1													
+CloakofPoison	10	2	2	100	1															10																												2						1													
+Mercoon	210	2	2	100	1															10																										8		2						1					1								
+<Summon>Mercoon																																																																			
+Abrahya	210	2	2	100	1															10																										8		2						1					1								
+<Summon>Abrahya																																																																			
+CakeSlice	10	2	2	100	1															10																																															
+AnniversaryCake	10	2	2	100	1															10																																															
+Talisman of Awakening PLUS	10	2	2	100	1																																											2			1	3		1													
+Lens Stone PLUS	10	2	2	100	1															10																								4				2			1		1	1													
+Wing of Devil	10	2	2	100	1															10																												2						1													
+Wing of Bat	10	2	2	100	1															10																												2						1													
+CloakofElementalMaster	10	2	2	100	1															10																												2						1													
+Collection Skill	8	2	1	1	202	4			654		4	3500																												1																											
+CloakofElementalMaster2																																																																			
+Sarazaran	210	2	2	100	1															10																										8		2						1					1								
+<Summon>Serazaran																																																																			
+<Summon>VictimOfGlory	9	1	1	111	1												17			10																								6																							
+<Summon>CreateSkeleton																																																																			
+Enlarge Fierce	1	1	1	1	202	1								101																											2																										
+Acrobatic Charge	61	1	1	1	1304	1								101						10																					2																										
+Braking Arms	21	1	1	1	202	15								101						10																					2			7																							
+Close Skirmish	21	1	1	1	202	1								101						10																					2			7																							
+Precise Assault	21	1	1	1	202	5								101			0			10																					2			8																							
+Blue Dire	21	1	1	1	1304	15								101						10																					2			0																							
+Recite of Breeze	21	1	1	1	1404	5								101																10001											2			7																							
+Insightful X	21	1	1	1	1304	15								101						10																					2			7																							
+Explosion Image	21	1	1	1	1304	1								101						10																					2			8																							
+Water Dream	21	1	1	1	202	1								101						10																					2			7																							
+Wounding Critical	21	1	1	1	1304	1								101																10001											2			8																							
+Barrage Strike	1	1	1	1	1304	1								101																											2			7																							
+Smart Force	10	1	2	100	1	1														10																					2																										
+Shout of Insight	10	1	2	100	303	1														10																					2																										
+Smart Blade	10	1	2	100	1	5			15											107																					2																										
+Smart Weapon	10	1	2	100	1	15			14											107																					2																										
+Sword Stopper	10	1	2	100	1	15	1000		14											107				4																	2																										
+Santa's Gloves2	10	2	2	100	1															10																																2															
+Unseeable	10	1	2	100	1	1											10																								2																										
+Lunar Masquerade	10	1	2	100	1	1														10																			4		2																					1					
+Chant Masquerade	10	1	2	100	1	1	1000																														1		4		2																					1					
+Dauntless Masquerade	10	1	2	100	1	1														10																			4		2																					1					
+Fires Masquerade	10	1	2	100	1	1	1000													10																			4		2																					1					
+Fallen Masquerade	10	1	2	100	1	1														10																			4		2																					1					
+Masquerade Master	10	1	2	100	1	1														10																					2																					2					
+Kin Sense	9	1	2	111	1		1000							106																																																					
+Dodge Form	9	1	2	111	1															10																																															
+Grace	9	1	2	111	1															10																																															
+Improved Strike	9	1	2	111	1		1000													10				2																																											
+Fortune Amulet - Flat Sum System <10 Hours>	10	2	2	100	1																																											2			1	3		1													
+Human Figure	10	2	2	100	1															10																																															
+Oak Figure	10	2	2	100	1															10																																															
+MoonElf Figure	10	2	2	100	1															10																																															
+Archlord Figure	10	2	2	100	1															10																																															
+Fortune Amulet - Flat Sum System <12 Hours>	10	2	2	100	1																																											2			1	3		1													
+<BOSS><ShadowLord>Skill1	1	2	1	1	1304									101																																																					
+<BOSS><ShadowLord>Skill2	1	2	1	1	304									101																																																					
+<Summon>VictimOfGlory<AdditionalEffect>	21	1	1	111	304									101						10																																	1														
+Assorted Fruit	10	2	2	100	1															10																																															
+Red-bean Sherbet	10	2	2	100	1															10																																															
+Green Tea Sherbert	10	2	2	100	1															10																																															
+Fruit Ice	10	2	2	100	1															10																																1															
+Bitter Concussion	21	2	1	1	1304									101						10																					2																										
+Lightning Javelin	21	2	1	101	404									101						10										10001											2																										
+Energy Buffer	10	2	2	100	309															10																					2																										
+Righteous Plating	10	2	2	100	309															10																					2																										
+Heightened Reflexes	10	2	2	100	309															10																					2																										
+Imperceptible	10	2	2	100	1												10																								2																										
+Aura of Decay	10	2	2	100	1																																				2				10001																						
+Redemption	40	2	1	111	204																																				2																				1						
+Holy Bliss	9	2	2	111	1															10																																															
+Amulet of True Awakening	10	2	2	100	1																																											2			1	3		1													
+Amulet of Rich Person	10	2	2	100	1																																											2			1	6		1													
+Wing of Karuna	10	2	2	100	1															10																												2						1													
+Wing of Phoenix	10	2	2	100	1															10																												2						1													
+Amulet of True Fortune																																																																			
+Amulet of Experience	10	2	2	100	1																																											2			1	3		1													
+Wing of Super Archangel	10	2	2	100	1															10																												2						1													
+Wing of Super Absolute Being	10	2	2	100	1															10																												2						1													
+<NPC>BigWheel	1	1	1	101	304	1								101																																																					
+<NPC>LinearBlow	1	1	1	1	1404	1								101																																																					
+<NPC>HellTypoon	5	1	1	1	1304	1			5					101																																																					
+<NPC>WheelGear	6	1	1	1	1304	1			2					101																																																					
+<NPC>Hook	1	1	1	1	304	1								101																																																					
+<NPC>DragonDevide	1	1	1	1	1404	1								101																																																					
+<NPC>SoulChaos	2	1	1	101	304	1			1					101																																																					
+<NPC>GeoShad	11	1	1	1	202	1			4					101						10												1																																			
+<NPC>VStrike	1	1	1	1	1304	1								101																																																					
+<NPC>ExplosionImage	21	1	1	1	1304	1								101						10																																															
+<NPC>ElemenatalStorm	1	1	1	1	1304	1								101																																																					
+<NPC>LightningFear	21	1	1	1	1304	1								101			3			10										10001																																					
+Invisible Blade X	21	1	1	111	1304	1								101						10																					2			7																							
+Lightening Rush	21	1	1	1	404	1								101			1			10																					2			7																							
+Fierce Blow	21	1	1	1	202	1								101						10																					2			7																							
+Close Fin Air	21	1	1	1	202	1								101						10																					2			7																							
+Heroism Might	10	1	1	110	303	1														10																					2																										
+Safeguard	10	1	2	100	303	1														10																					2																										
+Boost Up	10	1	2	100	303	1														10																					2																										
+Hide in Sight	10	1	2	100	1	1											10																								2																		4								1
+Advent Legend	10	1	2	100	1	1											8																								2																										
+Restoration	10	1	1	100	303	1														10																					2																										
+Two Weapon Mastery	9	1	1	111	1	15			14											107																																															
+Force Armour	10	1	2	100	1	1											8																								2																										
+<Hero>LightningVein	1	1	1	101	304	1								101																																																					
+<Hero>ReduceGround	21	1	1	1	1404	1								101						10																																															
+<Hero>DefenceMagic	10	1	2	100	1	1	1000										13																																																		
+<Hero>CloudFire	21	1	1	1	1304	1								101						10																																															
+<Hero>WindCrush	21	1	1	1	1304	1								101						10																																															
+<Hero>CreateSkeleton	210	1	2	100	1	1																																								1													1								
+<Hero>SuddenStrike	21	1	1	1	1304	1								101						10																																															
+<Hero>FullDownShot	21	1	1	1	1304	1								101						10																																															
+<Hero>ShadowIllusion	10	1	1	111	702	1											10																																										2								
+Minimal Physical Offence Power	10	2	2	100	1															10																																															
+Minimal Physical Defence Power	10	2	2	100	1															10																																															
+Minimal Life Endurance	10	2	2	100	1															10																																															
+Small Physical Offence Power	10	2	2	100	1															10																																															
+Small Physical Defence Power	10	2	2	100	1															10																																															
+Small Life Endurance	10	2	2	100	1															10																																															
+<Archer>TB	21	1	1	1	1304	1								101						10																																															
+<Archer>EZ	21	1	1	1	1304	1								101						10																																															
+<Archer>IW	21	1	1	1	1304	1								101						10																																															
+<Mage>SF	3	1	1	1	1304	1								101																																																					
+<Mage>WE	6	1	1	1	1304	1								101																																																					
+<Mage>SH	21	1	1	1	202	1								101						10																																															
+<Berserker>HR	21	1	1	1	304	1								101						10																																															
+<Berserker>LB	21	1	1	1	404	1								101						10																																															
+<Berserker>CE	21	1	1	1	202	1								101						10																																															
+<Hunter>SS	21	1	1	1	1304	1								101						10																																															
+SantasSuitBonusExp	10	2	2	100	1		1000													10																												2				7		1													
+<Hunter>GH	21	1	1	1	202	1								101						10																																															
+<Hunter>GR	21	1	1	1	1304	1								101						10										10001																																					
+<ELI>AS	21	1	1	1	202	1								101						10																																															
+<ELI>CP	21	1	1	1	202	1								101						10																																															
+<ELI>TP	21	1	1	1	1304	1								101						10																																															
+<SB>WC	21	1	1	1	1304	1								101																10001																																					
+<SB>LR	21	1	1	1	404	1								101			0			10																																															
+<SB>IBX	21	1	1	111	1304	1								101						10																																															
+Poison2nd	21	2	1	1	202		1000																							10001																																					
+Poison3rd	21	2	1	1	202		1000																							10001																																					
+Poison4th	21	2	1	1	202		1000																							10001																																					
+Poison5th	21	2	1	1	202		1000																							10001																																					
+lightning2nd	1	2	1	1	202		1000							101			1			10																																															
+lightning3rd	1	2	1	1	202		1000							101			1			10																																															
+lightning4th	1	2	1	1	202		1000							101			1			10																																															
+lightning5th	1	2	1	1	202		1000							101			1			10																																															
+Explosion2nd	1	2	1	1	1304		1000							101						10																																															
+Explosion3rd	1	2	1	1	1304		1000							101						10																																															
+Explosion4th	1	2	1	1	1304		1000							101						10																																															
+Explosion5th	1	2	1	1	1304		1000							101						10																																															
+SuperUltraExp	10	2	2	100	1																																											2			1	3		1													
+SuperUltraDrop	10	2	2	100	1															10																												2			1			1													
+SuperUltraEleCloak	10	2	2	100	1															10																												2						1													
+<boss><groupsmall>s01	1	2	1	1	1404									101																																																					
+<boss><groupsmall>s02	1	2	1	1	1304									101																																																					
+Rudolf	210	2	2	100	1															10																										8		2						1					1								
+<Summon>Rudolf																																																																			
+<Summon><H_W>CS																																																																			
+<boss><frosthdm>s1	1	2	1	1	1304									101																																																					
+<mob><dbspade>s1	1	2	1	1	1304									101																																																					
+<mob><bdclo>s1	1	2	1	1	1304									101																																																					
+<mob><bddia>s1	1	2	1	1	1304									101																																																					
+<mob><serpentw>s1	1	2	1	1	1304									101																																																					
+<mob><chainwd>s1	1	2	1	1	1304									101																																																					
+<mob><raptilsol>s1	1	2	1	1	1304									101																																																					
+<mob><spearmgreen>s1	1	2	1	1	1404									101																																																					
+<mob><spearmgrey>s1	1	2	1	1	1404									101																																																					
+<mob><spearmyello>s1	1	2	1	1	1404									101																																																					
+<mob><beastwsol>s1	1	2	1	1	1404									101																																																					
+<mob><beastwcha>s1	1	2	1	1	1404									101																																																					
+<mob><breastwco>s1	1	2	1	1	1404									101																																																					
+<mob><skyavensol>s1	1	2	1	1	1304									101																																																					
+<mob><gritspun>s1	1	2	1	1	1304									101																																																					
+<mob><gritsstar>s1	1	2	1	1	1304									101																																																					
+<mob><gritcru>s1	1	2	1	1	1304									101																																																					
+<mob><minotax>s1	1	2	1	1	1404									101																																																					
+<mob><hungerworker>s1	1	2	1	1	1304									101																																																					
+<mob><federws>s1	1	2	1	1	1404									101																																																					
+<mob><secubushum>s1	1	2	1	1	1304									101																																																					
+<Title> First Title	10	2	2	100	1															10																																	1	1													
+<mob><whitesc>s1	1	2	1	1	1404									101																																																					
+<mob><icebb>s1	1	2	1	1	1304									101																																																					
+<mob><icingds>s1	1	2	1	1	1304									101																																																					
+<mob><wingedrchd>s1	1	2	1	1	1304									101																																																					
+<mob><tigerors>s1	1	2	1	1	1304									101																																																					
+<mob><hookjst>s1	1	2	1	1	1404									101																																																					
+<mob><volcanowf>s1	1	2	1	1	1304									101																																																					
+<mob<masterwd>s1	1	2	1	1	1304									101																																																					
+LowAbility2	210	2	2	100	1															10																										8		2						1					1								
+<Summon>LowAbility2																																																																			
+LowAbility4	210	2	2	100	1															10																										8		2						1					1								
+<Summon>LowAbility4																																																																			
+LowAbility5	210	2	2	100	1															10																										8		2						1					1								
+<Summon>LowAbility5																																																																			
+NormalAbility2	210	2	2	100	1															10																										8		2						1					1								
+<Summon>NormalAbility2																																																																			
+NormalAbility4	210	2	2	100	1															10																										8		2						1					1								
+<Summon>NormalAbility4																																																																			
+NormalAbility5	210	2	2	100	1															10																										8		2						1					1								
+<Summon>NormalAbility5																																																																			
+HighAbility	210	2	2	100	1															10																										8		2						1					1								
+<Summon>HighAbility																																																																			
+HighestAbility	210	2	2	100	1															10																										8		2						1					1								
+<Summon>HighestAbility																																																																			
+LifeSoup	10	2	2	100	1															10																1																															
+WealthSoup	10	2	2	100	1															10																																6															
+HealthSoup	10	2	2	100	1															10																																															
+StrainerOfGlory	10	2	2	100	1															10																																1															
+SuccessSoup	10	2	2	100	1															10																																															
+AVT_AttackKorea	10	2	2	100	1		1000													10																	1											2				7		1													
+avt_defense_kr	10	2	2	100	1		1000													10																	1											2				7		1													
+avt_levelup	10	2	2	100	1															10																1												2				7		1													
+<mob>rviper	1	2	1	1	1404									101																																																					
+S_lspeed_potion	10	2	2	100	1															10																												2			1	3		1													
+S_quickness_potion	10	2	2	100	1															10																												2			1			1													
+S_defense_potion	10	2	2	100	1															10																												2			1			1													
+S_giant_potion	10	2	2	100	1									106						10																												2			1			1													
+S_Evasion_potion	10	2	2	100	1															10																												2			1	12		1													
+<mob><sabermali>s1	1	2	1	1	1304									101																																																					
+<MOB><Rock Golem>Skill 1	1	2	1	1	202									101																																																					
+<MOB><Machine Golem>Skill 1	1	2	1	1	202									101																																																					
+<MOB><Magma Stormer> Skill 1																																																																			
+3rdMemorialDaysPetLv1	210	2	2	100	1															10																										8		2						1					1								
+<Summon>3rdMemoryDaysPetLv1																																																																			
+3rdMemorialDaysPetLv2	210	2	2	100	1															10																										8		2						1					1								
+<Summon>3rdMemoryDaysPetLv2																																																																			
+3rdMemorialDaysPetLv3	210	2	2	100	1															10																										8		2						1					1								
+<Summon>3rdMemoryDaysPetLv3																																																																			
+3rdMemorialDaysPetLv4	210	2	2	100	1															10																										8		2						1					1								
+<Summon>3rdMemoryDaysPetLv4																																																																			
+AVT_FHero	10	2	2	100	1		1000													10																	1											2				7		1													
+AVT_Pioneer	10	2	2	100	1															10																												2				7		1													
+<MOB><Goblin Ranger>Skill 1	1	2	1	1	1304									101																																																					
+<BOSS><Ghoul Boss> Skill 2																																																																			
+<MOB><Grippler>Skill 1	1	2	1	1	1404									101																																																					
+<MOB><Griffin>Skill 2	1	2	1	1	202									101																																																					
+<MOB><Griffin>Skill 3	1	2	1	1	1404									101																																																					
+<MOB><Gnoll>Skill 1	1	2	1	1	202									101																																																					
+Serazaran1Lv	210	2	2	100	1															10																										8		2						1					1								
+<Summon>Serazaran1Lv																																																																			
+Serazaran2Lv	210	2	2	100	1															10																										8		2						1					1								
+<Summon>Serazaran2Lv																																																																			
+Serazaran3Lv	210	2	2	100	1															10																										8		2						1					1								
+<Summon>Serazaran3Lv																																																																			
+Serazaran4Lv	210	2	2	100	1															10																										8		2				1		1					1								
+<Summon>Serazaran4Lv																																																																			
+AVT_Returner	10	2	2	100	1																																											2			1	1		1													
+Attack Type	10	2	2	100	1		1000													10																	1											2						1													
+Defense Type	10	2	2	100	1		1000													10																	1											2						1													
+AVT_BalancedType	10	2	2	100	1		1000													10																												2				7		1													
+AVT_SuperiorType	10	2	2	100	1		1000													10																												2				7		1													
+<MOB><Tynee Draconian Thrower>Skill 1	1	2	1	1	202									101																																																					
+mercoon1																																																																			
+<summon>mercoon1																																																																			
+abrahya1																																																																			
+<summon>abrahya1																																																																			
+Chaotic Debuff	10	1	2	100	1			7												10																																															
+<MOB><Cure>Skill 1	40	2	2	100	1																						2																																								
+<MOB><Lamia>Skill 1	1	2	1	1	202									101																																																					
+<MOB><Lequimes> Skill 1																																																																			
+<MOB><Lequimes> Skill 2																																																																			
+<MOB><Marylith>Skill 1	1	2	1	1	202									101																																																					
+<BOSS><Marylith Queen> Skill 1																																																																			
+<MOB><Manticore>Skill 1	1	2	1	1	1404									101																																																					
+<MOB><Bat> Skill 1																																																																			
+<BOSS><Giant Hornet Queen> Skill 1																																																																			
+<MOB><Dark Avatar Knight> Skill 1																																																																			
+Skull of Chaos	10	2	2	100	1		1000													10																	1											2						1													
+Heart of Chaos	10	2	2	100	1		1000													10																	1																														
+Extract of Chaos	10	2	2	100	1															10																																															
+Claw of Chaos	10	2	2	100	1															10																																															
+Magic Crystal	10	2	2	100	1															10																																															
+Talisman of Awakening 130	10	2	2	100	1																																											2			1	3		1													
+Talisman of Awakening 140	10	2	2	100	1																																											2			1	3		1													
+Talisman of Awakening 120	10	2	2	100	1																																											2			1	3		1													
+<MOB><Human Mage Sentry>Skill 1	1	2	1	1	202									101																																																					
+<MOB><Human Archer Sentry>Skill 1	1	2	1	1	1304									101																																																					
+<MOB><Human Warrior Sentry>Skill 1	1	2	1	1	304									101																																																					
+<MOB><Orc Warrior Sentry>Skill 1	1	2	1	1	202									101																																																					
+<MOB><Orc Warrior Sentry>Skill 2	1	2	1	1	1404									101																																																					
+<MOB><Orc Mage Sentry>Skill 1	1	2	1	1	1404									101																																																					
+<Battle>Increase All Stats	20010	2	2	101	201															10																																															
+<Battle>Skill Upgrade	20010	2	2	101	201															10																			1		2																										
+<Battle>Max HP Increase	20010	2	2	101	201															10																																															
+<Battle>Critical Hit Defense Increase	20010	2	2	101	201															10				4																																											
+<Battle>Bonus XP Increase	20010	2	2	101	201															10																																1															
+<Battle>Bonus Drop Rate Increase	20010	2	2	101	201															10																																4															
+<Battle>Bonus Gold Increase	20010	2	2	101	201															10																																2															
+<Battle>Skill Cast Time Decrease	20010	2	2	101	201															10																																															
+<Battle>Skill Cooldown Time Decrease	20010	2	2	101	201															10																																															
+<Battle>3 Major Elemental Attack Powers Increase	20010	2	2	101	201															10																																															
+<Battle>3 Major Elemental Resistance Increase	20010	2	2	101	201															10																																															
+<Battle>Skill Block Rate Increase	20010	2	2	101	201															10																																															
+<Battle>Block Rate Increase	20010	2	2	101	201															10																																															
+<Battle>Damage Increase	20010	2	2	101	201															10																																															
+<Battle>Defense Increase	20010	2	2	101	201															10																																															
+<Battle>Elemental Damage increase	20010	2	2	101	201															10																																															
+<Battle>Elemental Resistance Increase	20010	2	2	101	201															10																																															
+<Battle>Physical Resistance Increase	20010	2	2	101	201															10																																															
+<Battle>Attack Rate Increase	20010	2	2	101	201															10																																															
+<Battle>Defense Rate Increase	20010	2	2	101	201															10																																															
+<Battle>Dodge Increases	20010	2	2	101	201															10																																															
+<Battle>Attack Speed Increase	20010	2	2	101	201															10																																															
+<Battle>Movement Speed Increase	20010	2	2	101	201															10																																															
+<Battle>HP Recovery Increase	20010	2	2	101	201															10																1																															
+<Battle>Mana Recovery Increase	20010	2	2	101	201															10																2																															
+<Battle>Individual Ability	10	2	2	100	1		4000													10																								6				2																			
+<Battle>Party Ability	10	2	2	100	1		4000													10																								6				2																			
+<Battle>Race Ability	10	2	2	100	1		4000													10																								6				2																			
+<MOB><MoonElf Warrior Sentry>Skill 1	1	2	1	1	1404									101																																																					
+<MOB><MoonElf Archer Sentry>Skill 1	1	2	1	1	202									101																																																					
+<MOB><MoonElf Mage Sentry>Skill 1	1	2	1	1	202									101																																																					
+Kitty Lv 1	210	2	2	100	1															10																										8		2						1					1								
+<Summon>Kitty Lv 1																																																																			
+Kitty Lv 2	210	2	2	100	1															10																										8		2						1					1								
+<Summon>Kitty Lv 2																																																																			
+Doggy Lv 3	210	2	2	100	1															10																										8		2						1					1								
+<Summon>Doggy Lv 3																																																																			
+Doggy Lv 4	210	2	2	100	1															10																										8		2						1					1								
+<Summon>Doggy Lv 4																																																																			
+Test Ramda	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Test Ramda																																																																			
+Doogie Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Doogie Lv 1																																																																			
+Doogie Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Doogie Lv 2																																																																			
+Doogie Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Doogie Lv 3																																																																			
+Doogie Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Doogie Lv 4																																																																			
+Doogie Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Doogie Lv 5																																																																			
+Doogie Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Doogie Lv 6																																																																			
+Doogie Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Doogie Lv 7																																																																			
+Doogie Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Doogie Lv 8																																																																			
+Doogie Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Doogie Lv 9																																																																			
+Doogie Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Doogie Lv 10																																																																			
+Rakundel Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rakundel Lv 1																																																																			
+Rakundel Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rakundel Lv 2																																																																			
+Rakundel Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rakundel Lv 3																																																																			
+Rakundel Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rakundel Lv 4																																																																			
+Rakundel Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rakundel Lv 5																																																																			
+Rakundel Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rakundel Lv 6																																																																			
+Rakundel Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rakundel Lv 7																																																																			
+Rakundel Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rakundel Lv 8																																																																			
+Rakundel Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rakundel Lv 9																																																																			
+Rakundel Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rakundel Lv 10																																																																			
+Latiman Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Latiman Lv 1																																																																			
+Latiman Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Latiman Lv 2																																																																			
+Latiman Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Latiman Lv 3																																																																			
+Latiman Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Latiman Lv 4																																																																			
+Latiman Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Latiman Lv 5																																																																			
+Latiman Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Latiman Lv 6																																																																			
+Latiman Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Latiman Lv 7																																																																			
+Latiman Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Latiman Lv 8																																																																			
+Latiman Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Latiman Lv 9																																																																			
+Latiman Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Latiman Lv 10																																																																			
+Lu Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Lu Lv 1																																																																			
+Lu Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Lu Lv 2																																																																			
+Lu Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Lu Lv 3																																																																			
+Lu Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Lu Lv 4																																																																			
+Lu Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Lu Lv 5																																																																			
+Lu Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Lu Lv 6																																																																			
+Lu Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Lu Lv 7																																																																			
+Lu Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Lu Lv 8																																																																			
+Lu Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Lu Lv 9																																																																			
+Lu Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Lu Lv 10																																																																			
+Milfi Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Milfi Lv 1																																																																			
+Milfi Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Milfi Lv 2																																																																			
+Milfi Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Milfi Lv 3																																																																			
+Milfi Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Milfi Lv 4																																																																			
+Milfi Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Milfi Lv 5																																																																			
+Milfi Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Milfi Lv 6																																																																			
+Milfi Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Milfi Lv 7																																																																			
+Milfi Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Milfi Lv 8																																																																			
+Milfi Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Milfi Lv 9																																																																			
+Milfi Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Milfi Lv 10																																																																			
+Bloom Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Bloom Lv 1																																																																			
+Bloom Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Bloom Lv 2																																																																			
+Bloom Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Bloom Lv 3																																																																			
+Bloom Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Bloom Lv 4																																																																			
+Bloom Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Bloom Lv 5																																																																			
+Bloom Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Bloom Lv 6																																																																			
+Bloom Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Bloom Lv 7																																																																			
+Bloom Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Bloom Lv 8																																																																			
+Bloom Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Bloom Lv 9																																																																			
+Bloom Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Bloom Lv 10																																																																			
+Teful Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Teful Lv 1																																																																			
+Teful Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Teful Lv 2																																																																			
+Teful Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Teful Lv 3																																																																			
+Teful Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Teful Lv 4																																																																			
+Teful Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Teful Lv 5																																																																			
+Teful Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Teful Lv 6																																																																			
+Teful Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Teful Lv 7																																																																			
+Teful Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Teful Lv 8																																																																			
+Teful Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Teful Lv 9																																																																			
+Teful Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Teful Lv 10																																																																			
+Pekki Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Pekki Lv 1																																																																			
+Pekki Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Pekki Lv 2																																																																			
+Pekki Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Pekki Lv 3																																																																			
+Pekki Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Pekki Lv 4																																																																			
+Pekki Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Pekki Lv 5																																																																			
+Pekki Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Pekki Lv 6																																																																			
+Pekki Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Pekki Lv 7																																																																			
+Pekki Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Pekki Lv 8																																																																			
+Pekki Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Pekki Lv 9																																																																			
+Pekki Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Pekki Lv 10																																																																			
+Battleground Defeated Race Halt	20	2	2	101	2												9																								2																										
+<Battle>Cast Halt	10	2	2	100	1		4000													10																								0																							
+<Battle>Individual Ability 2	10	2	2	100	2															10																												2																			
+<Battle>Party Ability 2	10	2	2	100	206															10																												2																			
+<Battle>Race Ability 2	10	2	2	100	207															10																												2																			
+Talisman of Heavenly Luck	10	2	2	100	1																																											2			1	14		1													
+Disturb	21	1	1	1	202	1								101			3			10																					1																										
+Hurt Muscle	21	1	1	1	202	1								101						10																					1																										
+Battle Machine	10	1	2	100	1	1														10																					2																										
+Good Xenon	10	1	2	100	1	18														10																					2																										
+Good Karon	10	1	2	100	1	17														10																					2																										
+Awake Orbiter																																																																			
+Awake Slayer																																																																			
+Awake Summoner																																																																			
+Distribute	40	1	2	100	303	1														10																					2																						7				
+Hater	21	1	1	1	1304	1								101						10																					1																										
+Purgatory	10	1	2	100	303	1														10																					2																										
+Power Stunner	21	1	1	1	202	17	1000							101			1																								2																										
+Reverse Death	10	1	2	100	1	17	1000																														1				2																										
+War Cry	10	1	1	100	1	17														10																					2																										
+Body Check	21	1	1	1	1404	17	1000		50	400				109						10																					1																										
+Ambush	1	1	1	1	202	17								101																											1			2																							
+Zen Shield	10	1	2	100	1	17														10				4																	2																										
+Tidal Wave	21	1	1	1	304	17								101						10																					2																										
+Legendary Slayer	10	1	2	100	1	17	1000										4																								2																										
+Break Armor	21	1	1	1	202	17								111						10																					2																										
+Air Strike	10	1	2	100	1	17	1000							106						10																					2																										
+Lose Faith	1	1	1	1	202	17								101																											2																										
+Mind Eye	21	1	1	1	202	18								101			3			10																					2																										
+Twister	21	1	1	101	1304	18			2					101																10001		1									1																										
+Rush Hour	10	1	2	100	1	18														10																					2																										
+Block Breaker	1	1	1	1	1404	18								101																											1																										
+Push Away	21	1	1	1	1304	18								101						10																					2																										
+Shadow Effector	10	1	2	100	1	18														10																					2																										
+Siphon Wave	21	1	1	1	1304	18								101			3			10																					2																										
+Remove Armor	21	1	1	1	202	18								101						10																					2																										
+Swift	10	1	2	100	1	18														10	4																				2																										
+Toxic Hand	21	1	1	1	202	18								101			9																								1																										
+Flash and Burn	21	1	1	101	1304	18			2					101						10																					2																										
+Screamer	21	1	1	1	1304	18								101			3			10																					2																										
+Killing Breath	1	1	1	1	1404	1								101																											2																										
+Mana Union	10	1	2	100	1	1														10																					2																										
+Mighty Foot	21	1	1	111	1304	1								101						10																					2																										
+Perfect Sense	10	1	2	100	1	1														10																					2																										
+Mind Jumper	10	1	2	100	1	1														10																					2																										
+Mighty Wing	21	1	1	111	304	1								101						10																					2																										
+Hell Infinity	21	1	1	1	1304	1			2					101																10001		1									1																										
+World Ruler	10	1	2	100	1	1														10																					2																										
+Breath of Rage	21	1	1	101	1304	1	1000		50	400				109						10																					2																										
+Call on Nature	210	1	2	100	1																																				2					7													1								
+Lose Mind	21	1	1	1	202	1			2					101						10																					2																										
+Sacred One	210	1	2	100	1	1																																			2					0																					
+Super Talisman of Awakening (China)	10	2	2	100	1																																											2			1	3		1													
+Talisman of Awakening+ (China)	10	2	2	100	1																																											2			1	3		1													
+String of Family Happiness	10	2	2	100	1															10																																															
+Bead of Friendship	10	2	2	100	1															10																																															
+Toy of Blessing	10	2	2	100	1															10																																															
+Moon Welcoming Toy	10	2	2	100	1															10																																															
+<MOB>Blood Bath	1	2	1	1	1304									101																																																					
+Slayer of Evolution	10	3	2	100	1							1								10								5																				2	1																		
+Slayer of Revolution																																																																			
+Slayer of Lord																																																																			
+Orbiter of Evolution	10	3	2	100	1							1								10								5																				2	1																		
+Orbiter of Revolution																																																																			
+Orbiter of Lord																																																																			
+Summoner of Evolution	10	3	2	100	1							1								10								5																				2	1																		
+Summoner of Revolution																																																																			
+Summoner of Lord																																																																			
+Evil-warding Pumpkin	10	2	2	100	1															10																																4															
+Soul-calling Candle	10	2	2	100	1															10																																1															
+Holy Oak Branch	10	2	2	100	1															10																																2															
+Halloween Pumpkinhead Ability	10	2	2	100	1		1000													10																												2				7		1													
+Halloween Avatar Ability	10	2	2	100	1		1000													10																												2				7		1													
+Halloween Pumpkinhead Ability 2	10	2	2	100	1		1000													10																												2				7		1													
+Halloween Pumpkinhead Ability 3	10	2	2	100	1		1000													10																												2				7		1													
+<MOB>Tracker Ein	1	2	1	1	1304									101																																																					
+<MOB>Tracker Zwei	1	2	1	1	1304									101																																																					
+<MOB>Tracker Drai	1	2	1	1	1304									101																																																					
+<MOB>Dark Age	1	2	1	1	1304									101																																																					
+<MOB>Haken Hollow	1	2	1	1	1304									101																																																					
+<MOB>Nine Vital	1	2	1	1	1304									101																																																					
+<MOB>Chariot Gladiator	1	2	1	1	1304									101																																																					
+<Summon>Sacred One	9	1	1	111	1															10																																															
+<Summon>Call on Nature																																																																			
+Christmas Bell	10	2	2	100	1															10																																															
+Christmas Socks	10	2	2	100	1															10																																															
+Rudolf Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rudolf Lv 1																																																																			
+Rudolf Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rudolf Lv 2																																																																			
+Rudolf Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rudolf Lv 3																																																																			
+Rudolf Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rudolf Lv 4																																																																			
+Rudolf Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rudolf Lv 5																																																																			
+Rudolf Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rudolf Lv 6																																																																			
+Rudolf Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rudolf Lv 7																																																																			
+Rudolf Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rudolf Lv 8																																																																			
+Rudolf Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rudolf Lv 9																																																																			
+Rudolf Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Rudolf Lv 10																																																																			
+Powerful Might	10	1	2	100	1	17	1000							106																											2																										
+Moral Courage	10	1	1	100	1	17														10																					2																										
+Smart Sniper	10	1	1	100	1	18														10																					2																										
+Great Honor	10	1	1	100	1	18														10																					2																										
+Soul of Scion	10	1	1	100	1	1														10																					2																										
+Guardian of Scion	10	1	1	100	1	1														10																					2																										
+Force Claw	9	1	2	111	1															10																																															
+Wing Over	9	1	2	111	1															10																																															
+Piercing Tooth	9	1	2	111	1		1000		5	150				106																																																					
+Strong Mind	9	1	2	111	1															10																																															
+Iron Scale	9	1	2	111	1															10																																															
+Dragon Might	9	1	2	111	1															10																																															
+Dragon Wing	9	1	2	111	1															10																																															
+Dragon Head	9	1	2	111	1															10																																															
+Dragon Mind	9	1	2	111	1															10																																															
+Dragon Blood	9	1	2	111	1															10																																															
+<MOB>Three Bothers of Nine Vital	1	2	1	1	1304									101																																																					
+<MOB>Hyper Howl of Nine Vital	1	2	1	1	1304									101																																																					
+<MOB>Haken Hollow Overseer	1	2	1	1	1304									101																																																					
+<MOB>Haken Hollow Undertaker	1	2	1	1	1304									101																																																					
+<MOB>Chariot Gladiator Skill 01	1	1	1	1	1404									101																											2																										
+<Summon>Mighty Foot	9	1	1	111	1															10																								6																							
+<Summon>Mighty Foot Skill 01	21	1	1	111	304									101						10																																	1														
+<Summon>Mighty Wing	9	1	1	111	1															10																								6																							
+<Summon>Mighty Wing Skill 01	21	1	1	111	304									101						10																																	1														
+<Summon>Sacred One Skill 01	10	1	1	1	202															10																																	1														
+<Summon>Sacred One Skill 02	10	1	1	1	202															10																																	1														
+Scion's Normal Attack																																																																			
+Novice Buff Potion	10	2	2	100	1															10																												2			1			1													
+Talisman of Awakening 30	10	2	2	100	1																																											2			1	3		1													
+Talisman of Awakening 50	10	2	2	100	1																																											2			1	3		1													
+<Hero Tartasandra>Twister	21	1	1	101	1304				2					101																10001		1									1																										
+<Hero Tartasandra>Disturb	21	1	1	1	202									101			3			10																					1																										
+<Hero Tartasandra>Power Stunner	21	1	1	1	202		1000							101			1																								2																										
+<Limoivoire>Ambush	1	1	1	1	202									101																											1			2																							
+<Limoivoire>Tidal Wave	21	1	1	1	304									101						10																					2																										
+<Limoivoire>Break Armor	1	1	1	1	202									111																											2																										
+<Ruzru>Mind Eye	1	1	1	1	202									101																											1																										
+<Ruzru>Block Breaker	1	1	1	1	1404									101																											1																										
+<Ruzru>Remove Armor	21	1	1	1	202									101						10																					2																										
+Guard Slayer	1	1	1	1	202									101																											1																										
+Guard Orbiter	1	1	1	1	202									101																											1																										
+Guard Summoner	1	1	1	1	202									101																											1																										
+Superior 2	10	2	2	100	1		1000													10																												2				7		1													
+Mercoon Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Mercoon Lv 1																																																																			
+Mercoon Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Mercoon Lv 2																																																																			
+Mercoon Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Mercoon Lv 3																																																																			
+Mercoon Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Mercoon Lv 4																																																																			
+Mercoon Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Mercoon Lv 5																																																																			
+Mercoon Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Mercoon Lv 6																																																																			
+Mercoon Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Mercoon Lv 7																																																																			
+Mercoon Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Mercoon Lv 8																																																																			
+Mercoon Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Mercoon Lv 9																																																																			
+Mercoon Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Mercoon Lv 10																																																																			
+Ramda Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Ramda Lv 1																																																																			
+Ramda Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Ramda Lv 2																																																																			
+Ramda Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Ramda Lv 3																																																																			
+Ramda Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Ramda Lv 4																																																																			
+Ramda Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Ramda Lv 5																																																																			
+Ramda Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Ramda Lv 6																																																																			
+Ramda Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Ramda Lv 7																																																																			
+Ramda Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Ramda Lv 8																																																																			
+Ramda Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Ramda Lv 9																																																																			
+Ramda Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Ramda Lv 10																																																																			
+Abrahya Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Abrahya Lv 1																																																																			
+Abrahya Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Abrahya Lv 2																																																																			
+Abrahya Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Abrahya Lv 3																																																																			
+Abrahya Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Abrahya Lv 4																																																																			
+Abrahya Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Abrahya Lv 5																																																																			
+Abrahya Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Abrahya Lv 6																																																																			
+Abrahya Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Abrahya Lv 7																																																																			
+Abrahya Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Abrahya Lv 8																																																																			
+Abrahya Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Abrahya Lv 9																																																																			
+Abrahya Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon>Abrahya Lv 10																																																																			
+Talisman of Awakening 100	10	2	2	100	1																																											2			1	3		1													
+Talisman of Awakening 50p	10	2	2	100	1																																											2			1	3		1													
+Talisman of Awakening 20	10	2	2	100	1																																											2			1	3		1													
+<Event> All Stats Increase	20010	2	2	101	201															10																																															
+<Event> Skill Upgrade	20010	2	2	101	201															10																			1		2																										
+<Event> Max HP Increase	20010	2	2	101	201															10																																															
+<Event> Critical Hit Defense Increase	20010	2	2	101	201															10				4																																											
+<Event> Bonus XP Increase	20010	2	2	101	201															10																																1															
+<Event> Bonus Drop Rate Increase	20010	2	2	101	201															10																																4															
+<Event> Bonus Gold Increase	20010	2	2	101	201															10																																2															
+<Event> Skill Cast Time Decrease	20010	2	2	101	201															10																																															
+<Event> Skill Cooldown Decrease	20010	2	2	101	201															10																																															
+<Event> Event Ability	10	2	2	100	1		4000													10																								6				2																			
+<Event> Event Ability 2	10	2	2	100	211															10																												2																			
+[E] Giant Potion	10	2	2	100	1															10																												2			1			1													
+[E] Evasion Potion	10	2	2	100	1															10																												2			1			1													
+[E] Light Speed Potion	10	2	2	100	1															10																												2			1			1													
+[E] Quickness Potion	10	2	2	100	1															10																												2			1			1													
+[E] Defense Potion	10	2	2	100	1															10																												2			1			1													
+Usus' Warning	20020	2	2	111	201												0																																					1													
+<MOB> <Flame Knight> Intimidating Blow	23	2	1	1	202									101						10																																															
+<MOB> <Flame Hunter> Disturb	23	2	1	1	202									101			3			10																																															
+<MOB> <Flame Mage> Wretched Cold	23	2	1	1	202									101						10																																															
+<MOB> <Flame Looter> Skill 1	23	2	1	101	304									101																10001																																					
+<MOB> <Flame Extortioner> Skill 1	23	2	1	1	1304															10																																															
+<MOB> <Cry of Fury> Skill 1	23	2	1	101	304									101			3			10																																															
+<MOB> <Cry of Fury> Skill 2	23	2	1	1	1304		1000							101			1																																																		
+<MOB> <Bloodline Warrior> Lightning Rush	26	2	1	1	404									101					2	10																																															
+<MOB> <Bloodline Scout> Diminishing Hex	26	2	1	1	2															10																																															
+<MOB> <Bloodline Mage> Antimagic	40	2	1	1	202				1																		16																																								
+<MOB> <Life Hunter> Skill 1	26	2	2	1	404															10																																															
+<MOB> <Life Ambusher> Skill 1	26	2	1	101	304															10																																															
+<MOB> <Cry of Silence> Skill 1	26	2	1	101	304															10																																															
+<MOB> <Cry of Silence> Skill 2	26	2	1	1	1304									101																10001																																					
+<MOB> <Storm Knight> Repress	10	2	1	1	202												15																																																		
+<MOB> <Storm Archer> Restrain	20	2	1	1	202												14																																																		
+<MOB> <Storm Mage> Typhoon	25	2	1	1	1304				5					101						10																																															
+<MOB> <Blade Inspector> Skill 1	25	2	1	101	304				4					101						10												1																																			
+<MOB> <Blade Robber> Skill 1	25	2	1	1	1304		1000							101			1																																																		
+<MOB> <Cry of Pain> Skill 1	25	2	2	101	304															10																																															
+<MOB> <Cry of Pain> Skill 2	25	2	1	1	1304				4					101						10												1																																			
+<MOB> <Lord of Heaven's Hell> Skill 1	22	2	1	1	1304		1000							101			1																																																		
+<MOB> <Lord of Heaven's Hell> Skill 2	22	2	1	101	304															10																																															
+<MOB> <Lord of Heaven's Hell> Skill 3	22	2	1	1	404				4					101						10												1																																			
+Usus' Warning <1 day>	20010	2	2	111	201												0																																																		
+Usus' Warning <7 days>	20010	2	2	111	201												0																																																		
+Usus' Warning <30 days>	20010	2	2	111	201												0																																																		
+Remains of Ashtal	10	2	2	100	1															10																																															
+<MOB> <Arch Demon> Skill 1	22	2	1	1	1304		1000							101			1																																																		
+<MOB> <Arch Demon> Skill 2	22	2	1	1	1304															10																																															
+<MOB> <Arch Demon> Skill 3	22	2	1	1	1304				4					101						10												1																																			
+<MOB> <Arch Demon> Skill 4	40	2	1	1	202				1																		16																																								
+Ashtal's Energy Lv. 1	10	2	2	101	201																																															1															
+Ashtal's Energy Lv. 2	10	2	2	101	201																																															1															
+Ashtal's Energy Lv. 3	10	2	2	101	201																																															1															
+Ashtal's Energy Lv. 4	10	2	2	101	201																																															1															
+Ashtal's Energy Lv. 5	10	2	2	101	201																																															1															
+Ashtal's Energy Lv. 6	10	2	2	101	201																																															1															
+Ashtal's Energy Lv. 7	10	2	2	101	201																																															1															
+Ashtal's Energy Lv. 8	10	2	2	101	201															10																																4															
+Frenzied 2	10	2	2	100	1		1000													10																												2				7		1													
+Wishing Candle	10	2	2	100	1															10																																															
+Revin Lv. 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon> Revin Lv. 1																																																																			
+Revin Lv. 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon> Revin Lv. 2																																																																			
+Revin Lv. 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon> Revin Lv. 3																																																																			
+Revin Lv. 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon> Revin Lv. 4																																																																			
+Revin Lv. 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon> Revin Lv. 5																																																																			
+Revin Lv. 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon> Revin Lv. 6																																																																			
+Revin Lv. 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon> Revin Lv. 7																																																																			
+Revin Lv. 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon> Revin Lv. 8																																																																			
+Revin Lv. 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon> Revin Lv. 9																																																																			
+Revin Lv. 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<Summon> Revin Lv. 10																																																																			
+<Title> Advanced Knight	10	2	2	100	1															10																																	1	1													
+<Title> Advanced Archer	10	2	2	100	1															10																																	1	1													
+<Title> Advanced Mage	10	2	2	100	1															10																																	1	1													
+<Title> Embodiment of Magic	10	2	2	100	1															10																																	1	1													
+<Title> Embodiment of Fire	10	2	2	100	1															10																																	1	1													
+<Title> Embodiment of Air	10	2	2	100	1															10																																	1	1													
+<Title> Embodiment of Water	10	2	2	100	1															10																																	1	1													
+<Title> Embodiment of Earth	10	2	2	100	1															10																																	1	1													
+<Title> Ugdrasil's Nectar	10	2	2	100	1		1000							106						10																																	1														
+<Title> Dikain's Nectar	10	2	2	100	1															10																																3	1														
+<Title> Gracia's Nectar	10	2	2	100	1															10																																	1														
+<Title> Zian's Nectar	10	2	2	100	1															10																																	1														
+<Title> Syripus' Nectar	10	2	2	100	1															10																																12	1														
+Iron Shield	9	1	2	111	1	3														10																																															
+Justice of Battle	1	1	1	1	202	1								101																											1																										
+Shield of the Front	10	1	2	100	303	1														10																					2																										
+Martyr's Retribution	1	1	1	1	1404	1								101																											1																										
+Forced March	9	1	2	111	1	3														10																																															
+Strike of Judgement	21	1	1	1	202	1								101					3	10																					2																						1				
+Righteous Smite	21	1	1	1	1304	1	1000							101			25																								2																							2			
+Brilliant Spirit	10	1	2	110	1	1														10																					2																										
+Terrifying Nemesis	21	1	1	1	202	1	1000							101			20			10																					2																							10			
+Inexorable Strike	21	1	1	1	202	1	1000							101			22			10																					2																							15			
+Slight of Bow	9	1	2	111	1	11														10																																															
+Biting Strike	1	1	1	1	1304	1								101																											1																										
+Bow of Meditation	40	1	1	111	201	1											0										64														2																							1002			
+Ghost on the Arrow	1	1	1	1	1404	1								101																											1																										
+Illusion Stride	9	1	2	111	1	11														10																																															
+Scorpion Trap	21	1	1	1	1304	1	1000							101			20			10																					2																							10			
+Cloud of Arrows	21	1	1	1	1304	1	1000							101			21			10																					2																							11			
+Archer's Eye	10	1	2	100	1	1											0			10																					2																										
+Intimidate Blow	21	1	1	1	1404	1	1000							101			24			10																					2																							2			
+Hurricane of Death	21	1	1	1	202	1			2					101						10										10001		1									1																										
+Magical Tradition	9	1	2	111	1	9														10																																															
+Lance of Lightning	1	1	1	1	1404	1								101																											1																										
+Radiant Vision	10	1	2	110	1	1														10																					2																										
+Titan Crusher	1	1	1	1	1304	1								101																											1																										
+Iron Staff	9	1	2	111	1	9														10																																															
+Storm Bite	21	1	1	1	1304	1	1000							101			25			10																					2																							2			
+Dread Assault	21	1	1	1	1304	1	1000							101			22			10																					2																							15			
+Spiral Vision	10	1	2	100	1	1														10																					2																										
+Black Staff Disease	21	1	1	1	304	1	1000							101			23			10																					2																										
+Soul Bane	21	1	1	1	202	1								101						10																					2																										
+Terrible Scale	9	1	2	111	1	1														10																																															
+Cruel Slash	1	1	1	1	202	1								101																											1																										
+Battle Focus	10	1	2	100	303	1														10																					2																										
+Violent Crusher	1	1	1	1	304	1								101																											1																										
+Insane Howling	9	1	2	111	1	1														10																																															
+Frightful Sight	21	1	1	1	202	1	1000							101			22			10																					2																							15			
+Forced Battle	21	1	1	1	202	1								101					3	10																					2																						1				
+Indomitable Soul	10	1	2	100	303	1														10																					2																										
+Cry of Disorder	21	1	1	1	304	1	1000							101			21			10																					2																							11			
+Ultimate Rage	10	1	2	100	1	1														10																					2																										
+Nimble Mobility	9	1	2	111	1	12														10																																															
+Acrobatic Shot	1	1	1	1	1304	1								101																											1																										
+Dangerous Position	10	1	2	100	303	1														10																					2																										
+Tricky Shot	1	1	1	1	1404	1								101																											1																										
+Bloody Walk	9	1	2	111	1	12														10																																															
+Painting Attack	21	1	1	1	1304	1	1000							101			21			10																					2																							11			
+Crimson Eye	21	1	1	1	1304	1	1000							101			24			10																					2																							2			
+Enemy Bane Stance	10	1	2	100	1	1											0			10																					2																										
+Shrinking Snake Shot	21	1	1	1	1404	1	1000							101			25			10																					2																							2			
+Exquisite Pain	10	1	1	100	303	1														10																					2																										
+Nightmare Vision	9	1	2	111	1	10														10																																															
+Soul Burn	1	1	1	1	1304	1								101																											1																										
+Crown of Madness	10	1	2	110	5	1														10																			2		2																										
+Dark Firewood	1	1	1	1	1404	1								101																											1																										
+Shroud of Darkness	9	1	2	111	1	10											0			10																																															
+Venomous Bite	21	1	1	1	1404	1	1000							101			23			10																					2																										
+Life Black Fire	21	1	1	1	1304	1	1000							101			20			10																					2																							10			
+Ruins of Horror	10	1	2	111	303	1											0			10							64														2																							1015			
+Zone of Terrible Corpses	21	1	1	1	1404	1	1000							101			22			10																					2																							15			
+Deadman Awaken	10	1	1	100	1	1			2											10																					2			3																							
+Indomitable Dagger	9	1	2	111	1	15														10																																															
+Deadly Piercing	1	1	1	1	202	1								101																											1																										
+Fortitude Soul	10	1	2	100	303	1														10																					2																										
+Precision Sword Rush	1	1	1	1	1404	1								101																											1																										
+Frontline Step	9	1	2	111	1	15														10																																															
+Extreme Blade	21	1	1	1	202	1								101					3	10																					2																						1				
+Sudden Twist Attack	21	1	1	1	304	1	1000							101			21			10																					2																							11			
+Steadfast Sword	10	1	2	100	303	1											0			10														0							2																										
+Myriad Crescent Slashing	21	1	1	1	304	1	1000							101			25			10																					2																							2			
+Soul of the Impossible Weapon	21	1	1	1	304	1	1000							101			22			10																					2																							15			
+Evade Slashing.	9	1	2	111	1	13											0			10														0																																	
+Slasher Shot	1	1	1	1	1304	1								101																											1																										
+Forest Soul Barrier	10	1	2	111	303	1														10																					2																										
+Howling Blood Strike	1	1	1	1	1304	1								101																											1																										
+Quick Reload	9	1	2	111	1	13														10																																															
+Rage Tornado	21	1	1	1	1304	1	1000							101			24			10																					2																							2			
+Hail of Thorns	21	1	1	1	1404	1	1000							101			20			10																					2																							10			
+Ranger's Quarry	10	1	2	110	1	1														10																					2																										
+Eye of the Red Ranger	21	1	1	1	1304	1	1000							101			22			10																					2																							15			
+Unstoppable Fierce Shot	10	1	1	100	1	1														10																					2																										
+Elemental Magi	9	1	2	111	1	14														10																																															
+Fiery Crab	1	1	1	1	1304	1								101																											1																										
+Blessing Elemental	10	1	2	110	5	1														10																			2		2																										
+Cloud of Frost	1	1	1	1	1404	1								101																											1																										
+Elemental Rejuvenation	9	1	2	111	501	14											0			10																																															
+Elemental Tentacle	21	1	1	1	1404	1	1000							101			20			10																					2																							10			
+Spectral Storm	21	1	1	1	1304	1	1000							101			21			10																					2																							11			
+Iron Protector	10	1	2	111	303	1											0			10							64														2																							1002			
+Prismatic Chain	21	1	1	1	1404	1	1000							101			23			10																					2																										
+Absolute Territory	10	1	1	100	1	1			2											10																					2			3																							
+Warding Slayer	9	1	2	111	1	17														10																																															
+Brilliant Barrage	1	1	1	1	202	1								101																											1																										
+Powerful Light	10	1	2	110	1	1														10																					2																										
+Delayed Blow	1	1	1	1	304	1								101																											1																										
+Rule of the Slayer	9	1	2	111	1	17														10																																															
+Shrinking Punch	21	1	1	1	202	1	1000							101			25			10																					2																							2			
+Daylight Smite	21	1	1	1	1404	1	1000							101			21			10																					2																							11			
+Hand of Justice	10	1	2	111	303	1											0			10							64														2																							1011			
+Restrained Strike	21	1	1	1	304	1	1000							101			20			10																					2																							10			
+Challenge the Justice	10	1	2	100	1	1														10																					2																										
+Pardon of Vice	9	1	2	111	1	18														10																																															
+Fiery Shot	1	1	1	1	1304	1								101																											1																										
+Dragon Boon	40	1	2	111	303	1											0			10							64														2																							1015			
+Brand of Crime	1	1	1	1	1404	1								101																											1																										
+Punishing Crime	9	1	2	111	1	18														10														0																																	
+Resounding Destroyer	21	1	1	1	1304	1	1000							101			20			10																					2																							10			
+Lightning Frenzy Assault	21	1	1	1	1304	1	1000							101			24			10																					2																							2			
+Elemental Rescue	10	1	2	100	303	1											0			10																					2																										
+Withering Night Shot	21	1	1	1	1404	1	1000							101			25			10																					2																							2			
+Victim's Repose	21	1	1	1	202	1			2					101						10										10001		1									2																										
+Scale Protection	9	1	2	111	1	17														10																																															
+Iron Claw Boom	1	1	1	1	304	17								101																											1																										
+Over the Dragon	10	1	2	110	1	17														10																					2																										
+Crushing Rip Attack	1	1	1	1	1404	17								101																											1																										
+Blood Vein	9	1	2	111	1	17														10																																															
+Frightful Wingover	21	1	1	1	1304	17	1000							101			22			10																					2																							15			
+Oppressive Blow	21	1	1	1	304	17	1000							101			25			10																					2																							2			
+Dragon Presence	10	1	2	100	303	17														10																					2																										
+Elemental Maelstrom	21	1	1	1	1304	17	1000							101			23			10																					2																										
+Obliterating Breath	10	1	2	100	1	17														10																					2																										
+<Title> Novice Knight	10	2	2	100	1															10																																	1	1													
+<Title> Apprentice Warrior	10	2	2	100	1															10																																	1	1													
+<Title> Novice Archer	10	2	2	100	1															10																																	1	1													
+<Title> Apprentice Archer	10	2	2	100	1															10																																	1	1													
+<Title> Novice Mage	10	2	2	100	1															10																																	1	1													
+<Title> Apprentice Mage	10	2	2	100	1															10																																	1	1													
+<Title> Mightthesis' Energy	10	2	2	100	1															10																																	1	1													
+<Title> Mightthesis' Touch	10	2	2	100	1															10																																	1	1													
+<Title> Mightthesis' Protection	10	2	2	100	1															10																																	1	1													
+<Title> Mightthesis' Blessing	10	2	2	100	1															10																																	1	1													
+<Title> Mightthesis' Endurance	10	2	2	100	1															10																																	1	1													
+<Title> Energy of the Dragon	10	2	2	100	1															10																																1	1														
+Scion's Blessing	10	2	2	100	1																																											2			1	1		1													
+<Title> Oath of Honor																																																																			
+Mark of the Junior Champion	10	2	2	100	1															10																																															
+Mark of the Common Champion	10	2	2	100	1															10	12																																														
+Mark of the Grand Champion	10	2	2	100	1															10				4																																											
+Santa's Socks	10	2	2	100	1															10																																															
+Santa's Hat	10	2	2	100	1															10																																															
+Santa's Gloves	10	2	2	100	1															10																																															
+<Title> Christmas Miracle	10	2	2	100	1															10																																4	1	1													
+Elit Avatar	10	2	2	100	1		1000													10																			1									2				1		1													
+chatbuff01	10	2	2	100	1															10																																															
+chatbuff02	10	2	2	100	1															10																																															
+chatbuff03	10	2	2	100	1															10																																															
+chatbuff04	10	2	2	100	1															10																																															
+chatbuff05	10	2	2	100	1															10																																															
+<summon>T Pet																																																																			
+T Pet	210	2	2	100	1															10																										8		2						1					1								
+<MOB>Labolas01																																																																			
+<MOB>Labolas02																																																																			
+<MOB>Orobas01																																																																			
+<MOB>Pozaak01																																																																			
+<MOB>Pozaak02																																																																			
+<MOB>Nujaacon01																																																																			
+<MOB>Megaloprepis01																																																																			
+<MOB>Megaloprepis02																																																																			
+<MOB>Megaloprepis03																																																																			
+<MOB>Efkamptos01																																																																			
+<MOB>Oriax01																																																																			
+<MOB>Eveliktos01																																																																			
+<MOB>Marax01																																																																			
+<MOB>Savnock01																																																																			
+heroic	10	2	2	100	1		1000													10																												2				7		1													
+Absolute Territory <Additional Effect>	20	1	1	1	202	1	2000							101						10										10001																							1														
+Deadman Awaken <Additional Effect>	20	1	1	1	202	1	2000							101						10										10001																							1														
+Fortune of Moonelf	10	2	2	100	1															10																																1															
+<Item>Chap Rice	10	2	2	100	1															10																																															
+<Item>SSook	10	2	2	100	1															10																																															
+<Item>Flower Rum	10	2	2	100	1															10																																															
+<Item>Flower Dan	10	2	2	100	1															10																																															
+Rage High Avatar	10	2	2	100	1		1000													10																												2				15		1													
+Rage Low Avatar	10	2	2	100	1		1000													10																												2				15		1													
+Defense Master <Additional Effect>																																																																			
+Combat Master <Additional Effect>																																																																			
+SoccerBall	10	2	2	100	1															10																																															
+TestCharisma	10	2	2	100	1															10																																16															
+Fortune of Human	10	2	2	100	1															10	4																															1															
+Fortune of Orc	10	2	2	100	1															10	8																															1															
+awaken200	10	2	2	100	1																																											2			1	3		1													
+Fortune of Rainover	20010	2	2	101	201																																															7															
+Favor of Teacher	20010	2	2	101	201															10																																8															
+Grand Master	20010	2	2	101	201															10																																8															
+Wise Student	20010	2	2	101	201																																															5															
+Charisma Double	10	2	2	100	1															10																																16															
+Aura of Chicken	20010	2	2	101	201															10																																															
+Songfun	10	2	2	101	1															10																																															
+Dualsword	210	2	2	100	1	1																																								6													1								
+<Summon>Dualsword																																																																			
+Assasin	210	2	2	100	1	1																																								6													1								
+<Summon>Assasin																																																																			
+Bulundog	210	2	2	100	1	1																																								6													1								
+<Summon>Bulundog																																																																			
+Bulundog W	210	2	2	100	1	1																																								6													1								
+<summon>Bulundog W																																																																			
+Pumpkin Head	10	2	2	100	1															10																												2				7		1													
+Pumpkin Head Real	10	2	2	100	1															10																												2				7		1													
+potion exp up	20010	2	2	100	1															10																																1															
+event buff money up	10	2	2	100	1															10																																2															
+Pumpkin Head Real 5hour	10	2	2	100	1															10																												2				7		1													
+Pumpkin Head 14day	10	2	2	100	1		1000													10																			1									2				7		1													
+Pumpkin Head 30day	10	2	2	100	1		1000													10																			1									2				7		1													
+roast turkey	10	2	2	100	1															10																																3															
+attack7item	10	2	2	100	1															10																																															
+defense7item	10	2	2	100	1															10																																															
+<Title>goddessoflucky	20010	2	2	101	201															10																																12	1														
+<Title>backwarrior	20010	2	2	101	201															10																																	1														
+<Title>greatspirit	20010	2	2	101	201															10																																	1														
+pcbangdevil	10	2	2	100	1															10																												2				7		1													
+chat_hp30	10	2	2	100	1															10																																															
+chat_dmg10	10	2	2	100	1															10																																															
+chat_def10	10	2	2	100	1															10																																															
+chat_mp30	10	2	2	100	1															10																																															
+drop2020	10	2	2	100	1															10																																12															
+drop4040	10	2	2	100	1															10																																12															
+drop6060	10	2	2	100	1															10																																12															
+drop8080	10	2	2	100	1															10																																12															
+drop100100	10	2	2	100	1															10																																12															
+dragun Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>dragun Lv 1																																																																			
+dragun Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>dragun Lv 2																																																																			
+dragun Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>dragun Lv 3																																																																			
+dragun Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>dragun Lv 4																																																																			
+dragun Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>dragun Lv 5																																																																			
+dragun Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>dragun Lv 6																																																																			
+dragun Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>dragun Lv 7																																																																			
+dragun Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>dragun Lv 8																																																																			
+dragun Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>dragun Lv 9																																																																			
+dragun Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>dragun Lv 10																																																																			
+newdragun Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>newdragun Lv 1																																																																			
+newdragun Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>newdragun Lv 2																																																																			
+newdragun Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>newdragun Lv 3																																																																			
+newdragun Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>newdragun Lv 4																																																																			
+newdragun Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>newdragun Lv 5																																																																			
+newdragun Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>newdragun Lv 6																																																																			
+newdragun Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>newdragun Lv 7																																																																			
+newdragun Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>newdragun Lv 8																																																																			
+newdragun Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>newdragun Lv 9																																																																			
+newdragun Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>newdragun Lv 10																																																																			
+kozzuro Lv 1	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>kozzuro Lv 1																																																																			
+kozzuro Lv 2	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>kozzuro Lv 2																																																																			
+kozzuro Lv 3	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>kozzuro Lv 3																																																																			
+kozzuro Lv 4	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>kozzuro Lv 4																																																																			
+kozzuro Lv 5	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>kozzuro Lv 5																																																																			
+kozzuro Lv 6	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>kozzuro Lv 6																																																																			
+kozzuro Lv 7	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>kozzuro Lv 7																																																																			
+kozzuro Lv 8	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>kozzuro Lv 8																																																																			
+kozzuro Lv 9	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>kozzuro Lv 9																																																																			
+kozzuro Lv 10	210	2	2	100	1															10	12			4																						8		2						1					1								
+<summon>kozzuro Lv 10																																																																			
+chat_money100	10	2	2	100	1															10																																2															
+<Title> Ele/Dim 1	10	2	2	100	1															10																																	1	1													
+<Title> Ele/Dim 2	10	2	2	100	1															10																																	1	1													
+<Title> Novice Knight_1716	10	2	2	100	1															10																																	1	1													
+<Title> Novice Knight_1717	10	2	2	100	1															10																																	1	1													
+<Title> Novice Knight_1718	10	2	2	100	1															10																																	1	1													
+Demonic Aura Lv1	10	2	2	100	1															10																																1															
+Demonic Aura Lv2	10	2	2	100	1															10																																1															
+Demonic Aura Lv3	10	2	2	100	1															10																																1															
+Demonic Aura Lv4	10	2	2	100	1															10																																1															
+Demonic Aura Lv5	10	2	2	100	1															10																																1															
+Demonic Aura Lv6	10	2	2	100	1															10																																1															
+Demonic Aura Lv7	10	2	2	100	1															10																																4															
+<Title> Ele/Dim 3	10	2	2	100	1															10														4																			1	1													
+<Title> Ele/Dim 4	10	2	2	100	1															10														4																			1	1													
+<Title> Ele/Dim 5	10	2	2	100	1															10														4																			1	1													
+<Title> Phys Damage 1	10	2	2	100	1															10																																	1	1													
+<Title> Phys Damage 2	10	2	2	100	1															10																																	1	1													
+<Title> Phys Damage 3	10	2	2	100	1															10														4																			1	1													
+<Title> Phys Damage 4	10	2	2	100	1															10														4																			1	1													
+<Title> Phys Damage 5	10	2	2	100	1															10														4																			1	1													
+<Title> CritDps 1	10	2	2	100	1															10																																	1	1													
+<Title> CritDps 2	10	2	2	100	1															10																																	1	1													
+Aura Lv60	10	2	2	100	1															10																																3															
+Aura Lv90	10	2	2	100	1															10																																7															
+Aura Lv120	10	2	2	100	1															10																																16															
+<Title> CritDps 3	10	2	2	100	1															10	4																																1	1													
+<Title> CritDps 4	10	2	2	100	1															10	4																																1	1													
+<Title> CritDps 5	10	2	2	100	1															10	4																																1	1													
+<Title> CritBurst 1	10	2	2	100	1									106						10																																	1	1													
+<Title> CritBurst 2	10	2	2	100	1									106						10																																	1	1													
+<Title> CritBurst 3	10	2	2	100	1									106						10																																	1	1													
+Serazaran4Lv_Great	210	2	2	100	1															10																										8		2				1		1					1								
+<Summon>Serazaran4Lv_Great																																																																			
+<Title> CritBurst 4	10	2	2	100	1									106						10																																	1	1													
+<Title> CritBurst 5	10	2	2	100	1									106						10																																	1	1													
+<Title> TankCast 1	10	2	2	100	1															10																																	1	1													
+<Title> TankCast 2	10	2	2	100	1															10																																	1	1													
+doubt_ExpDrop	10	2	2	100	1																																											2			1	13		1													
+<Title> TankCast 3	10	2	2	100	1												8			10																																	1	1													
+<Title> TankCast 4	10	2	2	100	1												8			10																																	1	1													
+Super_Talisman	10	2	2	100	1																																											2			1	14		1													
+<Title>Warriors Soul	20010	2	2	101	201															10																																4	1	1													
+bless of kantra	10	2	2	100	1															10																																7															
+<Title> TankCast 5	10	2	2	100	1												8			10																																	1	1													
+<Title> TankCrit 1	10	2	2	100	1															10				4																													1	1													
+<Title> TankCrit 2	10	2	2	100	1															10				4																													1	1													
+<Title> TankCrit 3	10	2	2	100	1												8			10				4																													1	1													
+Returnavatar	10	2	2	100	1		1000													10																			1									2				7		1													
+ReturnTalisman	10	2	2	100	1																																											2			1	3		1													
+<Title> TankCrit 4	10	2	2	100	1												8			10				4																													1	1													
+<Title> TankCrit 5	10	2	2	100	1												8			10				4																													1	1													
+<Title> 2- First Title_1765	10	2	2	100	1															10																																	1	1													
+<Title> 2-First Title	10	2	2	100	1															10																																	1	1													
+<Title> 2-Cast1	10	2	2	100	1															10																																	1	1													
+<Title> 2-Cast2	10	2	2	100	1															10																																	1	1													
+<Title> 2-Cast3	10	2	2	100	1															10														4																			1	1													
+<Title> 2-Cast4	10	2	2	100	1															10														4																			1	1													
+<Title> 2-Cast5	10	2	2	100	1															10														4																			1	1													
+<Title> 2-Crit 1	10	2	2	100	1									106						10																																	1	1													
+<Title> 2-Crit 2	10	2	2	100	1									106						10																																	1	1													
+<Title> 2-Crit 3	10	2	2	100	1									106						10	4																																1	1													
+<Title> 2-Crit 4	10	2	2	100	1									106						10	4																																1	1													
+<Title> 2-Crit 5	10	2	2	100	1									106						10	4																																1	1													
+<Title> 2-Tank 1	10	2	2	100	1															10																																	1	1													
+<Title> 2-Tank 2	10	2	2	100	1															10																																	1	1													
+<Title> 2-Tank 3	10	2	2	100	1												8			10																																	1	1													
+<Title> 2-Tank 4	10	2	2	100	1												8			10																																	1	1													
+<Title> 2-Tank 5	10	2	2	100	1												8			10																																	1	1													
+Talisman of Awakening 100_1782	10	2	2	100	1																																											2			1	3		1													
+Yanus Talisman of Growth LV1	20010	2	2	100	1																																											2			1	1		1													
+Yanus Talisman of Growth LV2	20010	2	2	100	1																																											2			1	1		1													
+Yanus Talisman of Growth LV3	20010	2	2	100	1																																											2			1	1		1													
+Yanus Talisman of Growth LV4	20010	2	2	100	1																																											2			1	1		1													
+Yanus Talisman of Growth LV5	20010	2	2	100	1																																											2			1	1		1													
+Yanus Talisman of Growth LV6	20010	2	2	100	1																																											2			1	1		1													
+Yanus Talisman of Growth LV7	20010	2	2	100	1																																											2			1	1		1													
+Yanus Talisman of Growth LV8	20010	2	2	100	1																																											2			1	1		1													
+Yanus Talisman of Growth LV9	20010	2	2	100	1																																											2			1	1		1													
+Yanus Talisman of Growth LV10	20010	2	2	100	1																																											2			1	1		1													
+Yanus Talisman of Treasure LV1	20010	2	2	100	1																																											2			1	12		1													
+Yanus Talisman of Treasure LV2	20010	2	2	100	1																																											2			1	12		1													
+Yanus Talisman of Treasure LV3	20010	2	2	100	1																																											2			1	12		1													
+Yanus Talisman of Treasure LV4	20010	2	2	100	1																																											2			1	12		1													
+Yanus Talisman of Treasure LV5	20010	2	2	100	1																																											2			1	12		1													
+Yanus Talisman of Treasure LV6	20010	2	2	100	1																																											2			1	12		1													
+Yanus Talisman of Treasure LV7	20010	2	2	100	1																																											2			1	12		1													
+Yanus Talisman of Treasure LV8	20010	2	2	100	1																																											2			1	12		1													
+Yanus Talisman of Treasure LV9	20010	2	2	100	1																																											2			1	12		1													
+Yanus Talisman of Treasure LV10	20010	2	2	100	1																																											2			1	12		1													
+Elixir of Accuracy	10	2	2	100	1															10																																															
+Elixir of Critical Hit	10	2	2	100	1		1000							106						10																																															
+Elixir of Magic Attack	10	2	2	100	1															10																																															
+Elixir of Block	10	2	2	100	1															10																																															
+Elixir of Physical Resistance	10	2	2	100	1															10				4																																											
+Elixir of Magical Resistance	10	2	2	100	1															10																																															
+Elixir of Stun Resistance	10	2	2	100	1												8			10																																															
+Elixir of Fighting Spirit	10	2	2	100	1															10																																															
+Elixir of Cold-hearted Spirit	10	2	2	100	1															10																																															
+Elixir of lethality	10	2	2	100	1															10																																															
+Elixir of Immortality	10	2	2	100	1												8			10				4																																											
+Super Compound Potion	10	2	2	100	1		1000							106						10																												2			1			1													
+Super Lens Stone Plus	10	2	2	100	1															10																								4				2			1		1	1													
+<Title>Warrior Of Chantra	20010	2	2	101	201		1000													10																																	1	1													
+<Title>Hero Of  Chantra	20010	2	2	101	201		1000													10																																	1	1													
+Superior3	10	2	2	100	1		1000													10																			1									2				7		1													
+Angry Candy	10	2	2	100	1															10																																															
+Gloomy Candy	10	2	2	100	1															10																																															
+Smiling Pumpkin Head	10	2	2	100	1		1000													10																												2				7		1													
+Angry Pumpkin Head	10	2	2	100	1		1000													10																												2				7		1													
+Weeping  Pumpkin Head	10	2	2	100	1		1000													10																												2				7		1													
+The Royal Cloak	10	2	2	100	1		1000													10																			1									2						1													
+<Title> Ultimate Slaughter	20010	2	2	101	201															10																																28	1	1													

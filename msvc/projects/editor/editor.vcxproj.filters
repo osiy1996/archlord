@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{d9d1b687-7ddc-4f33-8534-4ee842b0c2d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\core">
+      <UniqueIdentifier>{e306d3b9-7d1a-406f-b2c3-e64124c62a84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\task">
+      <UniqueIdentifier>{9b9f1ae8-7f82-4a67-bd27-e24448cf5279}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\public">
+      <UniqueIdentifier>{600710e1-4045-49d4-a2ac-c3fc824ad010}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\editor">
+      <UniqueIdentifier>{cdc34e5f-6f48-41ce-a23e-274b51c61f9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\utility">
+      <UniqueIdentifier>{99e2190a-b4c2-4542-a27a-8f69f34dc670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\client">
+      <UniqueIdentifier>{73795499-6147-44ce-813f-f59b52669cea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\vendor">
+      <UniqueIdentifier>{0ec6ffdd-ac14-417e-8f62-74655c319003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\vendor\pcg">
+      <UniqueIdentifier>{b40e71c1-5f96-410d-8852-4c0e557c5d1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\vendor\bgfx">
+      <UniqueIdentifier>{5aaf2be5-60e3-4773-aacf-a6aab679bd2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\vendor\imgui">
+      <UniqueIdentifier>{8ed8528a-3f16-45f9-b067-dc550afdc05f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\vendor\bgfx\c99">
+      <UniqueIdentifier>{89242e48-7ce0-4224-ab48-92b2c130afe5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\vendor\aplib">
+      <UniqueIdentifier>{da590861-1daa-41ac-a312-1139ffdf7bae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\core\getopt.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\core\hash_map.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\core\internal.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\core\log.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\core\macros.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\core\malloc.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\core\os.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\core\ring_buffer.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\core\string.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\core\string_conv.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\core\types.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\core\vector.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\core\bin_stream.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\core\core.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\core\file_system.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\task\task.h">
+      <Filter>source\task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\task\internal.h">
+      <Filter>source\task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_chat.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_config.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_define.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_drop_item.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_dungeon_wnd.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_binding.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_gacha.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_guild.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_manager.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_nature.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_npc_dialog.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_point_light.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_product.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_quest.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_skill_master.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_teleport.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_factors.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_grid.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_guild.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_item.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_item_convert.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_login.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_map.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_module.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_object.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_octree.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_optimized_packet2.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_packet.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_plugin_boss_spawn.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_random.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_sector.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_shrine.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_skill.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_spawn.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_startup_encryption.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_tick.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_timer.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_ui_status.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_world.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_admin.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_auction.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_base.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_character.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\utility\au_ini_manager.h">
+      <Filter>source\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\utility\au_md5.h">
+      <Filter>source\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\utility\au_packet.h">
+      <Filter>source\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\utility\au_table.h">
+      <Filter>source\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\utility\au_blowfish.h">
+      <Filter>source\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_module_registry.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_module_instance.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\pcg\pcg_basic.h">
+      <Filter>source\vendor\pcg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_event_point_light.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_ambient_occlusion_map.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_camera.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_console.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\bgfx\c99\bgfx.h">
+      <Filter>source\vendor\bgfx\c99</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_dat.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_texture.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_renderware.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_mesh.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\utility\au_math.h">
+      <Filter>source\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_render.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_imgui_impl_bgfx.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_imgui_vs.bin.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_imgui.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_imgui_fs.bin.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_imgui_impl_sdl2.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\imgui\imstb_rectpack.h">
+      <Filter>source\vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\imgui\imstb_textedit.h">
+      <Filter>source\vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\imgui\imstb_truetype.h">
+      <Filter>source\vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\imgui\imconfig.h">
+      <Filter>source\vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\imgui\imgui.h">
+      <Filter>source\vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\imgui\imgui_internal.h">
+      <Filter>source\vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_terrain.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\aplib\aplib.h">
+      <Filter>source\vendor\aplib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_object.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\editor\ae_terrain.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\editor\ae_texture.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\editor\ae_object.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\core\hash_map.c">
+      <Filter>source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\core\log.c">
+      <Filter>source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\core\malloc.c">
+      <Filter>source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\core\os_win32.c">
+      <Filter>source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\core\ring_buffer.c">
+      <Filter>source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\core\string.c">
+      <Filter>source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\core\string_conv_win32.c">
+      <Filter>source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\core\vector.c">
+      <Filter>source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\core\bin_stream.c">
+      <Filter>source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\core\core.c">
+      <Filter>source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\core\file_system_win32.c">
+      <Filter>source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\core\getopt.c">
+      <Filter>source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\task\task.c">
+      <Filter>source\task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_chat.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_config.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_drop_item.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_dungeon_wnd.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_binding.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_gacha.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_guild.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_manager.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_nature.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_npc_dialog.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_point_light.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_product.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_quest.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_skill_master.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_teleport.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_factors.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_grid.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_guild.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_item.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_item_convert.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_login.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_map.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_module.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_object.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_octree.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_optimized_packet2.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_packet.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_plugin_boss_spawn.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_random.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_sector.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_shrine.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_skill.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_spawn.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_startup_encryption.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_tick.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_timer.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_ui_status.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_world.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_admin.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_auction.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_base.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_character.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\utility\au_ini_manager.c">
+      <Filter>source\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\utility\au_md5_win32.c">
+      <Filter>source\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\utility\au_packet.c">
+      <Filter>source\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\utility\au_table.c">
+      <Filter>source\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\utility\au_blowfish.c">
+      <Filter>source\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\editor\main.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_module_registry.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_module_instance.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\vendor\pcg\pcg_basic.c">
+      <Filter>source\vendor\pcg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_event_point_light.c">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_ambient_occlusion_map.c">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_camera.c">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_console.cpp">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_dat.c">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_texture.cpp">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_renderware.c">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_mesh.c">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_render.c">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_imgui.cpp">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_imgui_impl_bgfx.cpp">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_imgui_impl_sdl2.cpp">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\vendor\imgui\imgui_widgets.cpp">
+      <Filter>source\vendor\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\vendor\imgui\imgui.cpp">
+      <Filter>source\vendor\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\vendor\imgui\imgui_draw.cpp">
+      <Filter>source\vendor\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\vendor\imgui\imgui_tables.cpp">
+      <Filter>source\vendor\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_terrain.c">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_object.c">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\editor\ae_terrain.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\editor\ae_texture.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\editor\ae_object.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="..\..\..\source\vendor\aplib\src\64bit\depack.asm">
+      <Filter>source\vendor\aplib</Filter>
+    </MASM>
+  </ItemGroup>
+</Project>

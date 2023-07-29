@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{de2ecefd-ef8e-42d7-9dd1-d9d289cc5138}</ProjectGuid>
+    <RootNamespace>editor</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\..\bin\</OutDir>
+    <IntDir>$(ProjectDir)\build\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_$(Platform)_$(Configuration)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\..\bin\</OutDir>
+    <IntDir>$(ProjectDir)\build\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_$(Platform)_$(Configuration)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)\..\bin\</OutDir>
+    <IntDir>$(ProjectDir)\build\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_$(Platform)_$(Configuration)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)\..\bin\</OutDir>
+    <IntDir>$(ProjectDir)\build\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_$(Platform)_$(Configuration)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>BX_CONFIG_DEBUG=_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\source</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>Default</LanguageStandard>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;bx$(Configuration).lib;bgfx$(Configuration).lib;bimg$(Configuration).lib;bimg_decode$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>BX_CONFIG_DEBUG=_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\source</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>Default</LanguageStandard>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;bx$(Configuration).lib;bgfx$(Configuration).lib;bimg$(Configuration).lib;bimg_decode$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>BX_CONFIG_DEBUG=_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\source</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>Default</LanguageStandard>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;bx$(Configuration).lib;bgfx$(Configuration).lib;bimg$(Configuration).lib;bimg_decode$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>BX_CONFIG_DEBUG=_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\source</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>Default</LanguageStandard>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;bx$(Configuration).lib;bgfx$(Configuration).lib;bimg$(Configuration).lib;bimg_decode$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\client\ac_ambient_occlusion_map.h" />
+    <ClInclude Include="..\..\..\source\client\ac_camera.h" />
+    <ClInclude Include="..\..\..\source\client\ac_console.h" />
+    <ClInclude Include="..\..\..\source\client\ac_dat.h" />
+    <ClInclude Include="..\..\..\source\client\ac_event_point_light.h" />
+    <ClInclude Include="..\..\..\source\client\ac_imgui.h" />
+    <ClInclude Include="..\..\..\source\client\ac_imgui_fs.bin.h" />
+    <ClInclude Include="..\..\..\source\client\ac_imgui_impl_bgfx.h" />
+    <ClInclude Include="..\..\..\source\client\ac_imgui_impl_sdl2.h" />
+    <ClInclude Include="..\..\..\source\client\ac_imgui_vs.bin.h" />
+    <ClInclude Include="..\..\..\source\client\ac_mesh.h" />
+    <ClInclude Include="..\..\..\source\client\ac_object.h" />
+    <ClInclude Include="..\..\..\source\client\ac_renderware.h" />
+    <ClInclude Include="..\..\..\source\client\ac_terrain.h" />
+    <ClInclude Include="..\..\..\source\client\ac_texture.h" />
+    <ClInclude Include="..\..\..\source\client\ac_render.h" />
+    <ClInclude Include="..\..\..\source\core\bin_stream.h" />
+    <ClInclude Include="..\..\..\source\core\core.h" />
+    <ClInclude Include="..\..\..\source\core\file_system.h" />
+    <ClInclude Include="..\..\..\source\core\getopt.h" />
+    <ClInclude Include="..\..\..\source\core\hash_map.h" />
+    <ClInclude Include="..\..\..\source\core\internal.h" />
+    <ClInclude Include="..\..\..\source\core\log.h" />
+    <ClInclude Include="..\..\..\source\core\macros.h" />
+    <ClInclude Include="..\..\..\source\core\malloc.h" />
+    <ClInclude Include="..\..\..\source\core\os.h" />
+    <ClInclude Include="..\..\..\source\core\ring_buffer.h" />
+    <ClInclude Include="..\..\..\source\core\string.h" />
+    <ClInclude Include="..\..\..\source\core\string_conv.h" />
+    <ClInclude Include="..\..\..\source\core\types.h" />
+    <ClInclude Include="..\..\..\source\core\vector.h" />
+    <ClInclude Include="..\..\..\source\editor\ae_object.h" />
+    <ClInclude Include="..\..\..\source\editor\ae_terrain.h" />
+    <ClInclude Include="..\..\..\source\editor\ae_texture.h" />
+    <ClInclude Include="..\..\..\source\public\ap_admin.h" />
+    <ClInclude Include="..\..\..\source\public\ap_auction.h" />
+    <ClInclude Include="..\..\..\source\public\ap_base.h" />
+    <ClInclude Include="..\..\..\source\public\ap_character.h" />
+    <ClInclude Include="..\..\..\source\public\ap_chat.h" />
+    <ClInclude Include="..\..\..\source\public\ap_config.h" />
+    <ClInclude Include="..\..\..\source\public\ap_define.h" />
+    <ClInclude Include="..\..\..\source\public\ap_drop_item.h" />
+    <ClInclude Include="..\..\..\source\public\ap_dungeon_wnd.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_binding.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_gacha.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_guild.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_manager.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_nature.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_npc_dialog.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_point_light.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_product.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_quest.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_skill_master.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_teleport.h" />
+    <ClInclude Include="..\..\..\source\public\ap_factors.h" />
+    <ClInclude Include="..\..\..\source\public\ap_grid.h" />
+    <ClInclude Include="..\..\..\source\public\ap_guild.h" />
+    <ClInclude Include="..\..\..\source\public\ap_item.h" />
+    <ClInclude Include="..\..\..\source\public\ap_item_convert.h" />
+    <ClInclude Include="..\..\..\source\public\ap_login.h" />
+    <ClInclude Include="..\..\..\source\public\ap_map.h" />
+    <ClInclude Include="..\..\..\source\public\ap_module.h" />
+    <ClInclude Include="..\..\..\source\public\ap_module_instance.h" />
+    <ClInclude Include="..\..\..\source\public\ap_module_registry.h" />
+    <ClInclude Include="..\..\..\source\public\ap_object.h" />
+    <ClInclude Include="..\..\..\source\public\ap_octree.h" />
+    <ClInclude Include="..\..\..\source\public\ap_optimized_packet2.h" />
+    <ClInclude Include="..\..\..\source\public\ap_packet.h" />
+    <ClInclude Include="..\..\..\source\public\ap_plugin_boss_spawn.h" />
+    <ClInclude Include="..\..\..\source\public\ap_random.h" />
+    <ClInclude Include="..\..\..\source\public\ap_sector.h" />
+    <ClInclude Include="..\..\..\source\public\ap_shrine.h" />
+    <ClInclude Include="..\..\..\source\public\ap_skill.h" />
+    <ClInclude Include="..\..\..\source\public\ap_spawn.h" />
+    <ClInclude Include="..\..\..\source\public\ap_startup_encryption.h" />
+    <ClInclude Include="..\..\..\source\public\ap_tick.h" />
+    <ClInclude Include="..\..\..\source\public\ap_timer.h" />
+    <ClInclude Include="..\..\..\source\public\ap_ui_status.h" />
+    <ClInclude Include="..\..\..\source\public\ap_world.h" />
+    <ClInclude Include="..\..\..\source\task\internal.h" />
+    <ClInclude Include="..\..\..\source\task\task.h" />
+    <ClInclude Include="..\..\..\source\utility\au_blowfish.h" />
+    <ClInclude Include="..\..\..\source\utility\au_ini_manager.h" />
+    <ClInclude Include="..\..\..\source\utility\au_math.h" />
+    <ClInclude Include="..\..\..\source\utility\au_md5.h" />
+    <ClInclude Include="..\..\..\source\utility\au_packet.h" />
+    <ClInclude Include="..\..\..\source\utility\au_table.h" />
+    <ClInclude Include="..\..\..\source\vendor\aplib\aplib.h" />
+    <ClInclude Include="..\..\..\source\vendor\bgfx\c99\bgfx.h" />
+    <ClInclude Include="..\..\..\source\vendor\imgui\imconfig.h" />
+    <ClInclude Include="..\..\..\source\vendor\imgui\imgui.h" />
+    <ClInclude Include="..\..\..\source\vendor\imgui\imgui_internal.h" />
+    <ClInclude Include="..\..\..\source\vendor\imgui\imstb_rectpack.h" />
+    <ClInclude Include="..\..\..\source\vendor\imgui\imstb_textedit.h" />
+    <ClInclude Include="..\..\..\source\vendor\imgui\imstb_truetype.h" />
+    <ClInclude Include="..\..\..\source\vendor\pcg\pcg_basic.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\client\ac_ambient_occlusion_map.c" />
+    <ClCompile Include="..\..\..\source\client\ac_camera.c" />
+    <ClCompile Include="..\..\..\source\client\ac_console.cpp" />
+    <ClCompile Include="..\..\..\source\client\ac_dat.c" />
+    <ClCompile Include="..\..\..\source\client\ac_event_point_light.c" />
+    <ClCompile Include="..\..\..\source\client\ac_imgui.cpp" />
+    <ClCompile Include="..\..\..\source\client\ac_imgui_impl_bgfx.cpp" />
+    <ClCompile Include="..\..\..\source\client\ac_imgui_impl_sdl2.cpp" />
+    <ClCompile Include="..\..\..\source\client\ac_mesh.c" />
+    <ClCompile Include="..\..\..\source\client\ac_object.c" />
+    <ClCompile Include="..\..\..\source\client\ac_renderware.c" />
+    <ClCompile Include="..\..\..\source\client\ac_terrain.c" />
+    <ClCompile Include="..\..\..\source\client\ac_texture.cpp" />
+    <ClCompile Include="..\..\..\source\client\ac_render.c" />
+    <ClCompile Include="..\..\..\source\core\bin_stream.c" />
+    <ClCompile Include="..\..\..\source\core\core.c" />
+    <ClCompile Include="..\..\..\source\core\file_system_win32.c" />
+    <ClCompile Include="..\..\..\source\core\getopt.c" />
+    <ClCompile Include="..\..\..\source\core\hash_map.c" />
+    <ClCompile Include="..\..\..\source\core\log.c" />
+    <ClCompile Include="..\..\..\source\core\malloc.c" />
+    <ClCompile Include="..\..\..\source\core\os_win32.c" />
+    <ClCompile Include="..\..\..\source\core\ring_buffer.c" />
+    <ClCompile Include="..\..\..\source\core\string.c" />
+    <ClCompile Include="..\..\..\source\core\string_conv_win32.c" />
+    <ClCompile Include="..\..\..\source\core\vector.c" />
+    <ClCompile Include="..\..\..\source\editor\ae_object.cpp" />
+    <ClCompile Include="..\..\..\source\editor\ae_terrain.cpp" />
+    <ClCompile Include="..\..\..\source\editor\ae_texture.cpp" />
+    <ClCompile Include="..\..\..\source\editor\main.cpp" />
+    <ClCompile Include="..\..\..\source\public\ap_admin.c" />
+    <ClCompile Include="..\..\..\source\public\ap_auction.c" />
+    <ClCompile Include="..\..\..\source\public\ap_base.c" />
+    <ClCompile Include="..\..\..\source\public\ap_character.c" />
+    <ClCompile Include="..\..\..\source\public\ap_chat.c" />
+    <ClCompile Include="..\..\..\source\public\ap_config.c" />
+    <ClCompile Include="..\..\..\source\public\ap_drop_item.c" />
+    <ClCompile Include="..\..\..\source\public\ap_dungeon_wnd.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_binding.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_gacha.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_guild.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_manager.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_nature.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_npc_dialog.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_point_light.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_product.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_quest.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_skill_master.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_teleport.c" />
+    <ClCompile Include="..\..\..\source\public\ap_factors.c" />
+    <ClCompile Include="..\..\..\source\public\ap_grid.c" />
+    <ClCompile Include="..\..\..\source\public\ap_guild.c" />
+    <ClCompile Include="..\..\..\source\public\ap_item.c" />
+    <ClCompile Include="..\..\..\source\public\ap_item_convert.c" />
+    <ClCompile Include="..\..\..\source\public\ap_login.c" />
+    <ClCompile Include="..\..\..\source\public\ap_map.c" />
+    <ClCompile Include="..\..\..\source\public\ap_module.c" />
+    <ClCompile Include="..\..\..\source\public\ap_module_instance.c" />
+    <ClCompile Include="..\..\..\source\public\ap_module_registry.c" />
+    <ClCompile Include="..\..\..\source\public\ap_object.c" />
+    <ClCompile Include="..\..\..\source\public\ap_octree.c" />
+    <ClCompile Include="..\..\..\source\public\ap_optimized_packet2.c" />
+    <ClCompile Include="..\..\..\source\public\ap_packet.c" />
+    <ClCompile Include="..\..\..\source\public\ap_plugin_boss_spawn.c" />
+    <ClCompile Include="..\..\..\source\public\ap_random.c" />
+    <ClCompile Include="..\..\..\source\public\ap_sector.c" />
+    <ClCompile Include="..\..\..\source\public\ap_shrine.c" />
+    <ClCompile Include="..\..\..\source\public\ap_skill.c" />
+    <ClCompile Include="..\..\..\source\public\ap_spawn.c" />
+    <ClCompile Include="..\..\..\source\public\ap_startup_encryption.c" />
+    <ClCompile Include="..\..\..\source\public\ap_tick.c" />
+    <ClCompile Include="..\..\..\source\public\ap_timer.c" />
+    <ClCompile Include="..\..\..\source\public\ap_ui_status.c" />
+    <ClCompile Include="..\..\..\source\public\ap_world.c" />
+    <ClCompile Include="..\..\..\source\task\task.c" />
+    <ClCompile Include="..\..\..\source\utility\au_blowfish.c" />
+    <ClCompile Include="..\..\..\source\utility\au_ini_manager.c" />
+    <ClCompile Include="..\..\..\source\utility\au_md5_win32.c" />
+    <ClCompile Include="..\..\..\source\utility\au_packet.c" />
+    <ClCompile Include="..\..\..\source\utility\au_table.c" />
+    <ClCompile Include="..\..\..\source\vendor\imgui\imgui.cpp" />
+    <ClCompile Include="..\..\..\source\vendor\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\..\..\source\vendor\imgui\imgui_tables.cpp" />
+    <ClCompile Include="..\..\..\source\vendor\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="..\..\..\source\vendor\pcg\pcg_basic.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="..\..\..\source\vendor\aplib\src\64bit\depack.asm">
+      <FileType>Document</FileType>
+    </MASM>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>

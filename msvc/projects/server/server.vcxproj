@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{cd3b06d9-d9fd-4b9b-8422-70350d3e0e87}</ProjectGuid>
+    <RootNamespace>server</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\..\bin\</OutDir>
+    <IntDir>$(ProjectDir)\build\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_$(Platform)_$(Configuration)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\..\bin\</OutDir>
+    <IntDir>$(ProjectDir)\build\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_$(Platform)_$(Configuration)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)\..\bin\</OutDir>
+    <IntDir>$(ProjectDir)\build\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_$(Platform)_$(Configuration)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)\..\bin\</OutDir>
+    <IntDir>$(ProjectDir)\build\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_$(Platform)_$(Configuration)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\source;$(SolutionDir)..\source\vendor\PostgreSQL</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Platform)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libeay32.lib;libpq.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\source;$(SolutionDir)..\source\vendor\PostgreSQL</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Platform)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libeay32.lib;libpq.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\source;$(SolutionDir)..\source\vendor\PostgreSQL</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Platform)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libeay32.lib;libpq.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\source;$(SolutionDir)..\source\vendor\PostgreSQL</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Platform)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libeay32.lib;libpq.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\core\bin_stream.h" />
+    <ClInclude Include="..\..\..\source\core\core.h" />
+    <ClInclude Include="..\..\..\source\core\file_system.h" />
+    <ClInclude Include="..\..\..\source\core\getopt.h" />
+    <ClInclude Include="..\..\..\source\core\hash_map.h" />
+    <ClInclude Include="..\..\..\source\core\internal.h" />
+    <ClInclude Include="..\..\..\source\core\log.h" />
+    <ClInclude Include="..\..\..\source\core\macros.h" />
+    <ClInclude Include="..\..\..\source\core\malloc.h" />
+    <ClInclude Include="..\..\..\source\core\os.h" />
+    <ClInclude Include="..\..\..\source\core\ring_buffer.h" />
+    <ClInclude Include="..\..\..\source\core\string.h" />
+    <ClInclude Include="..\..\..\source\core\string_conv.h" />
+    <ClInclude Include="..\..\..\source\core\types.h" />
+    <ClInclude Include="..\..\..\source\core\vector.h" />
+    <ClInclude Include="..\..\..\source\net\internal.h" />
+    <ClInclude Include="..\..\..\source\net\net.h" />
+    <ClInclude Include="..\..\..\source\net\tcp_srv.h" />
+    <ClInclude Include="..\..\..\source\public\ap_admin.h" />
+    <ClInclude Include="..\..\..\source\public\ap_ai2.h" />
+    <ClInclude Include="..\..\..\source\public\ap_auction.h" />
+    <ClInclude Include="..\..\..\source\public\ap_base.h" />
+    <ClInclude Include="..\..\..\source\public\ap_bill_info.h" />
+    <ClInclude Include="..\..\..\source\public\ap_cash_mall.h" />
+    <ClInclude Include="..\..\..\source\public\ap_character.h" />
+    <ClInclude Include="..\..\..\source\public\ap_chat.h" />
+    <ClInclude Include="..\..\..\source\public\ap_config.h" />
+    <ClInclude Include="..\..\..\source\public\ap_define.h" />
+    <ClInclude Include="..\..\..\source\public\ap_drop_item.h" />
+    <ClInclude Include="..\..\..\source\public\ap_dungeon_wnd.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_bank.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_binding.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_gacha.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_guild.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_item_convert.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_manager.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_nature.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_npc_dialog.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_npc_trade.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_point_light.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_product.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_quest.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_refinery.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_skill_master.h" />
+    <ClInclude Include="..\..\..\source\public\ap_event_teleport.h" />
+    <ClInclude Include="..\..\..\source\public\ap_factors.h" />
+    <ClInclude Include="..\..\..\source\public\ap_grid.h" />
+    <ClInclude Include="..\..\..\source\public\ap_guild.h" />
+    <ClInclude Include="..\..\..\source\public\ap_item.h" />
+    <ClInclude Include="..\..\..\source\public\ap_item_convert.h" />
+    <ClInclude Include="..\..\..\source\public\ap_item_convert_internal.h" />
+    <ClInclude Include="..\..\..\source\public\ap_item_internal.h" />
+    <ClInclude Include="..\..\..\source\public\ap_service_npc.h" />
+    <ClInclude Include="..\..\..\source\public\ap_login.h" />
+    <ClInclude Include="..\..\..\source\public\ap_map.h" />
+    <ClInclude Include="..\..\..\source\public\ap_map_internal.h" />
+    <ClInclude Include="..\..\..\source\public\ap_module.h" />
+    <ClInclude Include="..\..\..\source\public\ap_module_instance.h" />
+    <ClInclude Include="..\..\..\source\public\ap_module_registry.h" />
+    <ClInclude Include="..\..\..\source\public\ap_object.h" />
+    <ClInclude Include="..\..\..\source\public\ap_octree.h" />
+    <ClInclude Include="..\..\..\source\public\ap_optimized_packet2.h" />
+    <ClInclude Include="..\..\..\source\public\ap_packet.h" />
+    <ClInclude Include="..\..\..\source\public\ap_party.h" />
+    <ClInclude Include="..\..\..\source\public\ap_party_item.h" />
+    <ClInclude Include="..\..\..\source\public\ap_plugin_boss_spawn.h" />
+    <ClInclude Include="..\..\..\source\public\ap_pvp.h" />
+    <ClInclude Include="..\..\..\source\public\ap_random.h" />
+    <ClInclude Include="..\..\..\source\public\ap_refinery.h" />
+    <ClInclude Include="..\..\..\source\public\ap_sector.h" />
+    <ClInclude Include="..\..\..\source\public\ap_shrine.h" />
+    <ClInclude Include="..\..\..\source\public\ap_skill.h" />
+    <ClInclude Include="..\..\..\source\public\ap_spawn.h" />
+    <ClInclude Include="..\..\..\source\public\ap_startup_encryption.h" />
+    <ClInclude Include="..\..\..\source\public\ap_summons.h" />
+    <ClInclude Include="..\..\..\source\public\ap_system_message.h" />
+    <ClInclude Include="..\..\..\source\public\ap_tick.h" />
+    <ClInclude Include="..\..\..\source\public\ap_timer.h" />
+    <ClInclude Include="..\..\..\source\public\ap_ui_status.h" />
+    <ClInclude Include="..\..\..\source\public\ap_world.h" />
+    <ClInclude Include="..\..\..\source\server\as_account.h" />
+    <ClInclude Include="..\..\..\source\server\as_ai2_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_cash_mall_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_character.h" />
+    <ClInclude Include="..\..\..\source\server\as_character_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_chat_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_database.h" />
+    <ClInclude Include="..\..\..\source\server\as_drop_item.h" />
+    <ClInclude Include="..\..\..\source\server\as_drop_item_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_event_bank_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_event_binding.h" />
+    <ClInclude Include="..\..\..\source\server\as_event_guild.h" />
+    <ClInclude Include="..\..\..\source\server\as_event_item_convert_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_event_npc_dialog_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_event_npc_trade_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_event_refinery_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_event_skill_master_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_event_teleport_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_game_admin.h" />
+    <ClInclude Include="..\..\..\source\server\as_guild.h" />
+    <ClInclude Include="..\..\..\source\server\as_guild_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_item.h" />
+    <ClInclude Include="..\..\..\source\server\as_item_convert.h" />
+    <ClInclude Include="..\..\..\source\server\as_item_convert_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_item_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_service_npc.h" />
+    <ClInclude Include="..\..\..\source\server\as_service_npc_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_login.h" />
+    <ClInclude Include="..\..\..\source\server\as_login_admin.h" />
+    <ClInclude Include="..\..\..\source\server\as_map.h" />
+    <ClInclude Include="..\..\..\source\server\as_map_admin.h" />
+    <ClInclude Include="..\..\..\source\server\as_party.h" />
+    <ClInclude Include="..\..\..\source\server\as_party_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_player.h" />
+    <ClInclude Include="..\..\..\source\server\as_pvp_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_refinery_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_server.h" />
+    <ClInclude Include="..\..\..\source\server\as_skill.h" />
+    <ClInclude Include="..\..\..\source\server\as_skill_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_spawn.h" />
+    <ClInclude Include="..\..\..\source\server\as_ui_status.h" />
+    <ClInclude Include="..\..\..\source\server\as_ui_status_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_world.h" />
+    <ClInclude Include="..\..\..\source\task\internal.h" />
+    <ClInclude Include="..\..\..\source\task\task.h" />
+    <ClInclude Include="..\..\..\source\utility\au_blowfish.h" />
+    <ClInclude Include="..\..\..\source\utility\au_ini_manager.h" />
+    <ClInclude Include="..\..\..\source\utility\au_math.h" />
+    <ClInclude Include="..\..\..\source\utility\au_md5.h" />
+    <ClInclude Include="..\..\..\source\utility\au_packet.h" />
+    <ClInclude Include="..\..\..\source\utility\au_table.h" />
+    <ClInclude Include="..\..\..\source\vendor\pcg\pcg_basic.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\core\bin_stream.c" />
+    <ClCompile Include="..\..\..\source\core\core.c" />
+    <ClCompile Include="..\..\..\source\core\file_system_win32.c" />
+    <ClCompile Include="..\..\..\source\core\getopt.c" />
+    <ClCompile Include="..\..\..\source\core\hash_map.c" />
+    <ClCompile Include="..\..\..\source\core\log.c" />
+    <ClCompile Include="..\..\..\source\core\malloc.c" />
+    <ClCompile Include="..\..\..\source\core\os_win32.c" />
+    <ClCompile Include="..\..\..\source\core\ring_buffer.c" />
+    <ClCompile Include="..\..\..\source\core\string.c" />
+    <ClCompile Include="..\..\..\source\core\string_conv_win32.c" />
+    <ClCompile Include="..\..\..\source\core\vector.c" />
+    <ClCompile Include="..\..\..\source\net\net.c" />
+    <ClCompile Include="..\..\..\source\net\net_win32.c" />
+    <ClCompile Include="..\..\..\source\net\tcp_srv_win32.c" />
+    <ClCompile Include="..\..\..\source\public\ap_admin.c" />
+    <ClCompile Include="..\..\..\source\public\ap_ai2.c" />
+    <ClCompile Include="..\..\..\source\public\ap_auction.c" />
+    <ClCompile Include="..\..\..\source\public\ap_base.c" />
+    <ClCompile Include="..\..\..\source\public\ap_bill_info.c" />
+    <ClCompile Include="..\..\..\source\public\ap_cash_mall.c" />
+    <ClCompile Include="..\..\..\source\public\ap_character.c" />
+    <ClCompile Include="..\..\..\source\public\ap_chat.c" />
+    <ClCompile Include="..\..\..\source\public\ap_config.c" />
+    <ClCompile Include="..\..\..\source\public\ap_drop_item.c" />
+    <ClCompile Include="..\..\..\source\public\ap_dungeon_wnd.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_bank.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_binding.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_gacha.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_guild.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_item_convert.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_manager.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_nature.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_npc_dialog.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_npc_trade.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_point_light.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_product.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_quest.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_refinery.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_skill_master.c" />
+    <ClCompile Include="..\..\..\source\public\ap_event_teleport.c" />
+    <ClCompile Include="..\..\..\source\public\ap_factors.c" />
+    <ClCompile Include="..\..\..\source\public\ap_grid.c" />
+    <ClCompile Include="..\..\..\source\public\ap_guild.c" />
+    <ClCompile Include="..\..\..\source\public\ap_item.c" />
+    <ClCompile Include="..\..\..\source\public\ap_item_convert.c" />
+    <ClCompile Include="..\..\..\source\public\ap_item_convert_io.c" />
+    <ClCompile Include="..\..\..\source\public\ap_item_io.c" />
+    <ClCompile Include="..\..\..\source\public\ap_service_npc.c" />
+    <ClCompile Include="..\..\..\source\public\ap_login.c" />
+    <ClCompile Include="..\..\..\source\public\ap_map.c" />
+    <ClCompile Include="..\..\..\source\public\ap_map_io.c" />
+    <ClCompile Include="..\..\..\source\public\ap_module.c" />
+    <ClCompile Include="..\..\..\source\public\ap_module_instance.c" />
+    <ClCompile Include="..\..\..\source\public\ap_module_registry.c" />
+    <ClCompile Include="..\..\..\source\public\ap_object.c" />
+    <ClCompile Include="..\..\..\source\public\ap_octree.c" />
+    <ClCompile Include="..\..\..\source\public\ap_optimized_packet2.c" />
+    <ClCompile Include="..\..\..\source\public\ap_packet.c" />
+    <ClCompile Include="..\..\..\source\public\ap_party.c" />
+    <ClCompile Include="..\..\..\source\public\ap_party_item.c" />
+    <ClCompile Include="..\..\..\source\public\ap_plugin_boss_spawn.c" />
+    <ClCompile Include="..\..\..\source\public\ap_pvp.c" />
+    <ClCompile Include="..\..\..\source\public\ap_random.c" />
+    <ClCompile Include="..\..\..\source\public\ap_refinery.c" />
+    <ClCompile Include="..\..\..\source\public\ap_sector.c" />
+    <ClCompile Include="..\..\..\source\public\ap_shrine.c" />
+    <ClCompile Include="..\..\..\source\public\ap_skill.c" />
+    <ClCompile Include="..\..\..\source\public\ap_spawn.c" />
+    <ClCompile Include="..\..\..\source\public\ap_startup_encryption.c" />
+    <ClCompile Include="..\..\..\source\public\ap_summons.c" />
+    <ClCompile Include="..\..\..\source\public\ap_system_message.c" />
+    <ClCompile Include="..\..\..\source\public\ap_tick.c" />
+    <ClCompile Include="..\..\..\source\public\ap_timer.c" />
+    <ClCompile Include="..\..\..\source\public\ap_ui_status.c" />
+    <ClCompile Include="..\..\..\source\public\ap_world.c" />
+    <ClCompile Include="..\..\..\source\server\as_account.c" />
+    <ClCompile Include="..\..\..\source\server\as_ai2_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_cash_mall_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_character.c" />
+    <ClCompile Include="..\..\..\source\server\as_character_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_chat_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_database.c" />
+    <ClCompile Include="..\..\..\source\server\as_drop_item.c" />
+    <ClCompile Include="..\..\..\source\server\as_drop_item_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_entry.c" />
+    <ClCompile Include="..\..\..\source\server\as_event_bank_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_event_binding.c" />
+    <ClCompile Include="..\..\..\source\server\as_event_guild.c" />
+    <ClCompile Include="..\..\..\source\server\as_event_item_convert_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_event_npc_dialog_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_event_npc_trade_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_event_refinery_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_event_skill_master_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_event_teleport_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_game_admin.c" />
+    <ClCompile Include="..\..\..\source\server\as_guild.c" />
+    <ClCompile Include="..\..\..\source\server\as_guild_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_item.c" />
+    <ClCompile Include="..\..\..\source\server\as_item_convert.c" />
+    <ClCompile Include="..\..\..\source\server\as_item_convert_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_item_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_service_npc.c" />
+    <ClCompile Include="..\..\..\source\server\as_service_npc_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_login.c" />
+    <ClCompile Include="..\..\..\source\server\as_login_admin.c" />
+    <ClCompile Include="..\..\..\source\server\as_map.c" />
+    <ClCompile Include="..\..\..\source\server\as_party.c" />
+    <ClCompile Include="..\..\..\source\server\as_party_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_player.c" />
+    <ClCompile Include="..\..\..\source\server\as_pvp_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_refinery_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_server.c" />
+    <ClCompile Include="..\..\..\source\server\as_skill.c" />
+    <ClCompile Include="..\..\..\source\server\as_skill_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_spawn.c" />
+    <ClCompile Include="..\..\..\source\server\as_ui_status.c" />
+    <ClCompile Include="..\..\..\source\server\as_ui_status_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_world.c" />
+    <ClCompile Include="..\..\..\source\task\task.c" />
+    <ClCompile Include="..\..\..\source\utility\au_blowfish.c" />
+    <ClCompile Include="..\..\..\source\utility\au_ini_manager.c" />
+    <ClCompile Include="..\..\..\source\utility\au_md5_win32.c" />
+    <ClCompile Include="..\..\..\source\utility\au_packet.c" />
+    <ClCompile Include="..\..\..\source\utility\au_table.c" />
+    <ClCompile Include="..\..\..\source\vendor\pcg\pcg_basic.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

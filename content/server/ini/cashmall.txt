@@ -1,0 +1,494 @@
+Category_Name	CashItem_TID	CashItem_Stack	CashItem_Price	CashItem_Type	CashItem_Description
+Bundles					
+	6007	50000	450	2	Lens Stone+ Bundle (50000)
+	4799	50	450	2	Compound Potion Bundle (50)
+	10373	10	1500	1	Lucky Box (10)
+	9805	10	2500	1	Ancient Wing Chest (10)
+	10374	10	1500	1	Mount Chest (10)
+	6242	10	1250	0	Wing Chest (10)
+	9141	10	2500	0	Cloak Chest (10)
+	12109	10	2500	0	Dimension Cloak Chest (10)
+	9142	10	2000	0	Ring Spirit Chest (10)
+	7436	50	2300	0	Fortune Gate Pass (50)
+	7644	10	900	0	Pet Reinforcement Manual (10)
+	10375	10	1300	0	Premium Box Human (10)
+	10377	10	1300	0	Premium Box Orc (10)
+	10379	10	1300	0	Premium Box Moonelf (10)
+	10372	10	1250	0	Premium Box (10)
+	842	50	1300	0	Resurrecting Orb (50)
+	6184	50	240	0	Extra-Large Giant Potion (50)
+	6185	50	240	0	Extra-Large Light Speed Potion (50)
+	6186	50	240	0	Extra-Large Defence Potion (50)
+	6187	50	240	0	Extra-Large Quickness Potion (50)
+	6188	50	240	0	Extra-Large Evasion Potion (50)
+	1836	10	1000	0	Letter of Great Pardon (10)
+Consumable					
+	6007	5000	50	2	Lens Stone+ (5000)
+	4799	5	50	2	Compound Potion (5)
+	842	5	150	0	Resurrecting Orb (5)
+	1174	10	250	0	Summoning Orb (10)
+	4568	5	250	0	Gate of Phantom (5)
+	11256	1	60	0	Marvell Scroll of Release
+	4875	1	150	0	Signature of Glory (1)
+	4877	1	150	0	Release of Agreement (1)
+	3916	1	500	0	Secret Safe
+	3906	50	75	0	Shout of Elemental (50)
+	11404	1	1500	0	Incantation Letter of Name Change
+	6425	1	150	0	Gem of Origin (1)
+	1171	1	30	0	Return Orb (1)
+	1836	1	110	0	Letter of Great Pardon (1)
+	4572	5	100	0	Destiny Prayer Stone (5)
+	1830	5	250	0	Tullan Passport (5)
+	1832	5	250	0	Trilgard Passport (5)
+	1834	5	250	0	Deribelle Passport (5)
+	6064	5	250	0	Asylum Passport (5)
+	6184	10	50	0	Extra-Large Giant Potion (10)
+	6185	10	50	0	Extra-Large Light Speed Potion (10)
+	6186	10	50	0	Extra-Large Defence Potion (10)
+	6187	10	50	0	Extra-Large Quickness Potion (10)
+	6188	10	50	0	Extra-Large Evasion Potion (10)
+Talisman					
+	11041	1	240	0	Talisman of Awakening 50% <3 days>
+	11042	1	600	0	Talisman of Awakening 50% <7 days>
+	11043	1	800	0	Talisman of Awakening 50% <10 days>
+	6049	1	30	0	Lucky Charm <1 day>
+	6050	1	75	0	Lucky Charm <3 days>
+	6051	1	150	0	Lucky Charm <14 days>
+	7716	1	50	0	Talisman of Heavenly Luck <1 day>
+	7717	1	90	0	Talisman of Heavenly Luck <3 days>
+	7718	1	300	0	Talisman of Heavenly Luck <14 days>
+	3436	1	60	0	Talisman of Awakening <1 day>
+	3437	1	150	0	Talisman of Awakening <3 days>
+	3438	1	300	0	Talisman of Awakening <14 days>
+Misc					
+	10373	1	160	1	Lucky Box (1)
+	9805	1	300	1	Ancient Wing Chest (1)
+	10374	1	160	1	Mount Chest (1)
+	6242	1	150	0	Wing Chest (1)
+	9141	1	300	0	Cloak Chest (1)
+	12109	1	300	0	Dimension Cloak Chest (1)
+	9142	1	250	0	Ring Spirit Chest (1)
+	10372	1	140	0	Premium Box (1)
+	7436	5	250	0	Fortune Gate Pass (5)
+	7644	1	100	0	Pet Reinforcement Manual (1)
+	10375	1	140	0	Premium Box Human (1)
+	10377	1	140	0	Premium Box Orc (1)
+	10379	1	140	0	Premium Box Moonelf (1)
+Human					
+	14164	1	500	1	This suit does have a complete set
+	14165	1	500	1	This suit does have a Pirate Head
+	14166	1	500	1	This suit does have a Pirate Head
+	13666	1	450	1	This suit does have a complete set
+	13720	1	450	1	This suit does have a Pirate Head
+	13721	1	450	1	This suit does have a Pirate Head
+	13722	1	450	1	This suit does have a Pirate Head
+	13774	1	450	1	This suit does not have a helmet
+	13775	1	450	1	This suit does not have a helmet
+	13778	1	450	1	This suit does not have a helmet
+	13828	1	450	1	This suit does not have a helmet
+	13829	1	450	1	This suit does not have a helmet
+	13830	1	450	1	This suit does not have a helmet
+	13882	1	450	1	This suit does have a complete set
+	13883	1	450	1	This suit is missing the head inside helmet
+	13884	1	450	1	This suit does have a complete set
+	13936	1	450	1	This suit does have a complete set
+	13937	1	450	1	This suit is missing the head inside helmet
+	13938	1	450	1	This suit does have a Pirate Head
+	13990	1	450	1	This suit does have a complete set
+	13991	1	450	1	This suit does have a Pirate Head
+	13992	1	450	1	This suit does have a Pirate Head
+	14311	1	450	1	This suit does not have a helmet
+	14312	1	450	1	This suit does not have a helmet
+	14313	1	450	1	This suit does not have a helmet
+	14365	1	450	1	This suit does not have a helmet
+	14366	1	450	1	This suit does not have a helmet
+	14367	1	450	1	This suit does not have a helmet
+	14419	1	450	1	This suit does have a complete set
+	14420	1	450	1	This suit does have a complete set
+	14421	1	450	1	This suit does have a complete set
+	13612	1	450	1	This suit does not have a helmet
+	13613	1	450	1	This suit does not have a helmet
+	13614	1	450	1	This suit does not have a helmet
+	7131	1	300	0	Suit <14 Days>
+	7136	1	300	0	Suit <14 Days>
+	7141	1	300	0	Suit <14 Days>
+	7176	1	300	0	Suit <14 Days>
+	7181	1	300	0	Suit <14 Days>
+	7186	1	300	0	Suit <14 Days>
+	7221	1	300	0	Suit <14 Days>
+	7226	1	300	0	Suit <14 Days>
+	7231	1	300	0	Suit <14 Days>
+	7266	1	300	0	Suit <14 Days>
+	7291	1	300	0	Suit <14 Days>
+	7296	1	300	0	Suit <14 Days>
+	7301	1	300	0	Suit <14 Days>
+	7767	1	300	0	Suit <14 Days>
+	7772	1	300	0	Suit <14 Days>
+	7777	1	300	0	Suit <14 Days>
+	9146	1	300	0	Suit <14 Days>
+	9149	1	300	0	Suit <14 Days>
+	9152	1	300	0	Suit <14 Days>
+	11099	1	300	0	Suit <14 Days>
+	11102	1	300	0	Suit <14 Days>
+	11105	1	300	0	Suit <14 Days>
+	11149	1	300	0	Suit <14 Days>
+	11152	1	300	0	Suit <14 Days>
+	11155	1	300	0	Suit <14 Days>
+	11179	1	300	0	Suit <14 Days>
+	11182	1	300	0	Suit <14 Days>
+	11194	1	300	0	Suit <14 Days>
+	11197	1	300	0	Suit <14 Days>
+	11200	1	300	0	Suit <14 Days>
+	11224	1	300	0	Suit <14 Days>
+	11227	1	300	0	Suit <14 Days>
+	11230	1	300	0	Suit <14 Days>
+	11448	1	300	0	Suit <14 Days>
+	11451	1	300	0	Suit <14 Days>
+	11454	1	300	0	Suit <14 Days>
+	11531	1	300	0	Suit <14 Days>
+	11534	1	300	0	Suit <14 Days>
+	11537	1	300	0	Suit <14 Days>
+	12121	1	300	0	Suit <14 Days>
+	12124	1	300	0	Suit <14 Days>
+	12127	1	300	0	Suit <14 Days>
+	12151	1	300	0	Suit <14 Days>
+	12154	1	300	0	Suit <14 Days>
+	12157	1	300	0	Suit <14 Days>
+	12181	1	300	0	Suit <14 Days>
+	12184	1	300	0	Suit <14 Days>
+	12187	1	300	0	Suit <14 Days>
+	12211	1	300	0	Suit <14 Days>
+	12214	1	300	0	Suit <14 Days>
+	12217	1	300	0	Suit <14 Days>
+	12507	1	300	0	Suit <14 Days>
+	12510	1	300	0	Suit <14 Days>
+	12522	1	300	0	Suit <14 Days>
+	12537	1	300	0	Suit <14 Days>
+	12540	1	300	0	Suit <14 Days>
+	12549	1	300	0	Suit <14 Days>
+	12971	1	300	0	Suit <14 Days>
+	12972	1	300	0	Suit <14 Days>
+	12973	1	300	0	Suit <14 Days>
+	13002	1	300	0	Suit <14 Days>
+	13005	1	300	0	Suit <14 Days>
+	13008	1	300	0	Suit <14 Days>
+	13032	1	300	0	Suit <14 Days>
+	13035	1	300	0	Suit <14 Days>
+	13038	1	300	0	Suit <14 Days>
+	13062	1	300	0	Suit <14 Days>
+	13065	1	300	0	Suit <14 Days>
+	13068	1	300	0	Suit <14 Days>
+	13092	1	300	0	Suit <14 Days>
+	13095	1	300	0	Suit <14 Days>
+	13098	1	300	0	Suit <14 Days>
+	13122	1	300	0	Suit <14 Days>
+	13125	1	300	0	Suit <14 Days>
+	13128	1	300	0	Suit <14 Days>
+	13182	1	300	0	Suit <14 Days>
+	13185	1	300	0	Suit <14 Days>
+	13188	1	300	0	Suit <14 Days>
+	13212	1	300	0	Suit <14 Days>
+	13215	1	300	0	Suit <14 Days>
+	13218	1	300	0	Suit <14 Days>
+	13242	1	300	0	Suit <14 Days>
+	13245	1	300	0	Suit <14 Days>
+	13248	1	300	0	Suit <14 Days>
+	31002	1	300	0	Suit <14 Days>
+	31005	1	300	0	Suit <14 Days>
+	31008	1	300	0	Suit <14 Days>
+	31032	1	300	0	Suit <14 Days>
+	31035	1	300	0	Suit <14 Days>
+	31038	1	300	0	Suit <14 Days>
+	31062	1	300	0	Suit <14 Days>
+	31065	1	300	0	Suit <14 Days>
+	31068	1	300	0	Suit <14 Days>
+	31092	1	300	0	Suit <14 Days>
+	31095	1	300	0	Suit <14 Days>
+	31098	1	300	0	Suit <14 Days>
+	31122	1	300	0	Suit <14 Days>
+	31125	1	300	0	Suit <14 Days>
+	31128	1	300	0	Suit <14 Days>
+	31152	1	300	0	Suit <14 Days>
+	31155	1	300	0	Suit <14 Days>
+	31158	1	300	0	Suit <14 Days>
+	7086	1	300	0	Suit <14 Days>
+	7091	1	300	0	Suit <14 Days>
+	7096	1	300	0	Suit <14 Days>
+Orc					
+	14167	1	500	1	This suit does have a complete set
+	14168	1	500	1	This suit does not have a helmet
+	14169	1	500	1	This suit does have a complete set
+	13669	1	450	1	This suit does have a complete set
+	13670	1	450	1	This suit does have a complete set
+	13723	1	450	1	This suit does have a Pirate Head
+	13724	1	450	1	This suit does have a Pirate Head
+	13725	1	450	1	This suit does have a Pirate Head
+	13776	1	450	1	This suit does not have a helmet
+	13779	1	450	1	This suit does not have a helmet
+	13777	1	450	1	This suit does not have a helmet
+	13831	1	450	1	This suit does not have a helmet
+	13832	1	450	1	This suit does not have a helmet
+	13833	1	450	1	This suit does not have a helmet
+	13885	1	450	1	This suit does have a complete set
+	13886	1	450	1	This suit does have a complete set
+	13887	1	450	1	This suit does have a complete set
+	13939	1	450	1	This suit does have a complete set
+	13940	1	450	1	This suit does have a complete set
+	13941	1	450	1	This suit does have a complete set
+	13993	1	450	1	This suit does have a complete set
+	13994	1	450	1	This suit does have a complete set
+	13995	1	450	1	This suit does have a complete set
+	14314	1	450	1	This suit does not have a helmet
+	14315	1	450	1	This suit does not have a helmet
+	14316	1	450	1	This suit does not have a helmet
+	14368	1	450	1	This suit does not have a helmet
+	14369	1	450	1	This suit does not have a helmet
+	14370	1	450	1	This suit does not have a helmet
+	14422	1	450	1	This suit does have a complete set
+	14423	1	450	1	This suit does have a complete set
+	14424	1	450	1	This suit does have a complete set
+	13615	1	450	1	This suit does not have a helmet
+	13616	1	450	1	This suit does not have a helmet
+	13617	1	450	1	This suit does not have a helmet
+	7146	1	300	0	Suit <14 Days>
+	7151	1	300	0	Suit <14 Days>
+	7156	1	300	0	Suit <14 Days>
+	7191	1	300	0	Suit <14 Days>
+	7196	1	300	0	Suit <14 Days>
+	7201	1	300	0	Suit <14 Days>
+	7236	1	300	0	Suit <14 Days>
+	7241	1	300	0	Suit <14 Days>
+	7246	1	300	0	Suit <14 Days>
+	7271	1	300	0	Suit <14 Days>
+	7306	1	300	0	Suit <14 Days>
+	7311	1	300	0	Suit <14 Days>
+	7316	1	300	0	Suit <14 Days>
+	7782	1	300	0	Suit <14 Days>
+	7787	1	300	0	Suit <14 Days>
+	7792	1	300	0	Suit <14 Days>
+	9155	1	300	0	Suit <14 Days>
+	9158	1	300	0	Suit <14 Days>
+	9161	1	300	0	Suit <14 Days>
+	11108	1	300	0	Suit <14 Days>
+	11111	1	300	0	Suit <14 Days>
+	11114	1	300	0	Suit <14 Days>
+	11158	1	300	0	Suit <14 Days>
+	11161	1	300	0	Suit <14 Days>
+	11164	1	300	0	Suit <14 Days>
+	11185	1	300	0	Suit <14 Days>
+	11188	1	300	0	Suit <14 Days>
+	11203	1	300	0	Suit <14 Days>
+	11206	1	300	0	Suit <14 Days>
+	11209	1	300	0	Suit <14 Days>
+	11233	1	300	0	Suit <14 Days>
+	11236	1	300	0	Suit <14 Days>
+	11239	1	300	0	Suit <14 Days>
+	11457	1	300	0	Suit <14 Days>
+	11460	1	300	0	Suit <14 Days>
+	11463	1	300	0	Suit <14 Days>
+	11540	1	300	0	Suit <14 Days>
+	11543	1	300	0	Suit <14 Days>
+	11546	1	300	0	Suit <14 Days>
+	12130	1	300	0	Suit <14 Days>
+	12133	1	300	0	Suit <14 Days>
+	12136	1	300	0	Suit <14 Days>
+	12160	1	300	0	Suit <14 Days>
+	12163	1	300	0	Suit <14 Days>
+	12166	1	300	0	Suit <14 Days>
+	12190	1	300	0	Suit <14 Days>
+	12193	1	300	0	Suit <14 Days>
+	12196	1	300	0	Suit <14 Days>
+	12220	1	300	0	Suit <14 Days>
+	12223	1	300	0	Suit <14 Days>
+	12226	1	300	0	Suit <14 Days>
+	12513	1	300	0	Suit <14 Days>
+	12525	1	300	0	Suit <14 Days>
+	12516	1	300	0	Suit <14 Days>
+	12543	1	300	0	Suit <14 Days>
+	12552	1	300	0	Suit <14 Days>
+	12546	1	300	0	Suit <14 Days>
+	12974	1	300	0	Suit <14 Days>
+	12975	1	300	0	Suit <14 Days>
+	12976	1	300	0	Suit <14 Days>
+	13011	1	300	0	Suit <14 Days>
+	13014	1	300	0	Suit <14 Days>
+	13017	1	300	0	Suit <14 Days>
+	13041	1	300	0	Suit <14 Days>
+	13044	1	300	0	Suit <14 Days>
+	13047	1	300	0	Suit <14 Days>
+	13071	1	300	0	Suit <14 Days>
+	13074	1	300	0	Suit <14 Days>
+	13077	1	300	0	Suit <14 Days>
+	13101	1	300	0	Suit <14 Days>
+	13104	1	300	0	Suit <14 Days>
+	13107	1	300	0	Suit <14 Days>
+	13131	1	300	0	Suit <14 Days>
+	13134	1	300	0	Suit <14 Days>
+	13137	1	300	0	Suit <14 Days>
+	13191	1	300	0	Suit <14 Days>
+	13194	1	300	0	Suit <14 Days>
+	13197	1	300	0	Suit <14 Days>
+	13221	1	300	0	Suit <14 Days>
+	13224	1	300	0	Suit <14 Days>
+	13227	1	300	0	Suit <14 Days>
+	13251	1	300	0	Suit <14 Days>
+	13254	1	300	0	Suit <14 Days>
+	13257	1	300	0	Suit <14 Days>
+	31011	1	300	0	Suit <14 Days>
+	31014	1	300	0	Suit <14 Days>
+	31017	1	300	0	Suit <14 Days>
+	31041	1	300	0	Suit <14 Days>
+	31044	1	300	0	Suit <14 Days>
+	31047	1	300	0	Suit <14 Days>
+	31071	1	300	0	Suit <14 Days>
+	31074	1	300	0	Suit <14 Days>
+	31077	1	300	0	Suit <14 Days>
+	31101	1	300	0	Suit <14 Days>
+	31104	1	300	0	Suit <14 Days>
+	31107	1	300	0	Suit <14 Days>
+	31131	1	300	0	Suit <14 Days>
+	31134	1	300	0	Suit <14 Days>
+	31137	1	300	0	Suit <14 Days>
+	31161	1	300	0	Suit <14 Days>
+	31164	1	300	0	Suit <14 Days>
+	31167	1	300	0	Suit <14 Days>
+	7101	1	300	0	Suit <14 Days>
+	7106	1	300	0	Suit <14 Days>
+	7111	1	300	0	Suit <14 Days>
+Moonelf					
+	14170	1	500	1	This suit does have a complete set
+	14171	1	500	1	This suit does have a Pirate Head
+	14172	1	500	1	This suit does have a complete set
+	13672	1	450	1	This suit does have a complete set
+	13726	1	450	1	This suit does have a Pirate Head
+	13727	1	450	1	This suit does have a Pirate Head
+	13728	1	450	1	This suit does have a Pirate Head
+	13782	1	450	1	This suit does not have a helmet
+	13780	1	450	1	This suit does not have a helmet
+	13781	1	450	1	This suit does not have a helmet
+	13834	1	450	1	This suit does not have a helmet
+	13835	1	450	1	This suit does not have a helmet
+	13836	1	450	1	This suit does not have a helmet
+	13888	1	450	1	This suit does have a complete set
+	13889	1	450	1	This suit does have a complete set
+	13890	1	450	1	This suit does have a complete set
+	13942	1	450	1	This suit does have a complete set
+	13943	1	450	1	This suit does have a complete set
+	13944	1	450	1	This suit does have a complete set
+	13997	1	450	1	This suit does have a Pirate Head
+	14477	1	450	1	This suit does have a Pirate Head
+	14317	1	450	1	This suit does not have a helmet
+	14318	1	450	1	This suit does not have a helmet
+	14319	1	450	1	This suit does not have a helmet
+	14371	1	450	1	This suit does not have a helmet
+	14372	1	450	1	This suit does not have a helmet
+	14373	1	450	1	This suit does not have a helmet
+	14425	1	450	1	This suit does have a complete set
+	14426	1	450	1	This suit does have a complete set
+	14427	1	450	1	This suit does have a complete set
+	13618	1	300	1	This suit does not have a helmet
+	13619	1	300	1	This suit does not have a helmet
+	13620	1	300	1	This suit does not have a helmet
+	7161	1	300	0	Suit <14 Days>
+	7166	1	300	0	Suit <14 Days>
+	7171	1	300	0	Suit <14 Days>
+	7206	1	300	0	Suit <14 Days>
+	7211	1	300	0	Suit <14 Days>
+	7216	1	300	0	Suit <14 Days>
+	7251	1	300	0	Suit <14 Days>
+	7256	1	300	0	Suit <14 Days>
+	7261	1	300	0	Suit <14 Days>
+	7276	1	300	0	Suit <14 Days>
+	7281	1	300	0	Suit <14 Days>
+	7286	1	300	0	Suit <14 Days>
+	7321	1	300	0	Suit <14 Days>
+	7326	1	300	0	Suit <14 Days>
+	7331	1	300	0	Suit <14 Days>
+	7797	1	300	0	Suit <14 Days>
+	7802	1	300	0	Suit <14 Days>
+	7807	1	300	0	Suit <14 Days>
+	9164	1	300	0	Suit <14 Days>
+	9167	1	300	0	Suit <14 Days>
+	9170	1	300	0	Suit <14 Days>
+	11117	1	300	0	Suit <14 Days>
+	11120	1	300	0	Suit <14 Days>
+	11123	1	300	0	Suit <14 Days>
+	11167	1	300	0	Suit <14 Days>
+	11170	1	300	0	Suit <14 Days>
+	11173	1	300	0	Suit <14 Days>
+	11212	1	300	0	Suit <14 Days>
+	11215	1	300	0	Suit <14 Days>
+	11218	1	300	0	Suit <14 Days>
+	11242	1	300	0	Suit <14 Days>
+	11245	1	300	0	Suit <14 Days>
+	11248	1	300	0	Suit <14 Days>
+	11466	1	300	0	Suit <14 Days>
+	11469	1	300	0	Suit <14 Days>
+	11472	1	300	0	Suit <14 Days>
+	11549	1	300	0	Suit <14 Days>
+	11552	1	300	0	Suit <14 Days>
+	11555	1	300	0	Suit <14 Days>
+	12139	1	300	0	Suit <14 Days>
+	12142	1	300	0	Suit <14 Days>
+	12145	1	300	0	Suit <14 Days>
+	12169	1	300	0	Suit <14 Days>
+	12172	1	300	0	Suit <14 Days>
+	12175	1	300	0	Suit <14 Days>
+	12199	1	300	0	Suit <14 Days>
+	12202	1	300	0	Suit <14 Days>
+	12205	1	300	0	Suit <14 Days>
+	12229	1	300	0	Suit <14 Days>
+	12232	1	300	0	Suit <14 Days>
+	12235	1	300	0	Suit <14 Days>
+	12534	1	300	0	Suit <14 Days>
+	12529	1	300	0	Suit <14 Days>
+	12528	1	300	0	Suit <14 Days>
+	12555	1	300	0	Suit <14 Days>
+	12558	1	300	0	Suit <14 Days>
+	12561	1	300	0	Suit <14 Days>
+	12977	1	300	0	Suit <14 Days>
+	12978	1	300	0	Suit <14 Days>
+	12979	1	300	0	Suit <14 Days>
+	13020	1	300	0	Suit <14 Days>
+	13023	1	300	0	Suit <14 Days>
+	13026	1	300	0	Suit <14 Days>
+	13050	1	300	0	Suit <14 Days>
+	13053	1	300	0	Suit <14 Days>
+	13056	1	300	0	Suit <14 Days>
+	13080	1	300	0	Suit <14 Days>
+	13083	1	300	0	Suit <14 Days>
+	13086	1	300	0	Suit <14 Days>
+	13110	1	300	0	Suit <14 Days>
+	13113	1	300	0	Suit <14 Days>
+	13116	1	300	0	Suit <14 Days>
+	13140	1	300	0	Suit <14 Days>
+	13143	1	300	0	Suit <14 Days>
+	13146	1	300	0	Suit <14 Days>
+	13200	1	300	0	Suit <14 Days>
+	13203	1	300	0	Suit <14 Days>
+	13206	1	300	0	Suit <14 Days>
+	13230	1	300	0	Suit <14 Days>
+	13233	1	300	0	Suit <14 Days>
+	13236	1	300	0	Suit <14 Days>
+	13260	1	300	0	Suit <14 Days>
+	13263	1	300	0	Suit <14 Days>
+	13266	1	300	0	Suit <14 Days>
+	31020	1	300	0	Suit <14 Days>
+	31023	1	300	0	Suit <14 Days>
+	31026	1	300	0	Suit <14 Days>
+	31050	1	300	0	Suit <14 Days>
+	31053	1	300	0	Suit <14 Days>
+	31056	1	300	0	Suit <14 Days>
+	31080	1	300	0	Suit <14 Days>
+	31083	1	300	0	Suit <14 Days>
+	31086	1	300	0	Suit <14 Days>
+	31110	1	300	0	Suit <14 Days>
+	31113	1	300	0	Suit <14 Days>
+	31116	1	300	0	Suit <14 Days>
+	31140	1	300	0	Suit <14 Days>
+	31143	1	300	0	Suit <14 Days>
+	31170	1	300	0	Suit <14 Days>
+	31173	1	300	0	Suit <14 Days>
+	7116	1	300	0	Suit <14 Days>
+	7121	1	300	0	Suit <14 Days>
+	7126	1	300	0	Suit <14 Days>

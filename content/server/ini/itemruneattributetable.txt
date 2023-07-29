@@ -1,0 +1,533 @@
+Item_Name	TID	ANTI Number	SecondCategory	Skill_Name	Skill_Level	Skill_Rate	Upper_Body	Lower_Body	Weapon	Shield	Head	Ring	Necklace	Shoes	Gloves	Success_Rate	Rank	Mount_Restriction_Level	Description
+Attack Prayer Stone<Lv1>	463		32						O							100	1	1	Damage +1
+Attack Prayer Stone<Lv3>	464		32						O							90	3	1	Damage +3
+Blocking Accuracy Prayer Stone<Lv1>	465		33							O						100	1	1	Block +2%
+Attack Accuracy Prayer Stone<Lv1>	466		32						O							100	1	1	Attack Rating +4
+Attack Accuracy Prayer Stone<Lv2>	467		32						O							95	2	1	Attack Rating +6
+Attack Accuracy Prayer Stone<Lv3>	468		32						O							90	3	1	Attack Rating +8
+Blocking Accuracy Prayer Stone<Lv2>	469		33							O						95	2	1	Block +4%
+Blocking Accuracy Prayer Stone<Lv3>	470		33							O						90	3	1	Block +6%
+Defense Prayer Stone<Lv1>	471		33				O									100	1	1	Defense +2
+Defense Prayer Stone<Lv3>	472		33				O									90	3	1	Defense +4
+Life Prayer Stone<Lv1>	474	1	33				O									100	1	1	Max. HP +50
+Life Prayer Stone<Lv3>	475	1	33				O									90	3	1	Max. HP +80
+Mana Prayer Stone<Lv1>	480	2	33				O									100	1	1	Max. Mana +50
+Mana Prayer Stone<Lv3>	481	2	33				O									90	3	1	Max. Mana +80
+Cold Prayer Stone<Lv1>	588		32	Cold Prayer Stone <Small>	1	4			O							100	1	1	Ice damage +6 with a 4% chance to slow the target for 5 seconds
+Cold Prayer Stone<Lv3>	589		32	Cold Prayer Stone <Medium>	1	6			O							90	3	1	Ice damage +8 with a 6% chance to slow the target for 5 seconds
+Thunder Prayer Stone<Lv1>	591		32	Lightning Prayer Stone <Small>	1	4			O							100	1	1	Lightning damage +6 with a 4% chance to stun the target for 3 seconds
+Thunder Prayer Stone<Lv3>	592		32	Lightning Prayer Stone <Medium>	1	6			O							90	3	1	Lightning damage +8 with a 6% chance to stun the target for 3 seconds
+Deadly Poison Prayer Stone<Lv1>	594		32	Deadly Poison Prayer Stone <Small>	1	4			O							100	1	1	4% chance on hit to deal 15 poison damage every 3 seconds for 30 seconds
+Deadly Poison Prayer Stone<Lv3>	595		32	Deadly Poison Prayer Stone <Medium>	1	6			O							90	3	1	6% chance on hit to deal 25 poison damage every 3 seconds for 30 seconds
+Shield Resistance Prayer Stone Lv 1	597	202	32							O						100	1	1	5% chance to reflect 2 damage back to the attacker when hit
+Shield Resistance Prayer Stone Lv 2	598	202	32							O						95	2	1	5% chance to reflect 4 damage back to the attacker when hit
+Shield Resistance Prayer Stone Lv 3	599	202	32							O						90	3	1	5% chance to reflect 6 damage back to the attacker when hit
+Stamina Buff Prayer Stone<Lv1>	600	4	33				O									100	1	1	Max. HP +6%
+Stamina Buff Prayer Stone<Lv3>	601	4	33				O									90	3	1	Max. HP +10%
+Curse Removal Prayer Stone Lv 1	603	21	33				O									100	1	1	Reduces poisoning duration effects by 4 seconds
+Curse Removal Prayer Stone Lv 3	604	21	33				O									90	3	1	Reduces poisoning duration effects by 12 seconds
+Curse Removal Prayer Stone Lv 2	605	21	33				O									95	2	1	Reduces poisoning duration effects by 8 seconds
+Skill Awakening Prayer Stone Lv 1	606	22	33				O									100	1	1	Reduces slowing duration effects by 2 seconds
+Skill Awakening Prayer Stone Lv 3	607	22	33				O									90	3	1	Reduces slowing duration effects by 6 seconds
+Skill Awakening Prayer Stone Lv 2	608	22	33				O									95	2	1	Reduces slowing duration effects by 4 seconds
+Conversion Prayer Stone Lv 1	609	23	33				O									100	1	1	Reduces your chance of being stunned by 5%
+Conversion Prayer Stone Lv 3	610	23	33				O									90	3	1	Reduces your chance of being stunned 15%
+Conversion Prayer Stone Lv 2	611	23	33				O									95	2	1	Reduces your chance of being stunned by 10%
+Mana Replenishment Prayer Stone<Lv1>	613	6	34									O	O			100	1	1	Restores 4 mana every 10 seconds
+Mana Replenishment Prayer Stone<Lv3>	614	6	34									O	O			90	3	1	Restores 6 mana every 10 seconds
+Life Recovery Prayer Stone<Lv1>	616	7	34									O	O			100	1	1	Heals you for 4 health every 10 seconds
+Life Recovery Prayer Stone<Lv3>	617	7	34									O	O			90	3	1	Heals you for 6 health every 10 seconds
+Spirit Uplift Prayer Stone<Lv1>	840	5	33				O									100	1	1	Max. Mana +6%
+Spirit Uplift Prayer Stone<Lv3>	841	5	33				O									90	3	1	Max. Mana +10%
+Physical Resistance Prayer Stone<Lv1>	1169	8	33				O	O								100	1	1	Resistance +6%
+Physical Resistance Prayer Stone<Lv3>	1170	8	33				O	O								90	3	1	Resistance +10%
+Skill Block Prayer Stone<Lv1>	1172	9	33					O		O						100	1	1	Skill Block +4%
+Skill Block Prayer Stone<Lv3>	1173	9	33					O		O						90	3	1	Skill Block +8%
+Attack Prayer Stone<Lv2>	1829		32						O							95	2	1	Damage +2
+Cold Prayer Stone<Lv2>	1831		32	Cold Prayer Stone <Option1>	1	5			O							95	2	1	Ice damage +7 with a 5% chance to slow the target for 5 seconds
+Mana Prayer Stone<Lv2>	1833	2	33				O									95	2	1	Max. Mana +65
+Mana Replenishment Prayer Stone<Lv2>	1835	6	34									O	O			95	2	1	Restores 5 mana every 10 seconds
+Deadly Poison Prayer Stone<Lv2>	1837		32	Deadly Poison Prayer Stone <Option 1>	1	5			O							95	2	1	5% chance on hit to deal 20 poison damage every 3 seconds for 30 seconds
+Physical Resistance Prayer Stone<Lv2>	1839	8	33				O	O								95	2	1	Resistance +8%
+Defense Prayer Stone<Lv2>	1841		33				O									95	2	1	Defense +3
+Life Prayer Stone<Lv2>	1843	1	33				O									95	2	1	Max. HP +65
+Life Recovery Prayer Stone<Lv2>	1845	7	34									O	O			95	2	1	Heals you for 5 health every 10 seconds
+Skill Block Prayer Stone<Lv2>	1847	9	33					O		O						95	2	1	Skill Block +6%
+Thunder Prayer Stone<Lv2>	1849		32	Lightning Prayer Stone <Option 1>	1	5			O							95	2	1	Lightning damage +7 with a 5% chance to stun the target for 3 seconds
+Spirit Uplift Prayer Stone<Lv2>	1851	5	33				O									95	2	1	Max. Mana +8%
+Stamina Buff Prayer Stone<Lv2>	1853	4	33				O									95	2	1	Max. HP +8%
+Quickness Prayer Stone<Lv1>	1855	80	38											O		100	1	1	Movement Speed +3%
+Quickness Prayer Stone<Lv2>	1856	80	38											O		95	2	1	Movement Speed +6%
+Quickness Prayer Stone<Lv3>	1857	80	38											O		90	3	1	Movement Speed +9%
+Light Speed Prayer Stone<Lv1>	1860	90	38												O	100	1	1	Attack Speed +5%
+Light Speed Prayer Stone<Lv2>	1861	90	38												O	95	2	1	Attack Speed +10%
+Light Speed Prayer Stone<Lv3>	1862	90	38												O	90	3	1	Attack Speed +15%
+Might Prayer Stone<Lv1>	1865		39								O	O	O			100	1	1	Strength +10
+Might Prayer Stone<Lv2>	1866		39								O	O	O			95	2	1	Strength +20
+Might Prayer Stone<Lv3>	1867		39								O	O	O			90	3	1	Strength +30
+Agility Prayer Stone<Lv1>	1870		39								O	O	O			100	1	1	Agility +10
+Agility Prayer Stone<Lv2>	1871		39								O	O	O			95	2	1	Agility +15
+Agility Prayer Stone<Lv3>	1872		39								O	O	O			90	3	1	Agility +20
+Prayer Stone of Knowledge <Lv1>	1875		39								O	O	O			100	1	1	Intelligence +10
+Prayer Stone of Knowledge <Lv2>	1876		39								O	O	O			95	2	1	Intelligence +20
+Prayer Stone of Knowledge <Lv3>	1877		39								O	O	O			90	3	1	Intelligence +30
+Stamina Prayer Stone<Lv1>	1880		39								O	O	O			100	1	1	Stamina +5
+Stamina Prayer Stone<Lv2>	1881		39								O	O	O			95	2	1	Stamina +10
+Stamina Prayer Stone<Lv3>	1882		39								O	O	O			90	3	1	Stamina +15
+Wisdom Prayer Stone<Lv1>	1885		39								O	O	O			100	1	1	Wisdom +10
+Wisdom Prayer Stone<Lv2>	1886		39								O	O	O			95	2	1	Wisdom +15
+Wisdom Prayer Stone<Lv3>	1887		39								O	O	O			90	3	1	Wisdom +20
+Critical Hit Prayer Stone<Lv1>	1890	100	38												O	100	1	1	Critical Hit damage increased by +10%
+Critical Hit Prayer Stone<Lv2>	1891	100	38												O	95	2	1	Critical Hit damage increased by +15%
+Critical Hit Prayer Stone<Lv3>	1892	100	38												O	90	3	1	Critical Hit damage increased by +20%
+Angel Wings<Lv1>	4571	60	36										O			100	1	1	Movement Speed +10%
+Destiny Prayer Stone	4572	70	37				O	O	O		O			O	O	100	1	1	Adds Socket and Bonus
+Destiny Prayer Stone	4575	70	37				O	O	O		O			O	O	30	1	1	Adds Socket and Bonus
+Destiny Prayer Stone	4576	70	37				O	O	O		O			O	O	70	1	1	Adds Socket and Bonus
+Lord Wings<Lv1>	4607	60	36										O			100	1	1	Movement Speed +10%
+Superior Stone	4742	50	35												O	100	1	1	Attack Speed +10%
+Lucky Prayer Stone<Lv1>	6074	110	40											O		100	1	1	Bonus drop rate +5%
+Lucky Prayer Stone<Lv2>	6075	110	40											O		95	2	1	Bonus drop rate +10%
+Lucky Prayer Stone<Lv3>	6076	110	40											O		90	3	1	Bonus drop rate +15%
+Destiny Prayer Stone	6183	70	37				O	O	O		O			O	O	100	1	1	Adds Socket and Bonus
+Dark Wings<Lv2>	6225	60	36										O			100	1	1	Movement Speed +11%
+Dark Wings<Lv3>	6226	60	36										O			100	1	1	Movement Speed +12%
+Dark Wings<Lv4>	6227	60	36										O			100	1	1	Movement Speed +13%
+Dark Wings<Lv5>	6228	60	36										O			100	1	1	Movement Speed +14%
+Death Wings<Lv2>	6229	60	36										O			100	1	1	Movement Speed +11%
+Death Wings<Lv3>	6230	60	36										O			100	1	1	Movement Speed +12%
+Death Wings<Lv4>	6231	60	36										O			100	1	1	Movement Speed +13%
+Death Wings<Lv5>	6232	60	36										O			100	1	1	Movement Speed +14%
+Eternity Wings<Lv2>	6233	60	36										O			100	1	1	Movement Speed +11%
+Eternity Wings<Lv3>	6234	60	36										O			100	1	1	Movement Speed +12%
+Eternity Wings<Lv4>	6235	60	36										O			100	1	1	Movement Speed +13%
+Eternity Wings<Lv5>	6236	60	36										O			100	1	1	Movement Speed +14%
+Judgement Wings<Lv2>	6237	60	36										O			100	1	1	Movement Speed +11%
+Judgement Wings<Lv3>	6238	60	36										O			100	1	1	Movement Speed +12%
+Judgement Wings<Lv4>	6239	60	36										O			100	1	1	Movement Speed +13%
+Judgement Wings<Lv5>	6240	60	36										O			100	1	1	Movement Speed +14%
+Infinity Wings<Lv6>	6241	60	36										O			100	1	1	Movement Speed +15%
+Dark Wings<Lv1>	6243	60	36										O			100	1	1	Movement Speed +10%
+Death Wings<Lv1>	6244	60	36										O			100	1	1	Movement Speed +10%
+Eternity Wings<Lv1>	6245	60	36										O			100	1	1	Movement Speed +10%
+Judgement Wings<Lv1>	6246	60	36										O			100	1	1	Movement Speed +10%
+Lord Wings<Lv2>	6247	60	36										O			100	1	1	Movement Speed +11%
+Lord Wings<Lv3>	6248	60	36										O			100	1	1	Movement Speed +12%
+Lord Wings<Lv4>	6249	60	36										O			100	1	1	Movement Speed +13%
+Lord Wings<Lv5>	6250	60	36										O			100	1	1	Movement Speed +14%
+Angel Wings<Lv2>	6251	60	36										O			100	1	1	Movement Speed +11%
+Angel Wings<Lv3>	6252	60	36										O			100	1	1	Movement Speed +12%
+Angel Wings<Lv4>	6253	60	36										O			100	1	1	Movement Speed +13%
+Angel Wings<Lv5>	6254	60	36										O			100	1	1	Movement Speed +14%
+Defense Prayer Stone<Lv3>	6363		33				O									90	3	1	Defense +4
+Attack Prayer Stone<Lv3>	6364		32						O							90	3	1	Damage +3
+Destiny Prayer Stone	7381	70	37				O	O	O		O			O	O	100	1	1	Adds Socket and Bonus
+Small Emerald	7501	121	32									O	O			80	1	1	Damage +3
+Small Black Pearl	7502	122	32									O	O			80	1	1	Attack Rating +3
+Small Zircon	7503	123	33									O	O			80	1	1	Block +2%
+Small Diamond	7504	124	33									O	O			80	1	1	Defense +3
+Small Ruby	7505	125	33									O	O			80	1	1	Max. HP +20
+Small Sapphire	7506	126	33									O	O			80	1	1	Max. Mana +20
+Big Emerald	7507	121	32									O	O			65	2	30	Damage +5
+Big Black Pearl	7508	122	32									O	O			65	2	30	Attack Rating +4
+Big Zircon	7509	123	33									O	O			65	2	30	Block +3%
+Big Diamond	7510	124	33									O	O			65	2	30	Defense +5
+Big Ruby	7511	125	33									O	O			65	2	30	Max. HP +30
+Big Sapphire	7512	126	33									O	O			65	2	30	Max. Mana +30
+Big Topaz	7513	127	33									O	O			65	2	30	Max. HP +2%
+Big Aquamarine	7514	128	33									O	O			65	2	30	Max. Mana +2%
+Fantastic Emerald	7515	121	32									O	O			50	3	50	Damage +10
+Fantastic Black Pearl	7516	122	32									O	O			50	3	50	Attack Rating +6
+Fantastic Zircon	7517	123	33									O	O			50	3	50	Block +5%
+Fantastic Diamond	7518	124	33									O	O			50	3	50	Defense +7
+Fantastic Ruby	7519	125	33									O	O			50	3	50	Max. HP +50
+Fantastic Sapphire	7520	126	33									O	O			50	3	50	Max. Mana +50
+Fantastic Topaz	7521	127	33									O	O			50	3	50	Max. HP +3%
+Fantastic Aquamarine	7522	128	33									O	O			50	3	50	Max. Mana +3%
+Fantastic White Pearl	7523	129	33									O	O			50	3	50	Resistance +3%
+Fantastic Amethyst	7524	130	33									O	O			50	3	50	Skill Block +3%
+Cloak of Elemental Mastery Lv 1	9040	200	36										O			100	1	1	All Elemental Attacks +5 / All Elemental Resistances +8%
+Cloak of Elemental Mastery Lv 2	9041	200	36										O			100	1	1	All Elemental Attacks +6 / All Elemental Resistances +9%
+Cloak of Elemental Mastery Lv 3	9042	200	36										O			100	1	1	All Elemental Attacks +7 / All Elemental Resistances +10%
+Cloak of Elemental Mastery Lv 4	9043	200	36										O			100	1	1	All Elemental Attacks +8 / All Elemental Resistances +11%
+Cloak of Elemental Mastery Lv 5	9044	200	36										O			100	1	1	All Elemental Attacks +9 / All Elemental Resistances +12%
+Cloak of Elemental Mastery Lv 6	9045	200	36										O			100	1	1	All Elemental Attacks +10 / All Elemental Resistances +13%
+Cloak of Elemental Mastery Lv 7	9046	200	36										O			100	1	1	All Elemental Attacks +11 / All Elemental Resistances +14%
+Cloak of Elemental Mastery Lv 8	9047	200	36										O			100	1	1	All Elemental Attacks +12 / All Elemental Resistances +15%
+Prayer Stone of Ring Spirit Lv 1	9048	201	36									O				100	1	1	Resistance +5%
+Prayer Stone of Ring Spirit Lv 2	9049	201	36									O				100	1	1	Resistance +6%
+Prayer Stone of Ring Spirit Lv 3	9050	201	36									O				100	1	1	Resistance +7%
+Prayer Stone of Ring Spirit Lv 4	9051	201	36									O				100	1	1	Resistance +8%
+Prayer Stone of Ring Spirit Lv 5	9052	201	36									O				100	1	1	Resistance +9%
+Prayer Stone of Ring Spirit Lv 6	9053	201	36									O				100	1	1	Resistance +10%
+Prayer Stone of Ring Spirit Lv 7	9054	201	36									O				100	1	1	Resistance +11%
+Prayer Stone of Ring Spirit Lv 8	9055	201	36									O				100	1	1	Resistance +12%
+Cloak of Elemental Mastery Lv 1	9178	200	36										O			100	1	1	All Elemental Attacks +5 / All Elemental Resistances +8%
+Cloak of Elemental Mastery Lv 2	9179	200	36										O			100	1	1	All Elemental Attacks +6 / All Elemental Resistances +9%
+Cloak of Elemental Mastery Lv 3	9180	200	36										O			100	1	1	All Elemental Attacks +7 / All Elemental Resistances +10%
+Cloak of Elemental Mastery Lv 4	9181	200	36										O			100	1	1	All Elemental Attacks +8 / All Elemental Resistances +11%
+Cloak of Elemental Mastery Lv 5	9182	200	36										O			100	1	1	All Elemental Attacks +9 / All Elemental Resistances +12%
+Cloak of Elemental Mastery Lv 6	9183	200	36										O			100	1	1	All Elemental Attacks +10 / All Elemental Resistances +13%
+Cloak of Elemental Mastery Lv 7	9184	200	36										O			100	1	1	All Elemental Attacks +11 / All Elemental Resistances +14%
+Cloak of Elemental Mastery Lv 8	9185	200	36										O			100	1	1	All Elemental Attacks +12 / All Elemental Resistances +15%
+Prayer Stone of Ring Spirit Lv 1	9766	201	36									O				100	1	1	Resistance +5%
+Prayer Stone of Ring Spirit Lv 2	9767	201	36									O				100	1	1	Resistance +6%
+Prayer Stone of Ring Spirit Lv 3	9768	201	36									O				100	1	1	Resistance +7%
+Prayer Stone of Ring Spirit Lv 4	9769	201	36									O				100	1	1	Resistance +8%
+Prayer Stone of Ring Spirit Lv 5	9770	201	36									O				100	1	1	Resistance +9%
+Prayer Stone of Ring Spirit Lv 6	9771	201	36									O				100	1	1	Resistance +10%
+Prayer Stone of Ring Spirit Lv 7	9772	201	36									O				100	1	1	Resistance +11%
+Prayer Stone of Ring Spirit Lv 8	9773	201	36									O				100	1	1	Resistance +12%
+Lord Wings<Lv1>	9774	60	36										O			100	1	1	Movement Speed +10%
+Angel Wings<Lv1>	9775	60	36										O			100	1	1	Movement Speed +10%
+Dark Wings<Lv2>	9776	60	36										O			100	1	1	Movement Speed +11%
+Dark Wings<Lv3>	9777	60	36										O			100	1	1	Movement Speed +12%
+Dark Wings<Lv4>	9778	60	36										O			100	1	1	Movement Speed +13%
+Dark Wings<Lv5>	9779	60	36										O			100	1	1	Movement Speed +14%
+Death Wings<Lv2>	9780	60	36										O			100	1	1	Movement Speed +11%
+Death Wings<Lv3>	9781	60	36										O			100	1	1	Movement Speed +12%
+Death Wings<Lv4>	9782	60	36										O			100	1	1	Movement Speed +13%
+Death Wings<Lv5>	9783	60	36										O			100	1	1	Movement Speed +14%
+Eternity Wings<Lv2>	9784	60	36										O			100	1	1	Movement Speed +11%
+Eternity Wings<Lv3>	9785	60	36										O			100	1	1	Movement Speed +12%
+Eternity Wings<Lv4>	9786	60	36										O			100	1	1	Movement Speed +13%
+Eternity Wings<Lv5>	9787	60	36										O			100	1	1	Movement Speed +14%
+Judgement Wings<Lv2>	9788	60	36										O			100	1	1	Movement Speed +11%
+Judgement Wings<Lv3>	9789	60	36										O			100	1	1	Movement Speed +12%
+Judgement Wings<Lv4>	9790	60	36										O			100	1	1	Movement Speed +13%
+Judgement Wings<Lv5>	9791	60	36										O			100	1	1	Movement Speed +14%
+Infinity Wings<Lv6>	9792	60	36										O			100	1	1	Movement Speed +15%
+Dark Wings<Lv1>	9793	60	36										O			100	1	1	Movement Speed +10%
+Death Wings<Lv1>	9794	60	36										O			100	1	1	Movement Speed +10%
+Eternity Wings<Lv1>	9795	60	36										O			100	1	1	Movement Speed +10%
+Judgement Wings<Lv1>	9796	60	36										O			100	1	1	Movement Speed +10%
+Lord Wings<Lv2>	9797	60	36										O			100	1	1	Movement Speed +11%
+Lord Wings<Lv3>	9798	60	36										O			100	1	1	Movement Speed +12%
+Lord Wings<Lv4>	9799	60	36										O			100	1	1	Movement Speed +13%
+Lord Wings<Lv5>	9800	60	36										O			100	1	1	Movement Speed +14%
+Angel Wings<Lv2>	9801	60	36										O			100	1	1	Movement Speed +11%
+Angel Wings<Lv3>	9802	60	36										O			100	1	1	Movement Speed +12%
+Angel Wings<Lv4>	9803	60	36										O			100	1	1	Movement Speed +13%
+Angel Wings<Lv5>	9804	60	36										O			100	1	1	Movement Speed +14%
+Scion Prayer Stone	11016		32				O	O	O		O			O	O	100	1	1	Water / Fire / Earth / Air / Magic / Ice / Lightning / Poison Damages +5
+Fragment of Ashtal	11259		50				O	O	O		O	O	O	O	O	100	1	1	
+Cloak of Elemental Mastery Lv 2	11306	200	36										O			100	1	1	All Elemental Attacks +6 / All Elemental Resistances +9%
+Cloak of Elemental Mastery Lv 5	11307	200	36										O			100	1	1	All Elemental Attacks +9 / All Elemental Resistances +12%
+Attack Prayer Stone<Lv4>	11695		32						O							85	4	1	Damage +1
+Attack Prayer Stone<Lv5>	11696		32						O							80	5	1	Damage +2
+Attack Prayer Stone<Lv6>	11697		32						O							75	6	1	Damage +3
+Attack Accuracy Prayer Stone<Lv4>	11698		32						O							85	4	1	Attack Rating +4
+Attack Accuracy Prayer Stone<Lv5>	11699		32						O							80	5	1	Attack Rating +6
+Attack Accuracy Prayer Stone<Lv6>	11700		32						O							75	6	1	Attack Rating +8
+Cold Prayer Stone<Lv4>	11701		32	Cold Prayer Stone <Small>	1	4			O							85	4	1	Ice damage +6 with a 4% chance to slow the target for 5 seconds
+Cold Prayer Stone<Lv5>	11702		32	Cold Prayer Stone <Option1>	1	5			O							80	5	1	Ice damage +7 with a 5% chance to slow the target for 5 seconds
+Cold Prayer Stone<Lv6>	11703		32	Cold Prayer Stone <Medium>	1	6			O							75	6	1	Ice damage +8 with a 6% chance to slow the target for 5 seconds
+Thunder Prayer Stone<Lv4>	11704		32	Lightning Prayer Stone <Small>	1	4			O							85	4	1	Lightning damage +6 with a 4% chance to stun the target for 3 seconds
+Thunder Prayer Stone<Lv5>	11705		32	Lightning Prayer Stone <Option 1>	1	5			O							80	5	1	Lightning damage +7 with a 5% chance to stun the target for 3 seconds
+Thunder Prayer Stone<Lv6>	11706		32	Lightning Prayer Stone <Medium>	1	6			O							75	6	1	Lightning damage +8 with a 6% chance to stun the target for 3 seconds
+Deadly Poison Prayer Stone<Lv4>	11707		32	Deadly Poison Prayer Stone <Small>	1	4			O							85	4	1	4% chance on hit to deal 15 poison damage every 3 seconds for 30 seconds
+Deadly Poison Prayer Stone<Lv5>	11708		32	Deadly Poison Prayer Stone <Option 1>	1	5			O							80	5	1	5% chance on hit to deal 20 poison damage every 3 seconds for 30 seconds
+Deadly Poison Prayer Stone<Lv6>	11709		32	Deadly Poison Prayer Stone <Medium>	1	6			O							75	6	1	6% chance on hit to deal 25 poison damage every 3 seconds for 30 seconds
+Shield Resistance Prayer Stone<Lv4>	11710	202	32							O						85	4	1	5% chance to reflect 2 damage back to the attacker when hit
+Shield Resistance Prayer Stone<Lv5>	11711	202	32							O						80	5	1	5% chance to reflect 4 damage back to the attacker when hit
+Shield Resistance Prayer Stone<Lv6>	11712	202	32							O						75	6	1	5% chance to reflect 6 damage back to the attacker when hit
+Critical Hit Prayer Stone<Lv4>	11713	100	38												O	85	4	1	Critical Hit damage increased by +10%
+Critical Hit Prayer Stone<Lv5>	11714	100	38												O	80	5	1	Critical Hit damage increased by +15%
+Critical Hit Prayer Stone<Lv6>	11715	100	38												O	75	6	1	Critical Hit damage increased by +20%
+Blocking Accuracy Prayer Stone<Lv4>	11716		33							O						85	4	1	Block +2%
+Blocking Accuracy Prayer Stone<Lv5>	11717		33							O						80	5	1	Block +9%
+Blocking Accuracy Prayer Stone<Lv6>	11718		33							O						75	6	1	Block +6%
+Defense Prayer Stone<Lv4>	11719		33				O									85	4	1	Defense +2
+Defense Prayer Stone<Lv5>	11720		33				O									80	5	1	Defense +3
+Defense Prayer Stone<Lv6>	11721		33				O									75	6	1	Defense +4
+Life Prayer Stone<Lv4>	11722	1	33				O									85	4	1	Max. HP +50
+Life Prayer Stone<Lv5>	11723	1	33				O									80	5	1	Max. HP +65
+Life Prayer Stone<Lv6>	11724	1	33				O									75	6	1	Max. HP +80
+Mana Prayer Stone<Lv4>	11725	2	33				O									85	4	1	Max. Mana +50
+Mana Prayer Stone<Lv5>	11726	2	33				O									80	5	1	Max. Mana +65
+Mana Prayer Stone<Lv6>	11727	2	33				O									75	6	1	Max. Mana +80
+Stamina Increase Prayer Stone<Lv4>	11728	4	33				O									85	4	1	Max. HP +6%
+Stamina Increase Prayer Stone<Lv5>	11729	4	33				O									80	5	1	Max. HP +8%
+Stamina Increase Prayer Stone<Lv6>	11730	4	33				O									75	6	1	Max. HP +10%
+Spirit Uplift Prayer Stone<Lv4>	11731	5	33				O									85	4	1	Max. Mana +6%
+Spirit Uplift Prayer Stone<Lv5>	11732	5	33				O									80	5	1	Max. Mana +8%
+Spirit Uplift Prayer Stone<Lv6>	11733	5	33				O									75	6	1	Max. Mana +10%
+Physical Resistance Prayer Stone<Lv4>	11734	8	33				O	O								85	4	1	Resistance +6%
+Physical Resistance Prayer Stone<Lv5>	11735	8	33				O	O								80	5	1	Resistance +8%
+Physical Resistance Prayer Stone<Lv6>	11736	8	33				O	O								75	6	1	Resistance +10%
+Skill Block Prayer Stone<Lv4>	11737	9	33					O		O						85	4	1	Skill Block +4%
+Skill Block Prayer Stone<Lv5>	11738	9	33					O		O						80	5	1	Skill Block +6%
+Skill Block Prayer Stone<Lv6>	11739	9	33					O		O						75	6	1	Skill Block +8%
+Curse Removal Prayer Stone<Lv4>	11740	21	33				O									85	4	1	Reduces poisoning duration effects by 4 seconds
+Curse Removal Prayer Stone<Lv5>	11741	21	33				O									80	5	1	Reduces poisoning duration effects by 8 seconds
+Curse Removal Prayer Stone<Lv6>	11742	21	33				O									75	6	1	Reduces poisoning duration effects by 12 seconds
+Skill Awakening Prayer Stone<Lv4>	11743	22	33				O									85	4	1	Reduces slowing duration effects by 2 seconds
+Skill Awakening Prayer Stone<Lv5>	11744	22	33				O									80	5	1	Reduces slowing duration effects by 4 seconds
+Skill Awakening Prayer Stone<Lv6>	11745	22	33				O									75	6	1	Reduces slowing duration effects by 6 seconds
+Conversion Prayer Stone<Lv4>	11746	23	33				O									85	4	1	Reduces your chance of being stunned by 5%
+Conversion Prayer Stone<Lv5>	11747	23	33				O									80	5	1	Reduces your chance of being stunned by 10%
+Conversion Prayer Stone<Lv6>	11748	23	33				O									75	6	1	Reduces your chance of being stunned 15%
+Mana Replenishment Prayer Stone<Lv4>	11749	6	34									O	O			85	4	1	Restores 4 mana every 10 seconds
+Mana Replenishment Prayer Stone<Lv5>	11750	6	34									O	O			80	5	1	Restores 5 mana every 10 seconds
+Mana Replenishment Prayer Stone<Lv6>	11751	6	34									O	O			75	6	1	Restores 6 mana every 10 seconds
+Life Recovery Prayer Stone<Lv4>	11752	7	34									O	O			85	4	1	Heals you for 4 health every 10 seconds
+Life Recovery Prayer Stone<Lv5>	11753	7	34									O	O			80	5	1	Heals you for 5 health every 10 seconds
+Life Recovery Prayer Stone<Lv6>	11754	7	34									O	O			75	6	1	Heals you for 6 health every 10 seconds
+Quickness Prayer Stone<Lv4>	11755	80	38											O		85	4	1	Movement Speed +3%
+Quickness Prayer Stone<Lv5>	11756	80	38											O		80	5	1	Movement Speed +6%
+Quickness Prayer Stone<Lv6>	11757	80	38											O		75	6	1	Movement Speed +9%
+Light Speed Prayer Stone<Lv4>	11758	90	38												O	85	4	1	Attack Speed +5%
+Light Speed Prayer Stone<Lv5>	11759	90	38												O	80	5	1	Attack Speed +10%
+Light Speed Prayer Stone<Lv6>	11760	90	38												O	75	6	1	Attack Speed +15%
+Might Prayer Stone<Lv4>	11761		39								O	O	O			85	4	1	Strength +10
+Might Prayer Stone<Lv5>	11762		39								O	O	O			80	5	1	Strength +20
+Might Prayer Stone<Lv6>	11763		39								O	O	O			75	6	1	Strength +30
+Agility Prayer Stone<Lv4>	11764		39								O	O	O			85	4	1	Agility +10
+Agility Prayer Stone<Lv5>	11765		39								O	O	O			80	5	1	Agility +15
+Agility Prayer Stone<Lv6>	11766		39								O	O	O			75	6	1	Agility +20
+Prayer Stone of Knowledge <Lv4>	11767		39								O	O	O			85	4	1	Intelligence +10
+Prayer Stone of Knowledge <Lv5>	11768		39								O	O	O			80	5	1	Intelligence +20
+Prayer Stone of Knowledge <Lv6>	11769		39								O	O	O			75	6	1	Intelligence +30
+Stamina Prayer Stone<Lv4>	11770		39								O	O	O			85	4	1	Stamina +5
+Stamina Prayer Stone<Lv5>	11771		39								O	O	O			80	5	1	Stamina +10
+Stamina Prayer Stone<Lv6>	11772		39								O	O	O			75	6	1	Stamina +15
+Wisdom Prayer Stone<Lv4>	11773		39								O	O	O			85	4	1	Wisdom +10
+Wisdom Prayer Stone<Lv5>	11774		39								O	O	O			80	5	1	Wisdom +15
+Wisdom Prayer Stone<Lv6>	11775		39								O	O	O			75	6	1	Wisdom +20
+Lucky Prayer Stone<Lv4>	11776	110	40											O		85	4	1	Bonus drop rate +5%
+Lucky Prayer Stone<Lv5>	11777	110	40											O		80	5	1	Bonus drop rate +10%
+Lucky Prayer Stone<Lv6>	11778	110	40											O		75	6	1	Bonus drop rate +15%
+Cloak of Dimension Mastery Lv 1	12110	200	36										O			100	1	1	Ice / Lightning / Poison Damage +5 / Ice / Lightning / Poison Resistance +8%
+Cloak of Dimension Mastery Lv 2	12111	200	36										O			100	1	1	Ice / Lightning / Poison Damage +6 / Ice / Lightning / Poison Resistance +9%
+Cloak of Dimension Mastery Lv 3	12112	200	36										O			100	1	1	Ice / Lightning / Poison Damage +7 / Ice / Lightning / Poison Resistance +10%
+Cloak of Dimension Mastery Lv 4	12113	200	36										O			100	1	1	Ice / Poison / Lightning Damage +8 / Resistance +11%
+Cloak of Dimension Mastery Lv 5	12114	200	36										O			100	1	1	Ice / Lightning / Poison Damage +9 / Ice / Lightning / Poison Resistance +12%
+Cloak of Dimension Mastery Lv 6	12115	200	36										O			100	1	1	Ice / Lightning / Poison Damage +10 / Ice / Lightning / Poison Resistance +13%
+Cloak of Dimension Mastery Lv 7	12116	200	36										O			100	1	1	Ice / Lightning / Poison Damage +11 / Ice / Lightning / Poison Resistance +14%
+Cloak of Dimension Mastery Lv 8	12117	200	36										O			100	1	1	Ice / Lightning / Poison Damage +12 / Ice / Lightning / Poison Resistance +15%
+Fragment of Ashtal	12118		50				O	O	O		O	O	O	O	O	100	1	1	
+Angel Wings<Lv1>	12119	60	36										O			100	1	1	Movement Speed +10%
+Fragment of Ashtal	12592		50				O	O	O		O	O	O	O	O	100	1	1	
+Combined Deadly Prayer Stone <Lv. 1>	12725	100													O	80		1	Attack Rate +4\nCritical Increase +10%
+Combined Deadly Prayer Stone <Lv. 2>	12726	100													O	65		1	Attack Rate +6\nCritical Increase +15%
+Combined Deadly Prayer Stone <Lv. 3>	12727	100													O	50		1	Attack Rate +8\nCritical Increase +20%
+Combined Deadly Prayer Stone <Lv. 4>	12728	100													O	50		1	Attack Rate +10\nCritical Increase +22%
+Combined Deadly Prayer Stone <Lv. 5>	12729	100													O	50		1	Attack Rate +12\nCritical Increase +24%
+Combined Deadly Prayer Stone <Lv. 6>	12730	100													O	50		1	Attack Rate +14\nCritical Increase +26%
+Combined Magical Power Prayer Stone <Lv. 1>	12731	5					O									80		1	Max. Mana +50\nRestores 4 Mana every 10 seconds.\nReduces Skill Casting/Cooldown Time by 3%.
+Combined Magical Power Prayer Stone <Lv. 2>	12732	5					O									65		1	Max. Mana +65\nRestores 5 Mana every 10 seconds.\nReduces Skill Casting/Cooldown Time by 4%.
+Combined Magical Power Prayer Stone <Lv. 3>	12733	5					O									50		1	Max. Mana +80\nRestores 6 Mana every 10 seconds.\nReduces Skill Casting/Cooldown Time by 5%.
+Combined Magical Power Prayer Stone <Lv. 4>	12734	5					O									50		1	Max. Mana +90\nRestores 7 Mana every 10 seconds.\nReduces Skill Casting/Cooldown Time by 6%.
+Combined Magical Power Prayer Stone <Lv. 5>	12735	5					O									50		1	Max. Mana +100\nRestores 8 Mana every 10 seconds.\nReduces Skill Casting/Cooldown Time by 7%.
+Combined Magical Power Prayer Stone <Lv. 6>	12736	5					O									50		1	Max. Mana +110\nRestores 9 Mana every 10 seconds.\nReduces Skill Casting/Cooldown Time by 8%.
+Combined Life Prayer Stone <Lv. 1>	12737	4					O									80		1	Max. HP +50\nRestores 4 HP every 10 seconds.
+Combined Life Prayer Stone <Lv. 2>	12738	4					O									65		1	Max. HP +65\nRestores 5 HP every 10 seconds.
+Combined Life Prayer Stone <Lv. 3>	12739	4					O									50		1	Max. HP +80\nRestores 6 HP every 10 seconds.
+Combined Life Prayer Stone <Lv. 4>	12740	4					O									50		1	Max. HP +90\nRestores 7 HP every 10 seconds.
+Combined Life Prayer Stone <Lv. 5>	12741	4					O									50		1	Max. HP +100\nRestores 8 HP every 10 seconds.
+Combined Life Prayer Stone <Lv. 6>	12742	4					O									50		1	Max. HP +110\nRestores 9 HP every 10 seconds.
+Combined Sage Prayer Stone <Lv. 1>	12743	5					O									80		1	Wisdom +10\nIntelligence +10\nMana +6%
+Combined Sage Prayer Stone <Lv. 2>	12744	5					O									65		1	Wisdom +15\nIntelligence +20\nMana +8%
+Combined Sage Prayer Stone <Lv. 3>	12745	5					O									50		1	Wisdom +20\nIntelligence +30\nMana +10%
+Combined Sage Prayer Stone <Lv. 4>	12746	5					O									50		1	Wisdom +25\nIntelligence +40\nMana +12%
+Combined Sage Prayer Stone <Lv. 5>	12747	5					O									50		1	Wisdom +30\nIntelligence +50\nMana +13%
+Combined Sage Prayer Stone <Lv. 6>	12748	5					O									50		1	Wisdom +35\nIntelligence +60\nMana +14%
+Combined Fierce Attack Prayer Stone <Lv. 1>	12749	120							O							80		1	Physical Damage +1\nStrength +10
+Combined Fierce Attack Prayer Stone <Lv. 2>	12750	120							O							65		1	Physical Damage +2\nStrength +20
+Combined Fierce Attack Prayer Stone <Lv. 3>	12751	120							O							50		1	Physical Damage +3\nStrength +30
+Combined Fierce Attack Prayer Stone <Lv. 4>	12752	120							O							50		1	Physical Damage +4\nStrength +40
+Combined Fierce Attack Prayer Stone <Lv. 5>	12753	120							O							50		1	Physical Damage +5\nStrength +50
+Combined Fierce Attack Prayer Stone <Lv. 6>	12754	120							O							50		1	Physical Damage +6\nStrength +60
+Combined Windfall Prayer Stone <Lv. 1>	12755	110												O		80		1	Bonus Drop Rate +5%\nAll Elemental Resistances +1%
+Combined Windfall Prayer Stone <Lv. 2>	12756	110												O		65		1	Bonus Drop Rate +10%\nAll Elemental Resistances +2%
+Combined Windfall Prayer Stone <Lv. 3>	12757	110												O		50		1	Bonus Drop Rate +15%\nAll Elemental Resistances +3%
+Combined Windfall Prayer Stone <Lv. 4>	12758	110												O		50		1	Bonus Drop Rate +18%\nAll Elemental Resistances +4%
+Combined Windfall Prayer Stone <Lv. 5>	12759	110												O		50		1	Bonus Drop Rate +21%\nAll Elemental Resistances +5%
+Combined Windfall Prayer Stone <Lv. 6>	12760	110												O		50		1	Bonus Drop Rate +24%\nAll Elemental Resistances +6%
+Combined Absolute Defense Prayer Stone <Lv. 1>	12761	8						O								80		1	Physical Resistance +6%\nPhysical Defense +2
+Combined Absolute Defense Prayer Stone <Lv. 2>	12762	8						O								65		1	Physical Resistance +8%\nPhysical Defense +3
+Combined Absolute Defense Prayer Stone <Lv. 3>	12763	8						O								50		1	Physical Resistance +10%\nPhysical Defense +4
+Combined Absolute Defense Prayer Stone <Lv. 4>	12764	8						O								50		1	Physical Resistance +11%\nPhysical Defense +5
+Combined Absolute Defense Prayer Stone <Lv. 5>	12765	8						O								50		1	Physical Resistance +12%\nPhysical Defense +6
+Combined Absolute Defense Prayer Stone <Lv. 6>	12766	8						O								50		1	Physical Resistance +13%\nPhysical Defense +7
+Combined Vitality Prayer Stone <Lv. 1>	12767	4					O									80		1	Max. HP +6%\nStamina +5
+Combined Vitality Prayer Stone <Lv. 2>	12768	4					O									65		1	Max. HP +8%\nStamina +10
+Combined Vitality Prayer Stone <Lv. 3>	12769	4					O									50		1	Max. HP +10%\nStamina +15
+Combined Vitality Prayer Stone <Lv. 4>	12770	4					O									50		1	Max. HP +12%\nStamina +20
+Combined Vitality Prayer Stone <Lv. 5>	12771	4					O									50		1	Max. HP +13%\nStamina +25
+Combined Vitality Prayer Stone <Lv. 6>	12772	4					O									50		1	Max. HP +14%\nStamina +30
+Combined Elemental Prayer Stone <Lv. 1>	12773	150							O							80		1	Ice Elemental Damage +4\nLightning Elemental Damage +4\nPoison Elemental Damage +4
+Combined Elemental Prayer Stone <Lv. 2>	12774	150							O							65		1	Ice Elemental Damage +8\nLightning Elemental Damage +8\nPoison Elemental Damage +8
+Combined Elemental Prayer Stone <Lv. 3>	12775	150							O							50		1	Ice Elemental Damage +12\nLightning Elemental Damage +12\nPoison Elemental Damage +12
+Combined Elemental Prayer Stone <Lv. 4>	12776	150							O							50		1	Ice Elemental Damage +14\nLightning Elemental Damage +14\nPoison Elemental Damage +14
+Combined Elemental Prayer Stone <Lv. 5>	12777	150							O							50		1	Ice Elemental Damage +16\nLightning Elemental Damage +16\nPoison Elemental Damage +16
+Combined Elemental Prayer Stone <Lv. 6>	12778	150							O							50		1	Ice Elemental Damage +18\nLightning Elemental Damage +18\nPoison Elemental Damage +18
+Combined Impregnability Prayer Stone <Lv. 1>	12779	140								O						80		1	Skill Block Rate +4%\nBlock Rate +2%
+Combined Impregnability Prayer Stone <Lv. 2>	12780	140								O						65		1	Skill Block Rate +6%\nBlock Rate +4%
+Combined Impregnability Prayer Stone <Lv. 3>	12781	140								O						50		1	Skill Block Rate +8%\nBlock Rate +6%
+Combined Impregnability Prayer Stone <Lv. 4>	12782	140								O						50		1	Skill Block Rate +11%\nBlock Rate +8%
+Combined Impregnability Prayer Stone <Lv. 5>	12783	140								O						50		1	Skill Block Rate +12%\nBlock Rate +9%
+Combined Impregnability Prayer Stone <Lv. 6>	12784	140								O						50		1	Skill Block Rate +13%\nBlock Rate +10%
+Combined Indomitable Prayer Stone <Lv. 1>	12785	8						O								80		1	5% chance to convert 10% of damage received into restored health\nIce / Lightning / Poison Elemental Resistance +4%
+Combined Indomitable Prayer Stone <Lv. 2>	12786	8						O								65		1	5% chance to convert 15% of damage received into restored health\nIce / Lightning / Poison Elemental Resistance +8%
+Combined Indomitable Prayer Stone <Lv. 3>	12787	8						O								50		1	5% chance to convert 20% of damage taken into restored health\nIce / Lightning / Poison Elemental Resistance +12%
+Combined Indomitable Prayer Stone <Lv. 4>	12788	8						O								50		1	5% chance to convert 24% of damage received into restored health\nIce / Lightning / Poison Elemental Resistance +14%
+Combined Indomitable Prayer Stone <Lv. 5>	12789	8						O								50		1	5% chance to convert 28% of damage received into restored health\nIce / Lightning / Poison Elemental Resistance +16%
+Combined Indomitable Prayer Stone <Lv. 6>	12790	8						O								50		1	5% chance to convert 32% of damage received into restored health\nIce / Lightning / Poison Elemental Resistance +18%
+Combined High Speed Prayer Stone <Lv. 1>	12791	90													O	80		1	Agility +10\nMovement Speed +3%\nAttack Speed +5%
+Combined High Speed Prayer Stone <Lv. 2>	12792	90													O	65		1	Agility +15\nMovement Speed +6%\nAttack Speed +10%
+Combined High Speed Prayer Stone <Lv. 3>	12793	90													O	50		1	Agility +20\nMovement Speed +9%\nAttack Speed +15%
+Combined High Speed Prayer Stone <Lv. 4>	12794	90													O	50		1	Agility +25\nMovement Speed +10%\nAttack Speed +16%
+Combined High Speed Prayer Stone <Lv. 5>	12795	90													O	50		1	Agility +30\nMovement Speed +11%\nAttack Speed +17%
+Combined High Speed Prayer Stone <Lv. 6>	12796	90													O	50		1	Agility +35\nMovement Speed +12%\nAttack Speed +18%
+Attack Prayer Stone<Lv4>	13434		32						O							85	4	1	Damage +4
+Attack Prayer Stone<Lv5>	13435		32						O							80	5	1	Damage +5
+Fragment of Ashtal	13478		50				O	O	O		O	O	O	O	O	100	1	1	
+Dragon Wings <Lv6>	13536	60	36										O			100	1	1	Movement Speed +15%
+Fallen Wings <Lv6>	13537	60	36										O			100	1	1	Movement Speed +15%
+Nightstalker Wings <Lv6>	13538	60	36										O			100	1	1	Movement Speed +15%
+Firedragon Wings <Lv6>	13539	60	36										O			100	1	1	Movement Speed +15%
+Iridescent Wings <Lv6>	13540	60	36										O			100	1	1	Movement Speed +15%
+Red Infinity Wings <Lv6>	13541	60	36										O			100	1	1	Movement Speed +15%
+Black Infinity Wings <Lv6>	13542	60	36										O			100	1	1	Movement Speed +15%
+Pink Infinity Wings <Lv6>	13543	60	36										O			100	1	1	Movement Speed +15%
+Blue Infinity Wings <Lv6>	13544	60	36										O			100	1	1	Movement Speed +15%
+Rainbow Infinity Wings <Lv6>	13545	60	36										O			100	1	1	Movement Speed +15%
+Ancient Lord Wings <Lv5>	13546	60	36										O			100	1	1	Movement Speed +14%
+Ancient Eternity Wings <Lv5>	13547	60	36										O			100	1	1	Movement speed +14%
+Ancient Judgement Wings <Lv5>	13548	60	36										O			100	1	1	Movement Speed +14%
+Dark Wings	13549	60	36										O			100	1	1	Movement Speed +11%
+Ancient Death Wings <Lv5>	13550	60	36										O			100	1	1	Movement Speed +14%
+Ancient Angel Wings <Lv5>	13551	60	36										O			100	1	1	Movement Speed +14%
+Ancient Lord Wings <Lv1>	13552	60	36										O			100	1	1	Movement Speed +10%
+Ancient Lord Wings <Lv2>	13553	60	36										O			100	1	1	Movement Speed +11%
+Ancient Lord Wings <Lv3>	13554	60	36										O			100	1	1	Movement Speed +12%
+Ancient Lord Wings <Lv4>	13555	60	36										O			100	1	1	Movement Speed +13%
+Ancient Eternity Wings <Lv1>	13556	60	36										O			100	1	1	Movement Speed +10%
+Ancient Eternity Wings <Lv2>	13557	60	36										O			100	1	1	Movement Speed +11%
+Ancient Eternity Wings <Lv3>	13558	60	36										O			100	1	1	Movement Speed +12%
+Ancient Eternity Wings <Lv4>	13559	60	36										O			100	1	1	Movement Speed +13%
+Ancient Judgement Wings <Lv1>	13560	60	36										O			100	1	1	Movement Speed +10%
+Ancient Judgement Wings <Lv2>	13561	60	36										O			100	1	1	Movement Speed +11%
+Ancient Judgement Wings <Lv3>	13562	60	36										O			100	1	1	Movement Speed +12%
+Ancient Judgement Wings <Lv4>	13563	60	36										O			100	1	1	Movement Speed +13%
+Ancient Death Wings <Lv1>	13564	60	36										O			100	1	1	Movement Speed +10%
+Ancient Death Wings <Lv2>	13565	60	36										O			100	1	1	Movement Speed +11%
+Ancient Death Wings <Lv3>	13566	60	36										O			100	1	1	Movement Speed +12%
+Ancient Death Wings <Lv4>	13567	60	36										O			100	1	1	Movement Speed +13%
+Removed	13568	60	36										O			100	1	1	Movement Speed +10%
+Ancient Angel Wings <Lv2>	13569	60	36										O			100	1	1	Movement Speed +11%
+Ancient Angel Wings <Lv3>	13570	60	36										O			100	1	1	Movement Speed +12%
+Ancient Angel Wings <Lv4>	13571	60	36										O			100	1	1	Movement Speed +13%
+Ancient Angel Wings <Lv1>	13572	60	36										O			100	1	1	Movement Speed +11%
+Wells Wings<Lv6>	13573	60	36										O			100	1	1	Movement Speed +15%
+Granit Wings <Lv6>	13574	60	36										O			100	1	1	Movement Speed +15%
+Hazel Wings <Lv6>	13575	60	36										O			100	1	1	Movement Speed +15%
+Spooky Wings<Lv1>	13576	60	36										O			100	1	1	Movement Speed +10%
+Spooky Wings<Lv2>	13577	60	36										O			100	1	1	Movement Speed +11%
+Spooky Wings<Lv3>	13578	60	36										O			100	1	1	Movement Speed +12%
+Spooky Wings<Lv4>	13579	60	36										O			100	1	1	Movement Speed +13%
+Spooky Wings<Lv5>	13580	60	36										O			100	1	1	Movement Speed +10%
+Wells Arena Cloak Lv6	13584	200	36										O			100	1	1	All Elemental Attacks +10 / All Elemental Resistances +13%
+Jewel of Zian	13588	121	32													50	3	50	Damage +10
+Jewel of Ugdrasil	13589	125	33													50	3	50	Max. HP +50
+Jewel of Gracia	13590	126	33													50	3	50	Max. Mana +50
+Jewel of Dikain	13591	130	33													50	3	50	Skill Block +3%
+Jewel of Syripus	13592	127	33													50	3	50	Max. HP +3%
+Voldonx Wings <Lv6>	14479	60	36										O			100	1	1	Movement Speed +15%
+Bukkake Arena Cloak Lv6	14540	200	36										O			100	1	1	All Elemental Attacks +10 / All Elemental Resistances +13%
+Ancient Cloak of Dimension Mastery	14543	200	36										O			100	1	1	Ice / Lightning / Poison Damage +10 / Ice / Lightning / Poison Resistance +13%
+Ancient Cloak of Elemental Mastery	14544	200	36										O			100	1	1	All Elemental Attacks +10 / All Elemental Resistances +13%
+Crusade Of Zian Wings <Lv6>	14545	60	36										O			100	1	1	Movement Speed +15%
+Scarlet Cloak of Elemental Mastery <Lv6>	14546	200	36										O			100	1	1	All Elemental Attacks +10 / All Elemental Resistances +13%
+Ashen Mist Cloak of Elemental Mastery <Lv6>	14547	200	36										O			100	1	1	All Elemental Attacks +10 / All Elemental Resistances +13%
+Rosy Aura Cloak of Elemental Mastery <Lv6>	14548	200	36										O			100	1	1	All Elemental Attacks +10 / All Elemental Resistances +13%
+Scarlet Cloak of Dimension Mastery <Lv6>	14549	200	36										O			100	1	1	Ice / Lightning / Poison Damage +10 / Ice / Lightning / Poison Resistance +13%
+Ashen Mist Cloak of Dimension Mastery <Lv6>	14550	200	36										O			100	1	1	Ice / Lightning / Poison Damage +10 / Ice / Lightning / Poison Resistance +13%
+Rosy Aura Cloak of Dimension Mastery <Lv6>	14551	200	36										O			100	1	1	Ice / Lightning / Poison Damage +10 / Ice / Lightning / Poison Resistance +13%
+Rosy Aura Wings <Lv6>	14552	60	36										O			100	1	1	Movement Speed +15%
+Gyufa Arena Cloak Lv6	14553	200	36										O			100	1	1	All Elemental Attacks +10 / All Elemental Resistances +13%
+Valentines Wings <Lv5>	14561	60	36										O			100	1	1	Movement Speed +14%
+Valentines Cloak <Lv5>	14562	200	36										O			100	1	1	All Elemental Attacks +9 / All Elemental Resistances +12%
+Ashen Mist Wings <Lv6>	14564	60	36										O			100	1	1	Movement Speed +15%
+Scarlet Wings <Lv6>	14565	60	36										O			100	1	1	Movement Speed +15%
+Rosy Aura Cloak of Elemental Mastery <Lv5>	14567	200	36										O			100	1	1	All Elemental Attacks +9 / All Elemental Resistances +12%
+Rosy Aura Cloak of Dimension Mastery <Lv5>	14568	200	36										O			100	1	1	Ice / Lightning / Poison Damage +9 / Ice / Lightning / Poison Resistance +12%
+Rosy Aura Wings <Lv5>	14569	60	36										O			100	1	1	Movement Speed +15%
+Ashen Mist Cloak of Elemental Mastery <Lv5>	14570	200	36										O			100	1	1	All Elemental Attacks +9 / All Elemental Resistances +12%
+Ashen Mist Cloak of Dimension Mastery <Lv5>	14571	200	36										O			100	1	1	Ice / Lightning / Poison Damage +9 / Ice / Lightning / Poison Resistance +12%
+Ashen Mist Wings <Lv5>	14572	60	36										O			100	1	1	Movement Speed +15%
+Scarlet Cloak of Elemental Mastery <Lv5>	14573	200	36										O			100	1	1	All Elemental Attacks +9 / All Elemental Resistances +12%
+Scarlet Cloak of Dimension Mastery <Lv5>	14574	200	36										O			100	1	1	Ice / Lightning / Poison Damage +9 / Ice / Lightning / Poison Resistance +12%
+Scarlet Wings <Lv5>	14575	60	36										O			100	1	1	Movement Speed +15%
+Valentines Dimensional Cloak <Lv5>	14577	200	36										O			100	1	1	Ice / Lightning / Poison Damage +9 / Ice / Lightning / Poison Resistance +12%
+Scarlet Wings <Lv4>	14592	60	36										O			100	1	1	Movement Speed +13%
+Ashen Mist Wings <Lv4>	14593	60	36										O			100	1	1	Movement Speed +13%
+Rosy Aura Wings <Lv4>	14594	60	36										O			100	1	1	Movement Speed +13%
+Scarlet Cloak of Elemental Mastery <Lv4>	14595	200	36										O			100	1	1	All Elemental Attacks +8 / All Elemental Resistances +11%
+Scarlet Cloak of Dimension Mastery <Lv4>	14596	200	36										O			100	1	1	Ice / Poison / Lightning Damage +8 / Resistance +11%
+Ashen Mist Cloak of Elemental Mastery <Lv4>	14597	200	36										O			100	1	1	All Elemental Attacks +8 / All Elemental Resistances +11%
+Ashen Mist Cloak of Dimension Mastery <Lv4>	14598	200	36										O			100	1	1	Ice / Poison / Lightning Damage +8 / Resistance +11%
+Rosy Aura Cloak of Elemental Mastery <Lv4>	14599	200	36										O			100	1	1	All Elemental Attacks +8 / All Elemental Resistances +11%
+Rosy Aura Cloak of Dimension Mastery <Lv4>	14600	200	36										O			100	1	1	Ice / Poison / Lightning Damage +8 / Resistance +11%
+Admin +100% Resistance and Skill Block	14602		50				O	O	O		O	O	O	O	O	100	1	1	Admin +100% Resistance and Skill Block
+Admin +300k HP	14603		50				O	O	O		O	O	O	O	O	100	1	1	
+Admin +100% MS	14604		50				O	O	O		O	O	O	O	O	100	1	1	Admin +100% MS
+Administrator's Prayer Stone	20003		32				O	O	O		O	O	O	O	O	100	1	1	
+Fragment of Ashtal	20265		50				O	O	O		O	O	O	O	O	100	1	1	
+Scion Prayer Stone	20568		32				O	O	O		O			O	O	100	1	1	Water / Fire / Earth / Air / Magic / Ice / Lightning / Poison Damages +5
+Fragment of Ashtal	20570		50				O	O	O		O	O	O	O	O	100	1	1	
+Scion Prayer Stone	20594		32				O	O	O		O			O	O	100	1	1	Water / Fire / Earth / Air / Magic / Ice / Lightning / Poison Damages +5
+The Cloak of Dreadlords	22176	200	36										O			100	1	1	Max HP +12%\nMax MP +12%\nBonus Gold +100
+Elemental Wings<Lv1>	40084	60	36										O			100	1	1	Movement Speed +10%
+Moonlight Wings<Lv1>	40085	60	36										O			100	1	1	Movement Speed +10%
+Phoenix Wings<Lv2>	40086	60	36										O			100	1	1	Movement Speed +11%
+Phoenix Wings<Lv3>	40087	60	36										O			100	1	1	Movement Speed +12%
+Phoenix Wings<Lv4>	40088	60	36										O			100	1	1	Movement Speed +13%
+Phoenix Wings<Lv5>	40089	60	36										O			100	1	1	Movement Speed +14%
+Devil Wings<Lv2>	40090	60	36										O			100	1	1	Movement Speed +11%
+Devil Wings<Lv3>	40091	60	36										O			100	1	1	Movement Speed +12%
+Devil Wings<Lv4>	40092	60	36										O			100	1	1	Movement Speed +13%
+Devil Wings<Lv5>	40093	60	36										O			100	1	1	Movement Speed +14%
+Dark Angel Wings<Lv2>	40094	60	36										O			100	1	1	Movement Speed +11%
+Dark Angel Wings<Lv3>	40095	60	36										O			100	1	1	Movement Speed +12%
+Dark Angel Wings<Lv4>	40096	60	36										O			100	1	1	Movement Speed +13%
+Dark Angel Wings<Lv5>	40097	60	36										O			100	1	1	Movement Speed +14%
+Red Dragon Wings<Lv2>	40098	60	36										O			100	1	1	Movement Speed +11%
+Red Dragon Wings<Lv3>	40099	60	36										O			100	1	1	Movement Speed +12%
+Red Dragon Wings<Lv4>	40100	60	36										O			100	1	1	Movement Speed +13%
+Red Dragon Wings<Lv5>	40101	60	36										O			100	1	1	Movement Speed +14%
+God Wings<Lv6>	40102	60	36										O			100	1	1	Movement Speed +17%
+Phoenix Wings<Lv1>	40103	60	36										O			100	1	1	Movement Speed +10%
+Devil Wings<Lv1>	40104	60	36										O			100	1	1	Movement Speed +10%
+Dark Angel Wings<Lv1>	40105	60	36										O			100	1	1	Movement Speed +10%
+Red Dragon Wings<Lv1>	40106	60	36										O			100	1	1	Movement Speed +10%
+Elemental Wings<Lv2>	40107	60	36										O			100	1	1	Movement Speed +11%
+Elemental Wings<Lv3>	40108	60	36										O			100	1	1	Movement Speed +12%
+Elemental Wings<Lv4>	40109	60	36										O			100	1	1	Movement Speed +13%
+Elemental Wings<Lv5>	40110	60	36										O			100	1	1	Movement Speed +14%
+Moonlight Wings<Lv2>	40111	60	36										O			100	1	1	Movement Speed +11%
+Moonlight Wings<Lv3>	40112	60	36										O			100	1	1	Movement Speed +12%
+Moonlight Wings<Lv4>	40113	60	36										O			100	1	1	Movement Speed +13%
+Moonlight Wings<Lv5>	40114	60	36										O			100	1	1	Movement Speed +14%
+Elemental Wings<Lv6>	40121	60	36										O			100	1	1	Movement Speed +17%
+Moonlight Wings<Lv6>	40122	60	36										O			100	1	1	Movement Speed +17%
+Phoenix Wings<Lv6>	40123	60	36										O			100	1	1	Movement Speed +17%
+Devil Wings<Lv6>	40124	60	36										O			100	1	1	Movement Speed +17%
+Dark Angel Wings<Lv6>	40125	60	36										O			100	1	1	Movement Speed +17%
+Red Dragon Wings<Lv6>	40126	60	36										O			100	1	1	Movement Speed +17%
+God Wings<Lv1>	40127	60	36										O			100	1	1	Movement Speed +10%
+God Wings<Lv2>	40128	60	36										O			100	1	1	Movement Speed +11%
+God Wings<Lv3>	40129	60	36										O			100	1	1	Movement Speed +12%
+God Wings<Lv4>	40130	60	36										O			100	1	1	Movement Speed +13%
+God Wings<Lv5>	40131	60	36										O			100	1	1	Movement Speed +14%
+Attack Prayer Stone<Lv3>	42097		32						O							90	3	1	Damage +3
+Quickness Prayer Stone<Lv3>	42098	80	38											O		90	3	1	Movement Speed +9%
+Physical Resistance Prayer Stone<Lv3>	42099	8	33				O	O								90	3	1	Resistance +10%
+Cold Prayer Stone<Lv3>	42100		32	Cold Prayer Stone <Medium>	1	6			O							90	3	1	Ice damage +8 with a 6% chance to slow the target for 5 seconds
+Thunder Prayer Stone<Lv3>	42101		32	Lightning Prayer Stone <Medium>	1	6			O							90	3	1	Lightning damage +8 with a 6% chance to stun the target for 3 seconds
+Deadly Poison Prayer Stone<Lv3>	42102		32	Deadly Poison Prayer Stone <Medium>	1	6			O							90	3	1	6% chance on hit to deal 25 poison damage every 3 seconds for 30 seconds
+Prayer Stone of Ring Spirit Lv 6	43041	201	36									O				100	1	1	Resistance +10%
+Crystal of Ashital	52009		50				O	O	O		O	O	O	O	O	100	1	1	
+Crystal of Ashital	52010		50				O	O	O		O	O	O	O	O	100	1	1	
+The Royal Cloak	57190	200	36										O			100	1	1	All skills level up +1\nMax HP +12%\nMax MP +12%\nBonus Gold +100

@@ -1,0 +1,4711 @@
+MonsterName	MonsterTID	ItemCount	ItemName	ItemTID	Min	Max	Rate
+Taravan	15	2		5018	1	1	10
+Taravan	15	2		1856	1	1	500
+Taravan	15	2		1861	1	1	500
+Taravan	15	2		1891	1	1	500
+Taravan	15	2		1866	1	1	500
+Taravan	15	2		1871	1	1	500
+Taravan	15	2		1876	1	1	500
+Taravan	15	2		1881	1	1	500
+Taravan	15	2		1886	1	1	500
+Taravan	15	2		6075	1	1	500
+Bronze Dragon Cid	16	2		451	1	1	100000
+Polgo	21	2		451	1	1	100000
+Spriggan Lord	22	1		451	1	1	100000
+Hydra	24	2		5008	1	1	30
+Hydra	24	2		5018	1	1	10
+Hydra	24	2		1856	1	1	500
+Hydra	24	2		1861	1	1	500
+Hydra	24	2		1891	1	1	500
+Hydra	24	2		1866	1	1	500
+Hydra	24	2		1871	1	1	500
+Hydra	24	2		1876	1	1	500
+Hydra	24	2		1881	1	1	500
+Hydra	24	2		1886	1	1	500
+Hydra	24	2		6075	1	1	500
+Ciroro	25	2		451	1	1	100000
+Torge Lord	27	1		1857	1	1	500
+Torge Lord	27	1		1862	1	1	500
+Torge Lord	27	1		1892	1	1	500
+Torge Lord	27	1		1867	1	1	500
+Torge Lord	27	1		1872	1	1	500
+Torge Lord	27	1		1877	1	1	500
+Torge Lord	27	1		1882	1	1	500
+Torge Lord	27	1		1887	1	1	500
+Torge Lord	27	1		6076	1	1	500
+Suddener	28	2		451	1	1	100000
+Manticore King	29	2		5015	1	1	20
+Manticore King	29	2		5016	1	1	25
+Manticore King	29	2		5017	1	1	30
+Manticore King	29	2		1856	1	1	500
+Manticore King	29	2		1861	1	1	500
+Manticore King	29	2		1891	1	1	500
+Manticore King	29	2		1866	1	1	500
+Manticore King	29	2		1871	1	1	500
+Manticore King	29	2		1876	1	1	500
+Manticore King	29	2		1881	1	1	500
+Manticore King	29	2		1886	1	1	500
+Manticore King	29	2		6075	1	1	500
+Bullod	30	2		5015	1	1	20
+Bullod	30	2		5016	1	1	25
+Bullod	30	2		5017	1	1	30
+Bullod	30	2		1856	1	1	500
+Bullod	30	2		1861	1	1	500
+Bullod	30	2		1891	1	1	500
+Bullod	30	2		1866	1	1	500
+Bullod	30	2		1871	1	1	500
+Bullod	30	2		1876	1	1	500
+Bullod	30	2		1881	1	1	500
+Bullod	30	2		1886	1	1	500
+Bullod	30	2		6075	1	1	500
+Event Skeleton [Ice World]	32	2		7494	1	1	100000
+Event Skeleton [Ice World]	32	2		4803	1	1	100000
+Troll Boss	34	2		5007	1	1	20
+Troll Boss	34	2		5018	1	1	20
+Troll Boss	34	2		5021	1	1	40
+Troll Boss	34	2		5012	1	1	40
+Troll Boss	34	2		5013	1	1	40
+Troll Boss	34	2		5014	1	1	40
+Troll Boss	34	2		5024	1	1	40
+Troll Boss	34	2		5023	1	1	40
+Troll Boss	34	2		5009	1	1	40
+Troll Boss	34	2		6053	1	1	1500
+Troll Boss	34	2		4755	1	1	100000
+Wyvern	38	2		5011	1	1	30
+Wyvern	38	2		1857	1	1	500
+Wyvern	38	2		1862	1	1	500
+Wyvern	38	2		1892	1	1	500
+Wyvern	38	2		1867	1	1	500
+Wyvern	38	2		1872	1	1	500
+Wyvern	38	2		1877	1	1	500
+Wyvern	38	2		1882	1	1	500
+Wyvern	38	2		1887	1	1	500
+Wyvern	38	2		6076	1	1	500
+Midas	40	2		5005	1	1	30
+Midas	40	2		5028	1	1	30
+Midas	40	2		1855	1	1	500
+Midas	40	2		1860	1	1	500
+Midas	40	2		1890	1	1	500
+Midas	40	2		1865	1	1	500
+Midas	40	2		1870	1	1	500
+Midas	40	2		1875	1	1	500
+Midas	40	2		1880	1	1	500
+Midas	40	2		1885	1	1	500
+Midas	40	2		6074	1	1	500
+Meizo	41	2		451	1	1	100000
+Victor	42	2		451	1	1	100000
+Windigo	43	2		5006	1	1	20
+Windigo	43	2		1855	1	1	500
+Windigo	43	2		1860	1	1	500
+Windigo	43	2		1890	1	1	500
+Windigo	43	2		1865	1	1	500
+Windigo	43	2		1870	1	1	500
+Windigo	43	2		1875	1	1	500
+Windigo	43	2		1880	1	1	500
+Windigo	43	2		1885	1	1	500
+Windigo	43	2		6074	1	1	500
+Posto	44	2		5008	1	1	30
+Posto	44	2		5018	1	1	10
+Posto	44	2		1856	1	1	500
+Posto	44	2		1861	1	1	500
+Posto	44	2		1891	1	1	500
+Posto	44	2		1866	1	1	500
+Posto	44	2		1871	1	1	500
+Posto	44	2		1876	1	1	500
+Posto	44	2		1881	1	1	500
+Posto	44	2		1886	1	1	500
+Posto	44	2		6075	1	1	500
+Boling	45	2		5008	1	1	30
+Boling	45	2		5018	1	1	10
+Boling	45	2		1856	1	1	500
+Boling	45	2		1861	1	1	500
+Boling	45	2		1891	1	1	500
+Boling	45	2		1866	1	1	500
+Boling	45	2		1871	1	1	500
+Boling	45	2		1876	1	1	500
+Boling	45	2		1881	1	1	500
+Boling	45	2		1886	1	1	500
+Boling	45	2		6075	1	1	500
+Snare	46	2		451	1	1	100000
+Uru	47	2		451	1	1	100000
+Barva	48	2		451	1	1	100000
+Elatus	49	1		1857	1	1	500
+Elatus	49	1		1862	1	1	500
+Elatus	49	1		1892	1	1	500
+Elatus	49	1		1867	1	1	500
+Elatus	49	1		1872	1	1	500
+Elatus	49	1		1877	1	1	500
+Elatus	49	1		1882	1	1	500
+Elatus	49	1		1887	1	1	500
+Elatus	49	1		6076	1	1	500
+Barom	50	2		5007	1	1	10
+Barom	50	2		1855	1	1	500
+Barom	50	2		1860	1	1	500
+Barom	50	2		1890	1	1	500
+Barom	50	2		1865	1	1	500
+Barom	50	2		1870	1	1	500
+Barom	50	2		1875	1	1	500
+Barom	50	2		1880	1	1	500
+Barom	50	2		1885	1	1	500
+Barom	50	2		6074	1	1	500
+Flying	51	1		451	1	1	100000
+Sizel	52	1		1857	1	1	500
+Sizel	52	1		1862	1	1	500
+Sizel	52	1		1892	1	1	500
+Sizel	52	1		1867	1	1	500
+Sizel	52	1		1872	1	1	500
+Sizel	52	1		1877	1	1	500
+Sizel	52	1		1882	1	1	500
+Sizel	52	1		1887	1	1	500
+Sizel	52	1		6076	1	1	500
+Krabb	53	2		5019	1	1	30
+Krabb	53	2		5009	1	1	20
+Krabb	53	2		1856	1	1	500
+Krabb	53	2		1861	1	1	500
+Krabb	53	2		1891	1	1	500
+Krabb	53	2		1866	1	1	500
+Krabb	53	2		1871	1	1	500
+Krabb	53	2		1876	1	1	500
+Krabb	53	2		1881	1	1	500
+Krabb	53	2		1886	1	1	500
+Krabb	53	2		6075	1	1	500
+Kelkel	54	2		5019	1	1	30
+Kelkel	54	2		5009	1	1	20
+Kelkel	54	2		1856	1	1	500
+Kelkel	54	2		1861	1	1	500
+Kelkel	54	2		1891	1	1	500
+Kelkel	54	2		1866	1	1	500
+Kelkel	54	2		1871	1	1	500
+Kelkel	54	2		1876	1	1	500
+Kelkel	54	2		1881	1	1	500
+Kelkel	54	2		1886	1	1	500
+Kelkel	54	2		6075	1	1	500
+Gorer	55	2		5008	1	1	30
+Gorer	55	2		5018	1	1	10
+Gorer	55	2		1856	1	1	500
+Gorer	55	2		1861	1	1	500
+Gorer	55	2		1891	1	1	500
+Gorer	55	2		1866	1	1	500
+Gorer	55	2		1871	1	1	500
+Gorer	55	2		1876	1	1	500
+Gorer	55	2		1881	1	1	500
+Gorer	55	2		1886	1	1	500
+Gorer	55	2		6075	1	1	500
+Switch	56	1		5005	1	1	30
+Hillary	57	1		1855	1	1	500
+Hillary	57	1		1860	1	1	500
+Hillary	57	1		1890	1	1	500
+Hillary	57	1		1865	1	1	500
+Hillary	57	1		1870	1	1	500
+Hillary	57	1		1875	1	1	500
+Hillary	57	1		1880	1	1	500
+Hillary	57	1		1885	1	1	500
+Hillary	57	1		6074	1	1	500
+Vissil	58	2		5006	1	1	20
+Vissil	58	2		1855	1	1	500
+Vissil	58	2		1860	1	1	500
+Vissil	58	2		1890	1	1	500
+Vissil	58	2		1865	1	1	500
+Vissil	58	2		1870	1	1	500
+Vissil	58	2		1875	1	1	500
+Vissil	58	2		1880	1	1	500
+Vissil	58	2		1885	1	1	500
+Vissil	58	2		6074	1	1	500
+Goss	59	2		5008	1	1	30
+Goss	59	2		1856	1	1	500
+Goss	59	2		1861	1	1	500
+Goss	59	2		1891	1	1	500
+Goss	59	2		1866	1	1	500
+Goss	59	2		1871	1	1	500
+Goss	59	2		1876	1	1	500
+Goss	59	2		1881	1	1	500
+Goss	59	2		1886	1	1	500
+Goss	59	2		6075	1	1	500
+Bolko	60	2		5009	1	1	20
+Bolko	60	2		5019	1	1	30
+Bolko	60	2		1857	1	1	500
+Bolko	60	2		1862	1	1	500
+Bolko	60	2		1892	1	1	500
+Bolko	60	2		1867	1	1	500
+Bolko	60	2		1872	1	1	500
+Bolko	60	2		1877	1	1	500
+Bolko	60	2		1882	1	1	500
+Bolko	60	2		1887	1	1	500
+Bolko	60	2		6076	1	1	500
+Gasios	61	1		1855	1	1	500
+Gasios	61	1		1860	1	1	500
+Gasios	61	1		1890	1	1	500
+Gasios	61	1		1865	1	1	500
+Gasios	61	1		1870	1	1	500
+Gasios	61	1		1875	1	1	500
+Gasios	61	1		1880	1	1	500
+Gasios	61	1		1885	1	1	500
+Gasios	61	1		6074	1	1	500
+Firewing	62	1		5005	1	1	30
+Firewing	62	1		5026	1	1	30
+Tika	63	2		5008	1	1	30
+Tika	63	2		5018	1	1	10
+Tika	63	2		1856	1	1	500
+Tika	63	2		1861	1	1	500
+Tika	63	2		1891	1	1	500
+Tika	63	2		1866	1	1	500
+Tika	63	2		1871	1	1	500
+Tika	63	2		1876	1	1	500
+Tika	63	2		1881	1	1	500
+Tika	63	2		1886	1	1	500
+Tika	63	2		6075	1	1	500
+Dover	64	2		5028	1	1	30
+Dover	64	2		1855	1	1	500
+Dover	64	2		1860	1	1	500
+Dover	64	2		1890	1	1	500
+Dover	64	2		1865	1	1	500
+Dover	64	2		1870	1	1	500
+Dover	64	2		1875	1	1	500
+Dover	64	2		1880	1	1	500
+Dover	64	2		1885	1	1	500
+Dover	64	2		6074	1	1	500
+Dorf	65	1		1855	1	1	500
+Dorf	65	1		1860	1	1	500
+Dorf	65	1		1890	1	1	500
+Dorf	65	1		1865	1	1	500
+Dorf	65	1		1870	1	1	500
+Dorf	65	1		1875	1	1	500
+Dorf	65	1		1880	1	1	500
+Dorf	65	1		1885	1	1	500
+Dorf	65	1		6074	1	1	500
+Lilyn	66	2		5007	1	1	10
+Lilyn	66	2		1855	1	1	500
+Lilyn	66	2		1860	1	1	500
+Lilyn	66	2		1890	1	1	500
+Lilyn	66	2		1865	1	1	500
+Lilyn	66	2		1870	1	1	500
+Lilyn	66	2		1875	1	1	500
+Lilyn	66	2		1880	1	1	500
+Lilyn	66	2		1885	1	1	500
+Lilyn	66	2		6074	1	1	500
+Maxo	67	2		5007	1	1	10
+Maxo	67	2		5015	1	1	20
+Maxo	67	2		5016	1	1	25
+Maxo	67	2		5017	1	1	30
+Maxo	67	2		1856	1	1	500
+Maxo	67	2		1861	1	1	500
+Maxo	67	2		1891	1	1	500
+Maxo	67	2		1866	1	1	500
+Maxo	67	2		1871	1	1	500
+Maxo	67	2		1876	1	1	500
+Maxo	67	2		1881	1	1	500
+Maxo	67	2		1886	1	1	500
+Maxo	67	2		6075	1	1	500
+Event Skeleton [Lightning World]	73	2		451	15	15	100000
+Event Skeleton [Lightning World]	73	2		4803	3	3	100000
+Event Skeleton [Poison World]	74	2		451	30	30	100000
+Event Skeleton [Poison World]	74	2		4803	5	5	100000
+Event Skeleton [Shinewood/Triboots]	75	2		7495	1	1	100000
+Event Skeleton [Shinewood/Triboots]	75	2		4802	1	1	100000
+Event Skeleton [Silancium/Asylum]	76	2		7493	1	1	100000
+Zombie Lord	86	2		451	1	1	100000
+Bashiva	88	1		5005	1	1	30
+Bashiva	88	1		5026	1	1	30
+Bogman	91	2		5027	1	1	30
+Bogman	91	2		1855	1	1	500
+Bogman	91	2		1860	1	1	500
+Bogman	91	2		1890	1	1	500
+Bogman	91	2		1865	1	1	500
+Bogman	91	2		1870	1	1	500
+Bogman	91	2		1875	1	1	500
+Bogman	91	2		1880	1	1	500
+Bogman	91	2		1885	1	1	500
+Bogman	91	2		6074	1	1	500
+Sapan	92	2		5006	1	1	20
+Sapan	92	2		5027	1	1	30
+Sapan	92	2		1855	1	1	500
+Sapan	92	2		1860	1	1	500
+Sapan	92	2		1890	1	1	500
+Sapan	92	2		1865	1	1	500
+Sapan	92	2		1870	1	1	500
+Sapan	92	2		1875	1	1	500
+Sapan	92	2		1880	1	1	500
+Sapan	92	2		1885	1	1	500
+Sapan	92	2		6074	1	1	500
+Aria	93	2		5006	1	1	20
+Aria	93	2		5027	1	1	30
+Aria	93	2		1855	1	1	500
+Aria	93	2		1860	1	1	500
+Aria	93	2		1890	1	1	500
+Aria	93	2		1865	1	1	500
+Aria	93	2		1870	1	1	500
+Aria	93	2		1875	1	1	500
+Aria	93	2		1880	1	1	500
+Aria	93	2		1885	1	1	500
+Aria	93	2		6074	1	1	500
+Ohkeros	94	1		1855	1	1	500
+Ohkeros	94	1		1860	1	1	500
+Ohkeros	94	1		1890	1	1	500
+Ohkeros	94	1		1865	1	1	500
+Ohkeros	94	1		1870	1	1	500
+Ohkeros	94	1		1875	1	1	500
+Ohkeros	94	1		1880	1	1	500
+Ohkeros	94	1		1885	1	1	500
+Ohkeros	94	1		6074	1	1	500
+Ingo	95	2		5006	1	1	20
+Ingo	95	2		1855	1	1	500
+Ingo	95	2		1860	1	1	500
+Ingo	95	2		1890	1	1	500
+Ingo	95	2		1865	1	1	500
+Ingo	95	2		1870	1	1	500
+Ingo	95	2		1875	1	1	500
+Ingo	95	2		1880	1	1	500
+Ingo	95	2		1885	1	1	500
+Ingo	95	2		6074	1	1	500
+Water Viper	117	1		5005	1	1	30
+Water Viper	117	1		5026	1	1	30
+Event Skeleton [Windrill/Latria]	121	1		7494	1	1	100000
+Skeleton Rapidfire Shooter	122	2		5028	1	1	30
+Skeleton Rapidfire Shooter	122	2		1855	1	1	500
+Skeleton Rapidfire Shooter	122	2		1860	1	1	500
+Skeleton Rapidfire Shooter	122	2		1890	1	1	500
+Skeleton Rapidfire Shooter	122	2		1865	1	1	500
+Skeleton Rapidfire Shooter	122	2		1870	1	1	500
+Skeleton Rapidfire Shooter	122	2		1875	1	1	500
+Skeleton Rapidfire Shooter	122	2		1880	1	1	500
+Skeleton Rapidfire Shooter	122	2		1885	1	1	500
+Skeleton Rapidfire Shooter	122	2		6074	1	1	500
+Skeleton Shaman	123	1		1855	1	1	500
+Skeleton Shaman	123	1		1860	1	1	500
+Skeleton Shaman	123	1		1890	1	1	500
+Skeleton Shaman	123	1		1865	1	1	500
+Skeleton Shaman	123	1		1870	1	1	500
+Skeleton Shaman	123	1		1875	1	1	500
+Skeleton Shaman	123	1		1880	1	1	500
+Skeleton Shaman	123	1		1885	1	1	500
+Skeleton Shaman	123	1		6074	1	1	500
+Windboar Imp	124	2		5008	1	1	30
+Windboar Imp	124	2		1856	1	1	500
+Windboar Imp	124	2		1861	1	1	500
+Windboar Imp	124	2		1891	1	1	500
+Windboar Imp	124	2		1866	1	1	500
+Windboar Imp	124	2		1871	1	1	500
+Windboar Imp	124	2		1876	1	1	500
+Windboar Imp	124	2		1881	1	1	500
+Windboar Imp	124	2		1886	1	1	500
+Windboar Imp	124	2		6075	1	1	500
+River Goblin Scout	126	2		5006	1	1	20
+River Goblin Scout	126	2		1855	1	1	500
+River Goblin Scout	126	2		1860	1	1	500
+River Goblin Scout	126	2		1890	1	1	500
+River Goblin Scout	126	2		1865	1	1	500
+River Goblin Scout	126	2		1870	1	1	500
+River Goblin Scout	126	2		1875	1	1	500
+River Goblin Scout	126	2		1880	1	1	500
+River Goblin Scout	126	2		1885	1	1	500
+River Goblin Scout	126	2		6074	1	1	500
+Candle Bear	127	2		5007	1	1	10
+Candle Bear	127	2		1856	1	1	500
+Candle Bear	127	2		1861	1	1	500
+Candle Bear	127	2		1891	1	1	500
+Candle Bear	127	2		1866	1	1	500
+Candle Bear	127	2		1871	1	1	500
+Candle Bear	127	2		1876	1	1	500
+Candle Bear	127	2		1881	1	1	500
+Candle Bear	127	2		1886	1	1	500
+Candle Bear	127	2		6075	1	1	500
+Flame Bat	128	2		5005	1	1	30
+Flame Bat	128	2		5028	1	1	30
+Flame Bat	128	2		1855	1	1	500
+Flame Bat	128	2		1860	1	1	500
+Flame Bat	128	2		1890	1	1	500
+Flame Bat	128	2		1865	1	1	500
+Flame Bat	128	2		1870	1	1	500
+Flame Bat	128	2		1875	1	1	500
+Flame Bat	128	2		1880	1	1	500
+Flame Bat	128	2		1885	1	1	500
+Flame Bat	128	2		6074	1	1	500
+Harpy Queen	135	1		1857	1	1	500
+Harpy Queen	135	1		1862	1	1	500
+Harpy Queen	135	1		1892	1	1	500
+Harpy Queen	135	1		1867	1	1	500
+Harpy Queen	135	1		1872	1	1	500
+Harpy Queen	135	1		1877	1	1	500
+Harpy Queen	135	1		1882	1	1	500
+Harpy Queen	135	1		1887	1	1	500
+Harpy Queen	135	1		6076	1	1	500
+Arachnoid Queen	193	2		451	1	1	100000
+Runebat Leader	194	2		5015	1	1	20
+Runebat Leader	194	2		5016	1	1	25
+Runebat Leader	194	2		5017	1	1	30
+Runebat Leader	194	2		1856	1	1	500
+Runebat Leader	194	2		1861	1	1	500
+Runebat Leader	194	2		1891	1	1	500
+Runebat Leader	194	2		1866	1	1	500
+Runebat Leader	194	2		1871	1	1	500
+Runebat Leader	194	2		1876	1	1	500
+Runebat Leader	194	2		1881	1	1	500
+Runebat Leader	194	2		1886	1	1	500
+Runebat Leader	194	2		6075	1	1	500
+Caretaker Cyklon	196	2		451	1	1	100000
+Necromantic Ruler	197	1		5014	1	1	30
+Necromantic Ruler	197	1		5024	1	1	30
+Corpse Eater	199	1		5014	1	1	30
+Corpse Eater	199	1		5024	1	1	30
+Accursed Lord	200	1		5014	1	1	30
+Accursed Lord	200	1		5024	1	1	30
+Gale Fleshripper	201	1		5014	1	1	30
+Gale Fleshripper	201	1		5024	1	1	30
+Sickle Flameweaver	202	1		5014	1	1	30
+Sickle Flameweaver	202	1		5024	1	1	30
+Fallen Sentinel	203	1		5014	1	1	30
+Fallen Sentinel	203	1		5024	1	1	30
+Vynil Tail	205	1		5013	1	1	30
+Accursed Warrior	206	1		5023	1	1	30
+Accursed Lasher	207	1		5023	1	1	30
+Necromantic Observer	208	1		5023	1	1	30
+Necromantic Messenger	209	1		5023	1	1	30
+Gale Carrion Feeder	210	1		5014	1	1	30
+Gale Talonbane	211	1		5014	1	1	30
+Blade Flameweaver	212	1		5014	1	1	30
+Lyrin Recruit	217	2		5012	1	1	30
+Lyrin Recruit	217	2		5022	1	1	30
+Lyrin Recruit	217	2		1857	1	1	500
+Lyrin Recruit	217	2		1862	1	1	500
+Lyrin Recruit	217	2		1892	1	1	500
+Lyrin Recruit	217	2		1867	1	1	500
+Lyrin Recruit	217	2		1872	1	1	500
+Lyrin Recruit	217	2		1877	1	1	500
+Lyrin Recruit	217	2		1882	1	1	500
+Lyrin Recruit	217	2		1887	1	1	500
+Lyrin Recruit	217	2		6076	1	1	500
+Lyrin Commander	221	2		5022	1	1	30
+Lyrin Commander	221	2		1857	1	1	500
+Lyrin Commander	221	2		1862	1	1	500
+Lyrin Commander	221	2		1892	1	1	500
+Lyrin Commander	221	2		1867	1	1	500
+Lyrin Commander	221	2		1872	1	1	500
+Lyrin Commander	221	2		1877	1	1	500
+Lyrin Commander	221	2		1882	1	1	500
+Lyrin Commander	221	2		1887	1	1	500
+Lyrin Commander	221	2		6076	1	1	500
+Shadow Zenith	225	1		5023	1	1	30
+Shadow Stalker	226	1		5013	1	1	30
+Sharkan Hunter	235	1		5014	1	1	30
+Roton Windrunnner	245	1		5013	1	1	30
+Eidolon Reaper	246	1		5023	1	1	30
+Vynil Soldier	263	2		5022	1	1	30
+Vynil Soldier	263	2		1857	1	1	500
+Vynil Soldier	263	2		1862	1	1	500
+Vynil Soldier	263	2		1892	1	1	500
+Vynil Soldier	263	2		1867	1	1	500
+Vynil Soldier	263	2		1872	1	1	500
+Vynil Soldier	263	2		1877	1	1	500
+Vynil Soldier	263	2		1882	1	1	500
+Vynil Soldier	263	2		1887	1	1	500
+Vynil Soldier	263	2		6076	1	1	500
+Centaur Commander	269	1		1857	1	1	500
+Centaur Commander	269	1		1862	1	1	500
+Centaur Commander	269	1		1892	1	1	500
+Centaur Commander	269	1		1867	1	1	500
+Centaur Commander	269	1		1872	1	1	500
+Centaur Commander	269	1		1877	1	1	500
+Centaur Commander	269	1		1882	1	1	500
+Centaur Commander	269	1		1887	1	1	500
+Centaur Commander	269	1		6076	1	1	500
+Chakdol	270	2		5005	1	1	30
+Chakdol	270	2		5028	1	1	30
+Chakdol	270	2		1855	1	1	500
+Chakdol	270	2		1860	1	1	500
+Chakdol	270	2		1890	1	1	500
+Chakdol	270	2		1865	1	1	500
+Chakdol	270	2		1870	1	1	500
+Chakdol	270	2		1875	1	1	500
+Chakdol	270	2		1880	1	1	500
+Chakdol	270	2		1885	1	1	500
+Chakdol	270	2		6074	1	1	500
+Captain Pack	271	2		5005	1	1	30
+Captain Pack	271	2		5028	1	1	30
+Captain Pack	271	2		1855	1	1	500
+Captain Pack	271	2		1860	1	1	500
+Captain Pack	271	2		1890	1	1	500
+Captain Pack	271	2		1865	1	1	500
+Captain Pack	271	2		1870	1	1	500
+Captain Pack	271	2		1875	1	1	500
+Captain Pack	271	2		1880	1	1	500
+Captain Pack	271	2		1885	1	1	500
+Captain Pack	271	2		6074	1	1	500
+Arachnoid Poison	273	2		5008	1	1	30
+Arachnoid Poison	273	2		1856	1	1	500
+Arachnoid Poison	273	2		1861	1	1	500
+Arachnoid Poison	273	2		1891	1	1	500
+Arachnoid Poison	273	2		1866	1	1	500
+Arachnoid Poison	273	2		1871	1	1	500
+Arachnoid Poison	273	2		1876	1	1	500
+Arachnoid Poison	273	2		1881	1	1	500
+Arachnoid Poison	273	2		1886	1	1	500
+Arachnoid Poison	273	2		6075	1	1	500
+Goblin Chief	275	2		5005	1	1	30
+Goblin Chief	275	2		5028	1	1	30
+Goblin Chief	275	2		1855	1	1	500
+Goblin Chief	275	2		1860	1	1	500
+Goblin Chief	275	2		1890	1	1	500
+Goblin Chief	275	2		1865	1	1	500
+Goblin Chief	275	2		1870	1	1	500
+Goblin Chief	275	2		1875	1	1	500
+Goblin Chief	275	2		1880	1	1	500
+Goblin Chief	275	2		1885	1	1	500
+Goblin Chief	275	2		6074	1	1	500
+Tongtong	276	1		5005	1	1	30
+Event Skeleton [Human Zone]	280	1		1855	1	1	500
+Event Skeleton [Human Zone]	280	1		1860	1	1	500
+Event Skeleton [Human Zone]	280	1		1890	1	1	500
+Event Skeleton [Human Zone]	280	1		1865	1	1	500
+Event Skeleton [Human Zone]	280	1		1870	1	1	500
+Event Skeleton [Human Zone]	280	1		1875	1	1	500
+Event Skeleton [Human Zone]	280	1		1880	1	1	500
+Event Skeleton [Human Zone]	280	1		1885	1	1	500
+Event Skeleton [Human Zone]	280	1		6074	1	1	500
+Thief Charger	281	2		5007	1	1	10
+Thief Charger	281	2		5015	1	1	20
+Thief Charger	281	2		5016	1	1	25
+Thief Charger	281	2		5017	1	1	30
+Thief Charger	281	2		1856	1	1	500
+Thief Charger	281	2		1861	1	1	500
+Thief Charger	281	2		1891	1	1	500
+Thief Charger	281	2		1866	1	1	500
+Thief Charger	281	2		1871	1	1	500
+Thief Charger	281	2		1876	1	1	500
+Thief Charger	281	2		1881	1	1	500
+Thief Charger	281	2		1886	1	1	500
+Thief Charger	281	2		6075	1	1	500
+Arkaros Slave	289	1		1856	1	1	500
+Arkaros Slave	289	1		1861	1	1	500
+Arkaros Slave	289	1		1891	1	1	500
+Arkaros Slave	289	1		1866	1	1	500
+Arkaros Slave	289	1		1871	1	1	500
+Arkaros Slave	289	1		1876	1	1	500
+Arkaros Slave	289	1		1881	1	1	500
+Arkaros Slave	289	1		1886	1	1	500
+Arkaros Slave	289	1		6075	1	1	500
+Lizardman Soldier	293	1		1855	1	1	500
+Lizardman Soldier	293	1		1860	1	1	500
+Lizardman Soldier	293	1		1890	1	1	500
+Lizardman Soldier	293	1		1865	1	1	500
+Lizardman Soldier	293	1		1870	1	1	500
+Lizardman Soldier	293	1		1875	1	1	500
+Lizardman Soldier	293	1		1880	1	1	500
+Lizardman Soldier	293	1		1885	1	1	500
+Lizardman Soldier	293	1		6074	1	1	500
+Magic Lycanto	297	1		1855	1	1	500
+Magic Lycanto	297	1		1860	1	1	500
+Magic Lycanto	297	1		1890	1	1	500
+Magic Lycanto	297	1		1865	1	1	500
+Magic Lycanto	297	1		1870	1	1	500
+Magic Lycanto	297	1		1875	1	1	500
+Magic Lycanto	297	1		1880	1	1	500
+Magic Lycanto	297	1		1885	1	1	500
+Magic Lycanto	297	1		6074	1	1	500
+Spell Werewolf	298	2		5018	1	1	10
+Spell Werewolf	298	2		1856	1	1	500
+Spell Werewolf	298	2		1861	1	1	500
+Spell Werewolf	298	2		1891	1	1	500
+Spell Werewolf	298	2		1866	1	1	500
+Spell Werewolf	298	2		1871	1	1	500
+Spell Werewolf	298	2		1876	1	1	500
+Spell Werewolf	298	2		1881	1	1	500
+Spell Werewolf	298	2		1886	1	1	500
+Spell Werewolf	298	2		6075	1	1	500
+Lizardman Lord	301	2		5006	1	1	20
+Lizardman Lord	301	2		5027	1	1	30
+Lizardman Lord	301	2		1855	1	1	500
+Lizardman Lord	301	2		1860	1	1	500
+Lizardman Lord	301	2		1890	1	1	500
+Lizardman Lord	301	2		1865	1	1	500
+Lizardman Lord	301	2		1870	1	1	500
+Lizardman Lord	301	2		1875	1	1	500
+Lizardman Lord	301	2		1880	1	1	500
+Lizardman Lord	301	2		1885	1	1	500
+Lizardman Lord	301	2		6074	1	1	500
+Redsign	306	2		451	1	1	100000
+Flame Bear	307	2		5007	1	1	10
+Flame Bear	307	2		5015	1	1	20
+Flame Bear	307	2		5016	1	1	25
+Flame Bear	307	2		5017	1	1	30
+Flame Bear	307	2		1856	1	1	500
+Flame Bear	307	2		1861	1	1	500
+Flame Bear	307	2		1891	1	1	500
+Flame Bear	307	2		1866	1	1	500
+Flame Bear	307	2		1871	1	1	500
+Flame Bear	307	2		1876	1	1	500
+Flame Bear	307	2		1881	1	1	500
+Flame Bear	307	2		1886	1	1	500
+Flame Bear	307	2		6075	1	1	500
+Gargoyle Bolt	309	2		5015	1	1	20
+Gargoyle Bolt	309	2		5016	1	1	25
+Gargoyle Bolt	309	2		5017	1	1	30
+Gargoyle Bolt	309	2		1856	1	1	500
+Gargoyle Bolt	309	2		1861	1	1	500
+Gargoyle Bolt	309	2		1891	1	1	500
+Gargoyle Bolt	309	2		1866	1	1	500
+Gargoyle Bolt	309	2		1871	1	1	500
+Gargoyle Bolt	309	2		1876	1	1	500
+Gargoyle Bolt	309	2		1881	1	1	500
+Gargoyle Bolt	309	2		1886	1	1	500
+Gargoyle Bolt	309	2		6075	1	1	500
+Stone Eater	311	2		5027	1	1	30
+Stone Eater	311	2		1855	1	1	500
+Stone Eater	311	2		1860	1	1	500
+Stone Eater	311	2		1890	1	1	500
+Stone Eater	311	2		1865	1	1	500
+Stone Eater	311	2		1870	1	1	500
+Stone Eater	311	2		1875	1	1	500
+Stone Eater	311	2		1880	1	1	500
+Stone Eater	311	2		1885	1	1	500
+Stone Eater	311	2		6074	1	1	500
+Reload	312	2		5006	1	1	20
+Reload	312	2		5027	1	1	30
+Reload	312	2		1855	1	1	500
+Reload	312	2		1860	1	1	500
+Reload	312	2		1890	1	1	500
+Reload	312	2		1865	1	1	500
+Reload	312	2		1870	1	1	500
+Reload	312	2		1875	1	1	500
+Reload	312	2		1880	1	1	500
+Reload	312	2		1885	1	1	500
+Reload	312	2		6074	1	1	500
+Windwing Harpy	320	2		5019	1	1	30
+Windwing Harpy	320	2		1857	1	1	500
+Windwing Harpy	320	2		1862	1	1	500
+Windwing Harpy	320	2		1892	1	1	500
+Windwing Harpy	320	2		1867	1	1	500
+Windwing Harpy	320	2		1872	1	1	500
+Windwing Harpy	320	2		1877	1	1	500
+Windwing Harpy	320	2		1882	1	1	500
+Windwing Harpy	320	2		1887	1	1	500
+Windwing Harpy	320	2		6076	1	1	500
+Green Poison Moth	324	2		5008	1	1	30
+Green Poison Moth	324	2		5018	1	1	10
+Green Poison Moth	324	2		1856	1	1	500
+Green Poison Moth	324	2		1861	1	1	500
+Green Poison Moth	324	2		1891	1	1	500
+Green Poison Moth	324	2		1866	1	1	500
+Green Poison Moth	324	2		1871	1	1	500
+Green Poison Moth	324	2		1876	1	1	500
+Green Poison Moth	324	2		1881	1	1	500
+Green Poison Moth	324	2		1886	1	1	500
+Green Poison Moth	324	2		6075	1	1	500
+Loki	329	2		5005	1	1	30
+Loki	329	2		5028	1	1	30
+Loki	329	2		1855	1	1	500
+Loki	329	2		1860	1	1	500
+Loki	329	2		1890	1	1	500
+Loki	329	2		1865	1	1	500
+Loki	329	2		1870	1	1	500
+Loki	329	2		1875	1	1	500
+Loki	329	2		1880	1	1	500
+Loki	329	2		1885	1	1	500
+Loki	329	2		6074	1	1	500
+Fire Lycanto	331	2		5028	1	1	30
+Fire Lycanto	331	2		1855	1	1	500
+Fire Lycanto	331	2		1860	1	1	500
+Fire Lycanto	331	2		1890	1	1	500
+Fire Lycanto	331	2		1865	1	1	500
+Fire Lycanto	331	2		1870	1	1	500
+Fire Lycanto	331	2		1875	1	1	500
+Fire Lycanto	331	2		1880	1	1	500
+Fire Lycanto	331	2		1885	1	1	500
+Fire Lycanto	331	2		6074	1	1	500
+Harpy Airwalker	333	1		1857	1	1	500
+Harpy Airwalker	333	1		1862	1	1	500
+Harpy Airwalker	333	1		1892	1	1	500
+Harpy Airwalker	333	1		1867	1	1	500
+Harpy Airwalker	333	1		1872	1	1	500
+Harpy Airwalker	333	1		1877	1	1	500
+Harpy Airwalker	333	1		1882	1	1	500
+Harpy Airwalker	333	1		1887	1	1	500
+Harpy Airwalker	333	1		6076	1	1	500
+Hobgoblin Chief	334	2		5019	1	1	30
+Hobgoblin Chief	334	2		5009	1	1	20
+Hobgoblin Chief	334	2		1856	1	1	500
+Hobgoblin Chief	334	2		1861	1	1	500
+Hobgoblin Chief	334	2		1891	1	1	500
+Hobgoblin Chief	334	2		1866	1	1	500
+Hobgoblin Chief	334	2		1871	1	1	500
+Hobgoblin Chief	334	2		1876	1	1	500
+Hobgoblin Chief	334	2		1881	1	1	500
+Hobgoblin Chief	334	2		1886	1	1	500
+Hobgoblin Chief	334	2		6075	1	1	500
+Viper King	337	2		5005	1	1	30
+Viper King	337	2		5028	1	1	30
+Viper King	337	2		1855	1	1	500
+Viper King	337	2		1860	1	1	500
+Viper King	337	2		1890	1	1	500
+Viper King	337	2		1865	1	1	500
+Viper King	337	2		1870	1	1	500
+Viper King	337	2		1875	1	1	500
+Viper King	337	2		1880	1	1	500
+Viper King	337	2		1885	1	1	500
+Viper King	337	2		6074	1	1	500
+Homunklus Commander	342	1		5023	1	1	30
+Chiming Illusion	347	1		5013	1	1	30
+Lyrin Shocktrooper	350	2		5022	1	1	30
+Lyrin Shocktrooper	350	2		1857	1	1	500
+Lyrin Shocktrooper	350	2		1862	1	1	500
+Lyrin Shocktrooper	350	2		1892	1	1	500
+Lyrin Shocktrooper	350	2		1867	1	1	500
+Lyrin Shocktrooper	350	2		1872	1	1	500
+Lyrin Shocktrooper	350	2		1877	1	1	500
+Lyrin Shocktrooper	350	2		1882	1	1	500
+Lyrin Shocktrooper	350	2		1887	1	1	500
+Lyrin Shocktrooper	350	2		6076	1	1	500
+Effel Commander	351	1		5013	1	1	30
+Effel Commander	351	1		5023	1	1	30
+Sharkan Alpha	352	1		5014	1	1	30
+Gast Commander	353	2		5022	1	1	30
+Gast Commander	353	2		1857	1	1	500
+Gast Commander	353	2		1862	1	1	500
+Gast Commander	353	2		1892	1	1	500
+Gast Commander	353	2		1867	1	1	500
+Gast Commander	353	2		1872	1	1	500
+Gast Commander	353	2		1877	1	1	500
+Gast Commander	353	2		1882	1	1	500
+Gast Commander	353	2		1887	1	1	500
+Gast Commander	353	2		6076	1	1	500
+Roton Commander	354	1		5013	1	1	30
+Roton Commander	354	1		5023	1	1	30
+Inquisitor Vard	355	1		5014	1	1	30
+Merfolk Queen	356	2		5022	1	1	30
+Merfolk Queen	356	2		1857	1	1	500
+Merfolk Queen	356	2		1862	1	1	500
+Merfolk Queen	356	2		1892	1	1	500
+Merfolk Queen	356	2		1867	1	1	500
+Merfolk Queen	356	2		1872	1	1	500
+Merfolk Queen	356	2		1877	1	1	500
+Merfolk Queen	356	2		1882	1	1	500
+Merfolk Queen	356	2		1887	1	1	500
+Merfolk Queen	356	2		6076	1	1	500
+Vynil Boss	357	1		5013	1	1	30
+Vynil Boss	357	1		5023	1	1	30
+Latan Troll Overseer	358	1		5014	1	1	30
+Harlequin MkIV	359	2		5014	1	1	30
+Harlequin MkIV	359	2		4801	1	1	1200
+Harlequin MkIV	359	2		4800	1	1	1875
+Harlequin MkIV	359	2		6053	1	1	250
+Harlequin MkIV	359	2		591	1	1	100
+Harlequin MkIV	359	2		1849	1	1	100
+Harlequin MkIV	359	2		592	1	1	100
+Hind Mech	360	2		5014	1	1	30
+Hind Mech	360	2		5024	1	1	30
+Hind Mech	360	2		4801	1	1	1600
+Hind Mech	360	2		4800	1	1	2500
+Hind Mech	360	2		6053	1	1	250
+Hind Mech	360	2		591	1	1	100
+Hind Mech	360	2		1849	1	1	100
+Hind Mech	360	2		592	1	1	100
+Plaguefish	362	2		5014	1	1	30
+Plaguefish	362	2		5024	1	1	30
+Plaguefish	362	2		4801	1	1	400
+Plaguefish	362	2		6053	1	1	250
+Plaguefish	362	2		594	1	1	100
+Plaguefish	362	2		1837	1	1	100
+Plaguefish	362	2		595	1	1	100
+Teslon Sentry	363	2		5014	1	1	30
+Teslon Sentry	363	2		4801	1	1	1200
+Teslon Sentry	363	2		4800	1	1	1875
+Teslon Sentry	363	2		6053	1	1	250
+Teslon Sentry	363	2		591	1	1	100
+Teslon Sentry	363	2		1849	1	1	100
+Teslon Sentry	363	2		592	1	1	100
+Spore Lynx	364	2		5014	1	1	30
+Spore Lynx	364	2		5024	1	1	30
+Spore Lynx	364	2		4801	1	1	400
+Spore Lynx	364	2		3311	1	1	500
+Spore Lynx	364	2		6053	1	1	250
+Spore Lynx	364	2		594	1	1	100
+Spore Lynx	364	2		1837	1	1	100
+Spore Lynx	364	2		595	1	1	100
+Limpit	365	2		5014	1	1	30
+Limpit	365	2		5024	1	1	30
+Limpit	365	2		4801	1	1	400
+Limpit	365	2		3311	1	1	500
+Limpit	365	2		6053	1	1	250
+Limpit	365	2		594	1	1	100
+Limpit	365	2		1837	1	1	100
+Limpit	365	2		595	1	1	100
+Gene Bora	366	2		5024	1	1	30
+Gene Bora	366	2		5014	1	1	30
+Gene Bora	366	2		4801	1	1	800
+Gene Bora	366	2		3311	1	1	500
+Gene Bora	366	2		6053	1	1	250
+Gene Bora	366	2		594	1	1	100
+Gene Bora	366	2		1837	1	1	100
+Gene Bora	366	2		595	1	1	100
+Exohas	376	2		451	1	1	100000
+Rotin	388	1		5026	1	1	30
+Embalmed Attendant	389	2		5010	1	1	15
+Embalmed Attendant	389	2		5020	1	1	30
+Embalmed Attendant	389	2		1857	1	1	500
+Embalmed Attendant	389	2		1862	1	1	500
+Embalmed Attendant	389	2		1892	1	1	500
+Embalmed Attendant	389	2		1867	1	1	500
+Embalmed Attendant	389	2		1872	1	1	500
+Embalmed Attendant	389	2		1877	1	1	500
+Embalmed Attendant	389	2		1882	1	1	500
+Embalmed Attendant	389	2		1887	1	1	500
+Embalmed Attendant	389	2		6076	1	1	500
+Burial Raider	410	2		5010	1	1	15
+Burial Raider	410	2		1857	1	1	500
+Burial Raider	410	2		1862	1	1	500
+Burial Raider	410	2		1892	1	1	500
+Burial Raider	410	2		1867	1	1	500
+Burial Raider	410	2		1872	1	1	500
+Burial Raider	410	2		1877	1	1	500
+Burial Raider	410	2		1882	1	1	500
+Burial Raider	410	2		1887	1	1	500
+Burial Raider	410	2		6076	1	1	500
+Amus the Judge	424	2		5019	1	1	30
+Amus the Judge	424	2		1857	1	1	500
+Amus the Judge	424	2		1862	1	1	500
+Amus the Judge	424	2		1892	1	1	500
+Amus the Judge	424	2		1867	1	1	500
+Amus the Judge	424	2		1872	1	1	500
+Amus the Judge	424	2		1877	1	1	500
+Amus the Judge	424	2		1882	1	1	500
+Amus the Judge	424	2		1887	1	1	500
+Amus the Judge	424	2		6076	1	1	500
+Ramin the Devourer	425	2		5019	1	1	30
+Ramin the Devourer	425	2		1857	1	1	500
+Ramin the Devourer	425	2		1862	1	1	500
+Ramin the Devourer	425	2		1892	1	1	500
+Ramin the Devourer	425	2		1867	1	1	500
+Ramin the Devourer	425	2		1872	1	1	500
+Ramin the Devourer	425	2		1877	1	1	500
+Ramin the Devourer	425	2		1882	1	1	500
+Ramin the Devourer	425	2		1887	1	1	500
+Ramin the Devourer	425	2		6076	1	1	500
+Invader Commander [Vigorore]	428	3		6352	2	2	100000
+Invader Commander [Vigorore]	428	3		14531	20	20	100000
+Invader Commander [Vigorore]	428	3		14542	3	3	100000
+Invader Commander [Vigorore]	428	3		1175	15	15	100000
+Invader Commander [Vigorore]	428	3		1178	15	15	100000
+Invader Commander [Vigorore]	428	3		14591	15	15	100000
+Rockpick	455	2		5005	1	1	30
+Rockpick	455	2		5028	1	1	30
+Rockpick	455	2		1855	1	1	500
+Rockpick	455	2		1860	1	1	500
+Rockpick	455	2		1890	1	1	500
+Rockpick	455	2		1865	1	1	500
+Rockpick	455	2		1870	1	1	500
+Rockpick	455	2		1875	1	1	500
+Rockpick	455	2		1880	1	1	500
+Rockpick	455	2		1885	1	1	500
+Rockpick	455	2		6074	1	1	500
+Green Dragon Cid	457	2		451	1	1	100000
+Gnoll Soldier	471	1		5005	1	1	30
+Bandillion Soldier	475	2		5028	1	1	30
+Bandillion Soldier	475	2		1855	1	1	500
+Bandillion Soldier	475	2		1860	1	1	500
+Bandillion Soldier	475	2		1890	1	1	500
+Bandillion Soldier	475	2		1865	1	1	500
+Bandillion Soldier	475	2		1870	1	1	500
+Bandillion Soldier	475	2		1875	1	1	500
+Bandillion Soldier	475	2		1880	1	1	500
+Bandillion Soldier	475	2		1885	1	1	500
+Bandillion Soldier	475	2		6074	1	1	500
+Small Tentacle	479	1		1855	1	1	500
+Small Tentacle	479	1		1860	1	1	500
+Small Tentacle	479	1		1890	1	1	500
+Small Tentacle	479	1		1865	1	1	500
+Small Tentacle	479	1		1870	1	1	500
+Small Tentacle	479	1		1875	1	1	500
+Small Tentacle	479	1		1880	1	1	500
+Small Tentacle	479	1		1885	1	1	500
+Small Tentacle	479	1		6074	1	1	500
+Gnoll King	481	2		451	1	1	100000
+Canedog Commander	482	2		451	1	1	100000
+Grippler King	483	2		5015	1	1	20
+Grippler King	483	2		5016	1	1	25
+Grippler King	483	2		5017	1	1	30
+Grippler King	483	2		1856	1	1	500
+Grippler King	483	2		1861	1	1	500
+Grippler King	483	2		1891	1	1	500
+Grippler King	483	2		1866	1	1	500
+Grippler King	483	2		1871	1	1	500
+Grippler King	483	2		1876	1	1	500
+Grippler King	483	2		1881	1	1	500
+Grippler King	483	2		1886	1	1	500
+Grippler King	483	2		6075	1	1	500
+Bandillion Boss	484	2		451	1	1	100000
+Total Broken	485	2		5027	1	1	30
+Total Broken	485	2		1855	1	1	500
+Total Broken	485	2		1860	1	1	500
+Total Broken	485	2		1890	1	1	500
+Total Broken	485	2		1865	1	1	500
+Total Broken	485	2		1870	1	1	500
+Total Broken	485	2		1875	1	1	500
+Total Broken	485	2		1880	1	1	500
+Total Broken	485	2		1885	1	1	500
+Total Broken	485	2		6074	1	1	500
+Silver Grippler	507	2		5007	1	1	10
+Silver Grippler	507	2		5015	1	1	20
+Silver Grippler	507	2		5016	1	1	25
+Silver Grippler	507	2		5017	1	1	30
+Silver Grippler	507	2		1856	1	1	500
+Silver Grippler	507	2		1861	1	1	500
+Silver Grippler	507	2		1891	1	1	500
+Silver Grippler	507	2		1866	1	1	500
+Silver Grippler	507	2		1871	1	1	500
+Silver Grippler	507	2		1876	1	1	500
+Silver Grippler	507	2		1881	1	1	500
+Silver Grippler	507	2		1886	1	1	500
+Silver Grippler	507	2		6075	1	1	500
+Dark Sabbat	510	2		5008	1	1	30
+Dark Sabbat	510	2		1856	1	1	500
+Dark Sabbat	510	2		1861	1	1	500
+Dark Sabbat	510	2		1891	1	1	500
+Dark Sabbat	510	2		1866	1	1	500
+Dark Sabbat	510	2		1871	1	1	500
+Dark Sabbat	510	2		1876	1	1	500
+Dark Sabbat	510	2		1881	1	1	500
+Dark Sabbat	510	2		1886	1	1	500
+Dark Sabbat	510	2		6075	1	1	500
+Flying Voltex	512	2		5007	1	1	10
+Flying Voltex	512	2		1856	1	1	500
+Flying Voltex	512	2		1861	1	1	500
+Flying Voltex	512	2		1891	1	1	500
+Flying Voltex	512	2		1866	1	1	500
+Flying Voltex	512	2		1871	1	1	500
+Flying Voltex	512	2		1876	1	1	500
+Flying Voltex	512	2		1881	1	1	500
+Flying Voltex	512	2		1886	1	1	500
+Flying Voltex	512	2		6075	1	1	500
+Broken Avenger	515	2		5006	1	1	20
+Broken Avenger	515	2		5027	1	1	30
+Broken Avenger	515	2		1855	1	1	500
+Broken Avenger	515	2		1860	1	1	500
+Broken Avenger	515	2		1890	1	1	500
+Broken Avenger	515	2		1865	1	1	500
+Broken Avenger	515	2		1870	1	1	500
+Broken Avenger	515	2		1875	1	1	500
+Broken Avenger	515	2		1880	1	1	500
+Broken Avenger	515	2		1885	1	1	500
+Broken Avenger	515	2		6074	1	1	500
+Broken Guardian	516	2		5006	1	1	20
+Broken Guardian	516	2		5027	1	1	30
+Broken Guardian	516	2		1855	1	1	500
+Broken Guardian	516	2		1860	1	1	500
+Broken Guardian	516	2		1890	1	1	500
+Broken Guardian	516	2		1865	1	1	500
+Broken Guardian	516	2		1870	1	1	500
+Broken Guardian	516	2		1875	1	1	500
+Broken Guardian	516	2		1880	1	1	500
+Broken Guardian	516	2		1885	1	1	500
+Broken Guardian	516	2		6074	1	1	500
+Wild Tentacle	517	1		1855	1	1	500
+Wild Tentacle	517	1		1860	1	1	500
+Wild Tentacle	517	1		1890	1	1	500
+Wild Tentacle	517	1		1865	1	1	500
+Wild Tentacle	517	1		1870	1	1	500
+Wild Tentacle	517	1		1875	1	1	500
+Wild Tentacle	517	1		1880	1	1	500
+Wild Tentacle	517	1		1885	1	1	500
+Wild Tentacle	517	1		6074	1	1	500
+Wild Lich	519	2		5015	1	1	20
+Wild Lich	519	2		5016	1	1	25
+Wild Lich	519	2		5017	1	1	30
+Wild Lich	519	2		1856	1	1	500
+Wild Lich	519	2		1861	1	1	500
+Wild Lich	519	2		1891	1	1	500
+Wild Lich	519	2		1866	1	1	500
+Wild Lich	519	2		1871	1	1	500
+Wild Lich	519	2		1876	1	1	500
+Wild Lich	519	2		1881	1	1	500
+Wild Lich	519	2		1886	1	1	500
+Wild Lich	519	2		6075	1	1	500
+Forgotten Ruler	523	1		1855	1	1	500
+Forgotten Ruler	523	1		1860	1	1	500
+Forgotten Ruler	523	1		1890	1	1	500
+Forgotten Ruler	523	1		1865	1	1	500
+Forgotten Ruler	523	1		1870	1	1	500
+Forgotten Ruler	523	1		1875	1	1	500
+Forgotten Ruler	523	1		1880	1	1	500
+Forgotten Ruler	523	1		1885	1	1	500
+Forgotten Ruler	523	1		6074	1	1	500
+Green Dragon Exilaikon	530	2		5008	1	1	30
+Green Dragon Exilaikon	530	2		1856	1	1	500
+Green Dragon Exilaikon	530	2		1861	1	1	500
+Green Dragon Exilaikon	530	2		1891	1	1	500
+Green Dragon Exilaikon	530	2		1866	1	1	500
+Green Dragon Exilaikon	530	2		1871	1	1	500
+Green Dragon Exilaikon	530	2		1876	1	1	500
+Green Dragon Exilaikon	530	2		1881	1	1	500
+Green Dragon Exilaikon	530	2		1886	1	1	500
+Green Dragon Exilaikon	530	2		6075	1	1	500
+King of the Dead	533	1		1855	1	1	500
+King of the Dead	533	1		1860	1	1	500
+King of the Dead	533	1		1890	1	1	500
+King of the Dead	533	1		1865	1	1	500
+King of the Dead	533	1		1870	1	1	500
+King of the Dead	533	1		1875	1	1	500
+King of the Dead	533	1		1880	1	1	500
+King of the Dead	533	1		1885	1	1	500
+King of the Dead	533	1		6074	1	1	500
+Brown Dragon Galkyuaran	540	2		5008	1	1	30
+Brown Dragon Galkyuaran	540	2		1856	1	1	500
+Brown Dragon Galkyuaran	540	2		1861	1	1	500
+Brown Dragon Galkyuaran	540	2		1891	1	1	500
+Brown Dragon Galkyuaran	540	2		1866	1	1	500
+Brown Dragon Galkyuaran	540	2		1871	1	1	500
+Brown Dragon Galkyuaran	540	2		1876	1	1	500
+Brown Dragon Galkyuaran	540	2		1881	1	1	500
+Brown Dragon Galkyuaran	540	2		1886	1	1	500
+Brown Dragon Galkyuaran	540	2		6075	1	1	500
+Bloodborn Darkbracer	547	2		5019	1	1	30
+Bloodborn Darkbracer	547	2		1857	1	1	500
+Bloodborn Darkbracer	547	2		1862	1	1	500
+Bloodborn Darkbracer	547	2		1892	1	1	500
+Bloodborn Darkbracer	547	2		1867	1	1	500
+Bloodborn Darkbracer	547	2		1872	1	1	500
+Bloodborn Darkbracer	547	2		1877	1	1	500
+Bloodborn Darkbracer	547	2		1882	1	1	500
+Bloodborn Darkbracer	547	2		1887	1	1	500
+Bloodborn Darkbracer	547	2		6076	1	1	500
+Bloodborn Shaman	549	1		1857	1	1	500
+Bloodborn Shaman	549	1		1862	1	1	500
+Bloodborn Shaman	549	1		1892	1	1	500
+Bloodborn Shaman	549	1		1867	1	1	500
+Bloodborn Shaman	549	1		1872	1	1	500
+Bloodborn Shaman	549	1		1877	1	1	500
+Bloodborn Shaman	549	1		1882	1	1	500
+Bloodborn Shaman	549	1		1887	1	1	500
+Bloodborn Shaman	549	1		6076	1	1	500
+Reckles	550	1		1857	1	1	500
+Reckles	550	1		1862	1	1	500
+Reckles	550	1		1892	1	1	500
+Reckles	550	1		1867	1	1	500
+Reckles	550	1		1872	1	1	500
+Reckles	550	1		1877	1	1	500
+Reckles	550	1		1882	1	1	500
+Reckles	550	1		1887	1	1	500
+Reckles	550	1		6076	1	1	500
+Curse Lupin	554	1		1857	1	1	500
+Curse Lupin	554	1		1862	1	1	500
+Curse Lupin	554	1		1892	1	1	500
+Curse Lupin	554	1		1867	1	1	500
+Curse Lupin	554	1		1872	1	1	500
+Curse Lupin	554	1		1877	1	1	500
+Curse Lupin	554	1		1882	1	1	500
+Curse Lupin	554	1		1887	1	1	500
+Curse Lupin	554	1		6076	1	1	500
+Karencha	555	1		1857	1	1	500
+Karencha	555	1		1862	1	1	500
+Karencha	555	1		1892	1	1	500
+Karencha	555	1		1867	1	1	500
+Karencha	555	1		1872	1	1	500
+Karencha	555	1		1877	1	1	500
+Karencha	555	1		1882	1	1	500
+Karencha	555	1		1887	1	1	500
+Karencha	555	1		6076	1	1	500
+Sevent	558	1		1857	1	1	500
+Sevent	558	1		1862	1	1	500
+Sevent	558	1		1892	1	1	500
+Sevent	558	1		1867	1	1	500
+Sevent	558	1		1872	1	1	500
+Sevent	558	1		1877	1	1	500
+Sevent	558	1		1882	1	1	500
+Sevent	558	1		1887	1	1	500
+Sevent	558	1		6076	1	1	500
+Lucibel	563	2		5019	1	1	30
+Lucibel	563	2		1857	1	1	500
+Lucibel	563	2		1862	1	1	500
+Lucibel	563	2		1892	1	1	500
+Lucibel	563	2		1867	1	1	500
+Lucibel	563	2		1872	1	1	500
+Lucibel	563	2		1877	1	1	500
+Lucibel	563	2		1882	1	1	500
+Lucibel	563	2		1887	1	1	500
+Lucibel	563	2		6076	1	1	500
+Shakhan	615	2		5005	1	1	30
+Shakhan	615	2		5028	1	1	30
+Shakhan	615	2		1855	1	1	500
+Shakhan	615	2		1860	1	1	500
+Shakhan	615	2		1890	1	1	500
+Shakhan	615	2		1865	1	1	500
+Shakhan	615	2		1870	1	1	500
+Shakhan	615	2		1875	1	1	500
+Shakhan	615	2		1880	1	1	500
+Shakhan	615	2		1885	1	1	500
+Shakhan	615	2		6074	1	1	500
+Halluminel	617	2		5028	1	1	30
+Halluminel	617	2		1855	1	1	500
+Halluminel	617	2		1860	1	1	500
+Halluminel	617	2		1890	1	1	500
+Halluminel	617	2		1865	1	1	500
+Halluminel	617	2		1870	1	1	500
+Halluminel	617	2		1875	1	1	500
+Halluminel	617	2		1880	1	1	500
+Halluminel	617	2		1885	1	1	500
+Halluminel	617	2		6074	1	1	500
+Boss Samuel	618	2		451	1	1	100000
+Arniel	619	2		5006	1	1	20
+Arniel	619	2		1855	1	1	500
+Arniel	619	2		1860	1	1	500
+Arniel	619	2		1890	1	1	500
+Arniel	619	2		1865	1	1	500
+Arniel	619	2		1870	1	1	500
+Arniel	619	2		1875	1	1	500
+Arniel	619	2		1880	1	1	500
+Arniel	619	2		1885	1	1	500
+Arniel	619	2		6074	1	1	500
+Kaijan	620	2		451	1	1	100000
+Lady Lien	621	1		1855	1	1	500
+Lady Lien	621	1		1860	1	1	500
+Lady Lien	621	1		1890	1	1	500
+Lady Lien	621	1		1865	1	1	500
+Lady Lien	621	1		1870	1	1	500
+Lady Lien	621	1		1875	1	1	500
+Lady Lien	621	1		1880	1	1	500
+Lady Lien	621	1		1885	1	1	500
+Lady Lien	621	1		6074	1	1	500
+Silver Lycanto	622	2		5006	1	1	20
+Silver Lycanto	622	2		1855	1	1	500
+Silver Lycanto	622	2		1860	1	1	500
+Silver Lycanto	622	2		1890	1	1	500
+Silver Lycanto	622	2		1865	1	1	500
+Silver Lycanto	622	2		1870	1	1	500
+Silver Lycanto	622	2		1875	1	1	500
+Silver Lycanto	622	2		1880	1	1	500
+Silver Lycanto	622	2		1885	1	1	500
+Silver Lycanto	622	2		6074	1	1	500
+Hukarung	623	2		5007	1	1	10
+Hukarung	623	2		1855	1	1	500
+Hukarung	623	2		1860	1	1	500
+Hukarung	623	2		1890	1	1	500
+Hukarung	623	2		1865	1	1	500
+Hukarung	623	2		1870	1	1	500
+Hukarung	623	2		1875	1	1	500
+Hukarung	623	2		1880	1	1	500
+Hukarung	623	2		1885	1	1	500
+Hukarung	623	2		6074	1	1	500
+Bleezers	624	2		5007	1	1	10
+Bleezers	624	2		5015	1	1	20
+Bleezers	624	2		5016	1	1	25
+Bleezers	624	2		5017	1	1	30
+Bleezers	624	2		1856	1	1	500
+Bleezers	624	2		1861	1	1	500
+Bleezers	624	2		1891	1	1	500
+Bleezers	624	2		1866	1	1	500
+Bleezers	624	2		1871	1	1	500
+Bleezers	624	2		1876	1	1	500
+Bleezers	624	2		1881	1	1	500
+Bleezers	624	2		1886	1	1	500
+Bleezers	624	2		6075	1	1	500
+Ankagious	625	2		5007	1	1	10
+Ankagious	625	2		5015	1	1	20
+Ankagious	625	2		5016	1	1	25
+Ankagious	625	2		5017	1	1	30
+Ankagious	625	2		1856	1	1	500
+Ankagious	625	2		1861	1	1	500
+Ankagious	625	2		1891	1	1	500
+Ankagious	625	2		1866	1	1	500
+Ankagious	625	2		1871	1	1	500
+Ankagious	625	2		1876	1	1	500
+Ankagious	625	2		1881	1	1	500
+Ankagious	625	2		1886	1	1	500
+Ankagious	625	2		6075	1	1	500
+Jewel Digger	626	1		6170	1	1	100000
+Jewel Digger	626	1		13598	1	1	100000
+Lakatamara	627	2		5008	1	1	30
+Lakatamara	627	2		1856	1	1	500
+Lakatamara	627	2		1861	1	1	500
+Lakatamara	627	2		1891	1	1	500
+Lakatamara	627	2		1866	1	1	500
+Lakatamara	627	2		1871	1	1	500
+Lakatamara	627	2		1876	1	1	500
+Lakatamara	627	2		1881	1	1	500
+Lakatamara	627	2		1886	1	1	500
+Lakatamara	627	2		6075	1	1	500
+Wilnar	628	2		5008	1	1	30
+Wilnar	628	2		1856	1	1	500
+Wilnar	628	2		1861	1	1	500
+Wilnar	628	2		1891	1	1	500
+Wilnar	628	2		1866	1	1	500
+Wilnar	628	2		1871	1	1	500
+Wilnar	628	2		1876	1	1	500
+Wilnar	628	2		1881	1	1	500
+Wilnar	628	2		1886	1	1	500
+Wilnar	628	2		6075	1	1	500
+Queen Firianes	629	2		5008	1	1	30
+Queen Firianes	629	2		5018	1	1	10
+Queen Firianes	629	2		1856	1	1	500
+Queen Firianes	629	2		1861	1	1	500
+Queen Firianes	629	2		1891	1	1	500
+Queen Firianes	629	2		1866	1	1	500
+Queen Firianes	629	2		1871	1	1	500
+Queen Firianes	629	2		1876	1	1	500
+Queen Firianes	629	2		1881	1	1	500
+Queen Firianes	629	2		1886	1	1	500
+Queen Firianes	629	2		6075	1	1	500
+Dark Wyvern	630	2		5009	1	1	20
+Dark Wyvern	630	2		1856	1	1	500
+Dark Wyvern	630	2		1861	1	1	500
+Dark Wyvern	630	2		1891	1	1	500
+Dark Wyvern	630	2		1866	1	1	500
+Dark Wyvern	630	2		1871	1	1	500
+Dark Wyvern	630	2		1876	1	1	500
+Dark Wyvern	630	2		1881	1	1	500
+Dark Wyvern	630	2		1886	1	1	500
+Dark Wyvern	630	2		6075	1	1	500
+Darkhan	631	2		5008	1	1	30
+Darkhan	631	2		5018	1	1	10
+Darkhan	631	2		1856	1	1	500
+Darkhan	631	2		1861	1	1	500
+Darkhan	631	2		1891	1	1	500
+Darkhan	631	2		1866	1	1	500
+Darkhan	631	2		1871	1	1	500
+Darkhan	631	2		1876	1	1	500
+Darkhan	631	2		1881	1	1	500
+Darkhan	631	2		1886	1	1	500
+Darkhan	631	2		6075	1	1	500
+Charasuka	635	1		1856	1	1	500
+Charasuka	635	1		1861	1	1	500
+Charasuka	635	1		1891	1	1	500
+Charasuka	635	1		1866	1	1	500
+Charasuka	635	1		1871	1	1	500
+Charasuka	635	1		1876	1	1	500
+Charasuka	635	1		1881	1	1	500
+Charasuka	635	1		1886	1	1	500
+Charasuka	635	1		6075	1	1	500
+Bone Dragon	636	2		451	1	1	100000
+Dartan	638	2		5007	1	1	10
+Dartan	638	2		1856	1	1	500
+Dartan	638	2		1861	1	1	500
+Dartan	638	2		1891	1	1	500
+Dartan	638	2		1866	1	1	500
+Dartan	638	2		1871	1	1	500
+Dartan	638	2		1876	1	1	500
+Dartan	638	2		1881	1	1	500
+Dartan	638	2		1886	1	1	500
+Dartan	638	2		6075	1	1	500
+Gazuth	642	1		6351	1	1	400
+Gazuth	642	1		13588	1	1	45
+Gazuth	642	1		13589	1	1	45
+Gazuth	642	1		13590	1	1	45
+Gazuth	642	1		13591	1	1	45
+Gazuth	642	1		13592	1	1	45
+Gazuth	642	1		13598	1	1	200
+Gazuth	642	1		14531	1	1	167
+Gazuth	642	1		7394	1	1	10000
+Gazuth	642	1		3311	1	1	500
+Windmempsi	653	2		5008	1	1	30
+Windmempsi	653	2		1856	1	1	500
+Windmempsi	653	2		1861	1	1	500
+Windmempsi	653	2		1891	1	1	500
+Windmempsi	653	2		1866	1	1	500
+Windmempsi	653	2		1871	1	1	500
+Windmempsi	653	2		1876	1	1	500
+Windmempsi	653	2		1881	1	1	500
+Windmempsi	653	2		1886	1	1	500
+Windmempsi	653	2		6075	1	1	500
+Queen of the Dead	654	2		5009	1	1	20
+Queen of the Dead	654	2		1856	1	1	500
+Queen of the Dead	654	2		1861	1	1	500
+Queen of the Dead	654	2		1891	1	1	500
+Queen of the Dead	654	2		1866	1	1	500
+Queen of the Dead	654	2		1871	1	1	500
+Queen of the Dead	654	2		1876	1	1	500
+Queen of the Dead	654	2		1881	1	1	500
+Queen of the Dead	654	2		1886	1	1	500
+Queen of the Dead	654	2		6075	1	1	500
+Pharaoh King	656	2		451	1	1	100000
+Euriale Lord	657	1		451	1	1	100000
+Prince Arien	658	2		5007	1	1	10
+Prince Arien	658	2		1855	1	1	500
+Prince Arien	658	2		1860	1	1	500
+Prince Arien	658	2		1890	1	1	500
+Prince Arien	658	2		1865	1	1	500
+Prince Arien	658	2		1870	1	1	500
+Prince Arien	658	2		1875	1	1	500
+Prince Arien	658	2		1880	1	1	500
+Prince Arien	658	2		1885	1	1	500
+Prince Arien	658	2		6074	1	1	500
+Karkaen	659	1		1856	1	1	500
+Karkaen	659	1		1861	1	1	500
+Karkaen	659	1		1891	1	1	500
+Karkaen	659	1		1866	1	1	500
+Karkaen	659	1		1871	1	1	500
+Karkaen	659	1		1876	1	1	500
+Karkaen	659	1		1881	1	1	500
+Karkaen	659	1		1886	1	1	500
+Karkaen	659	1		6075	1	1	500
+Mury	660	1		1856	1	1	500
+Mury	660	1		1861	1	1	500
+Mury	660	1		1891	1	1	500
+Mury	660	1		1866	1	1	500
+Mury	660	1		1871	1	1	500
+Mury	660	1		1876	1	1	500
+Mury	660	1		1881	1	1	500
+Mury	660	1		1886	1	1	500
+Mury	660	1		6075	1	1	500
+Ankra	661	1		1856	1	1	500
+Ankra	661	1		1861	1	1	500
+Ankra	661	1		1891	1	1	500
+Ankra	661	1		1866	1	1	500
+Ankra	661	1		1871	1	1	500
+Ankra	661	1		1876	1	1	500
+Ankra	661	1		1881	1	1	500
+Ankra	661	1		1886	1	1	500
+Ankra	661	1		6075	1	1	500
+Fodon	662	2		5008	1	1	30
+Fodon	662	2		1856	1	1	500
+Fodon	662	2		1861	1	1	500
+Fodon	662	2		1891	1	1	500
+Fodon	662	2		1866	1	1	500
+Fodon	662	2		1871	1	1	500
+Fodon	662	2		1876	1	1	500
+Fodon	662	2		1881	1	1	500
+Fodon	662	2		1886	1	1	500
+Fodon	662	2		6075	1	1	500
+Shaconne	663	2		5008	1	1	30
+Shaconne	663	2		5018	1	1	10
+Shaconne	663	2		1856	1	1	500
+Shaconne	663	2		1861	1	1	500
+Shaconne	663	2		1891	1	1	500
+Shaconne	663	2		1866	1	1	500
+Shaconne	663	2		1871	1	1	500
+Shaconne	663	2		1876	1	1	500
+Shaconne	663	2		1881	1	1	500
+Shaconne	663	2		1886	1	1	500
+Shaconne	663	2		6075	1	1	500
+Pamashura	664	2		5018	1	1	10
+Pamashura	664	2		1856	1	1	500
+Pamashura	664	2		1861	1	1	500
+Pamashura	664	2		1891	1	1	500
+Pamashura	664	2		1866	1	1	500
+Pamashura	664	2		1871	1	1	500
+Pamashura	664	2		1876	1	1	500
+Pamashura	664	2		1881	1	1	500
+Pamashura	664	2		1886	1	1	500
+Pamashura	664	2		6075	1	1	500
+Shamashura	665	2		5018	1	1	10
+Shamashura	665	2		1856	1	1	500
+Shamashura	665	2		1861	1	1	500
+Shamashura	665	2		1891	1	1	500
+Shamashura	665	2		1866	1	1	500
+Shamashura	665	2		1871	1	1	500
+Shamashura	665	2		1876	1	1	500
+Shamashura	665	2		1881	1	1	500
+Shamashura	665	2		1886	1	1	500
+Shamashura	665	2		6075	1	1	500
+Rockbole	671	1		5026	1	1	30
+Burning Eye	672	1		5026	1	1	30
+Big Rage	673	1		5026	1	1	30
+Garot	674	1		5026	1	1	30
+Slum	680	2		5005	1	1	30
+Slum	680	2		5028	1	1	30
+Slum	680	2		1855	1	1	500
+Slum	680	2		1860	1	1	500
+Slum	680	2		1890	1	1	500
+Slum	680	2		1865	1	1	500
+Slum	680	2		1870	1	1	500
+Slum	680	2		1875	1	1	500
+Slum	680	2		1880	1	1	500
+Slum	680	2		1885	1	1	500
+Slum	680	2		6074	1	1	500
+Gift	682	2		5005	1	1	30
+Gift	682	2		5028	1	1	30
+Gift	682	2		1855	1	1	500
+Gift	682	2		1860	1	1	500
+Gift	682	2		1890	1	1	500
+Gift	682	2		1865	1	1	500
+Gift	682	2		1870	1	1	500
+Gift	682	2		1875	1	1	500
+Gift	682	2		1880	1	1	500
+Gift	682	2		1885	1	1	500
+Gift	682	2		6074	1	1	500
+Hawul	684	2		5005	1	1	30
+Hawul	684	2		5028	1	1	30
+Hawul	684	2		1855	1	1	500
+Hawul	684	2		1860	1	1	500
+Hawul	684	2		1890	1	1	500
+Hawul	684	2		1865	1	1	500
+Hawul	684	2		1870	1	1	500
+Hawul	684	2		1875	1	1	500
+Hawul	684	2		1880	1	1	500
+Hawul	684	2		1885	1	1	500
+Hawul	684	2		6074	1	1	500
+Rojin	685	2		5028	1	1	30
+Rojin	685	2		1855	1	1	500
+Rojin	685	2		1860	1	1	500
+Rojin	685	2		1890	1	1	500
+Rojin	685	2		1865	1	1	500
+Rojin	685	2		1870	1	1	500
+Rojin	685	2		1875	1	1	500
+Rojin	685	2		1880	1	1	500
+Rojin	685	2		1885	1	1	500
+Rojin	685	2		6074	1	1	500
+Brondia	688	1		1855	1	1	500
+Brondia	688	1		1860	1	1	500
+Brondia	688	1		1890	1	1	500
+Brondia	688	1		1865	1	1	500
+Brondia	688	1		1870	1	1	500
+Brondia	688	1		1875	1	1	500
+Brondia	688	1		1880	1	1	500
+Brondia	688	1		1885	1	1	500
+Brondia	688	1		6074	1	1	500
+Asle	691	2		5006	1	1	20
+Asle	691	2		5027	1	1	30
+Asle	691	2		1855	1	1	500
+Asle	691	2		1860	1	1	500
+Asle	691	2		1890	1	1	500
+Asle	691	2		1865	1	1	500
+Asle	691	2		1870	1	1	500
+Asle	691	2		1875	1	1	500
+Asle	691	2		1880	1	1	500
+Asle	691	2		1885	1	1	500
+Asle	691	2		6074	1	1	500
+Everu	693	2		5006	1	1	20
+Everu	693	2		5027	1	1	30
+Everu	693	2		1855	1	1	500
+Everu	693	2		1860	1	1	500
+Everu	693	2		1890	1	1	500
+Everu	693	2		1865	1	1	500
+Everu	693	2		1870	1	1	500
+Everu	693	2		1875	1	1	500
+Everu	693	2		1880	1	1	500
+Everu	693	2		1885	1	1	500
+Everu	693	2		6074	1	1	500
+King of the Abandoned	694	1		1855	1	1	500
+King of the Abandoned	694	1		1860	1	1	500
+King of the Abandoned	694	1		1890	1	1	500
+King of the Abandoned	694	1		1865	1	1	500
+King of the Abandoned	694	1		1870	1	1	500
+King of the Abandoned	694	1		1875	1	1	500
+King of the Abandoned	694	1		1880	1	1	500
+King of the Abandoned	694	1		1885	1	1	500
+King of the Abandoned	694	1		6074	1	1	500
+Largefoot	695	2		5027	1	1	30
+Largefoot	695	2		1855	1	1	500
+Largefoot	695	2		1860	1	1	500
+Largefoot	695	2		1890	1	1	500
+Largefoot	695	2		1865	1	1	500
+Largefoot	695	2		1870	1	1	500
+Largefoot	695	2		1875	1	1	500
+Largefoot	695	2		1880	1	1	500
+Largefoot	695	2		1885	1	1	500
+Largefoot	695	2		6074	1	1	500
+Karkas	696	2		5027	1	1	30
+Karkas	696	2		1855	1	1	500
+Karkas	696	2		1860	1	1	500
+Karkas	696	2		1890	1	1	500
+Karkas	696	2		1865	1	1	500
+Karkas	696	2		1870	1	1	500
+Karkas	696	2		1875	1	1	500
+Karkas	696	2		1880	1	1	500
+Karkas	696	2		1885	1	1	500
+Karkas	696	2		6074	1	1	500
+Logo	697	2		5027	1	1	30
+Logo	697	2		1855	1	1	500
+Logo	697	2		1860	1	1	500
+Logo	697	2		1890	1	1	500
+Logo	697	2		1865	1	1	500
+Logo	697	2		1870	1	1	500
+Logo	697	2		1875	1	1	500
+Logo	697	2		1880	1	1	500
+Logo	697	2		1885	1	1	500
+Logo	697	2		6074	1	1	500
+Mann	698	2		5027	1	1	30
+Mann	698	2		1855	1	1	500
+Mann	698	2		1860	1	1	500
+Mann	698	2		1890	1	1	500
+Mann	698	2		1865	1	1	500
+Mann	698	2		1870	1	1	500
+Mann	698	2		1875	1	1	500
+Mann	698	2		1880	1	1	500
+Mann	698	2		1885	1	1	500
+Mann	698	2		6074	1	1	500
+Gadius	703	2		5007	1	1	10
+Gadius	703	2		5015	1	1	20
+Gadius	703	2		5016	1	1	25
+Gadius	703	2		5017	1	1	30
+Gadius	703	2		1856	1	1	500
+Gadius	703	2		1861	1	1	500
+Gadius	703	2		1891	1	1	500
+Gadius	703	2		1866	1	1	500
+Gadius	703	2		1871	1	1	500
+Gadius	703	2		1876	1	1	500
+Gadius	703	2		1881	1	1	500
+Gadius	703	2		1886	1	1	500
+Gadius	703	2		6075	1	1	500
+Sword Eater	704	1		1856	1	1	500
+Sword Eater	704	1		1861	1	1	500
+Sword Eater	704	1		1891	1	1	500
+Sword Eater	704	1		1866	1	1	500
+Sword Eater	704	1		1871	1	1	500
+Sword Eater	704	1		1876	1	1	500
+Sword Eater	704	1		1881	1	1	500
+Sword Eater	704	1		1886	1	1	500
+Sword Eater	704	1		6075	1	1	500
+Ding	705	2		5008	1	1	30
+Ding	705	2		1856	1	1	500
+Ding	705	2		1861	1	1	500
+Ding	705	2		1891	1	1	500
+Ding	705	2		1866	1	1	500
+Ding	705	2		1871	1	1	500
+Ding	705	2		1876	1	1	500
+Ding	705	2		1881	1	1	500
+Ding	705	2		1886	1	1	500
+Ding	705	2		6075	1	1	500
+Mutsor	706	2		5008	1	1	30
+Mutsor	706	2		1856	1	1	500
+Mutsor	706	2		1861	1	1	500
+Mutsor	706	2		1891	1	1	500
+Mutsor	706	2		1866	1	1	500
+Mutsor	706	2		1871	1	1	500
+Mutsor	706	2		1876	1	1	500
+Mutsor	706	2		1881	1	1	500
+Mutsor	706	2		1886	1	1	500
+Mutsor	706	2		6075	1	1	500
+Hiripina	707	2		5019	1	1	30
+Hiripina	707	2		1857	1	1	500
+Hiripina	707	2		1862	1	1	500
+Hiripina	707	2		1892	1	1	500
+Hiripina	707	2		1867	1	1	500
+Hiripina	707	2		1872	1	1	500
+Hiripina	707	2		1877	1	1	500
+Hiripina	707	2		1882	1	1	500
+Hiripina	707	2		1887	1	1	500
+Hiripina	707	2		6076	1	1	500
+Guardimesh	708	1		1857	1	1	500
+Guardimesh	708	1		1862	1	1	500
+Guardimesh	708	1		1892	1	1	500
+Guardimesh	708	1		1867	1	1	500
+Guardimesh	708	1		1872	1	1	500
+Guardimesh	708	1		1877	1	1	500
+Guardimesh	708	1		1882	1	1	500
+Guardimesh	708	1		1887	1	1	500
+Guardimesh	708	1		6076	1	1	500
+Mobet Lord	711	2		5019	1	1	30
+Mobet Lord	711	2		1857	1	1	500
+Mobet Lord	711	2		1862	1	1	500
+Mobet Lord	711	2		1892	1	1	500
+Mobet Lord	711	2		1867	1	1	500
+Mobet Lord	711	2		1872	1	1	500
+Mobet Lord	711	2		1877	1	1	500
+Mobet Lord	711	2		1882	1	1	500
+Mobet Lord	711	2		1887	1	1	500
+Mobet Lord	711	2		6076	1	1	500
+Marylith Princess	716	2		5019	1	1	30
+Marylith Princess	716	2		1857	1	1	500
+Marylith Princess	716	2		1862	1	1	500
+Marylith Princess	716	2		1892	1	1	500
+Marylith Princess	716	2		1867	1	1	500
+Marylith Princess	716	2		1872	1	1	500
+Marylith Princess	716	2		1877	1	1	500
+Marylith Princess	716	2		1882	1	1	500
+Marylith Princess	716	2		1887	1	1	500
+Marylith Princess	716	2		6076	1	1	500
+Gigantes	717	2		5019	1	1	30
+Gigantes	717	2		1857	1	1	500
+Gigantes	717	2		1862	1	1	500
+Gigantes	717	2		1892	1	1	500
+Gigantes	717	2		1867	1	1	500
+Gigantes	717	2		1872	1	1	500
+Gigantes	717	2		1877	1	1	500
+Gigantes	717	2		1882	1	1	500
+Gigantes	717	2		1887	1	1	500
+Gigantes	717	2		6076	1	1	500
+Griffin	718	2		5010	1	1	15
+Griffin	718	2		1857	1	1	500
+Griffin	718	2		1862	1	1	500
+Griffin	718	2		1892	1	1	500
+Griffin	718	2		1867	1	1	500
+Griffin	718	2		1872	1	1	500
+Griffin	718	2		1877	1	1	500
+Griffin	718	2		1882	1	1	500
+Griffin	718	2		1887	1	1	500
+Griffin	718	2		6076	1	1	500
+The Vampire	724	2		4871	5	5	100000
+Ghoul King	725	1		1857	1	1	500
+Ghoul King	725	1		1862	1	1	500
+Ghoul King	725	1		1892	1	1	500
+Ghoul King	725	1		1867	1	1	500
+Ghoul King	725	1		1872	1	1	500
+Ghoul King	725	1		1877	1	1	500
+Ghoul King	725	1		1882	1	1	500
+Ghoul King	725	1		1887	1	1	500
+Ghoul King	725	1		6076	1	1	500
+Centaur Windrunner	726	2		5019	1	1	30
+Centaur Windrunner	726	2		5009	1	1	20
+Centaur Windrunner	726	2		1856	1	1	500
+Centaur Windrunner	726	2		1861	1	1	500
+Centaur Windrunner	726	2		1891	1	1	500
+Centaur Windrunner	726	2		1866	1	1	500
+Centaur Windrunner	726	2		1871	1	1	500
+Centaur Windrunner	726	2		1876	1	1	500
+Centaur Windrunner	726	2		1881	1	1	500
+Centaur Windrunner	726	2		1886	1	1	500
+Centaur Windrunner	726	2		6075	1	1	500
+Lamia Queen	747	2		5020	1	1	30
+Lamia Queen	747	2		1857	1	1	500
+Lamia Queen	747	2		1862	1	1	500
+Lamia Queen	747	2		1892	1	1	500
+Lamia Queen	747	2		1867	1	1	500
+Lamia Queen	747	2		1872	1	1	500
+Lamia Queen	747	2		1877	1	1	500
+Lamia Queen	747	2		1882	1	1	500
+Lamia Queen	747	2		1887	1	1	500
+Lamia Queen	747	2		6076	1	1	500
+Magmaron	760	1		1855	1	1	500
+Magmaron	760	1		1860	1	1	500
+Magmaron	760	1		1890	1	1	500
+Magmaron	760	1		1865	1	1	500
+Magmaron	760	1		1870	1	1	500
+Magmaron	760	1		1875	1	1	500
+Magmaron	760	1		1880	1	1	500
+Magmaron	760	1		1885	1	1	500
+Magmaron	760	1		6074	1	1	500
+Rolando	762	2		5019	1	1	30
+Rolando	762	2		1857	1	1	500
+Rolando	762	2		1862	1	1	500
+Rolando	762	2		1892	1	1	500
+Rolando	762	2		1867	1	1	500
+Rolando	762	2		1872	1	1	500
+Rolando	762	2		1877	1	1	500
+Rolando	762	2		1882	1	1	500
+Rolando	762	2		1887	1	1	500
+Rolando	762	2		6076	1	1	500
+Corsos	763	2		5019	1	1	30
+Corsos	763	2		1857	1	1	500
+Corsos	763	2		1862	1	1	500
+Corsos	763	2		1892	1	1	500
+Corsos	763	2		1867	1	1	500
+Corsos	763	2		1872	1	1	500
+Corsos	763	2		1877	1	1	500
+Corsos	763	2		1882	1	1	500
+Corsos	763	2		1887	1	1	500
+Corsos	763	2		6076	1	1	500
+Longo	764	2		5019	1	1	30
+Longo	764	2		1857	1	1	500
+Longo	764	2		1862	1	1	500
+Longo	764	2		1892	1	1	500
+Longo	764	2		1867	1	1	500
+Longo	764	2		1872	1	1	500
+Longo	764	2		1877	1	1	500
+Longo	764	2		1882	1	1	500
+Longo	764	2		1887	1	1	500
+Longo	764	2		6076	1	1	500
+Viglos	765	2		5009	1	1	20
+Viglos	765	2		5019	1	1	30
+Viglos	765	2		1857	1	1	500
+Viglos	765	2		1862	1	1	500
+Viglos	765	2		1892	1	1	500
+Viglos	765	2		1867	1	1	500
+Viglos	765	2		1872	1	1	500
+Viglos	765	2		1877	1	1	500
+Viglos	765	2		1882	1	1	500
+Viglos	765	2		1887	1	1	500
+Viglos	765	2		6076	1	1	500
+Barto	766	2		5008	1	1	30
+Barto	766	2		5018	1	1	10
+Barto	766	2		1856	1	1	500
+Barto	766	2		1861	1	1	500
+Barto	766	2		1891	1	1	500
+Barto	766	2		1866	1	1	500
+Barto	766	2		1871	1	1	500
+Barto	766	2		1876	1	1	500
+Barto	766	2		1881	1	1	500
+Barto	766	2		1886	1	1	500
+Barto	766	2		6075	1	1	500
+Leki	767	2		5006	1	1	20
+Leki	767	2		1855	1	1	500
+Leki	767	2		1860	1	1	500
+Leki	767	2		1890	1	1	500
+Leki	767	2		1865	1	1	500
+Leki	767	2		1870	1	1	500
+Leki	767	2		1875	1	1	500
+Leki	767	2		1880	1	1	500
+Leki	767	2		1885	1	1	500
+Leki	767	2		6074	1	1	500
+Helldie	769	2		5006	1	1	20
+Helldie	769	2		1855	1	1	500
+Helldie	769	2		1860	1	1	500
+Helldie	769	2		1890	1	1	500
+Helldie	769	2		1865	1	1	500
+Helldie	769	2		1870	1	1	500
+Helldie	769	2		1875	1	1	500
+Helldie	769	2		1880	1	1	500
+Helldie	769	2		1885	1	1	500
+Helldie	769	2		6074	1	1	500
+Volga	770	2		5015	1	1	20
+Volga	770	2		5016	1	1	25
+Volga	770	2		5017	1	1	30
+Volga	770	2		1856	1	1	500
+Volga	770	2		1861	1	1	500
+Volga	770	2		1891	1	1	500
+Volga	770	2		1866	1	1	500
+Volga	770	2		1871	1	1	500
+Volga	770	2		1876	1	1	500
+Volga	770	2		1881	1	1	500
+Volga	770	2		1886	1	1	500
+Volga	770	2		6075	1	1	500
+Vorn	771	1		1857	1	1	500
+Vorn	771	1		1862	1	1	500
+Vorn	771	1		1892	1	1	500
+Vorn	771	1		1867	1	1	500
+Vorn	771	1		1872	1	1	500
+Vorn	771	1		1877	1	1	500
+Vorn	771	1		1882	1	1	500
+Vorn	771	1		1887	1	1	500
+Vorn	771	1		6076	1	1	500
+Harn	772	1		451	1	1	100000
+Fargan	773	2		5019	1	1	30
+Fargan	773	2		1857	1	1	500
+Fargan	773	2		1862	1	1	500
+Fargan	773	2		1892	1	1	500
+Fargan	773	2		1867	1	1	500
+Fargan	773	2		1872	1	1	500
+Fargan	773	2		1877	1	1	500
+Fargan	773	2		1882	1	1	500
+Fargan	773	2		1887	1	1	500
+Fargan	773	2		6076	1	1	500
+Darilla	774	2		5008	1	1	30
+Darilla	774	2		5018	1	1	10
+Darilla	774	2		1856	1	1	500
+Darilla	774	2		1861	1	1	500
+Darilla	774	2		1891	1	1	500
+Darilla	774	2		1866	1	1	500
+Darilla	774	2		1871	1	1	500
+Darilla	774	2		1876	1	1	500
+Darilla	774	2		1881	1	1	500
+Darilla	774	2		1886	1	1	500
+Darilla	774	2		6075	1	1	500
+Risky	775	2		5020	1	1	30
+Risky	775	2		1857	1	1	500
+Risky	775	2		1862	1	1	500
+Risky	775	2		1892	1	1	500
+Risky	775	2		1867	1	1	500
+Risky	775	2		1872	1	1	500
+Risky	775	2		1877	1	1	500
+Risky	775	2		1882	1	1	500
+Risky	775	2		1887	1	1	500
+Risky	775	2		6076	1	1	500
+Lilith	776	1		1855	1	1	500
+Lilith	776	1		1860	1	1	500
+Lilith	776	1		1890	1	1	500
+Lilith	776	1		1865	1	1	500
+Lilith	776	1		1870	1	1	500
+Lilith	776	1		1875	1	1	500
+Lilith	776	1		1880	1	1	500
+Lilith	776	1		1885	1	1	500
+Lilith	776	1		6074	1	1	500
+Bonedragon Harangarun	778	2		5008	1	1	30
+Bonedragon Harangarun	778	2		1856	1	1	500
+Bonedragon Harangarun	778	2		1861	1	1	500
+Bonedragon Harangarun	778	2		1891	1	1	500
+Bonedragon Harangarun	778	2		1866	1	1	500
+Bonedragon Harangarun	778	2		1871	1	1	500
+Bonedragon Harangarun	778	2		1876	1	1	500
+Bonedragon Harangarun	778	2		1881	1	1	500
+Bonedragon Harangarun	778	2		1886	1	1	500
+Bonedragon Harangarun	778	2		6075	1	1	500
+Sheena	779	2		451	1	1	100000
+Sunk	780	2		5019	1	1	30
+Sunk	780	2		1857	1	1	500
+Sunk	780	2		1862	1	1	500
+Sunk	780	2		1892	1	1	500
+Sunk	780	2		1867	1	1	500
+Sunk	780	2		1872	1	1	500
+Sunk	780	2		1877	1	1	500
+Sunk	780	2		1882	1	1	500
+Sunk	780	2		1887	1	1	500
+Sunk	780	2		6076	1	1	500
+Warzakh	782	2		5019	1	1	30
+Warzakh	782	2		1857	1	1	500
+Warzakh	782	2		1862	1	1	500
+Warzakh	782	2		1892	1	1	500
+Warzakh	782	2		1867	1	1	500
+Warzakh	782	2		1872	1	1	500
+Warzakh	782	2		1877	1	1	500
+Warzakh	782	2		1882	1	1	500
+Warzakh	782	2		1887	1	1	500
+Warzakh	782	2		6076	1	1	500
+Agony	783	1		1856	1	1	500
+Agony	783	1		1861	1	1	500
+Agony	783	1		1891	1	1	500
+Agony	783	1		1866	1	1	500
+Agony	783	1		1871	1	1	500
+Agony	783	1		1876	1	1	500
+Agony	783	1		1881	1	1	500
+Agony	783	1		1886	1	1	500
+Agony	783	1		6075	1	1	500
+Darkeye	784	2		5008	1	1	30
+Darkeye	784	2		1856	1	1	500
+Darkeye	784	2		1861	1	1	500
+Darkeye	784	2		1891	1	1	500
+Darkeye	784	2		1866	1	1	500
+Darkeye	784	2		1871	1	1	500
+Darkeye	784	2		1876	1	1	500
+Darkeye	784	2		1881	1	1	500
+Darkeye	784	2		1886	1	1	500
+Darkeye	784	2		6075	1	1	500
+Zucker	785	2		5010	1	1	15
+Zucker	785	2		5020	1	1	30
+Zucker	785	2		1857	1	1	500
+Zucker	785	2		1862	1	1	500
+Zucker	785	2		1892	1	1	500
+Zucker	785	2		1867	1	1	500
+Zucker	785	2		1872	1	1	500
+Zucker	785	2		1877	1	1	500
+Zucker	785	2		1882	1	1	500
+Zucker	785	2		1887	1	1	500
+Zucker	785	2		6076	1	1	500
+Shocker	786	2		451	1	1	100000
+Vorisky	787	2		5010	1	1	15
+Vorisky	787	2		5020	1	1	30
+Vorisky	787	2		1857	1	1	500
+Vorisky	787	2		1862	1	1	500
+Vorisky	787	2		1892	1	1	500
+Vorisky	787	2		1867	1	1	500
+Vorisky	787	2		1872	1	1	500
+Vorisky	787	2		1877	1	1	500
+Vorisky	787	2		1882	1	1	500
+Vorisky	787	2		1887	1	1	500
+Vorisky	787	2		6076	1	1	500
+Big Box	788	2		5006	1	1	20
+Big Box	788	2		1855	1	1	500
+Big Box	788	2		1860	1	1	500
+Big Box	788	2		1890	1	1	500
+Big Box	788	2		1865	1	1	500
+Big Box	788	2		1870	1	1	500
+Big Box	788	2		1875	1	1	500
+Big Box	788	2		1880	1	1	500
+Big Box	788	2		1885	1	1	500
+Big Box	788	2		6074	1	1	500
+Bleege	790	2		5019	1	1	30
+Bleege	790	2		1857	1	1	500
+Bleege	790	2		1862	1	1	500
+Bleege	790	2		1892	1	1	500
+Bleege	790	2		1867	1	1	500
+Bleege	790	2		1872	1	1	500
+Bleege	790	2		1877	1	1	500
+Bleege	790	2		1882	1	1	500
+Bleege	790	2		1887	1	1	500
+Bleege	790	2		6076	1	1	500
+Seshrud	791	1		1857	1	1	500
+Seshrud	791	1		1862	1	1	500
+Seshrud	791	1		1892	1	1	500
+Seshrud	791	1		1867	1	1	500
+Seshrud	791	1		1872	1	1	500
+Seshrud	791	1		1877	1	1	500
+Seshrud	791	1		1882	1	1	500
+Seshrud	791	1		1887	1	1	500
+Seshrud	791	1		6076	1	1	500
+Luke	792	2		5005	1	1	30
+Luke	792	2		5028	1	1	30
+Luke	792	2		1855	1	1	500
+Luke	792	2		1860	1	1	500
+Luke	792	2		1890	1	1	500
+Luke	792	2		1865	1	1	500
+Luke	792	2		1870	1	1	500
+Luke	792	2		1875	1	1	500
+Luke	792	2		1880	1	1	500
+Luke	792	2		1885	1	1	500
+Luke	792	2		6074	1	1	500
+Barso	793	1		1857	1	1	500
+Barso	793	1		1862	1	1	500
+Barso	793	1		1892	1	1	500
+Barso	793	1		1867	1	1	500
+Barso	793	1		1872	1	1	500
+Barso	793	1		1877	1	1	500
+Barso	793	1		1882	1	1	500
+Barso	793	1		1887	1	1	500
+Barso	793	1		6076	1	1	500
+Baikan	794	2		5020	1	1	30
+Baikan	794	2		1857	1	1	500
+Baikan	794	2		1862	1	1	500
+Baikan	794	2		1892	1	1	500
+Baikan	794	2		1867	1	1	500
+Baikan	794	2		1872	1	1	500
+Baikan	794	2		1877	1	1	500
+Baikan	794	2		1882	1	1	500
+Baikan	794	2		1887	1	1	500
+Baikan	794	2		6076	1	1	500
+Sodom	806	2		5006	1	1	20
+Sodom	806	2		5027	1	1	30
+Sodom	806	2		1855	1	1	500
+Sodom	806	2		1860	1	1	500
+Sodom	806	2		1890	1	1	500
+Sodom	806	2		1865	1	1	500
+Sodom	806	2		1870	1	1	500
+Sodom	806	2		1875	1	1	500
+Sodom	806	2		1880	1	1	500
+Sodom	806	2		1885	1	1	500
+Sodom	806	2		6074	1	1	500
+Finkel	808	2		5008	1	1	30
+Finkel	808	2		5018	1	1	10
+Finkel	808	2		1856	1	1	500
+Finkel	808	2		1861	1	1	500
+Finkel	808	2		1891	1	1	500
+Finkel	808	2		1866	1	1	500
+Finkel	808	2		1871	1	1	500
+Finkel	808	2		1876	1	1	500
+Finkel	808	2		1881	1	1	500
+Finkel	808	2		1886	1	1	500
+Finkel	808	2		6075	1	1	500
+Hawkarrow King	809	2		5021	1	1	30
+Hawkarrow King	809	2		1857	1	1	500
+Hawkarrow King	809	2		1862	1	1	500
+Hawkarrow King	809	2		1892	1	1	500
+Hawkarrow King	809	2		1867	1	1	500
+Hawkarrow King	809	2		1872	1	1	500
+Hawkarrow King	809	2		1877	1	1	500
+Hawkarrow King	809	2		1882	1	1	500
+Hawkarrow King	809	2		1887	1	1	500
+Hawkarrow King	809	2		6076	1	1	500
+Erinies Director	811	2		5021	1	1	30
+Erinies Director	811	2		1857	1	1	500
+Erinies Director	811	2		1862	1	1	500
+Erinies Director	811	2		1892	1	1	500
+Erinies Director	811	2		1867	1	1	500
+Erinies Director	811	2		1872	1	1	500
+Erinies Director	811	2		1877	1	1	500
+Erinies Director	811	2		1882	1	1	500
+Erinies Director	811	2		1887	1	1	500
+Erinies Director	811	2		6076	1	1	500
+Bouldo	812	1		451	1	1	100000
+Jimbo	813	1		1856	1	1	500
+Jimbo	813	1		1861	1	1	500
+Jimbo	813	1		1891	1	1	500
+Jimbo	813	1		1866	1	1	500
+Jimbo	813	1		1871	1	1	500
+Jimbo	813	1		1876	1	1	500
+Jimbo	813	1		1881	1	1	500
+Jimbo	813	1		1886	1	1	500
+Jimbo	813	1		6075	1	1	500
+Shuta	814	1		451	1	1	100000
+Balror	817	2		5012	1	1	30
+Balror	817	2		5022	1	1	30
+Balror	817	2		1857	1	1	500
+Balror	817	2		1862	1	1	500
+Balror	817	2		1892	1	1	500
+Balror	817	2		1867	1	1	500
+Balror	817	2		1872	1	1	500
+Balror	817	2		1877	1	1	500
+Balror	817	2		1882	1	1	500
+Balror	817	2		1887	1	1	500
+Balror	817	2		6076	1	1	500
+Invader Guardian	819	3		6351	1	1	6000
+Invader Guardian	819	3		13588	1	1	540
+Invader Guardian	819	3		13589	1	1	540
+Invader Guardian	819	3		13590	1	1	540
+Invader Guardian	819	3		13591	1	1	540
+Invader Guardian	819	3		13592	1	1	540
+Invader Guardian	819	3		13598	1	1	2400
+Invader Guardian	819	3		14531	1	1	2500
+Invader Guardian	819	3		7394	1	1	10000
+Invader Guardian	819	3		3311	1	1	6000
+Invader Guardian	819	3		2117	1	1	2000
+Invader Guardian	819	3		2119	1	1	2000
+Invader Guardian	819	3		535	1	1	5000
+Invader Guardian	819	3		14591	1	1	12500
+Noble Lich	821	2		5021	1	1	30
+Noble Lich	821	2		1857	1	1	500
+Noble Lich	821	2		1862	1	1	500
+Noble Lich	821	2		1892	1	1	500
+Noble Lich	821	2		1867	1	1	500
+Noble Lich	821	2		1872	1	1	500
+Noble Lich	821	2		1877	1	1	500
+Noble Lich	821	2		1882	1	1	500
+Noble Lich	821	2		1887	1	1	500
+Noble Lich	821	2		6076	1	1	500
+High Rank Freezy Bondman	824	2		5021	1	1	30
+High Rank Freezy Bondman	824	2		1857	1	1	500
+High Rank Freezy Bondman	824	2		1862	1	1	500
+High Rank Freezy Bondman	824	2		1892	1	1	500
+High Rank Freezy Bondman	824	2		1867	1	1	500
+High Rank Freezy Bondman	824	2		1872	1	1	500
+High Rank Freezy Bondman	824	2		1877	1	1	500
+High Rank Freezy Bondman	824	2		1882	1	1	500
+High Rank Freezy Bondman	824	2		1887	1	1	500
+High Rank Freezy Bondman	824	2		6076	1	1	500
+Gorgoth	825	1		6351	1	1	400
+Gorgoth	825	1		13588	1	1	45
+Gorgoth	825	1		13589	1	1	45
+Gorgoth	825	1		13590	1	1	45
+Gorgoth	825	1		13591	1	1	45
+Gorgoth	825	1		13592	1	1	45
+Gorgoth	825	1		13598	1	1	200
+Gorgoth	825	1		14531	1	1	167
+Gorgoth	825	1		7394	1	1	10000
+Gorgoth	825	1		3311	1	1	500
+Adult Hawkarrow	829	2		5011	1	1	30
+Adult Hawkarrow	829	2		5021	1	1	30
+Adult Hawkarrow	829	2		1857	1	1	500
+Adult Hawkarrow	829	2		1862	1	1	500
+Adult Hawkarrow	829	2		1892	1	1	500
+Adult Hawkarrow	829	2		1867	1	1	500
+Adult Hawkarrow	829	2		1872	1	1	500
+Adult Hawkarrow	829	2		1877	1	1	500
+Adult Hawkarrow	829	2		1882	1	1	500
+Adult Hawkarrow	829	2		1887	1	1	500
+Adult Hawkarrow	829	2		6076	1	1	500
+Euriale Soldier	832	2		5010	1	1	15
+Euriale Soldier	832	2		1857	1	1	500
+Euriale Soldier	832	2		1862	1	1	500
+Euriale Soldier	832	2		1892	1	1	500
+Euriale Soldier	832	2		1867	1	1	500
+Euriale Soldier	832	2		1872	1	1	500
+Euriale Soldier	832	2		1877	1	1	500
+Euriale Soldier	832	2		1882	1	1	500
+Euriale Soldier	832	2		1887	1	1	500
+Euriale Soldier	832	2		6076	1	1	500
+Succubus Premier	837	2		5021	1	1	30
+Succubus Premier	837	2		1857	1	1	500
+Succubus Premier	837	2		1862	1	1	500
+Succubus Premier	837	2		1892	1	1	500
+Succubus Premier	837	2		1867	1	1	500
+Succubus Premier	837	2		1872	1	1	500
+Succubus Premier	837	2		1877	1	1	500
+Succubus Premier	837	2		1882	1	1	500
+Succubus Premier	837	2		1887	1	1	500
+Succubus Premier	837	2		6076	1	1	500
+Pharaoh Knight	839	2		5012	1	1	30
+Pharaoh Knight	839	2		1857	1	1	500
+Pharaoh Knight	839	2		1862	1	1	500
+Pharaoh Knight	839	2		1892	1	1	500
+Pharaoh Knight	839	2		1867	1	1	500
+Pharaoh Knight	839	2		1872	1	1	500
+Pharaoh Knight	839	2		1877	1	1	500
+Pharaoh Knight	839	2		1882	1	1	500
+Pharaoh Knight	839	2		1887	1	1	500
+Pharaoh Knight	839	2		6076	1	1	500
+Tamarai	842	2		5005	1	1	30
+Tamarai	842	2		5028	1	1	30
+Tamarai	842	2		1855	1	1	500
+Tamarai	842	2		1860	1	1	500
+Tamarai	842	2		1890	1	1	500
+Tamarai	842	2		1865	1	1	500
+Tamarai	842	2		1870	1	1	500
+Tamarai	842	2		1875	1	1	500
+Tamarai	842	2		1880	1	1	500
+Tamarai	842	2		1885	1	1	500
+Tamarai	842	2		6074	1	1	500
+Veteran Jung	843	2		5028	1	1	30
+Veteran Jung	843	2		1855	1	1	500
+Veteran Jung	843	2		1860	1	1	500
+Veteran Jung	843	2		1890	1	1	500
+Veteran Jung	843	2		1865	1	1	500
+Veteran Jung	843	2		1870	1	1	500
+Veteran Jung	843	2		1875	1	1	500
+Veteran Jung	843	2		1880	1	1	500
+Veteran Jung	843	2		1885	1	1	500
+Veteran Jung	843	2		6074	1	1	500
+Young Bran	847	1		1857	1	1	500
+Young Bran	847	1		1862	1	1	500
+Young Bran	847	1		1892	1	1	500
+Young Bran	847	1		1867	1	1	500
+Young Bran	847	1		1872	1	1	500
+Young Bran	847	1		1877	1	1	500
+Young Bran	847	1		1882	1	1	500
+Young Bran	847	1		1887	1	1	500
+Young Bran	847	1		6076	1	1	500
+Duriven Searcher	854	2		5010	1	1	15
+Duriven Searcher	854	2		5020	1	1	30
+Duriven Searcher	854	2		1857	1	1	500
+Duriven Searcher	854	2		1862	1	1	500
+Duriven Searcher	854	2		1892	1	1	500
+Duriven Searcher	854	2		1867	1	1	500
+Duriven Searcher	854	2		1872	1	1	500
+Duriven Searcher	854	2		1877	1	1	500
+Duriven Searcher	854	2		1882	1	1	500
+Duriven Searcher	854	2		1887	1	1	500
+Duriven Searcher	854	2		6076	1	1	500
+Robatom	855	2		5010	1	1	15
+Robatom	855	2		5020	1	1	30
+Robatom	855	2		1857	1	1	500
+Robatom	855	2		1862	1	1	500
+Robatom	855	2		1892	1	1	500
+Robatom	855	2		1867	1	1	500
+Robatom	855	2		1872	1	1	500
+Robatom	855	2		1877	1	1	500
+Robatom	855	2		1882	1	1	500
+Robatom	855	2		1887	1	1	500
+Robatom	855	2		6076	1	1	500
+Queasa Guide	873	1		1857	1	1	500
+Queasa Guide	873	1		1862	1	1	500
+Queasa Guide	873	1		1892	1	1	500
+Queasa Guide	873	1		1867	1	1	500
+Queasa Guide	873	1		1872	1	1	500
+Queasa Guide	873	1		1877	1	1	500
+Queasa Guide	873	1		1882	1	1	500
+Queasa Guide	873	1		1887	1	1	500
+Queasa Guide	873	1		6076	1	1	500
+Queasa Judge	875	2		5012	1	1	30
+Queasa Judge	875	2		1857	1	1	500
+Queasa Judge	875	2		1862	1	1	500
+Queasa Judge	875	2		1892	1	1	500
+Queasa Judge	875	2		1867	1	1	500
+Queasa Judge	875	2		1872	1	1	500
+Queasa Judge	875	2		1877	1	1	500
+Queasa Judge	875	2		1882	1	1	500
+Queasa Judge	875	2		1887	1	1	500
+Queasa Judge	875	2		6076	1	1	500
+Hira Soldier	884	2		5012	1	1	30
+Hira Soldier	884	2		5022	1	1	30
+Hira Soldier	884	2		1857	1	1	500
+Hira Soldier	884	2		1862	1	1	500
+Hira Soldier	884	2		1892	1	1	500
+Hira Soldier	884	2		1867	1	1	500
+Hira Soldier	884	2		1872	1	1	500
+Hira Soldier	884	2		1877	1	1	500
+Hira Soldier	884	2		1882	1	1	500
+Hira Soldier	884	2		1887	1	1	500
+Hira Soldier	884	2		6076	1	1	500
+Hira Commander	885	2		5012	1	1	30
+Hira Commander	885	2		5022	1	1	30
+Hira Commander	885	2		1857	1	1	500
+Hira Commander	885	2		1862	1	1	500
+Hira Commander	885	2		1892	1	1	500
+Hira Commander	885	2		1867	1	1	500
+Hira Commander	885	2		1872	1	1	500
+Hira Commander	885	2		1877	1	1	500
+Hira Commander	885	2		1882	1	1	500
+Hira Commander	885	2		1887	1	1	500
+Hira Commander	885	2		6076	1	1	500
+Lequimes King	888	1		451	1	1	100000
+Amblord Hellmighty	889	2		451	1	1	100000
+Mortar	904	2		451	1	1	100000
+Amantorg	906	2		14531	2	2	100000
+Amantorg	906	2		14541	2	2	100000
+Barsch	909	2		5013	1	1	30
+Barsch	909	2		1857	1	1	500
+Barsch	909	2		1862	1	1	500
+Barsch	909	2		1892	1	1	500
+Barsch	909	2		1867	1	1	500
+Barsch	909	2		1872	1	1	500
+Barsch	909	2		1877	1	1	500
+Barsch	909	2		1882	1	1	500
+Barsch	909	2		1887	1	1	500
+Barsch	909	2		6076	1	1	500
+Bakum	910	2		5013	1	1	30
+Bakum	910	2		1857	1	1	500
+Bakum	910	2		1862	1	1	500
+Bakum	910	2		1892	1	1	500
+Bakum	910	2		1867	1	1	500
+Bakum	910	2		1872	1	1	500
+Bakum	910	2		1877	1	1	500
+Bakum	910	2		1882	1	1	500
+Bakum	910	2		1887	1	1	500
+Bakum	910	2		6076	1	1	500
+Tara	911	2		451	1	1	100000
+Sparta	912	2		5010	1	1	15
+Sparta	912	2		5020	1	1	30
+Sparta	912	2		1857	1	1	500
+Sparta	912	2		1862	1	1	500
+Sparta	912	2		1892	1	1	500
+Sparta	912	2		1867	1	1	500
+Sparta	912	2		1872	1	1	500
+Sparta	912	2		1877	1	1	500
+Sparta	912	2		1882	1	1	500
+Sparta	912	2		1887	1	1	500
+Sparta	912	2		6076	1	1	500
+Kobolt Sorcerer	916	2		451	1	1	100000
+Zero	917	2		5013	1	1	30
+Zero	917	2		1857	1	1	500
+Zero	917	2		1862	1	1	500
+Zero	917	2		1892	1	1	500
+Zero	917	2		1867	1	1	500
+Zero	917	2		1872	1	1	500
+Zero	917	2		1877	1	1	500
+Zero	917	2		1882	1	1	500
+Zero	917	2		1887	1	1	500
+Zero	917	2		6076	1	1	500
+Mysterio	918	2		451	1	1	100000
+Blank	919	2		5013	1	1	30
+Blank	919	2		1857	1	1	500
+Blank	919	2		1862	1	1	500
+Blank	919	2		1892	1	1	500
+Blank	919	2		1867	1	1	500
+Blank	919	2		1872	1	1	500
+Blank	919	2		1877	1	1	500
+Blank	919	2		1882	1	1	500
+Blank	919	2		1887	1	1	500
+Blank	919	2		6076	1	1	500
+Kobolt Thrower	927	2		5009	1	1	20
+Kobolt Thrower	927	2		1856	1	1	500
+Kobolt Thrower	927	2		1861	1	1	500
+Kobolt Thrower	927	2		1891	1	1	500
+Kobolt Thrower	927	2		1866	1	1	500
+Kobolt Thrower	927	2		1871	1	1	500
+Kobolt Thrower	927	2		1876	1	1	500
+Kobolt Thrower	927	2		1881	1	1	500
+Kobolt Thrower	927	2		1886	1	1	500
+Kobolt Thrower	927	2		6075	1	1	500
+Grave Zombie Lord	950	1		1855	1	1	500
+Grave Zombie Lord	950	1		1860	1	1	500
+Grave Zombie Lord	950	1		1890	1	1	500
+Grave Zombie Lord	950	1		1865	1	1	500
+Grave Zombie Lord	950	1		1870	1	1	500
+Grave Zombie Lord	950	1		1875	1	1	500
+Grave Zombie Lord	950	1		1880	1	1	500
+Grave Zombie Lord	950	1		1885	1	1	500
+Grave Zombie Lord	950	1		6074	1	1	500
+Frenzy Zombie Lord	951	1		1855	1	1	500
+Frenzy Zombie Lord	951	1		1860	1	1	500
+Frenzy Zombie Lord	951	1		1890	1	1	500
+Frenzy Zombie Lord	951	1		1865	1	1	500
+Frenzy Zombie Lord	951	1		1870	1	1	500
+Frenzy Zombie Lord	951	1		1875	1	1	500
+Frenzy Zombie Lord	951	1		1880	1	1	500
+Frenzy Zombie Lord	951	1		1885	1	1	500
+Frenzy Zombie Lord	951	1		6074	1	1	500
+Swindle Zombie Lord	952	1		1855	1	1	500
+Swindle Zombie Lord	952	1		1860	1	1	500
+Swindle Zombie Lord	952	1		1890	1	1	500
+Swindle Zombie Lord	952	1		1865	1	1	500
+Swindle Zombie Lord	952	1		1870	1	1	500
+Swindle Zombie Lord	952	1		1875	1	1	500
+Swindle Zombie Lord	952	1		1880	1	1	500
+Swindle Zombie Lord	952	1		1885	1	1	500
+Swindle Zombie Lord	952	1		6074	1	1	500
+Poison Spider	983	2		5007	1	1	10
+Poison Spider	983	2		5015	1	1	20
+Poison Spider	983	2		5016	1	1	25
+Poison Spider	983	2		5017	1	1	30
+Poison Spider	983	2		1856	1	1	500
+Poison Spider	983	2		1861	1	1	500
+Poison Spider	983	2		1891	1	1	500
+Poison Spider	983	2		1866	1	1	500
+Poison Spider	983	2		1871	1	1	500
+Poison Spider	983	2		1876	1	1	500
+Poison Spider	983	2		1881	1	1	500
+Poison Spider	983	2		1886	1	1	500
+Poison Spider	983	2		6075	1	1	500
+Giant Spider Knight	984	2		5007	1	1	10
+Giant Spider Knight	984	2		5015	1	1	20
+Giant Spider Knight	984	2		5016	1	1	25
+Giant Spider Knight	984	2		5017	1	1	30
+Giant Spider Knight	984	2		1856	1	1	500
+Giant Spider Knight	984	2		1861	1	1	500
+Giant Spider Knight	984	2		1891	1	1	500
+Giant Spider Knight	984	2		1866	1	1	500
+Giant Spider Knight	984	2		1871	1	1	500
+Giant Spider Knight	984	2		1876	1	1	500
+Giant Spider Knight	984	2		1881	1	1	500
+Giant Spider Knight	984	2		1886	1	1	500
+Giant Spider Knight	984	2		6075	1	1	500
+Babilague Commander	985	2		5007	1	1	10
+Babilague Commander	985	2		5015	1	1	20
+Babilague Commander	985	2		5016	1	1	25
+Babilague Commander	985	2		5017	1	1	30
+Babilague Commander	985	2		1856	1	1	500
+Babilague Commander	985	2		1861	1	1	500
+Babilague Commander	985	2		1891	1	1	500
+Babilague Commander	985	2		1866	1	1	500
+Babilague Commander	985	2		1871	1	1	500
+Babilague Commander	985	2		1876	1	1	500
+Babilague Commander	985	2		1881	1	1	500
+Babilague Commander	985	2		1886	1	1	500
+Babilague Commander	985	2		6075	1	1	500
+Bat Keyzle	986	2		5007	1	1	10
+Bat Keyzle	986	2		5015	1	1	20
+Bat Keyzle	986	2		5016	1	1	25
+Bat Keyzle	986	2		5017	1	1	30
+Bat Keyzle	986	2		1856	1	1	500
+Bat Keyzle	986	2		1861	1	1	500
+Bat Keyzle	986	2		1891	1	1	500
+Bat Keyzle	986	2		1866	1	1	500
+Bat Keyzle	986	2		1871	1	1	500
+Bat Keyzle	986	2		1876	1	1	500
+Bat Keyzle	986	2		1881	1	1	500
+Bat Keyzle	986	2		1886	1	1	500
+Bat Keyzle	986	2		6075	1	1	500
+Cave Bat Commander	987	2		5007	1	1	10
+Cave Bat Commander	987	2		5015	1	1	20
+Cave Bat Commander	987	2		5016	1	1	25
+Cave Bat Commander	987	2		5017	1	1	30
+Cave Bat Commander	987	2		1856	1	1	500
+Cave Bat Commander	987	2		1861	1	1	500
+Cave Bat Commander	987	2		1891	1	1	500
+Cave Bat Commander	987	2		1866	1	1	500
+Cave Bat Commander	987	2		1871	1	1	500
+Cave Bat Commander	987	2		1876	1	1	500
+Cave Bat Commander	987	2		1881	1	1	500
+Cave Bat Commander	987	2		1886	1	1	500
+Cave Bat Commander	987	2		6075	1	1	500
+Norgen Lord	988	2		5007	1	1	10
+Norgen Lord	988	2		5015	1	1	20
+Norgen Lord	988	2		5016	1	1	25
+Norgen Lord	988	2		5017	1	1	30
+Norgen Lord	988	2		1856	1	1	500
+Norgen Lord	988	2		1861	1	1	500
+Norgen Lord	988	2		1891	1	1	500
+Norgen Lord	988	2		1866	1	1	500
+Norgen Lord	988	2		1871	1	1	500
+Norgen Lord	988	2		1876	1	1	500
+Norgen Lord	988	2		1881	1	1	500
+Norgen Lord	988	2		1886	1	1	500
+Norgen Lord	988	2		6075	1	1	500
+Dark Assassin	989	2		5007	1	1	10
+Dark Assassin	989	2		5015	1	1	20
+Dark Assassin	989	2		5016	1	1	25
+Dark Assassin	989	2		5017	1	1	30
+Dark Assassin	989	2		1856	1	1	500
+Dark Assassin	989	2		1861	1	1	500
+Dark Assassin	989	2		1891	1	1	500
+Dark Assassin	989	2		1866	1	1	500
+Dark Assassin	989	2		1871	1	1	500
+Dark Assassin	989	2		1876	1	1	500
+Dark Assassin	989	2		1881	1	1	500
+Dark Assassin	989	2		1886	1	1	500
+Dark Assassin	989	2		6075	1	1	500
+Assault Dead	990	2		5007	1	1	10
+Assault Dead	990	2		5015	1	1	20
+Assault Dead	990	2		5016	1	1	25
+Assault Dead	990	2		5017	1	1	30
+Assault Dead	990	2		1856	1	1	500
+Assault Dead	990	2		1861	1	1	500
+Assault Dead	990	2		1891	1	1	500
+Assault Dead	990	2		1866	1	1	500
+Assault Dead	990	2		1871	1	1	500
+Assault Dead	990	2		1876	1	1	500
+Assault Dead	990	2		1881	1	1	500
+Assault Dead	990	2		1886	1	1	500
+Assault Dead	990	2		6075	1	1	500
+Dark Exman	991	2		5007	1	1	10
+Dark Exman	991	2		5015	1	1	20
+Dark Exman	991	2		5016	1	1	25
+Dark Exman	991	2		5017	1	1	30
+Dark Exman	991	2		1856	1	1	500
+Dark Exman	991	2		1861	1	1	500
+Dark Exman	991	2		1891	1	1	500
+Dark Exman	991	2		1866	1	1	500
+Dark Exman	991	2		1871	1	1	500
+Dark Exman	991	2		1876	1	1	500
+Dark Exman	991	2		1881	1	1	500
+Dark Exman	991	2		1886	1	1	500
+Dark Exman	991	2		6075	1	1	500
+Queen Areh	992	2		5007	1	1	10
+Queen Areh	992	2		5015	1	1	20
+Queen Areh	992	2		5016	1	1	25
+Queen Areh	992	2		5017	1	1	30
+Queen Areh	992	2		1856	1	1	500
+Queen Areh	992	2		1861	1	1	500
+Queen Areh	992	2		1891	1	1	500
+Queen Areh	992	2		1866	1	1	500
+Queen Areh	992	2		1871	1	1	500
+Queen Areh	992	2		1876	1	1	500
+Queen Areh	992	2		1881	1	1	500
+Queen Areh	992	2		1886	1	1	500
+Queen Areh	992	2		6075	1	1	500
+Spider Queen [FoS]	993	2		6259	1	1	100000
+Queen Babilague	994	2		5007	1	1	10
+Queen Babilague	994	2		5015	1	1	20
+Queen Babilague	994	2		5016	1	1	25
+Queen Babilague	994	2		5017	1	1	30
+Queen Babilague	994	2		1856	1	1	500
+Queen Babilague	994	2		1861	1	1	500
+Queen Babilague	994	2		1891	1	1	500
+Queen Babilague	994	2		1866	1	1	500
+Queen Babilague	994	2		1871	1	1	500
+Queen Babilague	994	2		1876	1	1	500
+Queen Babilague	994	2		1881	1	1	500
+Queen Babilague	994	2		1886	1	1	500
+Queen Babilague	994	2		6075	1	1	500
+Giant Poison Moth	1025	2		5015	1	1	20
+Giant Poison Moth	1025	2		5016	1	1	25
+Giant Poison Moth	1025	2		5017	1	1	30
+Giant Poison Moth	1025	2		1856	1	1	500
+Giant Poison Moth	1025	2		1861	1	1	500
+Giant Poison Moth	1025	2		1891	1	1	500
+Giant Poison Moth	1025	2		1866	1	1	500
+Giant Poison Moth	1025	2		1871	1	1	500
+Giant Poison Moth	1025	2		1876	1	1	500
+Giant Poison Moth	1025	2		1881	1	1	500
+Giant Poison Moth	1025	2		1886	1	1	500
+Giant Poison Moth	1025	2		6075	1	1	500
+Large Poison Moth	1026	2		5015	1	1	20
+Large Poison Moth	1026	2		5016	1	1	25
+Large Poison Moth	1026	2		5017	1	1	30
+Large Poison Moth	1026	2		1856	1	1	500
+Large Poison Moth	1026	2		1861	1	1	500
+Large Poison Moth	1026	2		1891	1	1	500
+Large Poison Moth	1026	2		1866	1	1	500
+Large Poison Moth	1026	2		1871	1	1	500
+Large Poison Moth	1026	2		1876	1	1	500
+Large Poison Moth	1026	2		1881	1	1	500
+Large Poison Moth	1026	2		1886	1	1	500
+Large Poison Moth	1026	2		6075	1	1	500
+Big Poison Moth	1027	2		5015	1	1	20
+Big Poison Moth	1027	2		5016	1	1	25
+Big Poison Moth	1027	2		5017	1	1	30
+Big Poison Moth	1027	2		1856	1	1	500
+Big Poison Moth	1027	2		1861	1	1	500
+Big Poison Moth	1027	2		1891	1	1	500
+Big Poison Moth	1027	2		1866	1	1	500
+Big Poison Moth	1027	2		1871	1	1	500
+Big Poison Moth	1027	2		1876	1	1	500
+Big Poison Moth	1027	2		1881	1	1	500
+Big Poison Moth	1027	2		1886	1	1	500
+Big Poison Moth	1027	2		6075	1	1	500
+Lazy Bone King	1031	1		1856	1	1	500
+Lazy Bone King	1031	1		1861	1	1	500
+Lazy Bone King	1031	1		1891	1	1	500
+Lazy Bone King	1031	1		1866	1	1	500
+Lazy Bone King	1031	1		1871	1	1	500
+Lazy Bone King	1031	1		1876	1	1	500
+Lazy Bone King	1031	1		1881	1	1	500
+Lazy Bone King	1031	1		1886	1	1	500
+Lazy Bone King	1031	1		6075	1	1	500
+Crazy Bone King	1032	1		1856	1	1	500
+Crazy Bone King	1032	1		1861	1	1	500
+Crazy Bone King	1032	1		1891	1	1	500
+Crazy Bone King	1032	1		1866	1	1	500
+Crazy Bone King	1032	1		1871	1	1	500
+Crazy Bone King	1032	1		1876	1	1	500
+Crazy Bone King	1032	1		1881	1	1	500
+Crazy Bone King	1032	1		1886	1	1	500
+Crazy Bone King	1032	1		6075	1	1	500
+Fury Bone King	1033	1		1856	1	1	500
+Fury Bone King	1033	1		1861	1	1	500
+Fury Bone King	1033	1		1891	1	1	500
+Fury Bone King	1033	1		1866	1	1	500
+Fury Bone King	1033	1		1871	1	1	500
+Fury Bone King	1033	1		1876	1	1	500
+Fury Bone King	1033	1		1881	1	1	500
+Fury Bone King	1033	1		1886	1	1	500
+Fury Bone King	1033	1		6075	1	1	500
+Mura Flying Walker	1076	2		5008	1	1	30
+Mura Flying Walker	1076	2		5018	1	1	10
+Mura Flying Walker	1076	2		1856	1	1	500
+Mura Flying Walker	1076	2		1861	1	1	500
+Mura Flying Walker	1076	2		1891	1	1	500
+Mura Flying Walker	1076	2		1866	1	1	500
+Mura Flying Walker	1076	2		1871	1	1	500
+Mura Flying Walker	1076	2		1876	1	1	500
+Mura Flying Walker	1076	2		1881	1	1	500
+Mura Flying Walker	1076	2		1886	1	1	500
+Mura Flying Walker	1076	2		6075	1	1	500
+Lote Commander	1077	2		5008	1	1	30
+Lote Commander	1077	2		5018	1	1	10
+Lote Commander	1077	2		1856	1	1	500
+Lote Commander	1077	2		1861	1	1	500
+Lote Commander	1077	2		1891	1	1	500
+Lote Commander	1077	2		1866	1	1	500
+Lote Commander	1077	2		1871	1	1	500
+Lote Commander	1077	2		1876	1	1	500
+Lote Commander	1077	2		1881	1	1	500
+Lote Commander	1077	2		1886	1	1	500
+Lote Commander	1077	2		6075	1	1	500
+Ciring Striker	1078	2		5008	1	1	30
+Ciring Striker	1078	2		5018	1	1	10
+Ciring Striker	1078	2		1856	1	1	500
+Ciring Striker	1078	2		1861	1	1	500
+Ciring Striker	1078	2		1891	1	1	500
+Ciring Striker	1078	2		1866	1	1	500
+Ciring Striker	1078	2		1871	1	1	500
+Ciring Striker	1078	2		1876	1	1	500
+Ciring Striker	1078	2		1881	1	1	500
+Ciring Striker	1078	2		1886	1	1	500
+Ciring Striker	1078	2		6075	1	1	500
+Bellos Queen	1079	2		5008	1	1	30
+Bellos Queen	1079	2		5018	1	1	10
+Bellos Queen	1079	2		1856	1	1	500
+Bellos Queen	1079	2		1861	1	1	500
+Bellos Queen	1079	2		1891	1	1	500
+Bellos Queen	1079	2		1866	1	1	500
+Bellos Queen	1079	2		1871	1	1	500
+Bellos Queen	1079	2		1876	1	1	500
+Bellos Queen	1079	2		1881	1	1	500
+Bellos Queen	1079	2		1886	1	1	500
+Bellos Queen	1079	2		6075	1	1	500
+Nothrin Queen	1080	2		5008	1	1	30
+Nothrin Queen	1080	2		5018	1	1	10
+Nothrin Queen	1080	2		1856	1	1	500
+Nothrin Queen	1080	2		1861	1	1	500
+Nothrin Queen	1080	2		1891	1	1	500
+Nothrin Queen	1080	2		1866	1	1	500
+Nothrin Queen	1080	2		1871	1	1	500
+Nothrin Queen	1080	2		1876	1	1	500
+Nothrin Queen	1080	2		1881	1	1	500
+Nothrin Queen	1080	2		1886	1	1	500
+Nothrin Queen	1080	2		6075	1	1	500
+Blue Queen	1081	2		5008	1	1	30
+Blue Queen	1081	2		5018	1	1	10
+Blue Queen	1081	2		1856	1	1	500
+Blue Queen	1081	2		1861	1	1	500
+Blue Queen	1081	2		1891	1	1	500
+Blue Queen	1081	2		1866	1	1	500
+Blue Queen	1081	2		1871	1	1	500
+Blue Queen	1081	2		1876	1	1	500
+Blue Queen	1081	2		1881	1	1	500
+Blue Queen	1081	2		1886	1	1	500
+Blue Queen	1081	2		6075	1	1	500
+Rotso Manticore	1082	2		5018	1	1	10
+Rotso Manticore	1082	2		1856	1	1	500
+Rotso Manticore	1082	2		1861	1	1	500
+Rotso Manticore	1082	2		1891	1	1	500
+Rotso Manticore	1082	2		1866	1	1	500
+Rotso Manticore	1082	2		1871	1	1	500
+Rotso Manticore	1082	2		1876	1	1	500
+Rotso Manticore	1082	2		1881	1	1	500
+Rotso Manticore	1082	2		1886	1	1	500
+Rotso Manticore	1082	2		6075	1	1	500
+Dalta Manticore	1083	2		5018	1	1	10
+Dalta Manticore	1083	2		1856	1	1	500
+Dalta Manticore	1083	2		1861	1	1	500
+Dalta Manticore	1083	2		1891	1	1	500
+Dalta Manticore	1083	2		1866	1	1	500
+Dalta Manticore	1083	2		1871	1	1	500
+Dalta Manticore	1083	2		1876	1	1	500
+Dalta Manticore	1083	2		1881	1	1	500
+Dalta Manticore	1083	2		1886	1	1	500
+Dalta Manticore	1083	2		6075	1	1	500
+Rune Manticore	1084	2		5018	1	1	10
+Rune Manticore	1084	2		1856	1	1	500
+Rune Manticore	1084	2		1861	1	1	500
+Rune Manticore	1084	2		1891	1	1	500
+Rune Manticore	1084	2		1866	1	1	500
+Rune Manticore	1084	2		1871	1	1	500
+Rune Manticore	1084	2		1876	1	1	500
+Rune Manticore	1084	2		1881	1	1	500
+Rune Manticore	1084	2		1886	1	1	500
+Rune Manticore	1084	2		6075	1	1	500
+Mura Queen	1085	2		5018	1	1	10
+Mura Queen	1085	2		1856	1	1	500
+Mura Queen	1085	2		1861	1	1	500
+Mura Queen	1085	2		1891	1	1	500
+Mura Queen	1085	2		1866	1	1	500
+Mura Queen	1085	2		1871	1	1	500
+Mura Queen	1085	2		1876	1	1	500
+Mura Queen	1085	2		1881	1	1	500
+Mura Queen	1085	2		1886	1	1	500
+Mura Queen	1085	2		6075	1	1	500
+Lote Queen	1086	2		5018	1	1	10
+Lote Queen	1086	2		1856	1	1	500
+Lote Queen	1086	2		1861	1	1	500
+Lote Queen	1086	2		1891	1	1	500
+Lote Queen	1086	2		1866	1	1	500
+Lote Queen	1086	2		1871	1	1	500
+Lote Queen	1086	2		1876	1	1	500
+Lote Queen	1086	2		1881	1	1	500
+Lote Queen	1086	2		1886	1	1	500
+Lote Queen	1086	2		6075	1	1	500
+Ciring Queen	1087	2		5018	1	1	10
+Ciring Queen	1087	2		1856	1	1	500
+Ciring Queen	1087	2		1861	1	1	500
+Ciring Queen	1087	2		1891	1	1	500
+Ciring Queen	1087	2		1866	1	1	500
+Ciring Queen	1087	2		1871	1	1	500
+Ciring Queen	1087	2		1876	1	1	500
+Ciring Queen	1087	2		1881	1	1	500
+Ciring Queen	1087	2		1886	1	1	500
+Ciring Queen	1087	2		6075	1	1	500
+Lord Utherus	1121	1		1856	1	1	500
+Lord Utherus	1121	1		1861	1	1	500
+Lord Utherus	1121	1		1891	1	1	500
+Lord Utherus	1121	1		1866	1	1	500
+Lord Utherus	1121	1		1871	1	1	500
+Lord Utherus	1121	1		1876	1	1	500
+Lord Utherus	1121	1		1881	1	1	500
+Lord Utherus	1121	1		1886	1	1	500
+Lord Utherus	1121	1		6075	1	1	500
+Lord Pisar	1122	1		1856	1	1	500
+Lord Pisar	1122	1		1861	1	1	500
+Lord Pisar	1122	1		1891	1	1	500
+Lord Pisar	1122	1		1866	1	1	500
+Lord Pisar	1122	1		1871	1	1	500
+Lord Pisar	1122	1		1876	1	1	500
+Lord Pisar	1122	1		1881	1	1	500
+Lord Pisar	1122	1		1886	1	1	500
+Lord Pisar	1122	1		6075	1	1	500
+Lord Creeping	1123	1		1856	1	1	500
+Lord Creeping	1123	1		1861	1	1	500
+Lord Creeping	1123	1		1891	1	1	500
+Lord Creeping	1123	1		1866	1	1	500
+Lord Creeping	1123	1		1871	1	1	500
+Lord Creeping	1123	1		1876	1	1	500
+Lord Creeping	1123	1		1881	1	1	500
+Lord Creeping	1123	1		1886	1	1	500
+Lord Creeping	1123	1		6075	1	1	500
+Princess Marienne	1124	1		1856	1	1	500
+Princess Marienne	1124	1		1861	1	1	500
+Princess Marienne	1124	1		1891	1	1	500
+Princess Marienne	1124	1		1866	1	1	500
+Princess Marienne	1124	1		1871	1	1	500
+Princess Marienne	1124	1		1876	1	1	500
+Princess Marienne	1124	1		1881	1	1	500
+Princess Marienne	1124	1		1886	1	1	500
+Princess Marienne	1124	1		6075	1	1	500
+Princess Imin	1125	1		1856	1	1	500
+Princess Imin	1125	1		1861	1	1	500
+Princess Imin	1125	1		1891	1	1	500
+Princess Imin	1125	1		1866	1	1	500
+Princess Imin	1125	1		1871	1	1	500
+Princess Imin	1125	1		1876	1	1	500
+Princess Imin	1125	1		1881	1	1	500
+Princess Imin	1125	1		1886	1	1	500
+Princess Imin	1125	1		6075	1	1	500
+Princess Charring	1126	1		1856	1	1	500
+Princess Charring	1126	1		1861	1	1	500
+Princess Charring	1126	1		1891	1	1	500
+Princess Charring	1126	1		1866	1	1	500
+Princess Charring	1126	1		1871	1	1	500
+Princess Charring	1126	1		1876	1	1	500
+Princess Charring	1126	1		1881	1	1	500
+Princess Charring	1126	1		1886	1	1	500
+Princess Charring	1126	1		6075	1	1	500
+Captain Ellius	1127	1		1856	1	1	500
+Captain Ellius	1127	1		1861	1	1	500
+Captain Ellius	1127	1		1891	1	1	500
+Captain Ellius	1127	1		1866	1	1	500
+Captain Ellius	1127	1		1871	1	1	500
+Captain Ellius	1127	1		1876	1	1	500
+Captain Ellius	1127	1		1881	1	1	500
+Captain Ellius	1127	1		1886	1	1	500
+Captain Ellius	1127	1		6075	1	1	500
+Kingpin Garcia	1128	1		1856	1	1	500
+Kingpin Garcia	1128	1		1861	1	1	500
+Kingpin Garcia	1128	1		1891	1	1	500
+Kingpin Garcia	1128	1		1866	1	1	500
+Kingpin Garcia	1128	1		1871	1	1	500
+Kingpin Garcia	1128	1		1876	1	1	500
+Kingpin Garcia	1128	1		1881	1	1	500
+Kingpin Garcia	1128	1		1886	1	1	500
+Kingpin Garcia	1128	1		6075	1	1	500
+General Hairal	1129	1		1856	1	1	500
+General Hairal	1129	1		1861	1	1	500
+General Hairal	1129	1		1891	1	1	500
+General Hairal	1129	1		1866	1	1	500
+General Hairal	1129	1		1871	1	1	500
+General Hairal	1129	1		1876	1	1	500
+General Hairal	1129	1		1881	1	1	500
+General Hairal	1129	1		1886	1	1	500
+General Hairal	1129	1		6075	1	1	500
+Kallip Bandit Charger	1148	2		5009	1	1	20
+Kallip Bandit Charger	1148	2		1856	1	1	500
+Kallip Bandit Charger	1148	2		1861	1	1	500
+Kallip Bandit Charger	1148	2		1891	1	1	500
+Kallip Bandit Charger	1148	2		1866	1	1	500
+Kallip Bandit Charger	1148	2		1871	1	1	500
+Kallip Bandit Charger	1148	2		1876	1	1	500
+Kallip Bandit Charger	1148	2		1881	1	1	500
+Kallip Bandit Charger	1148	2		1886	1	1	500
+Kallip Bandit Charger	1148	2		6075	1	1	500
+Kallip Bandit Charger	1148	2		5009	1	1	20
+Kallip Bandit Charger	1148	2		1856	1	1	500
+Kallip Bandit Charger	1148	2		1861	1	1	500
+Kallip Bandit Charger	1148	2		1891	1	1	500
+Kallip Bandit Charger	1148	2		1866	1	1	500
+Kallip Bandit Charger	1148	2		1871	1	1	500
+Kallip Bandit Charger	1148	2		1876	1	1	500
+Kallip Bandit Charger	1148	2		1881	1	1	500
+Kallip Bandit Charger	1148	2		1886	1	1	500
+Kallip Bandit Charger	1148	2		6075	1	1	500
+Jerome Bandit Mercenary	1149	2		5009	1	1	20
+Jerome Bandit Mercenary	1149	2		1856	1	1	500
+Jerome Bandit Mercenary	1149	2		1861	1	1	500
+Jerome Bandit Mercenary	1149	2		1891	1	1	500
+Jerome Bandit Mercenary	1149	2		1866	1	1	500
+Jerome Bandit Mercenary	1149	2		1871	1	1	500
+Jerome Bandit Mercenary	1149	2		1876	1	1	500
+Jerome Bandit Mercenary	1149	2		1881	1	1	500
+Jerome Bandit Mercenary	1149	2		1886	1	1	500
+Jerome Bandit Mercenary	1149	2		6075	1	1	500
+Black Assassin Combatant	1150	2		5009	1	1	20
+Black Assassin Combatant	1150	2		1856	1	1	500
+Black Assassin Combatant	1150	2		1861	1	1	500
+Black Assassin Combatant	1150	2		1891	1	1	500
+Black Assassin Combatant	1150	2		1866	1	1	500
+Black Assassin Combatant	1150	2		1871	1	1	500
+Black Assassin Combatant	1150	2		1876	1	1	500
+Black Assassin Combatant	1150	2		1881	1	1	500
+Black Assassin Combatant	1150	2		1886	1	1	500
+Black Assassin Combatant	1150	2		6075	1	1	500
+Yalquinas	1163	2		5009	1	1	20
+Yalquinas	1163	2		5019	1	1	30
+Yalquinas	1163	2		1857	1	1	500
+Yalquinas	1163	2		1862	1	1	500
+Yalquinas	1163	2		1892	1	1	500
+Yalquinas	1163	2		1867	1	1	500
+Yalquinas	1163	2		1872	1	1	500
+Yalquinas	1163	2		1877	1	1	500
+Yalquinas	1163	2		1882	1	1	500
+Yalquinas	1163	2		1887	1	1	500
+Yalquinas	1163	2		6076	1	1	500
+Hwaridun	1164	2		5009	1	1	20
+Hwaridun	1164	2		5019	1	1	30
+Hwaridun	1164	2		1857	1	1	500
+Hwaridun	1164	2		1862	1	1	500
+Hwaridun	1164	2		1892	1	1	500
+Hwaridun	1164	2		1867	1	1	500
+Hwaridun	1164	2		1872	1	1	500
+Hwaridun	1164	2		1877	1	1	500
+Hwaridun	1164	2		1882	1	1	500
+Hwaridun	1164	2		1887	1	1	500
+Hwaridun	1164	2		6076	1	1	500
+Girghan	1165	2		5009	1	1	20
+Girghan	1165	2		5019	1	1	30
+Girghan	1165	2		1857	1	1	500
+Girghan	1165	2		1862	1	1	500
+Girghan	1165	2		1892	1	1	500
+Girghan	1165	2		1867	1	1	500
+Girghan	1165	2		1872	1	1	500
+Girghan	1165	2		1877	1	1	500
+Girghan	1165	2		1882	1	1	500
+Girghan	1165	2		1887	1	1	500
+Girghan	1165	2		6076	1	1	500
+Ankle Gnoll Centurion	1166	2		5009	1	1	20
+Ankle Gnoll Centurion	1166	2		5019	1	1	30
+Ankle Gnoll Centurion	1166	2		1857	1	1	500
+Ankle Gnoll Centurion	1166	2		1862	1	1	500
+Ankle Gnoll Centurion	1166	2		1892	1	1	500
+Ankle Gnoll Centurion	1166	2		1867	1	1	500
+Ankle Gnoll Centurion	1166	2		1872	1	1	500
+Ankle Gnoll Centurion	1166	2		1877	1	1	500
+Ankle Gnoll Centurion	1166	2		1882	1	1	500
+Ankle Gnoll Centurion	1166	2		1887	1	1	500
+Ankle Gnoll Centurion	1166	2		6076	1	1	500
+Ramon Gnoll Centurion	1167	2		5009	1	1	20
+Ramon Gnoll Centurion	1167	2		5019	1	1	30
+Ramon Gnoll Centurion	1167	2		1857	1	1	500
+Ramon Gnoll Centurion	1167	2		1862	1	1	500
+Ramon Gnoll Centurion	1167	2		1892	1	1	500
+Ramon Gnoll Centurion	1167	2		1867	1	1	500
+Ramon Gnoll Centurion	1167	2		1872	1	1	500
+Ramon Gnoll Centurion	1167	2		1877	1	1	500
+Ramon Gnoll Centurion	1167	2		1882	1	1	500
+Ramon Gnoll Centurion	1167	2		1887	1	1	500
+Ramon Gnoll Centurion	1167	2		6076	1	1	500
+Zirkah Gnoll Centurion	1168	2		5009	1	1	20
+Zirkah Gnoll Centurion	1168	2		5019	1	1	30
+Zirkah Gnoll Centurion	1168	2		1857	1	1	500
+Zirkah Gnoll Centurion	1168	2		1862	1	1	500
+Zirkah Gnoll Centurion	1168	2		1892	1	1	500
+Zirkah Gnoll Centurion	1168	2		1867	1	1	500
+Zirkah Gnoll Centurion	1168	2		1872	1	1	500
+Zirkah Gnoll Centurion	1168	2		1877	1	1	500
+Zirkah Gnoll Centurion	1168	2		1882	1	1	500
+Zirkah Gnoll Centurion	1168	2		1887	1	1	500
+Zirkah Gnoll Centurion	1168	2		6076	1	1	500
+Tennial Guardian	1196	1		1857	1	1	500
+Tennial Guardian	1196	1		1862	1	1	500
+Tennial Guardian	1196	1		1892	1	1	500
+Tennial Guardian	1196	1		1867	1	1	500
+Tennial Guardian	1196	1		1872	1	1	500
+Tennial Guardian	1196	1		1877	1	1	500
+Tennial Guardian	1196	1		1882	1	1	500
+Tennial Guardian	1196	1		1887	1	1	500
+Tennial Guardian	1196	1		6076	1	1	500
+Lamontel Guard	1197	1		1857	1	1	500
+Lamontel Guard	1197	1		1862	1	1	500
+Lamontel Guard	1197	1		1892	1	1	500
+Lamontel Guard	1197	1		1867	1	1	500
+Lamontel Guard	1197	1		1872	1	1	500
+Lamontel Guard	1197	1		1877	1	1	500
+Lamontel Guard	1197	1		1882	1	1	500
+Lamontel Guard	1197	1		1887	1	1	500
+Lamontel Guard	1197	1		6076	1	1	500
+Kezan Heavy Infantry	1198	1		1857	1	1	500
+Kezan Heavy Infantry	1198	1		1862	1	1	500
+Kezan Heavy Infantry	1198	1		1892	1	1	500
+Kezan Heavy Infantry	1198	1		1867	1	1	500
+Kezan Heavy Infantry	1198	1		1872	1	1	500
+Kezan Heavy Infantry	1198	1		1877	1	1	500
+Kezan Heavy Infantry	1198	1		1882	1	1	500
+Kezan Heavy Infantry	1198	1		1887	1	1	500
+Kezan Heavy Infantry	1198	1		6076	1	1	500
+Tennial Boss	1202	1		1857	1	1	500
+Tennial Boss	1202	1		1862	1	1	500
+Tennial Boss	1202	1		1892	1	1	500
+Tennial Boss	1202	1		1867	1	1	500
+Tennial Boss	1202	1		1872	1	1	500
+Tennial Boss	1202	1		1877	1	1	500
+Tennial Boss	1202	1		1882	1	1	500
+Tennial Boss	1202	1		1887	1	1	500
+Tennial Boss	1202	1		6076	1	1	500
+Lamontel Commander	1203	1		1857	1	1	500
+Lamontel Commander	1203	1		1862	1	1	500
+Lamontel Commander	1203	1		1892	1	1	500
+Lamontel Commander	1203	1		1867	1	1	500
+Lamontel Commander	1203	1		1872	1	1	500
+Lamontel Commander	1203	1		1877	1	1	500
+Lamontel Commander	1203	1		1882	1	1	500
+Lamontel Commander	1203	1		1887	1	1	500
+Lamontel Commander	1203	1		6076	1	1	500
+Kezan Commander	1204	1		1857	1	1	500
+Kezan Commander	1204	1		1862	1	1	500
+Kezan Commander	1204	1		1892	1	1	500
+Kezan Commander	1204	1		1867	1	1	500
+Kezan Commander	1204	1		1872	1	1	500
+Kezan Commander	1204	1		1877	1	1	500
+Kezan Commander	1204	1		1882	1	1	500
+Kezan Commander	1204	1		1887	1	1	500
+Kezan Commander	1204	1		6076	1	1	500
+Ankle Canedog Commander	1205	1		1857	1	1	500
+Ankle Canedog Commander	1205	1		1862	1	1	500
+Ankle Canedog Commander	1205	1		1892	1	1	500
+Ankle Canedog Commander	1205	1		1867	1	1	500
+Ankle Canedog Commander	1205	1		1872	1	1	500
+Ankle Canedog Commander	1205	1		1877	1	1	500
+Ankle Canedog Commander	1205	1		1882	1	1	500
+Ankle Canedog Commander	1205	1		1887	1	1	500
+Ankle Canedog Commander	1205	1		6076	1	1	500
+Lamon Canedog Commander	1206	1		1857	1	1	500
+Lamon Canedog Commander	1206	1		1862	1	1	500
+Lamon Canedog Commander	1206	1		1892	1	1	500
+Lamon Canedog Commander	1206	1		1867	1	1	500
+Lamon Canedog Commander	1206	1		1872	1	1	500
+Lamon Canedog Commander	1206	1		1877	1	1	500
+Lamon Canedog Commander	1206	1		1882	1	1	500
+Lamon Canedog Commander	1206	1		1887	1	1	500
+Lamon Canedog Commander	1206	1		6076	1	1	500
+Zirkah Canedog Commander	1207	1		1857	1	1	500
+Zirkah Canedog Commander	1207	1		1862	1	1	500
+Zirkah Canedog Commander	1207	1		1892	1	1	500
+Zirkah Canedog Commander	1207	1		1867	1	1	500
+Zirkah Canedog Commander	1207	1		1872	1	1	500
+Zirkah Canedog Commander	1207	1		1877	1	1	500
+Zirkah Canedog Commander	1207	1		1882	1	1	500
+Zirkah Canedog Commander	1207	1		1887	1	1	500
+Zirkah Canedog Commander	1207	1		6076	1	1	500
+Knight Leader	1213	2		5021	1	1	30
+Knight Leader	1213	2		1857	1	1	500
+Knight Leader	1213	2		1862	1	1	500
+Knight Leader	1213	2		1892	1	1	500
+Knight Leader	1213	2		1867	1	1	500
+Knight Leader	1213	2		1872	1	1	500
+Knight Leader	1213	2		1877	1	1	500
+Knight Leader	1213	2		1882	1	1	500
+Knight Leader	1213	2		1887	1	1	500
+Knight Leader	1213	2		6076	1	1	500
+Berserker Elite	1217	2		5021	1	1	30
+Berserker Elite	1217	2		1857	1	1	500
+Berserker Elite	1217	2		1862	1	1	500
+Berserker Elite	1217	2		1892	1	1	500
+Berserker Elite	1217	2		1867	1	1	500
+Berserker Elite	1217	2		1872	1	1	500
+Berserker Elite	1217	2		1877	1	1	500
+Berserker Elite	1217	2		1882	1	1	500
+Berserker Elite	1217	2		1887	1	1	500
+Berserker Elite	1217	2		6076	1	1	500
+Archer Captain	1221	2		5021	1	1	30
+Archer Captain	1221	2		1857	1	1	500
+Archer Captain	1221	2		1862	1	1	500
+Archer Captain	1221	2		1892	1	1	500
+Archer Captain	1221	2		1867	1	1	500
+Archer Captain	1221	2		1872	1	1	500
+Archer Captain	1221	2		1877	1	1	500
+Archer Captain	1221	2		1882	1	1	500
+Archer Captain	1221	2		1887	1	1	500
+Archer Captain	1221	2		6076	1	1	500
+Sorcerer Mage	1225	2		5021	1	1	30
+Sorcerer Mage	1225	2		1857	1	1	500
+Sorcerer Mage	1225	2		1862	1	1	500
+Sorcerer Mage	1225	2		1892	1	1	500
+Sorcerer Mage	1225	2		1867	1	1	500
+Sorcerer Mage	1225	2		1872	1	1	500
+Sorcerer Mage	1225	2		1877	1	1	500
+Sorcerer Mage	1225	2		1882	1	1	500
+Sorcerer Mage	1225	2		1887	1	1	500
+Sorcerer Mage	1225	2		6076	1	1	500
+Tower Knight	1229	2		5012	1	1	30
+Tower Knight	1229	2		5022	1	1	30
+Tower Knight	1229	2		1857	1	1	500
+Tower Knight	1229	2		1862	1	1	500
+Tower Knight	1229	2		1892	1	1	500
+Tower Knight	1229	2		1867	1	1	500
+Tower Knight	1229	2		1872	1	1	500
+Tower Knight	1229	2		1877	1	1	500
+Tower Knight	1229	2		1882	1	1	500
+Tower Knight	1229	2		1887	1	1	500
+Tower Knight	1229	2		6076	1	1	500
+Divide Knight Lord	1233	2		5022	1	1	30
+Divide Knight Lord	1233	2		1857	1	1	500
+Divide Knight Lord	1233	2		1862	1	1	500
+Divide Knight Lord	1233	2		1892	1	1	500
+Divide Knight Lord	1233	2		1867	1	1	500
+Divide Knight Lord	1233	2		1872	1	1	500
+Divide Knight Lord	1233	2		1877	1	1	500
+Divide Knight Lord	1233	2		1882	1	1	500
+Divide Knight Lord	1233	2		1887	1	1	500
+Divide Knight Lord	1233	2		6076	1	1	500
+Blood Soul Berserker	1237	2		5012	1	1	30
+Blood Soul Berserker	1237	2		5022	1	1	30
+Blood Soul Berserker	1237	2		1857	1	1	500
+Blood Soul Berserker	1237	2		1862	1	1	500
+Blood Soul Berserker	1237	2		1892	1	1	500
+Blood Soul Berserker	1237	2		1867	1	1	500
+Blood Soul Berserker	1237	2		1872	1	1	500
+Blood Soul Berserker	1237	2		1877	1	1	500
+Blood Soul Berserker	1237	2		1882	1	1	500
+Blood Soul Berserker	1237	2		1887	1	1	500
+Blood Soul Berserker	1237	2		6076	1	1	500
+Mystic Berserker Hero	1241	2		5022	1	1	30
+Mystic Berserker Hero	1241	2		1857	1	1	500
+Mystic Berserker Hero	1241	2		1862	1	1	500
+Mystic Berserker Hero	1241	2		1892	1	1	500
+Mystic Berserker Hero	1241	2		1867	1	1	500
+Mystic Berserker Hero	1241	2		1872	1	1	500
+Mystic Berserker Hero	1241	2		1877	1	1	500
+Mystic Berserker Hero	1241	2		1882	1	1	500
+Mystic Berserker Hero	1241	2		1887	1	1	500
+Mystic Berserker Hero	1241	2		6076	1	1	500
+Shadow Chain Archer	1245	2		5012	1	1	30
+Shadow Chain Archer	1245	2		5022	1	1	30
+Shadow Chain Archer	1245	2		1857	1	1	500
+Shadow Chain Archer	1245	2		1862	1	1	500
+Shadow Chain Archer	1245	2		1892	1	1	500
+Shadow Chain Archer	1245	2		1867	1	1	500
+Shadow Chain Archer	1245	2		1872	1	1	500
+Shadow Chain Archer	1245	2		1877	1	1	500
+Shadow Chain Archer	1245	2		1882	1	1	500
+Shadow Chain Archer	1245	2		1887	1	1	500
+Shadow Chain Archer	1245	2		6076	1	1	500
+Phantom Archer Master	1249	2		5022	1	1	30
+Phantom Archer Master	1249	2		1857	1	1	500
+Phantom Archer Master	1249	2		1862	1	1	500
+Phantom Archer Master	1249	2		1892	1	1	500
+Phantom Archer Master	1249	2		1867	1	1	500
+Phantom Archer Master	1249	2		1872	1	1	500
+Phantom Archer Master	1249	2		1877	1	1	500
+Phantom Archer Master	1249	2		1882	1	1	500
+Phantom Archer Master	1249	2		1887	1	1	500
+Phantom Archer Master	1249	2		6076	1	1	500
+Keeper Staff Sorcerer	1253	2		5012	1	1	30
+Keeper Staff Sorcerer	1253	2		5022	1	1	30
+Keeper Staff Sorcerer	1253	2		1857	1	1	500
+Keeper Staff Sorcerer	1253	2		1862	1	1	500
+Keeper Staff Sorcerer	1253	2		1892	1	1	500
+Keeper Staff Sorcerer	1253	2		1867	1	1	500
+Keeper Staff Sorcerer	1253	2		1872	1	1	500
+Keeper Staff Sorcerer	1253	2		1877	1	1	500
+Keeper Staff Sorcerer	1253	2		1882	1	1	500
+Keeper Staff Sorcerer	1253	2		1887	1	1	500
+Keeper Staff Sorcerer	1253	2		6076	1	1	500
+Chaos Sorcerer Master	1257	2		5022	1	1	30
+Chaos Sorcerer Master	1257	2		1857	1	1	500
+Chaos Sorcerer Master	1257	2		1862	1	1	500
+Chaos Sorcerer Master	1257	2		1892	1	1	500
+Chaos Sorcerer Master	1257	2		1867	1	1	500
+Chaos Sorcerer Master	1257	2		1872	1	1	500
+Chaos Sorcerer Master	1257	2		1877	1	1	500
+Chaos Sorcerer Master	1257	2		1882	1	1	500
+Chaos Sorcerer Master	1257	2		1887	1	1	500
+Chaos Sorcerer Master	1257	2		6076	1	1	500
+Rappontiff Motar	1293	1		5023	1	1	30
+Zubus Crusher	1294	1		5014	1	1	30
+Zubus Crusher	1294	1		5024	1	1	30
+Zebus Scout	1297	1		5014	1	1	30
+Blant Queen	1304	2		5021	1	1	30
+Blant Queen	1304	2		1857	1	1	500
+Blant Queen	1304	2		1862	1	1	500
+Blant Queen	1304	2		1892	1	1	500
+Blant Queen	1304	2		1867	1	1	500
+Blant Queen	1304	2		1872	1	1	500
+Blant Queen	1304	2		1877	1	1	500
+Blant Queen	1304	2		1882	1	1	500
+Blant Queen	1304	2		1887	1	1	500
+Blant Queen	1304	2		6076	1	1	500
+Player Bound	1308	1		5014	1	1	30
+Player Bound	1308	1		5024	1	1	30
+Creptil Lightning	1313	1		5023	1	1	30
+Nekros net	1316	1		5014	1	1	30
+Nekros net	1316	1		5024	1	1	30
+Manarian	1321	1		1856	1	1	500
+Manarian	1321	1		1861	1	1	500
+Manarian	1321	1		1891	1	1	500
+Manarian	1321	1		1866	1	1	500
+Manarian	1321	1		1871	1	1	500
+Manarian	1321	1		1876	1	1	500
+Manarian	1321	1		1881	1	1	500
+Manarian	1321	1		1886	1	1	500
+Manarian	1321	1		6075	1	1	500
+Urulka	1322	2		5009	1	1	20
+Urulka	1322	2		1856	1	1	500
+Urulka	1322	2		1861	1	1	500
+Urulka	1322	2		1891	1	1	500
+Urulka	1322	2		1866	1	1	500
+Urulka	1322	2		1871	1	1	500
+Urulka	1322	2		1876	1	1	500
+Urulka	1322	2		1881	1	1	500
+Urulka	1322	2		1886	1	1	500
+Urulka	1322	2		6075	1	1	500
+Lariane	1323	2		5009	1	1	20
+Lariane	1323	2		5019	1	1	30
+Lariane	1323	2		1857	1	1	500
+Lariane	1323	2		1862	1	1	500
+Lariane	1323	2		1892	1	1	500
+Lariane	1323	2		1867	1	1	500
+Lariane	1323	2		1872	1	1	500
+Lariane	1323	2		1877	1	1	500
+Lariane	1323	2		1882	1	1	500
+Lariane	1323	2		1887	1	1	500
+Lariane	1323	2		6076	1	1	500
+Lidina	1324	2		5009	1	1	20
+Lidina	1324	2		5019	1	1	30
+Lidina	1324	2		1857	1	1	500
+Lidina	1324	2		1862	1	1	500
+Lidina	1324	2		1892	1	1	500
+Lidina	1324	2		1867	1	1	500
+Lidina	1324	2		1872	1	1	500
+Lidina	1324	2		1877	1	1	500
+Lidina	1324	2		1882	1	1	500
+Lidina	1324	2		1887	1	1	500
+Lidina	1324	2		6076	1	1	500
+Letche	1325	2		5009	1	1	20
+Letche	1325	2		5019	1	1	30
+Letche	1325	2		1857	1	1	500
+Letche	1325	2		1862	1	1	500
+Letche	1325	2		1892	1	1	500
+Letche	1325	2		1867	1	1	500
+Letche	1325	2		1872	1	1	500
+Letche	1325	2		1877	1	1	500
+Letche	1325	2		1882	1	1	500
+Letche	1325	2		1887	1	1	500
+Letche	1325	2		6076	1	1	500
+Dilan	1326	2		5007	1	1	20
+Dilan	1326	2		5018	1	1	20
+Dilan	1326	2		5021	1	1	40
+Dilan	1326	2		5012	1	1	40
+Dilan	1326	2		5013	1	1	40
+Dilan	1326	2		5014	1	1	40
+Dilan	1326	2		5024	1	1	40
+Dilan	1326	2		5023	1	1	40
+Dilan	1326	2		5009	1	1	40
+Dilan	1326	2		6053	1	1	1500
+Dilan	1326	2		4755	1	1	100000
+Gunar	1327	2		5019	1	1	30
+Gunar	1327	2		1857	1	1	500
+Gunar	1327	2		1862	1	1	500
+Gunar	1327	2		1892	1	1	500
+Gunar	1327	2		1867	1	1	500
+Gunar	1327	2		1872	1	1	500
+Gunar	1327	2		1877	1	1	500
+Gunar	1327	2		1882	1	1	500
+Gunar	1327	2		1887	1	1	500
+Gunar	1327	2		6076	1	1	500
+Aigle	1328	2		5019	1	1	30
+Aigle	1328	2		1857	1	1	500
+Aigle	1328	2		1862	1	1	500
+Aigle	1328	2		1892	1	1	500
+Aigle	1328	2		1867	1	1	500
+Aigle	1328	2		1872	1	1	500
+Aigle	1328	2		1877	1	1	500
+Aigle	1328	2		1882	1	1	500
+Aigle	1328	2		1887	1	1	500
+Aigle	1328	2		6076	1	1	500
+Harupien	1329	1		1857	1	1	500
+Harupien	1329	1		1862	1	1	500
+Harupien	1329	1		1892	1	1	500
+Harupien	1329	1		1867	1	1	500
+Harupien	1329	1		1872	1	1	500
+Harupien	1329	1		1877	1	1	500
+Harupien	1329	1		1882	1	1	500
+Harupien	1329	1		1887	1	1	500
+Harupien	1329	1		6076	1	1	500
+Hurricane Lin	1330	1		1857	1	1	500
+Hurricane Lin	1330	1		1862	1	1	500
+Hurricane Lin	1330	1		1892	1	1	500
+Hurricane Lin	1330	1		1867	1	1	500
+Hurricane Lin	1330	1		1872	1	1	500
+Hurricane Lin	1330	1		1877	1	1	500
+Hurricane Lin	1330	1		1882	1	1	500
+Hurricane Lin	1330	1		1887	1	1	500
+Hurricane Lin	1330	1		6076	1	1	500
+Naxia	1331	1		1857	1	1	500
+Naxia	1331	1		1862	1	1	500
+Naxia	1331	1		1892	1	1	500
+Naxia	1331	1		1867	1	1	500
+Naxia	1331	1		1872	1	1	500
+Naxia	1331	1		1877	1	1	500
+Naxia	1331	1		1882	1	1	500
+Naxia	1331	1		1887	1	1	500
+Naxia	1331	1		6076	1	1	500
+Tram	1332	1		1857	1	1	500
+Tram	1332	1		1862	1	1	500
+Tram	1332	1		1892	1	1	500
+Tram	1332	1		1867	1	1	500
+Tram	1332	1		1872	1	1	500
+Tram	1332	1		1877	1	1	500
+Tram	1332	1		1882	1	1	500
+Tram	1332	1		1887	1	1	500
+Tram	1332	1		6076	1	1	500
+Drain	1333	2		5010	1	1	15
+Drain	1333	2		1857	1	1	500
+Drain	1333	2		1862	1	1	500
+Drain	1333	2		1892	1	1	500
+Drain	1333	2		1867	1	1	500
+Drain	1333	2		1872	1	1	500
+Drain	1333	2		1877	1	1	500
+Drain	1333	2		1882	1	1	500
+Drain	1333	2		1887	1	1	500
+Drain	1333	2		6076	1	1	500
+Wind Riner	1334	2		5010	1	1	15
+Wind Riner	1334	2		1857	1	1	500
+Wind Riner	1334	2		1862	1	1	500
+Wind Riner	1334	2		1892	1	1	500
+Wind Riner	1334	2		1867	1	1	500
+Wind Riner	1334	2		1872	1	1	500
+Wind Riner	1334	2		1877	1	1	500
+Wind Riner	1334	2		1882	1	1	500
+Wind Riner	1334	2		1887	1	1	500
+Wind Riner	1334	2		6076	1	1	500
+Windrunner	1335	2		5010	1	1	15
+Windrunner	1335	2		1857	1	1	500
+Windrunner	1335	2		1862	1	1	500
+Windrunner	1335	2		1892	1	1	500
+Windrunner	1335	2		1867	1	1	500
+Windrunner	1335	2		1872	1	1	500
+Windrunner	1335	2		1877	1	1	500
+Windrunner	1335	2		1882	1	1	500
+Windrunner	1335	2		1887	1	1	500
+Windrunner	1335	2		6076	1	1	500
+Walaya Bodyguards	1336	2		5010	1	1	15
+Walaya Bodyguards	1336	2		1857	1	1	500
+Walaya Bodyguards	1336	2		1862	1	1	500
+Walaya Bodyguards	1336	2		1892	1	1	500
+Walaya Bodyguards	1336	2		1867	1	1	500
+Walaya Bodyguards	1336	2		1872	1	1	500
+Walaya Bodyguards	1336	2		1877	1	1	500
+Walaya Bodyguards	1336	2		1882	1	1	500
+Walaya Bodyguards	1336	2		1887	1	1	500
+Walaya Bodyguards	1336	2		6076	1	1	500
+Flying Steel	1337	2		5010	1	1	15
+Flying Steel	1337	2		5020	1	1	30
+Flying Steel	1337	2		1857	1	1	500
+Flying Steel	1337	2		1862	1	1	500
+Flying Steel	1337	2		1892	1	1	500
+Flying Steel	1337	2		1867	1	1	500
+Flying Steel	1337	2		1872	1	1	500
+Flying Steel	1337	2		1877	1	1	500
+Flying Steel	1337	2		1882	1	1	500
+Flying Steel	1337	2		1887	1	1	500
+Flying Steel	1337	2		6076	1	1	500
+Catasram	1338	2		451	1	1	100000
+Faren	1339	2		5010	1	1	15
+Faren	1339	2		5020	1	1	30
+Faren	1339	2		1857	1	1	500
+Faren	1339	2		1862	1	1	500
+Faren	1339	2		1892	1	1	500
+Faren	1339	2		1867	1	1	500
+Faren	1339	2		1872	1	1	500
+Faren	1339	2		1877	1	1	500
+Faren	1339	2		1882	1	1	500
+Faren	1339	2		1887	1	1	500
+Faren	1339	2		6076	1	1	500
+Daritown	1340	2		5010	1	1	15
+Daritown	1340	2		5020	1	1	30
+Daritown	1340	2		1857	1	1	500
+Daritown	1340	2		1862	1	1	500
+Daritown	1340	2		1892	1	1	500
+Daritown	1340	2		1867	1	1	500
+Daritown	1340	2		1872	1	1	500
+Daritown	1340	2		1877	1	1	500
+Daritown	1340	2		1882	1	1	500
+Daritown	1340	2		1887	1	1	500
+Daritown	1340	2		6076	1	1	500
+Cuirinia	1341	2		5020	1	1	30
+Cuirinia	1341	2		1857	1	1	500
+Cuirinia	1341	2		1862	1	1	500
+Cuirinia	1341	2		1892	1	1	500
+Cuirinia	1341	2		1867	1	1	500
+Cuirinia	1341	2		1872	1	1	500
+Cuirinia	1341	2		1877	1	1	500
+Cuirinia	1341	2		1882	1	1	500
+Cuirinia	1341	2		1887	1	1	500
+Cuirinia	1341	2		6076	1	1	500
+Wind Hawk	1342	2		5020	1	1	30
+Wind Hawk	1342	2		1857	1	1	500
+Wind Hawk	1342	2		1862	1	1	500
+Wind Hawk	1342	2		1892	1	1	500
+Wind Hawk	1342	2		1867	1	1	500
+Wind Hawk	1342	2		1872	1	1	500
+Wind Hawk	1342	2		1877	1	1	500
+Wind Hawk	1342	2		1882	1	1	500
+Wind Hawk	1342	2		1887	1	1	500
+Wind Hawk	1342	2		6076	1	1	500
+Big Hit Ghoul	1343	2		5020	1	1	30
+Big Hit Ghoul	1343	2		1857	1	1	500
+Big Hit Ghoul	1343	2		1862	1	1	500
+Big Hit Ghoul	1343	2		1892	1	1	500
+Big Hit Ghoul	1343	2		1867	1	1	500
+Big Hit Ghoul	1343	2		1872	1	1	500
+Big Hit Ghoul	1343	2		1877	1	1	500
+Big Hit Ghoul	1343	2		1882	1	1	500
+Big Hit Ghoul	1343	2		1887	1	1	500
+Big Hit Ghoul	1343	2		6076	1	1	500
+Zefiran	1344	2		5020	1	1	30
+Zefiran	1344	2		1857	1	1	500
+Zefiran	1344	2		1862	1	1	500
+Zefiran	1344	2		1892	1	1	500
+Zefiran	1344	2		1867	1	1	500
+Zefiran	1344	2		1872	1	1	500
+Zefiran	1344	2		1877	1	1	500
+Zefiran	1344	2		1882	1	1	500
+Zefiran	1344	2		1887	1	1	500
+Zefiran	1344	2		6076	1	1	500
+Tartan	1345	2		5020	1	1	30
+Tartan	1345	2		1857	1	1	500
+Tartan	1345	2		1862	1	1	500
+Tartan	1345	2		1892	1	1	500
+Tartan	1345	2		1867	1	1	500
+Tartan	1345	2		1872	1	1	500
+Tartan	1345	2		1877	1	1	500
+Tartan	1345	2		1882	1	1	500
+Tartan	1345	2		1887	1	1	500
+Tartan	1345	2		6076	1	1	500
+Wild Buster	1346	1		1857	1	1	500
+Wild Buster	1346	1		1862	1	1	500
+Wild Buster	1346	1		1892	1	1	500
+Wild Buster	1346	1		1867	1	1	500
+Wild Buster	1346	1		1872	1	1	500
+Wild Buster	1346	1		1877	1	1	500
+Wild Buster	1346	1		1882	1	1	500
+Wild Buster	1346	1		1887	1	1	500
+Wild Buster	1346	1		6076	1	1	500
+Dark Wing	1347	2		5011	1	1	30
+Dark Wing	1347	2		1857	1	1	500
+Dark Wing	1347	2		1862	1	1	500
+Dark Wing	1347	2		1892	1	1	500
+Dark Wing	1347	2		1867	1	1	500
+Dark Wing	1347	2		1872	1	1	500
+Dark Wing	1347	2		1877	1	1	500
+Dark Wing	1347	2		1882	1	1	500
+Dark Wing	1347	2		1887	1	1	500
+Dark Wing	1347	2		6076	1	1	500
+Aralman Guard	1348	2		5011	1	1	30
+Aralman Guard	1348	2		1857	1	1	500
+Aralman Guard	1348	2		1862	1	1	500
+Aralman Guard	1348	2		1892	1	1	500
+Aralman Guard	1348	2		1867	1	1	500
+Aralman Guard	1348	2		1872	1	1	500
+Aralman Guard	1348	2		1877	1	1	500
+Aralman Guard	1348	2		1882	1	1	500
+Aralman Guard	1348	2		1887	1	1	500
+Aralman Guard	1348	2		6076	1	1	500
+Aralman Soldier	1349	2		5011	1	1	30
+Aralman Soldier	1349	2		1857	1	1	500
+Aralman Soldier	1349	2		1862	1	1	500
+Aralman Soldier	1349	2		1892	1	1	500
+Aralman Soldier	1349	2		1867	1	1	500
+Aralman Soldier	1349	2		1872	1	1	500
+Aralman Soldier	1349	2		1877	1	1	500
+Aralman Soldier	1349	2		1882	1	1	500
+Aralman Soldier	1349	2		1887	1	1	500
+Aralman Soldier	1349	2		6076	1	1	500
+Aralman	1350	2		5011	1	1	30
+Aralman	1350	2		1857	1	1	500
+Aralman	1350	2		1862	1	1	500
+Aralman	1350	2		1892	1	1	500
+Aralman	1350	2		1867	1	1	500
+Aralman	1350	2		1872	1	1	500
+Aralman	1350	2		1877	1	1	500
+Aralman	1350	2		1882	1	1	500
+Aralman	1350	2		1887	1	1	500
+Aralman	1350	2		6076	1	1	500
+Black Hart Rider	1352	2		5014	1	1	30
+Ogre Boss	1357	2		451	1	1	100000
+Ruin Warrior	1360	2		5014	1	1	30
+Ruin Warrior	1360	2		5024	1	1	30
+Mirage	1363	2		451	1	1	100000
+Watcher	1385	2		4800	1	1	100
+Watcher	1385	2		6053	1	1	250
+Watcher	1385	2		588	1	1	100
+Watcher	1385	2		1831	1	1	100
+Watcher	1385	2		589	1	1	100
+Watcher	1385	2		5013	1	1	30
+Watcher	1385	2		5023	1	1	30
+Arctic Wretch	1387	2		4800	1	1	100
+Arctic Wretch	1387	2		6053	1	1	250
+Arctic Wretch	1387	2		588	1	1	100
+Arctic Wretch	1387	2		1831	1	1	100
+Arctic Wretch	1387	2		589	1	1	100
+Arctic Wretch	1387	2		5013	1	1	30
+Arctic Wretch	1387	2		5023	1	1	30
+Silfiend	1388	2		4800	1	1	100
+Silfiend	1388	2		6053	1	1	250
+Silfiend	1388	2		588	1	1	100
+Silfiend	1388	2		1831	1	1	100
+Silfiend	1388	2		589	1	1	100
+Silfiend	1388	2		5023	1	1	30
+Faren Servants	1389	2		5010	1	1	15
+Faren Servants	1389	2		5020	1	1	30
+Faren Servants	1389	2		1857	1	1	500
+Faren Servants	1389	2		1862	1	1	500
+Faren Servants	1389	2		1892	1	1	500
+Faren Servants	1389	2		1867	1	1	500
+Faren Servants	1389	2		1872	1	1	500
+Faren Servants	1389	2		1877	1	1	500
+Faren Servants	1389	2		1882	1	1	500
+Faren Servants	1389	2		1887	1	1	500
+Faren Servants	1389	2		6076	1	1	500
+Rodam Defender	1390	2		5010	1	1	15
+Rodam Defender	1390	2		5020	1	1	30
+Rodam Defender	1390	2		1857	1	1	500
+Rodam Defender	1390	2		1862	1	1	500
+Rodam Defender	1390	2		1892	1	1	500
+Rodam Defender	1390	2		1867	1	1	500
+Rodam Defender	1390	2		1872	1	1	500
+Rodam Defender	1390	2		1877	1	1	500
+Rodam Defender	1390	2		1882	1	1	500
+Rodam Defender	1390	2		1887	1	1	500
+Rodam Defender	1390	2		6076	1	1	500
+Teslon Mantis	1393	2		5014	1	1	30
+Teslon Mantis	1393	2		5024	1	1	30
+Teslon Mantis	1393	2		4801	1	1	1600
+Teslon Mantis	1393	2		4800	1	1	2500
+Teslon Mantis	1393	2		6053	1	1	250
+Teslon Mantis	1393	2		591	1	1	100
+Teslon Mantis	1393	2		1849	1	1	100
+Teslon Mantis	1393	2		592	1	1	100
+Deathmute	1394	2		4800	1	1	100
+Deathmute	1394	2		6053	1	1	250
+Deathmute	1394	2		588	1	1	100
+Deathmute	1394	2		1831	1	1	100
+Deathmute	1394	2		589	1	1	100
+Deathmute	1394	2		5023	1	1	30
+Invader Squad Captain [CF ToD]	1508	4		14541	5	5	100000
+Invader Squad Captain [CF ToD]	1508	4		6482	1	1	100000
+Invader Squad Captain [CF ToD]	1508	4		14542	1	1	100000
+Invader Squad Captain [CF ToD]	1508	4		14531	3	3	100000
+Balloondog Clover	1509	2		5019	1	1	30
+Balloondog Clover	1509	2		1857	1	1	500
+Balloondog Clover	1509	2		1862	1	1	500
+Balloondog Clover	1509	2		1892	1	1	500
+Balloondog Clover	1509	2		1867	1	1	500
+Balloondog Clover	1509	2		1872	1	1	500
+Balloondog Clover	1509	2		1877	1	1	500
+Balloondog Clover	1509	2		1882	1	1	500
+Balloondog Clover	1509	2		1887	1	1	500
+Balloondog Clover	1509	2		6076	1	1	500
+Balloondog Clover	1509	2		7392	1	1	30000
+Balloondog Clover	1509	2		7393	1	1	20000
+Balloondog Clover	1509	2		7394	1	1	10000
+Balloondog Diamond	1510	2		1857	1	1	500
+Balloondog Diamond	1510	2		1862	1	1	500
+Balloondog Diamond	1510	2		1892	1	1	500
+Balloondog Diamond	1510	2		1867	1	1	500
+Balloondog Diamond	1510	2		1872	1	1	500
+Balloondog Diamond	1510	2		1877	1	1	500
+Balloondog Diamond	1510	2		1882	1	1	500
+Balloondog Diamond	1510	2		1887	1	1	500
+Balloondog Diamond	1510	2		6076	1	1	500
+Balloondog Diamond	1510	2		7392	1	1	30000
+Balloondog Diamond	1510	2		7393	1	1	20000
+Balloondog Diamond	1510	2		7394	1	1	10000
+Balloondog Spade	1511	2		5010	1	1	15
+Balloondog Spade	1511	2		1857	1	1	500
+Balloondog Spade	1511	2		1862	1	1	500
+Balloondog Spade	1511	2		1892	1	1	500
+Balloondog Spade	1511	2		1867	1	1	500
+Balloondog Spade	1511	2		1872	1	1	500
+Balloondog Spade	1511	2		1877	1	1	500
+Balloondog Spade	1511	2		1882	1	1	500
+Balloondog Spade	1511	2		1887	1	1	500
+Balloondog Spade	1511	2		6076	1	1	500
+Balloondog Spade	1511	2		7392	1	1	30000
+Balloondog Spade	1511	2		7393	1	1	20000
+Balloondog Spade	1511	2		7394	1	1	10000
+Frost Horned Deathmute	1512	2		6388	1	1	100000
+Frost Horned Deathmute	1512	2		12799	1	1	100000
+Polar Golem Boss	1552	2		6388	1	1	100000
+Polar Golem Boss	1552	2		12799	1	1	100000
+Whitesnow Captor	1559	2		5009	1	1	20
+Whitesnow Captor	1559	2		1856	1	1	500
+Whitesnow Captor	1559	2		1861	1	1	500
+Whitesnow Captor	1559	2		1891	1	1	500
+Whitesnow Captor	1559	2		1866	1	1	500
+Whitesnow Captor	1559	2		1871	1	1	500
+Whitesnow Captor	1559	2		1876	1	1	500
+Whitesnow Captor	1559	2		1881	1	1	500
+Whitesnow Captor	1559	2		1886	1	1	500
+Whitesnow Captor	1559	2		6075	1	1	500
+Whitesnow Captor	1559	2		7392	1	1	30000
+Whitesnow Captor	1559	2		7393	1	1	20000
+Whitesnow Captor	1559	2		7394	1	1	10000
+Iceberg Bear	1560	2		5009	1	1	20
+Iceberg Bear	1560	2		5019	1	1	30
+Iceberg Bear	1560	2		1857	1	1	500
+Iceberg Bear	1560	2		1862	1	1	500
+Iceberg Bear	1560	2		1892	1	1	500
+Iceberg Bear	1560	2		1867	1	1	500
+Iceberg Bear	1560	2		1872	1	1	500
+Iceberg Bear	1560	2		1877	1	1	500
+Iceberg Bear	1560	2		1882	1	1	500
+Iceberg Bear	1560	2		1887	1	1	500
+Iceberg Bear	1560	2		6076	1	1	500
+Iceberg Bear	1560	2		7392	1	1	30000
+Iceberg Bear	1560	2		7393	1	1	20000
+Iceberg Bear	1560	2		7394	1	1	10000
+Master Wood	1561	2		5008	1	1	30
+Master Wood	1561	2		5018	1	1	10
+Master Wood	1561	2		1856	1	1	500
+Master Wood	1561	2		1861	1	1	500
+Master Wood	1561	2		1891	1	1	500
+Master Wood	1561	2		1866	1	1	500
+Master Wood	1561	2		1871	1	1	500
+Master Wood	1561	2		1876	1	1	500
+Master Wood	1561	2		1881	1	1	500
+Master Wood	1561	2		1886	1	1	500
+Master Wood	1561	2		6075	1	1	500
+Master Wood	1561	2		7392	1	1	30000
+Master Wood	1561	2		7393	1	1	20000
+Master Wood	1561	2		7394	1	1	10000
+Gritstorm Rex Star	1562	2		5020	1	1	30
+Gritstorm Rex Star	1562	2		1857	1	1	500
+Gritstorm Rex Star	1562	2		1862	1	1	500
+Gritstorm Rex Star	1562	2		1892	1	1	500
+Gritstorm Rex Star	1562	2		1867	1	1	500
+Gritstorm Rex Star	1562	2		1872	1	1	500
+Gritstorm Rex Star	1562	2		1877	1	1	500
+Gritstorm Rex Star	1562	2		1882	1	1	500
+Gritstorm Rex Star	1562	2		1887	1	1	500
+Gritstorm Rex Star	1562	2		6076	1	1	500
+Gritstorm Rex Star	1562	2		7392	1	1	30000
+Gritstorm Rex Star	1562	2		7393	1	1	20000
+Gritstorm Rex Star	1562	2		7394	1	1	10000
+Gritstorm Rex Star	1562	2		14541	1	1	100
+Gritstorm Rex Puncher	1563	2		5020	1	1	30
+Gritstorm Rex Puncher	1563	2		1857	1	1	500
+Gritstorm Rex Puncher	1563	2		1862	1	1	500
+Gritstorm Rex Puncher	1563	2		1892	1	1	500
+Gritstorm Rex Puncher	1563	2		1867	1	1	500
+Gritstorm Rex Puncher	1563	2		1872	1	1	500
+Gritstorm Rex Puncher	1563	2		1877	1	1	500
+Gritstorm Rex Puncher	1563	2		1882	1	1	500
+Gritstorm Rex Puncher	1563	2		1887	1	1	500
+Gritstorm Rex Puncher	1563	2		6076	1	1	500
+Gritstorm Rex Puncher	1563	2		7392	1	1	30000
+Gritstorm Rex Puncher	1563	2		7393	1	1	20000
+Gritstorm Rex Puncher	1563	2		7394	1	1	10000
+Gritstorm Rex Puncher	1563	2		14541	1	1	100
+Gritstorm Rex Crusher	1564	2		1857	1	1	500
+Gritstorm Rex Crusher	1564	2		1862	1	1	500
+Gritstorm Rex Crusher	1564	2		1892	1	1	500
+Gritstorm Rex Crusher	1564	2		1867	1	1	500
+Gritstorm Rex Crusher	1564	2		1872	1	1	500
+Gritstorm Rex Crusher	1564	2		1877	1	1	500
+Gritstorm Rex Crusher	1564	2		1882	1	1	500
+Gritstorm Rex Crusher	1564	2		1887	1	1	500
+Gritstorm Rex Crusher	1564	2		6076	1	1	500
+Gritstorm Rex Crusher	1564	2		7392	1	1	30000
+Gritstorm Rex Crusher	1564	2		7393	1	1	20000
+Gritstorm Rex Crusher	1564	2		7394	1	1	10000
+Gritstorm Rex Crusher	1564	2		14541	1	1	100
+Hook Jester	1565	2		5008	1	1	30
+Hook Jester	1565	2		1856	1	1	500
+Hook Jester	1565	2		1861	1	1	500
+Hook Jester	1565	2		1891	1	1	500
+Hook Jester	1565	2		1866	1	1	500
+Hook Jester	1565	2		1871	1	1	500
+Hook Jester	1565	2		1876	1	1	500
+Hook Jester	1565	2		1881	1	1	500
+Hook Jester	1565	2		1886	1	1	500
+Hook Jester	1565	2		6075	1	1	500
+Hook Jester	1565	2		7392	1	1	30000
+Hook Jester	1565	2		7393	1	1	20000
+Hook Jester	1565	2		7394	1	1	10000
+Battle Beast Soldier	1566	2		5008	1	1	30
+Battle Beast Soldier	1566	2		5018	1	1	10
+Battle Beast Soldier	1566	2		1856	1	1	500
+Battle Beast Soldier	1566	2		1861	1	1	500
+Battle Beast Soldier	1566	2		1891	1	1	500
+Battle Beast Soldier	1566	2		1866	1	1	500
+Battle Beast Soldier	1566	2		1871	1	1	500
+Battle Beast Soldier	1566	2		1876	1	1	500
+Battle Beast Soldier	1566	2		1881	1	1	500
+Battle Beast Soldier	1566	2		1886	1	1	500
+Battle Beast Soldier	1566	2		6075	1	1	500
+Battle Beast Soldier	1566	2		7392	1	1	30000
+Battle Beast Soldier	1566	2		7393	1	1	20000
+Battle Beast Soldier	1566	2		7394	1	1	10000
+Battle Beast Chaser	1567	2		5018	1	1	10
+Battle Beast Chaser	1567	2		1856	1	1	500
+Battle Beast Chaser	1567	2		1861	1	1	500
+Battle Beast Chaser	1567	2		1891	1	1	500
+Battle Beast Chaser	1567	2		1866	1	1	500
+Battle Beast Chaser	1567	2		1871	1	1	500
+Battle Beast Chaser	1567	2		1876	1	1	500
+Battle Beast Chaser	1567	2		1881	1	1	500
+Battle Beast Chaser	1567	2		1886	1	1	500
+Battle Beast Chaser	1567	2		6075	1	1	500
+Battle Beast Chaser	1567	2		7392	1	1	30000
+Battle Beast Chaser	1567	2		7393	1	1	20000
+Battle Beast Chaser	1567	2		7394	1	1	10000
+Battle Beast Commander	1568	2		1856	1	1	500
+Battle Beast Commander	1568	2		1861	1	1	500
+Battle Beast Commander	1568	2		1891	1	1	500
+Battle Beast Commander	1568	2		1866	1	1	500
+Battle Beast Commander	1568	2		1871	1	1	500
+Battle Beast Commander	1568	2		1876	1	1	500
+Battle Beast Commander	1568	2		1881	1	1	500
+Battle Beast Commander	1568	2		1886	1	1	500
+Battle Beast Commander	1568	2		6075	1	1	500
+Battle Beast Commander	1568	2		7392	1	1	30000
+Battle Beast Commander	1568	2		7393	1	1	20000
+Battle Beast Commander	1568	2		7394	1	1	10000
+Battle Beast Commander	1568	2		5018	1	1	100000
+Battle Beast Commander	1568	2		11305	1	1	100000
+Spear Master Grey	1569	2		5010	1	1	15
+Spear Master Grey	1569	2		5020	1	1	30
+Spear Master Grey	1569	2		1857	1	1	500
+Spear Master Grey	1569	2		1862	1	1	500
+Spear Master Grey	1569	2		1892	1	1	500
+Spear Master Grey	1569	2		1867	1	1	500
+Spear Master Grey	1569	2		1872	1	1	500
+Spear Master Grey	1569	2		1877	1	1	500
+Spear Master Grey	1569	2		1882	1	1	500
+Spear Master Grey	1569	2		1887	1	1	500
+Spear Master Grey	1569	2		6076	1	1	500
+Spear Master Grey	1569	2		7392	1	1	30000
+Spear Master Grey	1569	2		7393	1	1	20000
+Spear Master Grey	1569	2		7394	1	1	10000
+Spear Master Green	1570	2		5010	1	1	15
+Spear Master Green	1570	2		1857	1	1	500
+Spear Master Green	1570	2		1862	1	1	500
+Spear Master Green	1570	2		1892	1	1	500
+Spear Master Green	1570	2		1867	1	1	500
+Spear Master Green	1570	2		1872	1	1	500
+Spear Master Green	1570	2		1877	1	1	500
+Spear Master Green	1570	2		1882	1	1	500
+Spear Master Green	1570	2		1887	1	1	500
+Spear Master Green	1570	2		6076	1	1	500
+Spear Master Green	1570	2		7392	1	1	30000
+Spear Master Green	1570	2		7393	1	1	20000
+Spear Master Green	1570	2		7394	1	1	10000
+Spear Master Yellow	1571	2		5010	1	1	100000
+Spear Master Yellow	1571	2		5020	1	1	30
+Spear Master Yellow	1571	2		1857	1	1	500
+Spear Master Yellow	1571	2		1862	1	1	500
+Spear Master Yellow	1571	2		1892	1	1	500
+Spear Master Yellow	1571	2		1867	1	1	500
+Spear Master Yellow	1571	2		1872	1	1	500
+Spear Master Yellow	1571	2		1877	1	1	500
+Spear Master Yellow	1571	2		1882	1	1	500
+Spear Master Yellow	1571	2		1887	1	1	500
+Spear Master Yellow	1571	2		6076	1	1	500
+Spear Master Yellow	1571	2		7392	1	1	30000
+Spear Master Yellow	1571	2		7393	1	1	20000
+Spear Master Yellow	1571	2		7394	1	1	10000
+Spear Master Yellow	1571	2		11305	1	1	100000
+Reptilian Soldier	1572	2		5011	1	1	30
+Reptilian Soldier	1572	2		5021	1	1	30
+Reptilian Soldier	1572	2		1857	1	1	500
+Reptilian Soldier	1572	2		1862	1	1	500
+Reptilian Soldier	1572	2		1892	1	1	500
+Reptilian Soldier	1572	2		1867	1	1	500
+Reptilian Soldier	1572	2		1872	1	1	500
+Reptilian Soldier	1572	2		1877	1	1	500
+Reptilian Soldier	1572	2		1882	1	1	500
+Reptilian Soldier	1572	2		1887	1	1	500
+Reptilian Soldier	1572	2		6076	1	1	500
+Reptilian Soldier	1572	2		7392	1	1	30000
+Reptilian Soldier	1572	2		7393	1	1	20000
+Reptilian Soldier	1572	2		7394	1	1	10000
+Reptilian Soldier	1572	2		14541	1	1	100
+Volcano Wolf Form	1573	2		5008	1	1	30
+Volcano Wolf Form	1573	2		5018	1	1	10
+Volcano Wolf Form	1573	2		1856	1	1	500
+Volcano Wolf Form	1573	2		1861	1	1	500
+Volcano Wolf Form	1573	2		1891	1	1	500
+Volcano Wolf Form	1573	2		1866	1	1	500
+Volcano Wolf Form	1573	2		1871	1	1	500
+Volcano Wolf Form	1573	2		1876	1	1	500
+Volcano Wolf Form	1573	2		1881	1	1	500
+Volcano Wolf Form	1573	2		1886	1	1	500
+Volcano Wolf Form	1573	2		6075	1	1	500
+Volcano Wolf Form	1573	2		7392	1	1	30000
+Volcano Wolf Form	1573	2		7393	1	1	20000
+Volcano Wolf Form	1573	2		7394	1	1	10000
+Succubus Humble	1574	2		5012	1	1	30
+Succubus Humble	1574	2		5022	1	1	30
+Succubus Humble	1574	2		1857	1	1	500
+Succubus Humble	1574	2		1862	1	1	500
+Succubus Humble	1574	2		1892	1	1	500
+Succubus Humble	1574	2		1867	1	1	500
+Succubus Humble	1574	2		1872	1	1	500
+Succubus Humble	1574	2		1877	1	1	500
+Succubus Humble	1574	2		1882	1	1	500
+Succubus Humble	1574	2		1887	1	1	500
+Succubus Humble	1574	2		6076	1	1	500
+Succubus Humble	1574	2		7392	1	1	30000
+Succubus Humble	1574	2		7393	1	1	20000
+Succubus Humble	1574	2		7394	1	1	10000
+Succubus Humble	1574	2		14541	1	1	100
+Winged Latch Deck	1575	2		5007	1	1	10
+Winged Latch Deck	1575	2		1856	1	1	500
+Winged Latch Deck	1575	2		1861	1	1	500
+Winged Latch Deck	1575	2		1891	1	1	500
+Winged Latch Deck	1575	2		1866	1	1	500
+Winged Latch Deck	1575	2		1871	1	1	500
+Winged Latch Deck	1575	2		1876	1	1	500
+Winged Latch Deck	1575	2		1881	1	1	500
+Winged Latch Deck	1575	2		1886	1	1	500
+Winged Latch Deck	1575	2		6075	1	1	500
+Winged Latch Deck	1575	2		7392	1	1	30000
+Winged Latch Deck	1575	2		7393	1	1	20000
+Winged Latch Deck	1575	2		7394	1	1	10000
+Hungerman Walker	1576	2		5011	1	1	30
+Hungerman Walker	1576	2		1857	1	1	500
+Hungerman Walker	1576	2		1862	1	1	500
+Hungerman Walker	1576	2		1892	1	1	500
+Hungerman Walker	1576	2		1867	1	1	500
+Hungerman Walker	1576	2		1872	1	1	500
+Hungerman Walker	1576	2		1877	1	1	500
+Hungerman Walker	1576	2		1882	1	1	500
+Hungerman Walker	1576	2		1887	1	1	500
+Hungerman Walker	1576	2		6076	1	1	500
+Hungerman Walker	1576	2		7392	1	1	30000
+Hungerman Walker	1576	2		7393	1	1	20000
+Hungerman Walker	1576	2		7394	1	1	10000
+Hungerman Walker	1576	2		14541	1	1	100
+Ice Death Scorpion	1577	2		5009	1	1	20
+Ice Death Scorpion	1577	2		5019	1	1	30
+Ice Death Scorpion	1577	2		1857	1	1	500
+Ice Death Scorpion	1577	2		1862	1	1	500
+Ice Death Scorpion	1577	2		1892	1	1	500
+Ice Death Scorpion	1577	2		1867	1	1	500
+Ice Death Scorpion	1577	2		1872	1	1	500
+Ice Death Scorpion	1577	2		1877	1	1	500
+Ice Death Scorpion	1577	2		1882	1	1	500
+Ice Death Scorpion	1577	2		1887	1	1	500
+Ice Death Scorpion	1577	2		6076	1	1	500
+Ice Death Scorpion	1577	2		7392	1	1	30000
+Ice Death Scorpion	1577	2		7393	1	1	20000
+Ice Death Scorpion	1577	2		7394	1	1	10000
+Invader Tigerorus [CF FoP]	1578	4		14541	5	5	100000
+Invader Tigerorus [CF FoP]	1578	4		6482	1	1	100000
+Invader Tigerorus [CF FoP]	1578	4		14542	1	1	100000
+Invader Tigerorus [CF FoP]	1578	4		14531	3	3	100000
+Chainsword Dancer	1579	2		5011	1	1	30
+Chainsword Dancer	1579	2		5021	1	1	30
+Chainsword Dancer	1579	2		1857	1	1	500
+Chainsword Dancer	1579	2		1862	1	1	500
+Chainsword Dancer	1579	2		1892	1	1	500
+Chainsword Dancer	1579	2		1867	1	1	500
+Chainsword Dancer	1579	2		1872	1	1	500
+Chainsword Dancer	1579	2		1877	1	1	500
+Chainsword Dancer	1579	2		1882	1	1	500
+Chainsword Dancer	1579	2		1887	1	1	500
+Chainsword Dancer	1579	2		6076	1	1	500
+Chainsword Dancer	1579	2		7392	1	1	30000
+Chainsword Dancer	1579	2		7393	1	1	20000
+Chainsword Dancer	1579	2		7394	1	1	10000
+Chainsword Dancer	1579	2		14541	1	1	100
+Minotaur Axe	1585	2		5011	1	1	30
+Minotaur Axe	1585	2		1857	1	1	500
+Minotaur Axe	1585	2		1862	1	1	500
+Minotaur Axe	1585	2		1892	1	1	500
+Minotaur Axe	1585	2		1867	1	1	500
+Minotaur Axe	1585	2		1872	1	1	500
+Minotaur Axe	1585	2		1877	1	1	500
+Minotaur Axe	1585	2		1882	1	1	500
+Minotaur Axe	1585	2		1887	1	1	500
+Minotaur Axe	1585	2		6076	1	1	500
+Minotaur Axe	1585	2		7392	1	1	30000
+Minotaur Axe	1585	2		7393	1	1	20000
+Minotaur Axe	1585	2		7394	1	1	10000
+Minotaur Axe	1585	2		14541	1	1	100
+Feathered Wing Soldier	1586	2		1856	1	1	500
+Feathered Wing Soldier	1586	2		1861	1	1	500
+Feathered Wing Soldier	1586	2		1891	1	1	500
+Feathered Wing Soldier	1586	2		1866	1	1	500
+Feathered Wing Soldier	1586	2		1871	1	1	500
+Feathered Wing Soldier	1586	2		1876	1	1	500
+Feathered Wing Soldier	1586	2		1881	1	1	500
+Feathered Wing Soldier	1586	2		1886	1	1	500
+Feathered Wing Soldier	1586	2		6075	1	1	500
+Feathered Wing Soldier	1586	2		7392	1	1	30000
+Feathered Wing Soldier	1586	2		7393	1	1	20000
+Feathered Wing Soldier	1586	2		7394	1	1	10000
+Serpent Witch	1587	2		5011	1	1	30
+Serpent Witch	1587	2		5021	1	1	30
+Serpent Witch	1587	2		1857	1	1	500
+Serpent Witch	1587	2		1862	1	1	500
+Serpent Witch	1587	2		1892	1	1	500
+Serpent Witch	1587	2		1867	1	1	500
+Serpent Witch	1587	2		1872	1	1	500
+Serpent Witch	1587	2		1877	1	1	500
+Serpent Witch	1587	2		1882	1	1	500
+Serpent Witch	1587	2		1887	1	1	500
+Serpent Witch	1587	2		6076	1	1	500
+Serpent Witch	1587	2		7392	1	1	30000
+Serpent Witch	1587	2		7393	1	1	20000
+Serpent Witch	1587	2		7394	1	1	10000
+Serpent Witch	1587	2		14541	1	1	100
+Rattleviper	1588	2		1857	1	1	500
+Rattleviper	1588	2		1862	1	1	500
+Rattleviper	1588	2		1892	1	1	500
+Rattleviper	1588	2		1867	1	1	500
+Rattleviper	1588	2		1872	1	1	500
+Rattleviper	1588	2		1877	1	1	500
+Rattleviper	1588	2		1882	1	1	500
+Rattleviper	1588	2		1887	1	1	500
+Rattleviper	1588	2		6076	1	1	500
+Rattleviper	1588	2		7392	1	1	30000
+Rattleviper	1588	2		7393	1	1	20000
+Rattleviper	1588	2		7394	1	1	10000
+Rattleviper	1588	2		14541	1	1	100
+Sabre Marylith	1589	2		5021	1	1	30
+Sabre Marylith	1589	2		1857	1	1	500
+Sabre Marylith	1589	2		1862	1	1	500
+Sabre Marylith	1589	2		1892	1	1	500
+Sabre Marylith	1589	2		1867	1	1	500
+Sabre Marylith	1589	2		1872	1	1	500
+Sabre Marylith	1589	2		1877	1	1	500
+Sabre Marylith	1589	2		1882	1	1	500
+Sabre Marylith	1589	2		1887	1	1	500
+Sabre Marylith	1589	2		6076	1	1	500
+Sabre Marylith	1589	2		7392	1	1	30000
+Sabre Marylith	1589	2		7393	1	1	20000
+Sabre Marylith	1589	2		7394	1	1	10000
+Sabre Marylith	1589	2		14541	1	1	100
+Sky Avenger Soldier	1590	1		5012	1	1	30
+Sky Avenger Soldier	1590	1		1857	1	1	500
+Sky Avenger Soldier	1590	1		1862	1	1	500
+Sky Avenger Soldier	1590	1		1892	1	1	500
+Sky Avenger Soldier	1590	1		1867	1	1	500
+Sky Avenger Soldier	1590	1		1872	1	1	500
+Sky Avenger Soldier	1590	1		1877	1	1	500
+Sky Avenger Soldier	1590	1		1882	1	1	500
+Sky Avenger Soldier	1590	1		1887	1	1	500
+Sky Avenger Soldier	1590	1		6076	1	1	500
+Sky Avenger Soldier	1590	1		7392	1	1	30000
+Sky Avenger Soldier	1590	1		7393	1	1	20000
+Sky Avenger Soldier	1590	1		7394	1	1	10000
+Sky Avenger Soldier	1590	1		14541	1	1	100
+Event Monster in Land of Ice	1726	1		12799	1	1	100000
+Event Monster in Frozen	1727	1		12799	1	1	100000
+Irion Gest	1735	2		5006	1	1	20
+Irion Gest	1735	2		5027	1	1	30
+Irion Gest	1735	2		1855	1	1	500
+Irion Gest	1735	2		1860	1	1	500
+Irion Gest	1735	2		1890	1	1	500
+Irion Gest	1735	2		1865	1	1	500
+Irion Gest	1735	2		1870	1	1	500
+Irion Gest	1735	2		1875	1	1	500
+Irion Gest	1735	2		1880	1	1	500
+Irion Gest	1735	2		1885	1	1	500
+Irion Gest	1735	2		6074	1	1	500
+Patriot Slave	1739	1		14589	1	1	900
+Patriot Slave	1739	1		1175	1	1	100
+Patriot Slave	1739	1		1178	1	1	100
+Patriot Slave	1739	1		7392	1	1	10000
+Patriot Slave	1739	1		3311	1	1	250
+Patriot Sergeant	1740	2		14531	1	1	250
+Patriot Sergeant	1740	2		14589	1	1	2000
+Patriot Sergeant	1740	2		6351	1	1	800
+Patriot Sergeant	1740	2		13588	1	1	80
+Patriot Sergeant	1740	2		13589	1	1	80
+Patriot Sergeant	1740	2		13590	1	1	80
+Patriot Sergeant	1740	2		13591	1	1	80
+Patriot Sergeant	1740	2		13592	1	1	80
+Patriot Sergeant	1740	2		13598	1	1	350
+Patriot Sergeant	1740	2		7394	1	1	10000
+Patriot Sergeant	1740	2		3311	1	1	500
+Patriot Marauder	1741	1		14531	1	1	167
+Patriot Marauder	1741	1		14589	1	1	1350
+Patriot Marauder	1741	1		13588	1	1	45
+Patriot Marauder	1741	1		13589	1	1	45
+Patriot Marauder	1741	1		13590	1	1	45
+Patriot Marauder	1741	1		13591	1	1	45
+Patriot Marauder	1741	1		13592	1	1	45
+Patriot Marauder	1741	1		13598	1	1	200
+Patriot Marauder	1741	1		7393	1	1	10000
+Patriot Marauder	1741	1		3311	1	1	500
+Patriot Marauder	1741	1		6351	1	1	400
+Regia	1748	2		5005	1	1	30
+Regia	1748	2		5028	1	1	30
+Regia	1748	2		1855	1	1	500
+Regia	1748	2		1860	1	1	500
+Regia	1748	2		1890	1	1	500
+Regia	1748	2		1865	1	1	500
+Regia	1748	2		1870	1	1	500
+Regia	1748	2		1875	1	1	500
+Regia	1748	2		1880	1	1	500
+Regia	1748	2		1885	1	1	500
+Regia	1748	2		6074	1	1	500
+Bayal	1749	2		5005	1	1	30
+Bayal	1749	2		5028	1	1	30
+Bayal	1749	2		1855	1	1	500
+Bayal	1749	2		1860	1	1	500
+Bayal	1749	2		1890	1	1	500
+Bayal	1749	2		1865	1	1	500
+Bayal	1749	2		1870	1	1	500
+Bayal	1749	2		1875	1	1	500
+Bayal	1749	2		1880	1	1	500
+Bayal	1749	2		1885	1	1	500
+Bayal	1749	2		6074	1	1	500
+Irysha	1750	2		5006	1	1	20
+Irysha	1750	2		5027	1	1	30
+Irysha	1750	2		1855	1	1	500
+Irysha	1750	2		1860	1	1	500
+Irysha	1750	2		1890	1	1	500
+Irysha	1750	2		1865	1	1	500
+Irysha	1750	2		1870	1	1	500
+Irysha	1750	2		1875	1	1	500
+Irysha	1750	2		1880	1	1	500
+Irysha	1750	2		1885	1	1	500
+Irysha	1750	2		6074	1	1	500
+Felicia	1751	2		5006	1	1	20
+Felicia	1751	2		5027	1	1	30
+Felicia	1751	2		1855	1	1	500
+Felicia	1751	2		1860	1	1	500
+Felicia	1751	2		1890	1	1	500
+Felicia	1751	2		1865	1	1	500
+Felicia	1751	2		1870	1	1	500
+Felicia	1751	2		1875	1	1	500
+Felicia	1751	2		1880	1	1	500
+Felicia	1751	2		1885	1	1	500
+Felicia	1751	2		6074	1	1	500
+Kerg	1752	1		5005	1	1	30
+Berudin	1753	2		5027	1	1	30
+Berudin	1753	2		1855	1	1	500
+Berudin	1753	2		1860	1	1	500
+Berudin	1753	2		1890	1	1	500
+Berudin	1753	2		1865	1	1	500
+Berudin	1753	2		1870	1	1	500
+Berudin	1753	2		1875	1	1	500
+Berudin	1753	2		1880	1	1	500
+Berudin	1753	2		1885	1	1	500
+Berudin	1753	2		6074	1	1	500
+Bellihart	1754	2		5006	1	1	20
+Bellihart	1754	2		1855	1	1	500
+Bellihart	1754	2		1860	1	1	500
+Bellihart	1754	2		1890	1	1	500
+Bellihart	1754	2		1865	1	1	500
+Bellihart	1754	2		1870	1	1	500
+Bellihart	1754	2		1875	1	1	500
+Bellihart	1754	2		1880	1	1	500
+Bellihart	1754	2		1885	1	1	500
+Bellihart	1754	2		6074	1	1	500
+Shylock	1755	2		5006	1	1	20
+Shylock	1755	2		1855	1	1	500
+Shylock	1755	2		1860	1	1	500
+Shylock	1755	2		1890	1	1	500
+Shylock	1755	2		1865	1	1	500
+Shylock	1755	2		1870	1	1	500
+Shylock	1755	2		1875	1	1	500
+Shylock	1755	2		1880	1	1	500
+Shylock	1755	2		1885	1	1	500
+Shylock	1755	2		6074	1	1	500
+Guldin	1756	2		5007	1	1	10
+Guldin	1756	2		5015	1	1	20
+Guldin	1756	2		5016	1	1	25
+Guldin	1756	2		5017	1	1	30
+Guldin	1756	2		1856	1	1	500
+Guldin	1756	2		1861	1	1	500
+Guldin	1756	2		1891	1	1	500
+Guldin	1756	2		1866	1	1	500
+Guldin	1756	2		1871	1	1	500
+Guldin	1756	2		1876	1	1	500
+Guldin	1756	2		1881	1	1	500
+Guldin	1756	2		1886	1	1	500
+Guldin	1756	2		6075	1	1	500
+Chariot Shooter	1766	1		14590	1	1	900
+Chariot Shooter	1766	1		1175	1	1	50
+Chariot Shooter	1766	1		1178	1	1	50
+Chariot Shooter	1766	1		7392	1	1	10000
+Chariot Charger	1767	1		14531	1	1	167
+Chariot Charger	1767	1		14590	1	1	1350
+Chariot Charger	1767	1		13588	1	1	45
+Chariot Charger	1767	1		13589	1	1	45
+Chariot Charger	1767	1		13590	1	1	45
+Chariot Charger	1767	1		13591	1	1	45
+Chariot Charger	1767	1		13592	1	1	45
+Chariot Charger	1767	1		13598	1	1	200
+Chariot Charger	1767	1		7393	1	1	10000
+Chariot Charger	1767	1		3311	1	1	500
+Chariot Charger	1767	1		6351	1	1	400
+Chariot Gladiator	1768	2		14531	1	1	250
+Chariot Gladiator	1768	2		14590	1	1	2000
+Chariot Gladiator	1768	2		6351	1	1	800
+Chariot Gladiator	1768	2		13588	1	1	80
+Chariot Gladiator	1768	2		13589	1	1	80
+Chariot Gladiator	1768	2		13590	1	1	80
+Chariot Gladiator	1768	2		13591	1	1	80
+Chariot Gladiator	1768	2		13592	1	1	80
+Chariot Gladiator	1768	2		13598	1	1	350
+Chariot Gladiator	1768	2		7394	1	1	10000
+Chariot Gladiator	1768	2		3311	1	1	500
+Forsaken Rain	1777	2		5009	1	1	20
+Forsaken Rain	1777	2		1856	1	1	500
+Forsaken Rain	1777	2		1861	1	1	500
+Forsaken Rain	1777	2		1891	1	1	500
+Forsaken Rain	1777	2		1866	1	1	500
+Forsaken Rain	1777	2		1871	1	1	500
+Forsaken Rain	1777	2		1876	1	1	500
+Forsaken Rain	1777	2		1881	1	1	500
+Forsaken Rain	1777	2		1886	1	1	500
+Forsaken Rain	1777	2		6075	1	1	500
+Haken Hollow	1780	2		5008	1	1	30
+Haken Hollow	1780	2		1856	1	1	500
+Haken Hollow	1780	2		1861	1	1	500
+Haken Hollow	1780	2		1891	1	1	500
+Haken Hollow	1780	2		1866	1	1	500
+Haken Hollow	1780	2		1871	1	1	500
+Haken Hollow	1780	2		1876	1	1	500
+Haken Hollow	1780	2		1881	1	1	500
+Haken Hollow	1780	2		1886	1	1	500
+Haken Hollow	1780	2		6075	1	1	500
+Lanternrider Slave	1781	1		14591	1	1	900
+Lanternrider Slave	1781	1		1175	1	1	100
+Lanternrider Slave	1781	1		1178	1	1	100
+Lanternrider Slave	1781	1		7392	1	1	10000
+Lanternrider Slave	1781	1		3311	1	1	250
+Lanternrider Marauder	1782	1		14531	1	1	100
+Lanternrider Marauder	1782	1		14591	1	1	1350
+Lanternrider Marauder	1782	1		13588	1	1	45
+Lanternrider Marauder	1782	1		13589	1	1	45
+Lanternrider Marauder	1782	1		13590	1	1	45
+Lanternrider Marauder	1782	1		13591	1	1	45
+Lanternrider Marauder	1782	1		13592	1	1	45
+Lanternrider Marauder	1782	1		13598	1	1	200
+Lanternrider Marauder	1782	1		7393	1	1	10000
+Lanternrider Marauder	1782	1		3311	1	1	500
+Lanternrider Marauder	1782	1		6351	1	1	400
+Lanternrider Sergeant	1783	2		14531	1	1	200
+Lanternrider Sergeant	1783	2		14591	1	1	2000
+Lanternrider Sergeant	1783	2		6351	1	1	800
+Lanternrider Sergeant	1783	2		13588	1	1	80
+Lanternrider Sergeant	1783	2		13589	1	1	80
+Lanternrider Sergeant	1783	2		13590	1	1	80
+Lanternrider Sergeant	1783	2		13591	1	1	80
+Lanternrider Sergeant	1783	2		13592	1	1	80
+Lanternrider Sergeant	1783	2		13598	1	1	350
+Lanternrider Sergeant	1783	2		7394	1	1	10000
+Lanternrider Sergeant	1783	2		3311	1	1	500
+Nine Vital	1786	2		5019	1	1	30
+Nine Vital	1786	2		5009	1	1	20
+Nine Vital	1786	2		1856	1	1	500
+Nine Vital	1786	2		1861	1	1	500
+Nine Vital	1786	2		1891	1	1	500
+Nine Vital	1786	2		1866	1	1	500
+Nine Vital	1786	2		1871	1	1	500
+Nine Vital	1786	2		1876	1	1	500
+Nine Vital	1786	2		1881	1	1	500
+Nine Vital	1786	2		1886	1	1	500
+Nine Vital	1786	2		6075	1	1	500
+Dark Age	1787	2		5019	1	1	30
+Dark Age	1787	2		5009	1	1	20
+Dark Age	1787	2		1856	1	1	500
+Dark Age	1787	2		1861	1	1	500
+Dark Age	1787	2		1891	1	1	500
+Dark Age	1787	2		1866	1	1	500
+Dark Age	1787	2		1871	1	1	500
+Dark Age	1787	2		1876	1	1	500
+Dark Age	1787	2		1881	1	1	500
+Dark Age	1787	2		1886	1	1	500
+Dark Age	1787	2		6075	1	1	500
+Guston	1788	2		5007	1	1	10
+Guston	1788	2		1855	1	1	500
+Guston	1788	2		1860	1	1	500
+Guston	1788	2		1890	1	1	500
+Guston	1788	2		1865	1	1	500
+Guston	1788	2		1870	1	1	500
+Guston	1788	2		1875	1	1	500
+Guston	1788	2		1880	1	1	500
+Guston	1788	2		1885	1	1	500
+Guston	1788	2		6074	1	1	500
+Kalidan	1801	2		5015	1	1	20
+Kalidan	1801	2		5016	1	1	25
+Kalidan	1801	2		5017	1	1	30
+Kalidan	1801	2		1856	1	1	500
+Kalidan	1801	2		1861	1	1	500
+Kalidan	1801	2		1891	1	1	500
+Kalidan	1801	2		1866	1	1	500
+Kalidan	1801	2		1871	1	1	500
+Kalidan	1801	2		1876	1	1	500
+Kalidan	1801	2		1881	1	1	500
+Kalidan	1801	2		1886	1	1	500
+Kalidan	1801	2		6075	1	1	500
+Lapan	1802	2		5006	1	1	20
+Lapan	1802	2		5027	1	1	30
+Lapan	1802	2		1855	1	1	500
+Lapan	1802	2		1860	1	1	500
+Lapan	1802	2		1890	1	1	500
+Lapan	1802	2		1865	1	1	500
+Lapan	1802	2		1870	1	1	500
+Lapan	1802	2		1875	1	1	500
+Lapan	1802	2		1880	1	1	500
+Lapan	1802	2		1885	1	1	500
+Lapan	1802	2		6074	1	1	500
+Chest	1803	2		5006	1	1	20
+Chest	1803	2		5027	1	1	30
+Chest	1803	2		1855	1	1	500
+Chest	1803	2		1860	1	1	500
+Chest	1803	2		1890	1	1	500
+Chest	1803	2		1865	1	1	500
+Chest	1803	2		1870	1	1	500
+Chest	1803	2		1875	1	1	500
+Chest	1803	2		1880	1	1	500
+Chest	1803	2		1885	1	1	500
+Chest	1803	2		6074	1	1	500
+Gelion	1804	2		5008	1	1	30
+Gelion	1804	2		5018	1	1	10
+Gelion	1804	2		1856	1	1	500
+Gelion	1804	2		1861	1	1	500
+Gelion	1804	2		1891	1	1	500
+Gelion	1804	2		1866	1	1	500
+Gelion	1804	2		1871	1	1	500
+Gelion	1804	2		1876	1	1	500
+Gelion	1804	2		1881	1	1	500
+Gelion	1804	2		1886	1	1	500
+Gelion	1804	2		6075	1	1	500
+Bison	1805	2		5018	1	1	10
+Bison	1805	2		1856	1	1	500
+Bison	1805	2		1861	1	1	500
+Bison	1805	2		1891	1	1	500
+Bison	1805	2		1866	1	1	500
+Bison	1805	2		1871	1	1	500
+Bison	1805	2		1876	1	1	500
+Bison	1805	2		1881	1	1	500
+Bison	1805	2		1886	1	1	500
+Bison	1805	2		6075	1	1	500
+Gaurong	1806	2		5008	1	1	30
+Gaurong	1806	2		5018	1	1	10
+Gaurong	1806	2		1856	1	1	500
+Gaurong	1806	2		1861	1	1	500
+Gaurong	1806	2		1891	1	1	500
+Gaurong	1806	2		1866	1	1	500
+Gaurong	1806	2		1871	1	1	500
+Gaurong	1806	2		1876	1	1	500
+Gaurong	1806	2		1881	1	1	500
+Gaurong	1806	2		1886	1	1	500
+Gaurong	1806	2		6075	1	1	500
+Feio	1807	2		5008	1	1	30
+Feio	1807	2		5018	1	1	10
+Feio	1807	2		1856	1	1	500
+Feio	1807	2		1861	1	1	500
+Feio	1807	2		1891	1	1	500
+Feio	1807	2		1866	1	1	500
+Feio	1807	2		1871	1	1	500
+Feio	1807	2		1876	1	1	500
+Feio	1807	2		1881	1	1	500
+Feio	1807	2		1886	1	1	500
+Feio	1807	2		6075	1	1	500
+Manus	1808	2		5018	1	1	10
+Manus	1808	2		1856	1	1	500
+Manus	1808	2		1861	1	1	500
+Manus	1808	2		1891	1	1	500
+Manus	1808	2		1866	1	1	500
+Manus	1808	2		1871	1	1	500
+Manus	1808	2		1876	1	1	500
+Manus	1808	2		1881	1	1	500
+Manus	1808	2		1886	1	1	500
+Manus	1808	2		6075	1	1	500
+Hericule	1809	2		5018	1	1	10
+Hericule	1809	2		1856	1	1	500
+Hericule	1809	2		1861	1	1	500
+Hericule	1809	2		1891	1	1	500
+Hericule	1809	2		1866	1	1	500
+Hericule	1809	2		1871	1	1	500
+Hericule	1809	2		1876	1	1	500
+Hericule	1809	2		1881	1	1	500
+Hericule	1809	2		1886	1	1	500
+Hericule	1809	2		6075	1	1	500
+Hellrider	1810	2		5008	1	1	30
+Hellrider	1810	2		1856	1	1	500
+Hellrider	1810	2		1861	1	1	500
+Hellrider	1810	2		1891	1	1	500
+Hellrider	1810	2		1866	1	1	500
+Hellrider	1810	2		1871	1	1	500
+Hellrider	1810	2		1876	1	1	500
+Hellrider	1810	2		1881	1	1	500
+Hellrider	1810	2		1886	1	1	500
+Hellrider	1810	2		6075	1	1	500
+Nazdel	1811	2		5008	1	1	30
+Nazdel	1811	2		5018	1	1	10
+Nazdel	1811	2		1856	1	1	500
+Nazdel	1811	2		1861	1	1	500
+Nazdel	1811	2		1891	1	1	500
+Nazdel	1811	2		1866	1	1	500
+Nazdel	1811	2		1871	1	1	500
+Nazdel	1811	2		1876	1	1	500
+Nazdel	1811	2		1881	1	1	500
+Nazdel	1811	2		1886	1	1	500
+Nazdel	1811	2		6075	1	1	500
+Pirpin	1812	2		5018	1	1	10
+Pirpin	1812	2		1856	1	1	500
+Pirpin	1812	2		1861	1	1	500
+Pirpin	1812	2		1891	1	1	500
+Pirpin	1812	2		1866	1	1	500
+Pirpin	1812	2		1871	1	1	500
+Pirpin	1812	2		1876	1	1	500
+Pirpin	1812	2		1881	1	1	500
+Pirpin	1812	2		1886	1	1	500
+Pirpin	1812	2		6075	1	1	500
+Totin	1813	1		1856	1	1	500
+Totin	1813	1		1861	1	1	500
+Totin	1813	1		1891	1	1	500
+Totin	1813	1		1866	1	1	500
+Totin	1813	1		1871	1	1	500
+Totin	1813	1		1876	1	1	500
+Totin	1813	1		1881	1	1	500
+Totin	1813	1		1886	1	1	500
+Totin	1813	1		6075	1	1	500
+Oroch	1814	1		1856	1	1	500
+Oroch	1814	1		1861	1	1	500
+Oroch	1814	1		1891	1	1	500
+Oroch	1814	1		1866	1	1	500
+Oroch	1814	1		1871	1	1	500
+Oroch	1814	1		1876	1	1	500
+Oroch	1814	1		1881	1	1	500
+Oroch	1814	1		1886	1	1	500
+Oroch	1814	1		6075	1	1	500
+Custer	1815	2		5009	1	1	20
+Custer	1815	2		1856	1	1	500
+Custer	1815	2		1861	1	1	500
+Custer	1815	2		1891	1	1	500
+Custer	1815	2		1866	1	1	500
+Custer	1815	2		1871	1	1	500
+Custer	1815	2		1876	1	1	500
+Custer	1815	2		1881	1	1	500
+Custer	1815	2		1886	1	1	500
+Custer	1815	2		6075	1	1	500
+Haken	1816	2		5015	1	1	20
+Haken	1816	2		5016	1	1	25
+Haken	1816	2		5017	1	1	30
+Haken	1816	2		1856	1	1	500
+Haken	1816	2		1861	1	1	500
+Haken	1816	2		1891	1	1	500
+Haken	1816	2		1866	1	1	500
+Haken	1816	2		1871	1	1	500
+Haken	1816	2		1876	1	1	500
+Haken	1816	2		1881	1	1	500
+Haken	1816	2		1886	1	1	500
+Haken	1816	2		6075	1	1	500
+Gespen	1817	1		1856	1	1	500
+Gespen	1817	1		1861	1	1	500
+Gespen	1817	1		1891	1	1	500
+Gespen	1817	1		1866	1	1	500
+Gespen	1817	1		1871	1	1	500
+Gespen	1817	1		1876	1	1	500
+Gespen	1817	1		1881	1	1	500
+Gespen	1817	1		1886	1	1	500
+Gespen	1817	1		6075	1	1	500
+Wizden	1818	2		5007	1	1	20
+Wizden	1818	2		5018	1	1	20
+Wizden	1818	2		5021	1	1	40
+Wizden	1818	2		5012	1	1	40
+Wizden	1818	2		5013	1	1	40
+Wizden	1818	2		5014	1	1	40
+Wizden	1818	2		5024	1	1	40
+Wizden	1818	2		5023	1	1	40
+Wizden	1818	2		5009	1	1	40
+Wizden	1818	2		6053	1	1	1500
+Wizden	1818	2		4755	1	1	100000
+Paulo	1819	2		5009	1	1	20
+Paulo	1819	2		5019	1	1	30
+Paulo	1819	2		1857	1	1	500
+Paulo	1819	2		1862	1	1	500
+Paulo	1819	2		1892	1	1	500
+Paulo	1819	2		1867	1	1	500
+Paulo	1819	2		1872	1	1	500
+Paulo	1819	2		1877	1	1	500
+Paulo	1819	2		1882	1	1	500
+Paulo	1819	2		1887	1	1	500
+Paulo	1819	2		6076	1	1	500
+Tirphon	1820	2		5007	1	1	20
+Tirphon	1820	2		5018	1	1	20
+Tirphon	1820	2		5021	1	1	40
+Tirphon	1820	2		5012	1	1	40
+Tirphon	1820	2		5013	1	1	40
+Tirphon	1820	2		5014	1	1	40
+Tirphon	1820	2		5024	1	1	40
+Tirphon	1820	2		5023	1	1	40
+Tirphon	1820	2		5009	1	1	40
+Tirphon	1820	2		6053	1	1	1500
+Tirphon	1820	2		4755	1	1	100000
+Kelberon	1821	2		5009	1	1	20
+Kelberon	1821	2		1856	1	1	500
+Kelberon	1821	2		1861	1	1	500
+Kelberon	1821	2		1891	1	1	500
+Kelberon	1821	2		1866	1	1	500
+Kelberon	1821	2		1871	1	1	500
+Kelberon	1821	2		1876	1	1	500
+Kelberon	1821	2		1881	1	1	500
+Kelberon	1821	2		1886	1	1	500
+Kelberon	1821	2		6075	1	1	500
+Lychen	1822	2		5019	1	1	30
+Lychen	1822	2		5009	1	1	20
+Lychen	1822	2		1856	1	1	500
+Lychen	1822	2		1861	1	1	500
+Lychen	1822	2		1891	1	1	500
+Lychen	1822	2		1866	1	1	500
+Lychen	1822	2		1871	1	1	500
+Lychen	1822	2		1876	1	1	500
+Lychen	1822	2		1881	1	1	500
+Lychen	1822	2		1886	1	1	500
+Lychen	1822	2		6075	1	1	500
+Murad	1823	2		5005	1	1	30
+Murad	1823	2		5028	1	1	30
+Murad	1823	2		1855	1	1	500
+Murad	1823	2		1860	1	1	500
+Murad	1823	2		1890	1	1	500
+Murad	1823	2		1865	1	1	500
+Murad	1823	2		1870	1	1	500
+Murad	1823	2		1875	1	1	500
+Murad	1823	2		1880	1	1	500
+Murad	1823	2		1885	1	1	500
+Murad	1823	2		6074	1	1	500
+Kaliman	1974	2		5009	1	1	20
+Kaliman	1974	2		1856	1	1	500
+Kaliman	1974	2		1861	1	1	500
+Kaliman	1974	2		1891	1	1	500
+Kaliman	1974	2		1866	1	1	500
+Kaliman	1974	2		1871	1	1	500
+Kaliman	1974	2		1876	1	1	500
+Kaliman	1974	2		1881	1	1	500
+Kaliman	1974	2		1886	1	1	500
+Kaliman	1974	2		6075	1	1	500
+Cry of Fury	1975	1		10260	1	1	50000
+Cry of Fury	1975	1		589	1	1	50000
+Cry of Fury	1975	1		592	1	1	50000
+Cry of Fury	1975	1		595	1	1	50000
+Cry of Fury	1975	1		604	1	1	50000
+Cry of Fury	1975	1		1857	1	1	50000
+Cry of Fury	1975	1		1882	1	1	50000
+Cry of Fury	1975	1		470	1	1	50000
+Cry of Fury	1975	1		1867	1	1	50000
+Cry of Fury	1975	1		267	1	1	50000
+Cry of Fury	1975	1		247	1	1	50000
+Cry of Fury	1975	1		263	1	1	50000
+Cry of Fury	1975	1		255	1	1	50000
+Cry of Fury	1975	1		259	1	1	50000
+Cry of Fury	1975	1		10262	3	5	100000
+Flame Looter	1976	1		10000	1	1	50000
+Flame Looter	1976	1		10260	1	1	30000
+Flame Looter	1976	1		475	1	1	10000
+Flame Looter	1976	1		481	1	1	10000
+Flame Looter	1976	1		601	1	1	10000
+Flame Looter	1976	1		614	1	1	10000
+Flame Looter	1976	1		1872	1	1	10000
+Flame Looter	1976	1		464	1	1	10000
+Flame Looter	1976	1		468	1	1	10000
+Flame Looter	1976	1		1882	1	1	10000
+Flame Looter	1976	1		267	1	1	10000
+Flame Looter	1976	1		247	1	1	10000
+Flame Looter	1976	1		263	1	1	10000
+Flame Looter	1976	1		255	1	1	10000
+Flame Looter	1976	1		259	1	1	10000
+Flame Looter	1976	1		9344	1	1	5000
+Flame Looter	1976	1		9341	1	1	5000
+Flame Extortioner	1977	1		10000	1	1	50000
+Flame Extortioner	1977	1		10260	1	1	30000
+Flame Extortioner	1977	1		841	1	1	10000
+Flame Extortioner	1977	1		1170	1	1	10000
+Flame Extortioner	1977	1		1173	1	1	10000
+Flame Extortioner	1977	1		617	1	1	10000
+Flame Extortioner	1977	1		1877	1	1	10000
+Flame Extortioner	1977	1		599	1	1	10000
+Flame Extortioner	1977	1		1892	1	1	10000
+Flame Extortioner	1977	1		1887	1	1	10000
+Flame Extortioner	1977	1		267	1	1	10000
+Flame Extortioner	1977	1		247	1	1	10000
+Flame Extortioner	1977	1		263	1	1	10000
+Flame Extortioner	1977	1		255	1	1	10000
+Flame Extortioner	1977	1		259	1	1	10000
+Flame Extortioner	1977	1		9344	1	1	5000
+Flame Extortioner	1977	1		9345	1	1	5000
+Cry of Pain	1978	1		10260	1	1	50000
+Cry of Pain	1978	1		1892	1	1	50000
+Cry of Pain	1978	1		470	1	1	50000
+Cry of Pain	1978	1		472	1	1	50000
+Cry of Pain	1978	1		610	1	1	50000
+Cry of Pain	1978	1		1867	1	1	50000
+Cry of Pain	1978	1		6076	1	1	50000
+Cry of Pain	1978	1		610	1	1	50000
+Cry of Pain	1978	1		1877	1	1	50000
+Cry of Pain	1978	1		267	1	1	50000
+Cry of Pain	1978	1		247	1	1	50000
+Cry of Pain	1978	1		263	1	1	50000
+Cry of Pain	1978	1		255	1	1	50000
+Cry of Pain	1978	1		259	1	1	50000
+Cry of Pain	1978	1		10261	3	5	100000
+Blade Inspector	1979	1		10000	1	1	50000
+Blade Inspector	1979	1		10260	1	1	30000
+Blade Inspector	1979	1		475	1	1	10000
+Blade Inspector	1979	1		481	1	1	10000
+Blade Inspector	1979	1		601	1	1	10000
+Blade Inspector	1979	1		614	1	1	10000
+Blade Inspector	1979	1		1872	1	1	10000
+Blade Inspector	1979	1		464	1	1	10000
+Blade Inspector	1979	1		468	1	1	10000
+Blade Inspector	1979	1		1882	1	1	10000
+Blade Inspector	1979	1		267	1	1	10000
+Blade Inspector	1979	1		247	1	1	10000
+Blade Inspector	1979	1		263	1	1	10000
+Blade Inspector	1979	1		255	1	1	10000
+Blade Inspector	1979	1		259	1	1	10000
+Blade Inspector	1979	1		9344	1	1	5000
+Blade Inspector	1979	1		9341	1	1	5000
+Blade Robber	1980	1		10000	1	1	50000
+Blade Robber	1980	1		10260	1	1	30000
+Blade Robber	1980	1		841	1	1	10000
+Blade Robber	1980	1		1170	1	1	10000
+Blade Robber	1980	1		1173	1	1	10000
+Blade Robber	1980	1		617	1	1	10000
+Blade Robber	1980	1		1877	1	1	10000
+Blade Robber	1980	1		599	1	1	10000
+Blade Robber	1980	1		1892	1	1	10000
+Blade Robber	1980	1		1887	1	1	10000
+Blade Robber	1980	1		267	1	1	10000
+Blade Robber	1980	1		247	1	1	10000
+Blade Robber	1980	1		263	1	1	10000
+Blade Robber	1980	1		255	1	1	10000
+Blade Robber	1980	1		259	1	1	10000
+Blade Robber	1980	1		9344	1	1	5000
+Blade Robber	1980	1		9345	1	1	5000
+Cry of Silence	1982	1		10260	1	1	50000
+Cry of Silence	1982	1		464	1	1	50000
+Cry of Silence	1982	1		468	1	1	50000
+Cry of Silence	1982	1		599	1	1	50000
+Cry of Silence	1982	1		607	1	1	50000
+Cry of Silence	1982	1		1862	1	1	50000
+Cry of Silence	1982	1		1887	1	1	50000
+Cry of Silence	1982	1		472	1	1	50000
+Cry of Silence	1982	1		1872	1	1	50000
+Cry of Silence	1982	1		267	1	1	50000
+Cry of Silence	1982	1		247	1	1	50000
+Cry of Silence	1982	1		263	1	1	50000
+Cry of Silence	1982	1		255	1	1	50000
+Cry of Silence	1982	1		259	1	1	50000
+Cry of Silence	1982	1		10262	3	5	100000
+Life Hunter	1983	1		10000	1	1	50000
+Life Hunter	1983	1		10260	1	1	30000
+Life Hunter	1983	1		841	1	1	10000
+Life Hunter	1983	1		1170	1	1	10000
+Life Hunter	1983	1		1173	1	1	10000
+Life Hunter	1983	1		617	1	1	10000
+Life Hunter	1983	1		1877	1	1	10000
+Life Hunter	1983	1		599	1	1	10000
+Life Hunter	1983	1		1892	1	1	10000
+Life Hunter	1983	1		1887	1	1	10000
+Life Hunter	1983	1		267	1	1	10000
+Life Hunter	1983	1		247	1	1	10000
+Life Hunter	1983	1		263	1	1	10000
+Life Hunter	1983	1		255	1	1	10000
+Life Hunter	1983	1		259	1	1	10000
+Life Hunter	1983	1		9344	1	1	5000
+Life Hunter	1983	1		9345	1	1	5000
+Life Ambusher	1984	1		10000	1	1	50000
+Life Ambusher	1984	1		10260	1	1	30000
+Life Ambusher	1984	1		475	1	1	10000
+Life Ambusher	1984	1		481	1	1	10000
+Life Ambusher	1984	1		601	1	1	10000
+Life Ambusher	1984	1		614	1	1	10000
+Life Ambusher	1984	1		1872	1	1	10000
+Life Ambusher	1984	1		464	1	1	10000
+Life Ambusher	1984	1		468	1	1	10000
+Life Ambusher	1984	1		1882	1	1	10000
+Life Ambusher	1984	1		267	1	1	10000
+Life Ambusher	1984	1		247	1	1	10000
+Life Ambusher	1984	1		263	1	1	10000
+Life Ambusher	1984	1		255	1	1	10000
+Life Ambusher	1984	1		259	1	1	10000
+Life Ambusher	1984	1		9344	1	1	5000
+Life Ambusher	1984	1		9341	1	1	5000
+Storm Knight	1985	1		9999	1	1	50000
+Storm Knight	1985	1		10000	1	1	30000
+Storm Knight	1985	1		464	1	1	10000
+Storm Knight	1985	1		468	1	1	10000
+Storm Knight	1985	1		599	1	1	10000
+Storm Knight	1985	1		607	1	1	10000
+Storm Knight	1985	1		1862	1	1	10000
+Storm Knight	1985	1		1887	1	1	10000
+Storm Knight	1985	1		472	1	1	10000
+Storm Knight	1985	1		1872	1	1	10000
+Storm Knight	1985	1		267	1	1	10000
+Storm Knight	1985	1		247	1	1	10000
+Storm Knight	1985	1		263	1	1	10000
+Storm Knight	1985	1		255	1	1	10000
+Storm Knight	1985	1		259	1	1	10000
+Storm Knight	1985	1		9343	1	1	5000
+Storm Knight	1985	1		9344	1	1	5000
+The Lord of Heaven's Hell	1986	1		10260	1	1	50000
+The Lord of Heaven's Hell	1986	1		475	1	1	50000
+The Lord of Heaven's Hell	1986	1		481	1	1	50000
+The Lord of Heaven's Hell	1986	1		601	1	1	50000
+The Lord of Heaven's Hell	1986	1		614	1	1	50000
+The Lord of Heaven's Hell	1986	1		1872	1	1	50000
+The Lord of Heaven's Hell	1986	1		464	1	1	50000
+The Lord of Heaven's Hell	1986	1		468	1	1	50000
+The Lord of Heaven's Hell	1986	1		1882	1	1	50000
+The Lord of Heaven's Hell	1986	1		267	1	1	50000
+The Lord of Heaven's Hell	1986	1		247	1	1	50000
+The Lord of Heaven's Hell	1986	1		263	1	1	50000
+The Lord of Heaven's Hell	1986	1		255	1	1	50000
+The Lord of Heaven's Hell	1986	1		259	1	1	50000
+The Lord of Heaven's Hell	1986	1		10261	3	10	100000
+Storm Archer	1987	1		9999	1	1	50000
+Storm Archer	1987	1		10000	1	1	30000
+Storm Archer	1987	1		1892	1	1	10000
+Storm Archer	1987	1		470	1	1	10000
+Storm Archer	1987	1		472	1	1	10000
+Storm Archer	1987	1		610	1	1	10000
+Storm Archer	1987	1		1867	1	1	10000
+Storm Archer	1987	1		6076	1	1	10000
+Storm Archer	1987	1		610	1	1	10000
+Storm Archer	1987	1		1877	1	1	10000
+Storm Archer	1987	1		267	1	1	10000
+Storm Archer	1987	1		247	1	1	10000
+Storm Archer	1987	1		263	1	1	10000
+Storm Archer	1987	1		255	1	1	10000
+Storm Archer	1987	1		259	1	1	10000
+Storm Archer	1987	1		9341	1	1	5000
+Storm Archer	1987	1		9345	1	1	5000
+Storm Mage	1988	1		9999	1	1	50000
+Storm Mage	1988	1		10000	1	1	30000
+Storm Mage	1988	1		589	1	1	10000
+Storm Mage	1988	1		592	1	1	10000
+Storm Mage	1988	1		595	1	1	10000
+Storm Mage	1988	1		604	1	1	10000
+Storm Mage	1988	1		1857	1	1	10000
+Storm Mage	1988	1		1882	1	1	10000
+Storm Mage	1988	1		470	1	1	10000
+Storm Mage	1988	1		1867	1	1	10000
+Storm Mage	1988	1		267	1	1	10000
+Storm Mage	1988	1		247	1	1	10000
+Storm Mage	1988	1		263	1	1	10000
+Storm Mage	1988	1		255	1	1	10000
+Storm Mage	1988	1		259	1	1	10000
+Storm Mage	1988	1		9341	1	1	5000
+Storm Mage	1988	1		9343	1	1	5000
+Bloodline Scout	1989	1		9999	1	1	50000
+Bloodline Scout	1989	1		10000	1	1	30000
+Bloodline Scout	1989	1		464	1	1	10000
+Bloodline Scout	1989	1		468	1	1	10000
+Bloodline Scout	1989	1		599	1	1	10000
+Bloodline Scout	1989	1		607	1	1	10000
+Bloodline Scout	1989	1		1862	1	1	10000
+Bloodline Scout	1989	1		1887	1	1	10000
+Bloodline Scout	1989	1		472	1	1	10000
+Bloodline Scout	1989	1		1872	1	1	10000
+Bloodline Scout	1989	1		267	1	1	10000
+Bloodline Scout	1989	1		247	1	1	10000
+Bloodline Scout	1989	1		263	1	1	10000
+Bloodline Scout	1989	1		255	1	1	10000
+Bloodline Scout	1989	1		259	1	1	10000
+Bloodline Scout	1989	1		9343	1	1	5000
+Bloodline Scout	1989	1		9344	1	1	5000
+Bloodline Mage	1990	1		9999	1	1	50000
+Bloodline Mage	1990	1		10000	1	1	30000
+Bloodline Mage	1990	1		589	1	1	10000
+Bloodline Mage	1990	1		592	1	1	10000
+Bloodline Mage	1990	1		595	1	1	10000
+Bloodline Mage	1990	1		604	1	1	10000
+Bloodline Mage	1990	1		1857	1	1	10000
+Bloodline Mage	1990	1		1882	1	1	10000
+Bloodline Mage	1990	1		470	1	1	10000
+Bloodline Mage	1990	1		1867	1	1	10000
+Bloodline Mage	1990	1		267	1	1	10000
+Bloodline Mage	1990	1		247	1	1	10000
+Bloodline Mage	1990	1		263	1	1	10000
+Bloodline Mage	1990	1		255	1	1	10000
+Bloodline Mage	1990	1		259	1	1	10000
+Bloodline Mage	1990	1		9341	1	1	5000
+Bloodline Mage	1990	1		9343	1	1	5000
+Bloodline Warrior	1991	1		9999	1	1	50000
+Bloodline Warrior	1991	1		10000	1	1	30000
+Bloodline Warrior	1991	1		1892	1	1	10000
+Bloodline Warrior	1991	1		470	1	1	10000
+Bloodline Warrior	1991	1		472	1	1	10000
+Bloodline Warrior	1991	1		610	1	1	10000
+Bloodline Warrior	1991	1		1867	1	1	10000
+Bloodline Warrior	1991	1		6076	1	1	10000
+Bloodline Warrior	1991	1		610	1	1	10000
+Bloodline Warrior	1991	1		1877	1	1	10000
+Bloodline Warrior	1991	1		267	1	1	10000
+Bloodline Warrior	1991	1		247	1	1	10000
+Bloodline Warrior	1991	1		263	1	1	10000
+Bloodline Warrior	1991	1		255	1	1	10000
+Bloodline Warrior	1991	1		259	1	1	10000
+Bloodline Warrior	1991	1		9341	1	1	5000
+Bloodline Warrior	1991	1		9345	1	1	5000
+Flame Hunter	1992	1		9999	1	1	50000
+Flame Hunter	1992	1		10000	1	1	30000
+Flame Hunter	1992	1		464	1	1	10000
+Flame Hunter	1992	1		468	1	1	10000
+Flame Hunter	1992	1		599	1	1	10000
+Flame Hunter	1992	1		607	1	1	10000
+Flame Hunter	1992	1		1862	1	1	10000
+Flame Hunter	1992	1		1887	1	1	10000
+Flame Hunter	1992	1		472	1	1	10000
+Flame Hunter	1992	1		1872	1	1	10000
+Flame Hunter	1992	1		267	1	1	10000
+Flame Hunter	1992	1		247	1	1	10000
+Flame Hunter	1992	1		263	1	1	10000
+Flame Hunter	1992	1		255	1	1	10000
+Flame Hunter	1992	1		259	1	1	10000
+Flame Hunter	1992	1		9343	1	1	5000
+Flame Hunter	1992	1		9344	1	1	5000
+Flame Knight	1993	1		9999	1	1	50000
+Flame Knight	1993	1		10000	1	1	30000
+Flame Knight	1993	1		589	1	1	10000
+Flame Knight	1993	1		592	1	1	10000
+Flame Knight	1993	1		595	1	1	10000
+Flame Knight	1993	1		604	1	1	10000
+Flame Knight	1993	1		1857	1	1	10000
+Flame Knight	1993	1		1882	1	1	10000
+Flame Knight	1993	1		470	1	1	10000
+Flame Knight	1993	1		1867	1	1	10000
+Flame Knight	1993	1		267	1	1	10000
+Flame Knight	1993	1		247	1	1	10000
+Flame Knight	1993	1		263	1	1	10000
+Flame Knight	1993	1		255	1	1	10000
+Flame Knight	1993	1		259	1	1	10000
+Flame Knight	1993	1		9341	1	1	5000
+Flame Knight	1993	1		9343	1	1	5000
+Flame Mage	1994	1		9999	1	1	50000
+Flame Mage	1994	1		10000	1	1	30000
+Flame Mage	1994	1		1892	1	1	10000
+Flame Mage	1994	1		470	1	1	10000
+Flame Mage	1994	1		472	1	1	10000
+Flame Mage	1994	1		610	1	1	10000
+Flame Mage	1994	1		1867	1	1	10000
+Flame Mage	1994	1		6076	1	1	10000
+Flame Mage	1994	1		610	1	1	10000
+Flame Mage	1994	1		1877	1	1	10000
+Flame Mage	1994	1		267	1	1	10000
+Flame Mage	1994	1		247	1	1	10000
+Flame Mage	1994	1		263	1	1	10000
+Flame Mage	1994	1		255	1	1	10000
+Flame Mage	1994	1		259	1	1	10000
+Flame Mage	1994	1		9341	1	1	5000
+Flame Mage	1994	1		9345	1	1	5000
+Ashtal Core	1995	1		10260	1	1	50000
+Ashtal Core	1995	1		841	1	1	50000
+Ashtal Core	1995	1		1170	1	1	50000
+Ashtal Core	1995	1		1173	1	1	50000
+Ashtal Core	1995	1		617	1	1	50000
+Ashtal Core	1995	1		1877	1	1	50000
+Ashtal Core	1995	1		599	1	1	50000
+Ashtal Core	1995	1		1892	1	1	50000
+Ashtal Core	1995	1		1887	1	1	50000
+Ashtal Core	1995	1		267	1	1	50000
+Ashtal Core	1995	1		247	1	1	50000
+Ashtal Core	1995	1		263	1	1	50000
+Ashtal Core	1995	1		255	1	1	50000
+Ashtal Core	1995	1		259	1	1	50000
+Ashtal Core	1995	1		10261	5	20	100000
+Griffin	2019	2		5006	1	1	20
+Griffin	2019	2		463	1	1	500
+Griffin	2019	2		466	1	1	500
+Griffin	2019	2		588	1	1	500
+Griffin	2019	2		591	1	1	500
+Griffin	2019	2		594	1	1	500
+Griffin	2019	2		597	1	1	500
+Griffin	2019	2		1890	1	1	500
+Griffin	2019	2		465	1	1	500
+Gnoll King [Dungeon 1F]	2028	2		6259	1	1	100000
+Xelgoth	2036	1		6351	1	1	800
+Xelgoth	2036	1		13588	1	1	80
+Xelgoth	2036	1		13589	1	1	80
+Xelgoth	2036	1		13590	1	1	80
+Xelgoth	2036	1		13591	1	1	80
+Xelgoth	2036	1		13592	1	1	80
+Xelgoth	2036	1		13598	1	1	350
+Xelgoth	2036	1		14531	1	1	250
+Xelgoth	2036	1		7394	1	1	10000
+Xelgoth	2036	1		3311	1	1	500
+Soccer Ball of Newzealand	2138	1		5026	1	1	30
+Soccer Ball of Honduras	2139	1		5026	1	1	30
+Soccer Ball of Honduras	2139	1		5005	1	1	30
+Soccer Ball of Algeria	2140	1		5026	1	1	30
+Soccer Ball of Algeria	2140	1		5005	1	1	30
+Soccer Ball of Algeria	2140	1		5028	1	1	30
+Soccer Ball of Slovenia	2141	1		5005	1	1	30
+Soccer Ball of Slovenia	2141	1		5028	1	1	30
+Soccer Ball of Slovakia	2142	1		5006	1	1	15
+Soccer Ball of Slovakia	2142	1		5027	1	1	30
+Soccer Ball of Japan	2143	1		5006	1	1	15
+Soccer Ball of Japan	2143	1		5027	1	1	30
+Soccer Ball of Korea Republic	2144	1		5007	1	1	10
+Soccer Ball of Korea Republic	2144	1		5015	1	1	20
+Soccer Ball of Korea Republic	2144	1		5016	1	1	20
+Soccer Ball of Korea Republic	2144	1		5017	1	1	20
+Soccer Ball of Switzerland	2145	1		5007	1	1	10
+Soccer Ball of Switzerland	2145	1		5015	1	1	20
+Soccer Ball of Switzerland	2145	1		5016	1	1	20
+Soccer Ball of Switzerland	2145	1		5017	1	1	20
+Soccer Ball of Denmark	2146	1		5018	1	1	10
+Soccer Ball of Denmark	2146	1		5008	1	1	30
+Soccer Ball of South Africa	2147	1		5009	1	1	30
+Soccer Ball of South Africa	2147	1		5019	1	1	30
+Soccer Ball of USA	2148	1		5010	1	1	15
+Soccer Ball of USA	2148	1		5020	1	1	30
+Soccer Ball of Greece	2149	1		5015	1	1	20
+Soccer Ball of Greece	2149	1		5016	1	1	20
+Soccer Ball of Greece	2149	1		5017	1	1	20
+Soccer Ball of Greece	2149	1		5008	1	1	20
+Soccer Ball of Australia	2150	1		5018	1	1	10
+Soccer Ball of Australia	2150	1		5008	1	1	30
+Soccer Ball of Portugal	2159	1		5007	1	1	5
+Soccer Ball of Portugal	2159	1		5018	1	1	5
+Soccer Ball of Portugal	2159	1		5021	1	1	10
+Soccer Ball of Portugal	2159	1		5012	1	1	10
+Soccer Ball of Portugal	2159	1		5013	1	1	10
+Soccer Ball of Portugal	2159	1		5014	1	1	10
+Soccer Ball of Portugal	2159	1		5024	1	1	10
+Soccer Ball of Portugal	2159	1		13588	1	1	45
+Soccer Ball of Portugal	2159	1		13589	1	1	45
+Soccer Ball of Portugal	2159	1		13590	1	1	45
+Soccer Ball of Portugal	2159	1		13591	1	1	45
+Soccer Ball of Portugal	2159	1		13592	1	1	45
+Soccer Ball of Portugal	2159	1		13598	1	1	200
+Soccer Ball of Ivory Coast	2160	1		5014	1	1	30
+Soccer Ball of Ivory Coast	2160	1		5024	1	1	30
+Soccer Ball of Portugal	2161	1		5014	1	1	30
+Soccer Ball of Portugal	2161	1		5024	1	1	30
+Soccer Ball of Germany	2162	1		5013	1	1	30
+Soccer Ball of Germany	2162	1		5023	1	1	30
+Soccer Ball of France	2163	1		5007	1	1	5
+Soccer Ball of France	2163	1		5018	1	1	5
+Soccer Ball of France	2163	1		5021	1	1	10
+Soccer Ball of France	2163	1		5012	1	1	10
+Soccer Ball of France	2163	1		5013	1	1	10
+Soccer Ball of France	2163	1		5014	1	1	10
+Soccer Ball of France	2163	1		5024	1	1	10
+Soccer Ball of Italy	2164	1		5013	1	1	30
+Soccer Ball of Italy	2164	1		5014	1	1	30
+Soccer Ball of Italy	2164	1		5023	1	1	30
+Soccer Ball of Brazil	2165	1		5014	1	1	30
+Soccer Ball of Brazil	2165	1		5024	1	1	30
+Soccer Ball of England	2166	1		5007	1	1	5
+Soccer Ball of England	2166	1		5018	1	1	5
+Soccer Ball of England	2166	1		5021	1	1	10
+Soccer Ball of England	2166	1		5012	1	1	10
+Soccer Ball of England	2166	1		5013	1	1	10
+Soccer Ball of England	2166	1		5014	1	1	10
+Soccer Ball of England	2166	1		5024	1	1	10
+Soccer Ball of Argentina	2167	1		5014	1	1	30
+Soccer Ball of Argentina	2167	1		5024	1	1	30
+Soccer Ball of Spain	2168	1		5007	1	1	5
+Soccer Ball of Spain	2168	1		5018	1	1	5
+Soccer Ball of Spain	2168	1		5021	1	1	10
+Soccer Ball of Spain	2168	1		5012	1	1	10
+Soccer Ball of Spain	2168	1		5013	1	1	10
+Soccer Ball of Spain	2168	1		5014	1	1	10
+Soccer Ball of Spain	2168	1		5024	1	1	10
+Giggler Dual Sword	2169	1		5007	1	1	5
+Giggler Dual Sword	2169	1		5018	1	1	5
+Giggler Dual Sword	2169	1		5021	1	1	10
+Giggler Dual Sword	2169	1		5012	1	1	10
+Giggler Dual Sword	2169	1		5013	1	1	10
+Giggler Dual Sword	2169	1		5014	1	1	10
+Giggler Dual Sword	2169	1		5024	1	1	10
+Invader Captain [Vigorore]	2197	3		6482	1	1	100000
+Invader Captain [Vigorore]	2197	3		14531	5	5	100000
+Invader Captain [Vigorore]	2197	3		14542	1	1	100000
+Invader Captain [Vigorore]	2197	3		1175	5	5	100000
+Invader Captain [Vigorore]	2197	3		1178	5	5	100000
+Invader Captain [Vigorore]	2197	3		14591	5	5	100000
+Kazath	2204	1		6351	1	1	400
+Kazath	2204	1		13588	1	1	45
+Kazath	2204	1		13589	1	1	45
+Kazath	2204	1		13590	1	1	45
+Kazath	2204	1		13591	1	1	45
+Kazath	2204	1		13592	1	1	45
+Kazath	2204	1		13598	1	1	200
+Kazath	2204	1		14531	1	1	167
+Kazath	2204	1		7394	1	1	10000
+Kazath	2204	1		3311	1	1	500

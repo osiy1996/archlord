@@ -1,0 +1,3125 @@
+LotteryBoxTID	LotteryBoxName	PotItemTID	PotItemName	MinStack	MaxStack	Rate
+3021	Gambler's Copper Box	50067	Hero: Superior <Knight - 30 days>	1	1	10000
+3022	Gambler's Silver Box	50068	Hero: Superior <Archer - 30 days>	1	1	10000
+3023	Gambler's Gold Box	50069	Hero: Superior <Mage - 30 days>	1	1	10000
+3316	Orange Balloon	6007	Lens Stone+	5000	5000	100000
+3317	Yellow Balloon	14582	Extra-Large Mana Potion	999	999	10000
+3318	Green Balloon	12684	Legend of Roux	1	1	2500
+3318	Green Balloon	12688	Legend of Roux	1	1	2500
+3318	Green Balloon	12692	Legend of Roux	1	1	2500
+3318	Green Balloon	12687	Mitchell	1	1	2500
+3318	Green Balloon	12691	Mitchell	1	1	2500
+3318	Green Balloon	12695	Mitchell	1	1	2500
+3318	Green Balloon	13440	Milfis Candy Cart	1	1	2500
+3318	Green Balloon	13446	Milfis Candy Cart	1	1	2500
+3318	Green Balloon	13452	Milfis Candy Cart	1	1	2500
+3318	Green Balloon	13438	Phoenix	1	1	1500
+3318	Green Balloon	13444	Phoenix	1	1	1500
+3318	Green Balloon	13450	Phoenix	1	1	1500
+3318	Green Balloon	13441	Deerwolf	1	1	1000
+3318	Green Balloon	13447	Deerwolf	1	1	1000
+3318	Green Balloon	13453	Deerwolf	1	1	1000
+3319	Blue Balloon	13593	Elixir of Ugdrasil	1	2	1500
+3319	Blue Balloon	13594	Elixir of Dikain	1	2	2250
+3319	Blue Balloon	13595	Elixir of Gracia	1	2	1500
+3319	Blue Balloon	13596	Elixir of Zian	1	2	1500
+3319	Blue Balloon	13597	Elixir of Syripus	1	2	2250
+3320	Indigo Balloon	13593	Elixir of Ugdrasil	5	5	2500
+3320	Indigo Balloon	13594	Elixir of Dikain	5	5	1250
+3320	Indigo Balloon	13595	Elixir of Gracia	5	5	2500
+3320	Indigo Balloon	13596	Elixir of Zian	5	5	2500
+3320	Indigo Balloon	13597	Elixir of Syripus	5	5	1250
+3321	Purple Balloon	14592	Scarlet Wings <Lv4>	1	1	2222
+3321	Purple Balloon	14575	Scarlet Wings <Lv5>	1	1	1111
+3321	Purple Balloon	14593	Ashen Mist Wings <Lv4>	1	1	2222
+3321	Purple Balloon	14572	Ashen Mist Wings <Lv5>	1	1	1111
+3321	Purple Balloon	14594	Rosy Aura Wings <Lv4>	1	1	2222
+3321	Purple Balloon	14569	Rosy Aura Wings <Lv5>	1	1	1111
+3606	Christmas Socks	14573	Scarlet Cloak of Elemental Mastery <Lv5>	1	1	1111
+3606	Christmas Socks	14574	Scarlet Cloak of Dimension Mastery <Lv5>	1	1	1111
+3606	Christmas Socks	14595	Scarlet Cloak of Elemental Mastery <Lv4>	1	1	2222
+3606	Christmas Socks	14596	Scarlet Cloak of Dimension Mastery <Lv4>	1	1	2222
+3606	Christmas Socks	14567	Rosy Aura Cloak of Elemental Mastery <Lv5>	1	1	1111
+3606	Christmas Socks	14568	Rosy Aura Cloak of Dimension Mastery <Lv5>	1	1	1111
+3606	Christmas Socks	14599	Rosy Aura Cloak of Elemental Mastery <Lv4>	1	1	2222
+3606	Christmas Socks	14600	Rosy Aura Cloak of Dimension Mastery <Lv4>	1	1	2222
+3606	Christmas Socks	14570	Ashen Mist Cloak of Elemental Mastery <Lv5>	1	1	1111
+3606	Christmas Socks	14571	Ashen Mist Cloak of Dimension Mastery <Lv5>	1	1	1111
+3606	Christmas Socks	14597	Ashen Mist Cloak of Elemental Mastery <Lv4>	1	1	2222
+3606	Christmas Socks	14598	Ashen Mist Cloak of Dimension Mastery <Lv4>	1	1	2222
+3607	Santa Claus Gift Box	50075	Hero: Superior <Elementalist - 30 days>	1	1	10000
+3616	Gold Treasure Chest	486	Reinforcement Potion	7	16	10000
+3617	Silver Treasure Chest	486	Reinforcement Potion	4	8	10000
+4570	BokJumouny	266	Inferno Elemental Stone	10	30	1180
+4570	BokJumouny	246	Tornado Elemental Stone	10	30	1180
+4570	BokJumouny	262	Waterfall Elemental Stone	10	30	1180
+4570	BokJumouny	254	Tremor Elemental Stone	10	30	1180
+4570	BokJumouny	258	Transcendence Elemental Stone	10	30	1180
+4570	BokJumouny	464	Attack Prayer Stone<Lv3>	10	30	1180
+4570	BokJumouny	472	Defense Prayer Stone<Lv3>	10	30	1180
+4570	BokJumouny	1170	Physical Resistance Prayer Stone<Lv3>	10	30	1180
+4570	BokJumouny	486	Reinforcement Potion	10	50	560
+4582	Field Provision Pack	266	Inferno Elemental Stone	3	10	1100
+4582	Field Provision Pack	246	Tornado Elemental Stone	3	10	1100
+4582	Field Provision Pack	262	Waterfall Elemental Stone	3	10	1100
+4582	Field Provision Pack	254	Tremor Elemental Stone	3	10	1100
+4582	Field Provision Pack	258	Transcendence Elemental Stone	3	10	1100
+4582	Field Provision Pack	486	Reinforcement Potion	3	10	1100
+4582	Field Provision Pack	1173	Skill Block Prayer Stone<Lv3>	1	3	1000
+4582	Field Provision Pack	464	Attack Prayer Stone<Lv3>	1	3	1000
+4582	Field Provision Pack	6118	Archlord Potion	1	1	300
+4582	Field Provision Pack	1006	Broiled Meat of Transcendence	3	5	1100
+4750	Elite Weapon Chest	4001	Cruel Kris	1	1	90
+4750	Elite Weapon Chest	4002	Burning Butcher Scimitar	1	1	90
+4750	Elite Weapon Chest	4003	Bounce Falchion	1	1	90
+4750	Elite Weapon Chest	4004	Brutal Sword	1	1	90
+4750	Elite Weapon Chest	4005	Blood Scimitar	1	1	90
+4750	Elite Weapon Chest	4006	Harshslaughter Sword	1	1	90
+4750	Elite Weapon Chest	4007	Redtrail Sabre	1	1	90
+4750	Elite Weapon Chest	4008	Flashdust Piercer	1	1	90
+4750	Elite Weapon Chest	4584	Neverfallen Sword	1	1	90
+4750	Elite Weapon Chest	4585	Insane Bane's Slicer	1	1	90
+4750	Elite Weapon Chest	4009	Krimbelt Axe	1	1	90
+4750	Elite Weapon Chest	4010	Saw Divider	1	1	90
+4750	Elite Weapon Chest	4011	Infernocall Tomahawk	1	1	90
+4750	Elite Weapon Chest	4012	Dark Seed Axe	1	1	90
+4750	Elite Weapon Chest	4013	Scarlet Eye Axe	1	1	90
+4750	Elite Weapon Chest	4014	Winterizer Divider	1	1	90
+4750	Elite Weapon Chest	4015	Dark Impeller Divider	1	1	90
+4750	Elite Weapon Chest	4016	Immortal Power Crasher	1	1	90
+4750	Elite Weapon Chest	4586	Curselink Divider	1	1	90
+4750	Elite Weapon Chest	4587	Hell Impresa's Ax	1	1	90
+4750	Elite Weapon Chest	4017	Cruel Battle Club	1	1	90
+4750	Elite Weapon Chest	4018	Boundchaser Hammer	1	1	90
+4750	Elite Weapon Chest	4019	Arcadian Maul	1	1	90
+4750	Elite Weapon Chest	4020	Pythonhead Maul	1	1	90
+4750	Elite Weapon Chest	4021	Pure Warmace	1	1	90
+4750	Elite Weapon Chest	4022	Forcegatherer Morningstar	1	1	90
+4750	Elite Weapon Chest	4023	Fallenstigma Maul	1	1	90
+4750	Elite Weapon Chest	4024	Lost Valley Mace	1	1	90
+4750	Elite Weapon Chest	4588	Rune Sacrifice Maul	1	1	90
+4750	Elite Weapon Chest	4589	Shadow Obey's Destroyer	1	1	90
+4750	Elite Weapon Chest	4025	Crimson Bastard Sword	1	1	90
+4750	Elite Weapon Chest	4026	Lunatic Flamberge	1	1	90
+4750	Elite Weapon Chest	4027	Battle Bastard Sword	1	1	90
+4750	Elite Weapon Chest	4028	Shining Riccaso	1	1	90
+4750	Elite Weapon Chest	4029	Lord Flamberge	1	1	90
+4750	Elite Weapon Chest	4030	Soulaway Slasher	1	1	90
+4750	Elite Weapon Chest	4031	Gloomoath Claymore	1	1	90
+4750	Elite Weapon Chest	4032	Nature Force Bastard Sword	1	1	90
+4750	Elite Weapon Chest	4590	Destinyruin Mightedge	1	1	90
+4750	Elite Weapon Chest	4591	Orbit Walker's Slahser	1	1	90
+4750	Elite Weapon Chest	4033	Celestial Scythe	1	1	90
+4750	Elite Weapon Chest	4034	Cryland Bardiche	1	1	90
+4750	Elite Weapon Chest	4035	Dark Scythe	1	1	90
+4750	Elite Weapon Chest	4036	Spiritfallen Voulge	1	1	90
+4750	Elite Weapon Chest	4037	Throat Slasher	1	1	90
+4750	Elite Weapon Chest	4038	Wargrave Halberd	1	1	90
+4750	Elite Weapon Chest	4039	Coresweeper Bardiche	1	1	90
+4750	Elite Weapon Chest	4040	Agonyheart Scythe	1	1	90
+4750	Elite Weapon Chest	4592	Hexforce Halberd	1	1	90
+4750	Elite Weapon Chest	4593	Arcane Raid's Halberd	1	1	90
+4750	Elite Weapon Chest	4041	Spectrum Bow	1	1	90
+4750	Elite Weapon Chest	4042	Blue Eve's Bow	1	1	90
+4750	Elite Weapon Chest	4043	Burning Bow	1	1	90
+4750	Elite Weapon Chest	4044	Arcane Bow	1	1	90
+4750	Elite Weapon Chest	4045	Martial Bow	1	1	90
+4750	Elite Weapon Chest	4046	Headsweeper Bow	1	1	90
+4750	Elite Weapon Chest	4047	Silentdeath Bow	1	1	90
+4750	Elite Weapon Chest	4048	Immortalbard Bow	1	1	90
+4750	Elite Weapon Chest	4594	Bloodchaser Bow	1	1	90
+4750	Elite Weapon Chest	4595	Forest Wanderer's Bow	1	1	90
+4750	Elite Weapon Chest	4049	Guardian Crossbow	1	1	90
+4750	Elite Weapon Chest	4050	Rose Arbalest	1	1	90
+4750	Elite Weapon Chest	4051	Lost Horn Crossbow	1	1	90
+4750	Elite Weapon Chest	4052	Blaze Ballista	1	1	90
+4750	Elite Weapon Chest	4053	Freezing Arbalest	1	1	90
+4750	Elite Weapon Chest	4054	Blowname Arbalest	1	1	90
+4750	Elite Weapon Chest	4055	Hundredeye Crossbow	1	1	90
+4750	Elite Weapon Chest	4056	Gorefist Arbalest	1	1	90
+4750	Elite Weapon Chest	4596	Steeltearer Crossbow	1	1	90
+4750	Elite Weapon Chest	4597	Enchant Ruin's Arbalest	1	1	90
+4750	Elite Weapon Chest	4057	Wizardry Staff	1	1	90
+4750	Elite Weapon Chest	4058	Grimdivine Staff	1	1	90
+4750	Elite Weapon Chest	4059	Terra Staff	1	1	90
+4750	Elite Weapon Chest	4060	Spiritual Staff	1	1	90
+4750	Elite Weapon Chest	4061	Arcane Staff	1	1	90
+4750	Elite Weapon Chest	4062	Unstable Sage Staff	1	1	90
+4750	Elite Weapon Chest	4063	Oldfamilia Staff	1	1	90
+4750	Elite Weapon Chest	4064	Dark Pedigree Staff	1	1	90
+4750	Elite Weapon Chest	4598	Brutal Judge Staff	1	1	90
+4750	Elite Weapon Chest	4599	Realm Gaurdian's Staff	1	1	90
+4750	Elite Weapon Chest	4065	Shadow Orb	1	1	90
+4750	Elite Weapon Chest	4066	Darkhand Orb	1	1	90
+4750	Elite Weapon Chest	4067	Farnation Wand	1	1	90
+4750	Elite Weapon Chest	4068	Bane Orb	1	1	90
+4750	Elite Weapon Chest	4069	Disguiser Orb	1	1	90
+4750	Elite Weapon Chest	4070	Blindpower Wand	1	1	90
+4750	Elite Weapon Chest	4071	Phantomthriller Wand	1	1	90
+4750	Elite Weapon Chest	4072	Mortal Ceremony Wand	1	1	90
+4750	Elite Weapon Chest	4743	Spelleater Wand	1	1	90
+4750	Elite Weapon Chest	4744	Demise Load's Wand	1	1	90
+4750	Elite Weapon Chest	4073	Silver Kataria	1	1	90
+4750	Elite Weapon Chest	4074	Shadow Kataria	1	1	90
+4750	Elite Weapon Chest	4075	Luna Kataria	1	1	90
+4750	Elite Weapon Chest	4076	Splash Kataria	1	1	90
+4750	Elite Weapon Chest	4077	Blood Kataria	1	1	90
+4750	Elite Weapon Chest	4078	Eternal Flight Kataria	1	1	90
+4750	Elite Weapon Chest	4079	Kataria of Justice	1	1	90
+4750	Elite Weapon Chest	4080	Gaia Empress Kataria	1	1	90
+4750	Elite Weapon Chest	4745	Astral Buster Kataria	1	1	90
+4750	Elite Weapon Chest	4746	Leviathan Kataria	1	1	90
+4750	Elite Weapon Chest	4081	Sunset Chakram	1	1	90
+4750	Elite Weapon Chest	4082	Shade Chakram	1	1	90
+4750	Elite Weapon Chest	4083	Darkwing Chakram	1	1	90
+4750	Elite Weapon Chest	4084	Mystic Chakram	1	1	90
+4750	Elite Weapon Chest	4085	Spectral Chakram	1	1	90
+4750	Elite Weapon Chest	4086	Soul Bringer Chakram	1	1	90
+4750	Elite Weapon Chest	4087	Rumbleline Chakram	1	1	90
+4750	Elite Weapon Chest	4088	Divine Walker Chakram	1	1	90
+4750	Elite Weapon Chest	4747	Bloodyrain Chakram	1	1	90
+4750	Elite Weapon Chest	4748	Spell Howler Chakram	1	1	90
+4751	Elite Armor Chest	4101	Banegrowler Armor	1	1	29
+4751	Elite Armor Chest	4102	Banegrowler Gauntlets	1	1	29
+4751	Elite Armor Chest	4103	Banegrowler Greaves	1	1	29
+4751	Elite Armor Chest	4104	Banegrowler Boots	1	1	29
+4751	Elite Armor Chest	4105	Craftfist Armor	1	1	29
+4751	Elite Armor Chest	4106	Craftfist Gauntlets	1	1	29
+4751	Elite Armor Chest	4107	Craftfist Greaves	1	1	29
+4751	Elite Armor Chest	4108	Craftfist Boots	1	1	29
+4751	Elite Armor Chest	4109	Wolfthrone Helm	1	1	29
+4751	Elite Armor Chest	4110	Wolfthrone Armor	1	1	29
+4751	Elite Armor Chest	4111	Wolfthrone Gauntlets	1	1	29
+4751	Elite Armor Chest	4112	Wolfthrone Greaves	1	1	29
+4751	Elite Armor Chest	4113	Wolfthrone Boots	1	1	29
+4751	Elite Armor Chest	4118	Harshcrown Helm	1	1	29
+4751	Elite Armor Chest	4114	Harshcrown Armor	1	1	29
+4751	Elite Armor Chest	4115	Harshcrown Gauntlets	1	1	29
+4751	Elite Armor Chest	4116	Harshcrown Greaves	1	1	29
+4751	Elite Armor Chest	4117	Harshcrown Boots	1	1	29
+4751	Elite Armor Chest	4119	Flasharm Helm	1	1	29
+4751	Elite Armor Chest	4120	Flasharm Armor	1	1	29
+4751	Elite Armor Chest	4121	Flasharm Gauntlets	1	1	29
+4751	Elite Armor Chest	4122	Flasharm Greaves	1	1	29
+4751	Elite Armor Chest	4123	Flasharm Boots	1	1	29
+4751	Elite Armor Chest	4124	Wrenchingruler Helm	1	1	29
+4751	Elite Armor Chest	4125	Wrenchingruler Armor	1	1	29
+4751	Elite Armor Chest	4126	Wrenchingruler Gauntlets	1	1	29
+4751	Elite Armor Chest	4127	Wrenchingruler Greaves	1	1	29
+4751	Elite Armor Chest	4128	Wrenchingruler Boots	1	1	29
+4751	Elite Armor Chest	4130	Swordcreeper Helmet	1	1	29
+4751	Elite Armor Chest	4129	Swordcreeper Armor	1	1	29
+4751	Elite Armor Chest	4131	Swordcreeper Gauntlets	1	1	29
+4751	Elite Armor Chest	4132	Swordcreeper Greaves	1	1	29
+4751	Elite Armor Chest	4133	Swordcreeper Boots	1	1	29
+4751	Elite Armor Chest	4366	Painholder Helmet	1	1	29
+4751	Elite Armor Chest	4365	Painholder Armor	1	1	29
+4751	Elite Armor Chest	4367	Painholder Gauntlets	1	1	29
+4751	Elite Armor Chest	4368	Painholder Greaves	1	1	29
+4751	Elite Armor Chest	4369	Painholder Boots	1	1	29
+4751	Elite Armor Chest	5254	Trial Power's Helmet	1	1	29
+4751	Elite Armor Chest	5255	Trial Power's Armor	1	1	29
+4751	Elite Armor Chest	5256	Trial Power's Gauntlet	1	1	29
+4751	Elite Armor Chest	5257	Trial Power's Greaves	1	1	29
+4751	Elite Armor Chest	5258	Trial Power's Boots	1	1	29
+4751	Elite Armor Chest	4134	Wingsnatcher Armor	1	1	29
+4751	Elite Armor Chest	4135	Wingsnatcher Armpads	1	1	29
+4751	Elite Armor Chest	4136	Wingsnatcher Leggings	1	1	29
+4751	Elite Armor Chest	4137	Wingsnatcher Boots	1	1	29
+4751	Elite Armor Chest	4138	Light Dominion Armor	1	1	29
+4751	Elite Armor Chest	4139	Light Dominion Armpads	1	1	29
+4751	Elite Armor Chest	4140	Light Dominion Tassets	1	1	29
+4751	Elite Armor Chest	4141	Light Dominion Boots	1	1	29
+4751	Elite Armor Chest	4142	Chronochaser Cap	1	1	29
+4751	Elite Armor Chest	4143	Chronochaser Armor	1	1	29
+4751	Elite Armor Chest	4144	Chronochaser Armpads	1	1	29
+4751	Elite Armor Chest	4145	Chronochaser Tassets	1	1	29
+4751	Elite Armor Chest	4146	Chronochaser Boots	1	1	29
+4751	Elite Armor Chest	4147	Breathseize Cap	1	1	29
+4751	Elite Armor Chest	4148	Breathseize Armor	1	1	29
+4751	Elite Armor Chest	4149	Breathseize Armpads	1	1	29
+4751	Elite Armor Chest	4150	Breathseize Tassets	1	1	29
+4751	Elite Armor Chest	4151	Breathseize Boots	1	1	29
+4751	Elite Armor Chest	4152	Mountain King Cap	1	1	29
+4751	Elite Armor Chest	4153	Mountain King Armor	1	1	29
+4751	Elite Armor Chest	4154	Mountain King Armpads	1	1	29
+4751	Elite Armor Chest	4155	Mountain King Tassets	1	1	29
+4751	Elite Armor Chest	4156	Mountain King Boots	1	1	29
+4751	Elite Armor Chest	4157	Lust Rose Cap	1	1	29
+4751	Elite Armor Chest	4158	Lust Rose Armor	1	1	29
+4751	Elite Armor Chest	4159	Lust Rose Armpads	1	1	29
+4751	Elite Armor Chest	4160	Lust Rose Tassets	1	1	29
+4751	Elite Armor Chest	4161	Lust Rose Boots	1	1	29
+4751	Elite Armor Chest	4163	Secretmountain Cap	1	1	29
+4751	Elite Armor Chest	4162	Secretmountain Armor	1	1	29
+4751	Elite Armor Chest	4164	Secretmountain Armpads	1	1	29
+4751	Elite Armor Chest	4165	Secretmountain Leggings	1	1	29
+4751	Elite Armor Chest	4166	Secretmountain Boots	1	1	29
+4751	Elite Armor Chest	4371	Cursetracer Cap	1	1	29
+4751	Elite Armor Chest	4370	Cursetracer Armor	1	1	29
+4751	Elite Armor Chest	4372	Cursetracer Armpads	1	1	29
+4751	Elite Armor Chest	4373	Cursetracer Leggings	1	1	29
+4751	Elite Armor Chest	4374	Cursetracer Boots	1	1	29
+4751	Elite Armor Chest	5259	Eternal Crown's Cap	1	1	29
+4751	Elite Armor Chest	5260	Eternal Crown's Armor	1	1	29
+4751	Elite Armor Chest	5261	Eternal Crown's Armpads	1	1	29
+4751	Elite Armor Chest	5262	Eternal Crown's Leggings	1	1	29
+4751	Elite Armor Chest	5263	Eternal Crown's Boots	1	1	29
+4751	Elite Armor Chest	4167	Hail Rock Garb	1	1	29
+4751	Elite Armor Chest	4168	Hail Rock Bracelets	1	1	29
+4751	Elite Armor Chest	4169	Hail Rock Kilt	1	1	29
+4751	Elite Armor Chest	4170	Hail Rock Boots	1	1	29
+4751	Elite Armor Chest	4171	Mindbuster Garb	1	1	29
+4751	Elite Armor Chest	4172	Mindbuster Bracelets	1	1	29
+4751	Elite Armor Chest	4173	Mindbuster Kilt	1	1	29
+4751	Elite Armor Chest	4174	Mindbuster Boots	1	1	29
+4751	Elite Armor Chest	4175	Skulletto Headband	1	1	29
+4751	Elite Armor Chest	4176	Skulletto Garb	1	1	29
+4751	Elite Armor Chest	4177	Skulletto Bracelets	1	1	29
+4751	Elite Armor Chest	4178	Skulletto Kilt	1	1	29
+4751	Elite Armor Chest	4179	Skulletto Boots	1	1	29
+4751	Elite Armor Chest	4180	Cold Vengeance Headband	1	1	29
+4751	Elite Armor Chest	4181	Cold Vengeance Garb	1	1	29
+4751	Elite Armor Chest	4182	Cold Vengeance Bracelets	1	1	29
+4751	Elite Armor Chest	4183	Cold Vengeance Kilt	1	1	29
+4751	Elite Armor Chest	4184	Cold Vengeance Boots	1	1	29
+4751	Elite Armor Chest	4185	Enigma Sign Headband	1	1	29
+4751	Elite Armor Chest	4186	Enigma Sign Garb	1	1	29
+4751	Elite Armor Chest	4187	Enigma Sign Bracelets	1	1	29
+4751	Elite Armor Chest	4188	Enigma Sign Kilt	1	1	29
+4751	Elite Armor Chest	4189	Enigma Sign Boots	1	1	29
+4751	Elite Armor Chest	4190	Highcoma Headband	1	1	29
+4751	Elite Armor Chest	4191	Highcoma Garb	1	1	29
+4751	Elite Armor Chest	4192	Highcoma Bracelets	1	1	29
+4751	Elite Armor Chest	4193	Highcoma Kilt	1	1	29
+4751	Elite Armor Chest	4194	Highcoma Boots	1	1	29
+4751	Elite Armor Chest	4196	Brainbuster Headband	1	1	29
+4751	Elite Armor Chest	4195	Brainbuster Garb	1	1	29
+4751	Elite Armor Chest	4197	Brainbuster Bracelets	1	1	29
+4751	Elite Armor Chest	4198	Brainbuster Kilt	1	1	29
+4751	Elite Armor Chest	4199	Brainbuster Boots	1	1	29
+4751	Elite Armor Chest	4376	Divine Emblem Headband	1	1	29
+4751	Elite Armor Chest	4375	Divine Emblem Garb	1	1	29
+4751	Elite Armor Chest	4377	Divine Emblem Bracelets	1	1	29
+4751	Elite Armor Chest	4378	Divine Emblem Kilt	1	1	29
+4751	Elite Armor Chest	4379	Divine Emblem Boots	1	1	29
+4751	Elite Armor Chest	5264	Dragon Emperor's Headband	1	1	29
+4751	Elite Armor Chest	5265	Dragon Emperor's Garb	1	1	29
+4751	Elite Armor Chest	5266	Dragon Emperor's Bracelets	1	1	29
+4751	Elite Armor Chest	5267	Dragon Emperor's Kilt	1	1	29
+4751	Elite Armor Chest	5268	Dragon Emperor's Boots	1	1	29
+4751	Elite Armor Chest	4200	Warbreaker Armor	1	1	29
+4751	Elite Armor Chest	4201	Warbreaker Gauntlets	1	1	29
+4751	Elite Armor Chest	4202	Warbreaker Greaves	1	1	29
+4751	Elite Armor Chest	4203	Warbreaker Boots	1	1	29
+4751	Elite Armor Chest	4204	Beastlord Armor	1	1	29
+4751	Elite Armor Chest	4205	Beastlord Gauntlets	1	1	29
+4751	Elite Armor Chest	4206	Beastlord Greave	1	1	29
+4751	Elite Armor Chest	4207	Beastlord Boots	1	1	29
+4751	Elite Armor Chest	4208	Ghostslasher Helm	1	1	29
+4751	Elite Armor Chest	4209	Ghostslasher Armor	1	1	29
+4751	Elite Armor Chest	4210	Ghostslasher Gauntlets	1	1	29
+4751	Elite Armor Chest	4211	Ghostslasher Greaves	1	1	29
+4751	Elite Armor Chest	4212	Ghostslasher Boots	1	1	29
+4751	Elite Armor Chest	4217	Desert Ruin Helm	1	1	29
+4751	Elite Armor Chest	4213	Desert Ruin Armor	1	1	29
+4751	Elite Armor Chest	4214	Desert Ruin Gauntlets	1	1	29
+4751	Elite Armor Chest	4215	Desert Ruin Greaves	1	1	29
+4751	Elite Armor Chest	4216	Desert Ruin Boots	1	1	29
+4751	Elite Armor Chest	4218	Hellgater Helm	1	1	29
+4751	Elite Armor Chest	4219	Hellgater Armor	1	1	29
+4751	Elite Armor Chest	4220	Hellgater Gauntlets	1	1	29
+4751	Elite Armor Chest	4221	Hellgater Greaves	1	1	29
+4751	Elite Armor Chest	4222	Hellgater Boots	1	1	29
+4751	Elite Armor Chest	4223	Tribal Champion Helm	1	1	29
+4751	Elite Armor Chest	4224	Tribal Champion Armor	1	1	29
+4751	Elite Armor Chest	4225	Tribal Champion Gauntlets	1	1	29
+4751	Elite Armor Chest	4226	Tribal Champion Greaves	1	1	29
+4751	Elite Armor Chest	4227	Tribal Champion Boots	1	1	29
+4751	Elite Armor Chest	4229	Ogre-eater Helm	1	1	29
+4751	Elite Armor Chest	4228	Ogre-eater Armor	1	1	29
+4751	Elite Armor Chest	4230	Ogre-eater Gauntlets	1	1	29
+4751	Elite Armor Chest	4231	Ogre-eater Greave	1	1	29
+4751	Elite Armor Chest	4232	Ogre-eater Boots	1	1	29
+4751	Elite Armor Chest	4381	Ironheart Helm	1	1	29
+4751	Elite Armor Chest	4380	Ironheart Armor	1	1	29
+4751	Elite Armor Chest	4382	Ironheart Gauntlets	1	1	29
+4751	Elite Armor Chest	4383	Ironheart Greaves	1	1	29
+4751	Elite Armor Chest	4384	Ironheart Boots	1	1	29
+4751	Elite Armor Chest	5269	Desert Gaurdian's Helm	1	1	29
+4751	Elite Armor Chest	5270	Desert Gaurdian's Armor	1	1	29
+4751	Elite Armor Chest	5271	Desert Gaurdian's Gauntlets	1	1	29
+4751	Elite Armor Chest	5272	Desert Gaurdian's Greaves	1	1	29
+4751	Elite Armor Chest	5273	Desert Gaurdian's Boots	1	1	29
+4751	Elite Armor Chest	4233	Last Rider Armor	1	1	29
+4751	Elite Armor Chest	4234	Last Rider Armpads	1	1	29
+4751	Elite Armor Chest	4235	Last Rider Tassets	1	1	29
+4751	Elite Armor Chest	4236	Last Rider Boots	1	1	29
+4751	Elite Armor Chest	4237	Flymoth Armor	1	1	29
+4751	Elite Armor Chest	4238	Flymoth Armpads	1	1	29
+4751	Elite Armor Chest	4239	Flymoth Tassets	1	1	29
+4751	Elite Armor Chest	4240	Flymoth Boots	1	1	29
+4751	Elite Armor Chest	4241	Noblepiercer Cap	1	1	29
+4751	Elite Armor Chest	4242	Noblepiercer Armor	1	1	29
+4751	Elite Armor Chest	4243	Noblepiercer Armpads	1	1	29
+4751	Elite Armor Chest	4244	Noblepiercer Tassets	1	1	29
+4751	Elite Armor Chest	4245	Noblepiercer Boots	1	1	29
+4751	Elite Armor Chest	4246	Red Opera Cap	1	1	29
+4751	Elite Armor Chest	4247	Red Opera Armor	1	1	29
+4751	Elite Armor Chest	4248	Red Opera Armpads	1	1	29
+4751	Elite Armor Chest	4249	Red Opera Tassets	1	1	29
+4751	Elite Armor Chest	4250	Red Opera Boots	1	1	29
+4751	Elite Armor Chest	4251	Mortal Lion Cap	1	1	29
+4751	Elite Armor Chest	4252	Mortal Lion Armor	1	1	29
+4751	Elite Armor Chest	4253	Mortal Lion Armpads	1	1	29
+4751	Elite Armor Chest	4254	Mortal Lion Tassets	1	1	29
+4751	Elite Armor Chest	4255	Mortal Lion Boots	1	1	29
+4751	Elite Armor Chest	4256	Bleakheart Cap	1	1	29
+4751	Elite Armor Chest	4257	Bleakheart Armor	1	1	29
+4751	Elite Armor Chest	4258	Bleakheart Armpads	1	1	29
+4751	Elite Armor Chest	4259	Bleakheart Leggings	1	1	29
+4751	Elite Armor Chest	4260	Bleakheart Boots	1	1	29
+4751	Elite Armor Chest	4262	Mindsearcher Cap	1	1	29
+4751	Elite Armor Chest	4261	Mindsearcher Armor	1	1	29
+4751	Elite Armor Chest	4263	Mindsearcher Armpads	1	1	29
+4751	Elite Armor Chest	4264	Mindsearcher Leggings	1	1	29
+4751	Elite Armor Chest	4265	Mindsearcher Boots	1	1	29
+4751	Elite Armor Chest	4386	Ghostbless Cap	1	1	29
+4751	Elite Armor Chest	4385	Ghostbless Armor	1	1	29
+4751	Elite Armor Chest	4387	Ghostbless Armpads	1	1	29
+4751	Elite Armor Chest	4388	Ghostbless Leggings	1	1	29
+4751	Elite Armor Chest	4389	Ghostbless Boots	1	1	29
+4751	Elite Armor Chest	5274	Malice Breath's Cap	1	1	29
+4751	Elite Armor Chest	5275	Malice Breath's Armor	1	1	29
+4751	Elite Armor Chest	5276	Malice Breath's Armpads	1	1	29
+4751	Elite Armor Chest	5277	Malice Breath's Hoses	1	1	29
+4751	Elite Armor Chest	5278	Malice Breath's Boots	1	1	29
+4751	Elite Armor Chest	4266	Voyager Garb	1	1	29
+4751	Elite Armor Chest	4267	Voyager Bracelets	1	1	29
+4751	Elite Armor Chest	4268	Voyager Kilt	1	1	29
+4751	Elite Armor Chest	4269	Voyager Boots	1	1	29
+4751	Elite Armor Chest	4270	Braincastle Garb	1	1	29
+4751	Elite Armor Chest	4271	Braincastle Bracelets	1	1	29
+4751	Elite Armor Chest	4272	Braincastle Kilt	1	1	29
+4751	Elite Armor Chest	4273	Braincastle Boots	1	1	29
+4751	Elite Armor Chest	4275	Battlerattle Headband	1	1	29
+4751	Elite Armor Chest	4274	Battlerattle Garb	1	1	29
+4751	Elite Armor Chest	4276	Battlerattle Bracelets	1	1	29
+4751	Elite Armor Chest	4277	Battlerattle Kilt	1	1	29
+4751	Elite Armor Chest	4278	Battlerattle Boots	1	1	29
+4751	Elite Armor Chest	4280	Wisdom Age Headband	1	1	29
+4751	Elite Armor Chest	4279	Wisdom Age Garb	1	1	29
+4751	Elite Armor Chest	4281	Wisdom Age Bracelets	1	1	29
+4751	Elite Armor Chest	4282	Wisdom Age Kilt	1	1	29
+4751	Elite Armor Chest	4283	Wisdom Age Boots	1	1	29
+4751	Elite Armor Chest	4285	Grimjoker Headband	1	1	29
+4751	Elite Armor Chest	4284	Grimjoker Garb	1	1	29
+4751	Elite Armor Chest	4286	Grimjoker Bracelets	1	1	29
+4751	Elite Armor Chest	4287	Grimjoker Kilt	1	1	29
+4751	Elite Armor Chest	4288	Grimjoker Boots	1	1	29
+4751	Elite Armor Chest	4290	Eyes Wisher Headband	1	1	29
+4751	Elite Armor Chest	4289	Eyes Wisher Garb	1	1	29
+4751	Elite Armor Chest	4291	Eyes Wisher Bracelets	1	1	29
+4751	Elite Armor Chest	4292	Eyes Wisher Kilt	1	1	29
+4751	Elite Armor Chest	4293	Eyes Wisher Boots	1	1	29
+4751	Elite Armor Chest	4295	Lowerblade Cap	1	1	29
+4751	Elite Armor Chest	4294	Lowerblade Garb	1	1	29
+4751	Elite Armor Chest	4296	Lowerblade Armlets	1	1	29
+4751	Elite Armor Chest	4297	Lowerblade Kilt	1	1	29
+4751	Elite Armor Chest	4298	Lowerblade Boots	1	1	29
+4751	Elite Armor Chest	5279	Endless Voyager's Cap	1	1	29
+4751	Elite Armor Chest	5280	Endless Voyager's Garb	1	1	29
+4751	Elite Armor Chest	5281	Endless Voyager's Armlets	1	1	29
+4751	Elite Armor Chest	5282	Endless Voyager's Kilt	1	1	29
+4751	Elite Armor Chest	5283	Endless Voyager's Boots	1	1	29
+4751	Elite Armor Chest	4299	Redshine Cuirass	1	1	29
+4751	Elite Armor Chest	4300	Redshine Bracers	1	1	29
+4751	Elite Armor Chest	4301	Redshine Tights	1	1	29
+4751	Elite Armor Chest	4302	Redshine Jambeau	1	1	29
+4751	Elite Armor Chest	4303	Whiteknight Cuirass	1	1	29
+4751	Elite Armor Chest	4304	Whiteknight Bracers	1	1	29
+4751	Elite Armor Chest	4305	Whiteknight Tights	1	1	29
+4751	Elite Armor Chest	4306	Whiteknight Jambeau	1	1	29
+4751	Elite Armor Chest	4307	Deepforest Hair Lace	1	1	29
+4751	Elite Armor Chest	4308	Deepforest Cuirass	1	1	29
+4751	Elite Armor Chest	4309	Deepforest Bracers	1	1	29
+4751	Elite Armor Chest	4310	Deepforest Tights	1	1	29
+4751	Elite Armor Chest	4311	Deepforest Jambeau	1	1	29
+4751	Elite Armor Chest	4316	Darkleaper Hair Lace	1	1	29
+4751	Elite Armor Chest	4312	Darkleaper Cuirass	1	1	29
+4751	Elite Armor Chest	4313	Darkleaper Bracers	1	1	29
+4751	Elite Armor Chest	4314	Darkleaper Tights	1	1	29
+4751	Elite Armor Chest	4315	Darkleaper Jambeau	1	1	29
+4751	Elite Armor Chest	4321	Grey Cloud Hair Lace	1	1	29
+4751	Elite Armor Chest	4317	Grey Cloud Cuirass	1	1	29
+4751	Elite Armor Chest	4318	Gray Cloud Bracer	1	1	29
+4751	Elite Armor Chest	4319	Grey Cloud Tights	1	1	29
+4751	Elite Armor Chest	4320	Grey Cloud Jambeau	1	1	29
+4751	Elite Armor Chest	4326	Blue Walker Hair Lace	1	1	29
+4751	Elite Armor Chest	4322	Blue Walker Cuirass	1	1	29
+4751	Elite Armor Chest	4323	Blue Walker Bracer	1	1	29
+4751	Elite Armor Chest	4324	Blue Walker Tights	1	1	29
+4751	Elite Armor Chest	4325	Blue Walker Jambeau	1	1	29
+4751	Elite Armor Chest	4331	Yellow Master Hair Lace	1	1	29
+4751	Elite Armor Chest	4327	Yellow Master Cuirass	1	1	29
+4751	Elite Armor Chest	4328	Yellow Master Bracer	1	1	29
+4751	Elite Armor Chest	4329	Yellow Master Tights	1	1	29
+4751	Elite Armor Chest	4330	Yellow Master Jambeau	1	1	29
+4751	Elite Armor Chest	4399	Tender Abysmal Hair Lace	1	1	29
+4751	Elite Armor Chest	4395	Tender Abysmal Cuirass	1	1	29
+4751	Elite Armor Chest	4396	Tender Abysmal Bracer	1	1	29
+4751	Elite Armor Chest	4397	Tender Abysmal Tights	1	1	29
+4751	Elite Armor Chest	4398	Tender Abysmal Jambeau	1	1	29
+4751	Elite Armor Chest	5284	Green Judgement Hairlace	1	1	29
+4751	Elite Armor Chest	5285	Green Judgement Cuirass	1	1	29
+4751	Elite Armor Chest	5286	Green Judgement Tights	1	1	29
+4751	Elite Armor Chest	5287	Green Judgement Bracer	1	1	29
+4751	Elite Armor Chest	5288	Green Judgement Jambeau	1	1	29
+4751	Elite Armor Chest	4332	Willinglight Garb	1	1	29
+4751	Elite Armor Chest	4333	Willinglight Sleeves	1	1	29
+4751	Elite Armor Chest	4334	Willinglight Skirt	1	1	29
+4751	Elite Armor Chest	4335	Willinglight Shoes	1	1	29
+4751	Elite Armor Chest	4336	Acrobatos Garb	1	1	29
+4751	Elite Armor Chest	4337	Acrobatos Sleeves	1	1	29
+4751	Elite Armor Chest	4338	Acrobatos Skirt	1	1	29
+4751	Elite Armor Chest	4339	Acrobatos Shoes	1	1	29
+4751	Elite Armor Chest	4340	Twilight Cap	1	1	29
+4751	Elite Armor Chest	4341	Twilight Garb	1	1	29
+4751	Elite Armor Chest	4342	Twilight Sleeves	1	1	29
+4751	Elite Armor Chest	4343	Twilight Skirt	1	1	29
+4751	Elite Armor Chest	4344	Twilight Shoes	1	1	29
+4751	Elite Armor Chest	4349	Daylight's Cap	1	1	29
+4751	Elite Armor Chest	4345	Daylight's Garb	1	1	29
+4751	Elite Armor Chest	4346	Daylight's Sleeves	1	1	29
+4751	Elite Armor Chest	4347	Daylight's Skirt	1	1	29
+4751	Elite Armor Chest	4348	Daylight's Shoes	1	1	29
+4751	Elite Armor Chest	4354	Soul Eater Cap	1	1	29
+4751	Elite Armor Chest	4350	Soul Eater Garb	1	1	29
+4751	Elite Armor Chest	4351	Soul Eater Sleeve	1	1	29
+4751	Elite Armor Chest	4352	Soul Eater Skirt	1	1	29
+4751	Elite Armor Chest	4353	Soul Eater Shoes	1	1	29
+4751	Elite Armor Chest	4359	Equity Arbiter Cap	1	1	29
+4751	Elite Armor Chest	4355	Equity Arbiter Garb	1	1	29
+4751	Elite Armor Chest	4356	Equity Arbiter Sleeve	1	1	29
+4751	Elite Armor Chest	4357	Equity Arbiter Skirt	1	1	29
+4751	Elite Armor Chest	4358	Equity Arbiter Shoes	1	1	29
+4751	Elite Armor Chest	4364	Mastermind Cap	1	1	29
+4751	Elite Armor Chest	4360	Mastermind Garb	1	1	29
+4751	Elite Armor Chest	4361	Mastermind Sleeve	1	1	29
+4751	Elite Armor Chest	4362	Mastermind Skirt	1	1	29
+4751	Elite Armor Chest	4363	Mastermind Shoes	1	1	29
+4751	Elite Armor Chest	4404	Demention Walker Cap	1	1	29
+4751	Elite Armor Chest	4400	Demention Walker Garb	1	1	29
+4751	Elite Armor Chest	4401	Demention Walker Sleeve	1	1	29
+4751	Elite Armor Chest	4402	Demention Walker Skirt	1	1	29
+4751	Elite Armor Chest	4403	Demention Walker Shoes	1	1	29
+4751	Elite Armor Chest	5289	Ancient Lore Cap	1	1	29
+4751	Elite Armor Chest	5290	Ancient Lore Garb	1	1	29
+4751	Elite Armor Chest	5291	Ancient Lore Skirt	1	1	29
+4751	Elite Armor Chest	5292	Ancient Lore Sleeve	1	1	29
+4751	Elite Armor Chest	5293	Ancient Lore Shoes	1	1	29
+4755	Christmas Gift Box	12799	Santa's Bell	1	1	850
+4755	Christmas Gift Box	9756	Rudolf <Rank 1>	1	1	1000
+4755	Christmas Gift Box	9757	Rudolf <Rank 2>	1	1	750
+4755	Christmas Gift Box	9758	Rudolf <Rank 3>	1	1	500
+4755	Christmas Gift Box	6078	Rudolf Pet Box	1	1	250
+4755	Christmas Gift Box	4802	Gold Coin of the rich	1	1	250
+4755	Christmas Gift Box	4803	Silver coin of the rich	1	1	400
+4755	Christmas Gift Box	6007	Lens Stone+	500	500	500
+4755	Christmas Gift Box	7644	Pet Reinforcement Manual	1	1	100
+4755	Christmas Gift Box	6184	Extra-large Giant Potion+	1	1	500
+4755	Christmas Gift Box	6185	Extra-large Light Speed Potion+	1	1	500
+4755	Christmas Gift Box	6186	Extra-large Defence Potion+	1	1	500
+4755	Christmas Gift Box	6187	Extra-large Quickness Potion+	1	1	500
+4755	Christmas Gift Box	7648	Shuta Ring Piece	1	1	100
+4755	Christmas Gift Box	7659	Karkaen Necklace Piece	1	1	100
+4755	Christmas Gift Box	7651	Blode Ring Piece	1	1	100
+4755	Christmas Gift Box	7650	Pargon Ring Piece	1	1	100
+4755	Christmas Gift Box	7653	Logo Ring Piece	1	1	100
+4755	Christmas Gift Box	7654	Ohkeros Ring Piece	1	1	100
+4755	Christmas Gift Box	7665	Luke Necklace Piece	1	1	100
+4755	Christmas Gift Box	7655	Gadius Ring Piece	1	1	100
+4755	Christmas Gift Box	7662	Guardimesh Necklace Piece	1	1	100
+4755	Christmas Gift Box	7394	Large Recovery Potion	5	10	1000
+4755	Christmas Gift Box	6273	Extra-large Mana Potion	5	10	1000
+4755	Christmas Gift Box	14483	Santa's Socks	1	1	2500
+4755	Christmas Gift Box	14484	Santa's Hat	1	1	2500
+4755	Christmas Gift Box	14485	Santa's Gloves	1	1	2500
+4777	Bronze Treasure Chest	233	Large Life Potion	50	99	1700
+4777	Bronze Treasure Chest	1034	Manticore Potion	1	3	1700
+4777	Bronze Treasure Chest	265	Blaze Elemental Stone	2	3	1000
+4777	Bronze Treasure Chest	245	Gale Elemental Stone	2	3	1000
+4777	Bronze Treasure Chest	261	Fog Elemental Stone	2	3	1000
+4777	Bronze Treasure Chest	253	Soil Elemental Stone	2	3	1000
+4777	Bronze Treasure Chest	257	Meditation Elemental Stone	2	3	1000
+4777	Bronze Treasure Chest	486	Reinforcement Potion	2	4	1500
+4777	Bronze Treasure Chest	486	Reinforcement Potion	50	99	100
+4871	Lucky 2007	7436	Fortune Gate Pass	5	5	4000
+4871	Lucky 2007	6129	Rare Mount Chest	1	1	750
+4871	Lucky 2007	5007	Shuta Ring	1	1	100
+4871	Lucky 2007	5009	Pargon Ring	1	1	1000
+4871	Lucky 2007	5010	Blode Ring	1	1	1000
+4871	Lucky 2007	5011	Haul Ring	1	1	1000
+4871	Lucky 2007	5013	Ohkeros Ring	1	1	1000
+4871	Lucky 2007	5014	Gadius Ring	1	1	1000
+4871	Lucky 2007	5006	Barom Ring	1	1	1000
+4871	Lucky 2007	5018	Karkaen Necklace	1	1	100
+4871	Lucky 2007	5020	Biglos Necklace	1	1	1000
+4871	Lucky 2007	5024	Luke Necklace	1	1	1000
+4871	Lucky 2007	5023	Shocker Necklace	1	1	1000
+4871	Lucky 2007	5021	Guardimesh Necklace	1	1	1000
+4871	Lucky 2007	6267	Event Wing Chest	1	1	100
+4871	Lucky 2007	9177	Event Cloak Chest	1	1	100
+4871	Lucky 2007	12592	Fragment of Ashtal	1	1	250
+4871	Lucky 2007	11016	Scion Prayer Stone	1	1	250
+4871	Lucky 2007	10373	Lucky Box	1	1	1000
+4887	Knight's Gift	64	Slayingnova Cuirass	1	1	25
+4887	Knight's Gift	67	Slayingnova Gloves	1	1	25
+4887	Knight's Gift	68	Slayingnova Tassets	1	1	25
+4887	Knight's Gift	69	Slayingnova Boots	1	1	25
+4887	Knight's Gift	330	Lightsteel Armor	1	1	25
+4887	Knight's Gift	333	Lightsteel Gauntlets	1	1	25
+4887	Knight's Gift	334	Lightsteel Greaves	1	1	25
+4887	Knight's Gift	335	Lightsteel Boots	1	1	25
+4887	Knight's Gift	2085	Battleglory Cuirass	1	1	25
+4887	Knight's Gift	2087	Battleglory Gloves	1	1	25
+4887	Knight's Gift	2088	Battleglory Greaves	1	1	25
+4887	Knight's Gift	2089	Battleglory Boots	1	1	25
+4887	Knight's Gift	2251	Middleline Helm	1	1	25
+4887	Knight's Gift	2252	Middleline Armor	1	1	25
+4887	Knight's Gift	2254	Middleline Gauntlets	1	1	25
+4887	Knight's Gift	2255	Middleline Greaves	1	1	25
+4887	Knight's Gift	2256	Middleline Boots	1	1	25
+4887	Knight's Gift	2257	Bustash Helm	1	1	25
+4887	Knight's Gift	2258	Bustash Armor	1	1	25
+4887	Knight's Gift	2260	Bustash Gauntlets	1	1	25
+4887	Knight's Gift	2261	Bustash Greaves	1	1	25
+4887	Knight's Gift	2262	Bustash Boots	1	1	25
+4887	Knight's Gift	2263	Darkbreed Helm	1	1	25
+4887	Knight's Gift	2264	Darkbreed Armor	1	1	25
+4887	Knight's Gift	2266	Darkbreed Gauntlets	1	1	25
+4887	Knight's Gift	2267	Darkbreed Greaves	1	1	25
+4887	Knight's Gift	2268	Darkbreed Boots	1	1	25
+4887	Knight's Gift	2269	Coilcore Helm	1	1	25
+4887	Knight's Gift	2270	Coilcore Armor	1	1	25
+4887	Knight's Gift	2272	Coilcore Gauntlets	1	1	25
+4887	Knight's Gift	2273	Coilcore Greaves	1	1	25
+4887	Knight's Gift	2274	Coilcore Boots	1	1	25
+4887	Knight's Gift	3051	Savagepack Helmet	1	1	25
+4887	Knight's Gift	3050	Savagepack Armor	1	1	25
+4887	Knight's Gift	3052	Savagepack Gauntlets	1	1	25
+4887	Knight's Gift	3053	Savagepack Greaves	1	1	25
+4887	Knight's Gift	3054	Savagepack Boots	1	1	25
+4887	Knight's Gift	3066	Mistguard Helmet	1	1	25
+4887	Knight's Gift	3065	Mistguard Armor	1	1	25
+4887	Knight's Gift	3067	Mistguard Gauntlets	1	1	25
+4887	Knight's Gift	3068	Mistguard Greaves	1	1	25
+4887	Knight's Gift	3069	Mistguard Boots	1	1	25
+4887	Knight's Gift	5106	Eternaltrooper Helmet	1	1	25
+4887	Knight's Gift	5107	Eternaltrooper Armor	1	1	25
+4887	Knight's Gift	5108	Eternaltrooper Gauntlet	1	1	25
+4887	Knight's Gift	5109	Eternaltrooper Greaves	1	1	25
+4887	Knight's Gift	5110	Eternaltrooper Boots	1	1	25
+4887	Knight's Gift	2145	Banegrowler Armor	1	1	15
+4887	Knight's Gift	2147	Banegrowler Gauntlets	1	1	15
+4887	Knight's Gift	2148	Banegrowler Greaves	1	1	15
+4887	Knight's Gift	2149	Banegrowler Boots	1	1	15
+4887	Knight's Gift	2151	Craftfist Armor	1	1	15
+4887	Knight's Gift	2153	Craftfist Gauntlets	1	1	15
+4887	Knight's Gift	2154	Craftfist Greaves	1	1	15
+4887	Knight's Gift	2155	Craftfist Boots	1	1	15
+4887	Knight's Gift	2227	Wolfthrone Helm	1	1	15
+4887	Knight's Gift	2228	Wolfthrone Armor	1	1	15
+4887	Knight's Gift	2230	Wolfthrone Gauntlets	1	1	15
+4887	Knight's Gift	2231	Wolfthrone Greaves	1	1	15
+4887	Knight's Gift	2232	Wolfthrone Boots	1	1	15
+4887	Knight's Gift	2238	Harshcrown Helm	1	1	15
+4887	Knight's Gift	2233	Harshcrown Armor	1	1	15
+4887	Knight's Gift	2235	Harshcrown Gauntlets	1	1	15
+4887	Knight's Gift	2236	Harshcrown Greaves	1	1	15
+4887	Knight's Gift	2237	Harshcrown Boots	1	1	15
+4887	Knight's Gift	2239	Flasharm Helm	1	1	15
+4887	Knight's Gift	2240	Flasharm Armor	1	1	15
+4887	Knight's Gift	2242	Flasharm Gauntlets	1	1	15
+4887	Knight's Gift	2243	Flasharm Greaves	1	1	15
+4887	Knight's Gift	2244	Flasharm Boots	1	1	15
+4887	Knight's Gift	2245	Wrenchingruler Helm	1	1	15
+4887	Knight's Gift	2246	Wrenchingruler Armor	1	1	15
+4887	Knight's Gift	2248	Wrenchingruler Gauntlets	1	1	15
+4887	Knight's Gift	2249	Wrenchingruler Greaves	1	1	15
+4887	Knight's Gift	2250	Wrenchingruler Boots	1	1	15
+4887	Knight's Gift	3056	Swordcreeper Helmet	1	1	15
+4887	Knight's Gift	3055	Swordcreeper Armor	1	1	15
+4887	Knight's Gift	3057	Swordcreeper Gauntlets	1	1	15
+4887	Knight's Gift	3058	Swordcreeper Greaves	1	1	15
+4887	Knight's Gift	3059	Swordcreeper Boots	1	1	15
+4887	Knight's Gift	3071	Painholder Helmet	1	1	15
+4887	Knight's Gift	3070	Painholder Armor	1	1	15
+4887	Knight's Gift	3072	Painholder Gauntlets	1	1	15
+4887	Knight's Gift	3073	Painholder Greaves	1	1	15
+4887	Knight's Gift	3074	Painholder Boots	1	1	15
+4887	Knight's Gift	5111	Trial Power's Helmet	1	1	15
+4887	Knight's Gift	5112	Trial Power's Armor	1	1	15
+4887	Knight's Gift	5113	Trial Power's Gauntlet	1	1	15
+4887	Knight's Gift	5114	Trial Power's Greaves	1	1	15
+4887	Knight's Gift	5115	Trial Power's Boots	1	1	15
+4887	Knight's Gift	5501	Death Monarch Helmet	1	1	15
+4887	Knight's Gift	5502	Death Monarch Armour	1	1	15
+4887	Knight's Gift	5503	Death Monarch Gauntlet	1	1	15
+4887	Knight's Gift	5504	Death Monarch Greave	1	1	15
+4887	Knight's Gift	5505	Death Monarch Boot	1	1	15
+4887	Knight's Gift	4101	Banegrowler Armor	1	1	5
+4887	Knight's Gift	4102	Banegrowler Gauntlets	1	1	5
+4887	Knight's Gift	4103	Banegrowler Greaves	1	1	5
+4887	Knight's Gift	4104	Banegrowler Boots	1	1	5
+4887	Knight's Gift	4105	Craftfist Armor	1	1	5
+4887	Knight's Gift	4106	Craftfist Gauntlets	1	1	5
+4887	Knight's Gift	4107	Craftfist Greaves	1	1	5
+4887	Knight's Gift	4108	Craftfist Boots	1	1	5
+4887	Knight's Gift	4109	Wolfthrone Helm	1	1	5
+4887	Knight's Gift	4110	Wolfthrone Armor	1	1	5
+4887	Knight's Gift	4111	Wolfthrone Gauntlets	1	1	5
+4887	Knight's Gift	4112	Wolfthrone Greaves	1	1	5
+4887	Knight's Gift	4113	Wolfthrone Boots	1	1	5
+4887	Knight's Gift	4118	Harshcrown Helm	1	1	5
+4887	Knight's Gift	4114	Harshcrown Armor	1	1	5
+4887	Knight's Gift	4115	Harshcrown Gauntlets	1	1	5
+4887	Knight's Gift	4116	Harshcrown Greaves	1	1	5
+4887	Knight's Gift	4117	Harshcrown Boots	1	1	5
+4887	Knight's Gift	4119	Flasharm Helm	1	1	5
+4887	Knight's Gift	4120	Flasharm Armor	1	1	5
+4887	Knight's Gift	4121	Flasharm Gauntlets	1	1	5
+4887	Knight's Gift	4122	Flasharm Greaves	1	1	5
+4887	Knight's Gift	4123	Flasharm Boots	1	1	5
+4887	Knight's Gift	4124	Wrenchingruler Helm	1	1	5
+4887	Knight's Gift	4125	Wrenchingruler Armor	1	1	5
+4887	Knight's Gift	4126	Wrenchingruler Gauntlets	1	1	5
+4887	Knight's Gift	4127	Wrenchingruler Greaves	1	1	5
+4887	Knight's Gift	4128	Wrenchingruler Boots	1	1	5
+4887	Knight's Gift	4130	Swordcreeper Helmet	1	1	5
+4887	Knight's Gift	4129	Swordcreeper Armor	1	1	5
+4887	Knight's Gift	4131	Swordcreeper Gauntlets	1	1	5
+4887	Knight's Gift	4132	Swordcreeper Greaves	1	1	5
+4887	Knight's Gift	4133	Swordcreeper Boots	1	1	5
+4887	Knight's Gift	4366	Painholder Helmet	1	1	5
+4887	Knight's Gift	4365	Painholder Armor	1	1	5
+4887	Knight's Gift	4367	Painholder Gauntlets	1	1	5
+4887	Knight's Gift	4368	Painholder Greaves	1	1	5
+4887	Knight's Gift	4369	Painholder Boots	1	1	5
+4887	Knight's Gift	5254	Trial Power's Helmet	1	1	5
+4887	Knight's Gift	5255	Trial Power's Armor	1	1	5
+4887	Knight's Gift	5256	Trial Power's Gauntlet	1	1	5
+4887	Knight's Gift	5257	Trial Power's Greaves	1	1	5
+4887	Knight's Gift	5258	Trial Power's Boots	1	1	5
+4887	Knight's Gift	5601	Death Monarch Helmet	1	1	5
+4887	Knight's Gift	5602	Death Monarch Armour	1	1	5
+4887	Knight's Gift	5603	Death Monarch Gauntlet	1	1	5
+4887	Knight's Gift	5604	Death Monarch Greave	1	1	5
+4887	Knight's Gift	5605	Death Monarch Boot	1	1	5
+4887	Knight's Gift	1965	Assassin Short Sword	1	1	70
+4887	Knight's Gift	488	Wave Kris	1	1	70
+4887	Knight's Gift	1045	Empire Scimitar	1	1	70
+4887	Knight's Gift	1896	Mirror Blade	1	1	70
+4887	Knight's Gift	1898	Phantom Blade	1	1	70
+4887	Knight's Gift	1900	Blaze Sabre	1	1	70
+4887	Knight's Gift	3201	Fiercelord Sword	1	1	70
+4887	Knight's Gift	3204	Life-eater Sabre	1	1	70
+4887	Knight's Gift	3207	Eraser Sword	1	1	70
+4887	Knight's Gift	3210	Holylight Saber	1	1	70
+4887	Knight's Gift	5222	Dimage Sword	1	1	70
+4887	Knight's Gift	4001	Cruel Kris	1	1	15
+4887	Knight's Gift	4002	Burning Butcher Scimitar	1	1	15
+4887	Knight's Gift	4003	Bounce Falchion	1	1	15
+4887	Knight's Gift	4004	Brutal Sword	1	1	15
+4887	Knight's Gift	4005	Blood Scimitar	1	1	15
+4887	Knight's Gift	4006	Harshslaughter Sword	1	1	15
+4887	Knight's Gift	4007	Redtrail Sabre	1	1	15
+4887	Knight's Gift	4008	Flashdust Piercer	1	1	15
+4887	Knight's Gift	4584	Neverfallen Sword	1	1	15
+4887	Knight's Gift	4585	Insane Bane's Slicer	1	1	15
+4887	Knight's Gift	1895	Cruel Kris	1	1	15
+4887	Knight's Gift	2221	Burning Butcher Scimitar	1	1	15
+4887	Knight's Gift	1897	Bounce Falchion	1	1	15
+4887	Knight's Gift	1899	Brutal Sword	1	1	15
+4887	Knight's Gift	1901	Blood Scimitar	1	1	15
+4887	Knight's Gift	3202	Harshslaughter Sword	1	1	15
+4887	Knight's Gift	3205	Redtrail Sabre	1	1	15
+4887	Knight's Gift	3208	Flashdust Piercer	1	1	15
+4887	Knight's Gift	3211	Neverfallen Sword	1	1	15
+4887	Knight's Gift	5223	Insane Bane's Slicer	1	1	15
+4887	Knight's Gift	1902	Gear Axe	1	1	50
+4887	Knight's Gift	1903	Assault Axe	1	1	50
+4887	Knight's Gift	1904	Barbarian Axe	1	1	50
+4887	Knight's Gift	507	Hazard Tomahawk	1	1	50
+4887	Knight's Gift	1907	Spit Axe	1	1	50
+4887	Knight's Gift	1909	Gore Axe	1	1	50
+4887	Knight's Gift	3213	Blood Stream Axe	1	1	50
+4887	Knight's Gift	3216	Reddrop Axe	1	1	50
+4887	Knight's Gift	3219	Soulspin Axe	1	1	50
+4887	Knight's Gift	3222	Bonebuster Divider	1	1	50
+4887	Knight's Gift	5225	Armorbreaker Ax	1	1	50
+4887	Knight's Gift	4009	Krimbelt Axe	1	1	15
+4887	Knight's Gift	4010	Saw Divider	1	1	15
+4887	Knight's Gift	4011	Infernocall Tomahawk	1	1	15
+4887	Knight's Gift	4012	Dark Seed Axe	1	1	15
+4887	Knight's Gift	4013	Scarlet Eye Axe	1	1	15
+4887	Knight's Gift	4014	Winterizer Divider	1	1	15
+4887	Knight's Gift	4015	Dark Impeller Divider	1	1	15
+4887	Knight's Gift	4016	Immortal Power Crasher	1	1	15
+4887	Knight's Gift	4586	Curselink Divider	1	1	15
+4887	Knight's Gift	4587	Hell Impresa's Ax	1	1	15
+4887	Knight's Gift	2216	Krimbelt Axe	1	1	25
+4887	Knight's Gift	1905	Saw Divider	1	1	25
+4887	Knight's Gift	2224	Infernocall Tomahawk	1	1	25
+4887	Knight's Gift	2217	Dark Seed Axe	1	1	25
+4887	Knight's Gift	2220	Scarlet Eye Axe	1	1	25
+4887	Knight's Gift	3214	Winterizer Divider	1	1	25
+4887	Knight's Gift	3217	Dark Impeller Divider	1	1	25
+4887	Knight's Gift	3220	Immortal Power Crasher	1	1	25
+4887	Knight's Gift	3223	Curselink Divider	1	1	25
+4887	Knight's Gift	5226	Hell Impresa's Ax	1	1	25
+4887	Knight's Gift	317	Battle Pick	1	1	50
+4887	Knight's Gift	514	Savage Battle Club	1	1	50
+4887	Knight's Gift	517	Centurion Hammer	1	1	50
+4887	Knight's Gift	515	Helios Morningstar	1	1	50
+4887	Knight's Gift	518	Guardian Maul	1	1	50
+4887	Knight's Gift	516	Holy Warmace	1	1	50
+4887	Knight's Gift	3225	Novarion Morningstar	1	1	50
+4887	Knight's Gift	3228	Trial Maul	1	1	50
+4887	Knight's Gift	3231	Hydrian Mace	1	1	50
+4887	Knight's Gift	3234	Masterlink Maul	1	1	50
+4887	Knight's Gift	5228	Mortalillusion Destroyer	1	1	50
+4887	Knight's Gift	4017	Cruel Battle Club	1	1	15
+4887	Knight's Gift	4018	Boundchaser Hammer	1	1	15
+4887	Knight's Gift	4019	Arcadian Maul	1	1	15
+4887	Knight's Gift	4020	Pythonhead Maul	1	1	15
+4887	Knight's Gift	4021	Pure Warmace	1	1	15
+4887	Knight's Gift	4022	Forcegatherer Morningstar	1	1	15
+4887	Knight's Gift	4023	Fallenstigma Maul	1	1	15
+4887	Knight's Gift	4024	Lost Valley Mace	1	1	15
+4887	Knight's Gift	4588	Rune Sacrifice Maul	1	1	15
+4887	Knight's Gift	4589	Shadow Obey's Destroyer	1	1	15
+4887	Knight's Gift	1910	Cruel Battle Club	1	1	25
+4887	Knight's Gift	2222	Boundchaser Hammer	1	1	25
+4887	Knight's Gift	1912	Arcadian Maul	1	1	25
+4887	Knight's Gift	2225	Pythonhead Maul	1	1	25
+4887	Knight's Gift	1913	Pure Warmace	1	1	25
+4887	Knight's Gift	3226	Forcegatherer Morningstar	1	1	25
+4887	Knight's Gift	3229	Fallenstigma Maul	1	1	25
+4887	Knight's Gift	3232	Lost Valley Mace	1	1	25
+4887	Knight's Gift	3235	Rune Sacrifice Maul	1	1	25
+4887	Knight's Gift	5229	Shadow Obey's Destroyer	1	1	25
+4887	Knight's Gift	1914	Master Bastard Sword	1	1	50
+4887	Knight's Gift	1915	Warrior Bastard Sword	1	1	50
+4887	Knight's Gift	1917	Deadly Claymore	1	1	50
+4887	Knight's Gift	492	Double Bastard Sword	1	1	50
+4887	Knight's Gift	1920	Black Great Sword	1	1	50
+4887	Knight's Gift	1922	Elysian Flamberge	1	1	50
+4887	Knight's Gift	3237	Zillionbattle Slasher	1	1	50
+4887	Knight's Gift	3240	Warseed Claymore	1	1	50
+4887	Knight's Gift	3243	Gorebringer Bastard Sword	1	1	50
+4887	Knight's Gift	3246	Guardiansoul Mightedge	1	1	50
+4887	Knight's Gift	5231	Southerncross Slasher	1	1	50
+4887	Knight's Gift	4025	Crimson Bastard Sword	1	1	15
+4887	Knight's Gift	4026	Lunatic Flamberge	1	1	15
+4887	Knight's Gift	4027	Battle Bastard Sword	1	1	15
+4887	Knight's Gift	4028	Shining Riccaso	1	1	15
+4887	Knight's Gift	4029	Lord Flamberge	1	1	15
+4887	Knight's Gift	4030	Soulaway Slasher	1	1	15
+4887	Knight's Gift	4031	Gloomoath Claymore	1	1	15
+4887	Knight's Gift	4032	Nature Force Bastard Sword	1	1	15
+4887	Knight's Gift	4590	Destinyruin Mightedge	1	1	15
+4887	Knight's Gift	4591	Orbit Walker's Slahser	1	1	15
+4887	Knight's Gift	1916	Crimson Bastard Sword	1	1	25
+4887	Knight's Gift	1918	Lunatic Flamberge	1	1	25
+4887	Knight's Gift	1919	Battle Bastard Sword	1	1	25
+4887	Knight's Gift	1921	Shining Riccaso	1	1	25
+4887	Knight's Gift	1923	Lord Flamberge	1	1	25
+4887	Knight's Gift	3238	Soulaway Slasher	1	1	25
+4887	Knight's Gift	3241	Gloomoath Claymore	1	1	25
+4887	Knight's Gift	3244	Nature Force Bastard Sword	1	1	25
+4887	Knight's Gift	3247	Destinyruin Mightedge	1	1	25
+4887	Knight's Gift	5232	Orbit Walker's Slahser	1	1	25
+4887	Knight's Gift	1924	Heavy Battle Poleaxe	1	1	50
+4887	Knight's Gift	1925	Slash Halberd	1	1	50
+4887	Knight's Gift	1927	Battle Bardiche	1	1	50
+4887	Knight's Gift	1928	Soul Scythe	1	1	50
+4887	Knight's Gift	1930	Double Voulge	1	1	50
+4887	Knight's Gift	1931	Shimmering Poleaxe	1	1	50
+4887	Knight's Gift	3249	Ghostcall Halberd	1	1	50
+4887	Knight's Gift	3252	Bitterrage Bardiche	1	1	50
+4887	Knight's Gift	3255	Idolrun Scythe	1	1	50
+4887	Knight's Gift	3258	Howlingdone Halberd	1	1	50
+4887	Knight's Gift	5234	Eternaltomb Halberd	1	1	50
+4887	Knight's Gift	4033	Celestial Scythe	1	1	15
+4887	Knight's Gift	4034	Cryland Bardiche	1	1	15
+4887	Knight's Gift	4035	Dark Scythe	1	1	15
+4887	Knight's Gift	4036	Spiritfallen Voulge	1	1	15
+4887	Knight's Gift	4037	Throat Slasher	1	1	15
+4887	Knight's Gift	4038	Wargrave Halberd	1	1	15
+4887	Knight's Gift	4039	Coresweeper Bardiche	1	1	15
+4887	Knight's Gift	4040	Agonyheart Scythe	1	1	15
+4887	Knight's Gift	4592	Hexforce Halberd	1	1	15
+4887	Knight's Gift	4593	Arcane Raid's Halberd	1	1	15
+4887	Knight's Gift	1926	Celestial Scythe	1	1	25
+4887	Knight's Gift	2223	Cryland Bardiche	1	1	25
+4887	Knight's Gift	1929	Dark Scythe	1	1	25
+4887	Knight's Gift	2226	Spiritfallen Voulge	1	1	25
+4887	Knight's Gift	1932	Throat Slasher	1	1	25
+4887	Knight's Gift	3250	Wargrave Halberd	1	1	25
+4887	Knight's Gift	3253	Coresweeper Bardiche	1	1	25
+4887	Knight's Gift	3256	Agonyheart Scythe	1	1	25
+4887	Knight's Gift	3259	Hexforce Halberd	1	1	25
+4887	Knight's Gift	5235	Arcane Raid's Halberd	1	1	25
+4887	Knight's Gift	464	Attack Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	468	Attack Accuracy Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	589	Cold Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	592	Thunder Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	595	Deadly Poison Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	599	Shield Resistance Prayer Stone Lv 3	1	5	10
+4887	Knight's Gift	470	Blocking Accuracy Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	472	Defense Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	475	Life Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	481	Mana Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	601	Stamina Buff Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	841	Spirit Uplift Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	1170	Physical Resistance Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	1173	Skill Block Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	604	Curse Removal Prayer Stone Lv 3	1	5	10
+4887	Knight's Gift	607	Skill Awakening Prayer Stone Lv 3	1	5	10
+4887	Knight's Gift	610	Conversion Prayer Stone Lv 3	1	5	10
+4887	Knight's Gift	614	Mana Replenishment Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	617	Life Recovery Prayer Stone<Lv3>	1	5	10
+4887	Knight's Gift	1125	Small Healing Potion	50	99	20
+4887	Knight's Gift	1126	Medium Healing Potion	50	99	20
+4887	Knight's Gift	1127	Large Healing Potion	50	99	20
+4887	Knight's Gift	202	Wind Elemental Stone	1	10	30
+4887	Knight's Gift	244	Breath Elemental Stone	1	10	20
+4887	Knight's Gift	245	Gale Elemental Stone	1	10	10
+4887	Knight's Gift	246	Tornado Elemental Stone	1	10	5
+4887	Knight's Gift	200	Earth Elemental Stone	1	10	30
+4887	Knight's Gift	252	Dust Elemental Stone	1	10	20
+4887	Knight's Gift	253	Soil Elemental Stone	1	10	10
+4887	Knight's Gift	254	Tremor Elemental Stone	1	10	5
+4887	Knight's Gift	204	Magic Elemental Stone	1	10	30
+4887	Knight's Gift	256	Spirit Elemental Stone	1	10	20
+4887	Knight's Gift	257	Meditation Elemental Stone	1	10	10
+4887	Knight's Gift	258	Transcendence Elemental Stone	1	10	5
+4887	Knight's Gift	201	Water Elemental Stone	1	10	30
+4887	Knight's Gift	260	River Elemental Stone	1	10	20
+4887	Knight's Gift	261	Fog Elemental Stone	1	10	10
+4887	Knight's Gift	262	Waterfall Elemental Stone	1	10	5
+4887	Knight's Gift	203	Fire Elemental Stone	1	10	30
+4887	Knight's Gift	264	Embers Elemental Stone	1	10	20
+4887	Knight's Gift	265	Blaze Elemental Stone	1	10	10
+4887	Knight's Gift	266	Inferno Elemental Stone	1	10	5
+4887	Knight's Gift	4772	Small Elemental Potion	50	99	10
+4887	Knight's Gift	4773	Medium Elemental Potion	50	99	10
+4887	Knight's Gift	4774	Large Elemental Potion	50	99	10
+4887	Knight's Gift	4778	Nekros net Potion	1	10	10
+4887	Knight's Gift	4779	Ruin Warrior Potion	1	10	10
+4887	Knight's Gift	4780	Lequimes Potion	1	10	10
+4887	Knight's Gift	4781	Lich Potion	1	10	10
+4887	Knight's Gift	4782	Bound Potion	1	10	10
+4887	Knight's Gift	4783	Voltex Potion	1	10	10
+4887	Knight's Gift	4784	Blant Potion	1	10	10
+4887	Knight's Gift	4785	Eyeball Potion	1	10	10
+4887	Knight's Gift	4786	Ogre Potion	1	10	10
+4887	Knight's Gift	4787	Succubus Potion	1	10	10
+4887	Knight's Gift	4788	Torge Potion	1	10	10
+4887	Knight's Gift	4789	Erinies Potion	1	10	10
+4887	Knight's Gift	4790	Euriale Potion	1	10	10
+4887	Knight's Gift	4791	Zebus Potion	1	10	10
+4887	Knight's Gift	4792	Centaur Potion	1	10	10
+4887	Knight's Gift	4793	Cube Potion	1	10	10
+4887	Knight's Gift	4794	Creptil Potion	1	10	10
+4887	Knight's Gift	4795	Freezy Bondman Potion	1	10	10
+4887	Knight's Gift	4796	Hart Rider Potion	1	10	10
+4887	Knight's Gift	4797	Hawkarrow Potion	1	10	10
+4887	Knight's Gift	486	Reinforcement Potion	10	20	100
+4895	Pet Box	13283	Revin <Rank 5>	1	1	2500
+4895	Pet Box	40078	Kozzuro-Rank 5-	1	1	2500
+4895	Pet Box	40068	Dragoon-Rank 5-	1	1	2500
+4895	Pet Box	13284	Revin <Rank 6>	1	1	2000
+4895	Pet Box	40079	Kozzuro-Rank 6-	1	1	2000
+4895	Pet Box	40069	Dragoon-Rank 6-	1	1	2000
+4895	Pet Box	13285	Revin <Rank 7>	1	1	750
+4895	Pet Box	40080	Kozzuro-Rank 7-	1	1	750
+4895	Pet Box	40070	Dragoon-Rank 7-	1	1	750
+4895	Pet Box	13286	Revin <Rank 8>	1	1	500
+4895	Pet Box	40081	Kozzuro-Rank 8-	1	1	500
+4895	Pet Box	40071	Dragoon-Rank 8-	1	1	500
+4895	Pet Box	13287	Revin <Rank 9>	1	1	100
+4895	Pet Box	40082	Kozzuro-Rank 9-	1	1	100
+4895	Pet Box	40072	Dragoon-Rank 9-	1	1	100
+4895	Pet Box	13288	Revin <Rank 10>	1	1	40
+4895	Pet Box	40083	Kozzuro-Rank 10-	1	1	40
+4895	Pet Box	40073	Dragoon-Rank 10-	1	1	40
+4896	Archer's Gift	46	Risevision Suit	1	1	25
+4896	Archer's Gift	49	Risevision Armpads	1	1	25
+4896	Archer's Gift	50	Risevision Leggings	1	1	25
+4896	Archer's Gift	51	Risevision Boots	1	1	25
+4896	Archer's Gift	58	Hunter Jacket	1	1	25
+4896	Archer's Gift	61	Hunter Armpads	1	1	25
+4896	Archer's Gift	62	Hunter Leggings	1	1	25
+4896	Archer's Gift	63	Hunter Boots	1	1	25
+4896	Archer's Gift	2090	Crossfate Armor	1	1	25
+4896	Archer's Gift	2092	Crossfate Armpads	1	1	25
+4896	Archer's Gift	2093	Crossfate Leggings	1	1	25
+4896	Archer's Gift	2094	Crossfate Boots	1	1	25
+4896	Archer's Gift	2299	Rallytarget Cap	1	1	25
+4896	Archer's Gift	2300	Rallytarget Armor	1	1	25
+4896	Archer's Gift	2302	Rallytarget Armpads	1	1	25
+4896	Archer's Gift	2303	Rallytarget Leggings	1	1	25
+4896	Archer's Gift	2304	Rallytarget Boots	1	1	25
+4896	Archer's Gift	2305	Lighteye Cap	1	1	25
+4896	Archer's Gift	2306	Lighteye Armor	1	1	25
+4896	Archer's Gift	2308	Lighteye Armpads	1	1	25
+4896	Archer's Gift	2309	Lighteye Leggings	1	1	25
+4896	Archer's Gift	2310	Lighteye Boots	1	1	25
+4896	Archer's Gift	2311	Jumplane Cap	1	1	25
+4896	Archer's Gift	2312	Jumplane Armor	1	1	25
+4896	Archer's Gift	2314	Jumplane Armpads	1	1	25
+4896	Archer's Gift	2315	Jumplane Leggings	1	1	25
+4896	Archer's Gift	2316	Jumplane Boots	1	1	25
+4896	Archer's Gift	2317	Lifecircle Cap	1	1	25
+4896	Archer's Gift	2318	Lifecircle Armor	1	1	25
+4896	Archer's Gift	2320	Lifecircle Armpads	1	1	25
+4896	Archer's Gift	2321	Lifecircle Leggings	1	1	25
+4896	Archer's Gift	2322	Lifecircle Boots	1	1	25
+4896	Archer's Gift	3076	Phantom Eye Cap	1	1	25
+4896	Archer's Gift	3075	Phantom Eye Armor	1	1	25
+4896	Archer's Gift	3077	Phantom Eye Armpads	1	1	25
+4896	Archer's Gift	3078	Phantom Eye Leggings	1	1	25
+4896	Archer's Gift	3079	Phantom Eye Boots	1	1	25
+4896	Archer's Gift	3091	Greenarcher Cap	1	1	25
+4896	Archer's Gift	3090	Greenarcher Armor	1	1	25
+4896	Archer's Gift	3092	Greenarcher Armpads	1	1	25
+4896	Archer's Gift	3093	Greenarcher Leggings	1	1	25
+4896	Archer's Gift	3094	Greenarcher Boots	1	1	25
+4896	Archer's Gift	5121	Windfang Cap	1	1	25
+4896	Archer's Gift	5122	Windfang Armor	1	1	25
+4896	Archer's Gift	5123	Windfang Armpads	1	1	25
+4896	Archer's Gift	5124	Windfang Leggings	1	1	25
+4896	Archer's Gift	5125	Windfang Boots	1	1	25
+4896	Archer's Gift	2157	Wingsnatcher Armor	1	1	15
+4896	Archer's Gift	2159	Wingsnatcher Armpads	1	1	15
+4896	Archer's Gift	2160	Wingsnatcher Leggings	1	1	15
+4896	Archer's Gift	2161	Wingsnatcher Boots	1	1	15
+4896	Archer's Gift	2163	Light Dominion Armor	1	1	15
+4896	Archer's Gift	2164	Light Dominion Armpads	1	1	15
+4896	Archer's Gift	2166	Light Dominion Tassets	1	1	15
+4896	Archer's Gift	2167	Light Dominion Boots	1	1	15
+4896	Archer's Gift	2275	Chronochaser Cap	1	1	15
+4896	Archer's Gift	2276	Chronochaser Armor	1	1	15
+4896	Archer's Gift	2278	Chronochaser Armpads	1	1	15
+4896	Archer's Gift	2279	Chronochaser Tassets	1	1	15
+4896	Archer's Gift	2280	Chronochaser Boots	1	1	15
+4896	Archer's Gift	2281	Breathseize Cap	1	1	15
+4896	Archer's Gift	2282	Breathseize Armor	1	1	15
+4896	Archer's Gift	2284	Breathseize Armpads	1	1	15
+4896	Archer's Gift	2285	Breathseize Tassets	1	1	15
+4896	Archer's Gift	2286	Breathseize Boots	1	1	15
+4896	Archer's Gift	2287	Mountain King Cap	1	1	15
+4896	Archer's Gift	2288	Mountain King Armor	1	1	15
+4896	Archer's Gift	2290	Mountain King Armpads	1	1	15
+4896	Archer's Gift	2291	Mountain King Tassets	1	1	15
+4896	Archer's Gift	2292	Mountain King Boots	1	1	15
+4896	Archer's Gift	2293	Lust Rose Cap	1	1	15
+4896	Archer's Gift	2294	Lust Rose Armor	1	1	15
+4896	Archer's Gift	2296	Lust Rose Armpads	1	1	15
+4896	Archer's Gift	2297	Lust Rose Tassets	1	1	15
+4896	Archer's Gift	2298	Lust Rose Boots	1	1	15
+4896	Archer's Gift	3081	Secretmountain Cap	1	1	15
+4896	Archer's Gift	3080	Secretmountain Armor	1	1	15
+4896	Archer's Gift	3082	Secretmountain Armpads	1	1	15
+4896	Archer's Gift	3083	Secretmountain Leggings	1	1	15
+4896	Archer's Gift	3084	Secretmountain Boots	1	1	15
+4896	Archer's Gift	3096	Cursetracer Cap	1	1	15
+4896	Archer's Gift	3095	Cursetracer Armor	1	1	15
+4896	Archer's Gift	3097	Cursetracer Armpads	1	1	15
+4896	Archer's Gift	3098	Cursetracer Leggings	1	1	15
+4896	Archer's Gift	3099	Cursetracer Boots	1	1	15
+4896	Archer's Gift	5126	Eternal Crown's Cap	1	1	15
+4896	Archer's Gift	5127	Eternal Crown's Armor	1	1	15
+4896	Archer's Gift	5128	Eternal Crown's Armpads	1	1	15
+4896	Archer's Gift	5129	Eternal Crown's Leggings	1	1	15
+4896	Archer's Gift	5130	Eternal Crown's Boots	1	1	15
+4896	Archer's Gift	5506	Forest Emperor Cap	1	1	15
+4896	Archer's Gift	5507	Forest Emperor Armour	1	1	15
+4896	Archer's Gift	5508	Forest Emperor Arm pad	1	1	15
+4896	Archer's Gift	5509	Forest Emperor Leggings	1	1	15
+4896	Archer's Gift	5510	Forest Emperor Boot	1	1	15
+4896	Archer's Gift	4134	Wingsnatcher Armor	1	1	5
+4896	Archer's Gift	4135	Wingsnatcher Armpads	1	1	5
+4896	Archer's Gift	4136	Wingsnatcher Leggings	1	1	5
+4896	Archer's Gift	4137	Wingsnatcher Boots	1	1	5
+4896	Archer's Gift	4138	Light Dominion Armor	1	1	5
+4896	Archer's Gift	4139	Light Dominion Armpads	1	1	5
+4896	Archer's Gift	4140	Light Dominion Tassets	1	1	5
+4896	Archer's Gift	4141	Light Dominion Boots	1	1	5
+4896	Archer's Gift	4142	Chronochaser Cap	1	1	5
+4896	Archer's Gift	4143	Chronochaser Armor	1	1	5
+4896	Archer's Gift	4144	Chronochaser Armpads	1	1	5
+4896	Archer's Gift	4145	Chronochaser Tassets	1	1	5
+4896	Archer's Gift	4146	Chronochaser Boots	1	1	5
+4896	Archer's Gift	4147	Breathseize Cap	1	1	5
+4896	Archer's Gift	4148	Breathseize Armor	1	1	5
+4896	Archer's Gift	4149	Breathseize Armpads	1	1	5
+4896	Archer's Gift	4150	Breathseize Tassets	1	1	5
+4896	Archer's Gift	4151	Breathseize Boots	1	1	5
+4896	Archer's Gift	4152	Mountain King Cap	1	1	5
+4896	Archer's Gift	4153	Mountain King Armor	1	1	5
+4896	Archer's Gift	4154	Mountain King Armpads	1	1	5
+4896	Archer's Gift	4155	Mountain King Tassets	1	1	5
+4896	Archer's Gift	4156	Mountain King Boots	1	1	5
+4896	Archer's Gift	4157	Lust Rose Cap	1	1	5
+4896	Archer's Gift	4158	Lust Rose Armor	1	1	5
+4896	Archer's Gift	4159	Lust Rose Armpads	1	1	5
+4896	Archer's Gift	4160	Lust Rose Tassets	1	1	5
+4896	Archer's Gift	4161	Lust Rose Boots	1	1	5
+4896	Archer's Gift	4163	Secretmountain Cap	1	1	5
+4896	Archer's Gift	4162	Secretmountain Armor	1	1	5
+4896	Archer's Gift	4164	Secretmountain Armpads	1	1	5
+4896	Archer's Gift	4165	Secretmountain Leggings	1	1	5
+4896	Archer's Gift	4166	Secretmountain Boots	1	1	5
+4896	Archer's Gift	4371	Cursetracer Cap	1	1	5
+4896	Archer's Gift	4370	Cursetracer Armor	1	1	5
+4896	Archer's Gift	4372	Cursetracer Armpads	1	1	5
+4896	Archer's Gift	4373	Cursetracer Leggings	1	1	5
+4896	Archer's Gift	4374	Cursetracer Boots	1	1	5
+4896	Archer's Gift	5259	Eternal Crown's Cap	1	1	5
+4896	Archer's Gift	5260	Eternal Crown's Armor	1	1	5
+4896	Archer's Gift	5261	Eternal Crown's Armpads	1	1	5
+4896	Archer's Gift	5262	Eternal Crown's Leggings	1	1	5
+4896	Archer's Gift	5263	Eternal Crown's Boots	1	1	5
+4896	Archer's Gift	5606	Forest Emperor Cap	1	1	5
+4896	Archer's Gift	5607	Forest Emperor Armour	1	1	5
+4896	Archer's Gift	5608	Forest Emperor Arm pad	1	1	5
+4896	Archer's Gift	5609	Forest Emperor Leggings	1	1	5
+4896	Archer's Gift	5610	Forest Emperor Boot	1	1	5
+4896	Archer's Gift	1933	Nature Bow	1	1	70
+4896	Archer's Gift	538	Rampant bow	1	1	70
+4896	Archer's Gift	1046	Silver Ray Bow	1	1	70
+4896	Archer's Gift	1934	Aurora Bow	1	1	70
+4896	Archer's Gift	1936	Angel Bow	1	1	70
+4896	Archer's Gift	1938	Elflord Bow	1	1	70
+4896	Archer's Gift	3261	Beasttail Bow	1	1	70
+4896	Archer's Gift	3264	Redheart Bow	1	1	70
+4896	Archer's Gift	3267	Helixhorn Bow	1	1	70
+4896	Archer's Gift	3270	Scarletclaw Bow	1	1	70
+4896	Archer's Gift	5237	Arrowbreath Bow	1	1	70
+4896	Archer's Gift	4041	Spectrum Bow	1	1	15
+4896	Archer's Gift	4042	Blue Eve's Bow	1	1	15
+4896	Archer's Gift	4043	Burning Bow	1	1	15
+4896	Archer's Gift	4044	Arcane Bow	1	1	15
+4896	Archer's Gift	4045	Martial Bow	1	1	15
+4896	Archer's Gift	4046	Headsweeper Bow	1	1	15
+4896	Archer's Gift	4047	Silentdeath Bow	1	1	15
+4896	Archer's Gift	4048	Immortalbard Bow	1	1	15
+4896	Archer's Gift	4594	Bloodchaser Bow	1	1	15
+4896	Archer's Gift	4595	Forest Wanderer's Bow	1	1	15
+4896	Archer's Gift	537	Spectrum Bow	1	1	15
+4896	Archer's Gift	839	Blue Eve's Bow	1	1	15
+4896	Archer's Gift	1935	Burning Bow	1	1	15
+4896	Archer's Gift	1937	Arcane Bow	1	1	15
+4896	Archer's Gift	1939	Martial Bow	1	1	15
+4896	Archer's Gift	3262	Headsweeper Bow	1	1	15
+4896	Archer's Gift	3265	Silentdeath Bow	1	1	15
+4896	Archer's Gift	3268	Immortalbard Bow	1	1	15
+4896	Archer's Gift	3271	Bloodchaser Bow	1	1	15
+4896	Archer's Gift	5238	Forest Wanderer's Bow	1	1	15
+4896	Archer's Gift	545	Balance Ballista	1	1	50
+4896	Archer's Gift	1940	Steel Crossbow	1	1	50
+4896	Archer's Gift	1942	Master Crossbow	1	1	50
+4896	Archer's Gift	1944	Monarch Crossbow	1	1	50
+4896	Archer's Gift	1946	Grand Crossbow	1	1	50
+4896	Archer's Gift	1948	Doom Ballista	1	1	50
+4896	Archer's Gift	3273	Boltforce Arbalest	1	1	50
+4896	Archer's Gift	3276	Signtrace Crossbow	1	1	50
+4896	Archer's Gift	3279	Beyondcall Arbalest	1	1	50
+4896	Archer's Gift	3282	Slyhand Crossbow	1	1	50
+4896	Archer's Gift	5240	Shadowseeker Arbalest	1	1	50
+4896	Archer's Gift	4049	Guardian Crossbow	1	1	15
+4896	Archer's Gift	4050	Rose Arbalest	1	1	15
+4896	Archer's Gift	4051	Lost Horn Crossbow	1	1	15
+4896	Archer's Gift	4052	Blaze Ballista	1	1	15
+4896	Archer's Gift	4053	Freezing Arbalest	1	1	15
+4896	Archer's Gift	4054	Blowname Arbalest	1	1	15
+4896	Archer's Gift	4055	Hundredeye Crossbow	1	1	15
+4896	Archer's Gift	4056	Gorefist Arbalest	1	1	15
+4896	Archer's Gift	4596	Steeltearer Crossbow	1	1	15
+4896	Archer's Gift	4597	Enchant Ruin's Arbalest	1	1	15
+4896	Archer's Gift	1941	Guardian Crossbow	1	1	25
+4896	Archer's Gift	1943	Rose Arbalest	1	1	25
+4896	Archer's Gift	2218	Lost Horn Crossbow	1	1	25
+4896	Archer's Gift	1947	Blaze Ballista	1	1	25
+4896	Archer's Gift	1949	Freezing Arbalest	1	1	25
+4896	Archer's Gift	3274	Blowname Arbalest	1	1	25
+4896	Archer's Gift	3277	Hundredeye Crossbow	1	1	25
+4896	Archer's Gift	3280	Gorefist Arbalest	1	1	25
+4896	Archer's Gift	3283	Steeltearer Crossbow	1	1	25
+4896	Archer's Gift	5241	Enchant Ruin's Arbalest	1	1	25
+4896	Archer's Gift	464	Attack Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	468	Attack Accuracy Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	589	Cold Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	592	Thunder Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	595	Deadly Poison Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	599	Shield Resistance Prayer Stone Lv 3	1	5	10
+4896	Archer's Gift	470	Blocking Accuracy Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	472	Defense Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	475	Life Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	481	Mana Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	601	Stamina Buff Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	841	Spirit Uplift Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	1170	Physical Resistance Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	1173	Skill Block Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	604	Curse Removal Prayer Stone Lv 3	1	5	10
+4896	Archer's Gift	607	Skill Awakening Prayer Stone Lv 3	1	5	10
+4896	Archer's Gift	610	Conversion Prayer Stone Lv 3	1	5	10
+4896	Archer's Gift	614	Mana Replenishment Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	617	Life Recovery Prayer Stone<Lv3>	1	5	10
+4896	Archer's Gift	1125	Small Healing Potion	50	99	20
+4896	Archer's Gift	1126	Medium Healing Potion	50	99	20
+4896	Archer's Gift	1127	Large Healing Potion	50	99	20
+4896	Archer's Gift	202	Wind Elemental Stone	1	10	30
+4896	Archer's Gift	244	Breath Elemental Stone	1	10	20
+4896	Archer's Gift	245	Gale Elemental Stone	1	10	10
+4896	Archer's Gift	246	Tornado Elemental Stone	1	10	5
+4896	Archer's Gift	200	Earth Elemental Stone	1	10	30
+4896	Archer's Gift	252	Dust Elemental Stone	1	10	20
+4896	Archer's Gift	253	Soil Elemental Stone	1	10	10
+4896	Archer's Gift	254	Tremor Elemental Stone	1	10	5
+4896	Archer's Gift	204	Magic Elemental Stone	1	10	30
+4896	Archer's Gift	256	Spirit Elemental Stone	1	10	20
+4896	Archer's Gift	257	Meditation Elemental Stone	1	10	10
+4896	Archer's Gift	258	Transcendence Elemental Stone	1	10	5
+4896	Archer's Gift	201	Water Elemental Stone	1	10	30
+4896	Archer's Gift	260	River Elemental Stone	1	10	20
+4896	Archer's Gift	261	Fog Elemental Stone	1	10	10
+4896	Archer's Gift	262	Waterfall Elemental Stone	1	10	5
+4896	Archer's Gift	203	Fire Elemental Stone	1	10	30
+4896	Archer's Gift	264	Embers Elemental Stone	1	10	20
+4896	Archer's Gift	265	Blaze Elemental Stone	1	10	10
+4896	Archer's Gift	266	Inferno Elemental Stone	1	10	5
+4896	Archer's Gift	4772	Small Elemental Potion	50	99	10
+4896	Archer's Gift	4773	Medium Elemental Potion	50	99	10
+4896	Archer's Gift	4774	Large Elemental Potion	50	99	10
+4896	Archer's Gift	4778	Nekros net Potion	1	10	10
+4896	Archer's Gift	4779	Ruin Warrior Potion	1	10	10
+4896	Archer's Gift	4780	Lequimes Potion	1	10	10
+4896	Archer's Gift	4781	Lich Potion	1	10	10
+4896	Archer's Gift	4782	Bound Potion	1	10	10
+4896	Archer's Gift	4783	Voltex Potion	1	10	10
+4896	Archer's Gift	4784	Blant Potion	1	10	10
+4896	Archer's Gift	4785	Eyeball Potion	1	10	10
+4896	Archer's Gift	4786	Ogre Potion	1	10	10
+4896	Archer's Gift	4787	Succubus Potion	1	10	10
+4896	Archer's Gift	4788	Torge Potion	1	10	10
+4896	Archer's Gift	4789	Erinies Potion	1	10	10
+4896	Archer's Gift	4790	Euriale Potion	1	10	10
+4896	Archer's Gift	4791	Zebus Potion	1	10	10
+4896	Archer's Gift	4792	Centaur Potion	1	10	10
+4896	Archer's Gift	4793	Cube Potion	1	10	10
+4896	Archer's Gift	4794	Creptil Potion	1	10	10
+4896	Archer's Gift	4795	Freezy Bondman Potion	1	10	10
+4896	Archer's Gift	4796	Hart Rider Potion	1	10	10
+4896	Archer's Gift	4797	Hawkarrow Potion	1	10	10
+4896	Archer's Gift	486	Reinforcement Potion	10	20	100
+4905	Mage's Gift	7436	Fortune Gate Pass	5	10	1000
+4905	Mage's Gift	6267	Event Wing Chest	1	1	500
+4905	Mage's Gift	9177	Event Cloak Chest	1	1	500
+4905	Mage's Gift	14582	Extra-Large Mana Potion	500	500	2000
+4905	Mage's Gift	11613	Brilliant Gaudius Ring	1	1	200
+4905	Mage's Gift	11636	Intelligent Gaudius Ring	1	1	200
+4905	Mage's Gift	11659	Glorious Gaudius Ring	1	1	200
+4905	Mage's Gift	11612	Brilliant Ohkeros Ring	1	1	200
+4905	Mage's Gift	11635	Intelligent Ohkeros Ring	1	1	200
+4905	Mage's Gift	11658	Glorious Ohkeros Ring	1	1	200
+4905	Mage's Gift	11623	Brilliant Luke Necklace	1	1	200
+4905	Mage's Gift	11646	Intelligent Luke Necklace	1	1	200
+4905	Mage's Gift	11669	Glorious Luke Necklace	1	1	200
+4905	Mage's Gift	7394	Large Recovery Potion	999	999	2000
+4905	Mage's Gift	11782	Archondrite	10	15	2000
+4906	Berserker's Gift	7436	Fortune Gate Pass	20	20	1000
+4906	Berserker's Gift	14531	Runes of Ancient Lands	20	20	1750
+4906	Berserker's Gift	14541	Dust of Chaotic Frontier	20	20	1750
+4906	Berserker's Gift	12592	Fragment of Ashtal	1	1	1250
+4906	Berserker's Gift	11016	Scion Prayer Stone	1	1	1250
+4906	Berserker's Gift	4802	Gold Coin of the rich	1	1	1000
+4906	Berserker's Gift	3319	Elixir Chest	1	1	1000
+4906	Berserker's Gift	451	Serazaran Powder	30	30	1000
+4907	Hunter's Gift	7436	Fortune Gate Pass	99	99	1250
+4907	Hunter's Gift	14531	Runes of Ancient Lands	100	100	1250
+4907	Hunter's Gift	14541	Dust of Chaotic Frontier	100	100	1250
+4907	Hunter's Gift	3318	Prestige Mount Chest	1	1	1250
+4907	Hunter's Gift	3321	Prestige Wing Chest	1	1	1250
+4907	Hunter's Gift	3606	Prestige Cloak Chest	1	1	1250
+4907	Hunter's Gift	3320	Elixir Chest 2	1	1	1250
+4907	Hunter's Gift	14582	Extra-Large Mana Potion	9999	9999	1250
+4908	Sorcerer's Gift	154	Lunatic Rune Garb	1	1	25
+4908	Sorcerer's Gift	157	Lunatic Rune Bracelets	1	1	25
+4908	Sorcerer's Gift	158	Lunatic Rune Kilt	1	1	25
+4908	Sorcerer's Gift	159	Lunatic Rune Boots	1	1	25
+4908	Sorcerer's Gift	160	Mindon Garb	1	1	25
+4908	Sorcerer's Gift	163	Mindon Armlets	1	1	25
+4908	Sorcerer's Gift	164	Mindon Kilt	1	1	25
+4908	Sorcerer's Gift	165	Mindon Boots	1	1	25
+4908	Sorcerer's Gift	2111	Soulguider Garb	1	1	25
+4908	Sorcerer's Gift	2113	Soulguider Armlets	1	1	25
+4908	Sorcerer's Gift	2114	Soulguider Kilt	1	1	25
+4908	Sorcerer's Gift	2115	Soulguider Boots	1	1	25
+4908	Sorcerer's Gift	2492	Far Challenge Headband	1	1	25
+4908	Sorcerer's Gift	2491	Far Challenge Garb	1	1	25
+4908	Sorcerer's Gift	2494	Far Challenge Bracelets	1	1	25
+4908	Sorcerer's Gift	2495	Far Challenge Kilt	1	1	25
+4908	Sorcerer's Gift	2496	Far Challenge Boots	1	1	25
+4908	Sorcerer's Gift	2498	Hiddensense Headband	1	1	25
+4908	Sorcerer's Gift	2497	Hiddensense Garb	1	1	25
+4908	Sorcerer's Gift	2500	Hiddensense Armlets	1	1	25
+4908	Sorcerer's Gift	2501	Hiddensense Kilt	1	1	25
+4908	Sorcerer's Gift	2502	Hiddensense Boots	1	1	25
+4908	Sorcerer's Gift	2504	Silhouetten Headband	1	1	25
+4908	Sorcerer's Gift	2503	Silhouetten Garb	1	1	25
+4908	Sorcerer's Gift	2506	Silhouetten Armlets	1	1	25
+4908	Sorcerer's Gift	2507	Silhouetten Kilt	1	1	25
+4908	Sorcerer's Gift	2508	Silhouetten Boots	1	1	25
+4908	Sorcerer's Gift	2510	Candlesweep Headband	1	1	25
+4908	Sorcerer's Gift	2509	Candlesweep Garb	1	1	25
+4908	Sorcerer's Gift	2512	Candlesweep Armlets	1	1	25
+4908	Sorcerer's Gift	2513	Candlesweep Kilt	1	1	25
+4908	Sorcerer's Gift	2514	Candlesweep Boots	1	1	25
+4908	Sorcerer's Gift	3176	Whisperbless Cap	1	1	25
+4908	Sorcerer's Gift	3175	Whisperbless Garb	1	1	25
+4908	Sorcerer's Gift	3177	Whisperbless Armlets	1	1	25
+4908	Sorcerer's Gift	3178	Whisperbless Kilt	1	1	25
+4908	Sorcerer's Gift	3179	Whisperbless Boots	1	1	25
+4908	Sorcerer's Gift	3191	Wisetail Cap	1	1	25
+4908	Sorcerer's Gift	3190	Wisetail Garb	1	1	25
+4908	Sorcerer's Gift	3192	Wisetail Armlets	1	1	25
+4908	Sorcerer's Gift	3193	Wisetail Kilt	1	1	25
+4908	Sorcerer's Gift	3194	Wisetail Boots	1	1	25
+4908	Sorcerer's Gift	5181	Forsightpower Cap	1	1	25
+4908	Sorcerer's Gift	5182	Forsightpower Garb	1	1	25
+4908	Sorcerer's Gift	5183	Forsightpower Armlets	1	1	25
+4908	Sorcerer's Gift	5184	Forsightpower Kilt	1	1	25
+4908	Sorcerer's Gift	5185	Forsightpower Boots	1	1	25
+4908	Sorcerer's Gift	2192	Voyager Garb	1	1	15
+4908	Sorcerer's Gift	2195	Voyager Bracelets	1	1	15
+4908	Sorcerer's Gift	2196	Voyager Kilt	1	1	15
+4908	Sorcerer's Gift	2197	Voyager Boots	1	1	15
+4908	Sorcerer's Gift	2198	Braincastle Garb	1	1	15
+4908	Sorcerer's Gift	2201	Braincastle Bracelets	1	1	15
+4908	Sorcerer's Gift	2202	Braincastle Kilt	1	1	15
+4908	Sorcerer's Gift	2203	Braincastle Boots	1	1	15
+4908	Sorcerer's Gift	2468	Battlerattle Headband	1	1	15
+4908	Sorcerer's Gift	2467	Battlerattle Garb	1	1	15
+4908	Sorcerer's Gift	2470	Battlerattle Bracelets	1	1	15
+4908	Sorcerer's Gift	2471	Battlerattle Kilt	1	1	15
+4908	Sorcerer's Gift	2472	Battlerattle Boots	1	1	15
+4908	Sorcerer's Gift	2474	Wisdom Age Headband	1	1	15
+4908	Sorcerer's Gift	2473	Wisdom Age Garb	1	1	15
+4908	Sorcerer's Gift	2476	Wisdom Age Bracelets	1	1	15
+4908	Sorcerer's Gift	2477	Wisdom Age Kilt	1	1	15
+4908	Sorcerer's Gift	2478	Wisdom Age Boots	1	1	15
+4908	Sorcerer's Gift	2480	Grimjoker Headband	1	1	15
+4908	Sorcerer's Gift	2479	Grimjoker Garb	1	1	15
+4908	Sorcerer's Gift	2482	Grimjoker Bracelets	1	1	15
+4908	Sorcerer's Gift	2483	Grimjoker Kilt	1	1	15
+4908	Sorcerer's Gift	2484	Grimjoker Boots	1	1	15
+4908	Sorcerer's Gift	2486	Eyes Wisher Headband	1	1	15
+4908	Sorcerer's Gift	2485	Eyes Wisher Garb	1	1	15
+4908	Sorcerer's Gift	2488	Eyes Wisher Bracelets	1	1	15
+4908	Sorcerer's Gift	2489	Eyes Wisher Kilt	1	1	15
+4908	Sorcerer's Gift	2490	Eyes Wisher Boots	1	1	15
+4908	Sorcerer's Gift	3181	Lowerblade Cap	1	1	15
+4908	Sorcerer's Gift	3180	Lowerblade Garb	1	1	15
+4908	Sorcerer's Gift	3182	Lowerblade Armlets	1	1	15
+4908	Sorcerer's Gift	3183	Lowerblade Kilt	1	1	15
+4908	Sorcerer's Gift	3184	Lowerblade Boots	1	1	15
+4908	Sorcerer's Gift	3196	Dreammaster Cap	1	1	15
+4908	Sorcerer's Gift	3195	Dreammaster Garb	1	1	15
+4908	Sorcerer's Gift	3197	Dreammaster Armlets	1	1	15
+4908	Sorcerer's Gift	3198	Dreammaster Kilt	1	1	15
+4908	Sorcerer's Gift	3199	Dreammaster Boots	1	1	15
+4908	Sorcerer's Gift	5186	Endless Voyager's Cap	1	1	15
+4908	Sorcerer's Gift	5187	Endless Voyager's Garb	1	1	15
+4908	Sorcerer's Gift	5188	Endless Voyager's Armlets	1	1	15
+4908	Sorcerer's Gift	5189	Endless Voyager's Kilt	1	1	15
+4908	Sorcerer's Gift	5190	Endless Voyager's Boots	1	1	15
+4908	Sorcerer's Gift	5526	Chaos Revolver Cap	1	1	15
+4908	Sorcerer's Gift	5527	Chaos Revolver Garb	1	1	15
+4908	Sorcerer's Gift	5528	Chaos Revolver Armlet	1	1	15
+4908	Sorcerer's Gift	5529	Chaos Revolver Kilt	1	1	15
+4908	Sorcerer's Gift	5530	Chaos Revolver Boot	1	1	15
+4908	Sorcerer's Gift	4266	Voyager Garb	1	1	5
+4908	Sorcerer's Gift	4267	Voyager Bracelets	1	1	5
+4908	Sorcerer's Gift	4268	Voyager Kilt	1	1	5
+4908	Sorcerer's Gift	4269	Voyager Boots	1	1	5
+4908	Sorcerer's Gift	4270	Braincastle Garb	1	1	5
+4908	Sorcerer's Gift	4271	Braincastle Bracelets	1	1	5
+4908	Sorcerer's Gift	4272	Braincastle Kilt	1	1	5
+4908	Sorcerer's Gift	4273	Braincastle Boots	1	1	5
+4908	Sorcerer's Gift	4275	Battlerattle Headband	1	1	5
+4908	Sorcerer's Gift	4274	Battlerattle Garb	1	1	5
+4908	Sorcerer's Gift	4276	Battlerattle Bracelets	1	1	5
+4908	Sorcerer's Gift	4277	Battlerattle Kilt	1	1	5
+4908	Sorcerer's Gift	4278	Battlerattle Boots	1	1	5
+4908	Sorcerer's Gift	4280	Wisdom Age Headband	1	1	5
+4908	Sorcerer's Gift	4279	Wisdom Age Garb	1	1	5
+4908	Sorcerer's Gift	4281	Wisdom Age Bracelets	1	1	5
+4908	Sorcerer's Gift	4282	Wisdom Age Kilt	1	1	5
+4908	Sorcerer's Gift	4283	Wisdom Age Boots	1	1	5
+4908	Sorcerer's Gift	4285	Grimjoker Headband	1	1	5
+4908	Sorcerer's Gift	4284	Grimjoker Garb	1	1	5
+4908	Sorcerer's Gift	4286	Grimjoker Bracelets	1	1	5
+4908	Sorcerer's Gift	4287	Grimjoker Kilt	1	1	5
+4908	Sorcerer's Gift	4288	Grimjoker Boots	1	1	5
+4908	Sorcerer's Gift	4290	Eyes Wisher Headband	1	1	5
+4908	Sorcerer's Gift	4289	Eyes Wisher Garb	1	1	5
+4908	Sorcerer's Gift	4291	Eyes Wisher Bracelets	1	1	5
+4908	Sorcerer's Gift	4292	Eyes Wisher Kilt	1	1	5
+4908	Sorcerer's Gift	4293	Eyes Wisher Boots	1	1	5
+4908	Sorcerer's Gift	4295	Lowerblade Cap	1	1	5
+4908	Sorcerer's Gift	4294	Lowerblade Garb	1	1	5
+4908	Sorcerer's Gift	4296	Lowerblade Armlets	1	1	5
+4908	Sorcerer's Gift	4297	Lowerblade Kilt	1	1	5
+4908	Sorcerer's Gift	4298	Lowerblade Boots	1	1	5
+4908	Sorcerer's Gift	4391	Dreammaster Cap	1	1	5
+4908	Sorcerer's Gift	4390	Dreammaster Garb	1	1	5
+4908	Sorcerer's Gift	4392	Dreammaster Armlets	1	1	5
+4908	Sorcerer's Gift	4393	Dreammaster Kilt	1	1	5
+4908	Sorcerer's Gift	4394	Dreammaster Boots	1	1	5
+4908	Sorcerer's Gift	5279	Endless Voyager's Cap	1	1	5
+4908	Sorcerer's Gift	5280	Endless Voyager's Garb	1	1	5
+4908	Sorcerer's Gift	5281	Endless Voyager's Armlets	1	1	5
+4908	Sorcerer's Gift	5282	Endless Voyager's Kilt	1	1	5
+4908	Sorcerer's Gift	5283	Endless Voyager's Boots	1	1	5
+4908	Sorcerer's Gift	5626	Chaos Revolver Cap	1	1	5
+4908	Sorcerer's Gift	5627	Chaos Revolver Garb	1	1	5
+4908	Sorcerer's Gift	5628	Chaos Revolver Armlet	1	1	5
+4908	Sorcerer's Gift	5629	Chaos Revolver Kilt	1	1	5
+4908	Sorcerer's Gift	5630	Chaos Revolver Boot	1	1	5
+4908	Sorcerer's Gift	1047	Fable Staff	1	1	70
+4908	Sorcerer's Gift	1950	Templar Staff	1	1	70
+4908	Sorcerer's Gift	551	Antler Staff	1	1	70
+4908	Sorcerer's Gift	552	Battle Staff	1	1	70
+4908	Sorcerer's Gift	1953	Mystic Staff	1	1	70
+4908	Sorcerer's Gift	1955	Blackwitch Staff	1	1	70
+4908	Sorcerer's Gift	3285	Novablaze Staff	1	1	70
+4908	Sorcerer's Gift	3288	Soulbind Staff	1	1	70
+4908	Sorcerer's Gift	3291	Bloodbine Staff	1	1	70
+4908	Sorcerer's Gift	3294	Vicious Vision Staff	1	1	70
+4908	Sorcerer's Gift	5243	Misfortune Staff	1	1	70
+4908	Sorcerer's Gift	4057	Wizardry Staff	1	1	15
+4908	Sorcerer's Gift	4058	Grimdivine Staff	1	1	15
+4908	Sorcerer's Gift	4059	Terra Staff	1	1	15
+4908	Sorcerer's Gift	4060	Spiritual Staff	1	1	15
+4908	Sorcerer's Gift	4061	Arcane Staff	1	1	15
+4908	Sorcerer's Gift	4062	Unstable Sage Staff	1	1	15
+4908	Sorcerer's Gift	4063	Oldfamilia Staff	1	1	15
+4908	Sorcerer's Gift	4064	Dark Pedigree Staff	1	1	15
+4908	Sorcerer's Gift	4598	Brutal Judge Staff	1	1	15
+4908	Sorcerer's Gift	4599	Realm Gaurdian's Staff	1	1	15
+4908	Sorcerer's Gift	1951	Wizardry Staff	1	1	15
+4908	Sorcerer's Gift	838	Grimdivine Staff	1	1	15
+4908	Sorcerer's Gift	1952	Terra Staff	1	1	15
+4908	Sorcerer's Gift	1954	Spiritual Staff	1	1	15
+4908	Sorcerer's Gift	1956	Arcane Staff	1	1	15
+4908	Sorcerer's Gift	3286	Unstable Sage Staff	1	1	15
+4908	Sorcerer's Gift	3289	Oldfamilia Staff	1	1	15
+4908	Sorcerer's Gift	3292	Dark Pedigree Staff	1	1	15
+4908	Sorcerer's Gift	3295	Brutal Judge Staff	1	1	15
+4908	Sorcerer's Gift	5244	Realm Gaurdian's Staff	1	1	15
+4908	Sorcerer's Gift	559	Shining Wand	1	1	50
+4908	Sorcerer's Gift	498	Cat's Eye Wand	1	1	50
+4908	Sorcerer's Gift	1958	Elysium Wand	1	1	50
+4908	Sorcerer's Gift	561	Demoneye Wand	1	1	50
+4908	Sorcerer's Gift	1961	Sky Wand	1	1	50
+4908	Sorcerer's Gift	1963	Dragonheart Wand	1	1	50
+4908	Sorcerer's Gift	3297	Odd Oath Wand	1	1	50
+4908	Sorcerer's Gift	3301	Loopeye Wand	1	1	50
+4908	Sorcerer's Gift	3304	Altarlight Wand	1	1	50
+4908	Sorcerer's Gift	3307	Duskbring Wand	1	1	50
+4908	Sorcerer's Gift	5246	Spriteseed Wand	1	1	50
+4908	Sorcerer's Gift	4065	Shadow Orb	1	1	15
+4908	Sorcerer's Gift	4066	Darkhand Orb	1	1	15
+4908	Sorcerer's Gift	4067	Farnation Wand	1	1	15
+4908	Sorcerer's Gift	4068	Bane Orb	1	1	15
+4908	Sorcerer's Gift	4069	Disguiser Orb	1	1	15
+4908	Sorcerer's Gift	4070	Blindpower Wand	1	1	15
+4908	Sorcerer's Gift	4071	Phantomthriller Wand	1	1	15
+4908	Sorcerer's Gift	4072	Mortal Ceremony Wand	1	1	15
+4908	Sorcerer's Gift	4743	Spelleater Wand	1	1	15
+4908	Sorcerer's Gift	4744	Demise Load's Wand	1	1	15
+4908	Sorcerer's Gift	1957	Shadow Orb	1	1	25
+4908	Sorcerer's Gift	1959	Darkhand Orb	1	1	25
+4908	Sorcerer's Gift	2219	Farnation Wand	1	1	25
+4908	Sorcerer's Gift	1962	Bane Orb	1	1	25
+4908	Sorcerer's Gift	1964	Disguiser Orb	1	1	25
+4908	Sorcerer's Gift	3298	Blindpower Wand	1	1	25
+4908	Sorcerer's Gift	3302	Phantomthriller Wand	1	1	25
+4908	Sorcerer's Gift	3305	Mortal Ceremony Wand	1	1	25
+4908	Sorcerer's Gift	3308	Spelleater Wand	1	1	25
+4908	Sorcerer's Gift	5247	Demise Load's Wand	1	1	25
+4908	Sorcerer's Gift	464	Attack Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	468	Attack Accuracy Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	589	Cold Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	592	Thunder Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	595	Deadly Poison Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	599	Shield Resistance Prayer Stone Lv 3	1	5	10
+4908	Sorcerer's Gift	470	Blocking Accuracy Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	472	Defense Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	475	Life Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	481	Mana Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	601	Stamina Buff Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	841	Spirit Uplift Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	1170	Physical Resistance Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	1173	Skill Block Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	604	Curse Removal Prayer Stone Lv 3	1	5	10
+4908	Sorcerer's Gift	607	Skill Awakening Prayer Stone Lv 3	1	5	10
+4908	Sorcerer's Gift	610	Conversion Prayer Stone Lv 3	1	5	10
+4908	Sorcerer's Gift	614	Mana Replenishment Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	617	Life Recovery Prayer Stone<Lv3>	1	5	10
+4908	Sorcerer's Gift	1125	Small Healing Potion	50	99	20
+4908	Sorcerer's Gift	1126	Medium Healing Potion	50	99	20
+4908	Sorcerer's Gift	1127	Large Healing Potion	50	99	20
+4908	Sorcerer's Gift	202	Wind Elemental Stone	1	10	30
+4908	Sorcerer's Gift	244	Breath Elemental Stone	1	10	20
+4908	Sorcerer's Gift	245	Gale Elemental Stone	1	10	10
+4908	Sorcerer's Gift	246	Tornado Elemental Stone	1	10	5
+4908	Sorcerer's Gift	200	Earth Elemental Stone	1	10	30
+4908	Sorcerer's Gift	252	Dust Elemental Stone	1	10	20
+4908	Sorcerer's Gift	253	Soil Elemental Stone	1	10	10
+4908	Sorcerer's Gift	254	Tremor Elemental Stone	1	10	5
+4908	Sorcerer's Gift	204	Magic Elemental Stone	1	10	30
+4908	Sorcerer's Gift	256	Spirit Elemental Stone	1	10	20
+4908	Sorcerer's Gift	257	Meditation Elemental Stone	1	10	10
+4908	Sorcerer's Gift	258	Transcendence Elemental Stone	1	10	5
+4908	Sorcerer's Gift	201	Water Elemental Stone	1	10	30
+4908	Sorcerer's Gift	260	River Elemental Stone	1	10	20
+4908	Sorcerer's Gift	261	Fog Elemental Stone	1	10	10
+4908	Sorcerer's Gift	262	Waterfall Elemental Stone	1	10	5
+4908	Sorcerer's Gift	203	Fire Elemental Stone	1	10	30
+4908	Sorcerer's Gift	264	Embers Elemental Stone	1	10	20
+4908	Sorcerer's Gift	265	Blaze Elemental Stone	1	10	10
+4908	Sorcerer's Gift	266	Inferno Elemental Stone	1	10	5
+4908	Sorcerer's Gift	4772	Small Elemental Potion	50	99	10
+4908	Sorcerer's Gift	4773	Medium Elemental Potion	50	99	10
+4908	Sorcerer's Gift	4774	Large Elemental Potion	50	99	10
+4908	Sorcerer's Gift	4778	Nekros net Potion	1	10	10
+4908	Sorcerer's Gift	4779	Ruin Warrior Potion	1	10	10
+4908	Sorcerer's Gift	4780	Lequimes Potion	1	10	10
+4908	Sorcerer's Gift	4781	Lich Potion	1	10	10
+4908	Sorcerer's Gift	4782	Bound Potion	1	10	10
+4908	Sorcerer's Gift	4783	Voltex Potion	1	10	10
+4908	Sorcerer's Gift	4784	Blant Potion	1	10	10
+4908	Sorcerer's Gift	4785	Eyeball Potion	1	10	10
+4908	Sorcerer's Gift	4786	Ogre Potion	1	10	10
+4908	Sorcerer's Gift	4787	Succubus Potion	1	10	10
+4908	Sorcerer's Gift	4788	Torge Potion	1	10	10
+4908	Sorcerer's Gift	4789	Erinies Potion	1	10	10
+4908	Sorcerer's Gift	4790	Euriale Potion	1	10	10
+4908	Sorcerer's Gift	4791	Zebus Potion	1	10	10
+4908	Sorcerer's Gift	4792	Centaur Potion	1	10	10
+4908	Sorcerer's Gift	4793	Cube Potion	1	10	10
+4908	Sorcerer's Gift	4794	Creptil Potion	1	10	10
+4908	Sorcerer's Gift	4795	Freezy Bondman Potion	1	10	10
+4908	Sorcerer's Gift	4796	Hart Rider Potion	1	10	10
+4908	Sorcerer's Gift	4797	Hawkarrow Potion	1	10	10
+4908	Sorcerer's Gift	486	Reinforcement Potion	10	20	100
+4909	Ranger's Gift	2903	Shadow Cuirass	1	1	25
+4909	Ranger's Gift	2905	Shadow Bracers	1	1	25
+4909	Ranger's Gift	2906	Shadow Tights	1	1	25
+4909	Ranger's Gift	2907	Shadow Jambeau	1	1	25
+4909	Ranger's Gift	2913	Straight Cuirass	1	1	25
+4909	Ranger's Gift	2915	Straight Bracers	1	1	25
+4909	Ranger's Gift	2916	Straight Tights	1	1	25
+4909	Ranger's Gift	2917	Straight Jambeau	1	1	25
+4909	Ranger's Gift	2928	Valiant Cuirass	1	1	25
+4909	Ranger's Gift	2930	Valiant Bracers	1	1	25
+4909	Ranger's Gift	2931	Valiant Tights	1	1	25
+4909	Ranger's Gift	2932	Valiant Jambeau	1	1	25
+4909	Ranger's Gift	2963	Brilliant Hair Lace	1	1	25
+4909	Ranger's Gift	2943	Brilliant Cuirass	1	1	25
+4909	Ranger's Gift	2945	Brilliant Bracers	1	1	25
+4909	Ranger's Gift	2946	Brilliant Tights	1	1	25
+4909	Ranger's Gift	2947	Brilliant Jambeau	1	1	25
+4909	Ranger's Gift	2971	Topaz Hair Lace	1	1	25
+4909	Ranger's Gift	2966	Topaz Cuirass	1	1	25
+4909	Ranger's Gift	2968	Topaz Bracers	1	1	25
+4909	Ranger's Gift	2969	Topaz Tights	1	1	25
+4909	Ranger's Gift	2970	Topaz Jambeau	1	1	25
+4909	Ranger's Gift	3635	Crystal Hair Lace	1	1	25
+4909	Ranger's Gift	3630	Crystal Cuirass	1	1	25
+4909	Ranger's Gift	3632	Crystal Bracer	1	1	25
+4909	Ranger's Gift	3633	Crystal Tights	1	1	25
+4909	Ranger's Gift	3634	Crystal Jambeau	1	1	25
+4909	Ranger's Gift	3653	Quartz Hair Lace	1	1	25
+4909	Ranger's Gift	3648	Quartz Cuirass	1	1	25
+4909	Ranger's Gift	3650	Quartz Bracer	1	1	25
+4909	Ranger's Gift	3651	Quartz Tights	1	1	25
+4909	Ranger's Gift	3652	Quartz Jambeau	1	1	25
+4909	Ranger's Gift	3676	Activity Rise Hair Lace	1	1	25
+4909	Ranger's Gift	3666	Activity Rise Cuirass	1	1	25
+4909	Ranger's Gift	3668	Activity Rise Bracer	1	1	25
+4909	Ranger's Gift	3669	Activity Rise Tights	1	1	25
+4909	Ranger's Gift	3670	Activity Rise Jambeau	1	1	25
+4909	Ranger's Gift	3870	Valiant Hair Lace	1	1	25
+4909	Ranger's Gift	3865	Valiant Cuirass	1	1	25
+4909	Ranger's Gift	3867	Valiant Bracer	1	1	25
+4909	Ranger's Gift	3868	Valiant Tights	1	1	25
+4909	Ranger's Gift	3869	Valiant Jambeau	1	1	25
+4909	Ranger's Gift	5196	Deadly Sins Hairlace	1	1	25
+4909	Ranger's Gift	5197	Deadly Sins Cuirass	1	1	25
+4909	Ranger's Gift	5199	Deadly Sins Bracer	1	1	25
+4909	Ranger's Gift	5198	Deadly Sins Tights	1	1	25
+4909	Ranger's Gift	5200	Deadly Sins Jambeau	1	1	25
+4909	Ranger's Gift	2918	Redshine Cuirass	1	1	15
+4909	Ranger's Gift	2920	Redshine Bracers	1	1	15
+4909	Ranger's Gift	2921	Redshine Tights	1	1	15
+4909	Ranger's Gift	2922	Redshine Jambeau	1	1	15
+4909	Ranger's Gift	2933	Whiteknight Cuirass	1	1	15
+4909	Ranger's Gift	2935	Whiteknight Bracers	1	1	15
+4909	Ranger's Gift	2936	Whiteknight Tights	1	1	15
+4909	Ranger's Gift	2937	Whiteknight Jambeau	1	1	15
+4909	Ranger's Gift	2964	Deepforest Hair Lace	1	1	15
+4909	Ranger's Gift	2948	Deepforest Cuirass	1	1	15
+4909	Ranger's Gift	2950	Deepforest Bracers	1	1	15
+4909	Ranger's Gift	2951	Deepforest Tights	1	1	15
+4909	Ranger's Gift	2952	Deepforest Jambeau	1	1	15
+4909	Ranger's Gift	2977	Darkleaper Hair Lace	1	1	15
+4909	Ranger's Gift	2972	Darkleaper Cuirass	1	1	15
+4909	Ranger's Gift	2974	Darkleaper Bracers	1	1	15
+4909	Ranger's Gift	2975	Darkleaper Tights	1	1	15
+4909	Ranger's Gift	2976	Darkleaper Jambeau	1	1	15
+4909	Ranger's Gift	3641	Grey Cloud Hair Lace	1	1	15
+4909	Ranger's Gift	3636	Grey Cloud Cuirass	1	1	15
+4909	Ranger's Gift	3638	Gray Cloud Bracer	1	1	15
+4909	Ranger's Gift	3639	Grey Cloud Tights	1	1	15
+4909	Ranger's Gift	3640	Grey Cloud Jambeau	1	1	15
+4909	Ranger's Gift	3659	Blue Walker Hair Lace	1	1	15
+4909	Ranger's Gift	3654	Blue Walker Cuirass	1	1	15
+4909	Ranger's Gift	3656	Blue Walker Bracer	1	1	15
+4909	Ranger's Gift	3657	Blue Walker Tights	1	1	15
+4909	Ranger's Gift	3658	Blue Walker Jambeau	1	1	15
+4909	Ranger's Gift	3677	Yellow Master Hair Lace	1	1	15
+4909	Ranger's Gift	3671	Yellow Master Cuirass	1	1	15
+4909	Ranger's Gift	3673	Yellow Master Bracer	1	1	15
+4909	Ranger's Gift	3674	Yellow Master Tights	1	1	15
+4909	Ranger's Gift	3675	Yellow Master Jambeau	1	1	15
+4909	Ranger's Gift	3876	Tender Abysmal Hair Lace	1	1	15
+4909	Ranger's Gift	3871	Tender Abysmal Cuirass	1	1	15
+4909	Ranger's Gift	3873	Tender Abysmal Bracer	1	1	15
+4909	Ranger's Gift	3874	Tender Abysmal Tights	1	1	15
+4909	Ranger's Gift	3875	Tender Abysmal Jambeau	1	1	15
+4909	Ranger's Gift	5201	Green Judgement Hairlace	1	1	15
+4909	Ranger's Gift	5202	Green Judgement Cuirass	1	1	15
+4909	Ranger's Gift	5204	Green Judgement Bracer	1	1	15
+4909	Ranger's Gift	5203	Green Judgement Tights	1	1	15
+4909	Ranger's Gift	5205	Green Judgement Jambeau	1	1	15
+4909	Ranger's Gift	5531	High Elephant Hair lace	1	1	15
+4909	Ranger's Gift	5532	High Elephant Cuirass	1	1	15
+4909	Ranger's Gift	5533	High Elephant Bracer	1	1	15
+4909	Ranger's Gift	5534	High Elephant Tights	1	1	15
+4909	Ranger's Gift	5535	High Elephant Gem Boer	1	1	15
+4909	Ranger's Gift	4299	Redshine Cuirass	1	1	5
+4909	Ranger's Gift	4300	Redshine Bracers	1	1	5
+4909	Ranger's Gift	4301	Redshine Tights	1	1	5
+4909	Ranger's Gift	4302	Redshine Jambeau	1	1	5
+4909	Ranger's Gift	4303	Whiteknight Cuirass	1	1	5
+4909	Ranger's Gift	4304	Whiteknight Bracers	1	1	5
+4909	Ranger's Gift	4305	Whiteknight Tights	1	1	5
+4909	Ranger's Gift	4306	Whiteknight Jambeau	1	1	5
+4909	Ranger's Gift	4307	Deepforest Hair Lace	1	1	5
+4909	Ranger's Gift	4308	Deepforest Cuirass	1	1	5
+4909	Ranger's Gift	4309	Deepforest Bracers	1	1	5
+4909	Ranger's Gift	4310	Deepforest Tights	1	1	5
+4909	Ranger's Gift	4311	Deepforest Jambeau	1	1	5
+4909	Ranger's Gift	4316	Darkleaper Hair Lace	1	1	5
+4909	Ranger's Gift	4312	Darkleaper Cuirass	1	1	5
+4909	Ranger's Gift	4313	Darkleaper Bracers	1	1	5
+4909	Ranger's Gift	4314	Darkleaper Tights	1	1	5
+4909	Ranger's Gift	4315	Darkleaper Jambeau	1	1	5
+4909	Ranger's Gift	4321	Grey Cloud Hair Lace	1	1	5
+4909	Ranger's Gift	4317	Grey Cloud Cuirass	1	1	5
+4909	Ranger's Gift	4318	Gray Cloud Bracer	1	1	5
+4909	Ranger's Gift	4319	Grey Cloud Tights	1	1	5
+4909	Ranger's Gift	4320	Grey Cloud Jambeau	1	1	5
+4909	Ranger's Gift	4326	Blue Walker Hair Lace	1	1	5
+4909	Ranger's Gift	4322	Blue Walker Cuirass	1	1	5
+4909	Ranger's Gift	4323	Blue Walker Bracer	1	1	5
+4909	Ranger's Gift	4324	Blue Walker Tights	1	1	5
+4909	Ranger's Gift	4325	Blue Walker Jambeau	1	1	5
+4909	Ranger's Gift	4331	Yellow Master Hair Lace	1	1	5
+4909	Ranger's Gift	4327	Yellow Master Cuirass	1	1	5
+4909	Ranger's Gift	4328	Yellow Master Bracer	1	1	5
+4909	Ranger's Gift	4329	Yellow Master Tights	1	1	5
+4909	Ranger's Gift	4330	Yellow Master Jambeau	1	1	5
+4909	Ranger's Gift	4399	Tender Abysmal Hair Lace	1	1	5
+4909	Ranger's Gift	4395	Tender Abysmal Cuirass	1	1	5
+4909	Ranger's Gift	4396	Tender Abysmal Bracer	1	1	5
+4909	Ranger's Gift	4397	Tender Abysmal Tights	1	1	5
+4909	Ranger's Gift	4398	Tender Abysmal Jambeau	1	1	5
+4909	Ranger's Gift	5284	Green Judgement Hairlace	1	1	5
+4909	Ranger's Gift	5285	Green Judgement Cuirass	1	1	5
+4909	Ranger's Gift	5287	Green Judgement Bracer	1	1	5
+4909	Ranger's Gift	5286	Green Judgement Tights	1	1	5
+4909	Ranger's Gift	5288	Green Judgement Jambeau	1	1	5
+4909	Ranger's Gift	5631	High Elephant Hair lace	1	1	5
+4909	Ranger's Gift	5632	High Elephant Cuirass	1	1	5
+4909	Ranger's Gift	5633	High Elephant Bracer	1	1	5
+4909	Ranger's Gift	5634	High Elephant Tights	1	1	5
+4909	Ranger's Gift	5635	High Elephant Gem Boer	1	1	5
+4909	Ranger's Gift	2728	Bronze Kataria	1	1	70
+4909	Ranger's Gift	2730	Battle Kataria	1	1	70
+4909	Ranger's Gift	2733	Iron Kataria	1	1	70
+4909	Ranger's Gift	2736	Darkeye Kataria	1	1	70
+4909	Ranger's Gift	2739	Melting Kataria	1	1	70
+4909	Ranger's Gift	2742	Slash Kataria	1	1	70
+4909	Ranger's Gift	3733	Kataria of Agony	1	1	70
+4909	Ranger's Gift	3736	Faith Kataria	1	1	70
+4909	Ranger's Gift	3739	Fatal Kataria	1	1	70
+4909	Ranger's Gift	3742	Adamantine Kataria	1	1	70
+4909	Ranger's Gift	5249	Diamond Dust Kataria	1	1	70
+4909	Ranger's Gift	4073	Silver Kataria	1	1	15
+4909	Ranger's Gift	4074	Shadow Kataria	1	1	15
+4909	Ranger's Gift	4075	Luna Kataria	1	1	15
+4909	Ranger's Gift	4076	Splash Kataria	1	1	15
+4909	Ranger's Gift	4077	Blood Kataria	1	1	15
+4909	Ranger's Gift	4078	Eternal Flight Kataria	1	1	15
+4909	Ranger's Gift	4079	Kataria of Justice	1	1	15
+4909	Ranger's Gift	4080	Gaia Empress Kataria	1	1	15
+4909	Ranger's Gift	4745	Astral Buster Kataria	1	1	15
+4909	Ranger's Gift	4746	Leviathan Kataria	1	1	15
+4909	Ranger's Gift	2731	Silver Kataria	1	1	15
+4909	Ranger's Gift	2734	Shadow Kataria	1	1	15
+4909	Ranger's Gift	2737	Luna Kataria	1	1	15
+4909	Ranger's Gift	2740	Splash Kataria	1	1	15
+4909	Ranger's Gift	2743	Blood Kataria	1	1	15
+4909	Ranger's Gift	3734	Eternal Flight Kataria	1	1	15
+4909	Ranger's Gift	3737	Kataria of Justice	1	1	15
+4909	Ranger's Gift	3740	Gaia Empress Kataria	1	1	15
+4909	Ranger's Gift	3743	Astral Buster Kataria	1	1	15
+4909	Ranger's Gift	5250	Leviathan Kataria	1	1	15
+4909	Ranger's Gift	1933	Nature Bow	1	1	50
+4909	Ranger's Gift	538	Rampant bow	1	1	50
+4909	Ranger's Gift	1046	Silver Ray Bow	1	1	50
+4909	Ranger's Gift	1934	Aurora Bow	1	1	50
+4909	Ranger's Gift	1936	Angel Bow	1	1	50
+4909	Ranger's Gift	1938	Elflord Bow	1	1	50
+4909	Ranger's Gift	3261	Beasttail Bow	1	1	50
+4909	Ranger's Gift	3264	Redheart Bow	1	1	50
+4909	Ranger's Gift	3267	Helixhorn Bow	1	1	50
+4909	Ranger's Gift	3270	Scarletclaw Bow	1	1	50
+4909	Ranger's Gift	5237	Arrowbreath Bow	1	1	50
+4909	Ranger's Gift	4041	Spectrum Bow	1	1	15
+4909	Ranger's Gift	4042	Blue Eve's Bow	1	1	15
+4909	Ranger's Gift	4043	Burning Bow	1	1	15
+4909	Ranger's Gift	4044	Arcane Bow	1	1	15
+4909	Ranger's Gift	4045	Martial Bow	1	1	15
+4909	Ranger's Gift	4046	Headsweeper Bow	1	1	15
+4909	Ranger's Gift	4047	Silentdeath Bow	1	1	15
+4909	Ranger's Gift	4048	Immortalbard Bow	1	1	15
+4909	Ranger's Gift	4594	Bloodchaser Bow	1	1	15
+4909	Ranger's Gift	4595	Forest Wanderer's Bow	1	1	15
+4909	Ranger's Gift	537	Spectrum Bow	1	1	25
+4909	Ranger's Gift	839	Blue Eve's Bow	1	1	25
+4909	Ranger's Gift	1935	Burning Bow	1	1	25
+4909	Ranger's Gift	1937	Arcane Bow	1	1	25
+4909	Ranger's Gift	1939	Martial Bow	1	1	25
+4909	Ranger's Gift	3262	Headsweeper Bow	1	1	25
+4909	Ranger's Gift	3265	Silentdeath Bow	1	1	25
+4909	Ranger's Gift	3268	Immortalbard Bow	1	1	25
+4909	Ranger's Gift	3271	Bloodchaser Bow	1	1	25
+4909	Ranger's Gift	5238	Forest Wanderer's Bow	1	1	25
+4909	Ranger's Gift	464	Attack Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	468	Attack Accuracy Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	589	Cold Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	592	Thunder Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	595	Deadly Poison Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	599	Shield Resistance Prayer Stone Lv 3	1	5	10
+4909	Ranger's Gift	470	Blocking Accuracy Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	472	Defense Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	475	Life Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	481	Mana Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	601	Stamina Buff Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	841	Spirit Uplift Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	1170	Physical Resistance Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	1173	Skill Block Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	604	Curse Removal Prayer Stone Lv 3	1	5	10
+4909	Ranger's Gift	607	Skill Awakening Prayer Stone Lv 3	1	5	10
+4909	Ranger's Gift	610	Conversion Prayer Stone Lv 3	1	5	10
+4909	Ranger's Gift	614	Mana Replenishment Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	617	Life Recovery Prayer Stone<Lv3>	1	5	10
+4909	Ranger's Gift	1125	Small Healing Potion	50	99	20
+4909	Ranger's Gift	1126	Medium Healing Potion	50	99	20
+4909	Ranger's Gift	1127	Large Healing Potion	50	99	20
+4909	Ranger's Gift	202	Wind Elemental Stone	1	10	30
+4909	Ranger's Gift	244	Breath Elemental Stone	1	10	20
+4909	Ranger's Gift	245	Gale Elemental Stone	1	10	10
+4909	Ranger's Gift	246	Tornado Elemental Stone	1	10	5
+4909	Ranger's Gift	200	Earth Elemental Stone	1	10	30
+4909	Ranger's Gift	252	Dust Elemental Stone	1	10	20
+4909	Ranger's Gift	253	Soil Elemental Stone	1	10	10
+4909	Ranger's Gift	254	Tremor Elemental Stone	1	10	5
+4909	Ranger's Gift	204	Magic Elemental Stone	1	10	30
+4909	Ranger's Gift	256	Spirit Elemental Stone	1	10	20
+4909	Ranger's Gift	257	Meditation Elemental Stone	1	10	10
+4909	Ranger's Gift	258	Transcendence Elemental Stone	1	10	5
+4909	Ranger's Gift	201	Water Elemental Stone	1	10	30
+4909	Ranger's Gift	260	River Elemental Stone	1	10	20
+4909	Ranger's Gift	261	Fog Elemental Stone	1	10	10
+4909	Ranger's Gift	262	Waterfall Elemental Stone	1	10	5
+4909	Ranger's Gift	203	Fire Elemental Stone	1	10	30
+4909	Ranger's Gift	264	Embers Elemental Stone	1	10	20
+4909	Ranger's Gift	265	Blaze Elemental Stone	1	10	10
+4909	Ranger's Gift	266	Inferno Elemental Stone	1	10	5
+4909	Ranger's Gift	4772	Small Elemental Potion	50	99	10
+4909	Ranger's Gift	4773	Medium Elemental Potion	50	99	10
+4909	Ranger's Gift	4774	Large Elemental Potion	50	99	10
+4909	Ranger's Gift	4778	Nekros net Potion	1	10	10
+4909	Ranger's Gift	4779	Ruin Warrior Potion	1	10	10
+4909	Ranger's Gift	4780	Lequimes Potion	1	10	10
+4909	Ranger's Gift	4781	Lich Potion	1	10	10
+4909	Ranger's Gift	4782	Bound Potion	1	10	10
+4909	Ranger's Gift	4783	Voltex Potion	1	10	10
+4909	Ranger's Gift	4784	Blant Potion	1	10	10
+4909	Ranger's Gift	4785	Eyeball Potion	1	10	10
+4909	Ranger's Gift	4786	Ogre Potion	1	10	10
+4909	Ranger's Gift	4787	Succubus Potion	1	10	10
+4909	Ranger's Gift	4788	Torge Potion	1	10	10
+4909	Ranger's Gift	4789	Erinies Potion	1	10	10
+4909	Ranger's Gift	4790	Euriale Potion	1	10	10
+4909	Ranger's Gift	4791	Zebus Potion	1	10	10
+4909	Ranger's Gift	4792	Centaur Potion	1	10	10
+4909	Ranger's Gift	4793	Cube Potion	1	10	10
+4909	Ranger's Gift	4794	Creptil Potion	1	10	10
+4909	Ranger's Gift	4795	Freezy Bondman Potion	1	10	10
+4909	Ranger's Gift	4796	Hart Rider Potion	1	10	10
+4909	Ranger's Gift	4797	Hawkarrow Potion	1	10	10
+4909	Ranger's Gift	486	Reinforcement Potion	10	20	100
+4910	Elementalist's Gift	2848	Rise Garb	1	1	25
+4910	Elementalist's Gift	2850	Rise Sleeves	1	1	25
+4910	Elementalist's Gift	2851	Rise Skirt	1	1	25
+4910	Elementalist's Gift	2852	Rise Shoes	1	1	25
+4910	Elementalist's Gift	2858	Double Garb	1	1	25
+4910	Elementalist's Gift	2860	Double Sleeves	1	1	25
+4910	Elementalist's Gift	2861	Double Skirt	1	1	25
+4910	Elementalist's Gift	2862	Double Shoes	1	1	25
+4910	Elementalist's Gift	2873	Pantomime Garb	1	1	25
+4910	Elementalist's Gift	2875	Pantomime Sleeves	1	1	25
+4910	Elementalist's Gift	2876	Pantomime Skirt	1	1	25
+4910	Elementalist's Gift	2877	Pantomime Shoes	1	1	25
+4910	Elementalist's Gift	2960	Radiance Cap	1	1	25
+4910	Elementalist's Gift	2888	Radiance Garb	1	1	25
+4910	Elementalist's Gift	2890	Radiance Sleeves	1	1	25
+4910	Elementalist's Gift	2891	Radiance Skirt	1	1	25
+4910	Elementalist's Gift	2892	Radiance Shoes	1	1	25
+4910	Elementalist's Gift	2983	Sage's Cap	1	1	25
+4910	Elementalist's Gift	2978	Sage's Garb	1	1	25
+4910	Elementalist's Gift	2980	Sage's Sleeves	1	1	25
+4910	Elementalist's Gift	2981	Sage's Skirt	1	1	25
+4910	Elementalist's Gift	2982	Sage's Shoes	1	1	25
+4910	Elementalist's Gift	3689	Sage Lime Cap	1	1	25
+4910	Elementalist's Gift	3684	Sage Lime Garb	1	1	25
+4910	Elementalist's Gift	3686	Sage Lime Sleeve	1	1	25
+4910	Elementalist's Gift	3687	Sage Lime Skirt	1	1	25
+4910	Elementalist's Gift	3688	Sage Lime Shoes	1	1	25
+4910	Elementalist's Gift	3707	Clever Material Cap	1	1	25
+4910	Elementalist's Gift	3702	Clever Material Garb	1	1	25
+4910	Elementalist's Gift	3704	Clever Material Sleeve	1	1	25
+4910	Elementalist's Gift	3705	Clever Material Skirt	1	1	25
+4910	Elementalist's Gift	3706	Clever Material Shoes	1	1	25
+4910	Elementalist's Gift	3725	Smart Summoner Cap	1	1	25
+4910	Elementalist's Gift	3720	Smart Summoner Garb	1	1	25
+4910	Elementalist's Gift	3722	Smart Summoner Sleeve	1	1	25
+4910	Elementalist's Gift	3723	Smart Summoner Skirt	1	1	25
+4910	Elementalist's Gift	3724	Smart Summoner Shoes	1	1	25
+4910	Elementalist's Gift	3888	Judicious Owl Cap	1	1	25
+4910	Elementalist's Gift	3883	Judicious Owl Garb	1	1	25
+4910	Elementalist's Gift	3885	Judicious Owl Sleeve	1	1	25
+4910	Elementalist's Gift	3886	Judicious Owl Skirt	1	1	25
+4910	Elementalist's Gift	3887	Judicious Owl Shoes	1	1	25
+4910	Elementalist's Gift	5211	Catalysis Reba Cap	1	1	25
+4910	Elementalist's Gift	5212	Catalysis Reba Garb	1	1	25
+4910	Elementalist's Gift	5214	Catalysis Reba Sleeve	1	1	25
+4910	Elementalist's Gift	5213	Catalysis Reba Skirt	1	1	25
+4910	Elementalist's Gift	5215	Catalysis Reba Shoes	1	1	25
+4910	Elementalist's Gift	2863	Willinglight Garb	1	1	15
+4910	Elementalist's Gift	2865	Willinglight Sleeves	1	1	15
+4910	Elementalist's Gift	2866	Willinglight Skirt	1	1	15
+4910	Elementalist's Gift	2867	Willinglight Shoes	1	1	15
+4910	Elementalist's Gift	2878	Acrobatos Garb	1	1	15
+4910	Elementalist's Gift	2880	Acrobatos Sleeves	1	1	15
+4910	Elementalist's Gift	2881	Acrobatos Skirt	1	1	15
+4910	Elementalist's Gift	2882	Acrobatos Shoes	1	1	15
+4910	Elementalist's Gift	2961	Twilight Cap	1	1	15
+4910	Elementalist's Gift	2893	Twilight Garb	1	1	15
+4910	Elementalist's Gift	2895	Twilight Sleeves	1	1	15
+4910	Elementalist's Gift	2896	Twilight Skirt	1	1	15
+4910	Elementalist's Gift	2897	Twilight Shoes	1	1	15
+4910	Elementalist's Gift	2989	Daylight's Cap	1	1	15
+4910	Elementalist's Gift	2984	Daylight's Garb	1	1	15
+4910	Elementalist's Gift	2986	Daylight's Sleeves	1	1	15
+4910	Elementalist's Gift	2987	Daylight's Skirt	1	1	15
+4910	Elementalist's Gift	2988	Daylight's Shoes	1	1	15
+4910	Elementalist's Gift	3695	Soul Eater Cap	1	1	15
+4910	Elementalist's Gift	3690	Soul Eater Garb	1	1	15
+4910	Elementalist's Gift	3692	Soul Eater Sleeve	1	1	15
+4910	Elementalist's Gift	3693	Soul Eater Skirt	1	1	15
+4910	Elementalist's Gift	3694	Soul Eater Shoes	1	1	15
+4910	Elementalist's Gift	3713	Equity Arbiter Cap	1	1	15
+4910	Elementalist's Gift	3708	Equity Arbiter Garb	1	1	15
+4910	Elementalist's Gift	3710	Equity Arbiter Sleeve	1	1	15
+4910	Elementalist's Gift	3711	Equity Arbiter Skirt	1	1	15
+4910	Elementalist's Gift	3712	Equity Arbiter Shoes	1	1	15
+4910	Elementalist's Gift	3731	Mastermind Cap	1	1	15
+4910	Elementalist's Gift	3726	Mastermind Garb	1	1	15
+4910	Elementalist's Gift	3728	Mastermind Sleeve	1	1	15
+4910	Elementalist's Gift	3729	Mastermind Skirt	1	1	15
+4910	Elementalist's Gift	3730	Mastermind Shoes	1	1	15
+4910	Elementalist's Gift	3894	Demention Walker Cap	1	1	15
+4910	Elementalist's Gift	3889	Demention Walker Garb	1	1	15
+4910	Elementalist's Gift	3891	Demention Walker Sleeve	1	1	15
+4910	Elementalist's Gift	3892	Demention Walker Skirt	1	1	15
+4910	Elementalist's Gift	3893	Demention Walker Shoes	1	1	15
+4910	Elementalist's Gift	5216	Ancient Lore Cap	1	1	15
+4910	Elementalist's Gift	5217	Ancient Lore Garb	1	1	15
+4910	Elementalist's Gift	5219	Ancient Lore Sleeve	1	1	15
+4910	Elementalist's Gift	5218	Ancient Lore Skirt	1	1	15
+4910	Elementalist's Gift	5220	Ancient Lore Shoes	1	1	15
+4910	Elementalist's Gift	5536	Eldritch Spirit Cap	1	1	15
+4910	Elementalist's Gift	5537	Eldritch Spirit Garb	1	1	15
+4910	Elementalist's Gift	5538	Eldritch Spirit Sleeve	1	1	15
+4910	Elementalist's Gift	5539	Eldritch Spirit Skirt	1	1	15
+4910	Elementalist's Gift	5540	Eldritch Spirit Shoes	1	1	15
+4910	Elementalist's Gift	4332	Willinglight Garb	1	1	5
+4910	Elementalist's Gift	4333	Willinglight Sleeves	1	1	5
+4910	Elementalist's Gift	4334	Willinglight Skirt	1	1	5
+4910	Elementalist's Gift	4335	Willinglight Shoes	1	1	5
+4910	Elementalist's Gift	4336	Acrobatos Garb	1	1	5
+4910	Elementalist's Gift	4337	Acrobatos Sleeves	1	1	5
+4910	Elementalist's Gift	4338	Acrobatos Skirt	1	1	5
+4910	Elementalist's Gift	4339	Acrobatos Shoes	1	1	5
+4910	Elementalist's Gift	4340	Twilight Cap	1	1	5
+4910	Elementalist's Gift	4341	Twilight Garb	1	1	5
+4910	Elementalist's Gift	4342	Twilight Sleeves	1	1	5
+4910	Elementalist's Gift	4343	Twilight Skirt	1	1	5
+4910	Elementalist's Gift	4344	Twilight Shoes	1	1	5
+4910	Elementalist's Gift	4349	Daylight's Cap	1	1	5
+4910	Elementalist's Gift	4345	Daylight's Garb	1	1	5
+4910	Elementalist's Gift	4346	Daylight's Sleeves	1	1	5
+4910	Elementalist's Gift	4347	Daylight's Skirt	1	1	5
+4910	Elementalist's Gift	4348	Daylight's Shoes	1	1	5
+4910	Elementalist's Gift	4354	Soul Eater Cap	1	1	5
+4910	Elementalist's Gift	4350	Soul Eater Garb	1	1	5
+4910	Elementalist's Gift	4351	Soul Eater Sleeve	1	1	5
+4910	Elementalist's Gift	4352	Soul Eater Skirt	1	1	5
+4910	Elementalist's Gift	4353	Soul Eater Shoes	1	1	5
+4910	Elementalist's Gift	4359	Equity Arbiter Cap	1	1	5
+4910	Elementalist's Gift	4355	Equity Arbiter Garb	1	1	5
+4910	Elementalist's Gift	4356	Equity Arbiter Sleeve	1	1	5
+4910	Elementalist's Gift	4357	Equity Arbiter Skirt	1	1	5
+4910	Elementalist's Gift	4358	Equity Arbiter Shoes	1	1	5
+4910	Elementalist's Gift	4364	Mastermind Cap	1	1	5
+4910	Elementalist's Gift	4360	Mastermind Garb	1	1	5
+4910	Elementalist's Gift	4361	Mastermind Sleeve	1	1	5
+4910	Elementalist's Gift	4362	Mastermind Skirt	1	1	5
+4910	Elementalist's Gift	4363	Mastermind Shoes	1	1	5
+4910	Elementalist's Gift	4404	Demention Walker Cap	1	1	5
+4910	Elementalist's Gift	4400	Demention Walker Garb	1	1	5
+4910	Elementalist's Gift	4401	Demention Walker Sleeve	1	1	5
+4910	Elementalist's Gift	4402	Demention Walker Skirt	1	1	5
+4910	Elementalist's Gift	4403	Demention Walker Shoes	1	1	5
+4910	Elementalist's Gift	5289	Ancient Lore Cap	1	1	5
+4910	Elementalist's Gift	5290	Ancient Lore Garb	1	1	5
+4910	Elementalist's Gift	5292	Ancient Lore Sleeve	1	1	5
+4910	Elementalist's Gift	5291	Ancient Lore Skirt	1	1	5
+4910	Elementalist's Gift	5293	Ancient Lore Shoes	1	1	5
+4910	Elementalist's Gift	5636	Eldritch Spirit Cap	1	1	5
+4910	Elementalist's Gift	5637	Eldritch Spirit Garb	1	1	5
+4910	Elementalist's Gift	5638	Eldritch Spirit Sleeve	1	1	5
+4910	Elementalist's Gift	5639	Eldritch Spirit Skirt	1	1	5
+4910	Elementalist's Gift	5640	Eldritch Spirit Shoes	1	1	5
+4910	Elementalist's Gift	2712	Single Chakram	1	1	50
+4910	Elementalist's Gift	2714	Bone Chakram	1	1	50
+4910	Elementalist's Gift	2717	Dusk Chakram	1	1	50
+4910	Elementalist's Gift	2720	Bulwark Chakram	1	1	50
+4910	Elementalist's Gift	2723	Lunatic Chakram	1	1	50
+4910	Elementalist's Gift	2726	Supreme Chakram	1	1	50
+4910	Elementalist's Gift	3745	Ruby Hand Chakram	1	1	50
+4910	Elementalist's Gift	3748	Sacram Chakram	1	1	50
+4910	Elementalist's Gift	3751	Night Chaser Chakram	1	1	50
+4910	Elementalist's Gift	3754	Arcanebunko Chakram	1	1	50
+4910	Elementalist's Gift	5252	Phantom Indicate Chakram	1	1	50
+4910	Elementalist's Gift	4081	Sunset Chakram	1	1	15
+4910	Elementalist's Gift	4082	Shade Chakram	1	1	15
+4910	Elementalist's Gift	4083	Darkwing Chakram	1	1	15
+4910	Elementalist's Gift	4084	Mystic Chakram	1	1	15
+4910	Elementalist's Gift	4085	Spectral Chakram	1	1	15
+4910	Elementalist's Gift	4086	Soul Bringer Chakram	1	1	15
+4910	Elementalist's Gift	4087	Rumbleline Chakram	1	1	15
+4910	Elementalist's Gift	4088	Divine Walker Chakram	1	1	15
+4910	Elementalist's Gift	4747	Bloodyrain Chakram	1	1	15
+4910	Elementalist's Gift	4748	Spell Howler Chakram	1	1	15
+4910	Elementalist's Gift	2715	Sunset Chakram	1	1	25
+4910	Elementalist's Gift	2718	Shade Chakram	1	1	25
+4910	Elementalist's Gift	2721	Darkwing Chakram	1	1	25
+4910	Elementalist's Gift	2724	Mystic Chakram	1	1	25
+4910	Elementalist's Gift	2990	Spectral Chakram	1	1	25
+4910	Elementalist's Gift	3746	Soul Bringer Chakram	1	1	25
+4910	Elementalist's Gift	3749	Rumbleline Chakram	1	1	25
+4910	Elementalist's Gift	3752	Divine Walker Chakram	1	1	25
+4910	Elementalist's Gift	3755	Bloodyrain Chakram	1	1	25
+4910	Elementalist's Gift	5253	Spell Howler Chakram	1	1	25
+4910	Elementalist's Gift	1047	Fable Staff	1	1	50
+4910	Elementalist's Gift	1950	Templar Staff	1	1	50
+4910	Elementalist's Gift	551	Antler Staff	1	1	50
+4910	Elementalist's Gift	552	Battle Staff	1	1	50
+4910	Elementalist's Gift	1953	Mystic Staff	1	1	50
+4910	Elementalist's Gift	1955	Blackwitch Staff	1	1	50
+4910	Elementalist's Gift	3285	Novablaze Staff	1	1	50
+4910	Elementalist's Gift	3288	Soulbind Staff	1	1	50
+4910	Elementalist's Gift	3291	Bloodbine Staff	1	1	50
+4910	Elementalist's Gift	3294	Vicious Vision Staff	1	1	50
+4910	Elementalist's Gift	5243	Misfortune Staff	1	1	50
+4910	Elementalist's Gift	4057	Wizardry Staff	1	1	15
+4910	Elementalist's Gift	4058	Grimdivine Staff	1	1	15
+4910	Elementalist's Gift	4059	Terra Staff	1	1	15
+4910	Elementalist's Gift	4060	Spiritual Staff	1	1	15
+4910	Elementalist's Gift	4061	Arcane Staff	1	1	15
+4910	Elementalist's Gift	4062	Unstable Sage Staff	1	1	15
+4910	Elementalist's Gift	4063	Oldfamilia Staff	1	1	15
+4910	Elementalist's Gift	4064	Dark Pedigree Staff	1	1	15
+4910	Elementalist's Gift	4598	Brutal Judge Staff	1	1	15
+4910	Elementalist's Gift	4599	Realm Gaurdian's Staff	1	1	15
+4910	Elementalist's Gift	1951	Wizardry Staff	1	1	25
+4910	Elementalist's Gift	838	Grimdivine Staff	1	1	25
+4910	Elementalist's Gift	1952	Terra Staff	1	1	25
+4910	Elementalist's Gift	1954	Spiritual Staff	1	1	25
+4910	Elementalist's Gift	1956	Arcane Staff	1	1	25
+4910	Elementalist's Gift	3286	Unstable Sage Staff	1	1	25
+4910	Elementalist's Gift	3289	Oldfamilia Staff	1	1	25
+4910	Elementalist's Gift	3292	Dark Pedigree Staff	1	1	25
+4910	Elementalist's Gift	3295	Brutal Judge Staff	1	1	25
+4910	Elementalist's Gift	5244	Realm Gaurdian's Staff	1	1	25
+4910	Elementalist's Gift	464	Attack Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	468	Attack Accuracy Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	589	Cold Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	592	Thunder Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	595	Deadly Poison Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	599	Shield Resistance Prayer Stone Lv 3	1	5	10
+4910	Elementalist's Gift	470	Blocking Accuracy Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	472	Defense Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	475	Life Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	481	Mana Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	601	Stamina Buff Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	841	Spirit Uplift Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	1170	Physical Resistance Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	1173	Skill Block Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	604	Curse Removal Prayer Stone Lv 3	1	5	10
+4910	Elementalist's Gift	607	Skill Awakening Prayer Stone Lv 3	1	5	10
+4910	Elementalist's Gift	610	Conversion Prayer Stone Lv 3	1	5	10
+4910	Elementalist's Gift	614	Mana Replenishment Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	617	Life Recovery Prayer Stone<Lv3>	1	5	10
+4910	Elementalist's Gift	1125	Small Healing Potion	50	99	20
+4910	Elementalist's Gift	1126	Medium Healing Potion	50	99	20
+4910	Elementalist's Gift	1127	Large Healing Potion	50	99	20
+4910	Elementalist's Gift	202	Wind Elemental Stone	1	10	30
+4910	Elementalist's Gift	244	Breath Elemental Stone	1	10	20
+4910	Elementalist's Gift	245	Gale Elemental Stone	1	10	10
+4910	Elementalist's Gift	246	Tornado Elemental Stone	1	10	5
+4910	Elementalist's Gift	200	Earth Elemental Stone	1	10	30
+4910	Elementalist's Gift	252	Dust Elemental Stone	1	10	20
+4910	Elementalist's Gift	253	Soil Elemental Stone	1	10	10
+4910	Elementalist's Gift	254	Tremor Elemental Stone	1	10	5
+4910	Elementalist's Gift	204	Magic Elemental Stone	1	10	30
+4910	Elementalist's Gift	256	Spirit Elemental Stone	1	10	20
+4910	Elementalist's Gift	257	Meditation Elemental Stone	1	10	10
+4910	Elementalist's Gift	258	Transcendence Elemental Stone	1	10	5
+4910	Elementalist's Gift	201	Water Elemental Stone	1	10	30
+4910	Elementalist's Gift	260	River Elemental Stone	1	10	20
+4910	Elementalist's Gift	261	Fog Elemental Stone	1	10	10
+4910	Elementalist's Gift	262	Waterfall Elemental Stone	1	10	5
+4910	Elementalist's Gift	203	Fire Elemental Stone	1	10	30
+4910	Elementalist's Gift	264	Embers Elemental Stone	1	10	20
+4910	Elementalist's Gift	265	Blaze Elemental Stone	1	10	10
+4910	Elementalist's Gift	266	Inferno Elemental Stone	1	10	5
+4910	Elementalist's Gift	4772	Small Elemental Potion	50	99	10
+4910	Elementalist's Gift	4773	Medium Elemental Potion	50	99	10
+4910	Elementalist's Gift	4774	Large Elemental Potion	50	99	10
+4910	Elementalist's Gift	4778	Nekros net Potion	1	10	10
+4910	Elementalist's Gift	4779	Ruin Warrior Potion	1	10	10
+4910	Elementalist's Gift	4780	Lequimes Potion	1	10	10
+4910	Elementalist's Gift	4781	Lich Potion	1	10	10
+4910	Elementalist's Gift	4782	Bound Potion	1	10	10
+4910	Elementalist's Gift	4783	Voltex Potion	1	10	10
+4910	Elementalist's Gift	4784	Blant Potion	1	10	10
+4910	Elementalist's Gift	4785	Eyeball Potion	1	10	10
+4910	Elementalist's Gift	4786	Ogre Potion	1	10	10
+4910	Elementalist's Gift	4787	Succubus Potion	1	10	10
+4910	Elementalist's Gift	4788	Torge Potion	1	10	10
+4910	Elementalist's Gift	4789	Erinies Potion	1	10	10
+4910	Elementalist's Gift	4790	Euriale Potion	1	10	10
+4910	Elementalist's Gift	4791	Zebus Potion	1	10	10
+4910	Elementalist's Gift	4792	Centaur Potion	1	10	10
+4910	Elementalist's Gift	4793	Cube Potion	1	10	10
+4910	Elementalist's Gift	4794	Creptil Potion	1	10	10
+4910	Elementalist's Gift	4795	Freezy Bondman Potion	1	10	10
+4910	Elementalist's Gift	4796	Hart Rider Potion	1	10	10
+4910	Elementalist's Gift	4797	Hawkarrow Potion	1	10	10
+4910	Elementalist's Gift	486	Reinforcement Potion	10	20	100
+4988	Lowest Alchemy Box	7394	Large Recovery Potion	10	25	3000
+4988	Lowest Alchemy Box	6273	Extra-large Mana Potion	5	10	3000
+4988	Lowest Alchemy Box	1127	Large Healing Potion	5	10	3000
+4988	Lowest Alchemy Box	11782	Archondrite	1	1	990
+4988	Lowest Alchemy Box	12592	Fragment of Ashtal	1	1	1
+4988	Lowest Alchemy Box	11016	Scion Prayer Stone	1	1	1
+4989	Low Alchemy Box	7394	Large Recovery Potion	10	25	2700
+4989	Low Alchemy Box	6273	Extra-large Mana Potion	5	10	2700
+4989	Low Alchemy Box	11782	Archondrite	1	1	1960
+4989	Low Alchemy Box	12592	Fragment of Ashtal	1	1	1
+4989	Low Alchemy Box	11016	Scion Prayer Stone	1	1	1
+4989	Low Alchemy Box	1127	Large Healing Potion	1	1	2700
+4990	Beginner Alchemy Box	7394	Large Recovery Potion	10	25	2500
+4990	Beginner Alchemy Box	6273	Extra-large Mana Potion	5	10	2500
+4990	Beginner Alchemy Box	1127	Large Healing Potion	5	10	2500
+4990	Beginner Alchemy Box	11782	Archondrite	1	1	2480
+4990	Beginner Alchemy Box	12592	Fragment of Ashtal	1	1	1
+4990	Beginner Alchemy Box	11016	Scion Prayer Stone	1	1	1
+4991	Intermediate Alchemy Box	11782	Archondrite	1	1	2960
+4991	Intermediate Alchemy Box	7394	Large Recovery Potion	10	25	2400
+4991	Intermediate Alchemy Box	6273	Extra-large Mana Potion	5	10	2300
+4991	Intermediate Alchemy Box	1127	Large Healing Potion	5	10	2300
+4991	Intermediate Alchemy Box	12592	Fragment of Ashtal	1	1	1
+4991	Intermediate Alchemy Box	11016	Scion Prayer Stone	1	1	1
+4992	Advanced Alchemy Box	11782	Archondrite	1	1	3420
+4992	Advanced Alchemy Box	7394	Large Recovery Potion	10	25	2300
+4992	Advanced Alchemy Box	6273	Extra-large Mana Potion	20	30	2100
+4992	Advanced Alchemy Box	1127	Large Healing Potion	5	10	2100
+4992	Advanced Alchemy Box	12592	Fragment of Ashtal	1	1	1
+4992	Advanced Alchemy Box	11016	Scion Prayer Stone	1	1	1
+4993	Expert Alchemy Box	11782	Archondrite	1	1	3800
+4993	Expert Alchemy Box	7394	Large Recovery Potion	10	25	2100
+4993	Expert Alchemy Box	6273	Extra-large Mana Potion	20	30	2000
+4993	Expert Alchemy Box	1127	Large Healing Potion	5	10	1900
+4993	Expert Alchemy Box	12592	Fragment of Ashtal	1	1	1
+4993	Expert Alchemy Box	11016	Scion Prayer Stone	1	1	1
+4994	High Alchemy Box	11782	Archondrite	1	1	4750
+4994	High Alchemy Box	7394	Large Recovery Potion	10	25	1700
+4994	High Alchemy Box	6273	Extra-large Mana Potion	20	30	1700
+4994	High Alchemy Box	1127	Large Healing Potion	5	10	1600
+4994	High Alchemy Box	12592	Fragment of Ashtal	1	1	1
+4994	High Alchemy Box	11016	Scion Prayer Stone	1	1	1
+4995	Finest Alchemy Box	11782	Archondrite	1	1	5700
+4995	Finest Alchemy Box	7394	Large Recovery Potion	10	25	1400
+4995	Finest Alchemy Box	6273	Extra-large Mana Potion	20	30	1300
+4995	Finest Alchemy Box	1127	Large Healing Potion	5	10	1300
+4995	Finest Alchemy Box	12592	Fragment of Ashtal	1	1	1
+4995	Finest Alchemy Box	11016	Scion Prayer Stone	1	1	1
+4996	Legendary Alchemy Box	11782	Archondrite	1	1	6600
+4996	Legendary Alchemy Box	7394	Large Recovery Potion	10	25	1000
+4996	Legendary Alchemy Box	6273	Extra-large Mana Potion	20	30	1000
+4996	Legendary Alchemy Box	1127	Large Healing Potion	5	10	1000
+4996	Legendary Alchemy Box	12592	Fragment of Ashtal	1	1	1
+4996	Legendary Alchemy Box	11016	Scion Prayer Stone	1	1	1
+4997	Wise man's stone	11782	Archondrite	1	1	7500
+4997	Wise man's stone	7394	Large Recovery Potion	10	25	700
+4997	Wise man's stone	6273	Extra-large Mana Potion	20	30	700
+4997	Wise man's stone	1127	Large Healing Potion	5	10	600
+4997	Wise man's stone	12592	Fragment of Ashtal	1	1	1
+4997	Wise man's stone	11016	Scion Prayer Stone	1	1	1
+6053	Platinum treasure chest	6184	Extra-large Giant Potion+	1	2	1000
+6053	Platinum treasure chest	6185	Extra-large Light Speed Potion+	1	2	1000
+6053	Platinum treasure chest	6186	Extra-large Defence Potion+	1	2	1000
+6053	Platinum treasure chest	6187	Extra-large Quickness Potion+	1	2	1000
+6053	Platinum treasure chest	6188	Extra-large Evasion Potion+	1	2	1000
+6053	Platinum treasure chest	6273	Extra-large Mana Potion	20	30	1000
+6053	Platinum treasure chest	464	Attack Prayer Stone<Lv3>	1	3	250
+6053	Platinum treasure chest	601	Stamina Buff Prayer Stone<Lv3>	1	3	250
+6053	Platinum treasure chest	841	Spirit Uplift Prayer Stone<Lv3>	1	3	250
+6053	Platinum treasure chest	1170	Physical Resistance Prayer Stone<Lv3>	1	3	250
+6053	Platinum treasure chest	1173	Skill Block Prayer Stone<Lv3>	1	3	250
+6053	Platinum treasure chest	604	Curse Removal Prayer Stone Lv 3	1	3	250
+6053	Platinum treasure chest	607	Skill Awakening Prayer Stone Lv 3	1	3	250
+6053	Platinum treasure chest	610	Conversion Prayer Stone Lv 3	1	3	250
+6053	Platinum treasure chest	614	Mana Replenishment Prayer Stone<Lv3>	1	3	250
+6053	Platinum treasure chest	617	Life Recovery Prayer Stone<Lv3>	1	3	250
+6053	Platinum treasure chest	1862	Light Speed Prayer Stone<Lv3>	1	3	250
+6053	Platinum treasure chest	1857	Quickness Prayer Stone<Lv3>	1	3	250
+6053	Platinum treasure chest	6242	Wing Chest	1	1	50
+6053	Platinum treasure chest	9141	Cloak Chest	1	1	50
+6053	Platinum treasure chest	12109	Dimension Cloak Chest	1	1	50
+6053	Platinum treasure chest	11016	Scion Prayer Stone	1	1	50
+6053	Platinum treasure chest	12592	Fragment of Ashtal	1	1	50
+6053	Platinum treasure chest	7436	Fortune Gate Pass	1	1	750
+6053	Platinum treasure chest	1174	Summoning Orb	1	1	750
+6053	Platinum treasure chest	4568	Gate of Phantom	1	1	750
+6053	Platinum treasure chest	6007	Lens Stone+	250	500	750
+6053	Platinum treasure chest	4799	Compound Potion	1	1	750
+6053	Platinum treasure chest	6001	Talisman of Awakening PLUS 75 <1 Hour>	1	1	100
+6053	Platinum treasure chest	1169	Physical Resistance Prayer Stone<Lv1>	1	3	150
+6053	Platinum treasure chest	1839	Physical Resistance Prayer Stone<Lv2>	1	3	150
+6053	Platinum treasure chest	1172	Skill Block Prayer Stone<Lv1>	1	3	150
+6053	Platinum treasure chest	1847	Skill Block Prayer Stone<Lv2>	1	3	150
+6053	Platinum treasure chest	603	Curse Removal Prayer Stone Lv 1	1	3	150
+6053	Platinum treasure chest	605	Curse Removal Prayer Stone Lv 2	1	3	150
+6053	Platinum treasure chest	606	Skill Awakening Prayer Stone Lv 1	1	3	150
+6053	Platinum treasure chest	608	Skill Awakening Prayer Stone Lv 2	1	3	150
+6053	Platinum treasure chest	1860	Light Speed Prayer Stone<Lv1>	1	3	150
+6053	Platinum treasure chest	1861	Light Speed Prayer Stone<Lv2>	1	3	150
+6053	Platinum treasure chest	1856	Quickness Prayer Stone<Lv2>	1	3	150
+6053	Platinum treasure chest	1855	Quickness Prayer Stone<Lv1>	1	3	150
+6078	Homunculus Box	9759	Rudolf <Rank 4>	1	1	5000
+6078	Homunculus Box	9760	Rudolf <Rank 5>	1	1	3000
+6078	Homunculus Box	9761	Rudolf <Rank 6>	1	1	1000
+6078	Homunculus Box	9762	Rudolf <Rank 7>	1	1	500
+6078	Homunculus Box	9763	Rudolf <Rank 8>	1	1	250
+6078	Homunculus Box	9764	Rudolf <Rank 9>	1	1	50
+6087	Pumpkinhead Surprise Box for Knights	12807	Santa Claus Suit: Superior <Knight - 1 day>	1	1	2000
+6087	Pumpkinhead Surprise Box for Knights	6675	Armor of Excen	1	1	2000
+6087	Pumpkinhead Surprise Box for Knights	6677	Gauntlets of Excen	1	1	2000
+6087	Pumpkinhead Surprise Box for Knights	6678	Greaves of Excen	1	1	2000
+6087	Pumpkinhead Surprise Box for Knights	6679	Boots of Excen	1	1	2000
+6087	Pumpkinhead Surprise Box for Knights	13453	Deerwolf	1	1	100
+6088	Pumpkinhead Surprise Box for Archers	12808	Santa Claus Suit: Superior <Archer - 1 day>	1	1	2000
+6088	Pumpkinhead Surprise Box for Archers	6665	Armor of Robindole	1	1	2000
+6088	Pumpkinhead Surprise Box for Archers	6667	Armpads of Robindole	1	1	2000
+6088	Pumpkinhead Surprise Box for Archers	6668	Pants of Robindole	1	1	2000
+6088	Pumpkinhead Surprise Box for Archers	6669	Boots of Robindole	1	1	2000
+6088	Pumpkinhead Surprise Box for Archers	13453	Deerwolf	1	1	100
+6089	Pumpkinhead Surprise Box for Mages	12809	Santa Claus Suit: Superior <Mage - 1 day>	1	1	2000
+6089	Pumpkinhead Surprise Box for Mages	6655	Garb of Serreno	1	1	2000
+6089	Pumpkinhead Surprise Box for Mages	6657	Bracelets of Serreno	1	1	2000
+6089	Pumpkinhead Surprise Box for Mages	6658	Kilt of Serreno	1	1	2000
+6089	Pumpkinhead Surprise Box for Mages	6659	Boots of Serreno	1	1	2000
+6089	Pumpkinhead Surprise Box for Mages	13453	Deerwolf	1	1	100
+6090	Pumpkinhead Surprise Box for Berserkers	12810	Santa Claus Suit: Superior <Berserker - 1 day>	1	1	2000
+6090	Pumpkinhead Surprise Box for Berserkers	5996	Armor of Nuendo	1	1	2000
+6090	Pumpkinhead Surprise Box for Berserkers	5998	Gauntlet of Nuendo	1	1	2000
+6090	Pumpkinhead Surprise Box for Berserkers	5999	Greaves of Nuendo	1	1	2000
+6090	Pumpkinhead Surprise Box for Berserkers	6000	Boots of Nuendo	1	1	2000
+6090	Pumpkinhead Surprise Box for Berserkers	13441	Deerwolf	1	1	100
+6091	Present	6224	Super Large Mana Potion	30	99	1680
+6091	Present	1054	Reverse Orb	1	2	1280
+6091	Present	3498	Extra-large Life Potion	30	99	1150
+6091	Present	6007	Lens Stone+	1000	1500	900
+6091	Present	4799	Compound Potion	1	1	900
+6091	Present	7392	Small Recovery Potion	20	35	655
+6091	Present	3436	Talisman of Awakening<1 Day>	1	1	595
+6091	Present	7393	Medium Recovery Potion	15	30	500
+6091	Present	7394	Large Recovery Potion	10	25	500
+6091	Present	486	Reinforcement Potion	1	5	500
+6091	Present	7644	Pet Reinforcement Manual	1	1	400
+6091	Present	7716	Talisman of Heavenly Luck -1 days-	1	1	300
+6091	Present	6273	Extra-large Mana Potion	20	30	250
+6091	Present	11782	Archondrite	1	1	200
+6091	Present	10332	Talisman of Awakening 100 <2 hours>	1	1	65
+6091	Present	20437	Talisman of Awakening 200 <2 hours>	1	1	35
+6091	Present	9756	Rudolf <Rank 1>	1	1	25
+6091	Present	9757	Rudolf <Rank 2>	1	1	20
+6091	Present	9758	Rudolf <Rank 3>	1	1	15
+6091	Present	9759	Rudolf <Rank 4>	1	1	10
+6091	Present	12592	Fragment of Ashtal	1	1	10
+6091	Present	11016	Scion Prayer Stone	1	1	10
+6106	Pumpkinhead Surprise Box for Hunters	12811	Santa Claus Suit: Superior <Hunter - 1 day>	1	1	2000
+6106	Pumpkinhead Surprise Box for Hunters	6645	Armor of Shakran	1	1	2000
+6106	Pumpkinhead Surprise Box for Hunters	6647	Armpads of Shakran	1	1	2000
+6106	Pumpkinhead Surprise Box for Hunters	6648	Pants of Shakran	1	1	2000
+6106	Pumpkinhead Surprise Box for Hunters	6649	Boots of Shakran	1	1	2000
+6106	Pumpkinhead Surprise Box for Hunters	13441	Deerwolf	1	1	100
+6107	Pumpkinhead Surprise Box for Sorcerers	12812	Santa Claus Suit: Superior <Sorcerer - 1 day>	1	1	2000
+6107	Pumpkinhead Surprise Box for Sorcerers	6635	Garb of Zwan	1	1	2000
+6107	Pumpkinhead Surprise Box for Sorcerers	6637	Bracelets of Zwan	1	1	2000
+6107	Pumpkinhead Surprise Box for Sorcerers	6638	Kilt of Zwan	1	1	2000
+6107	Pumpkinhead Surprise Box for Sorcerers	6639	Boots of Zwan	1	1	2000
+6107	Pumpkinhead Surprise Box for Sorcerers	13441	Deerwolf	1	1	100
+6108	Pumpkinhead Surprise Box for Rangers	12813	Santa Claus Suit: Superior <Swashbuckler - 1 day>	1	1	2000
+6108	Pumpkinhead Surprise Box for Rangers	6704	Jacket of Camian	1	1	2000
+6108	Pumpkinhead Surprise Box for Rangers	6705	Gloves of Camian	1	1	2000
+6108	Pumpkinhead Surprise Box for Rangers	6706	Scabbard of Camian	1	1	2000
+6108	Pumpkinhead Surprise Box for Rangers	6707	Boots of Camian	1	1	2000
+6108	Pumpkinhead Surprise Box for Rangers	13447	Deerwolf	1	1	100
+6109	Pumpkinhead Surprise Box for Elementalists	12814	Santa Claus Suit: Superior <Ranger - 1 day>	1	1	2000
+6109	Pumpkinhead Surprise Box for Elementalists	6685	Cuirass of Remulos	1	1	2000
+6109	Pumpkinhead Surprise Box for Elementalists	6687	Bracers of Remulos	1	1	2000
+6109	Pumpkinhead Surprise Box for Elementalists	6688	Tights of Remulos	1	1	2000
+6109	Pumpkinhead Surprise Box for Elementalists	6689	Jambeau of Remulos	1	1	2000
+6109	Pumpkinhead Surprise Box for Elementalists	13447	Deerwolf	1	1	100
+6110	Pumpkinhead Surprise Box for Swashbucklers	12815	Santa Claus Suit: Superior <Elementalist - 1 day>	1	1	2000
+6110	Pumpkinhead Surprise Box for Swashbucklers	6695	Garb of Bibulan	1	1	2000
+6110	Pumpkinhead Surprise Box for Swashbucklers	6697	Sleeves of Bibulan	1	1	2000
+6110	Pumpkinhead Surprise Box for Swashbucklers	6698	Skirt of Bibulan	1	1	2000
+6110	Pumpkinhead Surprise Box for Swashbucklers	6699	Boots of Bibulan	1	1	2000
+6110	Pumpkinhead Surprise Box for Swashbucklers	13447	Deerwolf	1	1	100
+6123	Figure Marble	14548	Rosy Aura Cloak of Elemental Mastery <Lv6>	1	1	2
+6123	Figure Marble	14551	Rosy Aura Cloak of Dimension Mastery <Lv6>	1	1	2
+6123	Figure Marble	14552	Rosy Aura Wings <Lv6>	1	1	2
+6123	Figure Marble	14547	Ashen Mist Cloak of Elemental Mastery <Lv6>	1	1	2
+6123	Figure Marble	14550	Ashen Mist Cloak of Dimension Mastery <Lv6>	1	1	2
+6123	Figure Marble	14564	Ashen Mist Wings <Lv6>	1	1	2
+6123	Figure Marble	14546	Scarlet Cloak of Elemental Mastery <Lv6>	1	1	2
+6123	Figure Marble	14549	Scarlet Cloak of Dimension Mastery <Lv6>	1	1	2
+6123	Figure Marble	14565	Scarlet Wings <Lv6>	1	1	2
+6123	Figure Marble	14567	Rosy Aura Cloak of Elemental Mastery <Lv5>	1	1	1000
+6123	Figure Marble	14568	Rosy Aura Cloak of Dimension Mastery <Lv5>	1	1	1000
+6123	Figure Marble	14569	Rosy Aura Wings <Lv5>	1	1	500
+6123	Figure Marble	14570	Ashen Mist Cloak of Elemental Mastery <Lv5>	1	1	1000
+6123	Figure Marble	14571	Ashen Mist Cloak of Dimension Mastery <Lv5>	1	1	1000
+6123	Figure Marble	14572	Ashen Mist Wings <Lv5>	1	1	200
+6123	Figure Marble	14573	Scarlet Cloak of Elemental Mastery <Lv5>	1	1	1000
+6123	Figure Marble	14574	Scarlet Cloak of Dimension Mastery <Lv5>	1	1	1000
+6123	Figure Marble	14575	Scarlet Wings <Lv5>	1	1	500
+6125	Happy Wing Chest	6228	Dark Wings<Lv5>	1	1	1500
+6125	Happy Wing Chest	6232	Death Wings<Lv5>	1	1	1500
+6125	Happy Wing Chest	6236	Eternity Wings<Lv5>	1	1	1500
+6125	Happy Wing Chest	6240	Judgement Wings<Lv5>	1	1	1500
+6125	Happy Wing Chest	6250	Lord Wings<Lv5>	1	1	1500
+6125	Happy Wing Chest	6254	Angel Wings<Lv5>	1	1	1500
+6125	Happy Wing Chest	6241	Infinity Wings<Lv6>	1	1	1500
+6129	Happy Box	12684	Legend of Roux	1	1	1500
+6129	Happy Box	12688	Legend of Roux	1	1	1500
+6129	Happy Box	12692	Legend of Roux	1	1	1500
+6129	Happy Box	12687	Mitchell	1	1	1500
+6129	Happy Box	12691	Mitchell	1	1	1500
+6129	Happy Box	12695	Mitchell	1	1	1500
+6129	Happy Box	13440	Milfis Candy Cart	1	1	1500
+6129	Happy Box	13446	Milfis Candy Cart	1	1	1500
+6129	Happy Box	13452	Milfis Candy Cart	1	1	1500
+6148	Icebox	6147	Fruit Ice	1	1	1000
+6148	Icebox	6273	Extra-large Mana Potion	5	10	1000
+6148	Icebox	7394	Large Recovery Potion	5	10	1000
+6148	Icebox	7644	Pet Reinforcement Manual	1	1	250
+6148	Icebox	6184	Extra-large Giant Potion+	1	1	100
+6148	Icebox	6185	Extra-large Light Speed Potion+	1	1	100
+6148	Icebox	6187	Extra-large Quickness Potion+	1	1	100
+6148	Icebox	3906	Shout of Elemental	3	5	500
+6148	Icebox	4802	Gold Coin of the rich	1	1	7
+6148	Icebox	4803	Silver coin of the rich	1	1	50
+6148	Icebox	1830	Tullan Passport	1	1	150
+6148	Icebox	1832	Trilgard Passport	1	1	150
+6148	Icebox	1834	Deribel Passport	1	1	150
+6148	Icebox	7436	Fortune Gate Pass	1	3	250
+6148	Icebox	1171	Return Orb	1	1	50
+6148	Icebox	6007	Lens Stone+	500	1000	500
+6148	Icebox	4799	Compound Potion	1	1	250
+6148	Icebox	11256	Marvel Scroll of Release	1	1	100
+6148	Icebox	4875	Signature of Glory	1	1	100
+6148	Icebox	7481	Kitty Lv 1 <1 days>	1	1	50
+6148	Icebox	7648	Shuta Ring Piece	2	3	100
+6148	Icebox	7659	Karkaen Necklace Piece	2	3	100
+6148	Icebox	7651	Blode Ring Piece	2	3	100
+6148	Icebox	7653	Logo Ring Piece	2	3	100
+6148	Icebox	7654	Ohkeros Ring Piece	2	3	100
+6148	Icebox	7665	Luke Necklace Piece	2	3	100
+6148	Icebox	7655	Gadius Ring Piece	2	3	100
+6148	Icebox	7662	Guardimesh Necklace Piece	2	3	100
+6170	Assorted Songpyun	13588	Jewel of Zian	1	1	2000
+6170	Assorted Songpyun	13589	Jewel of Ugdrasil	1	1	2000
+6170	Assorted Songpyun	13590	Jewel of Gracia	1	1	2000
+6170	Assorted Songpyun	13591	Jewel of Dikain	1	1	2000
+6170	Assorted Songpyun	13592	Jewel of Syripus	1	1	2000
+6174	Holiday Present Box	3906	Shout of Elemental	10	20	2000
+6174	Holiday Present Box	11256	Marvel Scroll of Release	1	1	1500
+6174	Holiday Present Box	6007	Lens Stone+	3000	5000	1500
+6174	Holiday Present Box	4799	Compound Potion	3	5	1500
+6174	Holiday Present Box	1174	Summoning Orb	3	5	1000
+6174	Holiday Present Box	4568	Gate of Phantom	3	5	1000
+6174	Holiday Present Box	7644	Pet Reinforcement Manual	1	1	500
+6174	Holiday Present Box	10372	Premium BOX-Common sp1	1	1	125
+6174	Holiday Present Box	10375	Premium BOX-Human sp1	1	1	125
+6174	Holiday Present Box	10377	Premium BOX-Orc sp1	1	1	125
+6174	Holiday Present Box	10379	Premium BOX-MoonElf sp1	1	1	125
+6174	Holiday Present Box	6242	Wing Chest	1	1	125
+6174	Holiday Present Box	9141	Cloak Chest	1	1	125
+6174	Holiday Present Box	12109	Dimension Cloak Chest	1	1	125
+6174	Holiday Present Box	9142	Ring Spirit Chest	1	1	125
+6242	Wing Chest	6243	Dark Wings<Lv1>	1	1	600
+6242	Wing Chest	6244	Death Wings<Lv1>	1	1	600
+6242	Wing Chest	6245	Eternity Wings<Lv1>	1	1	600
+6242	Wing Chest	6246	Judgement Wings<Lv1>	1	1	600
+6242	Wing Chest	4607	Lord Wings<Lv1>	1	1	600
+6242	Wing Chest	4571	Angel Wings<Lv1>	1	1	600
+6242	Wing Chest	6225	Dark Wings<Lv2>	1	1	600
+6242	Wing Chest	6229	Death Wings<Lv2>	1	1	600
+6242	Wing Chest	6233	Eternity Wings<Lv2>	1	1	600
+6242	Wing Chest	6237	Judgement Wings<Lv2>	1	1	600
+6242	Wing Chest	6247	Lord Wings<Lv2>	1	1	600
+6242	Wing Chest	6251	Angel Wings<Lv2>	1	1	600
+6242	Wing Chest	6226	Dark Wings<Lv3>	1	1	250
+6242	Wing Chest	6234	Eternity Wings<Lv3>	1	1	250
+6242	Wing Chest	6238	Judgement Wings<Lv3>	1	1	250
+6242	Wing Chest	6230	Death Wings<Lv3>	1	1	250
+6242	Wing Chest	6248	Lord Wings<Lv3>	1	1	250
+6242	Wing Chest	6252	Angel Wings<Lv3>	1	1	250
+6242	Wing Chest	6227	Dark Wings<Lv4>	1	1	108
+6242	Wing Chest	6231	Death Wings<Lv4>	1	1	108
+6242	Wing Chest	6235	Eternity Wings<Lv4>	1	1	108
+6242	Wing Chest	6239	Judgement Wings<Lv4>	1	1	108
+6242	Wing Chest	6249	Lord Wings<Lv4>	1	1	108
+6242	Wing Chest	6253	Angel Wings<Lv4>	1	1	108
+6242	Wing Chest	6228	Dark Wings<Lv5>	1	1	50
+6242	Wing Chest	6232	Death Wings<Lv5>	1	1	50
+6242	Wing Chest	6236	Eternity Wings<Lv5>	1	1	50
+6242	Wing Chest	6240	Judgement Wings<Lv5>	1	1	50
+6242	Wing Chest	6250	Lord Wings<Lv5>	1	1	50
+6242	Wing Chest	6254	Angel Wings<Lv5>	1	1	50
+6242	Wing Chest	6241	Infinity Wings<Lv6>	1	1	50
+6259	Gift Box	6129	Rare Mount Chest	1	1	500
+6259	Gift Box	5007	Shuta Ring	1	1	100
+6259	Gift Box	5009	Pargon Ring	1	1	1000
+6259	Gift Box	5010	Blode Ring	1	1	1000
+6259	Gift Box	5011	Haul Ring	1	1	1000
+6259	Gift Box	5013	Ohkeros Ring	1	1	1000
+6259	Gift Box	5014	Gadius Ring	1	1	1000
+6259	Gift Box	5006	Barom Ring	1	1	1000
+6259	Gift Box	5018	Karkaen Necklace	1	1	1000
+6259	Gift Box	5020	Biglos Necklace	1	1	1000
+6259	Gift Box	5024	Luke Necklace	1	1	1000
+6259	Gift Box	5023	Shocker Necklace	1	1	1000
+6259	Gift Box	5021	Guardimesh Necklace	1	1	1000
+6259	Gift Box	12592	Fragment of Ashtal	1	1	200
+6259	Gift Box	11016	Scion Prayer Stone	1	1	200
+6259	Gift Box	13588	Jewel of Zian	5	5	1000
+6259	Gift Box	13589	Jewel of Ugdrasil	5	5	1000
+6259	Gift Box	13590	Jewel of Gracia	5	5	1000
+6259	Gift Box	13591	Jewel of Dikain	5	5	1000
+6259	Gift Box	13592	Jewel of Syripus	5	5	1000
+6259	Gift Box	13598	Extract of Elixir	5	5	1000
+6267	Wing Chest	6227	Dark Wings<Lv4>	1	1	1250
+6267	Wing Chest	6231	Death Wings<Lv4>	1	1	1250
+6267	Wing Chest	6235	Eternity Wings<Lv4>	1	1	1250
+6267	Wing Chest	6239	Judgement Wings<Lv4>	1	1	1250
+6267	Wing Chest	6249	Lord Wings<Lv4>	1	1	1250
+6267	Wing Chest	6253	Angel Wings<Lv4>	1	1	1250
+6267	Wing Chest	6228	Dark Wings<Lv5>	1	1	50
+6267	Wing Chest	6232	Death Wings<Lv5>	1	1	50
+6267	Wing Chest	6236	Eternity Wings<Lv5>	1	1	50
+6267	Wing Chest	6240	Judgement Wings<Lv5>	1	1	50
+6267	Wing Chest	6250	Lord Wings<Lv5>	1	1	50
+6267	Wing Chest	6254	Angel Wings<Lv5>	1	1	50
+6351	Swash Box	6147	Fruit Ice	1	1	1000
+6351	Swash Box	7644	Pet Reinforcement Manual	1	1	250
+6351	Swash Box	6184	Extra-large Giant Potion+	1	1	100
+6351	Swash Box	6185	Extra-large Light Speed Potion+	1	1	100
+6351	Swash Box	6186	Extra-large Defence Potion+	1	1	100
+6351	Swash Box	3906	Shout of Elemental	1	1	500
+6351	Swash Box	4802	Gold Coin of the rich	1	1	7
+6351	Swash Box	4803	Silver coin of the rich	1	1	50
+6351	Swash Box	7436	Fortune Gate Pass	1	1	250
+6351	Swash Box	1171	Return Orb	1	1	50
+6351	Swash Box	6007	Lens Stone+	500	500	500
+6351	Swash Box	4799	Compound Potion	1	1	250
+6351	Swash Box	11256	Marvel Scroll of Release	1	1	100
+6351	Swash Box	4875	Signature of Glory	1	1	100
+6351	Swash Box	7481	Kitty Lv 1 <1 days>	1	1	50
+6351	Swash Box	7648	Shuta Ring Piece	1	1	150
+6351	Swash Box	7659	Karkaen Necklace Piece	1	1	150
+6351	Swash Box	7650	Pargon Ring Piece	1	1	150
+6351	Swash Box	7651	Blode Ring Piece	1	1	150
+6351	Swash Box	7653	Logo Ring Piece	1	1	150
+6351	Swash Box	7654	Ohkeros Ring Piece	1	1	150
+6351	Swash Box	7655	Gadius Ring Piece	1	1	150
+6351	Swash Box	7665	Luke Necklace Piece	1	1	150
+6351	Swash Box	7662	Guardimesh Necklace Piece	1	1	150
+6351	Swash Box	14582	Extra-Large Mana Potion	5	8	1000
+6352	Buckler Box	7436	Fortune Gate Pass	20	20	4000
+6352	Buckler Box	11606	Brilliant Shuta Ring	1	1	250
+6352	Buckler Box	11629	Intelligent Shuta Ring	1	1	100
+6352	Buckler Box	11652	Glorious Shuta Ring	1	1	100
+6352	Buckler Box	11617	Brilliant Karkaen Necklace	1	1	250
+6352	Buckler Box	11640	Intelligent Karkaen Necklace	1	1	100
+6352	Buckler Box	11663	Glorious Karkaen Necklace	1	1	100
+6352	Buckler Box	11609	Brilliant Blode Ring	1	1	250
+6352	Buckler Box	11632	Intelligent Blode Ring	1	1	250
+6352	Buckler Box	11655	Glorious Blode Ring	1	1	250
+6352	Buckler Box	11631	Intelligent Pargon Ring	1	1	250
+6352	Buckler Box	11654	Glorious Pargon Ring	1	1	250
+6352	Buckler Box	11608	Brilliant Pargon Ring	1	1	250
+6352	Buckler Box	11611	Brilliant Logo Ring	1	1	250
+6352	Buckler Box	11634	Intelligent Logo Ring	1	1	250
+6352	Buckler Box	11657	Glorious Logo Ring	1	1	250
+6352	Buckler Box	11612	Brilliant Ohkeros Ring	1	1	250
+6352	Buckler Box	11635	Intelligent Ohkeros Ring	1	1	250
+6352	Buckler Box	11658	Glorious Ohkeros Ring	1	1	250
+6352	Buckler Box	11613	Brilliant Gaudius Ring	1	1	250
+6352	Buckler Box	11636	Intelligent Gaudius Ring	1	1	250
+6352	Buckler Box	11659	Glorious Gaudius Ring	1	1	250
+6352	Buckler Box	11623	Brilliant Luke Necklace	1	1	250
+6352	Buckler Box	11646	Intelligent Luke Necklace	1	1	250
+6352	Buckler Box	11669	Glorious Luke Necklace	1	1	250
+6352	Buckler Box	13593	Elixir of Ugdrasil	1	1	100
+6352	Buckler Box	13594	Elixir of Dikain	1	1	100
+6352	Buckler Box	13595	Elixir of Gracia	1	1	100
+6352	Buckler Box	13596	Elixir of Zian	1	1	100
+6352	Buckler Box	13597	Elixir of Syripus	1	1	100
+6388	Christmas Gift Box	7436	Fortune Gate Pass	5	5	4000
+6388	Christmas Gift Box	6129	Rare Mount Chest	1	1	750
+6388	Christmas Gift Box	11606	Brilliant Shuta Ring	1	1	150
+6388	Christmas Gift Box	11629	Intelligent Shuta Ring	1	1	150
+6388	Christmas Gift Box	11652	Glorious Shuta Ring	1	1	150
+6388	Christmas Gift Box	11617	Brilliant Karkaen Necklace	1	1	150
+6388	Christmas Gift Box	11640	Intelligent Karkaen Necklace	1	1	150
+6388	Christmas Gift Box	11663	Glorious Karkaen Necklace	1	1	150
+6388	Christmas Gift Box	11609	Brilliant Blode Ring	1	1	500
+6388	Christmas Gift Box	11632	Intelligent Blode Ring	1	1	500
+6388	Christmas Gift Box	11655	Glorious Blode Ring	1	1	500
+6388	Christmas Gift Box	11608	Brilliant Pargon Ring	1	1	250
+6388	Christmas Gift Box	11631	Intelligent Pargon Ring	1	1	250
+6388	Christmas Gift Box	11654	Glorious Pargon Ring	1	1	250
+6388	Christmas Gift Box	11611	Brilliant Logo Ring	1	1	500
+6388	Christmas Gift Box	11634	Intelligent Logo Ring	1	1	500
+6388	Christmas Gift Box	11657	Glorious Logo Ring	1	1	500
+6388	Christmas Gift Box	11612	Brilliant Ohkeros Ring	1	1	500
+6388	Christmas Gift Box	11635	Intelligent Ohkeros Ring	1	1	500
+6388	Christmas Gift Box	11658	Glorious Ohkeros Ring	1	1	500
+6388	Christmas Gift Box	11613	Brilliant Gaudius Ring	1	1	500
+6388	Christmas Gift Box	11636	Intelligent Gaudius Ring	1	1	500
+6388	Christmas Gift Box	11659	Glorious Gaudius Ring	1	1	500
+6388	Christmas Gift Box	11623	Brilliant Luke Necklace	1	1	500
+6388	Christmas Gift Box	11646	Intelligent Luke Necklace	1	1	500
+6388	Christmas Gift Box	11669	Glorious Luke Necklace	1	1	500
+6388	Christmas Gift Box	6078	Rudolf Pet Box	1	1	750
+6482	BokJumouny	6129	Rare Mount Chest	1	1	500
+6482	BokJumouny	5007	Shuta Ring	1	1	1000
+6482	BokJumouny	5009	Pargon Ring	1	1	1000
+6482	BokJumouny	5010	Blode Ring	1	1	1000
+6482	BokJumouny	5011	Haul Ring	1	1	1000
+6482	BokJumouny	5013	Ohkeros Ring	1	1	1000
+6482	BokJumouny	5014	Gadius Ring	1	1	1000
+6482	BokJumouny	5006	Barom Ring	1	1	1000
+6482	BokJumouny	5018	Karkaen Necklace	1	1	1000
+6482	BokJumouny	5020	Biglos Necklace	1	1	1000
+6482	BokJumouny	5024	Luke Necklace	1	1	1000
+6482	BokJumouny	5023	Shocker Necklace	1	1	1000
+6482	BokJumouny	5021	Guardimesh Necklace	1	1	1000
+6482	BokJumouny	12592	Fragment of Ashtal	1	1	1000
+6482	BokJumouny	11016	Scion Prayer Stone	1	1	1000
+6482	BokJumouny	13588	Jewel of Zian	5	5	1000
+6482	BokJumouny	13589	Jewel of Ugdrasil	5	5	1000
+6482	BokJumouny	13590	Jewel of Gracia	5	5	1000
+6482	BokJumouny	13591	Jewel of Dikain	5	5	1000
+6482	BokJumouny	13592	Jewel of Syripus	5	5	1000
+6482	BokJumouny	13598	Extract of Elixir	5	5	1000
+6490	Year 2008 Five Blessings Pouch	20025	Lens Stone+ (EVENT)	500	500	5000
+6490	Year 2008 Five Blessings Pouch	20024	Compound Potion (EVENT)	1	1	5000
+6490	Year 2008 Five Blessings Pouch	14555	Extra-large Giant Potion+ (EVENT)	1	1	5000
+6490	Year 2008 Five Blessings Pouch	14556	Extra-large Light Speed Potion+ (EVENT)	1	1	5000
+6490	Year 2008 Five Blessings Pouch	14557	Extra-large Defence Potion+ (EVENT)	1	1	5000
+6490	Year 2008 Five Blessings Pouch	14558	Extra-large Quickness Potion+ (EVENT)	1	1	5000
+6490	Year 2008 Five Blessings Pouch	451	Serazaran Powder	1	1	500
+6490	Year 2008 Five Blessings Pouch	7394	Large Recovery Potion	10	10	5000
+6490	Year 2008 Five Blessings Pouch	14559	Extra-large Mana Potion (EVENT)	5	5	5000
+6490	Year 2008 Five Blessings Pouch	4803	Silver coin of the rich	1	1	500
+6490	Year 2008 Five Blessings Pouch	13588	Jewel of Zian	1	1	500
+6490	Year 2008 Five Blessings Pouch	13589	Jewel of Ugdrasil	1	1	500
+6490	Year 2008 Five Blessings Pouch	13590	Jewel of Gracia	1	1	500
+6490	Year 2008 Five Blessings Pouch	13591	Jewel of Dikain	1	1	500
+6490	Year 2008 Five Blessings Pouch	13592	Jewel of Syripus	1	1	500
+6490	Year 2008 Five Blessings Pouch	13598	Extract of Elixir	1	1	2500
+6490	Year 2008 Five Blessings Pouch	14560	Marvel Scroll of Release (EVENT)	1	1	500
+6490	Year 2008 Five Blessings Pouch	7481	Kitty Lv 1 <1 days>	1	1	500
+6490	Year 2008 Five Blessings Pouch	3906	Shout of Elemental	1	1	500
+6490	Year 2008 Five Blessings Pouch	6001	Talisman of Awakening PLUS 75 <1 Hour>	1	1	5000
+6491	Happy Rat Box	1846	Lens Stone	1	1	10000
+7022	3-Year Anniversary Pet Box	7018	Abrahya Scroll Lv 1	1	1	2000
+7022	3-Year Anniversary Pet Box	7019	Abrahya Scroll Lv 2	1	1	4000
+7022	3-Year Anniversary Pet Box	7020	Ramda Scroll Lv 3	1	1	3000
+7022	3-Year Anniversary Pet Box	7021	Mercoon Scroll Lv 4	1	1	1000
+7063	3-Year Anniversary Present	6134	Lens Stone	20000	20000	50
+7063	3-Year Anniversary Present	6104	Cloak of Elemental Master<14 days>	1	1	150
+7063	3-Year Anniversary Present	6178	Talisman of Awakening<1 Day>	1	1	1200
+7063	3-Year Anniversary Present	6179	Lucky Charm<1 day>	1	1	1200
+7063	3-Year Anniversary Present	6180	Cloak of Elemental Master<1Day>	1	1	1200
+7063	3-Year Anniversary Present	6134	Lens Stone	1000	1000	1200
+7063	3-Year Anniversary Present	6193	Extra-large Giant Potion+	10	10	1200
+7063	3-Year Anniversary Present	6194	Extra-large Evasion Potion+	10	10	1200
+7063	3-Year Anniversary Present	6260	Extra-large Quickness Potion+	10	10	1200
+7063	3-Year Anniversary Present	6103	Gate of Phantom	10	10	1200
+7063	3-Year Anniversary Present	6265	Gold Key	1	5	100
+7063	3-Year Anniversary Present	6266	Silver Key	1	10	100
+7417	Chaotic Awakening Boost Lv 1	11257	Attendance Stamp	1	1	10000
+7418	Chaotic Awakening Boost Lv 2	14578	Archonium Coin	50	50	10000
+7419	Chaotic Awakening Boost Lv 3	7425	Talisman of Awakening <35 days>	1	1	500
+7419	Chaotic Awakening Boost Lv 3	7427	Talisman of Awakening <38 days>	1	1	1500
+7419	Chaotic Awakening Boost Lv 3	7426	Talisman of Awakening <23 days>	1	1	8000
+7493	Awakening Boost Chest Lv 1	6001	Talisman of Awakening PLUS 75 <1 Hour>	1	1	100000
+7494	Awakening Boost Chest Lv 2	14480	Talisman of Awakening 100 <2 hours> (EVENT)	1	1	100000
+7495	Awakening Boost Chest Lv 3	7490	Doggy Lv 4 <1 days>	1	1	100000
+9028	Box of Mirth	12275	Easter Event Costume <Knight - 1 day>	1	1	250
+9028	Box of Mirth	12277	Easter Event Costume <Ranger - 1 day>	1	1	250
+9028	Box of Mirth	12278	Easter Event Costume <Mage - 1 day>	1	1	250
+9028	Box of Mirth	12279	Easter Event Costume <Berserker - 1 day>	1	1	250
+9028	Box of Mirth	12280	Easter Event Costume <Sorcerer - 1 day>	1	1	250
+9028	Box of Mirth	12281	Easter Event Costume <Swashbuckler -1 days>	1	1	250
+9028	Box of Mirth	12282	Easter Event Costume <Archer - 1 day>	1	1	250
+9028	Box of Mirth	12283	Easter Event Costume <Elementalist - 1 day>	1	1	250
+9028	Box of Mirth	12284	Easter Event Costume <Hunter - 1 day>	1	1	250
+9028	Box of Mirth	4802	Gold Coin of the rich	1	1	100
+9028	Box of Mirth	4803	Silver coin of the rich	1	1	1000
+9028	Box of Mirth	4568	Gate of Phantom	1	5	1000
+9028	Box of Mirth	3906	Shout of Elemental	5	5	1000
+9028	Box of Mirth	14582	Extra-Large Mana Potion	5	5	1000
+9028	Box of Mirth	14541	Dust of Chaotic Frontier	1	3	250
+9028	Box of Mirth	14531	Runes of Ancient Lands	1	3	100
+9028	Box of Mirth	10336	Talisman of Heavenly Luck <2 Hours>	1	1	2000
+9028	Box of Mirth	12592	Fragment of Ashtal	1	1	100
+9028	Box of Mirth	11016	Scion Prayer Stone	1	1	150
+9028	Box of Mirth	6267	Event Wing Chest	1	1	500
+9028	Box of Mirth	116	Molten Stew	1	1	500
+9028	Box of Mirth	117	Silence Defense Stew	1	1	500
+9028	Box of Mirth	120	Waterfall Stew	1	1	500
+9028	Box of Mirth	126	Mountain Defense Stew	1	1	500
+9028	Box of Mirth	132	Transcendence Stew	1	1	500
+9029	Full Moon Pet Box	7596	Lu <Rank 3>	1	1	2500
+9029	Full Moon Pet Box	7597	Lu <Rank 4>	1	1	2500
+9029	Full Moon Pet Box	7598	Lu <Rank 5>	1	1	2500
+9029	Full Moon Pet Box	7599	Lu <Rank 6>	1	1	2500
+9030	Holiday Present Box	6224	Super Large Mana Potion	1	10	3000
+9030	Holiday Present Box	6273	Extra-large Mana Potion	1	5	300
+9030	Holiday Present Box	6275	Extra-large Healing Potion	1	5	400
+9030	Holiday Present Box	11085	Large Elemental Potion	1	5	400
+9030	Holiday Present Box	1127	Large Healing Potion	1	10	280
+9030	Holiday Present Box	7595	Lu <Rank 2>	1	1	3000
+9030	Holiday Present Box	7596	Lu <Rank 3>	1	1	1600
+9030	Holiday Present Box	9001	Pet Reinforcement Manual	1	1	500
+9030	Holiday Present Box	9031	Talisman of Heavenly Luck <3 days>	1	1	10
+9030	Holiday Present Box	7468	Extra-large Giant Potion+	10	10	100
+9030	Holiday Present Box	7469	Extra-large Evasion Potion+	10	10	100
+9030	Holiday Present Box	6267	Event Wing Chest	1	1	10
+9030	Holiday Present Box	12267	Application Ticket for Thanksgiving Gift	1	5	20
+9056	Jack-O'-Lantern	13576	Spooky Wings<Lv1>	1	1	2500
+9056	Jack-O'-Lantern	13577	Spooky Wings<Lv2>	1	1	1000
+9056	Jack-O'-Lantern	13578	Spooky Wings<Lv3>	1	1	1500
+9056	Jack-O'-Lantern	13579	Spooky Wings<Lv4>	1	1	50
+9056	Jack-O'-Lantern	13580	Spooky Wings<Lv5>	1	1	10
+9056	Jack-O'-Lantern	12592	Fragment of Ashtal	1	1	1000
+9056	Jack-O'-Lantern	11016	Scion Prayer Stone	1	1	1000
+9056	Jack-O'-Lantern	9029	Halloween Pet Box	1	1	1000
+9056	Jack-O'-Lantern	9177	Event Cloak Chest	1	1	20
+9056	Jack-O'-Lantern	6129	Rare Mount Chest	1	1	20
+9056	Jack-O'-Lantern	11032	Novice's Blessed Buff Potion	3	3	900
+9056	Jack-O'-Lantern	6072	Bat Wings control<1 Day> On/Off	1	1	500
+9056	Jack-O'-Lantern	7488	Doggy Lv 3 <3 days>	1	1	250
+9060	Halloween Gift Box	1093	Vampire Potion	1	1	1000
+9060	Halloween Gift Box	9059	Holy Oak Branch	1	3	2000
+9060	Halloween Gift Box	9058	Soul-calling Candle	1	3	2000
+9060	Halloween Gift Box	9057	Evil-warding Pumpkin	1	3	2000
+9060	Halloween Gift Box	7481	Kitty Lv 1 <1 days>	1	1	50
+9060	Halloween Gift Box	7394	Large Recovery Potion	5	10	3000
+9060	Halloween Gift Box	6072	Bat Wings control<1 Day> On/Off	1	1	1
+9060	Halloween Gift Box	13581	Spider	1	1	50
+9060	Halloween Gift Box	13582	Spider	1	1	50
+9060	Halloween Gift Box	13583	Spider	1	1	50
+9061	Mount Chest	6273	Extra-large Mana Potion	5	10	1000
+9061	Mount Chest	7394	Large Recovery Potion	5	10	1000
+9061	Mount Chest	7644	Pet Reinforcement Manual	1	1	250
+9061	Mount Chest	6184	Extra-large Giant Potion+	1	1	100
+9061	Mount Chest	6185	Extra-large Light Speed Potion+	1	1	100
+9061	Mount Chest	6187	Extra-large Quickness Potion+	1	1	100
+9061	Mount Chest	3906	Shout of Elemental	1	1	500
+9061	Mount Chest	7481	Kitty Lv 1 <1 days>	1	1	50
+9061	Mount Chest	7648	Shuta Ring Piece	1	1	100
+9061	Mount Chest	7659	Karkaen Necklace Piece	1	1	100
+9061	Mount Chest	7651	Blode Ring Piece	1	1	100
+9061	Mount Chest	7653	Logo Ring Piece	1	1	100
+9061	Mount Chest	7654	Ohkeros Ring Piece	1	1	100
+9061	Mount Chest	7665	Luke Necklace Piece	1	1	100
+9061	Mount Chest	7655	Gadius Ring Piece	1	1	100
+9061	Mount Chest	7662	Guardimesh Necklace Piece	1	1	100
+9061	Mount Chest	9058	Soul-calling Candle	1	1	400
+9061	Mount Chest	9057	Evil-warding Pumpkin	1	1	400
+9061	Mount Chest	9059	Holy Oak Branch	1	1	400
+9061	Mount Chest	7436	Fortune Gate Pass	1	1	100
+9062	Christmas Gift Box	9125	Nun's Habit <Mage - 1 day>	1	1	5000
+9062	Christmas Gift Box	9134	Wedding Dress <Mage - 1 day>	1	1	5000
+9063	Halloween Gift Box - Berserker	9126	Monk's Robe <Berserker - 1 day>	1	1	5000
+9063	Halloween Gift Box - Berserker	9135	Tuxedo <Berserker - 1 day>	1	1	5000
+9064	Box of Fate	9127	Nun's Habit <Hunter - 1 day>	1	1	5000
+9064	Box of Fate	9136	Wedding Dress <Hunter - 1 day>	1	1	5000
+9065	Halloween Gift Box - Sorcerer	9128	Monk's Robe <Sorcerer - 1 day>	1	1	5000
+9065	Halloween Gift Box - Sorcerer	9137	Tuxedo <Sorcerer - 1 day>	1	1	5000
+9066	Halloween Gift Box - Swashbuckler	9129	Nun's Habit <Swashbuckler -1 day>	1	1	5000
+9066	Halloween Gift Box - Swashbuckler	9138	Wedding Dress <Swashbuckler - 1 day>	1	1	5000
+9067	Halloween Gift Box - Ranger	9130	Nun's Habit <Ranger - 1 day>	1	1	5000
+9067	Halloween Gift Box - Ranger	9139	Wedding Dress <Ranger - 1 day>	1	1	5000
+9068	Halloween Gift Box - Elementalist	9131	Nun's Habit <Elementalist - 1 day>	1	1	5000
+9068	Halloween Gift Box - Elementalist	9140	Wedding Dress <Elementalist - 1 day>	1	1	5000
+9141	Cloak Chest	9040	Cloak of Elemental Mastery Lv 1	1	1	3500
+9141	Cloak Chest	9041	Cloak of Elemental Mastery Lv 2	1	1	3500
+9141	Cloak Chest	9042	Cloak of Elemental Mastery Lv 3	1	1	1400
+9141	Cloak Chest	9043	Cloak of Elemental Mastery Lv 4	1	1	700
+9141	Cloak Chest	9044	Cloak of Elemental Mastery Lv 5	1	1	300
+9141	Cloak Chest	9045	Cloak of Elemental Mastery Lv 6	1	1	50
+9142	Ring Spirit Chest	9048	Prayer Stone of Ring Spirit Lv 1	1	1	500
+9142	Ring Spirit Chest	9049	Prayer Stone of Ring Spirit Lv 2	1	1	500
+9142	Ring Spirit Chest	9050	Prayer Stone of Ring Spirit Lv 3	1	1	400
+9142	Ring Spirit Chest	9051	Prayer Stone of Ring Spirit Lv 4	1	1	200
+9142	Ring Spirit Chest	9052	Prayer Stone of Ring Spirit Lv 5	1	1	50
+9142	Ring Spirit Chest	9053	Prayer Stone of Ring Spirit Lv 6	1	1	5
+9143	Anniversary Gift	5018	Karkaen Necklace	1	1	1
+9143	Anniversary Gift	4772	Small Elemental Potion	20	30	1550
+9143	Anniversary Gift	1170	Physical Resistance Prayer Stone<Lv3>	1	2	9
+9143	Anniversary Gift	1867	Might Prayer Stone<Lv3>	1	2	50
+9143	Anniversary Gift	1882	Stamina Prayer Stone<Lv3>	1	2	20
+9143	Anniversary Gift	3900	Super Large Mana Potion	20	30	40
+9143	Anniversary Gift	1126	Medium Healing Potion	20	30	2080
+9143	Anniversary Gift	1127	Large Healing Potion	20	30	1000
+9143	Anniversary Gift	266	Inferno Elemental Stone	2	3	50
+9143	Anniversary Gift	246	Tornado Elemental Stone	2	3	50
+9143	Anniversary Gift	262	Waterfall Elemental Stone	2	3	50
+9143	Anniversary Gift	254	Tremor Elemental Stone	2	3	50
+9143	Anniversary Gift	258	Transcendence Elemental Stone	2	3	50
+9143	Anniversary Gift	3498	Extra-large Life Potion	90	99	5000
+9144	Welcome Gift	14555	Extra-large Giant Potion+ (EVENT)	1	1	250
+9144	Welcome Gift	14556	Extra-large Light Speed Potion+ (EVENT)	1	1	250
+9144	Welcome Gift	14557	Extra-large Defence Potion+ (EVENT)	1	1	250
+9144	Welcome Gift	14558	Extra-large Quickness Potion+ (EVENT)	1	1	250
+9144	Welcome Gift	14559	Extra-large Mana Potion (EVENT)	3	3	1000
+9144	Welcome Gift	20024	Compound Potion (EVENT)	1	1	1000
+9144	Welcome Gift	20025	Lens Stone+ (EVENT)	100	100	1000
+9144	Welcome Gift	7394	Large Recovery Potion	5	5	1000
+9144	Welcome Gift	4803	Silver coin of the rich	1	1	250
+9144	Welcome Gift	14576	Seed of Farmer <2 hours> (EVENT)	1	1	500
+9177	Cloak Chest	12113	Cloak of Dimension Mastery Lv 4	1	1	9500
+9177	Cloak Chest	12114	Cloak of Dimension Mastery Lv 5	1	1	500
+9177	Cloak Chest	9043	Cloak of Elemental Mastery Lv 4	1	1	9500
+9177	Cloak Chest	9044	Cloak of Elemental Mastery Lv 5	1	1	500
+9711	Ring Spirit Chest	9048	Prayer Stone of Ring Spirit Lv 1	1	1	500
+9711	Ring Spirit Chest	9049	Prayer Stone of Ring Spirit Lv 2	1	1	500
+9711	Ring Spirit Chest	9050	Prayer Stone of Ring Spirit Lv 3	1	1	400
+9711	Ring Spirit Chest	9051	Prayer Stone of Ring Spirit Lv 4	1	1	200
+9711	Ring Spirit Chest	9052	Prayer Stone of Ring Spirit Lv 5	1	1	25
+9755	Santa Claus Gift Box	6224	Super Large Mana Potion	30	99	1680
+9755	Santa Claus Gift Box	1054	Reverse Orb	1	2	1280
+9755	Santa Claus Gift Box	3498	Extra-large Life Potion	30	99	1150
+9755	Santa Claus Gift Box	6007	Lens Stone+	1000	1500	900
+9755	Santa Claus Gift Box	4799	Compound Potion	1	1	900
+9755	Santa Claus Gift Box	7392	Small Recovery Potion	20	35	655
+9755	Santa Claus Gift Box	3436	Talisman of Awakening<1 Day>	1	1	595
+9755	Santa Claus Gift Box	7393	Medium Recovery Potion	15	30	500
+9755	Santa Claus Gift Box	7394	Large Recovery Potion	10	25	500
+9755	Santa Claus Gift Box	486	Reinforcement Potion	1	5	500
+9755	Santa Claus Gift Box	7644	Pet Reinforcement Manual	1	1	400
+9755	Santa Claus Gift Box	7716	Talisman of Heavenly Luck -1 days-	1	1	300
+9755	Santa Claus Gift Box	6273	Extra-large Mana Potion	20	30	250
+9755	Santa Claus Gift Box	11782	Archondrite	1	1	200
+9755	Santa Claus Gift Box	10332	Talisman of Awakening 100 <2 hours>	1	1	65
+9755	Santa Claus Gift Box	20437	Talisman of Awakening 200 <2 hours>	1	1	35
+9755	Santa Claus Gift Box	9756	Rudolf <Rank 1>	1	1	25
+9755	Santa Claus Gift Box	9757	Rudolf <Rank 2>	1	1	20
+9755	Santa Claus Gift Box	9758	Rudolf <Rank 3>	1	1	15
+9755	Santa Claus Gift Box	9759	Rudolf <Rank 4>	1	1	10
+9755	Santa Claus Gift Box	12592	Fragment of Ashtal	1	1	10
+9755	Santa Claus Gift Box	11016	Scion Prayer Stone	1	1	10
+9805	Wing Chest	13552	Ancient Lord Wings <Lv1>	1	1	600
+9805	Wing Chest	13556	Ancient Eternity Wings <Lv1>	1	1	600
+9805	Wing Chest	13560	Ancient Judgement Wings <Lv1>	1	1	600
+9805	Wing Chest	13564	Ancient Death Wings <Lv1>	1	1	600
+9805	Wing Chest	13572	Ancient Angel Wings <Lv1>	1	1	600
+9805	Wing Chest	13553	Ancient Lord Wings <Lv2>	1	1	500
+9805	Wing Chest	13557	Ancient Eternity Wings <Lv2>	1	1	500
+9805	Wing Chest	13561	Ancient Judgement Wings <Lv2>	1	1	500
+9805	Wing Chest	13565	Ancient Death Wings <Lv2>	1	1	500
+9805	Wing Chest	13569	Ancient Angel Wings <Lv2>	1	1	500
+9805	Wing Chest	13554	Ancient Lord Wings <Lv3>	1	1	400
+9805	Wing Chest	13558	Ancient Eternity Wings <Lv3>	1	1	400
+9805	Wing Chest	13562	Ancient Judgement Wings <Lv3>	1	1	400
+9805	Wing Chest	13566	Ancient Death Wings <Lv3>	1	1	400
+9805	Wing Chest	13570	Ancient Angel Wings <Lv3>	1	1	400
+9805	Wing Chest	13555	Ancient Lord Wings <Lv4>	1	1	300
+9805	Wing Chest	13559	Ancient Eternity Wings <Lv4>	1	1	300
+9805	Wing Chest	13563	Ancient Judgement Wings <Lv4>	1	1	300
+9805	Wing Chest	13567	Ancient Death Wings <Lv4>	1	1	300
+9805	Wing Chest	13571	Ancient Angel Wings <Lv4>	1	1	300
+9805	Wing Chest	13546	Ancient Lord Wings <Lv5>	1	1	150
+9805	Wing Chest	13547	Ancient Eternity Wings <Lv5>	1	1	150
+9805	Wing Chest	13548	Ancient Judgement Wings <Lv5>	1	1	150
+9805	Wing Chest	13550	Ancient Death Wings <Lv5>	1	1	150
+9805	Wing Chest	13551	Ancient Angel Wings <Lv5>	1	1	150
+9805	Wing Chest	13536	Dragon Wings <Lv6>	1	1	10
+9805	Wing Chest	13537	Fallen Wings <Lv6>	1	1	5
+9805	Wing Chest	13538	Nightstalker Wings <Lv6>	1	1	5
+9805	Wing Chest	13539	Firedragon Wings <Lv6>	1	1	10
+9805	Wing Chest	13540	Iridescent Wings <Lv6>	1	1	5
+9805	Wing Chest	13541	Red Infinity Wings <Lv6>	1	1	10
+9805	Wing Chest	13542	Black Infinity Wings <Lv6>	1	1	1
+9805	Wing Chest	13543	Pink Infinity Wings <Lv6>	1	1	1
+9805	Wing Chest	13544	Blue Infinity Wings <Lv6>	1	1	10
+9805	Wing Chest	13545	Rainbow Infinity Wings <Lv6>	1	1	1
+9807	Santa Claus Gift Box	266	Inferno Elemental Stone	10	20	1180
+9807	Santa Claus Gift Box	246	Tornado Elemental Stone	10	20	1180
+9807	Santa Claus Gift Box	262	Waterfall Elemental Stone	10	20	1180
+9807	Santa Claus Gift Box	254	Tremor Elemental Stone	10	20	1180
+9807	Santa Claus Gift Box	258	Transcendence Elemental Stone	10	20	1180
+9807	Santa Claus Gift Box	464	Attack Prayer Stone<Lv3>	2	8	1180
+9807	Santa Claus Gift Box	472	Defense Prayer Stone<Lv3>	2	8	1180
+9807	Santa Claus Gift Box	1170	Physical Resistance Prayer Stone<Lv3>	2	8	1180
+9807	Santa Claus Gift Box	486	Reinforcement Potion	10	50	560
+10258	Chantra Inventory Type Chest	11034	Novice's Ring	1	1	2500
+10258	Chantra Inventory Type Chest	11035	Novice's Necklace	1	1	2500
+10258	Chantra Inventory Type Chest	6258	Signature of Glory	1	1	2500
+10258	Chantra Inventory Type Chest	11004	Unique Fireworks Heart	1	1	2500
+10372	Premium BOX-Common sp1	6007	Lens Stone+	5000	5000	5000
+10372	Premium BOX-Common sp1	4799	Compound Potion	5	5	5000
+10372	Premium BOX-Common sp1	4875	Signature of Glory	1	1	2500
+10372	Premium BOX-Common sp1	3906	Shout of Elemental	5	10	5000
+10372	Premium BOX-Common sp1	1174	Summoning Orb	5	10	2500
+10372	Premium BOX-Common sp1	4568	Gate of Phantom	5	10	2500
+10372	Premium BOX-Common sp1	4877	Release of Agreement	1	1	2500
+10372	Premium BOX-Common sp1	6242	Wing Chest	1	1	750
+10372	Premium BOX-Common sp1	12109	Dimension Cloak Chest	1	1	750
+10372	Premium BOX-Common sp1	9141	Cloak Chest	1	1	750
+10372	Premium BOX-Common sp1	9142	Ring Spirit Chest	1	1	750
+10372	Premium BOX-Common sp1	1836	Letter of Great Pardon	1	1	2500
+10372	Premium BOX-Common sp1	13454	Gold Ticket	1	1	300
+10372	Premium BOX-Common sp1	7436	Fortune Gate Pass	1	5	2500
+10373	Premium BOX-Common sp2	6407	Rich Man's Scroll<1Day>	1	1	400
+10373	Premium BOX-Common sp2	6477	Cloak of Elemental Master Control<1 day> On/Off	1	1	200
+10373	Premium BOX-Common sp2	9015	Super Cloak of Elemental Mastery <1 days>	1	1	100
+10373	Premium BOX-Common sp2	11032	Novice's Blessed Buff Potion	1	1	400
+10373	Premium BOX-Common sp2	12502	Ghost Armor: Superior <14 days>	1	1	200
+10373	Premium BOX-Common sp2	10332	Talisman of Awakening 100 <2 hours>	1	1	500
+10373	Premium BOX-Common sp2	6027	Cloak of Air control<1 Day> On/Off	1	1	75
+10373	Premium BOX-Common sp2	6023	Cloak of Water control<1 Day> On/Off	1	1	75
+10373	Premium BOX-Common sp2	6031	Cloak of Earth control<1 Days> On/Off	1	1	75
+10373	Premium BOX-Common sp2	6035	Cloak of Magic control<1 Day> On/Off	1	1	75
+10373	Premium BOX-Common sp2	11029	Small Box	10	10	800
+10373	Premium BOX-Common sp2	7436	Fortune Gate Pass	5	10	500
+10373	Premium BOX-Common sp2	6007	Lens Stone+	5000	5000	250
+10373	Premium BOX-Common sp2	6184	Extra-large Giant Potion+	5	5	200
+10373	Premium BOX-Common sp2	6185	Extra-large Light Speed Potion+	5	5	100
+10373	Premium BOX-Common sp2	6187	Extra-large Quickness Potion+	5	5	100
+10373	Premium BOX-Common sp2	4799	Compound Potion	5	5	250
+10373	Premium BOX-Common sp2	6054	Platinum Key	1	5	300
+10373	Premium BOX-Common sp2	7490	Doggy Lv 4 <1 days>	1	1	200
+10373	Premium BOX-Common sp2	6273	Extra-large Mana Potion	200	200	500
+10373	Premium BOX-Common sp2	11016	Scion Prayer Stone	1	1	200
+10373	Premium BOX-Common sp2	12592	Fragment of Ashtal	1	1	200
+10373	Premium BOX-Common sp2	13454	Gold Ticket	1	1	50
+10373	Premium BOX-Common sp2	4895	Pet Box	1	1	500
+10373	Premium BOX-Common sp2	10333	Seed of Farmer <2 hours>	1	1	800
+10374	Premium BOX-Any WCoin	12685	Golem	1	1	1000
+10374	Premium BOX-Any WCoin	12689	Golem	1	1	1000
+10374	Premium BOX-Any WCoin	12693	Golem	1	1	1000
+10374	Premium BOX-Any WCoin	13436	Eyeball	1	1	1000
+10374	Premium BOX-Any WCoin	13442	Eyeball	1	1	1000
+10374	Premium BOX-Any WCoin	13448	Eyeball	1	1	1000
+10374	Premium BOX-Any WCoin	13437	Teah	1	1	1000
+10374	Premium BOX-Any WCoin	13443	Teah	1	1	1000
+10374	Premium BOX-Any WCoin	13449	Teah	1	1	1000
+10374	Premium BOX-Any WCoin	12686	Griffin	1	1	1000
+10374	Premium BOX-Any WCoin	12690	Griffin	1	1	1000
+10374	Premium BOX-Any WCoin	12694	Griffin	1	1	1000
+10374	Premium BOX-Any WCoin	13439	Spider	1	1	1000
+10374	Premium BOX-Any WCoin	13445	Spider	1	1	1000
+10374	Premium BOX-Any WCoin	13451	Spider	1	1	1000
+10375	Premium BOX-Human sp1	11256	Marvel Scroll of Release	1	1	2000
+10375	Premium BOX-Human sp1	6007	Lens Stone+	5000	5000	2000
+10375	Premium BOX-Human sp1	4799	Compound Potion	5	5	2000
+10375	Premium BOX-Human sp1	7644	Pet Reinforcement Manual	1	1	800
+10375	Premium BOX-Human sp1	4875	Signature of Glory	1	1	1000
+10375	Premium BOX-Human sp1	3906	Shout of Elemental	5	10	900
+10375	Premium BOX-Human sp1	1174	Summoning Orb	5	10	1400
+10375	Premium BOX-Human sp1	4568	Gate of Phantom	5	10	1400
+10375	Premium BOX-Human sp1	4877	Release of Agreement	1	1	500
+10375	Premium BOX-Human sp1	7131	Kimono: Superior <Knight - 14 days>	1	1	250
+10375	Premium BOX-Human sp1	7136	Kimono: Superior <Archer - 14 days>	1	1	250
+10375	Premium BOX-Human sp1	7141	Kimono: Superior <Mage - 14 days>	1	1	250
+10375	Premium BOX-Human sp1	11099	Fuzzy Bear: Superior <Knight - 14 days>	1	1	250
+10375	Premium BOX-Human sp1	11102	Fuzzy Bear: Superior <Archer - 14 days>	1	1	250
+10375	Premium BOX-Human sp1	11105	Fuzzy Bear: Superior <Mage - 14 days>	1	1	250
+10375	Premium BOX-Human sp1	11179	Cowboy Outfit: Superior <Knight - 14 days>	1	1	250
+10375	Premium BOX-Human sp1	11182	Cowboy Outfit: Superior <Archer - 14 days>	1	1	250
+10375	Premium BOX-Human sp1	7266	Maid Garments: Superior <Mage - 14 days>	1	1	250
+10375	Premium BOX-Human sp1	12685	Golem	1	1	350
+10375	Premium BOX-Human sp1	13436	Eyeball	1	1	350
+10375	Premium BOX-Human sp1	12686	Griffin	1	1	350
+10375	Premium BOX-Human sp1	13437	Teah	1	1	350
+10375	Premium BOX-Human sp1	13439	Spider	1	1	350
+10375	Premium BOX-Human sp1	7436	Fortune Gate Pass	1	5	2000
+10376	Premium BOX-Human sp2	13600	Ring of Power	1	1	10000
+10377	Premium BOX-Orc sp1	11256	Marvel Scroll of Release	1	1	2000
+10377	Premium BOX-Orc sp1	6007	Lens Stone+	5000	5000	2000
+10377	Premium BOX-Orc sp1	4799	Compound Potion	5	5	2000
+10377	Premium BOX-Orc sp1	7644	Pet Reinforcement Manual	1	1	800
+10377	Premium BOX-Orc sp1	4875	Signature of Glory	1	1	1000
+10377	Premium BOX-Orc sp1	3906	Shout of Elemental	5	10	900
+10377	Premium BOX-Orc sp1	1174	Summoning Orb	5	10	1400
+10377	Premium BOX-Orc sp1	4568	Gate of Phantom	5	10	1400
+10377	Premium BOX-Orc sp1	4877	Release of Agreement	1	1	500
+10377	Premium BOX-Orc sp1	7146	Kimono: Superior <Berserker - 14 days>	1	1	250
+10377	Premium BOX-Orc sp1	7151	Kimono: Superior <Hunter - 14 days>	1	1	250
+10377	Premium BOX-Orc sp1	7156	Kimono: Superior <Sorcerer - 14 days>	1	1	250
+10377	Premium BOX-Orc sp1	11108	Fuzzy Bear: Superior <Berserker - 14 days>	1	1	250
+10377	Premium BOX-Orc sp1	11111	Fuzzy Bear: Superior <Hunter - 14 days>	1	1	250
+10377	Premium BOX-Orc sp1	11114	Fuzzy Bear: Superior <Sorcerer - 14 days>	1	1	250
+10377	Premium BOX-Orc sp1	11185	Cowboy Outfit: Superior <Berserker - 14 days>	1	1	250
+10377	Premium BOX-Orc sp1	7271	Maid Garments: Superior <Hunter - 14 days>	1	1	250
+10377	Premium BOX-Orc sp1	11188	Cowboy Outfit: Superior <Sorcerer - 14 days>	1	1	250
+10377	Premium BOX-Orc sp1	12689	Golem	1	1	350
+10377	Premium BOX-Orc sp1	13442	Eyeball	1	1	350
+10377	Premium BOX-Orc sp1	12690	Griffin	1	1	350
+10377	Premium BOX-Orc sp1	13443	Teah	1	1	350
+10377	Premium BOX-Orc sp1	13445	Spider	1	1	350
+10377	Premium BOX-Orc sp1	7436	Fortune Gate Pass	1	5	2000
+10379	Premium BOX-MoonElf sp1	11256	Marvel Scroll of Release	1	1	2000
+10379	Premium BOX-MoonElf sp1	6007	Lens Stone+	5000	5000	2000
+10379	Premium BOX-MoonElf sp1	4799	Compound Potion	5	5	2000
+10379	Premium BOX-MoonElf sp1	7644	Pet Reinforcement Manual	1	1	800
+10379	Premium BOX-MoonElf sp1	4875	Signature of Glory	1	1	1000
+10379	Premium BOX-MoonElf sp1	3906	Shout of Elemental	5	10	900
+10379	Premium BOX-MoonElf sp1	1174	Summoning Orb	5	10	1400
+10379	Premium BOX-MoonElf sp1	4568	Gate of Phantom	5	10	1400
+10379	Premium BOX-MoonElf sp1	4877	Release of Agreement	1	1	500
+10379	Premium BOX-MoonElf sp1	7161	Kimono: Superior <Swashbuckler - 14 days>	1	1	250
+10379	Premium BOX-MoonElf sp1	7166	Kimono: Superior <Ranger - 14 days>	1	1	250
+10379	Premium BOX-MoonElf sp1	7171	Kimono: Superior <Elementalist - 14 days>	1	1	250
+10379	Premium BOX-MoonElf sp1	11117	Fuzzy Bear: Superior <Swashbuckler - 14 days>	1	1	250
+10379	Premium BOX-MoonElf sp1	11120	Fuzzy Bear: Superior <Ranger - 14 days>	1	1	250
+10379	Premium BOX-MoonElf sp1	11123	Fuzzy Bear: Superior <Elementalist - 14 days>	1	1	250
+10379	Premium BOX-MoonElf sp1	7276	Maid Garments: Superior <Swashbuckler - 14 days>	1	1	250
+10379	Premium BOX-MoonElf sp1	7281	Maid Garments: Superior <Ranger - 14 days>	1	1	250
+10379	Premium BOX-MoonElf sp1	7286	Maid Garments: Superior <Elementalist - 14 days>	1	1	250
+10379	Premium BOX-MoonElf sp1	12693	Golem	1	1	350
+10379	Premium BOX-MoonElf sp1	13448	Eyeball	1	1	350
+10379	Premium BOX-MoonElf sp1	13449	Teah	1	1	350
+10379	Premium BOX-MoonElf sp1	13451	Spider	1	1	350
+10379	Premium BOX-MoonElf sp1	12694	Griffin	1	1	350
+10379	Premium BOX-MoonElf sp1	7436	Fortune Gate Pass	1	5	2000
+10380	Premium BOX-MoonElf sp2	11586	Rare Goth-Loli: Balanced <Swashbuckler - 7 days>	1	1	220
+10380	Premium BOX-MoonElf sp2	11587	Rare Goth-Loli: Balanced <Ranger - 7 days>	1	1	220
+10380	Premium BOX-MoonElf sp2	11588	Rare Goth-Loli: Balanced <Elementalist - 7 days>	1	1	220
+10380	Premium BOX-MoonElf sp2	11082	Large Healing Potion	999	999	200
+10380	Premium BOX-MoonElf sp2	11789	Loki Ring Piece	3	3	190
+10380	Premium BOX-MoonElf sp2	11790	Red Sign Ring Piece	3	3	190
+10380	Premium BOX-MoonElf sp2	11791	Barom Ring Piece	3	3	190
+10380	Premium BOX-MoonElf sp2	11792	Shuta Ring Piece	3	3	190
+10380	Premium BOX-MoonElf sp2	11793	Flying Ring Piece	3	3	190
+10380	Premium BOX-MoonElf sp2	11794	Pargon Ring Piece	3	3	190
+10380	Premium BOX-MoonElf sp2	11795	Blode Ring Piece	3	3	190
+10380	Premium BOX-MoonElf sp2	11796	Haul Ring Piece	3	3	190
+10380	Premium BOX-MoonElf sp2	11797	Logo Ring Piece	3	3	190
+10380	Premium BOX-MoonElf sp2	11798	Ohkeros Ring Piece	3	3	190
+10380	Premium BOX-MoonElf sp2	11799	Gadius Ring Piece	3	3	190
+10380	Premium BOX-MoonElf sp2	10331	Cloak of Elemental Mastery <7 days - Can be toggled On/Off>	1	1	520
+10380	Premium BOX-MoonElf sp2	6184	Extra-large Giant Potion+	5	5	330
+10380	Premium BOX-MoonElf sp2	6185	Extra-large Light Speed Potion+	5	5	330
+10380	Premium BOX-MoonElf sp2	6186	Extra-large Defence Potion+	5	5	330
+10380	Premium BOX-MoonElf sp2	6187	Extra-large Quickness Potion+	5	5	330
+10380	Premium BOX-MoonElf sp2	6188	Extra-large Evasion Potion+	5	5	330
+10380	Premium BOX-MoonElf sp2	1846	Lens Stone	7777	7777	540
+10380	Premium BOX-MoonElf sp2	11081	Medium Healing Potion	999	999	500
+10380	Premium BOX-MoonElf sp2	11085	Large Elemental Potion	999	999	500
+10380	Premium BOX-MoonElf sp2	11084	Medium Elemental Potion	999	999	500
+10380	Premium BOX-MoonElf sp2	246	Tornado Elemental Stone	4	4	500
+10380	Premium BOX-MoonElf sp2	254	Tremor Elemental Stone	4	4	500
+10380	Premium BOX-MoonElf sp2	258	Transcendence Elemental Stone	4	4	500
+10380	Premium BOX-MoonElf sp2	262	Waterfall Elemental Stone	4	4	500
+10380	Premium BOX-MoonElf sp2	266	Inferno Elemental Stone	4	4	500
+11028	Box of Fortune	20025	Lens Stone+ (EVENT)	2000	2000	10000
+11029	Scion's Treasure Chest I	6007	Lens Stone+	250	500	2000
+11029	Scion's Treasure Chest I	7436	Fortune Gate Pass	1	1	1000
+11029	Scion's Treasure Chest I	4799	Compound Potion	1	1	1500
+11029	Scion's Treasure Chest I	7394	Large Recovery Potion	5	10	6000
+11029	Scion's Treasure Chest I	6273	Extra-large Mana Potion	5	10	8000
+11029	Scion's Treasure Chest I	6001	Talisman of Awakening PLUS 75 <1 Hour>	1	1	1000
+11029	Scion's Treasure Chest I	1007	BBQ of Nirvana	1	1	5000
+11029	Scion's Treasure Chest I	6184	Extra-large Giant Potion+	1	1	2000
+11029	Scion's Treasure Chest I	6185	Extra-large Light Speed Potion+	1	1	2000
+11029	Scion's Treasure Chest I	6186	Extra-large Defence Potion+	1	1	2000
+11029	Scion's Treasure Chest I	6187	Extra-large Quickness Potion+	1	1	2000
+11029	Scion's Treasure Chest I	11734	Physical Resistance Prayer Stone<Lv4>	1	1	150
+11029	Scion's Treasure Chest I	11737	Skill Block Prayer Stone<Lv4>	1	1	150
+11029	Scion's Treasure Chest I	11740	Curse Removal Prayer Stone<Lv4>	1	1	250
+11029	Scion's Treasure Chest I	11728	Stamina Increase Prayer Stone<Lv4>	1	1	150
+11029	Scion's Treasure Chest I	11743	Skill Awakening Prayer Stone<Lv4>	1	1	150
+11029	Scion's Treasure Chest I	1170	Physical Resistance Prayer Stone<Lv3>	1	1	150
+11029	Scion's Treasure Chest I	1173	Skill Block Prayer Stone<Lv3>	1	1	150
+11029	Scion's Treasure Chest I	604	Curse Removal Prayer Stone Lv 3	1	1	250
+11029	Scion's Treasure Chest I	601	Stamina Buff Prayer Stone<Lv3>	1	1	150
+11029	Scion's Treasure Chest I	607	Skill Awakening Prayer Stone Lv 3	1	1	150
+11030	Scion's Treasure Chest II	6273	Extra-large Mana Potion	5	10	1000
+11030	Scion's Treasure Chest II	7394	Large Recovery Potion	5	10	1000
+11030	Scion's Treasure Chest II	7644	Pet Reinforcement Manual	1	1	100
+11030	Scion's Treasure Chest II	6184	Extra-large Giant Potion+	1	1	150
+11030	Scion's Treasure Chest II	6185	Extra-large Light Speed Potion+	1	1	150
+11030	Scion's Treasure Chest II	6186	Extra-large Defence Potion+	1	1	150
+11030	Scion's Treasure Chest II	6187	Extra-large Quickness Potion+	1	1	150
+11030	Scion's Treasure Chest II	3906	Shout of Elemental	1	1	500
+11030	Scion's Treasure Chest II	4802	Gold Coin of the rich	1	1	5
+11030	Scion's Treasure Chest II	4803	Silver coin of the rich	1	1	50
+11030	Scion's Treasure Chest II	4800	Lightning World Passport	1	1	150
+11030	Scion's Treasure Chest II	4801	Poison World Passport	1	1	150
+11030	Scion's Treasure Chest II	1830	Tullan Passport	1	1	150
+11030	Scion's Treasure Chest II	1832	Trilgard Passport	1	1	150
+11030	Scion's Treasure Chest II	1834	Deribel Passport	1	1	150
+11030	Scion's Treasure Chest II	7436	Fortune Gate Pass	1	1	200
+11030	Scion's Treasure Chest II	1171	Return Orb	1	1	50
+11030	Scion's Treasure Chest II	6007	Lens Stone+	500	500	500
+11030	Scion's Treasure Chest II	4875	Signature of Glory	1	1	100
+11030	Scion's Treasure Chest II	7481	Kitty Lv 1 <1 days>	1	1	50
+11030	Scion's Treasure Chest II	7648	Shuta Ring Piece	1	1	100
+11030	Scion's Treasure Chest II	7659	Karkaen Necklace Piece	1	1	100
+11030	Scion's Treasure Chest II	7651	Blode Ring Piece	1	1	100
+11030	Scion's Treasure Chest II	7653	Logo Ring Piece	1	1	100
+11030	Scion's Treasure Chest II	7654	Ohkeros Ring Piece	1	1	100
+11030	Scion's Treasure Chest II	7665	Luke Necklace Piece	1	1	100
+11030	Scion's Treasure Chest II	7655	Gadius Ring Piece	1	1	100
+11030	Scion's Treasure Chest II	7662	Guardimesh Necklace Piece	1	1	100
+11031	Scion's Treasure Chest III	7436	Fortune Gate Pass	5	10	4000
+11031	Scion's Treasure Chest III	6129	Rare Mount Chest	1	1	750
+11031	Scion's Treasure Chest III	11606	Brilliant Shuta Ring	1	1	500
+11031	Scion's Treasure Chest III	11629	Intelligent Shuta Ring	1	1	500
+11031	Scion's Treasure Chest III	11652	Glorious Shuta Ring	1	1	500
+11031	Scion's Treasure Chest III	11617	Brilliant Karkaen Necklace	1	1	500
+11031	Scion's Treasure Chest III	11640	Intelligent Karkaen Necklace	1	1	500
+11031	Scion's Treasure Chest III	11663	Glorious Karkaen Necklace	1	1	500
+11031	Scion's Treasure Chest III	11609	Brilliant Blode Ring	1	1	1000
+11031	Scion's Treasure Chest III	11632	Intelligent Blode Ring	1	1	1000
+11031	Scion's Treasure Chest III	11655	Glorious Blode Ring	1	1	1000
+11031	Scion's Treasure Chest III	11611	Brilliant Logo Ring	1	1	1000
+11031	Scion's Treasure Chest III	11634	Intelligent Logo Ring	1	1	1000
+11031	Scion's Treasure Chest III	11657	Glorious Logo Ring	1	1	1000
+11031	Scion's Treasure Chest III	11612	Brilliant Ohkeros Ring	1	1	1000
+11031	Scion's Treasure Chest III	11635	Intelligent Ohkeros Ring	1	1	1000
+11031	Scion's Treasure Chest III	11658	Glorious Ohkeros Ring	1	1	1000
+11031	Scion's Treasure Chest III	11613	Brilliant Gaudius Ring	1	1	1000
+11031	Scion's Treasure Chest III	11636	Intelligent Gaudius Ring	1	1	1000
+11031	Scion's Treasure Chest III	11659	Glorious Gaudius Ring	1	1	1000
+11031	Scion's Treasure Chest III	11623	Brilliant Luke Necklace	1	1	1000
+11031	Scion's Treasure Chest III	11646	Intelligent Luke Necklace	1	1	1000
+11031	Scion's Treasure Chest III	11669	Glorious Luke Necklace	1	1	1000
+11031	Scion's Treasure Chest III	6267	Event Wing Chest	1	1	300
+11031	Scion's Treasure Chest III	9177	Event Cloak Chest	1	1	300
+11046	Awakening Boost Chest+ <+30>	13599	Ring of Magical Power	1	1	10000
+11047	Awakening Boost Chest+ <+50>	13601	Ring of Blessing	1	1	10000
+11075	Chocolate of Friendship	13602	Ring of Transcendence	1	1	10000
+11076	Chocolate of Affection	1836	Letter of Great Pardon	5	10	1000
+11076	Chocolate of Affection	7490	Doggy Lv 4 <1 days>	1	1	1000
+11076	Chocolate of Affection	11032	Novice's Blessed Buff Potion	1	3	1000
+11076	Chocolate of Affection	13593	Elixir of Ugdrasil	1	1	1000
+11076	Chocolate of Affection	13594	Elixir of Dikain	1	1	1000
+11076	Chocolate of Affection	13595	Elixir of Gracia	1	1	1000
+11076	Chocolate of Affection	13596	Elixir of Zian	1	1	1000
+11076	Chocolate of Affection	13597	Elixir of Syripus	1	1	1000
+11076	Chocolate of Affection	14531	Runes of Ancient Lands	5	10	1000
+11076	Chocolate of Affection	14541	Dust of Chaotic Frontier	10	20	1000
+11076	Chocolate of Affection	7436	Fortune Gate Pass	5	10	1000
+11077	Chocolate of Friendship	1855	Quickness Prayer Stone<Lv1>	1	5	1750
+11077	Chocolate of Friendship	1857	Quickness Prayer Stone<Lv3>	1	5	750
+11077	Chocolate of Friendship	1860	Light Speed Prayer Stone<Lv1>	1	5	1750
+11077	Chocolate of Friendship	1862	Light Speed Prayer Stone<Lv3>	1	5	750
+11077	Chocolate of Friendship	6074	Lucky Prayer Stone<Lv1>	1	5	1750
+11077	Chocolate of Friendship	6076	Lucky Prayer Stone<Lv3>	1	5	750
+11077	Chocolate of Friendship	486	Reinforcement Potion	10	50	1000
+11077	Chocolate of Friendship	7501	Small Emerald	1	5	750
+11077	Chocolate of Friendship	7507	Big Emerald	1	5	750
+11078	Chocolate of Affection	1855	Quickness Prayer Stone<Lv1>	1	5	750
+11078	Chocolate of Affection	1857	Quickness Prayer Stone<Lv3>	1	5	750
+11078	Chocolate of Affection	1860	Light Speed Prayer Stone<Lv1>	1	5	750
+11078	Chocolate of Affection	1862	Light Speed Prayer Stone<Lv3>	1	5	750
+11078	Chocolate of Affection	6074	Lucky Prayer Stone<Lv1>	1	5	750
+11078	Chocolate of Affection	6076	Lucky Prayer Stone<Lv3>	1	5	750
+11078	Chocolate of Affection	486	Reinforcement Potion	10	50	1000
+11078	Chocolate of Affection	7501	Small Emerald	1	5	2500
+11078	Chocolate of Affection	7507	Big Emerald	1	5	2000
+11254	Marshmallows	7394	Large Recovery Potion	10	10	750
+11254	Marshmallows	6273	Extra-large Mana Potion	10	10	750
+11254	Marshmallows	7644	Pet Reinforcement Manual	1	1	250
+11254	Marshmallows	6184	Extra-large Giant Potion+	1	1	100
+11254	Marshmallows	6185	Extra-large Light Speed Potion+	1	1	100
+11254	Marshmallows	6186	Extra-large Defence Potion+	1	1	100
+11254	Marshmallows	6187	Extra-large Quickness Potion+	1	1	100
+11254	Marshmallows	3906	Shout of Elemental	1	1	250
+11254	Marshmallows	4802	Gold Coin of the rich	1	1	32
+11254	Marshmallows	4803	Silver coin of the rich	1	1	100
+11254	Marshmallows	1171	Return Orb	1	1	50
+11254	Marshmallows	7436	Fortune Gate Pass	1	3	250
+11254	Marshmallows	6007	Lens Stone+	500	500	500
+11254	Marshmallows	4799	Compound Potion	1	1	500
+11254	Marshmallows	11256	Marvel Scroll of Release	1	1	100
+11254	Marshmallows	7481	Kitty Lv 1 <1 days>	1	1	350
+11254	Marshmallows	11016	Scion Prayer Stone	1	1	75
+11254	Marshmallows	12592	Fragment of Ashtal	1	1	50
+11255	Candy	1855	Quickness Prayer Stone<Lv1>	1	5	750
+11255	Candy	1857	Quickness Prayer Stone<Lv3>	1	5	750
+11255	Candy	1860	Light Speed Prayer Stone<Lv1>	1	5	750
+11255	Candy	1862	Light Speed Prayer Stone<Lv3>	1	5	750
+11255	Candy	6074	Lucky Prayer Stone<Lv1>	1	5	750
+11255	Candy	6076	Lucky Prayer Stone<Lv3>	1	5	750
+11255	Candy	486	Reinforcement Potion	10	50	1000
+11255	Candy	7504	Small Diamond	1	5	2500
+11255	Candy	7510	Big Diamond	1	5	2000
+11261	Sprit's Gift	1976	Destruction Stone	3	5	900
+11261	Sprit's Gift	601	Stamina Buff Prayer Stone<Lv3>	2	4	600
+11261	Sprit's Gift	1173	Skill Block Prayer Stone<Lv3>	2	4	600
+11261	Sprit's Gift	472	Defense Prayer Stone<Lv3>	3	5	1000
+11261	Sprit's Gift	1170	Physical Resistance Prayer Stone<Lv3>	2	4	600
+11261	Sprit's Gift	464	Attack Prayer Stone<Lv3>	3	5	1000
+11261	Sprit's Gift	1054	Reverse Orb	1	3	550
+11261	Sprit's Gift	1127	Large Healing Potion	30	60	425
+11261	Sprit's Gift	1006	Broiled Meat of Transcendence	10	20	450
+11261	Sprit's Gift	486	Reinforcement Potion	3	5	970
+11261	Sprit's Gift	486	Reinforcement Potion	6	8	800
+11261	Sprit's Gift	486	Reinforcement Potion	10	30	30
+11261	Sprit's Gift	266	Inferno Elemental Stone	1	3	300
+11261	Sprit's Gift	246	Tornado Elemental Stone	2	3	300
+11261	Sprit's Gift	262	Waterfall Elemental Stone	2	3	300
+11261	Sprit's Gift	254	Tremor Elemental Stone	2	3	300
+11261	Sprit's Gift	258	Transcendence Elemental Stone	2	3	300
+11261	Sprit's Gift	267	Meteor Elemental Stone	1	1	15
+11261	Sprit's Gift	247	Hurricane Elemental Stone	1	1	15
+11261	Sprit's Gift	263	Sea Elemental Stone	1	1	15
+11261	Sprit's Gift	255	Terra Elemental Stone	1	1	15
+11261	Sprit's Gift	259	Nirvana Elemental Stone	1	1	15
+11261	Sprit's Gift	4773	Medium Elemental Potion	10	99	500
+11265	Marshmallows	1855	Quickness Prayer Stone<Lv1>	1	5	1500
+11265	Marshmallows	1857	Quickness Prayer Stone<Lv3>	1	3	400
+11265	Marshmallows	1860	Light Speed Prayer Stone<Lv1>	1	5	1500
+11265	Marshmallows	1862	Light Speed Prayer Stone<Lv3>	1	3	400
+11265	Marshmallows	6074	Lucky Prayer Stone<Lv1>	1	5	1500
+11265	Marshmallows	6076	Lucky Prayer Stone<Lv3>	1	3	400
+11265	Marshmallows	1880	Stamina Prayer Stone<Lv1>	1	5	1500
+11265	Marshmallows	1882	Stamina Prayer Stone<Lv3>	1	3	400
+11265	Marshmallows	1865	Might Prayer Stone<Lv1>	1	5	1500
+11265	Marshmallows	1867	Might Prayer Stone<Lv3>	1	3	400
+11265	Marshmallows	486	Reinforcement Potion	10	50	500
+11266	Candy	7436	Fortune Gate Pass	15	15	3000
+11266	Candy	4895	Pet Box	1	1	2000
+11266	Candy	6129	Rare Mount Chest	1	1	2000
+11266	Candy	11016	Scion Prayer Stone	1	1	2000
+11266	Candy	6123	Event Wings & Cloak Chest	1	1	250
+11266	Candy	12592	Fragment of Ashtal	1	1	2000
+11305	Hero's Gift	6184	Extra-large Giant Potion+	5	5	500
+11305	Hero's Gift	6185	Extra-large Light Speed Potion+	5	5	500
+11305	Hero's Gift	6186	Extra-large Defence Potion+	5	5	500
+11305	Hero's Gift	6187	Extra-large Quickness Potion+	5	5	500
+11305	Hero's Gift	6188	Extra-large Evasion Potion+	5	5	500
+11305	Hero's Gift	10332	Talisman of Awakening 100 <2 hours>	1	1	150
+11305	Hero's Gift	11016	Scion Prayer Stone	1	1	150
+11305	Hero's Gift	12592	Fragment of Ashtal	1	1	150
+11305	Hero's Gift	6213	Cloak of Elemental Master<1Day>	1	1	150
+11305	Hero's Gift	11041	Talisman of Awakening<3 Days>	1	1	500
+11788	G.O's Gift Box	6105	Lens Stone	100	100	600
+11788	G.O's Gift Box	6103	Gate of Phantom	3	3	610
+11788	G.O's Gift Box	6182	Shout of Elemental	10	10	620
+11788	G.O's Gift Box	6258	Signature of Glory	1	1	630
+11788	G.O's Gift Box	6183	Destiny Prayer Stone	3	3	640
+11788	G.O's Gift Box	7561	Talisman of Awakening <3 hours>	1	1	650
+11788	G.O's Gift Box	11002	Lucky Charm <3 hours>	1	1	660
+11788	G.O's Gift Box	11312	Extra-large Giant Potion+	1	1	670
+11788	G.O's Gift Box	11514	Extra-large Defence Potion+	1	1	680
+11788	G.O's Gift Box	11313	Extra-large Evasion Potion+	1	1	690
+11788	G.O's Gift Box	11003	Extra-large Quickness Potion+	1	1	690
+11788	G.O's Gift Box	11513	Extra-large Light Speed Potion+	1	1	700
+11788	G.O's Gift Box	11308	Gold Key	1	1	720
+11788	G.O's Gift Box	11309	Silver Key	1	1	720
+11788	G.O's Gift Box	9001	Pet Reinforcement Manual	1	1	720
+12109	Dimension Cloak Chest	12110	Cloak of Dimension Mastery Lv 1	1	1	3500
+12109	Dimension Cloak Chest	12111	Cloak of Dimension Mastery Lv 2	1	1	3500
+12109	Dimension Cloak Chest	12112	Cloak of Dimension Mastery Lv 3	1	1	1400
+12109	Dimension Cloak Chest	12113	Cloak of Dimension Mastery Lv 4	1	1	700
+12109	Dimension Cloak Chest	12114	Cloak of Dimension Mastery Lv 5	1	1	300
+12109	Dimension Cloak Chest	12115	Cloak of Dimension Mastery Lv 6	1	1	50

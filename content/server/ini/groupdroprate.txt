@@ -1,0 +1,29 @@
+GroupID	GroupName	IsAffectedByDropMed	DropRate	LevelBonus10	LevelBonus20	LevelBonus30	LevelBonus40	LevelBonus50	LevelBonus60	LevelBonus70	LevelBonus80	LevelBonus90	LevelBonus100
+1	Normal Weapon	0	5000	20000	10000	1500	1000	1000	0	0	0	0	0
+2	Rare Weapon	0	4000	20000	10000	1500	1000	1000	0	0	0	0	0
+3	Unique Weapon	0	3000	0	4000	1500	1000	1000	0	0	0	0	0
+4	Elite Weapon	1	200	0	150	50	40	30	20	10	0	0	0
+5	Normal Armor	0	5000	20000	10000	1500	1000	1000	0	0	0	0	0
+6	Rare Armor	0	4000	20000	10000	1500	1000	1000	0	0	0	0	0
+7	Unique Armor	0	3000	5000	4000	1500	1000	1000	0	0	0	0	0
+8	Elite Armor	0	300	0	150	50	40	30	20	10	0	0	0
+9	EVENT BOXES	1	100000	0	0	0	0	0	0	0	0	0	0
+10	Realm Armor	1	150	0	0	0	0	0	0	0	-110	-110	-110
+11	Elemental Stone	0	1500	300	200	100	0	0	0	0	0	0	0
+12	Prayer Stone	0	1000	-300	-400	-400	-300	-200	-100	0	0	0	0
+13	Reinforcement Potion	0	1000	-300	0	0	0	0	0	0	0	0	0
+14	Normal Ring, Normal Necklace	0	2000	0	-1000	-1300	-1600	-1600	-1600	-1600	-1600	-1600	-1600
+15	Shield, Rare Ring, Rare Necklace, Jewel	0	400	0	0	0	0	0	0	0	0	0	0
+16	Life Potion, Mana Potion	0	70000	25000	15000	0	-10000	-20000	-30000	-40000	-50000	-50000	-50000
+17	Quickness Potion, Light Speed Potion	0	1500	1500	500	0	-500	-500	-500	-500	-500	-500	-500
+18	Passport	0	6000	0	-1500	-2000	-2500	-2500	-2500	-2500	-2500	-2500	-2500
+19	Spell Scroll	0	0	0	0	0	0	0	0	0	0	0	0
+20	CF Passport	0	0	0	0	0	0	0	0	0	0	0	0
+21	Material	0	500	0	0	0	0	0	0	0	0	0	0
+22	Letter of Pardon	0	250	0	0	0	0	0	100	250	500	1000	1500
+23	Treasure Chest	1	0	0	0	0	0	0	0	0	0	0	0
+24	Weapon/Armor Chest	0	0	0	0	0	0	0	0	0	0	0	0
+25		0	0	0	0	0	0	0	0	0	0	0	0
+26	Reverse Orb	0	150	0	0	0	0	0	0	0	0	0	0
+27	Elemental Potion	0	90000	0	0	0	0	0	0	0	0	0	0
+29	Rare Ring/Necklace	0	0	0	0	0	0	0	0	0	0	0	0
