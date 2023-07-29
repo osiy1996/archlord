@@ -3837,6 +3837,7 @@ static inline void makeaddpacket(
 			&item->expire_time, /* ExpireTime */
 			&item->cash_item_use_count, /*	EnableTrade */
 			&item->stamina_remain_time); /*	StaminaRemainTime */
+		bufcount++;
 	}
 	else if (item->temp->equip.kind == AP_ITEM_EQUIP_KIND_WEAPON) {
 		factorpacket = ap_packet_get_temp_buffer(mod->ap_packet);

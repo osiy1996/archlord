@@ -1,5 +1,4 @@
-#include <assert.h>
-#include <time.h>
+#include "server/as_account.h"
 
 #include "core/log.h"
 #include "core/malloc.h"
@@ -9,8 +8,10 @@
 #include "public/ap_module.h"
 #include "public/ap_tick.h"
 
-#include "server/as_account.h"
 #include "server/as_database.h"
+
+#include <assert.h>
+#include <time.h>
 
 #define STMT_INSERT "INSERT_ACCOUNT"
 #define STMT_SELECT_LIST "SELECT_ACCOUNT_LIST"

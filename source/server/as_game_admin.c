@@ -335,7 +335,6 @@ static boolean handle_ac_character(
 			constructbank(mod, c, account);
 			constructquickbelt(mod, c);
 			as_player_add(mod->as_player, c);
-			ap_character_set_grow_up_factor(mod->ap_character, c, 0, cdb->level);
 			ap_character_update_factor(mod->ap_character, c, 
 				AP_FACTORS_BIT_MOVEMENT_SPEED |
 				AP_FACTORS_BIT_PHYSICAL_DMG |

@@ -697,6 +697,7 @@ struct ap_character * as_character_from_db(
 	strlcpy(c->nickname, db->nickname, sizeof(c->nickname));
 	c->pos = db->position;
 	c->bound_region_id = db->bound_region_id;
+	c->factor.char_status.level = 0;
 	c->factor.char_status.murderer = db->villain_points;
 	c->factor.char_point.hp = db->hp;
 	c->factor.char_point.mp = db->mp;
