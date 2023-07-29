@@ -6,6 +6,8 @@ LoginServerIP=192.168.1.35
 LoginServerPort=11002
 GameServerIP=192.168.1.35
 GameServerPort=11008
+WebServerIP=192.168.1.35
+WebServerPort=8080
 
 DBName=archlord
 DBUser=aluser

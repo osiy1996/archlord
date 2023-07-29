@@ -260,6 +260,7 @@
     <ClInclude Include="..\..\..\source\server\as_game_admin.h" />
     <ClInclude Include="..\..\..\source\server\as_guild.h" />
     <ClInclude Include="..\..\..\source\server\as_guild_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_http_server.h" />
     <ClInclude Include="..\..\..\source\server\as_item.h" />
     <ClInclude Include="..\..\..\source\server\as_item_convert.h" />
     <ClInclude Include="..\..\..\source\server\as_item_convert_process.h" />
@@ -290,6 +291,7 @@
     <ClInclude Include="..\..\..\source\utility\au_md5.h" />
     <ClInclude Include="..\..\..\source\utility\au_packet.h" />
     <ClInclude Include="..\..\..\source\utility\au_table.h" />
+    <ClInclude Include="..\..\..\source\vendor\httplib\httplib.h" />
     <ClInclude Include="..\..\..\source\vendor\pcg\pcg_basic.h" />
   </ItemGroup>
   <ItemGroup>
@@ -391,6 +393,7 @@
     <ClCompile Include="..\..\..\source\server\as_game_admin.c" />
     <ClCompile Include="..\..\..\source\server\as_guild.c" />
     <ClCompile Include="..\..\..\source\server\as_guild_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_http_server.cpp" />
     <ClCompile Include="..\..\..\source\server\as_item.c" />
     <ClCompile Include="..\..\..\source\server\as_item_convert.c" />
     <ClCompile Include="..\..\..\source\server\as_item_convert_process.c" />

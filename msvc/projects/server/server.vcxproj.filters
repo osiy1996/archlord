@@ -25,6 +25,9 @@
     <Filter Include="net">
       <UniqueIdentifier>{5954bbaf-c271-4e38-a8a6-d1180e3be340}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\httplib">
+      <UniqueIdentifier>{adb6efde-7ed6-49d0-857f-95e38f9eaea1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\vendor\pcg\pcg_basic.h">
@@ -423,6 +426,12 @@
     <ClInclude Include="..\..\..\source\server\as_service_npc.h">
       <Filter>server</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\httplib\httplib.h">
+      <Filter>vendor\httplib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\server\as_http_server.h">
+      <Filter>server</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\vendor\pcg\pcg_basic.c">
@@ -801,6 +810,9 @@
       <Filter>public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\server\as_service_npc.c">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\server\as_http_server.cpp">
       <Filter>server</Filter>
     </ClCompile>
   </ItemGroup>

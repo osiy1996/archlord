@@ -91,6 +91,7 @@
 #include "server/as_game_admin.h"
 #include "server/as_guild.h"
 #include "server/as_guild_process.h"
+#include "server/as_http_server.h"
 #include "server/as_item.h"
 #include "server/as_item_convert.h"
 #include "server/as_item_convert_process.h"
@@ -196,6 +197,7 @@ static ap_module_t g_AsEventTeleportProcess;
 static ap_module_t g_AsGameAdmin;
 static ap_module_t g_AsGuild;
 static ap_module_t g_AsGuildProcess;
+static ap_module_t g_AsHttpServer;
 static ap_module_t g_AsItem;
 static ap_module_t g_AsItemConvert;
 static ap_module_t g_AsItemConvertProcess;
@@ -269,6 +271,7 @@ static struct module_desc g_Modules[] = {
 	{ AP_LOGIN_MODULE_NAME, ap_login_create_module, NULL, &g_ApLogin },
 	{ AP_WORLD_MODULE_NAME, ap_world_create_module, NULL, &g_ApWorld },
 	/* Server modules. */
+	{ AS_HTTP_SERVER_MODULE_NAME, as_http_server_create_module, NULL, &g_AsHttpServer },
 	{ AS_DATABASE_MODULE_NAME, as_database_create_module, NULL, &g_AsDatabase },
 	{ AS_CHARACTER_MODULE_NAME, as_character_create_module, NULL, &g_AsCharacter },
 	{ AS_SERVER_MODULE_NAME, as_server_create_module, NULL, &g_AsServer },
@@ -796,6 +799,7 @@ int main(int argc, char * argv[])
 		as_spawn_process(g_AsSpawn, tick);
 		as_ai2_process_end_frame(g_AsAI2Process);
 		as_map_clear_expired_item_drops(g_AsMap, tick);
+		as_http_server_poll_requests(g_AsHttpServer);
 		accum += dt;
 		while (accum >= STEPTIME) {
 			/* Fixed-step updates should be done here (i.e. character movement). */

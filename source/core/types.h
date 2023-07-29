@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#ifndef NO_BOOLEAN
 typedef int32_t boolean;
+#endif
 
 #endif /* _BASE_TYPES_H_ */

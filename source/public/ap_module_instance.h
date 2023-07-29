@@ -3,6 +3,17 @@
 
 #include "public/ap_module_registry.h"
 
+#ifdef __cplusplus
+#define AP_MODULE_INSTANCE_FIND_IN_REGISTRY(REGISTRY, MODULE, MODULE_NAME) \
+{\
+	*(ap_module_t *)&(MODULE) = ap_module_registry_get_module((REGISTRY), (MODULE_NAME));\
+	if (!(MODULE)) {\
+		ERROR("Failed to retrieve module (%s).", (MODULE_NAME));\
+		return FALSE;\
+		\
+	}\
+}
+#else
 #define AP_MODULE_INSTANCE_FIND_IN_REGISTRY(REGISTRY, MODULE, MODULE_NAME) \
 {\
 	(MODULE) = ap_module_registry_get_module((REGISTRY), (MODULE_NAME));\
@@ -12,6 +23,7 @@
 		\
 	}\
 }
+#endif
 
 BEGIN_DECLS
 
