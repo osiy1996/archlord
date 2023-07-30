@@ -194,7 +194,7 @@ static boolean cbmenulevelupreward(
 	uint32_t beginindex = UINT32_MAX;
 	uint32_t i;
 	uint32_t rewardcount = 0;
-	if (ap_character_get_level(cb->character) < reward->level) {
+	if (ap_character_get_absolute_level(cb->character) < reward->level) {
 		ap_event_npc_dialog_make_grant_msg_box_packet(mod->ap_event_npc_dialog,
 			character->id, cb->npc->id, 0, AP_EVENT_NPC_DIALOG_MSG_BOX_OK,
 			"Character level is too low.");

@@ -224,7 +224,7 @@ void as_account_reference(struct as_account * account);
  */
 struct as_account * as_account_copy_detached(
 	struct as_account_module * mod,
-	const struct as_account * account);
+	struct as_account * account);
 
 /**
  * Release cached account.

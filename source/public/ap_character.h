@@ -1236,17 +1236,25 @@ boolean ap_character_parse_client_packet(
 	char * character_name,
 	uint32_t * auth_key);
 
-inline uint32_t ap_character_get_level(struct ap_character * character)
+static inline uint32_t ap_character_get_level(const struct ap_character * character)
 {
 	return character->factor.char_status.level;
 }
 
-inline boolean ap_character_is_pc(struct ap_character * character)
+static inline uint32_t ap_character_get_absolute_level(const struct ap_character * character)
+{
+	if (CHECK_BIT(character->special_status, AP_CHARACTER_SPECIAL_STATUS_LEVELLIMIT))
+		return character->factor.char_status.limited_level;
+	else
+		return character->factor.char_status.level;
+}
+
+static inline boolean ap_character_is_pc(struct ap_character * character)
 {
 	return ((character->char_type & AP_CHARACTER_TYPE_PC) != 0);
 }
 
-inline boolean ap_character_is_summon(struct ap_character * character)
+static inline boolean ap_character_is_summon(struct ap_character * character)
 {
 	return ((character->char_type & AP_CHARACTER_TYPE_SUMMON) != 0);
 }

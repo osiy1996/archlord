@@ -81,7 +81,7 @@ static boolean cbreceive(
 		factors = temp->used_const_factor[1];
 		if (c->inventory_gold < (uint64_t)factors[AP_SKILL_CONST_SKILL_COST])
 			break;
-		if (c->factor.char_status.level < factors[AP_SKILL_CONST_REQUIRE_LEVEL]) {
+		if (ap_character_get_absolute_level(c) < factors[AP_SKILL_CONST_REQUIRE_LEVEL]) {
 			ap_event_skill_master_make_packet(mod->ap_event_skill_master,
 				AP_EVENT_SKILL_MASTER_PACKET_TYPE_LEARN_RESULT,
 				e, &c->id, NULL, NULL, 
@@ -165,7 +165,7 @@ static boolean cbreceive(
 			break;
 		if (c->inventory_gold < (uint64_t)factors[AP_SKILL_CONST_SKILL_UPGRADE_COST])
 			break;
-		if (c->factor.char_status.level < factors[AP_SKILL_CONST_REQUIRE_LEVEL])
+		if (ap_character_get_absolute_level(c) < factors[AP_SKILL_CONST_REQUIRE_LEVEL])
 			break;
 		if (c->factor.dirt.skill_point < factors[AP_SKILL_CONST_REQUIRE_POINT])
 			break;

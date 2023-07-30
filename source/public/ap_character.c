@@ -1908,7 +1908,7 @@ void ap_character_set_level(
 	uint32_t level)
 {
 	struct ap_character_cb_set_level cb = { character, 
-		character->factor.char_status.level };
+		ap_character_get_level(character) };
 	character->factor.char_status.level = level;
 	ap_module_enum_callback(&mod->instance.context, 
 		AP_CHARACTER_CB_SET_LEVEL, &cb);
@@ -1958,6 +1958,7 @@ void ap_character_special_status_on(
 {
 	uint32_t index = ap_character_get_special_status_duration_index(special_status);
 	boolean temporary = FALSE;
+	assert(!(special_status & AP_CHARACTER_SPECIAL_STATUS_LEVELLIMIT));
 	if (!(character->special_status & special_status)) {
 		struct ap_character_cb_special_status_on cb = { 0 };
 		character->special_status |= special_status;
@@ -1988,6 +1989,7 @@ void ap_character_special_status_off(
 	struct ap_character * character,
 	uint64_t special_status)
 {
+	assert(!(special_status & AP_CHARACTER_SPECIAL_STATUS_LEVELLIMIT));
 	if (character->special_status & special_status) {
 		struct ap_character_cb_special_status_off cb = { 0 };
 		uint32_t index = ap_character_get_special_status_duration_index(special_status);

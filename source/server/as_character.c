@@ -191,7 +191,7 @@ static boolean cbcharsetlevel(
 {
 	struct ap_character * c = cb->character;
 	struct as_character_db * db = as_character_get(mod, c)->db;
-	uint32_t level = c->factor.char_status.level;
+	uint32_t level = ap_character_get_level(c);
 	if (db)
 		db->level = level;
 	if (c->char_type & AP_CHARACTER_TYPE_PC) {
@@ -778,7 +778,7 @@ void as_character_reflect(
 		db->status |= AS_CHARACTER_STATUS_AUTO_ATTACK_AFTER_SKILL_CAST;
 	else 
 		db->status &= ~AS_CHARACTER_STATUS_AUTO_ATTACK_AFTER_SKILL_CAST;
-	db->level = character->factor.char_status.level;
+	db->level = ap_character_get_absolute_level(character);
 	db->inventory_gold = character->inventory_gold;
 	db->villain_points = character->factor.char_status.murderer;
 	db->hp = character->factor.char_point.hp;

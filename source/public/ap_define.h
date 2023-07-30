@@ -489,8 +489,12 @@ extern const enum ap_service_area g_ServiceArea;
 
 #define AP_GETSERVICEAREAFLAG(eArea) (0x0001 << (eArea))
 
+#define SET_BIT(BITFLAGS, BIT) (BITFLAGS) |= (BIT)
+
 #define CHECK_BIT(BITFLAGS, BIT) \
 	(((BITFLAGS) & (BIT)) == (BIT))
+
+#define CLEAR_BIT(BITFLAGS, BIT) (BITFLAGS) &= ~(BIT)
 
 END_DECLS
 

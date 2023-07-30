@@ -57,7 +57,7 @@ static boolean cbcharsetlevel(
 	if (!CHECK_BIT(c->char_type, AP_CHARACTER_TYPE_PC))
 		return TRUE;
 	sc = ap_skill_get_character(mod->ap_skill, c);
-	level = ap_character_get_level(c);
+	level = ap_character_get_absolute_level(c);
 	sp = level;
 	if (level > 49) {
 		/* Bonus points between Lv50-Lv71. */
@@ -442,6 +442,27 @@ void as_skill_reset_all_buffs(
 					as_player_send_packet(mod->as_player, character);
 				}
 			}
+		}
+		i = ap_skill_remove_buff(mod->ap_skill, character, i);
+	}
+}
+
+void as_skill_remove_all_buffs(
+	struct as_skill_module * mod,
+	struct ap_character * character)
+{
+	struct ap_skill_character * attachment = 
+		ap_skill_get_character(mod->ap_skill, character);
+	uint32_t i;
+	for (i = 0; i < attachment->buff_count;) {
+		struct ap_skill_buff_list * buff = &attachment->buff_list[i];
+		if (CHECK_BIT(buff->temp->attribute, AP_SKILL_ATTRIBUTE_PASSIVE) || 
+			ap_skill_has_effect2_and_detail(buff->temp,
+				AP_SKILL_EFFECT2_DURATION_TYPE,
+				AP_SKILL_EFFECT_DETAIL_DURATION_TYPE,
+				AP_SKILL_EFFECT_DETAIL_DURATION_TYPE2)) {
+			i++;
+			continue;
 		}
 		i = ap_skill_remove_buff(mod->ap_skill, character, i);
 	}

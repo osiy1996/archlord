@@ -218,134 +218,14 @@ static void adjustfactor(struct ap_item_module * mod, struct ap_character * c)
 	}
 }
 
-static void equipunequip(
+static void applylinkoptions(
 	struct ap_item_module * mod,
 	struct ap_character * c,
 	struct ap_item * item,
+	uint32_t level,
 	int modifier)
 {
-	uint32_t level = item->current_link_level;
 	uint32_t i;
-	if (item->temp->equip.kind == AP_ITEM_EQUIP_KIND_WEAPON ||
-		item->temp->equip.part == AP_ITEM_PART_RIDE) {
-		adjustfactor(mod, c);
-	}
-	/** \todo
-	 * When a weapon is equiped/unequiped, we need to 
-	 * go through passive/active skill effects and 
-	 * check weapon requirements. */
-	if (item->factor.damage.min.magic) {
-		c->factor.damage.min.magic += modifier * item->factor.damage.min.magic;
-		c->factor.damage.max.magic += modifier * item->factor.damage.max.magic;
-		c->update_flags |= AP_FACTORS_BIT_DAMAGE;
-	}
-	if (item->factor.damage.min.water) {
-		c->factor.damage.min.water += modifier * item->factor.damage.min.water;
-		c->factor.damage.max.water += modifier * item->factor.damage.max.water;
-		c->update_flags |= AP_FACTORS_BIT_DAMAGE;
-	}
-	if (item->factor.damage.min.fire) {
-		c->factor.damage.min.fire += modifier * item->factor.damage.min.fire;
-		c->factor.damage.max.fire += modifier * item->factor.damage.max.fire;
-		c->update_flags |= AP_FACTORS_BIT_DAMAGE;
-	}
-	if (item->factor.damage.min.earth) {
-		c->factor.damage.min.earth += modifier * item->factor.damage.min.earth;
-		c->factor.damage.max.earth += modifier * item->factor.damage.max.earth;
-		c->update_flags |= AP_FACTORS_BIT_DAMAGE;
-	}
-	if (item->factor.damage.min.air) {
-		c->factor.damage.min.air += modifier * item->factor.damage.min.air;
-		c->factor.damage.max.air += modifier * item->factor.damage.max.air;
-		c->update_flags |= AP_FACTORS_BIT_DAMAGE;
-	}
-	if (item->factor.damage.min.poison) {
-		c->factor.damage.min.poison += modifier * item->factor.damage.min.poison;
-		c->factor.damage.max.poison += modifier * item->factor.damage.max.poison;
-		c->update_flags |= AP_FACTORS_BIT_DAMAGE;
-	}
-	if (item->factor.damage.min.lightning) {
-		c->factor.damage.min.lightning += modifier * item->factor.damage.min.lightning;
-		c->factor.damage.max.lightning += modifier * item->factor.damage.max.lightning;
-		c->update_flags |= AP_FACTORS_BIT_DAMAGE;
-	}
-	if (item->factor.damage.min.ice) {
-		c->factor.damage.min.ice += modifier * item->factor.damage.min.ice;
-		c->factor.damage.max.ice += modifier * item->factor.damage.max.ice;
-		c->update_flags |= AP_FACTORS_BIT_DAMAGE;
-	}
-	if (item->factor.defense.rate.physical_block) {
-		c->factor.defense.rate.physical_block +=
-			modifier * item->factor.defense.rate.physical_block;
-		c->update_flags |= AP_FACTORS_BIT_DEFENSE;
-	}
-	if (item->factor.defense.point.physical) {
-		c->factor.defense.point.physical +=
-			modifier * item->factor.defense.point.physical;
-		c->update_flags |= AP_FACTORS_BIT_DEFENSE;
-	}
-	if (item->factor.defense.point.magic) {
-		c->factor.defense.point.magic +=
-			modifier * item->factor.defense.point.magic;
-		c->update_flags |= AP_FACTORS_BIT_DEFENSE;
-	}
-	if (item->factor.defense.point.water) {
-		c->factor.defense.point.water +=
-			modifier * item->factor.defense.point.water;
-		c->update_flags |= AP_FACTORS_BIT_DEFENSE;
-	}
-	if (item->factor.defense.point.fire) {
-		c->factor.defense.point.fire +=
-			modifier * item->factor.defense.point.fire;
-		c->update_flags |= AP_FACTORS_BIT_DEFENSE;
-	}
-	if (item->factor.defense.point.earth) {
-		c->factor.defense.point.earth +=
-			modifier * item->factor.defense.point.earth;
-		c->update_flags |= AP_FACTORS_BIT_DEFENSE;
-	}
-	if (item->factor.defense.point.air) {
-		c->factor.defense.point.air +=
-			modifier * item->factor.defense.point.air;
-		c->update_flags |= AP_FACTORS_BIT_DEFENSE;
-	}
-	if (item->factor.defense.point.poison) {
-		c->factor.defense.point.poison +=
-			modifier * item->factor.defense.point.poison;
-		c->update_flags |= AP_FACTORS_BIT_DEFENSE;
-	}
-	if (item->factor.defense.point.lightning) {
-		c->factor.defense.point.lightning +=
-			modifier * item->factor.defense.point.lightning;
-		c->update_flags |= AP_FACTORS_BIT_DEFENSE;
-	}
-	if (item->factor.defense.point.ice) {
-		c->factor.defense.point.ice +=
-			modifier * item->factor.defense.point.ice;
-		c->update_flags |= AP_FACTORS_BIT_DEFENSE;
-	}
-	if (item->factor.char_status.con) {
-		c->factor.char_status.con += modifier * item->factor.char_status.con;
-		c->update_flags |= AP_FACTORS_BIT_CHAR_STATUS;
-	}
-	if (item->factor.char_status.str) {
-		c->factor.char_status.str += modifier * item->factor.char_status.str;
-		c->update_flags |= AP_FACTORS_BIT_CHAR_STATUS;
-	}
-	if (item->factor.char_status.intel) {
-		c->factor.char_status.intel += modifier * item->factor.char_status.intel;
-		c->update_flags |= AP_FACTORS_BIT_CHAR_STATUS;
-	}
-	if (item->factor.char_status.agi) {
-		c->factor.char_status.agi += modifier * item->factor.char_status.agi;
-		c->update_flags |= AP_FACTORS_BIT_CHAR_STATUS;
-	}
-	if (item->factor.char_status.wis) {
-		c->factor.char_status.wis += modifier * item->factor.char_status.wis;
-		c->update_flags |= AP_FACTORS_BIT_CHAR_STATUS;
-	}
-	for (i = 0; i < item->option_count; i++)
-		ap_item_apply_option(mod, c, item->options[i], modifier);
 	for (i = 0; i < item->temp->link_count; i++) {
 		const struct ap_item_option_link_pool * pool = item->temp->link_pools[i];
 		uint32_t j;
@@ -359,13 +239,146 @@ static void equipunequip(
 	}
 }
 
+static void applystats(
+	struct ap_item_module * mod,
+	struct ap_character * character, 
+	struct ap_item * item,
+	int modifier)
+{
+	struct ap_item_cb_apply_stats cb = { 0 };
+	uint32_t i;
+	if (item->temp->equip.kind == AP_ITEM_EQUIP_KIND_WEAPON ||
+		item->temp->equip.part == AP_ITEM_PART_RIDE) {
+		adjustfactor(mod, character);
+	}
+	/** \todo
+	 * When a weapon is equiped/unequiped, we need to 
+	 * go through passive/active skill effects and 
+	 * check weapon requirements. */
+	if (item->factor.damage.min.magic) {
+		character->factor.damage.min.magic += modifier * item->factor.damage.min.magic;
+		character->factor.damage.max.magic += modifier * item->factor.damage.max.magic;
+		character->update_flags |= AP_FACTORS_BIT_DAMAGE;
+	}
+	if (item->factor.damage.min.water) {
+		character->factor.damage.min.water += modifier * item->factor.damage.min.water;
+		character->factor.damage.max.water += modifier * item->factor.damage.max.water;
+		character->update_flags |= AP_FACTORS_BIT_DAMAGE;
+	}
+	if (item->factor.damage.min.fire) {
+		character->factor.damage.min.fire += modifier * item->factor.damage.min.fire;
+		character->factor.damage.max.fire += modifier * item->factor.damage.max.fire;
+		character->update_flags |= AP_FACTORS_BIT_DAMAGE;
+	}
+	if (item->factor.damage.min.earth) {
+		character->factor.damage.min.earth += modifier * item->factor.damage.min.earth;
+		character->factor.damage.max.earth += modifier * item->factor.damage.max.earth;
+		character->update_flags |= AP_FACTORS_BIT_DAMAGE;
+	}
+	if (item->factor.damage.min.air) {
+		character->factor.damage.min.air += modifier * item->factor.damage.min.air;
+		character->factor.damage.max.air += modifier * item->factor.damage.max.air;
+		character->update_flags |= AP_FACTORS_BIT_DAMAGE;
+	}
+	if (item->factor.damage.min.poison) {
+		character->factor.damage.min.poison += modifier * item->factor.damage.min.poison;
+		character->factor.damage.max.poison += modifier * item->factor.damage.max.poison;
+		character->update_flags |= AP_FACTORS_BIT_DAMAGE;
+	}
+	if (item->factor.damage.min.lightning) {
+		character->factor.damage.min.lightning += modifier * item->factor.damage.min.lightning;
+		character->factor.damage.max.lightning += modifier * item->factor.damage.max.lightning;
+		character->update_flags |= AP_FACTORS_BIT_DAMAGE;
+	}
+	if (item->factor.damage.min.ice) {
+		character->factor.damage.min.ice += modifier * item->factor.damage.min.ice;
+		character->factor.damage.max.ice += modifier * item->factor.damage.max.ice;
+		character->update_flags |= AP_FACTORS_BIT_DAMAGE;
+	}
+	if (item->factor.defense.rate.physical_block) {
+		character->factor.defense.rate.physical_block +=
+			modifier * item->factor.defense.rate.physical_block;
+		character->update_flags |= AP_FACTORS_BIT_DEFENSE;
+	}
+	if (item->factor.defense.point.physical) {
+		character->factor.defense.point.physical +=
+			modifier * item->factor.defense.point.physical;
+		character->update_flags |= AP_FACTORS_BIT_DEFENSE;
+	}
+	if (item->factor.defense.point.magic) {
+		character->factor.defense.point.magic +=
+			modifier * item->factor.defense.point.magic;
+		character->update_flags |= AP_FACTORS_BIT_DEFENSE;
+	}
+	if (item->factor.defense.point.water) {
+		character->factor.defense.point.water +=
+			modifier * item->factor.defense.point.water;
+		character->update_flags |= AP_FACTORS_BIT_DEFENSE;
+	}
+	if (item->factor.defense.point.fire) {
+		character->factor.defense.point.fire +=
+			modifier * item->factor.defense.point.fire;
+		character->update_flags |= AP_FACTORS_BIT_DEFENSE;
+	}
+	if (item->factor.defense.point.earth) {
+		character->factor.defense.point.earth +=
+			modifier * item->factor.defense.point.earth;
+		character->update_flags |= AP_FACTORS_BIT_DEFENSE;
+	}
+	if (item->factor.defense.point.air) {
+		character->factor.defense.point.air +=
+			modifier * item->factor.defense.point.air;
+		character->update_flags |= AP_FACTORS_BIT_DEFENSE;
+	}
+	if (item->factor.defense.point.poison) {
+		character->factor.defense.point.poison +=
+			modifier * item->factor.defense.point.poison;
+		character->update_flags |= AP_FACTORS_BIT_DEFENSE;
+	}
+	if (item->factor.defense.point.lightning) {
+		character->factor.defense.point.lightning +=
+			modifier * item->factor.defense.point.lightning;
+		character->update_flags |= AP_FACTORS_BIT_DEFENSE;
+	}
+	if (item->factor.defense.point.ice) {
+		character->factor.defense.point.ice +=
+			modifier * item->factor.defense.point.ice;
+		character->update_flags |= AP_FACTORS_BIT_DEFENSE;
+	}
+	if (item->factor.char_status.con) {
+		character->factor.char_status.con += modifier * item->factor.char_status.con;
+		character->update_flags |= AP_FACTORS_BIT_CHAR_STATUS;
+	}
+	if (item->factor.char_status.str) {
+		character->factor.char_status.str += modifier * item->factor.char_status.str;
+		character->update_flags |= AP_FACTORS_BIT_CHAR_STATUS;
+	}
+	if (item->factor.char_status.intel) {
+		character->factor.char_status.intel += modifier * item->factor.char_status.intel;
+		character->update_flags |= AP_FACTORS_BIT_CHAR_STATUS;
+	}
+	if (item->factor.char_status.agi) {
+		character->factor.char_status.agi += modifier * item->factor.char_status.agi;
+		character->update_flags |= AP_FACTORS_BIT_CHAR_STATUS;
+	}
+	if (item->factor.char_status.wis) {
+		character->factor.char_status.wis += modifier * item->factor.char_status.wis;
+		character->update_flags |= AP_FACTORS_BIT_CHAR_STATUS;
+	}
+	for (i = 0; i < item->option_count; i++)
+		ap_item_apply_option(mod, character, item->options[i], modifier);
+	applylinkoptions(mod, character, item, item->current_link_level, modifier);
+	cb.character = character;
+	cb.item = item;
+	cb.modifier = modifier;
+	ap_module_enum_callback(mod, AP_ITEM_CB_APPLY_STATS, &cb);
+}
+
 static void addequipstats(
 	struct ap_item_module * mod,
 	struct ap_character * c,
 	struct ap_item * item)
 {
-	/** \todo
-	 * Add item convert stats. */
 	/** \todo
 	 * Add skill plus. */
 }
@@ -375,8 +388,6 @@ static void removeequipstats(
 	struct ap_character * c,
 	struct ap_item * item)
 {
-	/** \todo
-	 * Remove item convert stats. */
 	/** \todo
 	 * Remove skill plus. */
 }
@@ -3123,12 +3134,12 @@ boolean ap_item_check_use_restriction(
 		return FALSE;
 	if (temp->type != AP_ITEM_TYPE_USABLE)
 		return FALSE;
-	if (c->char_status.level < r->char_status.level) {
+	if (ap_character_get_level(character) < r->char_status.level) {
 		/* Character level is too low. */
 		return FALSE;
 	}
 	if (r->char_status.limited_level &&
-		c->char_status.level > r->char_status.limited_level) {
+		ap_character_get_level(character) > r->char_status.limited_level) {
 		/* Character level is too high. */
 		return FALSE;
 	}
@@ -3162,12 +3173,12 @@ boolean ap_item_check_equip_restriction(
 		/* Not an equipment. */
 		return FALSE;
 	}
-	if (c->char_status.level < r->char_status.level) {
+	if (ap_character_get_level(character) < r->char_status.level) {
 		/* Character level is too low. */
 		return FALSE;
 	}
 	if (r->char_status.limited_level &&
-		c->char_status.level > r->char_status.limited_level) {
+		ap_character_get_level(character) > r->char_status.limited_level) {
 		/* Character level is too high. */
 		return FALSE;
 	}
@@ -3382,7 +3393,7 @@ boolean ap_item_equip(
 	item->equip_tick = ap_tick_get(mod->ap_tick);
 	if (!(equip_flags & AP_ITEM_EQUIP_WITH_NO_STATS)) {
 		item->current_link_level = ap_character_get_level(character);
-		equipunequip(mod, character, item, 1);
+		applystats(mod, character, item, 1);
 		addequipstats(mod, character, item);
 	}
 	cb.character = character;
@@ -3423,7 +3434,7 @@ boolean ap_item_unequip(
 		ap_item_remove_from_grid(mod, character, item);
 	}
 	if (!(item->equip_flags & AP_ITEM_EQUIP_WITH_NO_STATS)) {
-		equipunequip(mod, character, item, -1);
+		applystats(mod, character, item, -1);
 		removeequipstats(mod, character, item);
 	}
 	cb.character = character;
@@ -3674,6 +3685,42 @@ void ap_item_apply_option(
 	if (skilldata->critical_resistance)
 		combateffect->critical_hit_resistance += modifier * skilldata->critical_resistance;
 	skillattachment->sync_combat_effect_arg = TRUE;
+}
+
+void ap_item_sync_with_character_level(
+	struct ap_item_module * mod,
+	struct ap_character * character)
+{
+	struct ap_grid * grid = ap_item_get_character_grid(mod, character, 
+		AP_ITEM_STATUS_EQUIP);
+	uint32_t i;
+	uint32_t level = ap_character_get_level(character);
+	for (i = 0; i < grid->grid_count; i++) {
+		struct ap_item * item = ap_grid_get_object_by_index(grid, i);
+		boolean canequip;
+		if (!item)
+			continue;
+		canequip = ap_item_check_equip_restriction(mod, item, character);
+		if (CHECK_BIT(item->equip_flags, AP_ITEM_EQUIP_WITH_NO_STATS)) {
+			if (canequip) {
+				CLEAR_BIT(item->equip_flags, AP_ITEM_EQUIP_WITH_NO_STATS);
+				item->current_link_level = level;
+				applystats(mod, character, item, 1);
+				addequipstats(mod, character, item);
+			}
+		}
+		else if (!canequip) {
+			SET_BIT(item->equip_flags, AP_ITEM_EQUIP_WITH_NO_STATS);
+			applystats(mod, character, item, -1);
+			removeequipstats(mod, character, item);
+		}
+		else if (item->current_link_level != level) {
+			applylinkoptions(mod, character, item, item->current_link_level, -1);
+			item->current_link_level = level;
+			applylinkoptions(mod, character, item, item->current_link_level, 1);
+		}
+	}
+	ap_character_update_factor(mod->ap_character, character, 0);
 }
 
 struct ap_grid * ap_item_get_character_grid(

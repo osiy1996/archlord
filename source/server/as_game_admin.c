@@ -30,6 +30,7 @@
 #include "public/ap_tick.h"
 #include "public/ap_ui_status.h"
 
+#include "server/as_event_binding.h"
 #include "server/as_guild.h"
 #include "server/as_item.h"
 #include "server/as_login.h"
@@ -82,6 +83,7 @@ struct as_game_admin_module {
 	struct ap_ui_status_module * ap_ui_status;
 	struct as_account_module * as_account;
 	struct as_character_module * as_character;
+	struct as_event_binding_module * as_event_binding;
 	struct as_guild_module * as_guild;
 	struct as_item_module * as_item;
 	struct as_login_module * as_login;
@@ -306,6 +308,7 @@ static boolean handle_ac_character(
 			TRACE("Takeover player character (%s).", cname);
 		}
 		else {
+			struct as_map_region * spawnregion;
 			accountid = as_character_get_account_id(mod->as_character, cname);
 			if (!accountid)
 				return FALSE;
@@ -329,6 +332,14 @@ static boolean handle_ac_character(
 			}
 			dcsameaccount(mod, account);
 			c = as_character_from_db(mod->as_character, cdb);
+			spawnregion = as_map_get_region_at(mod->as_map, &c->pos);
+			if (spawnregion && spawnregion->temp->level_limit) {
+				/* Cannot login at level limited regions (i.e. CF). */
+				const struct au_pos * respawn = as_event_binding_find_by_type(mod->as_event_binding,
+					c->bound_region_id, AP_EVENT_BINDING_TYPE_RESURRECTION, NULL);
+				if (respawn)
+					c->pos = *respawn;
+			}
 			c->bank_gold = account->bank_gold;
 			pc = as_player_get_character_ad(mod->as_player, c);
 			pc->conn = conn;
@@ -604,6 +615,7 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_ui_status, AP_UI_STATUS_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_account, AS_ACCOUNT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_character, AS_CHARACTER_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_event_binding, AS_EVENT_BINDING_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_guild, AS_GUILD_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_item, AS_ITEM_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_login, AS_LOGIN_MODULE_NAME);

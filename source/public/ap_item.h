@@ -888,6 +888,7 @@ enum ap_item_callback_id {
 	AP_ITEM_CB_END_READ_IMPORT,
 	AP_ITEM_CB_EQUIP,
 	AP_ITEM_CB_UNEQUIP,
+	AP_ITEM_CB_APPLY_STATS,
 };
 
 struct ap_item_lottery_item {
@@ -1119,6 +1120,13 @@ struct ap_item_cb_equip {
 struct ap_item_cb_unequip {
 	struct ap_character * character;
 	struct ap_item * item;
+};
+
+/** \brief AP_ITEM_CB_APPLY_STATS callback data. */
+struct ap_item_cb_apply_stats {
+	struct ap_character * character;
+	struct ap_item * item;
+	int modifier;
 };
 
 struct ap_item_module * ap_item_create_module();
@@ -1407,6 +1415,10 @@ void ap_item_apply_option(
 	struct ap_character * c, 
 	const struct ap_item_option_template * option,
 	int modifier);
+
+void ap_item_sync_with_character_level(
+	struct ap_item_module * mod,
+	struct ap_character * character);
 
 boolean ap_item_on_receive(
 	struct ap_item_module * mod,

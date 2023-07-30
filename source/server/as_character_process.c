@@ -622,10 +622,23 @@ static boolean cbchargainexperience(
 	struct ap_character_cb_gain_experience * cb)
 {
 	struct ap_character * character = cb->character;
-	uint64_t currentexp = ap_factors_get_current_exp(&character->factor);
-	uint64_t maxexp = ap_factors_get_max_exp(&character->factor);
-	uint32_t currentlevel = ap_character_get_level(character);
-	uint32_t nextlevel = currentlevel;
+	uint64_t currentexp;
+	uint64_t maxexp;
+	uint32_t currentlevel;
+	uint32_t nextlevel;
+	struct as_map_region * region;
+	if (CHECK_BIT(character->special_status, AP_CHARACTER_SPECIAL_STATUS_LEVELLIMIT))
+		return TRUE;
+	region = as_map_get_character_ad(mod->as_map, character)->region;
+	if (region && 
+		region->temp->level_limit && 
+		region->temp->level_limit <= ap_character_get_absolute_level(character)) {
+		return TRUE;
+	}
+	currentexp = ap_factors_get_current_exp(&character->factor);
+	maxexp = ap_factors_get_max_exp(&character->factor);
+	currentlevel = ap_character_get_level(character);
+	nextlevel = currentlevel;
 	character->factor.char_point.bonus_exp = (uint32_t)(cb->amount * 100);
 	ap_character_make_update_packet(mod->ap_character, character, 
 		AP_FACTORS_BIT_EXP | AP_FACTORS_BIT_BONUS_EXP);

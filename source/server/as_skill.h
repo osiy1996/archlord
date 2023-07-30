@@ -112,6 +112,14 @@ void as_skill_reset_all_buffs(
 	struct as_skill_module * mod,
 	struct ap_character * character);
 
+/**
+ * Different from as_skill_reset_all_buffs, this function 
+ * will not reset skill cooldowns.
+ */
+void as_skill_remove_all_buffs(
+	struct as_skill_module * mod,
+	struct ap_character * character);
+
 void as_skill_clear_special_status_buffs(
 	struct as_skill_module * mod,
 	struct ap_character * character,

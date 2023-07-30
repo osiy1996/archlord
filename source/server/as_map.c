@@ -671,8 +671,6 @@ static void onchangeregion(
 	uint32_t count;
 	if (!ap_character_is_pc(c))
 		return;
-	/* TODO: If region is a safe area and there is a valid 
-	 * binding, update character binding. */
 	if (prev) {
 		count = vec_count(prev->npcs);
 		for (i = 0; i < count; i++) {
@@ -680,6 +678,12 @@ static void onchangeregion(
 			struct as_map_character * m = as_map_get_character_ad(mod, npc);
 			as_player_send_custom_packet(mod->as_player, c, m->npc_remove_packet, 
 				m->npc_remove_packet_len);
+		}
+		if (CHECK_BIT(c->special_status, AP_CHARACTER_SPECIAL_STATUS_LEVELLIMIT)) {
+			ap_character_set_level(mod->ap_character, c, 
+				ap_character_get_absolute_level(c));
+			CLEAR_BIT(c->special_status, AP_CHARACTER_SPECIAL_STATUS_LEVELLIMIT);
+			ap_item_sync_with_character_level(mod->ap_item, c);
 		}
 	}
 	if (next) {
@@ -692,6 +696,14 @@ static void onchangeregion(
 		}
 		if (next->temp->type.props.safety_type == AP_MAP_ST_SAFE)
 			c->bound_region_id = next->temp->id;
+		if (next->temp->level_limit && 
+			ap_character_get_absolute_level(c) > next->temp->level_limit) {
+			assert(!(c->special_status & AP_CHARACTER_SPECIAL_STATUS_LEVELLIMIT));
+			c->factor.char_status.limited_level = ap_character_get_level(c);
+			SET_BIT(c->special_status, AP_CHARACTER_SPECIAL_STATUS_LEVELLIMIT);
+			ap_character_set_level(mod->ap_character, c, next->temp->level_limit);
+			ap_item_sync_with_character_level(mod->ap_item, c);
+		}
 	}
 }
 

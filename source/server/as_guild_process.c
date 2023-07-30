@@ -53,7 +53,7 @@ static boolean cbreceive(
 			as_player_send_packet(mod->as_player, c);
 			break;
 		}
-		if (c->factor.char_status.level < 20) {
+		if (ap_character_get_absolute_level(c) < 20) {
 			ap_guild_make_system_message_packet(mod->ap_guild, 
 				AP_GUILD_SYSTEM_CODE_NEED_MORE_LEVEL, 
 				NULL, NULL, NULL, NULL);
@@ -98,7 +98,7 @@ static boolean cbreceive(
 		assert(m != NULL);
 		m->rank = AP_GUILD_MEMBER_RANK_MASTER;
 		m->join_date = time(NULL);
-		m->level = c->factor.char_status.level;
+		m->level = ap_character_get_absolute_level(c);
 		m->tid = c->tid;
 		m->status = AP_GUILD_MEMBER_STATUS_ONLINE;
 		gc->guild = g;
@@ -263,7 +263,7 @@ static boolean cbreceive(
 			}
 			m->rank = rank;
 			m->join_date = time(NULL);
-			m->level = c->factor.char_status.level;
+			m->level = ap_character_get_absolute_level(c);
 			m->tid = c->tid;
 			m->status = AP_GUILD_MEMBER_STATUS_ONLINE;
 			gc->guild = g;
