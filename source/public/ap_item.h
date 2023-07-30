@@ -561,6 +561,7 @@ enum ap_item_bound_type {
 enum ap_item_equip_flag_bits {
 	AP_ITEM_EQUIP_BY_ITEM_IN_USE = 0x01,
 	AP_ITEM_EQUIP_WITH_NO_STATS = 0x02,
+	AP_ITEM_EQUIP_SILENT = 0x04,
 };
 
 /** \brief Character factor adjustment setting. */
@@ -1033,6 +1034,7 @@ struct ap_item {
 	struct ap_item_option_template * options[AP_ITEM_OPTION_MAX_COUNT];
 	uint16_t rune_option_tid[AP_ITEM_OPTION_MAX_RUNE_COUNT];
 	struct ap_item_option_template * rune_options[AP_ITEM_OPTION_MAX_RUNE_COUNT];
+	uint32_t current_link_level;
 	uint16_t skill_plus_tid[AP_ITEM_MAX_SKILL_PLUS_EFFECT];
 	boolean in_use;
 	uint64_t remain_time;

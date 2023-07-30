@@ -79,6 +79,18 @@ static boolean cbcharencode(
 	return result;
 }
 
+static boolean cbcharcopy(
+	struct as_service_npc_module * mod, 
+	struct as_character_cb_copy * cb)
+{
+	const struct as_service_npc_character_database_attachment * src = 
+		as_service_npc_get_character_database_attachment(mod, cb->src);
+	struct as_service_npc_character_database_attachment * dst = 
+		as_service_npc_get_character_database_attachment(mod, cb->dst);
+	memcpy(dst, src, sizeof(*src));
+	return TRUE;
+}
+
 static boolean onregister(
 	struct as_service_npc_module * mod,
 	struct ap_module_registry * registry)
@@ -97,6 +109,7 @@ static boolean onregister(
 		ERROR("Failed to set character database stream.");
 		return FALSE;
 	}
+	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_COPY, mod, cbcharcopy);
 	return TRUE;
 }
 

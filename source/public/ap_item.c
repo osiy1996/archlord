@@ -154,18 +154,16 @@ static struct ap_item * getprimaryweapon(
 
 static void adjustfactor(struct ap_item_module * mod, struct ap_character * c)
 {
-	struct ap_item * mount = ap_item_get_equipment(mod, c,
-		AP_ITEM_PART_RIDE);
-	struct ap_item * mountweap = ap_item_get_equipment(mod, c,
-		AP_ITEM_PART_LANCER);
+	struct ap_item * mount = ap_item_get_equipment(mod, c, AP_ITEM_PART_RIDE);
+	struct ap_item * mountweap = ap_item_get_equipment(mod, c, AP_ITEM_PART_LANCER);
 	struct ap_item * primaryweap = getprimaryweapon(mod, c);
 	struct ap_item_character * ic = ap_item_get_character(mod, c);
-	if (mount && !(mount->equip_flags & AP_ITEM_EQUIP_WITH_NO_STATS)) {
+	if (mount && !CHECK_BIT(mount->equip_flags, AP_ITEM_EQUIP_WITH_NO_STATS)) {
 		/* Character is mounted, movement speed needs to 
 		 * be adjusted. */
 		ic->factor_adjust_movement = AP_ITEM_CHARACTER_FACTOR_ADJUST_MOUNT;
-		ic->mount_movement = mount->factor.char_status.movement;
-		ic->mount_movement_fast = mount->factor.char_status.movement_fast;
+		ic->mount_movement = mount->temp->run_buff;
+		ic->mount_movement_fast = mount->temp->run_buff;
 		c->update_flags |= AP_FACTORS_BIT_MOVEMENT_SPEED;
 		if (mountweap && !(mountweap->equip_flags & AP_ITEM_EQUIP_WITH_NO_STATS)) {
 			/* Character is mounted, attack stats need to 
@@ -226,7 +224,7 @@ static void equipunequip(
 	struct ap_item * item,
 	int modifier)
 {
-	uint32_t level = ap_character_get_level(c);
+	uint32_t level = item->current_link_level;
 	uint32_t i;
 	if (item->temp->equip.kind == AP_ITEM_EQUIP_KIND_WEAPON ||
 		item->temp->equip.part == AP_ITEM_PART_RIDE) {
@@ -3383,6 +3381,7 @@ boolean ap_item_equip(
 	item->equip_flags = equip_flags;
 	item->equip_tick = ap_tick_get(mod->ap_tick);
 	if (!(equip_flags & AP_ITEM_EQUIP_WITH_NO_STATS)) {
+		item->current_link_level = ap_character_get_level(character);
 		equipunequip(mod, character, item, 1);
 		addequipstats(mod, character, item);
 	}

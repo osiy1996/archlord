@@ -161,6 +161,18 @@ static boolean cbreflectchar(
 	return TRUE;
 }
 
+static boolean cbcharcopy(
+	struct as_ui_status_module * mod,
+	struct as_character_cb_copy * cb)
+{
+	const struct as_ui_status_character_db * src = 
+		as_ui_status_get_character_db(mod, cb->src);
+	struct as_ui_status_character_db * dst = 
+		as_ui_status_get_character_db(mod, cb->dst);
+	memcpy(dst, src, sizeof(*src));
+	return TRUE;
+}
+
 static boolean onregister(
 	struct as_ui_status_module * mod,
 	struct ap_module_registry * registry)
@@ -179,10 +191,9 @@ static boolean onregister(
 		ERROR("Failed to set character database stream.");
 		return FALSE;
 	}
-	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_LOAD, 
-		mod, cbloadchar);
-	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_REFLECT, 
-		mod, cbreflectchar);
+	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_LOAD, mod, cbloadchar);
+	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_REFLECT, mod, cbreflectchar);
+	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_COPY, mod, cbcharcopy);
 	return TRUE;
 }
 

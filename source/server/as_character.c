@@ -608,6 +608,51 @@ boolean as_character_encode(
 	return TRUE;
 }
 
+struct as_character_db * as_character_copy_database(
+	struct as_character_module * mod,
+	struct as_character_db * character)
+{
+	struct as_character_cb_copy cb = { 0 };
+	struct as_character_db * copy = as_character_new_db(mod);
+	size_t index;
+	struct as_character_rng_state * rng = NULL;
+	memcpy(copy->name, character->name, sizeof(copy->name));
+	copy->creation_date = character->creation_date;
+	copy->status = character->status;
+	copy->slot = character->slot;
+	copy->tid = character->tid;
+	copy->level = character->level;
+	copy->inventory_gold = character->inventory_gold;
+	copy->charisma = character->charisma;
+	copy->hp = character->hp;
+	copy->mp = character->mp;
+	copy->exp = character->exp;
+	copy->hair = character->hair;
+	copy->face = character->face;
+	memcpy(copy->nickname, character->nickname, sizeof(copy->nickname));
+	copy->pvp_win = character->pvp_win;
+	copy->pvp_lose = character->pvp_lose;
+	copy->villain_points = character->villain_points;
+	copy->criminal_status = character->criminal_status;
+	copy->criminal_duration = character->criminal_duration;
+	copy->rogue_duration = character->rogue_duration;
+	copy->bound_region_id = character->bound_region_id;
+	copy->position = character->position;
+	copy->unique_acc_drop_bonus = character->unique_acc_drop_bonus;
+	while (ap_admin_iterate_id(&character->rng_state_admin, &index, &rng)) {
+		struct as_character_rng_state * rngcopy = ap_admin_add_object_by_id(
+			&copy->rng_state_admin, rng->guid);
+		if (rngcopy) {
+			rngcopy->guid = rng->guid;
+			rngcopy->state = rng->state;
+		}
+	}
+	cb.src = character;
+	cb.dst = copy;
+	ap_module_enum_callback(mod, AS_CHARACTER_CB_COPY, &cb);
+	return copy;
+}
+
 boolean as_character_reserve_name(
 	struct as_character_module * mod,
 	const char * character_name,

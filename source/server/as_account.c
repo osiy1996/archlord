@@ -935,6 +935,33 @@ void as_account_reference(struct as_account * account)
 	account->refcount++;
 }
 
+struct as_account * as_account_copy_detached(
+	struct as_account_module * mod,
+	struct as_account * account)
+{
+	struct as_account_cb_copy cb = { 0 };
+	struct as_account * copy = as_account_new(mod);
+	uint32_t i;
+	memcpy(copy->account_id, account->account_id, sizeof(copy->account_id));
+	memcpy(copy->pw_salt, account->pw_salt, sizeof(copy->pw_salt));
+	memcpy(copy->pw_hash, account->pw_hash, sizeof(copy->pw_hash));
+	memcpy(copy->email, account->email, sizeof(copy->email));
+	copy->creation_date = account->creation_date;
+	copy->flags = account->flags;
+	copy->extra_bank_slots = account->extra_bank_slots;
+	copy->bank_gold = account->bank_gold;
+	copy->chantra_coins = account->chantra_coins;
+	copy->character_count = account->character_count;
+	for (i = 0; i < account->character_count; i++) {
+		copy->characters[i] = as_character_copy_database(mod->as_character, 
+			account->characters[i]);
+	}
+	cb.src = account;
+	cb.dst = copy;
+	ap_module_enum_callback(mod, AS_ACCOUNT_CB_COPY, &cb);
+	return copy;
+}
+
 void as_account_release(struct as_account * account)
 {
 	assert(account->refcount != 0);

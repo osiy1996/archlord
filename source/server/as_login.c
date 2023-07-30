@@ -112,7 +112,7 @@ static void dcsameaccount(
 	while (as_server_iterate_conn(mod->as_server, AS_SERVER_LOGIN, &index, &c)) {
 		struct as_login_conn_ad * ad = 
 			as_login_get_attached_conn_data(mod, c);
-		if (conn != c && account == ad->account) {
+		if (conn != c && strcmp(account->account_id, ad->account->account_id) == 0) {
 			as_server_disconnect(mod->as_server, c);
 			index = 0;
 		}
@@ -140,7 +140,7 @@ static void handle_login(
 	}
 	INFO("Login: AccountID = %s", account->account_id);
 	conn_login->stage = AS_LOGIN_STAGE_LOGGED_IN;
-	conn_login->account = account;
+	conn_login->account = as_account_copy_detached(mod->as_account, account);
 	as_account_reference(account);
 	ap_login_make_sign_on_packet(mod->ap_login, account->account_id, NULL);
 	as_server_send_packet(mod->as_server, conn);
@@ -406,7 +406,14 @@ static boolean cbdisconnect(
 	}
 	ad->character_count = 0;
 	if (ad->account) {
-		as_account_release(ad->account);
+		/* When account is loaded at login (either from cached or databased), 
+		 * its refcount is increased to retain it in cache as user enters the game.
+		 * 
+		 * It is expected at this point the account should remain in cache. */
+		struct as_account * cached = as_account_load_from_cache(mod->as_account,
+			ad->account->account_id, FALSE);
+		assert(cached != NULL);
+		as_account_release(cached);
 		ad->account = NULL;
 	}
 	return TRUE;

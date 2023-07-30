@@ -1323,6 +1323,10 @@ void as_map_broadcast(struct as_map_module * mod, struct ap_character * characte
 	uint32_t count = 0;
 	uint32_t i;
 	struct as_map_character * mc = as_map_get_character_ad(mod, character);
+	if (!mc->sector) {
+		/* Character has not been added to the world. */
+		return;
+	}
 	if (mc->sync_instance_id) {
 		as_map_get_characters_in_instance(mod, &character->pos,
 			mc->sync_instance_id, &mod->character_list);

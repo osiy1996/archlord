@@ -25,6 +25,7 @@
 #include "public/ap_party.h"
 #include "public/ap_pvp.h"
 #include "public/ap_refinery.h"
+#include "public/ap_ride.h"
 #include "public/ap_skill.h"
 #include "public/ap_tick.h"
 #include "public/ap_ui_status.h"
@@ -75,6 +76,7 @@ struct as_game_admin_module {
 	struct ap_party_module * ap_party;
 	struct ap_pvp_module * ap_pvp;
 	struct ap_refinery_module * ap_refinery;
+	struct ap_ride_module * ap_ride;
 	struct ap_skill_module * ap_skill;
 	struct ap_tick_module * ap_tick;
 	struct ap_ui_status_module * ap_ui_status;
@@ -373,6 +375,7 @@ static boolean handle_ac_character(
 	case AC_CHARACTER_PACKET_LOADING_COMPLETE: {
 		struct ap_character * c;
 		struct ap_guild_character * gc;
+		struct ap_item * mount;
 		if (ad->stage != STAGE_AWAIT_ENTER_GAME)
 			return FALSE;
 		ad->stage = STAGE_IN_GAME;
@@ -413,6 +416,12 @@ static boolean handle_ac_character(
 		if (ap_tick_get(mod->ap_tick) >= c->combat_end_tick) {
 			ap_character_special_status_on(mod->ap_character, c, 
 				AP_CHARACTER_SPECIAL_STATUS_INVINCIBLE, 10000);
+		}
+		mount = ap_item_get_equipment(mod->ap_item, c, AP_ITEM_PART_RIDE);
+		if (mount) {
+			ap_ride_make_packet(mod->ap_ride, AP_RIDE_PACKET_RIDE_ACK, 
+				c->id, mount->id);
+			as_player_send_packet(mod->as_player, c);
 		}
 		break;
 	}
@@ -589,6 +598,7 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_party, AP_PARTY_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_pvp, AP_PVP_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_refinery, AP_REFINERY_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_ride, AP_RIDE_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_skill, AP_SKILL_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_tick, AP_TICK_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_ui_status, AP_UI_STATUS_MODULE_NAME);

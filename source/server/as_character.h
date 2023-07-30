@@ -73,6 +73,8 @@ enum as_character_callback_id {
 	/** \brief Reflect runtime character object 
 	 *         on database state. */
 	AS_CHARACTER_CB_REFLECT,
+	/** \brief Copy database object. */
+	AS_CHARACTER_CB_COPY,
 };
 
 struct as_character_rng_state {
@@ -133,9 +135,7 @@ struct as_character {
 	struct as_character_id_link * id_link;
 };
 
-/**
- * \brief AS_CHARACTER_CB_DECODE callback data.
- */
+/** \brief AS_CHARACTER_CB_DECODE callback data. */
 struct as_character_cb_decode {
 	struct as_character_db * character;
 	struct as_database_codec * codec;
@@ -143,28 +143,28 @@ struct as_character_cb_decode {
 	uint32_t field_id;
 };
 
-/**
- * \brief AS_CHARACTER_CB_ENCODE callback data.
- */
+/** \brief AS_CHARACTER_CB_ENCODE callback data. */
 struct as_character_cb_encode {
 	struct as_character_db * character;
 	struct as_database_codec * codec;
 };
 
-/**
- * \brief AS_CHARACTER_CB_LOAD callback data.
- */
+/** \brief AS_CHARACTER_CB_LOAD callback data. */
 struct as_character_cb_load {
 	struct ap_character * character;
 	struct as_character_db * db;
 };
 
-/**
- * \brief AS_CHARACTER_CB_REFLECT callback data.
- */
+/** \brief AS_CHARACTER_CB_REFLECT callback data. */
 struct as_character_cb_reflect {
 	struct ap_character * character;
 	struct as_character_db * db;
+};
+
+/** \brief AS_CHARACTER_CB_COPY callback data. */
+struct as_character_cb_copy {
+	struct as_character_db * src;
+	struct as_character_db * dst;
 };
 
 struct as_character_module * as_character_create_module();
@@ -210,6 +210,10 @@ struct as_character_db * as_character_decode(
 boolean as_character_encode(
 	struct as_character_module * mod,
 	struct as_database_codec * codec,
+	struct as_character_db * character);
+
+struct as_character_db * as_character_copy_database(
+	struct as_character_module * mod,
 	struct as_character_db * character);
 
 boolean as_character_reserve_name(

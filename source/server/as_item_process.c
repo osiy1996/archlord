@@ -103,8 +103,6 @@ static boolean equipavatar(
 			ap_item_free(mod->ap_item, avatarpart);
 			continue;
 		}
-		ap_item_make_add_packet(mod->ap_item, avatarpart);
-		as_map_broadcast(mod->as_map, character);
 	}
 	return TRUE;
 }
@@ -124,9 +122,6 @@ void unequipavatar(
 			if (!ap_item_unequip(mod->ap_item, character, avatarpart)) {
 				assert(0);
 			}
-			ap_item_make_remove_packet(mod->ap_item, avatarpart);
-			as_map_broadcast(mod->as_map, character);
-			ap_item_unequip(mod->ap_item, character, avatarpart);
 			ap_item_free(mod->ap_item, avatarpart);
 		}
 	}
@@ -248,17 +243,9 @@ static boolean cbloadchar(
 			ap_item_free(mod->ap_item, item);
 			continue;
 		}
-		if (!ap_grid_is_free(grid, idb->layer, idb->row, 
-				idb->column)) {
-			assert(0);
-			ERROR("Grid is already occupied by another item (character = %s, item_tid = %u, item_status = %d).",
-				cb->character->name, idb->tid, idb->status);
-			ap_item_free(mod->ap_item, item);
-			continue;
-		}
 		item->character_id = cb->character->id;
 		if (item->status == AP_ITEM_STATUS_EQUIP) {
-			uint32_t flags = 0;
+			uint32_t flags = AP_ITEM_EQUIP_SILENT;
 			if (!ap_item_check_equip_restriction(mod->ap_item, item, cb->character))
 				flags |= AP_ITEM_EQUIP_WITH_NO_STATS;
 			if (!ap_item_equip(mod->ap_item, cb->character, item, flags)) {
@@ -266,7 +253,18 @@ static boolean cbloadchar(
 					cb->character->name, idb->tid, 
 					item->temp->name);
 				ap_item_free(mod->ap_item, item);
+				memmove(&db->items[i], &db->items[i + 1], 
+					(--db->item_count - i) * sizeof(db->items[0]));
+				i--;
+				continue;
 			}
+		}
+		else if (!ap_grid_is_free(grid, idb->layer, idb->row, idb->column)) {
+			ERROR("Grid is already occupied by another item (character = %s, item_tid = %u, item_status = %d).",
+				cb->character->name, idb->tid, idb->status);
+			assert(0);
+			ap_item_free(mod->ap_item, item);
+			continue;
 		}
 		else {
 			ap_grid_add_item(grid, idb->layer, idb->row, 
@@ -1014,13 +1012,8 @@ static boolean cbreceive(
 				break;
 			}
 			/* Try to unequip current equipment. */
-			for (i = 0; i < count; i++) {
+			for (i = 0; i < count; i++)
 				result &= ap_item_unequip(mod->ap_item, c, unequip[i]);
-				ap_item_make_update_packet(mod->ap_item, unequip[i], 
-					AP_ITEM_UPDATE_STATUS | 
-					AP_ITEM_UPDATE_GRID_POS);
-				as_map_broadcast(mod->as_map, c);
-			}
 			if (!result)
 				break;
 			prevgrid = ap_item_get_character_grid(mod->ap_item, c, item->status);
@@ -1032,14 +1025,7 @@ static boolean cbreceive(
 				prevpos[AP_ITEM_GRID_POS_TAB],
 				prevpos[AP_ITEM_GRID_POS_ROW],
 				prevpos[AP_ITEM_GRID_POS_COLUMN]);
-			ap_item_make_update_packet(mod->ap_item, item, 
-				AP_ITEM_UPDATE_STATUS | AP_ITEM_UPDATE_GRID_POS);
-			as_player_send_packet(mod->as_player, c);
 			ap_character_update_factor(mod->ap_character, c, 0);
-			ap_item_make_add_packet(mod->ap_item, item);
-			as_map_broadcast_with_exception(mod->as_map, c, c);
-			ap_item_convert_make_add_packet(mod->ap_item_convert, item);
-			as_map_broadcast_with_exception(mod->as_map, c, c);
 		}
 		else if (item->status == AP_ITEM_STATUS_EQUIP &&
 			(cb->status == AP_ITEM_STATUS_INVENTORY ||
@@ -1052,16 +1038,9 @@ static boolean cbreceive(
 			if (other) {
 				if (!ap_item_unequip(mod->ap_item, c, other))
 					break;
-				ap_item_make_update_packet(mod->ap_item, other, 
-					AP_ITEM_UPDATE_STATUS | 
-					AP_ITEM_UPDATE_GRID_POS);
-				as_map_broadcast(mod->as_map, c);
 			}
 			if (!ap_item_unequip(mod->ap_item, c, item))
 				break;
-			ap_item_make_update_packet(mod->ap_item, item, 
-				AP_ITEM_UPDATE_STATUS | AP_ITEM_UPDATE_GRID_POS);
-			as_map_broadcast(mod->as_map, c);
 			ap_character_update_factor(mod->ap_character, c, 0);
 		}
 		else if (item->status == AP_ITEM_STATUS_BANK && 
@@ -1247,6 +1226,48 @@ static boolean cbreceive(
 	return TRUE;
 }
 
+static boolean cbitemequip(
+	struct as_item_process_module * mod,
+	struct ap_item_cb_equip * cb)
+{
+	struct ap_character * character = cb->character;
+	struct ap_item * item = cb->item;
+	if (CHECK_BIT(item->equip_flags, AP_ITEM_EQUIP_SILENT))
+		return TRUE;
+	if (CHECK_BIT(item->equip_flags, AP_ITEM_EQUIP_BY_ITEM_IN_USE)) {
+		ap_item_make_add_packet(mod->ap_item, item);
+		as_map_broadcast(mod->as_map, character);
+	}
+	else {
+		ap_item_make_update_packet(mod->ap_item, item, 
+			AP_ITEM_UPDATE_STATUS | AP_ITEM_UPDATE_GRID_POS);
+		as_player_send_packet(mod->as_player, character);
+		ap_item_make_add_packet(mod->ap_item, item);
+		as_map_broadcast_with_exception(mod->as_map, character, character);
+		ap_item_convert_make_add_packet(mod->ap_item_convert, item);
+		as_map_broadcast_with_exception(mod->as_map, character, character);
+	}
+	return TRUE;
+}
+
+static boolean cbitemunequip(
+	struct as_item_process_module * mod,
+	struct ap_item_cb_unequip * cb)
+{
+	struct ap_character * character = cb->character;
+	struct ap_item * item = cb->item;
+	if (CHECK_BIT(item->equip_flags, AP_ITEM_EQUIP_BY_ITEM_IN_USE)) {
+		ap_item_make_remove_packet(mod->ap_item, item);
+		as_map_broadcast(mod->as_map, character);
+	}
+	else {
+		ap_item_make_update_packet(mod->ap_item, item, 
+			AP_ITEM_UPDATE_STATUS | AP_ITEM_UPDATE_GRID_POS);
+		as_map_broadcast(mod->as_map, character);
+	}
+	return TRUE;
+}
+
 static boolean onregister(
 	struct as_item_process_module * mod,
 	struct ap_module_registry * registry)
@@ -1271,6 +1292,8 @@ static boolean onregister(
 	ap_character_add_callback(mod->ap_character, AP_CHARACTER_CB_PROCESS, mod, cbcharprocess);
 	ap_skill_add_callback(mod->ap_skill, AP_SKILL_CB_REMOVE_BUFF, mod, cbremovebuff);
 	ap_item_add_callback(mod->ap_item, AP_ITEM_CB_RECEIVE, mod, cbreceive);
+	ap_item_add_callback(mod->ap_item, AP_ITEM_CB_EQUIP, mod, cbitemequip);
+	ap_item_add_callback(mod->ap_item, AP_ITEM_CB_UNEQUIP, mod, cbitemunequip);
 	ap_chat_add_command(mod->ap_chat, "/create", mod, cbchatcreate);
 	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_LOAD, mod, cbloadchar);
 	return TRUE;

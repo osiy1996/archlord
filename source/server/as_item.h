@@ -68,6 +68,8 @@ enum as_item_callback_id {
 	AS_ITEM_CB_LOAD,
 	/** \brief Reflect item object on database state. */
 	AS_ITEM_CB_REFLECT,
+	/** \brief Copy item database object. */
+	AS_ITEM_CB_COPY,
 };
 
 struct as_item_db {
@@ -157,6 +159,12 @@ struct as_item_cb_reflect {
 	struct as_item_db * db;
 };
 
+/** \brief AS_ITEM_CB_COPY callback data. */
+struct as_item_cb_copy {
+	struct as_item_db * src;
+	struct as_item_db * dst;
+};
+
 struct as_item_module * as_item_create_module();
 
 void as_item_add_callback(
@@ -220,6 +228,10 @@ struct ap_item * as_item_from_db(
 	struct as_item_db * db);
 
 void as_item_reflect_db(struct as_item_module * mod, struct ap_item * item);
+
+struct as_item_db * as_item_copy_database(
+	struct as_item_module * mod, 
+	struct as_item_db * src);
 
 struct as_item * as_item_get(struct as_item_module * mod, struct ap_item * item);
 

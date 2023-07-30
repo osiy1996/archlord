@@ -159,6 +159,16 @@ static boolean cbreflect(
 	return TRUE;
 }
 
+static boolean cbitemcopy(
+	struct as_item_convert_module * mod,
+	struct as_item_cb_copy * cb)
+{
+	struct as_item_convert_db * src = as_item_convert_get_db(mod, cb->src);
+	struct as_item_convert_db * dst = as_item_convert_get_db(mod, cb->dst);
+	memcpy(dst, src, sizeof(*src));
+	return TRUE;
+}
+
 static boolean onregister(
 	struct as_item_convert_module * mod,
 	struct ap_module_registry * registry)
@@ -181,6 +191,7 @@ static boolean onregister(
 		mod, cbinitgen);
 	as_item_add_callback(mod->as_item, AS_ITEM_CB_LOAD, mod, cbload);
 	as_item_add_callback(mod->as_item, AS_ITEM_CB_REFLECT, mod, cbreflect);
+	as_item_add_callback(mod->as_item, AS_ITEM_CB_COPY, mod, cbitemcopy);
 	return TRUE;
 }
 

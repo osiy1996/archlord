@@ -54,6 +54,7 @@ enum as_account_callback_id {
 	AS_ACCOUNT_CB_DECODE,
 	/** \brief Encode database data. */
 	AS_ACCOUNT_CB_ENCODE,
+	AS_ACCOUNT_CB_COPY,
 };
 
 struct as_account {
@@ -111,6 +112,11 @@ struct as_account_cb_decode {
 struct as_account_cb_encode {
 	const struct as_account * account;
 	struct as_database_codec * codec;
+};
+
+struct as_account_cb_copy {
+	struct as_account * src;
+	struct as_account * dst;
 };
 
 struct as_account_module * as_account_create_module();
@@ -174,7 +180,7 @@ void * as_account_load_deferred(
 	as_account_deferred_t callback,
 	size_t user_data_size);
 
-/*
+/**
  * Creates an account in database.
  *
  * After an account is created in database, 
@@ -186,7 +192,7 @@ boolean as_account_create_in_db(
 	PGconn * conn,
 	struct as_account * account);
 
-/*
+/**
  * Cache account id that was created 
  * externally (i.e. in database).
  *
@@ -196,7 +202,7 @@ boolean as_account_create_in_db(
  */
 boolean as_account_cache_id(struct as_account_module * mod, const char * account_id);
 
-/*
+/**
  * Cache account data.
  * 
  * This function will only cache account data.
@@ -213,7 +219,14 @@ boolean as_account_cache(
 
 void as_account_reference(struct as_account * account);
 
-/*
+/** 
+ * Create a copy of the account.
+ */
+struct as_account * as_account_copy_detached(
+	struct as_account_module * mod,
+	const struct as_account * account);
+
+/**
  * Release cached account.
  */
 void as_account_release(struct as_account * account);

@@ -259,6 +259,21 @@ static boolean cbencodeaccount(
 	return result;
 }
 
+static boolean cbaccountcopy(
+	struct as_item_module * mod, 
+	struct as_account_cb_copy * cb)
+{
+	const struct as_item_account_attachment * src = 
+		as_item_get_account_attachment(mod, cb->src);
+	struct as_item_account_attachment * dst = 
+		as_item_get_account_attachment(mod, cb->dst);
+	uint32_t i;
+	dst->item_count = src->item_count;
+	for (i = 0; i < src->item_count; i++)
+		dst->items[i] = as_item_copy_database(mod, src->items[i]);
+	return TRUE;
+}
+
 static boolean cbreflectchar(
 	struct as_item_module * mod, 
 	struct as_character_cb_reflect * cb)
@@ -279,6 +294,19 @@ static boolean cbreflectchar(
 				as_item_reflect_db(mod, item);
 		}
 	}
+	return TRUE;
+}
+
+static boolean cbcharcopy(
+	struct as_item_module * mod, 
+	struct as_character_cb_copy * cb)
+{
+	struct as_item_character_db * src = as_item_get_character_db(mod, cb->src);
+	struct as_item_character_db * dst = as_item_get_character_db(mod, cb->dst);
+	uint32_t i;
+	dst->item_count = src->item_count;
+	for (i = 0; i < src->item_count; i++)
+		dst->items[i] = as_item_copy_database(mod, src->items[i]);
 	return TRUE;
 }
 
@@ -339,6 +367,9 @@ static boolean cbcharupdatefactor(
 		/** \todo 
 		 * Check if character is transformed. */
 		switch (ic->factor_adjust_attack) {
+		case AP_ITEM_CHARACTER_FACTOR_ADJUST_NONE:
+			f->attack.attack_range = c->temp->factor.attack.attack_range;
+			break;
 		case AP_ITEM_CHARACTER_FACTOR_ADJUST_COMBAT:
 			f->attack.attack_range = 
 				ic->combat_weapon_attack_range;
@@ -353,6 +384,9 @@ static boolean cbcharupdatefactor(
 		/** \todo 
 		 * Check if character is transformed. */
 		switch (ic->factor_adjust_attack) {
+		case AP_ITEM_CHARACTER_FACTOR_ADJUST_NONE:
+			f->attack.attack_speed = c->temp->factor.attack.attack_speed;
+			break;
 		case AP_ITEM_CHARACTER_FACTOR_ADJUST_COMBAT:
 			f->attack.attack_speed = (int)(ic->combat_weapon_attack_speed * 
 				fper->attack.attack_speed / 100.0f);
@@ -403,10 +437,10 @@ static boolean onregister(
 		ERROR("Failed to set account database stream.");
 		return FALSE;
 	}
-	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_REFLECT, 
-		mod, cbreflectchar);
-	ap_character_add_callback(mod->ap_character, 
-		AP_CHARACTER_CB_UPDATE_FACTOR, mod, cbcharupdatefactor);
+	ap_character_add_callback(mod->ap_character, AP_CHARACTER_CB_UPDATE_FACTOR, mod, cbcharupdatefactor);
+	as_account_add_callback(mod->as_account, AS_ACCOUNT_CB_COPY, mod, cbaccountcopy);
+	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_REFLECT, mod, cbreflectchar);
+	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_COPY, mod, cbcharcopy);
 	mod->player_session_offset = as_player_attach_data(mod->as_player, 
 		AS_PLAYER_MDI_SESSION, sizeof(struct as_item_player_session_attachment), 
 		mod, NULL, NULL);
@@ -767,6 +801,20 @@ void as_item_reflect_db(struct as_item_module * mod, struct ap_item * item)
 		db->expire_time = item->expire_time;
 	item->update_flags = AP_ITEM_UPDATE_NONE;
 	ap_module_enum_callback(mod, AS_ITEM_CB_REFLECT, &cb);
+}
+
+struct as_item_db * as_item_copy_database(
+	struct as_item_module * mod, 
+	struct as_item_db * src)
+{
+	struct as_item_cb_copy cb = { 0 };
+	struct as_item_db * copy = as_item_new_db(mod);
+	memcpy(copy, src, sizeof(*src));
+	copy->next = NULL;
+	cb.src = src;
+	cb.dst = copy;
+	ap_module_enum_callback(mod, AS_ITEM_CB_COPY, &cb);
+	return copy;
 }
 
 struct as_item * as_item_get(struct as_item_module * mod, struct ap_item * item)

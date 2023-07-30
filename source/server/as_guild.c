@@ -315,6 +315,16 @@ static boolean cbreflectchar(
 	return TRUE;
 }
 
+static boolean cbcharcopy(
+	struct as_guild_module * mod, 
+	struct as_character_cb_copy * cb)
+{
+	struct as_guild_character_db * src = as_guild_get_character_db(mod, cb->src);
+	struct as_guild_character_db * dst = as_guild_get_character_db(mod, cb->dst);
+	memcpy(src, dst, sizeof(*src));
+	return TRUE;
+}
+
 static boolean cbpreprocesschar(
 	struct as_guild_module * mod,
 	struct as_account_cb_preprocess_char * cb)
@@ -661,12 +671,10 @@ static boolean onregister(
 		ERROR("Failed to set character database stream.");
 		return FALSE;
 	}
-	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_LOAD, 
-		mod, cbcharload);
-	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_REFLECT, 
-		mod, cbreflectchar);
-	as_account_add_callback(mod->as_account, AS_ACCOUNT_CB_PREPROCESS_CHARACTER, 
-		mod, cbpreprocesschar);
+	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_LOAD, mod, cbcharload);
+	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_REFLECT, mod, cbreflectchar);
+	as_character_add_callback(mod->as_character, AS_CHARACTER_CB_COPY, mod, cbcharcopy);
+	as_account_add_callback(mod->as_account, AS_ACCOUNT_CB_PREPROCESS_CHARACTER, mod, cbpreprocesschar);
 	as_player_add_callback(mod->as_player, AS_PLAYER_CB_ADD, mod, cbplayeradd);
 	as_player_add_callback(mod->as_player, AS_PLAYER_CB_REMOVE, mod, cbplayerremove);
 	as_database_add_callback(mod->as_database, AS_DATABASE_CB_CONNECT, 
