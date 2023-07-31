@@ -23,6 +23,7 @@
 #include "public/ap_module.h"
 #include "public/ap_optimized_packet2.h"
 #include "public/ap_party.h"
+#include "public/ap_private_trade.h"
 #include "public/ap_pvp.h"
 #include "public/ap_refinery.h"
 #include "public/ap_ride.h"
@@ -75,6 +76,7 @@ struct as_game_admin_module {
 	struct ap_item_convert_module * ap_item_convert;
 	struct ap_optimized_packet2_module * ap_optimized_packet2;
 	struct ap_party_module * ap_party;
+	struct ap_private_trade_module * ap_private_trade;
 	struct ap_pvp_module * ap_pvp;
 	struct ap_refinery_module * ap_refinery;
 	struct ap_ride_module * ap_ride;
@@ -341,6 +343,7 @@ static boolean handle_ac_character(
 					c->pos = *respawn;
 			}
 			c->bank_gold = account->bank_gold;
+			c->chantra_coins = account->chantra_coins;
 			pc = as_player_get_character_ad(mod->as_player, c);
 			pc->conn = conn;
 			pc->account = account;
@@ -406,7 +409,8 @@ static boolean handle_ac_character(
 			AP_FACTORS_BIT_DEFENSE |
 			AP_FACTORS_BIT_SKILL_POINT |
 			AP_FACTORS_BIT_HEROIC_POINT |
-			AP_CHARACTER_BIT_INVENTORY_GOLD, TRUE);
+			AP_CHARACTER_BIT_INVENTORY_GOLD |
+			AP_CHARACTER_BIT_CHANTRA_COINS, TRUE);
 		informbufflist(mod, c);
 		ap_ui_status_make_add_packet(mod->ap_ui_status, c);
 		as_server_send_packet(mod->as_server, conn);
@@ -510,6 +514,9 @@ static boolean cbreceive(struct as_game_admin_module * mod, void * data)
 	case AP_PARTY_MANAGEMENT_PACKET_TYPE:
 		ap_party_on_receive_management(mod->ap_party, d->data, d->length, ad->character);
 		break;
+	case AP_PRIVATE_TRADE_PACKET_TYPE:
+		ap_private_trade_on_receive(mod->ap_private_trade, d->data, d->length, ad->character);
+		break;
 	case AP_REFINERY_PACKET_TYPE:
 		return ap_refinery_on_receive(mod->ap_refinery, d->data, d->length, ad->character);
 	case AP_SKILL_PACKET_TYPE:
@@ -607,6 +614,7 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_item_convert, AP_ITEM_CONVERT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_optimized_packet2, AP_OPTIMIZED_PACKET2_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_party, AP_PARTY_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_private_trade, AP_PRIVATE_TRADE_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_pvp, AP_PVP_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_refinery, AP_REFINERY_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_ride, AP_RIDE_MODULE_NAME);

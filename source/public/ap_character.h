@@ -148,6 +148,7 @@ static const uint32_t AP_CHARACTER_PC_TID[] = {
 #define AP_CHARACTER_BIT_SPECIAL_STATUS  (AP_FACTORS_BIT_END << 3)
 #define AP_CHARACTER_BIT_CRIMINAL_STATUS (AP_FACTORS_BIT_END << 4)
 #define AP_CHARACTER_BIT_POSITION        (AP_FACTORS_BIT_END << 5)
+#define AP_CHARACTER_BIT_CHANTRA_COINS   (AP_FACTORS_BIT_END << 6)
 
 BEGIN_DECLS
 
@@ -683,6 +684,8 @@ enum ap_character_callback_id {
 	AP_CHARACTER_CB_SPECIAL_STATUS_OFF,
 	/** \brief Triggered once character experience is gained. */
 	AP_CHARACTER_CB_GAIN_EXPERIENCE,
+	/** \brief Triggered once character action status is changed. */
+	AP_CHARACTER_CB_SET_ACTION_STATUS,
 };
 
 struct ap_character_action_info {
@@ -962,6 +965,12 @@ struct ap_character_cb_gain_experience {
 	uint64_t amount;
 };
 
+/** \brief AP_CHARACTER_CB_SET_ACTION_STATUS callback data. */
+struct ap_character_cb_set_action_status {
+	struct ap_character * character;
+	enum ap_character_action_status previous_status;
+};
+
 struct ap_character_module * ap_character_create_module();
 
 boolean ap_character_read_templates(
@@ -1174,6 +1183,11 @@ void ap_character_gain_experience(
 	struct ap_character_module * mod,
 	struct ap_character * character,
 	uint64_t amount);
+
+void ap_character_set_action_status(
+	struct ap_character_module * mod,
+	struct ap_character * character,
+	enum ap_character_action_status status);
 
 boolean ap_character_on_receive(
 	struct ap_character_module * mod,

@@ -169,7 +169,7 @@ boolean ap_grid_move_item(
  * \return Corresponding grid item index if successful.
  *         Otherwise AP_GRID_INVALID_INDEX.
  */
-inline uint32_t ap_grid_get_index(
+static inline uint32_t ap_grid_get_index(
 	const struct ap_grid * grid,
 	uint16_t layer,
 	uint16_t row,
@@ -181,14 +181,23 @@ inline uint32_t ap_grid_get_index(
 		AP_GRID_INVALID_INDEX : index;
 }
 
-inline void * ap_grid_get_object_by_index(
+static inline void * ap_grid_get_object_by_index(
 	struct ap_grid * grid,
 	uint32_t index)
 {
+	assert(index < grid->grid_count);
 	return grid->items[index].object;
 }
 
-inline void * ap_grid_get_object_by_index_secure(
+static inline uint32_t ap_grid_get_item_id_by_index(
+	struct ap_grid * grid,
+	uint32_t index)
+{
+	assert(index < grid->grid_count);
+	return grid->items[index].id;
+}
+
+static inline void * ap_grid_get_object_by_index_secure(
 	struct ap_grid * grid,
 	uint32_t index)
 {
@@ -197,7 +206,7 @@ inline void * ap_grid_get_object_by_index_secure(
 	return grid->items[index].object;
 }
 
-inline uint32_t ap_grid_get_empty_count(struct ap_grid * grid)
+static inline uint32_t ap_grid_get_empty_count(struct ap_grid * grid)
 {
 	assert(grid->item_count <= grid->grid_count);
 	return (grid->grid_count - grid->item_count);

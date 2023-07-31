@@ -258,7 +258,7 @@ static boolean cbchardeath(
 		c->factor.char_point.hp = 0;
 		flags |= AP_FACTORS_BIT_HP;
 	}
-	c->action_status = AP_CHARACTER_ACTION_STATUS_DEAD;
+	ap_character_set_action_status(mod->ap_character, c, AP_CHARACTER_ACTION_STATUS_DEAD);
 	ap_character_update(mod->ap_character, c, flags, FALSE);
 	return TRUE;
 }

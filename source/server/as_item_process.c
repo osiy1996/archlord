@@ -227,6 +227,9 @@ static boolean cbloadchar(
 		case AP_ITEM_STATUS_EQUIP:
 			grid = ichar->equipment;
 			break;
+		case AP_ITEM_STATUS_TRADE_GRID:
+			grid = ichar->trade;
+			break;
 		case AP_ITEM_STATUS_SUB_INVENTORY:
 			grid = ichar->sub_inventory;
 			break;

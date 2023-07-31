@@ -56,6 +56,7 @@
 #include "public/ap_party.h"
 #include "public/ap_party_item.h"
 #include "public/ap_plugin_boss_spawn.h"
+#include "public/ap_private_trade.h"
 #include "public/ap_pvp.h"
 #include "public/ap_random.h"
 #include "public/ap_refinery.h"
@@ -103,6 +104,7 @@
 #include "server/as_party.h"
 #include "server/as_party_process.h"
 #include "server/as_player.h"
+#include "server/as_private_trade_process.h"
 #include "server/as_pvp_process.h"
 #include "server/as_refinery_process.h"
 #include "server/as_ride_process.h"
@@ -172,6 +174,7 @@ static ap_module_t g_ApMap;
 static ap_module_t g_ApOptimizedPacket2;
 static ap_module_t g_ApParty;
 static ap_module_t g_ApPartyItem;
+static ap_module_t g_ApPrivateTrade;
 static ap_module_t g_ApPvP;
 static ap_module_t g_ApRefinery;
 static struct ap_ride_module * g_ApRide;
@@ -211,6 +214,7 @@ static ap_module_t g_AsMap;
 static ap_module_t g_AsParty;
 static ap_module_t g_AsPartyProcess;
 static ap_module_t g_AsPlayer;
+static struct as_private_trade_process_module * g_AsPrivateTradeProcess;
 static ap_module_t g_AsPvPProcess;
 static ap_module_t g_AsRefineryProcess;
 static struct as_ride_process_module * g_AsRideProcess;
@@ -247,6 +251,7 @@ static struct module_desc g_Modules[] = {
 	{ AP_ITEM_CONVERT_MODULE_NAME, ap_item_convert_create_module, NULL, &g_ApItemConvert },
 	{ AP_RIDE_MODULE_NAME, ap_ride_create_module, NULL, &g_ApRide },
 	{ AP_REFINERY_MODULE_NAME, ap_refinery_create_module, NULL, &g_ApRefinery },
+	{ AP_PRIVATE_TRADE_MODULE_NAME, ap_private_trade_create_module, NULL, &g_ApPrivateTrade },
 	{ AP_AI2_MODULE_NAME, ap_ai2_create_module, NULL, &g_ApAi2 },
 	{ AP_DROP_ITEM_MODULE_NAME, ap_drop_item_create_module, NULL, &g_ApDropItem },
 	{ AP_BILL_INFO_MODULE_NAME, ap_bill_info_create_module, NULL, &g_ApBillInfo },
@@ -310,6 +315,7 @@ static struct module_desc g_Modules[] = {
 	{ AS_EVENT_REFINERY_PROCESS_MODULE_NAME, as_event_refinery_process_create_module, NULL, &g_AsEventRefineryProcess },
 	{ AS_ITEM_PROCESS_MODULE_NAME, as_item_process_create_module, NULL, &g_AsItemProcess },
 	{ AS_ITEM_CONVERT_PROCESS_MODULE_NAME, as_item_convert_process_create_module, NULL, &g_AsItemConvertProcess },
+	{ AS_PRIVATE_TRADE_PROCESS_MODULE_NAME, as_private_trade_process_create_module, NULL, &g_AsPrivateTradeProcess },
 	{ AS_RIDE_PROCESS_MODULE_NAME, as_ride_process_create_module, NULL, &g_AsRideProcess },
 	{ AS_DROP_ITEM_PROCESS_MODULE_NAME, as_drop_item_process_create_module, NULL, &g_AsDropItemProcess },
 	{ AS_REFINERY_PROCESS_MODULE_NAME, as_refinery_process_create_module, NULL, &g_AsRefineryProcess },

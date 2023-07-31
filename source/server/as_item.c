@@ -283,6 +283,7 @@ static boolean cbreflectchar(
 	struct ap_grid * grids[] = {
 		ichar->inventory,
 		ichar->equipment,
+		ichar->trade,
 		ichar->sub_inventory,
 		ichar->cash_inventory,
 		ichar->bank };

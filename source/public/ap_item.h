@@ -99,14 +99,15 @@
 
 #define AP_ITEM_REVERSE_ORB_REUSE_INTERVAL 1800000
 
-#define	AP_ITEM_STATUS_FLAG_BIND_ON_ACQUIRE 0x00000001
-#define	AP_ITEM_STATUS_FLAG_BIND_ON_EQUIP   0x00000002
-#define	AP_ITEM_STATUS_FLAG_BIND_ON_USE     0x00000004
-#define	AP_ITEM_STATUS_FLAG_BIND_ON_OWNER   0x00000008
-#define AP_ITEM_STATUS_FLAG_QUEST           0x00000010
-#define AP_ITEM_STATUS_FLAG_CASH_PPCARD     0x00000100
-#define AP_ITEM_STATUS_FLAG_DISARMAMENT     0x00001000
-#define AP_ITEM_STATUS_FLAG_CANNOT_BE_SOLD  0x00002000
+#define	AP_ITEM_STATUS_FLAG_BIND_ON_ACQUIRE   0x00000001
+#define	AP_ITEM_STATUS_FLAG_BIND_ON_EQUIP     0x00000002
+#define	AP_ITEM_STATUS_FLAG_BIND_ON_USE       0x00000004
+#define	AP_ITEM_STATUS_FLAG_BIND_ON_OWNER     0x00000008
+#define AP_ITEM_STATUS_FLAG_QUEST             0x00000010
+#define AP_ITEM_STATUS_FLAG_CASH_PPCARD       0x00000100
+#define AP_ITEM_STATUS_FLAG_DISARMAMENT       0x00001000
+#define AP_ITEM_STATUS_FLAG_CANNOT_BE_SOLD    0x00002000
+#define AP_ITEM_STATUS_FLAG_CANNOT_BE_TRADED  0x00004000
 
 #define AP_ITEM_MAX_SKULL_LEVEL 10
 
@@ -1054,9 +1055,10 @@ struct ap_item_cooldown {
 struct ap_item_character {
 	struct ap_grid * inventory;
 	struct ap_grid * equipment;
-	struct ap_grid * cash_inventory;
+	struct ap_grid * trade;
 	/** \brief Pet inventory. */
 	struct ap_grid * sub_inventory;
+	struct ap_grid * cash_inventory;
 	struct ap_grid * bank;
 	uint64_t recent_inventory_process_tick;
 	enum ap_item_character_factor_adjust factor_adjust_attack;

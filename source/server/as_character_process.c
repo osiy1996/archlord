@@ -386,7 +386,8 @@ static void processchar(
 {
 	struct as_character * sc = as_character_get(mod->as_character, c);
 	uint32_t i;
-	if (tick >= c->action_end_tick) {
+	if (tick >= c->action_end_tick && 
+		c->action_status == AP_CHARACTER_ACTION_STATUS_NORMAL) {
 		if (sc->move_input.not_processed)
 			processmoveinput(mod, c, sc);
 		if (c->is_moving)
@@ -443,7 +444,8 @@ static boolean cbreceive(
 		if (0) {
 			/* \todo Should character lose experience? */
 		}
-		character->action_status = AP_CHARACTER_ACTION_STATUS_NORMAL;
+		ap_character_set_action_status(mod->ap_character, character, 
+			AP_CHARACTER_ACTION_STATUS_NORMAL);
 		character->factor.char_point.hp = character->factor.char_point_max.hp;
 		character->factor.char_point.mp = character->factor.char_point_max.mp;
 		ap_character_update(mod->ap_character, character, 
@@ -660,6 +662,16 @@ static boolean cbchargainexperience(
 	return TRUE;
 }
 
+static boolean cbcharsetactionstatus(
+	struct as_character_process_module * mod,
+	struct ap_character_cb_set_action_status * cb)
+{
+	struct ap_character * character = cb->character;
+	ap_character_update(mod->ap_character, character, 
+		AP_CHARACTER_BIT_ACTION_STATUS, FALSE);
+	return TRUE;
+}
+
 static boolean cbcharmove(
 	struct as_character_process_module * mod,
 	struct ap_optimized_packet2_cb_receive_char_move * cb)
@@ -855,6 +867,7 @@ static boolean onregister(
 	ap_character_add_callback(mod->ap_character, AP_CHARACTER_CB_IS_VALID_ATTACK_TARGET, mod, cbcharisvalidattacktarget);
 	ap_character_add_callback(mod->ap_character, AP_CHARACTER_CB_DEATH, mod, cbchardeath);
 	ap_character_add_callback(mod->ap_character, AP_CHARACTER_CB_GAIN_EXPERIENCE, mod, cbchargainexperience);
+	ap_character_add_callback(mod->ap_character, AP_CHARACTER_CB_SET_ACTION_STATUS, mod, cbcharsetactionstatus);
 	ap_optimized_packet2_add_callback(mod->ap_optimized_packet2, AP_OPTIMIZED_PACKET2_CB_RECEIVE_CHAR_MOVE, mod, cbcharmove);
 	ap_optimized_packet2_add_callback(mod->ap_optimized_packet2, AP_OPTIMIZED_PACKET2_CB_RECEIVE_CHAR_ACTION, mod, cbcharaction);
 	ap_chat_add_command(mod->ap_chat, "/goadmin", mod, cbchatgoadmin);

@@ -145,7 +145,7 @@ enum packet_type {
 	AP_SKILL_PACKET_TYPE = 0x05,
 	AP_SHRINE_PACKET_TYPE = 0x06,
 	 /* PrivateTrade Packet Type */
-	AP_PRIVATETRADE_PACKET_TYPE = 0x07,
+	AP_PRIVATE_TRADE_PACKET_TYPE = 0x07,
 	AP_PARTY_PACKET_TYPE = 0x08,         // party module packet type
 	AP_PARTY_MANAGEMENT_PACKET_TYPE = 0x09,
 	AP_RECRUIT_PACKET_TYPE = 0x0A,         // Recruit packet type

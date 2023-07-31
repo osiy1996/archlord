@@ -238,6 +238,7 @@
     <ClInclude Include="..\..\..\source\public\ap_system_message.h" />
     <ClInclude Include="..\..\..\source\public\ap_tick.h" />
     <ClInclude Include="..\..\..\source\public\ap_timer.h" />
+    <ClInclude Include="..\..\..\source\public\ap_private_trade.h" />
     <ClInclude Include="..\..\..\source\public\ap_ui_status.h" />
     <ClInclude Include="..\..\..\source\public\ap_world.h" />
     <ClInclude Include="..\..\..\source\server\as_account.h" />
@@ -266,6 +267,7 @@
     <ClInclude Include="..\..\..\source\server\as_item_convert.h" />
     <ClInclude Include="..\..\..\source\server\as_item_convert_process.h" />
     <ClInclude Include="..\..\..\source\server\as_item_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_private_trade_process.h" />
     <ClInclude Include="..\..\..\source\server\as_ride_process.h" />
     <ClInclude Include="..\..\..\source\server\as_service_npc.h" />
     <ClInclude Include="..\..\..\source\server\as_service_npc_process.h" />
@@ -372,6 +374,7 @@
     <ClCompile Include="..\..\..\source\public\ap_system_message.c" />
     <ClCompile Include="..\..\..\source\public\ap_tick.c" />
     <ClCompile Include="..\..\..\source\public\ap_timer.c" />
+    <ClCompile Include="..\..\..\source\public\ap_private_trade.c" />
     <ClCompile Include="..\..\..\source\public\ap_ui_status.c" />
     <ClCompile Include="..\..\..\source\public\ap_world.c" />
     <ClCompile Include="..\..\..\source\server\as_account.c" />
@@ -401,6 +404,7 @@
     <ClCompile Include="..\..\..\source\server\as_item_convert.c" />
     <ClCompile Include="..\..\..\source\server\as_item_convert_process.c" />
     <ClCompile Include="..\..\..\source\server\as_item_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_private_trade_process.c" />
     <ClCompile Include="..\..\..\source\server\as_ride_process.c" />
     <ClCompile Include="..\..\..\source\server\as_service_npc.c" />
     <ClCompile Include="..\..\..\source\server\as_service_npc_process.c" />

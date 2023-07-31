@@ -401,11 +401,14 @@ static boolean charctor(struct ap_item_module * mod, struct ap_character * c)
 	ci->equipment = ap_grid_new(AP_ITEM_EQUIP_LAYER, 
 		AP_ITEM_EQUIP_ROW, AP_ITEM_EQUIP_COLUMN, 
 		AP_GRID_ITEM_TYPE_ITEM);
-	ci->cash_inventory = ap_grid_new(AP_ITEM_CASH_INVENTORY_LAYER, 
-		AP_ITEM_CASH_INVENTORY_ROW, AP_ITEM_CASH_INVENTORY_COLUMN, 
+	ci->trade = ap_grid_new(AP_ITEM_TRADEBOX_LAYER, 
+		AP_ITEM_TRADEBOX_ROW, AP_ITEM_TRADEBOX_COLUMN, 
 		AP_GRID_ITEM_TYPE_ITEM);
 	ci->sub_inventory = ap_grid_new(AP_ITEM_SUB_LAYER, 
 		AP_ITEM_SUB_ROW, AP_ITEM_SUB_COLUMN, 
+		AP_GRID_ITEM_TYPE_ITEM);
+	ci->cash_inventory = ap_grid_new(AP_ITEM_CASH_INVENTORY_LAYER, 
+		AP_ITEM_CASH_INVENTORY_ROW, AP_ITEM_CASH_INVENTORY_COLUMN, 
 		AP_GRID_ITEM_TYPE_ITEM);
 	ci->bank = ap_grid_new(AP_ITEM_BANK_MAX_LAYER, 
 		AP_ITEM_BANK_ROW, AP_ITEM_BANK_COLUMN, 
@@ -421,8 +424,9 @@ static boolean chardtor(struct ap_item_module * mod, struct ap_character * c)
 	struct ap_grid ** grids[] = { 
 		&ci->inventory,
 		&ci->equipment,
-		&ci->cash_inventory,
+		&ci->trade,
 		&ci->sub_inventory,
+		&ci->cash_inventory,
 		&ci->bank };
 	for (i = 0; i < COUNT_OF(grids); i++) {
 		struct ap_grid * g = *grids[i];
@@ -3734,6 +3738,8 @@ struct ap_grid * ap_item_get_character_grid(
 		return ic->inventory;
 	case AP_ITEM_STATUS_EQUIP:
 		return ic->equipment;
+	case AP_ITEM_STATUS_TRADE_GRID:
+		return ic->trade;
 	case AP_ITEM_STATUS_SUB_INVENTORY:
 		return ic->sub_inventory;
 	case AP_ITEM_STATUS_CASH_INVENTORY:

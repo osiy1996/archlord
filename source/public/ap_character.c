@@ -2015,6 +2015,20 @@ void ap_character_gain_experience(
 	ap_module_enum_callback(mod, AP_CHARACTER_CB_GAIN_EXPERIENCE, &cb);
 }
 
+void ap_character_set_action_status(
+	struct ap_character_module * mod,
+	struct ap_character * character,
+	enum ap_character_action_status status)
+{
+	struct ap_character_cb_set_action_status cb = { 0 };
+	if (character->action_status == status)
+		return;
+	cb.character = character;
+	cb.previous_status = character->action_status;
+	character->action_status = status;
+	ap_module_enum_callback(mod, AP_CHARACTER_CB_SET_ACTION_STATUS, &cb);
+}
+
 boolean ap_character_on_receive(
 	struct ap_character_module * mod,
 	const void * data,
@@ -2123,7 +2137,7 @@ void ap_character_make_add_packet(
 		factorpacket, /* Factor Packet */
 		&character->inventory_gold, /* Inventory money */
 		&character->bank_gold, /* Bank money */
-		NULL, /* Cash */
+		&character->chantra_coins, /* Cash */
 		&character->action_status,
 		&character->criminal_status,
 		NULL, /* Attacker id */
@@ -2289,7 +2303,8 @@ void ap_character_make_update_packet(
 			&character->inventory_gold : NULL,
 		(flags & AP_CHARACTER_BIT_BANK_GOLD) ?
 			&character->bank_gold : NULL, /* Bank money */
-		NULL, /* Cash */
+		(flags & AP_CHARACTER_BIT_CHANTRA_COINS) ?
+			&character->chantra_coins : NULL, /* Cash */
 		(flags & AP_CHARACTER_BIT_ACTION_STATUS) ?
 			&character->action_status : NULL,
 		(flags & AP_CHARACTER_BIT_CRIMINAL_STATUS) ?

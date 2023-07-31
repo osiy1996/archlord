@@ -511,7 +511,8 @@ void as_spawn_process(struct as_spawn_module * mod, uint64_t tick)
 			setspawnpos(mod, c, sc);
 			c->factor.char_point.hp = c->factor.char_point_max.hp;
 			c->factor.char_point.mp = c->factor.char_point_max.mp;
-			c->action_status = AP_CHARACTER_ACTION_STATUS_NORMAL;
+			ap_character_set_action_status(mod->ap_character, c, 
+				AP_CHARACTER_ACTION_STATUS_NORMAL);
 			vec_erase(mod->respawn_list, &mod->respawn_list[i]);
 			i--;
 			count--;

@@ -438,6 +438,12 @@
     <ClInclude Include="..\..\..\source\server\as_ride_process.h">
       <Filter>server</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_private_trade.h">
+      <Filter>public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\server\as_private_trade_process.h">
+      <Filter>server</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\vendor\pcg\pcg_basic.c">
@@ -825,6 +831,12 @@
       <Filter>public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\server\as_ride_process.c">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_private_trade.c">
+      <Filter>public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\server\as_private_trade_process.c">
       <Filter>server</Filter>
     </ClCompile>
   </ItemGroup>

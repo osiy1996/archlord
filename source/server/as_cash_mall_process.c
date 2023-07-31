@@ -18,6 +18,7 @@ struct as_cash_mall_process_module {
 	struct ap_module_instance instance;
 	struct ap_bill_info_module * ap_bill_info;
 	struct ap_cash_mall_module * ap_cash_mall;
+	struct ap_character_module * ap_character;
 	struct ap_chat_module * ap_chat;
 	struct as_drop_item_module * as_drop_item;
 	struct as_player_module * as_player;
@@ -79,12 +80,14 @@ static boolean cbreceive(
 			break;
 		}
 		account->chantra_coins -= mallitem->price;
+		c->chantra_coins = account->chantra_coins;
 		ap_cash_mall_make_buy_result_packet(mod->ap_cash_mall, 
 			AP_CASH_MALL_BUY_RESULT_SUCCESS);
 		as_player_send_packet(mod->as_player, c);
 		ap_bill_info_make_cash_info_packet(mod->ap_bill_info, c->id, 0, 
 			as_player_get_character_ad(mod->as_player, c)->account->chantra_coins);
 		as_player_send_packet(mod->as_player, c);
+		ap_character_update(mod->ap_character, c, AP_CHARACTER_BIT_CHANTRA_COINS, TRUE);
 		break;
 	}
 	case AP_CASH_MALL_PACKET_REFRESH_CASH:
@@ -132,6 +135,7 @@ static void cbchataddcc(
 	ap_bill_info_make_cash_info_packet(mod->ap_bill_info, target->id, 0, 
 		account->chantra_coins);
 	as_player_send_packet(mod->as_player, target);
+	ap_character_update(mod->ap_character, c, AP_CHARACTER_BIT_CHANTRA_COINS, TRUE);
 }
 
 static boolean onregister(
@@ -140,6 +144,7 @@ static boolean onregister(
 {
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_bill_info, AP_BILL_INFO_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_cash_mall, AP_CASH_MALL_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_character, AP_CHARACTER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_chat, AP_CHAT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_drop_item, AS_DROP_ITEM_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_player, AS_PLAYER_MODULE_NAME);
