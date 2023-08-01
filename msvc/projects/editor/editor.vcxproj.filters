@@ -93,135 +93,6 @@
     <ClInclude Include="..\..\..\source\task\internal.h">
       <Filter>source\task</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_chat.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_config.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_define.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_drop_item.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_dungeon_wnd.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_event_binding.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_event_gacha.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_event_guild.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_event_manager.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_event_nature.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_event_npc_dialog.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_event_point_light.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_event_product.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_event_quest.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_event_skill_master.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_event_teleport.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_factors.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_grid.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_guild.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_item.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_item_convert.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_login.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_map.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_module.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_object.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_octree.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_optimized_packet2.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_packet.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_plugin_boss_spawn.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_random.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_sector.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_shrine.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_skill.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_spawn.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_startup_encryption.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_tick.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_timer.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_ui_status.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_world.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_admin.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_auction.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_base.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_character.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\source\utility\au_ini_manager.h">
       <Filter>source\utility</Filter>
     </ClInclude>
@@ -236,12 +107,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\source\utility\au_blowfish.h">
       <Filter>source\utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_module_registry.h">
-      <Filter>source\public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\public\ap_module_instance.h">
-      <Filter>source\public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\vendor\pcg\pcg_basic.h">
       <Filter>source\vendor\pcg</Filter>
@@ -330,6 +195,201 @@
     <ClInclude Include="..\..\..\source\editor\ae_object.h">
       <Filter>source\editor</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_auction.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_base.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_bill_info.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_cash_mall.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_character.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_chat.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_config.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_define.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_drop_item.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_dungeon_wnd.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_bank.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_binding.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_gacha.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_guild.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_item_convert.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_manager.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_nature.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_npc_dialog.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_npc_trade.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_point_light.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_product.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_quest.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_refinery.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_skill_master.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_event_teleport.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_factors.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_grid.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_guild.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_item.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_item_convert.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_item_convert_internal.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_item_internal.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_login.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_map.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_map_internal.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_module.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_module_instance.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_module_registry.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_object.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_octree.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_optimized_packet2.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_packet.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_party.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_party_item.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_plugin_boss_spawn.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_private_trade.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_pvp.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_random.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_refinery.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_ride.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_sector.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_service_npc.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_shrine.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_skill.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_spawn.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_startup_encryption.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_summons.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_system_message.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_tick.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_timer.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_ui_status.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_world.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_admin.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_ai2.h">
+      <Filter>source\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\editor\ae_item.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\core\hash_map.c">
@@ -371,132 +431,6 @@
     <ClCompile Include="..\..\..\source\task\task.c">
       <Filter>source\task</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_chat.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_config.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_drop_item.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_dungeon_wnd.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_event_binding.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_event_gacha.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_event_guild.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_event_manager.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_event_nature.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_event_npc_dialog.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_event_point_light.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_event_product.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_event_quest.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_event_skill_master.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_event_teleport.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_factors.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_grid.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_guild.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_item.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_item_convert.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_login.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_map.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_module.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_object.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_octree.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_optimized_packet2.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_packet.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_plugin_boss_spawn.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_random.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_sector.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_shrine.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_skill.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_spawn.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_startup_encryption.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_tick.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_timer.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_ui_status.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_world.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_admin.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_auction.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_base.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_character.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\source\utility\au_ini_manager.c">
       <Filter>source\utility</Filter>
     </ClCompile>
@@ -514,12 +448,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\editor\main.cpp">
       <Filter>source\editor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_module_registry.c">
-      <Filter>source\public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\public\ap_module_instance.c">
-      <Filter>source\public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\vendor\pcg\pcg_basic.c">
       <Filter>source\vendor\pcg</Filter>
@@ -585,6 +513,198 @@
       <Filter>source\editor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\editor\ae_object.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_auction.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_base.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_bill_info.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_cash_mall.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_character.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_chat.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_config.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_drop_item.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_dungeon_wnd.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_bank.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_binding.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_gacha.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_guild.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_item_convert.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_manager.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_nature.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_npc_dialog.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_npc_trade.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_point_light.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_product.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_quest.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_refinery.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_skill_master.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_event_teleport.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_factors.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_grid.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_guild.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_item.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_item_convert.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_item_convert_io.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_item_io.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_login.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_map.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_map_io.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_module.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_module_instance.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_module_registry.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_object.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_octree.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_optimized_packet2.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_packet.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_party.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_party_item.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_plugin_boss_spawn.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_private_trade.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_pvp.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_random.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_refinery.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_ride.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_sector.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_service_npc.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_shrine.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_skill.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_spawn.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_startup_encryption.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_summons.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_system_message.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_tick.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_timer.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_ui_status.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_world.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_admin.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_ai2.c">
+      <Filter>source\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\editor\ae_item.c">
       <Filter>source\editor</Filter>
     </ClCompile>
   </ItemGroup>

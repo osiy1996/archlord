@@ -847,6 +847,11 @@ struct ap_character_cb_interrupt_follow {
 	struct ap_character * character;
 };
 
+struct ap_character_cb_init_static {
+	struct ap_character * character;
+	boolean acquired_ownership;
+};
+
 struct ap_character_cb_free_id {
 	struct ap_character * character;
 	uint32_t id;

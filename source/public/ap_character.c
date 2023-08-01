@@ -1250,6 +1250,7 @@ boolean ap_character_read_static(
 		uint32_t id = strtoul(
 			ap_module_stream_read_section_name(stream, i), NULL, 10);
 		struct ap_character * c = ap_character_new(mod);
+		struct ap_character_cb_init_static cb = { 0 };
 		/* Static character ids are preset but character may 
 		 * have obtained a generated id when it was constructed, 
 		 * in which case we need to free that id before we 
@@ -1268,13 +1269,20 @@ boolean ap_character_read_static(
 		c->char_type = AP_CHARACTER_TYPE_NPC;
 		c->npc_display_for_map = TRUE;
 		c->npc_display_for_nameboard = TRUE;
+		cb.character = c;
+		cb.acquired_ownership = FALSE;
 		if (!ap_module_enum_callback(&mod->instance.context, 
-				AP_CHARACTER_CB_INIT_STATIC, c)) {
+				AP_CHARACTER_CB_INIT_STATIC, &cb)) {
 			ERROR("Failed to initialize static character (%s).",
 				c->name);
 			ap_character_free(mod, c);
 			ap_module_stream_destroy(stream);
 			return FALSE;
+		}
+		if (!cb.acquired_ownership) {
+			WARN("Static character ownership was not acquired by any module. Discarding character (%s).",
+				c->name);
+			ap_character_free(mod, c);
 		}
 	}
 	ap_module_stream_destroy(stream);

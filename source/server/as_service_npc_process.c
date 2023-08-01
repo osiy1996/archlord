@@ -300,8 +300,9 @@ static struct ap_event_npc_dialog_menu_item * buildeventnpcmenu(
 
 static boolean cbcharinitstatic(
 	struct as_service_npc_process_module * mod,
-	struct ap_character * character)
+	struct ap_character_cb_init_static * cb)
 {
+	struct ap_character * character = cb->character;
 	struct ap_event_npc_dialog_menu_item * menu = NULL;
 	switch (character->tid) {
 	case CHAOTICFRONTIERNPCTID:

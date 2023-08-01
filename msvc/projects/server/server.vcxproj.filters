@@ -444,6 +444,9 @@
     <ClInclude Include="..\..\..\source\server\as_private_trade_process.h">
       <Filter>server</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\server\as_auction_process.h">
+      <Filter>server</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\vendor\pcg\pcg_basic.c">
@@ -644,7 +647,7 @@
     <ClCompile Include="..\..\..\source\core\log.c">
       <Filter>core</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\server\as_entry.c">
+    <ClCompile Include="..\..\..\source\server\main.c">
       <Filter>server</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\server\as_database.c">
@@ -837,6 +840,9 @@
       <Filter>public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\server\as_private_trade_process.c">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\server\as_auction_process.c">
       <Filter>server</Filter>
     </ClCompile>
   </ItemGroup>

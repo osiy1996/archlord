@@ -4828,6 +4828,8 @@ boolean ap_skill_attempt_cast(
 		return FALSE;
 	if (character->is_transformed)
 		return FALSE;
+	if (character->action_status != AP_CHARACTER_ACTION_STATUS_NORMAL)
+		return FALSE;
 	if (f[AP_SKILL_CONST_COST_HP] >= character->factor.char_point.hp)
 		return FALSE;
 	if (f[AP_SKILL_CONST_COST_MP] > character->factor.char_point.mp)

@@ -243,6 +243,7 @@
     <ClInclude Include="..\..\..\source\public\ap_world.h" />
     <ClInclude Include="..\..\..\source\server\as_account.h" />
     <ClInclude Include="..\..\..\source\server\as_ai2_process.h" />
+    <ClInclude Include="..\..\..\source\server\as_auction_process.h" />
     <ClInclude Include="..\..\..\source\server\as_cash_mall_process.h" />
     <ClInclude Include="..\..\..\source\server\as_character.h" />
     <ClInclude Include="..\..\..\source\server\as_character_process.h" />
@@ -379,6 +380,7 @@
     <ClCompile Include="..\..\..\source\public\ap_world.c" />
     <ClCompile Include="..\..\..\source\server\as_account.c" />
     <ClCompile Include="..\..\..\source\server\as_ai2_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_auction_process.c" />
     <ClCompile Include="..\..\..\source\server\as_cash_mall_process.c" />
     <ClCompile Include="..\..\..\source\server\as_character.c" />
     <ClCompile Include="..\..\..\source\server\as_character_process.c" />
@@ -386,7 +388,7 @@
     <ClCompile Include="..\..\..\source\server\as_database.c" />
     <ClCompile Include="..\..\..\source\server\as_drop_item.c" />
     <ClCompile Include="..\..\..\source\server\as_drop_item_process.c" />
-    <ClCompile Include="..\..\..\source\server\as_entry.c" />
+    <ClCompile Include="..\..\..\source\server\main.c" />
     <ClCompile Include="..\..\..\source\server\as_event_bank_process.c" />
     <ClCompile Include="..\..\..\source\server\as_event_binding.c" />
     <ClCompile Include="..\..\..\source\server\as_event_guild.c" />

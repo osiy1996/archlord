@@ -123,7 +123,7 @@ static inline struct ap_private_trade_character_attachment * ap_private_trade_ge
 	struct ap_character * character)
 {
 	assert(g_ApPrivateTradeCharacterAttachmentOffset != SIZE_MAX);
-	return ap_module_get_attached_data(character, g_ApPrivateTradeCharacterAttachmentOffset);
+	return (struct ap_private_trade_character_attachment *)ap_module_get_attached_data(character, g_ApPrivateTradeCharacterAttachmentOffset);
 }
 
 static inline void ap_private_trade_clear(struct ap_private_trade_character_attachment * attachment)

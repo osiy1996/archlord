@@ -752,8 +752,9 @@ static boolean cbcharmove(
 
 static boolean cbcharinitstatic(
 	struct as_map_module * mod,
-	struct ap_character *  c)
+	struct ap_character_cb_init_static *  cb)
 {
+	struct ap_character * c = cb->character;
 	struct as_map_region * r = as_map_get_region_at(mod, &c->pos);
 	struct as_map_character * cmap;
 	struct ap_character ** obj;
@@ -766,6 +767,8 @@ static boolean cbcharinitstatic(
 	obj = ap_admin_add_object_by_id(&mod->npc_admin, c->id);
 	if (!obj)
 		return FALSE;
+	assert(cb->acquired_ownership == FALSE);
+	cb->acquired_ownership = TRUE;
 	*obj = c;
 	cmap = as_map_get_character_ad(mod, c);
 	cmap->region = r;

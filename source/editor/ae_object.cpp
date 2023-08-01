@@ -490,9 +490,7 @@ static void render_properties(struct ae_object_module * mod)
 {
 	struct ap_object * obj = mod->active_object;
 	struct ac_object * objc;
-	if (!ImGui::Begin("Properties", 
-			(bool *)&mod->display_properties) ||
-		!obj) {
+	if (!ImGui::Begin("Properties", (bool *)&mod->display_properties) || !obj) {
 		ImGui::End();
 		return;
 	}

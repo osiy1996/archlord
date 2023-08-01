@@ -19,20 +19,27 @@
 #include "task/task.h"
 
 #include "public/ap_admin.h"
+#include "public/ap_ai2.h"
 #include "public/ap_auction.h"
+#include "public/ap_bill_info.h"
 #include "public/ap_character.h"
+#include "public/ap_cash_mall.h"
 #include "public/ap_chat.h"
 #include "public/ap_config.h"
 #include "public/ap_drop_item.h"
 #include "public/ap_dungeon_wnd.h"
+#include "public/ap_event_bank.h"
 #include "public/ap_event_binding.h"
 #include "public/ap_event_gacha.h"
 #include "public/ap_event_guild.h"
+#include "public/ap_event_item_convert.h"
 #include "public/ap_event_manager.h"
 #include "public/ap_event_nature.h"
 #include "public/ap_event_npc_dialog.h"
+#include "public/ap_event_npc_trade.h"
 #include "public/ap_event_point_light.h"
 #include "public/ap_event_product.h"
+#include "public/ap_event_refinery.h"
 #include "public/ap_event_skill_master.h"
 #include "public/ap_event_quest.h"
 #include "public/ap_event_teleport.h"
@@ -46,12 +53,21 @@
 #include "public/ap_octree.h"
 #include "public/ap_optimized_packet2.h"
 #include "public/ap_packet.h"
+#include "public/ap_party.h"
+#include "public/ap_party_item.h"
 #include "public/ap_plugin_boss_spawn.h"
+#include "public/ap_private_trade.h"
+#include "public/ap_pvp.h"
 #include "public/ap_random.h"
+#include "public/ap_refinery.h"
+#include "public/ap_ride.h"
+#include "public/ap_service_npc.h"
 #include "public/ap_skill.h"
 #include "public/ap_shrine.h"
 #include "public/ap_spawn.h"
 #include "public/ap_startup_encryption.h"
+#include "public/ap_summons.h"
+#include "public/ap_system_message.h"
 #include "public/ap_tick.h"
 #include "public/ap_ui_status.h"
 #include "public/ap_world.h"
@@ -68,6 +84,7 @@
 #include "client/ac_terrain.h"
 #include "client/ac_texture.h"
 
+#include "editor/ae_item.h"
 #include "editor/ae_object.h"
 #include "editor/ae_terrain.h"
 #include "editor/ae_texture.h"
@@ -85,44 +102,60 @@ struct module_desc {
 	const char * name;
 	void * cb_create;
 	ap_module_t module_;
-	ap_module_t * global_handle;
+	void * global_handle;
 };
 
-static ap_module_t g_ApPacket;
-static struct ap_tick_module * g_ApTick;
-static ap_module_t g_ApRandom;
-static struct ap_config_module * g_ApConfig;
+static struct ap_ai2_module * g_ApAi2;
+static struct ap_auction_module * g_ApAuction;
+static struct ap_base_module * g_ApBase;
+static struct ap_bill_info_module * g_ApBillInfo;
+static struct ap_cash_mall_module * g_ApCashMall;
 static struct ap_character_module * g_ApCharacter;
-static ap_module_t g_ApBase;
-static ap_module_t g_ApStartupEncryption;
+static struct ap_chat_module * g_ApChat;
+static struct ap_config_module * g_ApConfig;
+static struct ap_drop_item_module * g_ApDropItem;
+static struct ap_dungeon_wnd_module * g_ApDungeonWnd;
+static struct ap_event_bank_module * g_ApEventBank;
+static struct ap_event_binding_module * g_ApEventBinding;
+static struct ap_event_gacha_module * g_ApEventGacha;
+static struct ap_event_guild_module * g_ApEventGuild;
+static struct ap_event_item_convert_module * g_ApEventItemConvert;
+static struct ap_event_manager_module * g_ApEventManager;
+static struct ap_event_nature_module * g_ApEventNature;
+static struct ap_event_npc_dialog_module * g_ApEventNpcDialog;
+static struct ap_event_npc_trade_module * g_ApEventNpcTrade;
+static struct ap_event_point_light_module * g_ApEventPointLight;
+static struct ap_event_product_module * g_ApEventProduct;
+static struct ap_event_refinery_module * g_ApEventRefinery;
+static struct ap_event_skill_master_module * g_ApEventSkillMaster;
+static struct ap_event_quest_module * g_ApEventQuest;
+static struct ap_event_teleport_module * g_ApEventTeleport;
 static struct ap_factors_module * g_ApFactors;
-static struct ap_object_module * g_ApObject;
-static ap_module_t g_ApDungeonWnd;
-static ap_module_t g_ApPluginBossSpawn;
-static struct ap_spawn_module * g_ApSpawn;
-static struct ap_skill_module * g_ApSkill;
+static struct ap_guild_module * g_ApGuild;
 static struct ap_item_module * g_ApItem;
-static ap_module_t g_ApItemConvert;
-static ap_module_t g_ApDropItem;
-static ap_module_t g_ApUiStatus;
-static ap_module_t g_ApGuild;
-static ap_module_t g_ApEventManager;
-static ap_module_t g_ApAuction;
-static ap_module_t g_ApEventBinding;
-static ap_module_t g_ApEventGacha;
-static ap_module_t g_ApEventGuild;
-static ap_module_t g_ApEventNature;
-static ap_module_t g_ApEventNpcDialog;
-static ap_module_t g_ApEventPointLight;
-static ap_module_t g_ApEventProduct;
-static ap_module_t g_ApEventSkillMaster;
-static ap_module_t g_ApEventQuest;
-static ap_module_t g_ApEventTeleport;
-static ap_module_t g_ApOptimizedPacket2;
-static ap_module_t g_ApChat;
-static ap_module_t g_ApMap;
-static ap_module_t g_ApLogin;
-static ap_module_t g_ApWorld;
+static struct ap_item_convert_module * g_ApItemConvert;
+static struct ap_login_module * g_ApLogin;
+static struct ap_map_module * g_ApMap;
+static struct ap_object_module * g_ApObject;
+static struct ap_optimized_packet2_module * g_ApOptimizedPacket2;
+static struct ap_packet_module * g_ApPacket;
+static struct ap_party_module * g_ApParty;
+static struct ap_party_item_module * g_ApPartyItem;
+static struct ap_plugin_boss_spawn_module * g_ApPluginBossSpawn;
+static struct ap_private_trade_module * g_ApPrivateTrade;
+static struct ap_pvp_module * g_ApPvP;
+static struct ap_random_module * g_ApRandom;
+static struct ap_refinery_module * g_ApRefinery;
+static struct ap_ride_module * g_ApRide;
+static struct ap_service_npc_module * g_ApServiceNpc;
+static struct ap_skill_module * g_ApSkill;
+static struct ap_spawn_module * g_ApSpawn;
+static struct ap_startup_encryption_module * g_ApStartupEncryption;
+static struct ap_summons_module * g_ApSummons;
+static struct ap_system_message_module * g_ApSystemMessage;
+static struct ap_tick_module * g_ApTick;
+static struct ap_ui_status_module * g_ApUiStatus;
+static struct ap_world_module * g_ApWorld;
 
 static struct ac_console_module * g_AcConsole;
 static ap_module_t g_AcAmbientOcclusionMap;
@@ -135,61 +168,79 @@ static ap_module_t g_AcMesh;
 static struct ac_terrain_module * g_AcTerrain;
 static struct ac_object_module * g_AcObject;
 
+static struct ae_item_module * g_AeItem;
+static struct ae_object_module * g_AeObject;
 static struct ae_terrain_module * g_AeTerrain;
 static struct ae_texture_module * g_AeTexture;
-static struct ae_object_module * g_AeObject;
 
 static struct module_desc g_Modules[] = {
 	/* Public modules. */
-	{ AP_PACKET_MODULE_NAME, ap_packet_create_module, NULL, (ap_module_t *)&g_ApPacket },
-	{ AP_TICK_MODULE_NAME, ap_tick_create_module, NULL, (ap_module_t *)&g_ApTick },
-	{ AP_RANDOM_MODULE_NAME, ap_random_create_module, NULL, (ap_module_t *)&g_ApRandom },
-	{ AP_CONFIG_MODULE_NAME, ap_config_create_module, NULL, (ap_module_t *)&g_ApConfig },
-	{ AP_BASE_MODULE_NAME, ap_base_create_module, NULL, (ap_module_t *)&g_ApBase },
+	{ AP_PACKET_MODULE_NAME, ap_packet_create_module, NULL, &g_ApPacket },
+	{ AP_TICK_MODULE_NAME, ap_tick_create_module, NULL, &g_ApTick },
+	{ AP_RANDOM_MODULE_NAME, ap_random_create_module, NULL, &g_ApRandom },
+	{ AP_CONFIG_MODULE_NAME, ap_config_create_module, NULL, &g_ApConfig },
+	{ AP_BASE_MODULE_NAME, ap_base_create_module, NULL, &g_ApBase },
 	{ AP_STARTUP_ENCRYPTION_MODULE_NAME, ap_startup_encryption_create_module, NULL, &g_ApStartupEncryption },
-	{ AP_FACTORS_MODULE_NAME, ap_factors_create_module, NULL, (ap_module_t *)&g_ApFactors },
-	{ AP_OBJECT_MODULE_NAME, ap_object_create_module, NULL, (ap_module_t *)&g_ApObject },
-	{ AP_DUNGEON_WND_MODULE_NAME, ap_dungeon_wnd_create_module, NULL, (ap_module_t *)&g_ApDungeonWnd },
-	{ AP_PLUGIN_BOSS_SPAWN_MODULE_NAME, ap_plugin_boss_spawn_create_module, NULL, (ap_module_t *)&g_ApPluginBossSpawn },
-	{ AP_CHARACTER_MODULE_NAME, ap_character_create_module, NULL, (ap_module_t *)&g_ApCharacter },
-	{ AP_SPAWN_MODULE_NAME, ap_spawn_create_module, NULL, (ap_module_t *)&g_ApSpawn },
-	{ AP_SKILL_MODULE_NAME, ap_skill_create_module, NULL, (ap_module_t *)&g_ApSkill },
-	{ AP_ITEM_MODULE_NAME, ap_item_create_module, NULL, (ap_module_t *)&g_ApItem },
-	{ AP_ITEM_CONVERT_MODULE_NAME, ap_item_convert_create_module, NULL, (ap_module_t *)&g_ApItemConvert },
-	{ AP_DROP_ITEM_MODULE_NAME, ap_drop_item_create_module, NULL, (ap_module_t *)&g_ApDropItem },
-	{ AP_UI_STATUS_MODULE_NAME, ap_ui_status_create_module, NULL, (ap_module_t *)&g_ApUiStatus },
-	{ AP_GUILD_MODULE_NAME, ap_guild_create_module, NULL, (ap_module_t *)&g_ApGuild },
-	{ AP_EVENT_MANAGER_MODULE_NAME, ap_event_manager_create_module, NULL, (ap_module_t *)&g_ApEventManager },
-	{ AP_EVENT_BINDING_MODULE_NAME, ap_event_binding_create_module, NULL, (ap_module_t *)&g_ApEventBinding },
-	{ AP_EVENT_GACHA_MODULE_NAME, ap_event_gacha_create_module, NULL, (ap_module_t *)&g_ApEventGacha },
-	{ AP_EVENT_GUILD_MODULE_NAME, ap_event_guild_create_module, NULL, (ap_module_t *)&g_ApEventGuild },
-	{ AP_EVENT_NATURE_MODULE_NAME, ap_event_nature_create_module, NULL, (ap_module_t *)&g_ApEventNature },
-	{ AP_EVENT_NPC_DIALOG_MODULE_NAME, ap_event_npc_dialog_create_module, NULL, (ap_module_t *)&g_ApEventNpcDialog },
-	{ AP_EVENT_POINT_LIGHT_MODULE_NAME, ap_event_point_light_create_module, NULL, (ap_module_t *)&g_ApEventPointLight },
-	{ AP_EVENT_PRODUCT_MODULE_NAME, ap_event_product_create_module, NULL, (ap_module_t *)&g_ApEventProduct },
-	{ AP_EVENT_SKILL_MASTER_MODULE_NAME, ap_event_skill_master_create_module, NULL, (ap_module_t *)&g_ApEventSkillMaster },
-	{ AP_EVENT_QUEST_MODULE_NAME, ap_event_quest_create_module, NULL, (ap_module_t *)&g_ApEventQuest },
-	{ AP_EVENT_TELEPORT_MODULE_NAME, ap_event_teleport_create_module, NULL, (ap_module_t *)&g_ApEventTeleport },
-	{ AP_OPTIMIZED_PACKET2_MODULE_NAME, ap_optimized_packet2_create_module, NULL, (ap_module_t *)&g_ApOptimizedPacket2 },
-	{ AP_CHAT_MODULE_NAME, ap_chat_create_module, NULL, (ap_module_t *)&g_ApChat },
-	{ AP_MAP_MODULE_NAME, ap_map_create_module, NULL, (ap_module_t *)&g_ApMap },
-	{ AP_LOGIN_MODULE_NAME, ap_login_create_module, NULL, (ap_module_t *)&g_ApLogin },
-	{ AP_WORLD_MODULE_NAME, ap_world_create_module, NULL, (ap_module_t *)&g_ApWorld },
+	{ AP_SYSTEM_MESSAGE_MODULE_NAME, ap_system_message_create_module, NULL, &g_ApSystemMessage },
+	{ AP_FACTORS_MODULE_NAME, ap_factors_create_module, NULL, &g_ApFactors },
+	{ AP_OBJECT_MODULE_NAME, ap_object_create_module, NULL, &g_ApObject },
+	{ AP_DUNGEON_WND_MODULE_NAME, ap_dungeon_wnd_create_module, NULL, &g_ApDungeonWnd },
+	{ AP_PLUGIN_BOSS_SPAWN_MODULE_NAME, ap_plugin_boss_spawn_create_module, NULL, &g_ApPluginBossSpawn },
+	{ AP_CHARACTER_MODULE_NAME, ap_character_create_module, NULL, &g_ApCharacter },
+	{ AP_SUMMONS_MODULE_NAME, ap_summons_create_module, NULL, &g_ApSummons },
+	{ AP_PVP_MODULE_NAME, ap_pvp_create_module, NULL, &g_ApPvP },
+	{ AP_PARTY_MODULE_NAME, ap_party_create_module, NULL, &g_ApParty },
+	{ AP_SPAWN_MODULE_NAME, ap_spawn_create_module, NULL, &g_ApSpawn },
+	{ AP_SKILL_MODULE_NAME, ap_skill_create_module, NULL, &g_ApSkill },
+	{ AP_ITEM_MODULE_NAME, ap_item_create_module, NULL, &g_ApItem },
+	{ AP_ITEM_CONVERT_MODULE_NAME, ap_item_convert_create_module, NULL, &g_ApItemConvert },
+	{ AP_RIDE_MODULE_NAME, ap_ride_create_module, NULL, &g_ApRide },
+	{ AP_REFINERY_MODULE_NAME, ap_refinery_create_module, NULL, &g_ApRefinery },
+	{ AP_PRIVATE_TRADE_MODULE_NAME, ap_private_trade_create_module, NULL, &g_ApPrivateTrade },
+	{ AP_AI2_MODULE_NAME, ap_ai2_create_module, NULL, &g_ApAi2 },
+	{ AP_DROP_ITEM_MODULE_NAME, ap_drop_item_create_module, NULL, &g_ApDropItem },
+	{ AP_BILL_INFO_MODULE_NAME, ap_bill_info_create_module, NULL, &g_ApBillInfo },
+	{ AP_CASH_MALL_MODULE_NAME, ap_cash_mall_create_module, NULL, &g_ApCashMall },
+	{ AP_PARTY_ITEM_MODULE_NAME, ap_party_item_create_module, NULL, &g_ApPartyItem },
+	{ AP_UI_STATUS_MODULE_NAME, ap_ui_status_create_module, NULL, &g_ApUiStatus },
+	{ AP_GUILD_MODULE_NAME, ap_guild_create_module, NULL, &g_ApGuild },
+	{ AP_EVENT_MANAGER_MODULE_NAME, ap_event_manager_create_module, NULL, &g_ApEventManager },
+	{ AP_EVENT_BANK_MODULE_NAME, ap_event_bank_create_module, NULL, &g_ApEventBank },
+	{ AP_EVENT_BINDING_MODULE_NAME, ap_event_binding_create_module, NULL, &g_ApEventBinding },
+	{ AP_EVENT_GACHA_MODULE_NAME, ap_event_gacha_create_module, NULL, &g_ApEventGacha },
+	{ AP_EVENT_GUILD_MODULE_NAME, ap_event_guild_create_module, NULL, &g_ApEventGuild },
+	{ AP_EVENT_ITEM_CONVERT_MODULE_NAME, ap_event_item_convert_create_module, NULL, &g_ApEventItemConvert },
+	{ AP_EVENT_NATURE_MODULE_NAME, ap_event_nature_create_module, NULL, &g_ApEventNature },
+	{ AP_EVENT_NPC_DIALOG_MODULE_NAME, ap_event_npc_dialog_create_module, NULL, &g_ApEventNpcDialog },
+	{ AP_EVENT_NPC_TRADE_MODULE_NAME, ap_event_npc_trade_create_module, NULL, &g_ApEventNpcTrade },
+	{ AP_EVENT_POINT_LIGHT_MODULE_NAME, ap_event_point_light_create_module, NULL, &g_ApEventPointLight },
+	{ AP_EVENT_PRODUCT_MODULE_NAME, ap_event_product_create_module, NULL, &g_ApEventProduct },
+	{ AP_EVENT_SKILL_MASTER_MODULE_NAME, ap_event_skill_master_create_module, NULL, &g_ApEventSkillMaster },
+	{ AP_EVENT_QUEST_MODULE_NAME, ap_event_quest_create_module, NULL, &g_ApEventQuest },
+	{ AP_EVENT_TELEPORT_MODULE_NAME, ap_event_teleport_create_module, NULL, &g_ApEventTeleport },
+	{ AP_EVENT_REFINERY_MODULE_NAME, ap_event_refinery_create_module, NULL, &g_ApEventRefinery },
+	{ AP_SERVICE_NPC_MODULE_NAME, ap_service_npc_create_module, NULL, &g_ApServiceNpc },
+	{ AP_OPTIMIZED_PACKET2_MODULE_NAME, ap_optimized_packet2_create_module, NULL, &g_ApOptimizedPacket2 },
+	{ AP_CHAT_MODULE_NAME, ap_chat_create_module, NULL, &g_ApChat },
+	{ AP_MAP_MODULE_NAME, ap_map_create_module, NULL, &g_ApMap },
+	{ AP_LOGIN_MODULE_NAME, ap_login_create_module, NULL, &g_ApLogin },
+	{ AP_WORLD_MODULE_NAME, ap_world_create_module, NULL, &g_ApWorld },
 	/* Client modules. */
-	{ AC_AMBIENT_OCCLUSION_MAP_MODULE_NAME, ac_ambient_occlusion_map_create_module, NULL, (ap_module_t *)&g_AcAmbientOcclusionMap },
-	{ AC_EVENT_POINT_LIGHT_MODULE_NAME, ac_event_point_light_create_module, NULL, (ap_module_t *)&g_AcEventPointLight },
-	{ AC_DAT_MODULE_NAME, ac_dat_create_module, NULL, (ap_module_t *)&g_AcDat },
-	{ AC_RENDER_MODULE_NAME, ac_render_create_module, NULL, (ap_module_t *)&g_AcRender },
-	{ AC_TEXTURE_MODULE_NAME, ac_texture_create_module, NULL, (ap_module_t *)&g_AcTexture },
-	{ AC_IMGUI_MODULE_NAME, ac_imgui_create_module, NULL, (ap_module_t *)&g_AcImgui },
-	{ AC_CONSOLE_MODULE_NAME, ac_console_create_module, NULL, (ap_module_t *)&g_AcConsole },
-	{ AC_MESH_MODULE_NAME, ac_mesh_create_module, NULL, (ap_module_t *)&g_AcMesh },
-	{ AC_TERRAIN_MODULE_NAME, ac_terrain_create_module, NULL, (ap_module_t *)&g_AcTerrain },
-	{ AC_OBJECT_MODULE_NAME, ac_object_create_module, NULL, (ap_module_t *)&g_AcObject },
+	{ AC_AMBIENT_OCCLUSION_MAP_MODULE_NAME, ac_ambient_occlusion_map_create_module, NULL, &g_AcAmbientOcclusionMap },
+	{ AC_EVENT_POINT_LIGHT_MODULE_NAME, ac_event_point_light_create_module, NULL, &g_AcEventPointLight },
+	{ AC_DAT_MODULE_NAME, ac_dat_create_module, NULL, &g_AcDat },
+	{ AC_RENDER_MODULE_NAME, ac_render_create_module, NULL, &g_AcRender },
+	{ AC_TEXTURE_MODULE_NAME, ac_texture_create_module, NULL, &g_AcTexture },
+	{ AC_IMGUI_MODULE_NAME, ac_imgui_create_module, NULL, &g_AcImgui },
+	{ AC_CONSOLE_MODULE_NAME, ac_console_create_module, NULL, &g_AcConsole },
+	{ AC_MESH_MODULE_NAME, ac_mesh_create_module, NULL, &g_AcMesh },
+	{ AC_TERRAIN_MODULE_NAME, ac_terrain_create_module, NULL, &g_AcTerrain },
+	{ AC_OBJECT_MODULE_NAME, ac_object_create_module, NULL, &g_AcObject },
 	/* Editor modules. */
-	{ AE_TEXTURE_MODULE_NAME, ae_texture_create_module, NULL, (ap_module_t *)&g_AeTexture },
-	{ AE_TERRAIN_MODULE_NAME, ae_terrain_create_module, NULL, (ap_module_t *)&g_AeTerrain },
-	{ AE_OBJECT_MODULE_NAME, ae_object_create_module, NULL, (ap_module_t *)&g_AeObject },
+	{ AE_TEXTURE_MODULE_NAME, ae_texture_create_module, NULL, &g_AeTexture },
+	{ AE_TERRAIN_MODULE_NAME, ae_terrain_create_module, NULL, &g_AeTerrain },
+	{ AE_OBJECT_MODULE_NAME, ae_object_create_module, NULL, &g_AeObject },
+	{ AE_ITEM_MODULE_NAME, ae_item_create_module, NULL, &g_AeItem },
 };
 
 /* With this definition added, any module context 
@@ -209,7 +260,7 @@ static boolean create_modules()
 			return FALSE;
 		}
 		if (m->global_handle)
-			*m->global_handle = m->module_;
+			*(ap_module_t *)m->global_handle = m->module_;
 	}
 	INFO("Completed module creation.");
 	return TRUE;
@@ -277,7 +328,7 @@ static void shutdown()
 			instance->cb_shutdown(m->module_);
 		ap_module_instance_destroy(m->module_);
 		m->module_ = NULL;
-		*m->global_handle = NULL;
+		*(ap_module_t *)m->global_handle = NULL;
 	}
 	INFO("All modules are shutdown.");
 }
@@ -301,8 +352,7 @@ static boolean initialize()
 		ERROR("Failed to retrieve ServerIniDir config.");
 		return FALSE;
 	}
-	if (!make_path(path, sizeof(path), 
-			"%s/chartype.ini", inidir)) {
+	if (!make_path(path, sizeof(path), "%s/chartype.ini", inidir)) {
 		ERROR("Failed to create path (chartype.ini).");
 		return FALSE;
 	}
@@ -310,8 +360,7 @@ static boolean initialize()
 		ERROR("Failed to load character type names.");
 		return FALSE;
 	}
-	if (!make_path(path, sizeof(path), 
-			"%s/objecttemplate.ini", inidir)) {
+	if (!make_path(path, sizeof(path), "%s/objecttemplate.ini", inidir)) {
 		ERROR("Failed to create path (objecttemplate.ini).");
 		return FALSE;
 	}
@@ -328,8 +377,7 @@ static boolean initialize()
 		ERROR("Failed to read character templates (%s).", path);
 		return FALSE;
 	}
-	if (!make_path(path, sizeof(path), 
-			"%s/characterdatatable.txt", inidir)) {
+	if (!make_path(path, sizeof(path), "%s/characterdatatable.txt", inidir)) {
 		ERROR("Failed to create path (characterdatatable.txt).");
 		return FALSE;
 	}
@@ -337,8 +385,7 @@ static boolean initialize()
 		ERROR("Failed to read character import data (%s).", path);
 		return FALSE;
 	}
-	if (!make_path(path, sizeof(path), 
-			"%s/growupfactor.ini", inidir)) {
+	if (!make_path(path, sizeof(path), "%s/growupfactor.ini", inidir)) {
 		ERROR("Failed to create path (growupfactor.ini).");
 		return FALSE;
 	}
@@ -346,8 +393,7 @@ static boolean initialize()
 		ERROR("Failed to read character grow up factor (%s).", path);
 		return FALSE;
 	}
-	if (!make_path(path, sizeof(path), 
-			"%s/levelupexp.ini", inidir)) {
+	if (!make_path(path, sizeof(path), "%s/levelupexp.ini", inidir)) {
 		ERROR("Failed to create path (levelupexp.ini).");
 		return FALSE;
 	}
@@ -355,8 +401,7 @@ static boolean initialize()
 		ERROR("Failed to read character level up exp (%s).", path);
 		return FALSE;
 	}
-	if (!make_path(path, sizeof(path), 
-			"%s/skilltemplate.ini", inidir)) {
+	if (!make_path(path, sizeof(path), "%s/skilltemplate.ini", inidir)) {
 		ERROR("Failed to create path (skilltemplate.ini).");
 		return FALSE;
 	}
@@ -364,26 +409,31 @@ static boolean initialize()
 		ERROR("Failed to read skill templates (%s).", path);
 		return FALSE;
 	}
-	if (!make_path(path, sizeof(path), 
-			"%s/skillspec.ini", inidir)) {
-		ERROR("Failed to create path (skillspec.ini).");
+	if (!make_path(path, sizeof(path), "%s/skillspec.txt", inidir)) {
+		ERROR("Failed to create path (skillspec.txt).");
 		return FALSE;
 	}
 	if (!ap_skill_read_spec(g_ApSkill, path, FALSE)) {
 		ERROR("Failed to read skill specialization (%s).", path);
 		return FALSE;
 	}
-	if (!make_path(path, sizeof(path), 
-			"%s/skillconst.ini", inidir)) {
-		ERROR("Failed to create path (skillconst.ini).");
+	if (!make_path(path, sizeof(path), "%s/skillconst.txt", inidir)) {
+		ERROR("Failed to create path (skillconst.txt).");
 		return FALSE;
 	}
 	if (!ap_skill_read_const(g_ApSkill, path, FALSE)) {
 		ERROR("Failed to read skill const (%s).", path);
 		return FALSE;
 	}
-	if (!make_path(path, sizeof(path), 
-			"%s/itemoptiontable.txt", inidir)) {
+	if (!make_path(path, sizeof(path), "%s/skillconst2.txt", inidir)) {
+		ERROR("Failed to create path (skillconst2.txt).");
+		return FALSE;
+	}
+	if (!ap_skill_read_const2(g_ApSkill, path, FALSE)) {
+		ERROR("Failed to read skill const2 (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/itemoptiontable.txt", inidir)) {
 		ERROR("Failed to create path (itemoptiontable.txt).");
 		return FALSE;
 	}
@@ -391,8 +441,7 @@ static boolean initialize()
 		ERROR("Failed to read item option data (%s).", path);
 		return FALSE;
 	}
-	if (!make_path(path, sizeof(path), 
-			"%s/itemdatatable.txt", inidir)) {
+	if (!make_path(path, sizeof(path), "%s/itemdatatable.txt", inidir)) {
 		ERROR("Failed to create path (itemdatatable.txt).");
 		return FALSE;
 	}
@@ -400,8 +449,127 @@ static boolean initialize()
 		ERROR("Failed to read item import data (%s).", path);
 		return FALSE;
 	}
-	if (!make_path(path, sizeof(path), 
-			"%s/npc.ini", inidir)) {
+	if (!make_path(path, sizeof(path), "%s/itemlotterybox.txt", inidir)) {
+		ERROR("Failed to create path (%s/itemlotterybox.txt).", inidir);
+		return FALSE;
+	}
+	if (!ap_item_read_lottery_box(g_ApItem, path, FALSE)) {
+		ERROR("Failed to read item lottery box (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/avatarset.ini", inidir)) {
+		ERROR("Failed to create path (%s/avatarset.ini).", inidir);
+		return FALSE;
+	}
+	if (!ap_item_read_avatar_set(g_ApItem, path, FALSE)) {
+		ERROR("Failed to read item avatar sets (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/itemconverttable.txt", inidir)) {
+		ERROR("Failed to create path (%s/itemconverttable.txt).", inidir);
+		return FALSE;
+	}
+	if (!ap_item_convert_read_convert_table(g_ApItemConvert, path)) {
+		ERROR("Failed to read item convert table (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/itemruneattributetable.txt", inidir)) {
+		ERROR("Failed to create path (%s/itemruneattributetable.txt).", inidir);
+		return FALSE;
+	}
+	if (!ap_item_convert_read_rune_attribute_table(g_ApItemConvert, path, FALSE)) {
+		ERROR("Failed to read item rune attribute table (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/refineryrecipetable.txt", inidir)) {
+		ERROR("Failed to create path (%s/refineryrecipetable.txt).", inidir);
+		return FALSE;
+	}
+	if (!ap_refinery_read_recipe_table(g_ApRefinery, path, FALSE)) {
+		ERROR("Failed to read refinery recipe table (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/aidatatable.txt", inidir)) {
+		ERROR("Failed to create path (%s/aidatatable.txt).", inidir);
+		return FALSE;
+	}
+	if (!ap_ai2_read_data_table(g_ApAi2, path, FALSE)) {
+		ERROR("Failed to read ai data table (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/optionnumdroprate.txt", inidir)) {
+		ERROR("Failed to create path (%s/optionnumdroprate.txt).", inidir);
+		return FALSE;
+	}
+	if (!ap_drop_item_read_option_num_drop_rate(g_ApDropItem, path, FALSE)) {
+		ERROR("Failed to read option number drop rates (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/socketnumdroprate.txt", inidir)) {
+		ERROR("Failed to create path (%s/socketnumdroprate.txt).", inidir);
+		return FALSE;
+	}
+	if (!ap_drop_item_read_socket_num_drop_rate(g_ApDropItem, path, FALSE)) {
+		ERROR("Failed to read socket number drop rates (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/droprankrate.txt", inidir)) {
+		ERROR("Failed to create path (%s/droprankrate.txt).", inidir);
+		return FALSE;
+	}
+	if (!ap_drop_item_read_drop_rank_rate(g_ApDropItem, path, FALSE)) {
+		ERROR("Failed to read item drop rank rates (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/groupdroprate.txt", inidir)) {
+		ERROR("Failed to create path (%s/groupdroprate.txt).", inidir);
+		return FALSE;
+	}
+	if (!ap_drop_item_read_drop_group_rate(g_ApDropItem, path, FALSE)) {
+		ERROR("Failed to read item drop group rates (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/itemdroptable.txt", inidir)) {
+		ERROR("Failed to create path (%s/itemdroptable.txt).", inidir);
+		return FALSE;
+	}
+	if (!ap_drop_item_read_drop_table(g_ApDropItem, path, FALSE)) {
+		ERROR("Failed to read item drop table (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/leveluprewardtable.txt", inidir)) {
+		ERROR("Failed to create path (%s/leveluprewardtable.txt).", inidir);
+		return FALSE;
+	}
+	if (!ap_service_npc_read_level_up_reward_table(g_ApServiceNpc, path, FALSE)) {
+		ERROR("Failed to read level up reward table (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/cashmall.txt", inidir)) {
+		ERROR("Failed to create path (%s/cashmall.txt).", inidir);
+		return FALSE;
+	}
+	if (!ap_cash_mall_read_import_data(g_ApCashMall, path, FALSE)) {
+		ERROR("Failed to read cash mall data (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/teleportpoint.ini", inidir)) {
+		ERROR("Failed to create path (%s/teleportpoint.ini).", inidir);
+		return FALSE;
+	}
+	if (!ap_event_teleport_read_teleport_points(g_ApEventTeleport, path, FALSE)) {
+		ERROR("Failed to read teleport points (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/npctradelist.txt", inidir)) {
+		ERROR("Failed to create path (%s/npctradelist.txt).", inidir);
+		return FALSE;
+	}
+	if (!ap_event_npc_trade_read_trade_lists(g_ApEventNpcTrade, path)) {
+		ERROR("Failed to read npc trade list templates.");
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/npc.ini", inidir)) {
 		ERROR("Failed to create path (npc.ini).");
 		return FALSE;
 	}
@@ -409,18 +577,16 @@ static boolean initialize()
 		ERROR("Failed to read static characters (%s).", path);
 		return FALSE;
 	}
-	if (!make_path(path, sizeof(path), 
-			"%s/spawndatatable.ini", inidir)) {
-		ERROR("Failed to create path (spawndatatable.ini).");
+	if (!make_path(path, sizeof(path), "%s/spawndatatable.txt", inidir)) {
+		ERROR("Failed to create path (spawndatatable.txt).");
 		return FALSE;
 	}
 	if (!ap_spawn_read_data(g_ApSpawn, path, FALSE)) {
 		ERROR("Failed to read spawn data (%s).", path);
 		return FALSE;
 	}
-	if (!make_path(path, sizeof(path), 
-			"%s/spawninstancetable.ini", inidir)) {
-		ERROR("Failed to create path (spawninstancetable.ini).");
+	if (!make_path(path, sizeof(path), "%s/spawninstancetable.txt", inidir)) {
+		ERROR("Failed to create path (spawninstancetable.txt).");
 		return FALSE;
 	}
 	if (!ap_spawn_read_instances(g_ApSpawn, path, FALSE)) {
