@@ -3,6 +3,7 @@
 #include "core/log.h"
 #include "core/malloc.h"
 #include "core/string.h"
+#include "core/vector.h"
 
 #include "public/ap_admin.h"
 #include "public/ap_character.h"
@@ -414,6 +415,13 @@ boolean ap_event_teleport_read_teleport_points(
 	return TRUE;
 }
 
+static int sortpoints(
+	const struct ap_event_teleport_point * const * p1,
+	const struct ap_event_teleport_point * const * p2)
+{
+	return strcmp((*p1)->point_name, (*p2)->point_name);
+}
+
 boolean ap_event_teleport_write_teleport_points(
 	struct ap_event_teleport_module * mod,
 	const char * file_path, 
@@ -423,23 +431,33 @@ boolean ap_event_teleport_write_teleport_points(
 	size_t index = 0;
 	void * object;
 	struct ap_event_teleport_point * point;
+	struct ap_event_teleport_point ** list = vec_new_reserved(sizeof(*list), 
+		ap_admin_get_object_count(&mod->point_admin));
+	while (ap_admin_iterate_name(&mod->point_admin, &index, &object)) {
+		point = *(struct ap_event_teleport_point **)object;
+		vec_push_back((void **)&list, &point);
+	}
+	qsort(list, vec_count(list), sizeof(*list), sortpoints);
 	stream = ap_module_stream_create();
 	ap_module_stream_set_mode(stream, AU_INI_MGR_MODE_NAME_OVERWRITE);
 	ap_module_stream_set_type(stream, AU_INI_MGR_TYPE_NORMAL);
-	while (ap_admin_iterate_name(&mod->point_admin, &index, &object)) {
-		point = *(struct ap_event_teleport_point **)object;
+	for (index = 0; index < vec_count(list); index++) {
+		point = list[index];
 		if (!ap_module_stream_set_section_name(stream, point->point_name)) {
 			ERROR("Failed to set section name.");
 			ap_module_stream_destroy(stream);
+			vec_free(list);
 			return FALSE;
 		}
 		if (!ap_module_stream_enum_write(mod, stream, 
 				AP_EVENT_TELEPORT_MDI_TELEPORT_POINT, point)) {
 			ERROR("Failed to write teleport point (%s).", point->point_name);
 			ap_module_stream_destroy(stream);
+			vec_free(list);
 			return FALSE;
 		}
 	}
+	vec_free(list);
 	if (!ap_module_stream_write(stream, file_path, 0, encrypt)) {
 		ERROR("Failed to write teleport points..");
 		ap_module_stream_destroy(stream);

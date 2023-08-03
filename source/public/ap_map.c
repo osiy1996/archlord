@@ -421,6 +421,13 @@ boolean ap_map_read_region_glossary(
 	return TRUE;
 }
 
+static int sortglossary(
+	const struct ap_map_region_glossary * const * g1,
+	const struct ap_map_region_glossary * const * g2)
+{
+	return strcmp((*g1)->name, (*g2)->name);
+}
+
 boolean ap_map_write_region_glossary(
 	struct ap_map_module * mod,
 	const char * file_path,
@@ -428,18 +435,26 @@ boolean ap_map_write_region_glossary(
 {
 	size_t index = 0;
 	struct ap_map_region_glossary * glossary;
+	struct ap_map_region_glossary ** list = vec_new_reserved(sizeof(*list),
+		ap_admin_get_object_count(&mod->glossary_admin));
 	void * data = alloc(0x100000);
 	char * buffer = data;
 	size_t size;
 	boolean r = TRUE;
-	while (ap_admin_iterate_name(&mod->glossary_admin, &index, (void **)&glossary)) {
+	while (ap_admin_iterate_name(&mod->glossary_admin, &index, (void **)&glossary))
+		vec_push_back((void **)&list, &glossary);
+	qsort(list, vec_count(list), sizeof(*list), sortglossary);
+	for (index = 0; index < vec_count(list); index++) {
+		glossary = list[index];
 		buffer = write_line_bufferv(buffer, 256, "%s\t%s", glossary->name, 
 			glossary->label);
 		if (!buffer) {
 			dealloc(data);
+			vec_free(list);
 			return FALSE;
 		}
 	}
+	vec_free(list);
 	size = (size_t)(buffer - (char *)data);
 	if (encrypt && !au_md5_crypt(data, size, "1111", 4))
 		r = FALSE;

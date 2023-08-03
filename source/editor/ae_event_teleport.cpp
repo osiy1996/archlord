@@ -38,6 +38,7 @@ static boolean cbcommitchanges(
 	char paths[2][1024];
 	boolean encrypt[2] = { FALSE, TRUE };
 	uint32_t i;
+	boolean success = TRUE;
 	if (!mod->has_pending_changes)
 		return TRUE;
 	snprintf(paths[0], sizeof(paths[0]), "%s/teleportpoint.ini", 
@@ -51,6 +52,7 @@ static boolean cbcommitchanges(
 		}
 		else {
 			ERROR("Failed to save teleport points to: %s.", paths[i]);
+			success = FALSE;
 		}
 	}
 	snprintf(paths[1], sizeof(paths[1]), "%s/ini/teleportgroup.ini",
@@ -61,8 +63,10 @@ static boolean cbcommitchanges(
 	}
 	else {
 		ERROR("Failed to save teleport groups to: %s.", paths[1]);
+		success = FALSE;
 	}
-	mod->has_pending_changes = FALSE;
+	if (success)
+		mod->has_pending_changes = FALSE;
 	return TRUE;
 }
 
