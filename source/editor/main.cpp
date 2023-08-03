@@ -84,7 +84,11 @@
 #include "client/ac_terrain.h"
 #include "client/ac_texture.h"
 
+#include "editor/ae_editor_action.h"
+#include "editor/ae_event_refinery.h"
+#include "editor/ae_event_teleport.h"
 #include "editor/ae_item.h"
+#include "editor/ae_map.h"
 #include "editor/ae_object.h"
 #include "editor/ae_terrain.h"
 #include "editor/ae_texture.h"
@@ -168,7 +172,11 @@ static ap_module_t g_AcMesh;
 static struct ac_terrain_module * g_AcTerrain;
 static struct ac_object_module * g_AcObject;
 
+static struct ae_editor_action_module * g_AeEditorAction;
+static struct ae_event_refinery_module * g_AeEventRefinery;
+static struct ae_event_teleport_module * g_AeEventTeleport;
 static struct ae_item_module * g_AeItem;
+static struct ae_map_module * g_AeMap;
 static struct ae_object_module * g_AeObject;
 static struct ae_terrain_module * g_AeTerrain;
 static struct ae_texture_module * g_AeTexture;
@@ -237,8 +245,12 @@ static struct module_desc g_Modules[] = {
 	{ AC_TERRAIN_MODULE_NAME, ac_terrain_create_module, NULL, &g_AcTerrain },
 	{ AC_OBJECT_MODULE_NAME, ac_object_create_module, NULL, &g_AcObject },
 	/* Editor modules. */
+	{ AE_EDITOR_ACTION_MODULE_NAME, ae_editor_action_create_module, NULL, &g_AeEditorAction },
 	{ AE_TEXTURE_MODULE_NAME, ae_texture_create_module, NULL, &g_AeTexture },
 	{ AE_TERRAIN_MODULE_NAME, ae_terrain_create_module, NULL, &g_AeTerrain },
+	{ AE_MAP_MODULE_NAME, ae_map_create_module, NULL, &g_AeMap },
+	{ AE_EVENT_REFINERY_MODULE_NAME, ae_event_refinery_create_module, NULL, &g_AeEventRefinery },
+	{ AE_EVENT_TELEPORT_MODULE_NAME, ae_event_teleport_create_module, NULL, &g_AeEventTeleport },
 	{ AE_OBJECT_MODULE_NAME, ae_object_create_module, NULL, &g_AeObject },
 	{ AE_ITEM_MODULE_NAME, ae_item_create_module, NULL, &g_AeItem },
 };
@@ -676,6 +688,8 @@ static void render(struct ac_camera * cam, float dt)
 	ac_imgui_new_frame(g_AcImgui);
 	ImGui::BeginMainMenuBar();
 	if (ImGui::BeginMenu("File", true)) {
+		if (ImGui::Selectable("Save"))
+			ae_editor_action_commit_changes(g_AeEditorAction);
 		ImGui::EndMenu();
 	}
 	if (ImGui::BeginMenu("View", true)) {
@@ -784,7 +798,7 @@ int main(int argc, char * argv[])
 		return -1;
 	}
 	{
-		vec3 center = { -437032.4f, 4785.9f, 161015.2f };
+		vec3 center = { -462922.5f,3217.9f,-44894.8f };
 		ac_camera_init(&cam, center, 5000.0f, 45.0f, 30.0f, 60.0f, 200.0f, 40000.0f);
 		ac_terrain_sync(g_AcTerrain, cam.center, TRUE);
 		ac_object_sync(g_AcObject, cam.center, TRUE);

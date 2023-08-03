@@ -53,6 +53,11 @@ char * strupper(char * s);
 int strcasecmp(const char * s1, const char * s2);
 
 /*
+ * Finds a substring in a string, case insensitive.
+ */
+char * stristr(const char * string, const char * substring);
+
+/*
  * Is string empty?
  */
 boolean strisempty(const char * str);

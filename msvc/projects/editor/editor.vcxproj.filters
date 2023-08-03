@@ -390,6 +390,18 @@
     <ClInclude Include="..\..\..\source\editor\ae_item.h">
       <Filter>source\editor</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\editor\ae_event_refinery.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\editor\ae_event_teleport.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\editor\ae_map.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\editor\ae_editor_action.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\core\hash_map.c">
@@ -705,6 +717,18 @@
       <Filter>source\public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\editor\ae_item.c">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\editor\ae_event_refinery.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\editor\ae_event_teleport.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\editor\ae_map.c">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\editor\ae_editor_action.c">
       <Filter>source\editor</Filter>
     </ClCompile>
   </ItemGroup>

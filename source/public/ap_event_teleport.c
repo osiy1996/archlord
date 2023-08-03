@@ -39,8 +39,135 @@ struct ap_event_teleport_module {
 	struct ap_packet_module * ap_packet;
 	struct au_packet packet;
 	struct ap_admin point_admin;
+	struct ap_admin group_admin;
 	size_t character_attachment_offset;
 };
+
+static boolean cbpointread(
+	struct ap_event_teleport_module * mod,
+	struct ap_event_teleport_point * point,
+	struct ap_module_stream * stream)
+{
+	while (ap_module_stream_read_next_value(stream)) {
+		const char * value_name = ap_module_stream_get_value_name(stream);
+		const char * value = ap_module_stream_get_value(stream);
+		if (strcmp(value_name, STREAM_DESCRIPTION) == 0) {
+			strlcpy(point->description, value, sizeof(point->description));
+		}
+		else if (strcmp(value_name, STREAM_RADIUS_MIN) == 0) {
+			point->radius_min = strtof(value, NULL);
+		}
+		else if (strcmp(value_name, STREAM_RADIUS_MAX) == 0) {
+			point->radius_max = strtof(value, NULL);
+		}
+		else if (strcmp(value_name, STREAM_POINT_TYPE) == 0) {
+			point->target_type = strtol(value, NULL, 10);
+		}
+		else if (strcmp(value_name, STREAM_POINT_POS) == 0) {
+			if (point->target_type == AP_EVENT_TELEPORT_TARGET_POS) {
+				if (sscanf(value, "%f:%f:%f", &point->target.pos.x,
+						&point->target.pos.y, &point->target.pos.z) != 3) {
+					ERROR("Failed to read point position (%s).", point->point_name);
+					return FALSE;
+				}
+			}
+		}
+		else if (strcmp(value_name, STREAM_POINT_BASE) == 0) {
+			if (point->target_type == AP_EVENT_TELEPORT_TARGET_BASE) {
+				if (sscanf(value, "%d:%d", &point->target.base.type,
+						&point->target.base.id) != 2) {
+					ERROR("Failed to read point base (%s).", point->point_name);
+					return FALSE;
+				}
+				assert(point->target.base.type == AP_BASE_TYPE_OBJECT);
+				assert(point->target.base.id != 0);
+			}
+		}
+		else if (strcmp(value_name, STREAM_POINT_EVENT) == 0) {
+			point->attach_event = strtol(value, NULL, 10) != 0;
+		}
+		else if (strcmp(value_name, STREAM_USE_TYPE) == 0) {
+			point->use_type = strtol(value, NULL, 10);
+		}
+		else if (strcmp(value_name, STREAM_POINT_GROUP_NAME) == 0) {
+			struct ap_event_teleport_group * group;
+			if (point->group_count >= COUNT_OF(point->groups)) {
+				ERROR("Exceeded group count limit (%s).", point->point_name);
+				return FALSE;
+			}
+			group = ap_admin_get_object_by_name(&mod->group_admin, value);
+			if (!group) {
+				group = ap_admin_add_object_by_name(&mod->group_admin, value);
+				assert(group != NULL);
+				strlcpy(group->name, value, sizeof(group->name));
+			}
+			else if (group->destination_point_count >= AP_EVENT_TELEPORT_MAX_GROUP_POINT_COUNT) {
+				ERROR("Teleport group has too many teleport points.");
+				return FALSE;
+			}
+			group->destination_points[group->destination_point_count++] = point;
+			point->groups[point->group_count++] = group;
+		}
+		else if (strcmp(value_name, STREAM_POINT_TARGET_NAME) == 0) {
+			struct ap_event_teleport_group * group;
+			if (point->target_group_count >= COUNT_OF(point->target_groups)) {
+				ERROR("Exceeded target group count limit (%s).", point->point_name);
+				return FALSE;
+			}
+			group = ap_admin_get_object_by_name(&mod->group_admin, value);
+			if (!group) {
+				group = ap_admin_add_object_by_name(&mod->group_admin, value);
+				assert(group != NULL);
+				strlcpy(group->name, value, sizeof(group->name));
+			}
+			else if (group->source_point_count >= AP_EVENT_TELEPORT_MAX_GROUP_POINT_COUNT) {
+				ERROR("Teleport group has too many teleport points.");
+				return FALSE;
+			}
+			group->source_points[group->source_point_count++] = point;
+			point->target_groups[point->target_group_count++] = group;
+		}
+		else if (strcmp(value_name, STREAM_POINT_REGION_TYPE) == 0) {
+			point->region_type = strtol(value, NULL, 10);
+		}
+		else if (strcmp(value_name, STREAM_POINT_SPECIAL_TYPE) == 0) {
+			point->special_type = strtol(value, NULL, 10);
+		}
+		else {
+			assert(0);
+		}
+	}
+	return TRUE;
+}
+
+static boolean cbpointwrite(
+	struct ap_event_teleport_module * mod,
+	struct ap_event_teleport_point * point,
+	struct ap_module_stream * stream)
+{
+	boolean result = TRUE;
+	char buffer[128];
+	uint32_t i;
+	result &= ap_module_stream_write_value(stream, STREAM_DESCRIPTION, point->description);
+	result &= ap_module_stream_write_f32(stream, STREAM_RADIUS_MIN, point->radius_min);
+	result &= ap_module_stream_write_f32(stream, STREAM_RADIUS_MAX, point->radius_max);
+	result &= ap_module_stream_write_i32(stream, STREAM_POINT_TYPE, point->target_type);
+	result &= ap_module_stream_write_i32(stream, STREAM_POINT_REGION_TYPE, point->region_type);
+	result &= ap_module_stream_write_i32(stream, STREAM_POINT_SPECIAL_TYPE, point->special_type);
+	au_ini_mgr_print_compact(buffer, "%f:%f:%f", point->target.pos.x, 
+		point->target.pos.y, point->target.pos.z);
+	result &= ap_module_stream_write_value(stream, STREAM_POINT_POS, buffer);
+	sprintf(buffer, "%d:%u", point->target.base.type, 
+		point->target.base.id);
+	result &= ap_module_stream_write_value(stream, STREAM_POINT_BASE, buffer);
+	result &= ap_module_stream_write_i32(stream, STREAM_POINT_EVENT, point->attach_event);
+	result &= ap_module_stream_write_i32(stream, STREAM_USE_TYPE, point->use_type);
+	for (i = 0; i < point->group_count; i++)
+		result &= ap_module_stream_write_value(stream, STREAM_POINT_GROUP_NAME, point->groups[i]->name);
+	for (i = 0; i < point->target_group_count; i++)
+		result &= ap_module_stream_write_value(stream, STREAM_POINT_TARGET_NAME, point->target_groups[i]->name);
+	return TRUE;
+}
 
 static boolean event_ctor(struct ap_event_teleport_module * mod, void * data)
 {
@@ -55,8 +182,6 @@ static boolean event_dtor(
 	struct ap_event_manager_event * e)
 {
 	struct ap_event_teleport_event * teleportevent = ap_event_teleport_get_event(e);
-	if (teleportevent->point && teleportevent->point->target_base)
-		teleportevent->point->target_base = NULL;
 	dealloc(teleportevent);
 	e->data = NULL;
 	return TRUE;
@@ -89,12 +214,6 @@ static boolean event_read(
 					ap_base_get_type(event->source), ap_base_get_id(event->source));
 			}
 			else {
-				uint64_t id = makeid(ap_base_get_type(event->source),
-					ap_base_get_id(event->source));
-				if (!ap_admin_add_id(&mod->point_admin, e->point_name, id)) {
-					ERROR("Failed to bind event teleport point id.");
-					return FALSE;
-				}
 				if (e->point->target_type != AP_EVENT_TELEPORT_TARGET_BASE) {
 					WARN("Event teleport point target type does not match (%s).",
 						e->point_name);
@@ -160,6 +279,7 @@ static boolean onregister(
 static void onshutdown(struct ap_event_teleport_module * mod)
 {
 	ap_admin_destroy(&mod->point_admin);
+	ap_admin_destroy(&mod->group_admin);
 }
 
 struct ap_event_teleport_module * ap_event_teleport_create_module()
@@ -175,6 +295,9 @@ struct ap_event_teleport_module * ap_event_teleport_create_module()
 		AU_PACKET_TYPE_MEMORY_BLOCK, 1, /* disable target point id (array) */
 		AU_PACKET_TYPE_END);
 	ap_admin_init(&mod->point_admin, sizeof(struct ap_event_teleport_point), 128);
+	ap_admin_init(&mod->group_admin, sizeof(struct ap_event_teleport_group), 128);
+	ap_module_stream_add_callback(mod, AP_EVENT_TELEPORT_MDI_TELEPORT_POINT,
+		AP_EVENT_TELEPORT_MODULE_NAME, mod, cbpointread, cbpointwrite);
 	return mod;
 }
 
@@ -192,99 +315,130 @@ boolean ap_event_teleport_read_teleport_points(
 	const char * file_path, 
 	boolean decrypt)
 {
-	struct au_ini_mgr_ctx * ini = au_ini_mgr_create();
-	uint32_t sectioncount;
+	struct ap_module_stream * stream;
+	uint32_t count;
 	uint32_t i;
-	au_ini_mgr_set_mode(ini, AU_INI_MGR_MODE_NAME_OVERWRITE);
-	au_ini_mgr_set_path(ini, file_path);
-	if (!au_ini_mgr_read_file(ini, 0, decrypt)) {
-		ERROR("Failed to read file (%s).", file_path);
-		au_ini_mgr_destroy(ini);
+	stream = ap_module_stream_create();
+	if (!ap_module_stream_open(stream, file_path, 0, decrypt)) {
+		ERROR("Failed to open stream (%s).", file_path);
+		ap_module_stream_destroy(stream);
 		return FALSE;
 	}
-	sectioncount = au_ini_mgr_get_section_count(ini);
-	for (i = 0; i < sectioncount; i++) {
-		const char * pointname = au_ini_mgr_get_section_name(ini, i);
+	count = ap_module_stream_get_section_count(stream);
+	for (i = 0; i < count; i++) {
+		const char * pointname = ap_module_stream_read_section_name(stream, i);
 		struct ap_event_teleport_point * point = 
 			ap_admin_add_object_by_name(&mod->point_admin, pointname);
-		uint32_t keycount = au_ini_mgr_get_key_count(ini, i);
-		uint32_t j;
 		if (!point) {
 			ERROR("Failed to add teleport point (%s).", pointname);
-			au_ini_mgr_destroy(ini);
+			ap_module_stream_destroy(stream);
 			return FALSE;
 		}
-		for (j = 0; j < keycount; j++) {
-			const char * key = au_ini_mgr_get_key_name(ini, i, j);
-			const char * value = au_ini_mgr_get_value(ini, i, j);
-			if (strcmp(key, STREAM_DESCRIPTION) == 0) {
-				strlcpy(point->description, value, sizeof(point->description));
-			}
-			else if (strcmp(key, STREAM_RADIUS_MIN) == 0) {
-				point->radius_min = strtof(value, NULL);
-			}
-			else if (strcmp(key, STREAM_RADIUS_MAX) == 0) {
-				point->radius_max = strtof(value, NULL);
-			}
-			else if (strcmp(key, STREAM_POINT_TYPE) == 0) {
-				point->target_type = strtol(value, NULL, 10);
-			}
-			else if (strcmp(key, STREAM_POINT_POS) == 0) {
-				if (point->target_type == AP_EVENT_TELEPORT_TARGET_POS) {
-					if (sscanf(value, "%f:%f:%f", &point->target.pos.x,
-							&point->target.pos.y, &point->target.pos.z) != 3) {
-						ERROR("Failed to read point position (%s).", pointname);
-						au_ini_mgr_destroy(ini);
-						return FALSE;
-					}
-				}
-			}
-			else if (strcmp(key, STREAM_POINT_BASE) == 0) {
-				if (point->target_type == AP_EVENT_TELEPORT_TARGET_BASE) {
-					if (sscanf(value, "%d:%d", &point->target.base.type,
-							&point->target.base.id) != 2) {
-						ERROR("Failed to read point base (%s).", pointname);
-						au_ini_mgr_destroy(ini);
-						return FALSE;
-					}
-					assert(point->target.base.type == AP_BASE_TYPE_OBJECT);
-					assert(point->target.base.id != 0);
-				}
-			}
-			else if (strcmp(key, STREAM_POINT_EVENT) == 0) {
-				point->attach_event = strtol(value, NULL, 10) != 0;
-			}
-			else if (strcmp(key, STREAM_USE_TYPE) == 0) {
-				point->use_type = strtol(value, NULL, 10);
-			}
-			else if (strcmp(key, STREAM_POINT_GROUP_NAME) == 0) {
-				if (point->group_count >= COUNT_OF(point->groups)) {
-					ERROR("Exceeded group count limit (%s).", pointname);
-					au_ini_mgr_destroy(ini);
-					return FALSE;
-				}
-				strlcpy(point->groups[point->group_count++].name, value, 
-					sizeof(point->groups[0]));
-			}
-			else if (strcmp(key, STREAM_POINT_TARGET_NAME) == 0) {
-				if (point->target_group_count >= COUNT_OF(point->target_groups)) {
-					ERROR("Exceeded target group count limit (%s).", pointname);
-					au_ini_mgr_destroy(ini);
-					return FALSE;
-				}
-				strlcpy(point->target_groups[point->target_group_count++].name, value, 
-					sizeof(point->target_groups[0]));
-			}
-			else if (strcmp(key, STREAM_POINT_REGION_TYPE) == 0) {
-				point->region_type = strtol(value, NULL, 10);
-			}
-			else if (strcmp(key, STREAM_POINT_SPECIAL_TYPE) == 0) {
-				point->special_type = strtol(value, NULL, 10);
+		strlcpy(point->point_name, pointname, sizeof(point->point_name));
+		if (!ap_module_stream_enum_read(mod, stream, 
+				AP_EVENT_TELEPORT_MDI_TELEPORT_POINT, point)) {
+			ERROR("Failed to read teleport point (%s).", pointname);
+			ap_module_stream_destroy(stream);
+			ap_admin_remove_object_by_name(&mod->point_admin, pointname);
+			return FALSE;
+		}
+	}
+	ap_module_stream_destroy(stream);
+	return TRUE;
+}
+
+boolean ap_event_teleport_write_teleport_points(
+	struct ap_event_teleport_module * mod,
+	const char * file_path, 
+	boolean encrypt)
+{
+	struct ap_module_stream * stream;
+	size_t index = 0;
+	struct ap_event_teleport_point * point;
+	stream = ap_module_stream_create();
+	ap_module_stream_set_mode(stream, AU_INI_MGR_MODE_NAME_OVERWRITE);
+	ap_module_stream_set_type(stream, AU_INI_MGR_TYPE_NORMAL);
+	while (ap_admin_iterate_name(&mod->point_admin, &index, (void **)&point)) {
+		if (!ap_module_stream_set_section_name(stream, point->point_name)) {
+			ERROR("Failed to set section name.");
+			ap_module_stream_destroy(stream);
+			return FALSE;
+		}
+		if (!ap_module_stream_enum_write(mod, stream, 
+				AP_EVENT_TELEPORT_MDI_TELEPORT_POINT, point)) {
+			ERROR("Failed to write teleport point (%s).", point->point_name);
+			ap_module_stream_destroy(stream);
+			return FALSE;
+		}
+	}
+	if (!ap_module_stream_write(stream, file_path, 0, encrypt)) {
+		ERROR("Failed to write teleport points..");
+		ap_module_stream_destroy(stream);
+		return FALSE;
+	}
+	ap_module_stream_destroy(stream);
+	return TRUE;
+}
+
+struct ap_event_teleport_point * ap_event_teleport_add_point(
+	struct ap_event_teleport_module * mod,
+	const char * point_name,
+	void * target_base)
+{
+	struct ap_event_teleport_point * point = 
+		ap_admin_add_object_by_name(&mod->point_admin, point_name);
+	if (!point)
+		return NULL;
+	strlcpy(point->point_name, point_name, sizeof(point->point_name));
+	point->target_type = AP_EVENT_TELEPORT_TARGET_BASE;
+	point->target.base.type = ap_base_get_type(target_base);
+	point->target.base.id = ap_base_get_id(target_base);
+	point->target_base = target_base;
+	point->radius_min = 400.0f;
+	point->radius_max = 600.0f;
+	point->region_type = AP_EVENT_TELEPORT_REGION_NORMAL;
+	point->special_type = AP_EVENT_TELEPORT_SPECIAL_NORMAL;
+	return point;
+}
+
+void ap_event_teleport_remove_point(
+	struct ap_event_teleport_module * mod,
+	struct ap_event_teleport_point * point)
+{
+	uint32_t i;
+	for (i = 0; i < point->group_count; i++) {
+		struct ap_event_teleport_group * group = point->groups[i];
+		uint32_t j;
+		for (j = 0; j < group->destination_point_count; j++) {
+			if (group->destination_points[j] == point) {
+				group->destination_points[j] = 
+					group->destination_points[--group->destination_point_count];
+				break;
 			}
 		}
 	}
-	au_ini_mgr_destroy(ini);
-	return TRUE;
+	for (i = 0; i < point->target_group_count; i++) {
+		struct ap_event_teleport_group * group = point->target_groups[i];
+		uint32_t j;
+		for (j = 0; j < group->source_point_count; j++) {
+			if (group->source_points[j] == point) {
+				group->source_points[j] = 
+					group->source_points[--group->source_point_count];
+				break;
+			}
+		}
+	}
+	if (point->target_base) {
+		struct ap_event_manager_attachment * attachment = 
+			ap_event_manager_get_attachment(mod->ap_event_manager, point->target_base);
+		for (i = 0; i < attachment->event_count; i++) {
+			if (attachment->events[i].function == AP_EVENT_MANAGER_FUNCTION_TELEPORT) {
+				ap_event_manager_remove_function(mod->ap_event_manager, attachment, i);
+				break;
+			}
+		}
+	}
+	ap_admin_remove_object_by_name(&mod->point_admin, point->point_name);
 }
 
 struct ap_event_teleport_point * ap_event_teleport_find_point_by_id(
@@ -300,6 +454,28 @@ struct ap_event_teleport_point * ap_event_teleport_find_point_by_name(
 	const char * point_name)
 {
 	return ap_admin_get_object_by_name(&mod->point_admin, point_name);
+}
+
+struct ap_event_teleport_point * ap_event_teleport_iterate(
+	struct ap_event_teleport_module * mod,
+	size_t * index)
+{
+	struct ap_event_teleport_point * point;
+	if (ap_admin_iterate_name(&mod->point_admin, index, (void **)&point))
+		return point;
+	else
+		return NULL;
+}
+
+struct ap_event_teleport_group * ap_event_teleport_iterate_groups(
+	struct ap_event_teleport_module * mod,
+	size_t * index)
+{
+	struct ap_event_teleport_group * group;
+	if (ap_admin_iterate_name(&mod->group_admin, index, (void **)&group))
+		return group;
+	else
+		return NULL;
 }
 
 struct ap_event_teleport_character_attachment * ap_event_teleport_get_character_attachment(

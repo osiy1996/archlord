@@ -1050,7 +1050,7 @@ static boolean oninitialize(struct ac_object_module * mod)
 	return TRUE;
 }
 
-static void onshutdown(struct ac_object_module * mod)
+static void onclose(struct ac_object_module * mod)
 {
 	uint32_t count;
 	uint32_t i;
@@ -1069,8 +1069,6 @@ static void onshutdown(struct ac_object_module * mod)
 			}
 		}
 	}
-	vec_free(mod->visible_sectors);
-	vec_free(mod->visible_sectors_tmp);
 	bgfx_destroy_texture(mod->null_tex);
 	for (i = 0; i < COUNT_OF(mod->sampler); i++) {
 		if (BGFX_HANDLE_IS_VALID(mod->sampler[i]))
@@ -1080,13 +1078,19 @@ static void onshutdown(struct ac_object_module * mod)
 	count = vec_count(mod->templates);
 	for (i = 0; i < count; i++)
 		ac_object_destroy_template(&mod->templates[i]);
+}
+
+static void onshutdown(struct ac_object_module * mod)
+{
+	vec_free(mod->visible_sectors);
+	vec_free(mod->visible_sectors_tmp);
 	vec_free(mod->templates);
 }
 
 struct ac_object_module * ac_object_create_module()
 {
 	struct ac_object_module * mod = ap_module_instance_new(AC_OBJECT_MODULE_NAME,
-		sizeof(*mod), onregister, oninitialize, NULL, onshutdown);
+		sizeof(*mod), onregister, oninitialize, onclose, onshutdown);
 	uint32_t x;
 	uint32_t z;
 	uint32_t i;
@@ -1189,6 +1193,16 @@ struct ac_object_sector * ac_object_get_sector(
 	uint32_t z;
 	if (!ap_scr_pos_to_index(&pos->x, &x, &z))
 		return NULL;
+	return &mod->sectors[x][z];
+}
+
+struct ac_object_sector * ac_object_get_sector_by_index(
+	struct ac_object_module * mod, 
+	uint32_t x,
+	uint32_t z)
+{
+	assert(x < AP_SECTOR_WORLD_INDEX_WIDTH);
+	assert(z < AP_SECTOR_WORLD_INDEX_HEIGHT);
 	return &mod->sectors[x][z];
 }
 
@@ -1414,16 +1428,64 @@ boolean ac_object_get_min_height(
 	return FALSE;
 }
 
-void ac_object_commit_changes(struct ac_object_module * mod)
+void ac_object_export_sector(
+	struct ac_object_module * mod,
+	struct ac_object_sector * sector,
+	const char * export_directory)
 {
-	uint32_t x;
-	for (x = 0; x < AP_SECTOR_WORLD_INDEX_WIDTH; x++) {
-		uint32_t z;
-		for (z = 0; z < AP_SECTOR_WORLD_INDEX_HEIGHT; z++) {
-			struct ac_object_sector * s = &mod->sectors[x][z];
-			if (s->flags & AC_OBJECT_SECTOR_HAS_CHANGES) {
-				save_sector(mod, s);
+	if (sector->objects) {
+		uint32_t count = vec_count(sector->objects);
+		uint32_t i;
+		uint32_t * ids = read_object_ids(mod, sector->index_x, sector->index_z);
+		boolean write = TRUE;
+		for (i = 0; i < count; i++) {
+			struct ap_object * obj = sector->objects[i];
+			uint32_t x;
+			clear_object_octree_id_list(obj);
+			for (x = sector->index_x - 4; x < sector->index_x + 4; x++) {
+				uint32_t z;
+				for (z = sector->index_z - 4; z < sector->index_z + 4; z++) {
+					struct ap_octree_root_list * r;
+					if (!ap_scr_is_index_valid(x, z))
+						continue;
+					if (!mod->sectors[x][z].octree_roots)
+						continue;
+					r = mod->sectors[x][z].octree_roots->roots;
+					while (r) {
+						set_object_octree_node(obj,
+							ac_object_get_object(mod, obj),
+							r->node, x, z);
+						r = r->next;
+					}
+				}
+			}
+			if (!obj->object_id) {
+				uint32_t id;
+				if (ids) {
+					id = get_unique_object_id_from_list(ids,
+						sector->index_x, sector->index_z);
+					vec_push_back(&ids, &id);
+				}
+				else {
+					id = get_unique_object_id(mod, sector->index_x,
+						sector->index_z);
+				}
+				if (id == UINT32_MAX) {
+					ERROR("Ran out of available object IDs.");
+					write = FALSE;
+					break;
+				}
+				obj->object_id = id;
 			}
 		}
+		vec_free(ids);
+		if (write) {
+			ap_object_write_sector(mod->ap_object, export_directory, 
+				sector->index_x, sector->index_z, sector->objects);
+			/* TODO */
+		}
 	}
+	INFO("Commited object sector (%u,%u) changes to file (%s/obj%05u.ini).",
+		sector->index_x, sector->index_z, export_directory, 
+		(sector->index_x / 16) * 100 + (sector->index_z / 16));
 }

@@ -495,7 +495,7 @@ boolean ap_object_write_sector(
 	struct ap_module_stream * stream;
 	uint32_t c = vec_count(objects);
 	uint32_t i;
-	if (!make_path(path, sizeof(path), "%s/ini/obj%05u.ini",
+	if (!make_path(path, sizeof(path), "%s/obj%05u.ini",
 			object_dir, map_x * 100 + map_z)) {
 		ERROR("Failed to create path.");
 		return FALSE;

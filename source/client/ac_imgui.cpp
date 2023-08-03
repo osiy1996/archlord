@@ -66,10 +66,15 @@ boolean ac_imgui_init(
 	int bgfx_view, 
 	struct SDL_Window * window)
 {
+	ImFont * font;
 	mod->toolbox_height = 220.0f;
 	ImGui::CreateContext();
 	ImGui::GetIO().ConfigFlags = ImGuiConfigFlags_DockingEnable;
 	ImGui::GetIO().Fonts->AddFontDefault();
+	font = ImGui::GetIO().Fonts->AddFontFromFileTTF(
+		"content/fonts/Consola.ttf", 15.0f);
+	if (font)
+		ImGui::GetIO().FontDefault = font;
 	ImGui_Implbgfx_Init(bgfx_view);
 	switch (bgfx_get_renderer_type()) {
     case BGFX_RENDERER_TYPE_DIRECT3D9:

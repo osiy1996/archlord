@@ -178,6 +178,17 @@ struct ap_event_manager_attachment * ap_event_manager_get_attachment(
 	struct ap_event_manager_module * mod,
 	void * data);
 
+struct ap_event_manager_event * ap_event_manager_add_function(
+	struct ap_event_manager_module * mod,
+	struct ap_event_manager_attachment * attachment,
+	enum ap_event_manager_function_type function,
+	void * source);
+
+void ap_event_manager_remove_function(
+	struct ap_event_manager_module * mod,
+	struct ap_event_manager_attachment * attachment,
+	uint32_t index);
+
 /**
  * Find event function in object.
  * \param[in] source   Source data (character, object, item, etc.).
@@ -189,7 +200,7 @@ struct ap_event_manager_attachment * ap_event_manager_get_attachment(
 struct ap_event_manager_event * ap_event_manager_get_function(
 	struct ap_event_manager_module * mod,
 	void * source,
-	enum ap_event_manager_function function);
+	enum ap_event_manager_function_type function);
 
 /**
  * Parse base packet.

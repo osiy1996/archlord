@@ -6,34 +6,29 @@
 #include "core/string.h"
 #include "core/vector.h"
 
+#include "public/ap_admin.h"
 #include "public/ap_config.h"
 
 #include "utility/au_md5.h"
 
+#include <assert.h>
 #include <stdlib.h>
 
 struct ap_map_module {
 	struct ap_module_instance instance;
 	struct ap_config_module * ap_config;
 	struct ap_map_region_template region_templates[AP_MAP_MAX_REGION_ID + 1];
-	struct ap_map_region_glossary * glossary;
+	struct ap_admin glossary_admin;
 };
 
 static void match_glossary(struct ap_map_module * mod)
 {
-	uint32_t count = vec_count(mod->glossary);
 	uint32_t i;
 	for (i = 0; i <= COUNT_OF(mod->region_templates); i++) {
 		struct ap_map_region_template * t = &mod->region_templates[i];
-		uint32_t j;
 		if (!t->in_use)
 			continue;
-		for (j = 0; j < count; j++) {
-			if (strcmp(mod->glossary[j].name, t->name) == 0) {
-				t->glossary = mod->glossary[j].label;
-				break;
-			}
-		}
+		t->glossary = ap_admin_get_object_by_name(&mod->glossary_admin, t->name);
 		if (!t->glossary) {
 			t->glossary = "";
 			WARN("Region name doesn't have a matching glossary (Id = %u).",
@@ -73,8 +68,7 @@ static boolean oninitialize(struct ap_map_module * mod)
 			inidir);
 		return FALSE;
 	}
-	mod->glossary = ap_map_read_region_glossary(mod, path, FALSE);
-	if (!mod->glossary) {
+	if (!ap_map_read_region_glossary(mod, path, FALSE)) {
 		ERROR("Failed to read region glossary.");
 		return FALSE;
 	}
@@ -84,14 +78,14 @@ static boolean oninitialize(struct ap_map_module * mod)
 
 static void onshutdown(struct ap_map_module * mod)
 {
-	if (mod->glossary)
-		vec_free(mod->glossary);
+	ap_admin_destroy(&mod->glossary_admin);
 }
 
 struct ap_map_module * ap_map_create_module()
 {
 	struct ap_map_module * mod = ap_module_instance_new(AP_MAP_MODULE_NAME,
 		sizeof(*mod), onregister, oninitialize, NULL, onshutdown);
+	ap_admin_init(&mod->glossary_admin, sizeof(struct ap_map_region_glossary), 128);
 	return mod;
 }
 
@@ -376,7 +370,7 @@ boolean ap_map_write_region_tmp(
 	return TRUE;
 }
 
-struct ap_map_region_glossary * ap_map_read_region_glossary(
+boolean ap_map_read_region_glossary(
 	struct ap_map_module * mod,
 	const char * file_path,
 	boolean decrypt)
@@ -385,37 +379,17 @@ struct ap_map_region_glossary * ap_map_read_region_glossary(
 	void * head;
 	char line[1024];
 	uint32_t line_number = 0;
-	uint32_t count;
-	uint32_t c = 0;
-	struct ap_map_region_glossary * g;
 	buf = load_and_decrypt(file_path, decrypt);
 	if (!buf)
 		return FALSE;
 	head = buf;
 	while (TRUE) {
-		buf = (char *)read_line_buffer(buf, line, sizeof(line));
-		if (!buf)
-			break;
-		line_number++;
-		if (!line[0]) {
-			/* Empty line. */
-			continue;
-		}
-		c++;
-	}
-	if (!c) {
-		dealloc(head);
-		return NULL;
-	}
-	buf = head;
-	g = vec_new_reserved(sizeof(*g), c);
-	count = c;
-	c = 0;
-	while (TRUE) {
 		const char * cursor;
 		size_t maxcount;
 		struct ap_map_region_glossary * glossary;
 		buf = (char *)read_line_buffer(buf, line, sizeof(line));
+		char name[AP_MAP_MAX_REGION_NAME_SIZE];
+		char label[AP_MAP_MAX_REGION_NAME_SIZE];
 		if (!buf)
 			break;
 		line_number++;
@@ -427,26 +401,54 @@ struct ap_map_region_glossary * ap_map_read_region_glossary(
 		if (!cursor++) {
 			ERROR("Invalid format in file (%s), line %u.",
 				file_path, line_number);
-			vec_free(g);
 			dealloc(head);
 			return FALSE;
 		}
-		glossary = vec_add_empty(&g);
-		maxcount = MIN((size_t)(cursor - line),
-			sizeof(glossary->name));
-		strlcpy(glossary->name, line, maxcount);
-		strlcpy(glossary->label, cursor, sizeof(glossary->label));
-		c++;
-	}
-	if (c != count) {
-		ERROR("Failed to parse file (%s).", file_path);
-		vec_free(g);
-		dealloc(head);
-		return FALSE;
+		maxcount = MIN((size_t)(cursor - line), sizeof(glossary->name));
+		strlcpy(name, line, maxcount);
+		strlcpy(label, cursor, sizeof(label));
+		glossary = ap_admin_add_object_by_name(&mod->glossary_admin, name);
+		if (!glossary) {
+			WARN("Glossary name duplicate (%s).", label);
+			continue;
+		}
+		assert(sizeof(glossary->name) == sizeof(name));
+		assert(sizeof(glossary->label) == sizeof(label));
+		memcpy(glossary->name, name, sizeof(name));
+		memcpy(glossary->label, label, sizeof(label));
 	}
 	dealloc(head);
-	return g;
+	return TRUE;
 }
+
+boolean ap_map_write_region_glossary(
+	struct ap_map_module * mod,
+	const char * file_path,
+	boolean encrypt)
+{
+	size_t index = 0;
+	struct ap_map_region_glossary * glossary;
+	void * data = alloc(0x100000);
+	char * buffer = data;
+	size_t size;
+	boolean r = TRUE;
+	while (ap_admin_iterate_name(&mod->glossary_admin, &index, (void **)&glossary)) {
+		buffer = write_line_bufferv(buffer, 256, "%s\t%s", glossary->name, 
+			glossary->label);
+		if (!buffer) {
+			dealloc(data);
+			return FALSE;
+		}
+	}
+	size = (size_t)(buffer - (char *)data);
+	if (encrypt && !au_md5_crypt(data, size, "1111", 4))
+		r = FALSE;
+	else if (!make_file(file_path, data, size))
+		r = FALSE;
+	dealloc(data);
+	return r;
+}
+
 struct ap_map_region_template * ap_map_get_region_template(
 	struct ap_map_module * mod,
 	uint32_t region_id)
@@ -470,4 +472,41 @@ struct ap_map_region_template * ap_map_get_region_template_by_name(
 			return r;
 	}
 	return NULL;
+}
+
+boolean ap_map_add_glossary(
+	struct ap_map_module * mod, 
+	const char * name,
+	const char * label)
+{
+	struct ap_map_region_glossary * glossary = 
+		ap_admin_add_object_by_name(&mod->glossary_admin, name);
+	if (glossary) {
+		strlcpy(glossary->name, name, sizeof(glossary->name));
+		strlcpy(glossary->label, label, sizeof(glossary->label));
+		ap_module_enum_callback(mod, AP_MAP_CB_ADD_GLOSSARY, NULL);
+		return TRUE;
+	}
+	else {
+		struct ap_map_region_glossary * glossary = 
+			ap_admin_get_object_by_name(&mod->glossary_admin, name);
+		if (glossary) {
+			strlcpy(glossary->label, label, sizeof(glossary->label));
+			ap_module_enum_callback(mod, AP_MAP_CB_ADD_GLOSSARY, NULL);
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+	}
+}
+
+const char * ap_map_get_glossary(struct ap_map_module * mod, const char * name)
+{
+	struct ap_map_region_glossary * glossary = 
+		ap_admin_get_object_by_name(&mod->glossary_admin, name);
+	if (glossary)
+		return glossary->label;
+	else
+		return NULL;
 }

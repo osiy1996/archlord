@@ -170,6 +170,11 @@ struct ac_object_sector * ac_object_get_sector(
 	struct ac_object_module * mod, 
 	const struct au_pos * pos);
 
+struct ac_object_sector * ac_object_get_sector_by_index(
+	struct ac_object_module * mod, 
+	uint32_t x,
+	uint32_t z);
+
 /*
  * Inserts visible sectors into provided vector.
  */
@@ -202,7 +207,10 @@ boolean ac_object_get_min_height(
 	const struct ac_object_template * temp,
 	float * height);
 
-void ac_object_commit_changes(struct ac_object_module * mod);
+void ac_object_export_sector(
+	struct ac_object_module * mod,
+	struct ac_object_sector * sector,
+	const char * export_directory);
 
 END_DECLS
 

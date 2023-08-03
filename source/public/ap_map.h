@@ -11,6 +11,8 @@
 #define AP_MAP_MAX_REGION_ID 349
 #define AP_MAP_MAX_REGION_COUNT (AP_MAP_MAX_REGION_ID + 1)
 
+#define AP_MAP_MAX_REGION_NAME_SIZE 64
+
 BEGIN_DECLS
 
 enum ap_map_material_type {
@@ -56,6 +58,7 @@ enum ap_map_region_peculiarity {
 enum ap_map_callback_id {
 	/** \brief Triggered after region templates are read. */
 	AP_MAP_CB_INIT_REGION,
+	AP_MAP_CB_ADD_GLOSSARY,
 };
 
 struct ap_map_region_properties {
@@ -90,8 +93,8 @@ struct ap_map_region_template {
 	boolean in_use;
 	uint32_t id;
 	int32_t parent_id;
-	char name[64];
-	char comment[64];
+	char name[AP_MAP_MAX_REGION_NAME_SIZE];
+	char comment[AP_MAP_MAX_REGION_NAME_SIZE];
 	const char * glossary;
 	union ap_map_region_type type;
 	uint32_t peculiarity;
@@ -110,8 +113,8 @@ struct ap_map_region_template {
 };
 
 struct ap_map_region_glossary {
-	char name[64];
-	char label[64];
+	char name[AP_MAP_MAX_REGION_NAME_SIZE];
+	char label[AP_MAP_MAX_REGION_NAME_SIZE];
 };
 
 struct ap_map_module * ap_map_create_module();
@@ -146,17 +149,18 @@ boolean ap_map_write_region_tmp(
 	const struct ap_map_region_template * region_tmp,
 	boolean encrypt);
 
-/*
+/**
  * Reads region glossary file.
- * 
- * If successful, returns vector of glossary objects.
- * 
- * If not successful, returns NULL.
  */
-struct ap_map_region_glossary * ap_map_read_region_glossary(
+boolean ap_map_read_region_glossary(
 	struct ap_map_module * mod,
 	const char * file_path,
 	boolean decrypt);
+
+boolean ap_map_write_region_glossary(
+	struct ap_map_module * mod,
+	const char * file_path,
+	boolean encrypt);
 
 struct ap_map_region_template * ap_map_get_region_template(
 	struct ap_map_module * mod,
@@ -165,6 +169,13 @@ struct ap_map_region_template * ap_map_get_region_template(
 struct ap_map_region_template * ap_map_get_region_template_by_name(
 	struct ap_map_module * mod,
 	const char * region_name);
+
+boolean ap_map_add_glossary(
+	struct ap_map_module * mod, 
+	const char * name,
+	const char * label);
+
+const char * ap_map_get_glossary(struct ap_map_module * mod, const char * name);
 
 END_DECLS
 

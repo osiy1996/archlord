@@ -1,1870 +1,1122 @@
-배틀로얄 경기장	Battle Royal Arena
-툴란 남쪽 게이트	Tullan South Gate
-툴란 북쪽 게이트	Tullan North Gate
-번개의 쉬라인 포탈(휴먼)	Lightning Shrine Portal(Human)
-번개의 쉬라인 포탈(오크)	Lightning Shrine Portal(Orc)
-번개의 쉬라인 포탈(문엘프)	Lightning Shrine Portal(MoonElf)
-번개의 쉬라인 포탈(시온)	Lightning Shrine Portal(Scion)
-번개의 쉬라인 휴먼지역	Lightning Shrine Human Zone
-번개의 쉬라인 오크지역	Lightning Shrine Orc Zone
-번개의 쉬라인 문엘프지역	Lightning Shrine Moon Elf Zone
-번개의 쉬라인 드래곤시온지역	Lightning Shrine Dragonscion Zone
-번개의 쉬라인	Lightning Shrine
-번개의 쉬라인 외곽	Lightning Shrine Outskirts
-불의 쉬라인 포탈(휴먼)	Fire Shrine(Human)
-불의 쉬라인 포탈(오크)	Fire Shrine(Orc)
-불의 쉬라인 포탈(시온)	Fire Shrine(Scion)
-불의 쉬라인 포탈(문엘프)	Fire Shrine(MoonElf)
-불의 쉬라인 휴먼지역	Fire Shrine Human Zone
-불의 쉬라인 오크지역	Fire Shrine Orc Zone
-불의 쉬라인 문엘프지역	Fire Shrine Moon Elf Zone
-불의 쉬라인 드래곤시온지역	Fire Shrine Dragonscion Zone
-불의 쉬라인	Fire Shrine
-불의 쉬라인 외곽	Fire Shrine Outskirts
-독의 쉬라인 포탈(휴먼)	Poison Shrine(Human)
-독의 쉬라인 포탈(오크)	Poison Shrine(Orc)
-독의 쉬라인 포탈(문엘프)	Poison Shrine(MoonElf)
-독의 쉬라인 포탈(시온)	Poison Shrine(Scion)
-독의 쉬라인 휴먼지역	Poison Shrine Human Zone
-독의 쉬라인 오크지역	Poison Shrine Orc Zone
-독의 쉬라인 문엘프지역	Poison Shrine Moon Elf Zone
-독의 쉬라인 드래곤시온지역	Poison Shrine Dragonscion Zone
-독의 쉬라인	Poison Shrine
-독의 쉬라인 외곽	Poison Shrine Outskirts
-바람의 쉬라인 포탈(휴먼)	Wind Shrine(Human)
-바람의 쉬라인 포탈(오크)	Wind Shrine(Orc)
-바람의 쉬라인 포탈(문엘프)	Wind Shrine(MoonElf)
-바람의 쉬라인 포탈(시온)	Wind Shrine(Scion)
-바람의 쉬라인 휴먼지역	Wind Shrine Human Zone
-바람의 쉬라인 오크지역	Wind Shrine Orc Zone
-바람의 쉬라인 문엘프지역	Wind Shrine Moon Elf Zone
-바람의 쉬라인 드래곤시온지역	Wind Shrine Dragonscion Zone
-바람의 쉬라인	Wind Shrine
-바람의 쉬라인 외곽	Wind Shrine Outskirts
-정령의 쉬라인 포탈(휴먼)	Spirit Shrine(Human)
-정령의 쉬라인 포탈(오크)	Spirit Shrine(Orc)
-정령의 쉬라인 포탈(문엘프)	Spirit Shrine(MoonElf)
-정령의 쉬라인 포탈(시온)	Spirit Shrine(Scion)
-정령의 쉬라인 휴먼지역	Spirit Shrine Human Zone
-정령의 쉬라인 오크지역	Spirit Shrine Orc Zone
-정령의 쉬라인 문엘프지역	Spirit Shrine Moon Elf Zone
-정령의 쉬라인 드래곤시온지역	Spirit Shrine Dragonscion Zone
-정령의 쉬라인	Spirit Shrine
-정령의 쉬라인 외곽	Spirit Shrine Outskirts
-시리푸스의 쉬라인 포탈(휴먼)	Syripus Shrine(Human)
-시리푸스의 쉬라인 포탈(오크)	Syripus Shrine(Orc)
-시리푸스의 쉬라인 포탈(문엘프)	Syripus Shrine(MoonElf)
-시리푸스의 쉬라인 포탈(시온)	Syripus Shrine(Scion)
-시리푸스의 쉬라인 휴먼지역	Syripus Shrine Human Zone
-시리푸스의 쉬라인 오크지역	Syripus Shrine Orc Zone
-시리푸스의 쉬라인 문엘프지역	Syripus Shrine Moon Elf Zone
-시리푸스의 쉬라인 시온지역	Syripus Shrine scion Zone
-시리푸스의 쉬라인	Syripus Shrine
-시리푸스의 쉬라인 외곽	Syripus Shrine Outskirts
-물의 쉬라인 포탈(휴먼)	Water Shrine(Human)
-물의 쉬라인 포탈(오크)	Water Shrine(Orc)
-물의 쉬라인 포탈(문엘프)	Water Shrine(MoonElf)
-물의 쉬라인 포탈(시온)	Water Shrine(Scion)
-물의 쉬라인 휴먼지역	Water Shrine Human Zone
-물의 쉬라인 오크지역	Water Shrine Orc Zone
-물의 쉬라인 문엘프지역	Water Shrine Moon Elf Zone
-물의 쉬라인 드래곤시온지역	Water Shrine Dragonscion Zone
-물의 쉬라인	Water Shrine
-물의 쉬라인 외곽	Water Shrine Outskirts
-용암의 쉬라인 포탈(휴먼)	Lava Shrine(Human)
-용암의 쉬라인 포탈(오크)	Lava Shrine(Orc)
-용암의 쉬라인 포탈(문엘프)	Lava Shrine(MoonElf)
-용암의 쉬라인 포탈(시온)	Lava Shrine(Scion)
-용암의 쉬라인 휴먼지역	Lava Shrine Human Zone
-용암의 쉬라인 오크지역	Lava Shrine Orc Zone
-용암의 쉬라인 문엘프지역	Lava Shrine Moon Elf Zone
-용암의 쉬라인 드래곤시온지역	Lava Shrine Dragonscion Zone
-용암의 쉬라인	Lava Shrine
-용암의 쉬라인 외곽	Lava Shrine Outskirts
-트릴가드 행 포탈	Portal bound for Trilgard
-아르시안 성 진입로	Arthian approach
-트릴가드 궁	Trilgard palace
-아르시안 행 포탈	Portal bound for Arthian
-트라쿠아 행 포탈	Portal bound for Traqua
-데리벨 중앙로	Deribelle Main Street
-데리벨 행 포탈	Portal bound for Deribelle
-트라쿠아 성 진입로	Traqua approach
-드레이거 행 포탈	Portal bound for Drayger
-스톨 신전	Stull temple
-드레이거 성 진입로	Drayger approach
-스톨 행 포탈	Portal bound for Stull
-배틀 스퀘어 1층	Battle Square 1st Floor
-배틀 스퀘어 2층	Battle Square 2nd Floor
-배틀 스퀘어 3층	Battle Square 3rd Floor
-배틀 스퀘어 4층	Battle Square 4th Floor
-배틀 스퀘어 5층	Battle Square 5th Floor
-배틀 스퀘어 6층	Battle Square 6th Floor
-배틀스퀘어 1층	Battle Square 1st Floor
-배틀스퀘어_1층	Battle Square 1st Floor
-배틀스퀘어 2층	Battle Square 2nd Floor
-배틀스퀘어_2층	Battle Square 2nd Floor
-배틀스퀘어 3층	Battle Square 3rd Floor
-배틀스퀘어_3층	Battle Square 3rd Floor
-배틀스퀘어 4층	Battle Square 4th Floor
-배틀스퀘어_4층	Battle Square 4th Floor
-배틀스퀘어 5층	Battle Square 5th Floor
-배틀스퀘어_5층	Battle Square 5th Floor
-배틀스퀘어 6층	Battle Square 6th Floor
-배틀스퀘어_6층	Battle Square 6th Floor
-반목의 방	Chamber of Enmity
-반목의_방	Chamber of Enmity
-반목의_방2	2 Chamber of Enmity
-집착의_방	Chamber of Obsession
-집착의_방2	2 Chamber of Obsession
-헤븐즈 헬	Heaven's Hell
-불꽃의 지옥	Flames of Hell
-불꽃의_지옥	Flames of Hell
-불꽃의 지역	Flames of Zone
-불꽃의_지역	Flames of Zone
-생명의 핏줄	Bloodline of Life
-생명의_핏줄	Bloodline of Life
-칼날 태풍 산맥	Blade Storm Mountain
-칼날_태풍_산맥	Blade Storm Mountain
-헤븐즈 헬의 옥좌	Throne of Heaven's Hell
-헤븐즈_헬의_옥좌	Throne of Heaven's Hell
-고통의 입구	Gate of Pain
-글렌데스틴 숲 남동부	Southeast Glendestine Forest
-드래곤시온 요새	DragonScion Fortress
-드래곤시온 요새 입구	DragonScion Fortress Entrance
-드래이거 내부	Drayger Inside
-드래이거 내성문	Drayger Castle Internal Gate
-드래이거 렌스피어 입구	Drayger Rensphere Entrance
-드래이거 성 내부	Drayger Castle Inside
-드래이거 성 성주 사냥터	Drayger Castle Secret Dungeon
-드래이거 성주 사냥터	Drayger Secret Dungeon
-드래이거_성주_사냥터	Drayger Secret Dungeon
-드래이거 성주 사냥터 입구	Drayger Secret Dungeon Entrance
-드래이거_성주_사냥터_입구	Drayger Secret Dungeon Entrance
-드래이거 외성문	Drayger External Gate
-랜스피어 성 내부	Rensphere Castle Inside
-랜스피어 성주 사냥터	Rensphere Secret Dungeon
-랜스피어_성주_사냥터	Rensphere Secret Dungeon
-랜스피어 성주 사냥터 입구	Rensphere Secret Dungeon Entrance
-랜스피어_성주_사냥터_입구	Rensphere Secret Dungeon Entrance
-랜스피어성 내부	Rensphere Inside
-렌스피어 남서쪽	Rensphere Southwest Area
-미련의 방	Chamber of Regret
-배틀게이트 스톨	Stull Battlegate
-배틀 로얄 경기장	Battle Royal Arena
-배틀_로얄_경기장	Battle Royal Arena
-배틀로얄_경기장	Battle Royal Arena
-베틀로얄경기장	Battle Royal Arena
-배틀 로얄 관중석	Battle Royal Bleachers
-배틀_로얄_관중석	Battle Royal Bleachers
-배틀로얄_관중석	Battle Royal Bleachers
-베틀로얄_관중석	Battle Royal Bleachers
-배틀 로얄	Battle Royal
-벨제루크 동부	East Belzeruk
-벨제루크 북서부	Northwest Belzeruk
-분란의 방	Chamber of Disorder
-비난의 방	Chamber of Censure
-비애의 방	Chamber of Sorrow
-시련의 동굴 2층 입구	Cave of Trials 1st Floor Entrance
-시련의 동굴 2층 출구	Cave of Trials 1st Floor Exit
-시련의 동굴 입구	Cave of Trials Entrance
-시련의 동굴 출구	Cave of Trials Exit
-시련의 입구	Gate of Trials
-시엔 마을	Cien Village
-엘리시온 동쪽	Elyscion Eastern Area
-엘리시온_남쪽	Elyscion Southern Area
-원망의 방	Chamber of Grudge
-원한의 입구	Gate of Grudge
-유폐된 광산 2층 입구	Abandoned Mine 1st Floor Entrance
-유폐된 광산 2층 출구	Abandoned Mine 1st Floor Exit
-유폐된 광산 3층 입구	Abandoned Mine 2nd Floor Entrance
-유폐된 광산 3층 출구	Abandoned Mine 2nd Floor Exit
-유폐된 광산 내부	Abandoned Mine Inside
-유폐된 광산 입구	Abandoned Mine Entrance
-유폐된 광산 출구	Abandoned Mine Exit
-유혹의 입구	Gate of Temptation
-젠클리어 남동부	Southeast Zenclier
-젠클리어 남동쪽	Zenclier Southeast Area
-젠클리어 남부	South Zenclier
-젠클리어 남쪽	Zenclier Southern Area
-젠클리어 동부	East Zenclier
-젠클리어 동쪽	Zenclier Eastern Area
-젠클리어 서부	West Zenclier
-젠클리어 서쪽	Zenclier Western Area
-젠클리어 중앙 동부	East Central Zenclier
-젠클리어 중앙 동쪽	Zenclier East Central Area
-젠클리어 중앙 서부	Central West Zenclier
-젠클리어 중앙 서쪽	Zenclier West Central Area
-좌절의 방	Chamber of Despair
-증오의 입구	Gate of Hatred
-질시의 방	Chamber of Jealousy
-탄식의 입구	Gate of Deplore
-탐욕의 무덤 2층 입구	Tomb of Greed 1st Floor Entrance
-탐욕의 무덤 2층 출구	Tomb of Greed 1st Floor Exit
-탐욕의 무덤 3층 입구	Tomb of Greed 2nd Floor Entrance
-탐욕의 무덤 3층 출구	Tomb of Greed 2nd Floor Exit
-탐욕의 무덤 내부	Tomb of Greed Inside
-탐욕의 무덤 입구	Tomb of Greed Entrance
-탐욕의 무덤 출구	Tomb of Greed Exit
-트레바인 남부	South Trebain
-트레바인 상부	Upper Trebain
-트레바인 하부	Lower Trebain
-파멸의 입구	Gate of Ruin
-포츈로드 동부	East Fortune Road
-포츈로드 북부	North Fortune Road
-혼돈의 방	Chamber of Chaos
-혼란의 입구	Gate of Chaos
-엘리시온	Elyscion
-루시아스	Lucious
-아뮤네시아	Amunesia
-벨제루크	Belzeruk
-멜트라인	Meltline
-드래이거 성	Drayger Castle
-드래이거_성	Drayger Castle
-드래이거 성 인근	Drayger Castle Vicinity
-드래이거_성_인근	Drayger Castle Vicinity
-포츈로드	Fortune Road
-시엔	Cien
-사리엔드	Sariend
-란파	Ranfa
-톤파	Tonfa
-스톨	Stull
-젠틀리어 폭포	Zenclier Waterfall
-젠클리어_폭포	Zenclier Waterfall
-마다가르 파이프	Madagar Pipe
-마다가르_파이프	Madagar Pipe
-룽페이수련장	Lungfei Dojo
-룽페이 수련장	Lungfei Dojo
-롱페이_수련장	Lungfei Dojo
-카르마관문	Karma Barrier
-카르마_관문	Karma Barrier
-와일드본 성전	Wild Bone Temple
-와일드본_성전	Wild Bone Temple
-메멘토뉴엄	Mementonium
-드라카로 성전	Drakaro Church
-드라카로_성전	Drakaro Church
-포스크랙	Poscrack
-피의 늪	Blood Swamp
-피의_늪	Blood Swamp
-피의 산	Blood Mountain
-피의_산	Blood Mountain
-골렘 지역	Golem Territory
-골렘_지역	Golem Territory
-피드밀	Feedmill
-사형장	Execution Ground
-나선의 길	Spiral Road
-나선의_길	Spiral Road
-글렌데스틴 숲	Glendestine Forest
-글렌데스틴_숲	Glendestine Forest
-보화의_골짜기	Treasure Valley
-포세이큰_둥지	Nest of the Forsaken
-스릴킬	Srilkil
-빙헬	Veihel
-시련의 길	Road of Trials
-시련의_길	Road of Trials
-글렌데스틴 화산	Glendestin Volcano
-글렌데스틴_화산	Glendestin Volcano
-할리엔	Halien
-트레바인	Trebain
-스톨 길드 전투 경기장	Stull Guild Battle Arena
-스톨_길드_전투_경기장	Stull Guild Battle Arena
-탐욕의 무덤1층	Tomb of Greed Ground Floor
-탐욕의_무덤1층	Tomb of Greed Ground Floor
-탐욕의_무덤_1층	Tomb of Greed Ground Floor
-탐욕의 무덤2층	Tomb of Greed 1st Floor
-탐욕의_무덤2층	Tomb of Greed 1st Floor
-탐욕의_무덤_2층	Tomb of Greed 1st Floor
-탐욕의 무덤3층	Tomb of Greed 2nd Floor
-탐욕의_무덤3층	Tomb of Greed 2nd Floor
-탐욕의_무덤_3층	Tomb of Greed 2nd Floor
-유폐된 광산1층	Abandoned Mine Ground Floor
-유폐된_광산1층	Abandoned Mine Ground Floor
-유폐된_광산_1층	Abandoned Mine Ground Floor
-유폐된 광산2층	Abandoned Mine 1st Floor
-유폐된_광산2층	Abandoned Mine 1st Floor
-유폐된_광산_2층	Abandoned Mine 1st Floor
-유폐된 광산3층	Abandoned Mine 2nd Floor
-유폐된_광산3층	Abandoned Mine 2nd Floor
-유폐된_광산_3층	Abandoned Mine 2nd Floor
-시련의 동굴1층	Cave of Trials Ground Floor
-시련의_동굴1층	Cave of Trials Ground Floor
-시련의_동굴_1층	Cave of Trials Ground Floor
-시련의 동굴2층	Cave of Trials 1st Floor
-시련의_동굴2층	Cave of Trials 1st Floor
-시련의_동굴_2층	Cave of Trials 1st Floor
-죽은자의 전장	Battleground of the Dead
-죽은자의_전장	Battleground of the Dead
-드래이거 비밀의 던전	Secret Dungeon of Drayger
-드래이거 비밀의 던전 입구	Entrance to the Secret Dungeon of Drayger
-번뇌의 방	Chamber of Agony
-번뇌의_방	Chamber of Agony
-드래곤시온 지역	DragonScion Territory
-드래곤시온_지역	DragonScion Territory
-드래곤시온 요새	DragonScion Fortress
-드래곤시온_요새	DragonScion Fortress
-화합의 회랑	Corridor of Harmony
-화합의_회랑	Corridor of Harmony
-혼돈의 중심	Center of Chaos
-혼돈의_중심	Center of Chaos
-오크 지역	Orc Zone
-오크지역	Orc Zone
-휴먼 지역	Human Zone
-휴먼지역	Human Zone
-문엘프 지역	Moon Elf Zone
-문엘프지역	Moon Elf Zone
-중립지역	Dead Zone
-배틀그라운드	Battle Ground
-베틀그라운드_휴먼지역	Battle Ground Human Zone
-베틀그라운드_오크지역	Battle Ground Orc Zone
-베틀그라운드_문엘프지역	Battle Ground Moon Elf Zone
-베틀그라운드_드래곤시온지역	Battle Ground DragonScion Territory
-드래곤시온지역	Dragonscion Zone
-드래곤시온요새	Dragonscion Fortress
-드래곤시온 요새 입구	Dragonscion Fortress Entrance
-오크 요새	Orc Fortress
-오크_요새	Orc Fortress
-오크요새	Orc Fortress
-오크 요새 입구	Orc Fortress Entrance
-문엘프 요새	Moon Elf Fortress
-문엘프_요새	Moon Elf Fortress
-문엘프요새	Moon Elf Fortress
-문엘프 요새 입구	Moon Elf Fortress
-휴먼 요새	Human Fortress
-휴먼_요새	Human Fortress
-휴먼요새	Human Fortress
-휴먼 요새 입구	Human Fortress Entrance
-화전민마을	Village of Seethe
-버려진 과수원	Abandoned Orchard
-알게마분지	Algema Basin
-앵커빌	Anchorville
-배틀게이트 앵커빌	Anchorville Battlegate
-앵커빌 마을	Anchorville Village
-로만 파르칼	Ancient Parkal
-앙스펠호수	Angspel Lake
-에리엘	Ariel
-아르시안_성	Arthian Castle
-아르시안 성	Arthian Castle
-아르시안_성_인근	Arthian Castle Vicinity
-아르시안 성 인근	Arthian Castle Vicinity
-아르시안 내부	Arthian Castle Inside 
-아르시안 성 성주 사냥터	Arthian Castle Secret Dungeon
-아르시안 렌스피어 입구	Arthian Entrance
-아르시안 외성문	Arthian External Gate
-아르시안 성 내부	Arthian Inside
-아르시안 내성문	Arthian Internal Gate
-아르시안 성주 사냥터	Arthian Secret Dungeon
-아르시안_성주_사냥터	Arthian Secret Dungeon
-아르시안 성주 사냥터 입구	Arthian Secret Dungeon Entrance
-아르시안_성주_사냥터_입구	Arthian Secret Dungeon Entrance
-자객마을	Assassin Village
-천문관측소	Astronomy Observatory
-폰_아이젠하우스	Asylum
-폰 아이젠하우스 2층	Asylum 1st Floor
-폰_아이젠하우스_2층	Asylum 1st Floor
-폰 2층 입구	Asylum 1st Floor Entrance
-폰_아이젠하우스2층_입구	Asylum 1st Floor Entrance
-폰 아이젠하우스 2층 입구	Asylum 1st Floor Entrance
-폰 아이젠하우스 2층 출구	Asylum 1st Floor Exit
-폰_아이젠하우스_3층	Asylum 2nd Floor
-폰 아이젠하우스 3층	Asylum 2nd Floor
-폰 3층 입구	Asylum 2nd Floor Entrance
-폰 아이젠하우스 3층 입구	Asylum 2nd Floor Entrance
-폰 아이젠하우스 3층 출구	Asylum 2nd Floor Exit
-폰_아이젠하우스_4층	Asylum 3rd Floor
-폰 아이젠하우스 4층	Asylum 3rd Floor
-폰 아이젠하우스 4층 입구	Asylum 3rd Floor Entrance
-폰 출구	Asylum Exit
-폰 입구	Asylum Gate
-폰 1층 입구	Asylum Ground Floor Entrance
-폰 아이젠하우스 1층 출구	Asylum Ground Floor Entrance
-폰_아이젠하우스_입구	Asylum Ground Floor Entrance
-폰 아이젠하우스 입구	Asylum Ground Floor Entrance
-알현의_방	Audience Chamber
-바라평원	Bala Plain
-발러의_왕좌	Balor's Throne
-발러의 왕좌	Balor's Throne
-산적마을	Bandit Village
-바란다이크	Baran Dyke
-바란다이크1요새	Baran Dyke Fortress One 
-바란다이크3요새	Baran Dyke Fortress Three
-바란다이크2요새	Baran Dyke Fortress Two
-바르도터	Bardother
-바르도터동쪽	Bardother Eastern
-바르도터_동쪽	Bardother Eastern
-바르도터서쪽	Bardother Western
-바르도터_서쪽	Bardother Western
-바르도터남쪽	Bardother Southern
-바르도터_남쪽	Bardother Southern
-바르도터북쪽	Bardother Northern
-바르도터_북쪽	Bardother Northern
-관문 마을	Barrier Village
-관문마을	Barrier Village
-배틀스퀘어	Battlesquare
-베틀스퀘어	Battlesquare
-바트나유적지	Battna Site
-베이컨마을	Beacon Village
-벨리가분지	Belliga Basin
-새의낙원	Bird's Heaven
-새의둥지	Bird's Nest
-피의 제단	Blood Altar
-피의 안식처	Blood Shelter
-흡혈사막	Bloodsyphon Desert
-블루리버강	Blue River 
-멧돼지사냥터	Boar Field
-경계의 다리	Boundary Bridge
-생사의 경계지	Boundary of Life
-경계석	Boundary Stone
-끊어진 다리	Broken Bridge
-북트라이부츠산맥	Buktributs Mountains
-불란트부화장	Bullant Hatchery
-범프필드	Bump Field
-고트곶	Cape Gotto
-케이브타운	Cave Town
-세벤트의_둥지	Cevent's Nest
-세벤트의 둥지	Cevent's Nest
-공포의 방	Chamber of Horror
-광기의 방	Chamber of Madness
-맹세의_방	Chamber of Oath
-맹세의 방	Chamber of Oath
-고통의 방	Chamber of Pain
-절규의 방	Chamber of Screams
-죽은자들의 방	Chamber of the Dead
-잊혀진 자들의 방	Chamber of the Forgotten
-대기실	Chamber of Time
-통곡의 방	Chamber of Wailing
-통곡의_방	Chamber of Wailing
-통곡의_방2	2 Chamber of Wailing
-통곡의_방4	4 Chamber of Wailing
-속죄의 방	Chamber of Atone
-속죄의_방	Chamber of Atone
-참프로르 호수	Champor Lake
-칸트라 대륙	Chantra Continent
-사자의_예배당	Chapel of The Dead
-사자의 예배당	Chapel of The Dead
-체스터 늪	Chester Swamp
-닫혀진 광산	Closed Mine
-닫혀진_광산	Closed Mine
-닫혀진_광산_2층	Closed Mine 1st Floor
-닫혀진 광산 2층 입구	Closed Mine 1st Floor Entrance
-닫혀진_광산_2층_입구	Closed Mine 1st Floor Entrance
-닫혀진 광산 2층 출구	Closed Mine 1st Floor Exit
-닫혀진_광산_2층_출구	Closed Mine 1st Floor Exit
-닫혀진_광산_3층	Closed Mine 2nd Floor
-닫혀진 광산 3층 입구	Closed Mine 2nd Floor Entrance
-닫혀진_광산_3층_입구	Closed Mine 2nd Floor Entrance
-닫혀진_광산_3층_출구	Closed Mine 2nd Floor Exit
-닫혀진 광산 입구	Closed Mine Entrance
-닫혀진_광산_입구	Closed Mine Entrance
-닫혀진 광산 출구	Closed Mine Exit
-닫혀진_광산_출구	Closed Mine Exit
-닫혀진_광산_1층	Closed Mine Ground Floor
-닫혀진 광산 1층 입구	Closed Mine Ground Floor Entrance
-닫혀진_광산_1층_출구	Closed Mine Ground Floor Entrance
-닫혀진 광산 1층 출구	Closed Mine Ground Floor Exit
-클라우드사원	Cloud Temple
-콘트라_하우스	Contra House
-깊은 중심지	Core Arena
-깊은_중심지	Core Arena
-깊은_중심지2	Core Arena 2F
-깊은_중심지3	Core Arena 3F
-깊은_중심지4	Core Arena 4F
-깊은_중심지5	Core Arena 5F
-깊은_중심지6	Core Arena 6F
-염화의_동굴_2층	Corrosion Cave 1st Floor
-염화의 동굴 2층 입구	Corrosion Cave 1st Floor Entrance
-염화의_동굴_2층_입구	Corrosion Cave 1st Floor Entrance
-염화의_동굴_1층	Corrosion Cave Ground Floor
-염화의 동굴 1층 입구	Corrosion Cave Ground Floor Entrance
-염화의_동굴_1층_입구	Corrosion Cave Ground Floor Entrance
-염화의 동굴 1층 출구	Corrosion Cave Ground Floor Exit
-염화의_동굴_1층_출구	Corrosion Cave Ground Floor Exit
-기억의 망루	Cove of Memories
-크로우크로스	Crowcross
-저주의 계곡	Curse Valley
-다드홀	Dadhal
-검은_파도_마을	Dark Wave Village
-검은파도 마을	Dark Wave Village
-검은파도마을	Dark Wave Village
-죽은 앤트의 숲	Dead Arbor's Forest
-망자의 절벽	Dead Cliff
-데드라인	Dead Line
-사신의 평원	Death Plain
-델파라스	Delfaras
-배틀게이트 델파라스	Delfaras Battlegate
-델파라스 중앙광장	Delfaras Central Square
-도시 델파라스	Delfaras City
-델파라스 항구	Delfaras Harbor
-데리벨	Deribelle
-배틀게이트 데리벨	Deribelle Battlegate 
-도시 데리벨	Deribelle City
-데리벨 동문	Deribelle East Gate
-데리벨 동시가지	Deribelle East Town
-데리벨 북문	Deribelle North Gate
-데리벨 남문	Deribelle South Gate
-데리벨 남시가지	Deribelle South Town
-데리벨 서문	Deribelle West Gate
-데리벨 서시가지	Deribelle West Town
-사막족의 땅	Desert Tribe Land
-사막족 마을	Desert Tribe Village
-디난트야드	Dinant Yard
-현기증 습지	Dizzy Swamp
-드래곤여관터	Dragon Inn
-드래곤의 레어	Dragon's Lair
-용의 기둥	Dragon's Pillar
-꿈꾸는 절벽	Dreaming Cliff
-흐릿한 강변	Dull Riverbank
-용병사냥터	Dust Field
-마른강 평원	Dusty Creek
-동쪽분지	East Branch
-정령의 폭포	Elements Waterfall 
-엘로함망루	Elloham Watchtower
-엘로힘 망루	Elloham Watchtower
-엘로힘_망루	Elloham Watchtower
-엘로힘망루	Elloham Watchtower
-엘로르	Ellore
 배틀게이트 엘로르	Ellore Battlegate
-도시 엘로르	Ellore City
-엘름볼트	Elmbolt
-엘름볼트계곡	Elmbolt Valley
-영원의 제국	Eternal Empire
-영원동산	Eternal Hill
-석양의해변	Evening Sea
-모험도전지	Evor
-원정대 천막촌	Expedition Camp Site
-원정대천막촌	Expedition Camp Site
-에저로크	Ezerock
-에저로크남쪽	Ezerock Southern
-에저로크_남쪽	Ezerock Southern
-낙석지대	Fallen Hills
-오선지대	Five Lines
-염랑의_동굴_2층	Flame Cave 1st Floor
-염랑의 동굴 2층	Flame Cave 1st Floor
-염랑의 동굴 2층 입구	Flame Cave 1st Floor Entrance
-염랑의_동굴_2층_입구	Flame Cave 1st Floor Entrance
-염랑의 동굴 입구	Flame Cave Entrance
-염랑의_동굴_입구	Flame Cave Entrance
-염랑의_동굴_1층	Flame Cave Ground Floor
-염랑의 동굴 1층	Flame Cave Ground Floor
-염랑의 동굴 1층 입구	Flame Cave Ground Floor Entrance
-염랑의_동굴_1층_입구	Flame Cave Ground Floor Entrance
-염랑의 동굴 1층 출구	Flame Cave Ground Floor Exit
-염랑의_동굴_1층_출구	Flame Cave Ground Floor Exit
-금지된_광산	Forbidden Mine
-금지된광산	Forbidden Mine
-금지된_광산_2층	Forbidden Mine 1st Floor
-금지된 광산 2층	Forbidden Mine 1st Floor
-금지된 광산 2층 입구	Forbidden Mine 1st Floor Entrance
-금지된_광산_2층_입구	Forbidden Mine 1st Floor Entrance
-금지된 광산 2층 출구	Forbidden Mine 1st Floor Exit
-금지된_광산_2층_출구	Forbidden Mine 1st Floor Exit
-금지된_광산_3층	Forbidden Mine 2nd Floor
-금지된 광산 3층	Forbidden Mine 2nd Floor
-금지된 광산 3층 입구	Forbidden Mine 2nd Floor Entrance
-금지된_광산_3층_입구	Forbidden Mine 2nd Floor Entrance
-금지된 광산 입구	Forbidden Mine Entrance
-금지된_광산_입구	Forbidden Mine Entrance
-금지된 광산 출구	Forbidden Mine Exit
-금지된_광산_출구	Forbidden Mine Exit
-금지된_광산_1층	Forbidden Mine Ground Floor
-금지된 광산 1층	Forbidden Mine Ground Floor
-금지된 광산 1층 입구	Forbidden Mine Ground Floor Entrance
-금지된 광산 1층 출구	Forbidden Mine Ground Floor Exit
-금지된_광산_1층_출구	Forbidden Mine Ground Floor Exit
-포겔평원	Forgel Plains
-잊혀진 동굴	Forgotten Cave
-잊혀진 무덤	Forgotten Grave
-잊혀진_무덤	Forgotten Grave
-잊혀진_무덤_2층	Forgotten Grave 1st Floor
-잊혀진 무덤 2층	Forgotten Grave 1st Floor
-잊혀진 무덤 2층 입구	Forgotten Grave 1st Floor Entrance
-잊혀진_무덤_2층_입구	Forgotten Grave 1st Floor Entrance
-잊혀진 무덤 2층 출구	Forgotten Grave 1st Floor Exit
-잊혀진_무덤_2층_출구	Forgotten Grave 1st Floor Exit
-잊혀진_무덤_3층	Forgotten Grave 2nd Floor
-잊혀진 무덤 3층	Forgotten Grave 2nd Floor
-잊혀진 무덤 3층 입구	Forgotten Grave 2nd Floor Entrance
-잊혀진_무덤_3층_입구	Forgotten Grave 2nd Floor Entrance
-잊혀진 무덤 입구	Forgotten Grave Entrance
-잊혀진_무덤_입구	Forgotten Grave Entrance
-잊혀진 무덤 출구	Forgotten Grave Exit
-잊혀진_무덤_출구	Forgotten Grave Exit
-잊혀진_무덤_1층	Forgotten Grave Ground Floor
-잊혀진 무덤 1층	Forgotten Grave Ground Floor
-잊혀진 무덤 1층 입구	Forgotten Grave Ground Floor Entrance
-잊혀진 무덤 1층 출구	Forgotten Grave Ground Floor Exit
-잊혀진_무덤_1층_출구	Forgotten Grave Ground Floor Exit
-배틀스퀘어 <분열의 문>	Gate of Division
-분열의 문	Gate of Division
-분열의_문	Gate of Division
-분열의 문2	2 Gate of Division
-분열의_문2	2 Gate of Division
-분열의 문3	3 Gate of Division
-분열의_문3	3 Gate of Division
-분열의 문4	4 Gate of Division
-분열의_문4	4 Gate of Division
-분열의 문5	5 Gate of Division
-분열의_문5	5 Gate of Division
-분열의 문6	6 Gate of Division
-분열의_문6	6 Gate of Division
-배틀스퀘어 <탐욕의 문>	Gate of Greed
-탐욕의 문	Gate of Greed
-탐욕의_문	Gate of Greed
-탐욕의 문2	2 Gate of Greed
-탐욕의_문2	2 Gate of Greed
-탐욕의 문3	3 Gate of Greed
-탐욕의_문3	3 Gate of Greed
-탐욕의 문4	4 Gate of Greed
-탐욕의_문4	4 Gate of Greed
-탐욕의 문5	5 Gate of Greed
-탐욕의_문5	5 Gate of Greed
-탐욕의 문6	6 Gate of Greed
-탐욕의_문6	6 Gate of Greed
-배틀스퀘어 <분노의 문>	Gate of Rage
-분노의 문	Gate of Rage
-분노의_문	Gate of Rage
-분노의 문2	2 Gate of Rage
-분노의_문2	2 Gate of Rage
-분노의 문3	3 Gate of Rage
-분노의_문3	3 Gate of Rage
-분노의 문4	4 Gate of Rage
-분노의_문4	4 Gate of Rage
-분노의 문5	5 Gate of Rage
-분노의_문5	5 Gate of Rage
-분노의 문6	6 Gate of Rage
-분노의_문6	6 Gate of Rage
-배틀스퀘어 <슬픔의 문>	Gate of Sadness
-슬픔의 문	Gate of Sadness
-슬픔의_문	Gate of Sadness
-슬픔의 문2	2 Gate of Sadness
-슬픔의_문2	2 Gate of Sadness
-슬픔의 문3	3 Gate of Sadness
-슬픔의_문3	3 Gate of Sadness
-슬픔의 문4	4 Gate of Sadness
-슬픔의_문4	4 Gate of Sadness
-슬픔의 문5	5 Gate of Sadness
-슬픔의_문5	5 Gate of Sadness
-슬픔의 문6	6 Gate of Sadness
-슬픔의_문6	6 Gate of Sadness
-돌아오지 않는 길	Gauntlet Pass
-대장의 정원	General's Garden
-고스트분지	Ghost Valley
-거인의 가도	Giant's Highroad
-유리호수	Glass Lake
-글리터스	Glitters
-영광의 귀환지	Glory Port
-노움의굴	Gnome Cave
-고블린분지	Goblin Valley
-황금의길	Gold Road
-골룬도	Golundo
-배틀게이트 골룬도	Golundo Battle Gate
-골룬도 마을	Golundo Village
-골룬도마을	Golundo Village
-고토강	Gotto River
-그랜드크림슨	Grand Crimson
-망자의 묘	Grave of the Dead
-초록음악지	Green Music Hall
-그레이 계곡	Grey Valley
-그림로어	Grimlore
-그림로어동쪽	Grimlore Eastern
-그림로어_동쪽	Grimlore Eastern
-그림로어서쪽	Grimlore Western
-그림로어_서쪽	Grimlore Western
-그룬트반도	Groont Peninsula
-과다니니폭포	Guadanini Waterfall
-길드 경기장	Guild Battle Square
-길드_경기장	Guild Battle Square
-길드경기장	Guild Battle Square
-길드 경기장 주변	Around Guild Battle Arena
-길드_경기장_주변	Around Guild Battle Arena
-집시촌	Gypsy Town
-망치계곡	Hammer Valley
-흉가주점	Haunted Inn
-매의고원	Hawk's Plateau
-하이드백	Hideback 
-하이드백 마을	Hideback Village
-하이드백_마을	Hideback Village
-하이드백 마을	Hideback Village
-사냥꾼의 숲	Hunter's Forest
-무한의 수차	Infinite Mill
-인플레임_성	Inflame Castle
-인플레임 성	Inflame Castle
-인플레임 성 입구	Inflame Castle Entrance
-인플레임 성 내부	Inflame Castle Inside
-인플레임성 내부	Inflame Castle Inside
-인플레임성 내성문	Inflame Castle Internal Gate
-인플레임 성 성주 사냥터	Inflame Castle Secret Dungeon
-인플레임성_인근	Inflame Castle Vicinity
-인플레임_성_인근	Inflame Castle Vicinity
-인플레임 성 인근	Inflame Castle Vicinity
-인플레임 외성문	Inflame External Gate
-인플레임 렌스피어 입구	Inflame Rensphere Entrance
-인플레임 성주 사냥터	Inflame Secret Dungeon
-인플레임_성주_사냥터	Inflame Secret Dungeon
-인플레임 성주 사냥터 입구	Inflame Secret Dungeon Entrance
-인플레임_성주_사냥터_입구	Inflame Secret Dungeon Entrance
-상아무덤마을	Ivory Grave Village
-자무쉬의 봉인	Jamushi's Seal
-현악의 땅	Jaztero
-보석의 땅	Jewel Land
-칸디아광산	Kandia Mine
-캐러번 로드	Karebun Road
-캐러번_로드	Karebun Road
-캐러번로드	Karebun Road
-왕의 다리	King's Bridge
-왕의사냥터	King's Hunting Field
-카이젠폭포	Kisen Waterfall
-쿤	Kuhn
-배틀게이트 쿤	Kuhn Battlegate 
-도시 쿤	Kuhn City
-라트리아	Latria
-라트리아 남쪽	Latria Southern
-라트리아_남쪽	Latria Southern
-라플레시아	Laflesia
-배틀게이트 라프레시아	Laflesia Battlegate 
-도시 라플레시아	Laflesia City
-땅이 우는 곳	Lamentia
-상실의 땅	Land of Loss
-랜드엔드	Lands End
-관현악의 땅	La Triah
-라임호수	Lime Lake
-라임라이트	Limelight
-라임라이트 북쪽	Limelight Northern
-라임라이트_북쪽	Limelight Northern
-라임라이트 남쪽	Limelight Southern
-라임라이트_남쪽	Limelight Southern
-리자드맨의 발톱	Lizardman's claw
-리자드맨의_발톱	Lizardman's claw
-낮은바람마을	Low Wind Village
-정원하층	Lower Garden
-러프풋 땅	Lufut Land
-루나웨이강	Lunaway River
-루나웨이 습지대	Lunaway Swamp
-러스트뷰린산	Lustbiurin Mountain
-마스트코트	Mastcot
-멜기노 산맥	Melgino Mountains
-멤브레덴	Membreathen
-멤브레덴 서쪽	Membreathen Western
-멤브레덴_서쪽	Membreathen Western
-멤브레덴 남쪽	Membreathen Southern
-멤브레덴_남쪽	Membreathen Southern
-멤브레덴 동쪽	Membreathen Eastern
-멤브레덴_동쪽	Membreathen Eastern
-멤브레덴 입구	Membreathen Entrance
-추모자의 방	Memorial Chamber
-기억의언덕	Memory Hill
-상인의 계곡	Merchant Valley
-메테오라	Meteora
-작열의_동굴_2층	Miasma Cave 1st Floor
-작열의 동굴 2층	Miasma Cave 1st Floor
-작열의 동굴 2층 입구	Miasma Cave 1st Floor Entrance
-작열의_동굴_2층_입구	Miasma Cave 1st Floor Entrance
-작열의_동굴_2층_출구	Miasma Cave 1st Floor Exit
-작열의_동굴_1층	Miasma Cave Ground Floor
-작열의 동굴 1층	Miasma Cave Ground Floor
-작열의 동굴 1층 입구	Miasma Cave Ground Floor Entrance
-작열의_동굴_1층_입구	Miasma Cave Ground Floor Entrance
-작열의 동굴 1층 출구	Miasma Cave Ground Floor Exit
-작열의_동굴_1층_출구	Miasma Cave Ground Floor Exit
-크랩터폰	Midok
-기후지도	Milieu
-기후제의 땅	Milieu island
-광산 입구	Mine Entrance
-광산_입구	Mine Entrance
-광산 마을	Mine Village
-광산_마을	Mine Village
-광산마을	Mine Village
-기적의샘	Miracle Fountain
-미라지안 호수	Mirasian Lake
-싱잉레인	Mist Plain
-모라비아요새	Morabia Fortress
-모르트수로	Mort Waterway
-음악관	Music Hall
-숨죽인 유적	Muted Site
-나르캉골 산맥	Narkangol Mountains
-악몽의 골짜기	Nightmare Valley
-노블하임산맥	Noblehaim Mountains
-녹턴야드	Nocturn Yard
-노린	Norine
-배틀게이트 노린	Norine Battlegate 
-노린 마을	Norine Village
-델파라스 북부	North Delfaras
-범프필드 북쪽	Northern Ridge Field 
-북쪽땅의 사원	Northern Temple 
-노르톱_마을	Nortop Village
-노르톱마을	Nortop Village
-오우거마을	Ogre Village
-올드캐빈	Old Cabin
-집시들의 옛터	Old Gypsy Town
-옛항구터	Old Harbor
-오래된 광산	Old Mine
-오래된_광산	Old Mine
-오래된 광산 2층 입구	Old Mine 1st Floor Entrance
-오래된_광산_2층_입구	Old Mine 1st Floor Entrance
-오래된 광산 2층 출구	Old Mine 1st Floor Exit
-오래된_광산_2층_출구	Old Mine 1st Floor Exit
-오래된 광산 3층 입구	Old Mine 2nd Floor Entrance
-오래된_광산_3층_입구	Old Mine 2nd Floor Entrance
-오래된_광산_3층_출구	Old Mine 2nd Floor Exit
-오래된 광산 입구	Old Mine Entrance
-오래된_광산_입구	Old Mine Entrance
-오래된 광산 출구	Old Mine Exit
-오래된_광산_출구	Old Mine Exit
-오래된 광산 1층 입구	Old Mine Ground Floor Entrance
-오래된 광산 1층 출구	Old Mine Ground Floor Exit
-오드오브	Old Orb
-낡은_창고	Old Storehouse
-낡은 창고	Old Storehouse
-옛사원 터	Old Temple 
-오아실리안	Orsilian
-오르하협곡	Oruha Canyon
-오르하협곡 입구	Oruha Canyon Entrance
-판다람고원	Pandaram Plateau
-출전의 길	Path of Entry
-영광의 길	Path of Glory
-열사의 한계	Patriot's Limit
-추적자고원	Persuer Plateau
-개척자의 길	Pioneer's Road
-왕자의 사냥터	Prince's Hunting Field
-포박의 방	Prison Chamber
-금지된 광산	Prohibited Mine
-울림의 늪지	Quake Zone
-퀄트천막촌	Qualt Camp
-사자의 여왕	Queen of Lion
-여왕의서식지	Queen's Habitat
-레비나일 강	Rabinile River
-레비나일강 	Rabinile River
-레비나일강입구	Rabinile River Entrance
-레인라이크	Rainreich
-붉은 자갈길	Red Stone Road
-레더후드	Redderhood
-렌스피어_성	Rensphere Castle
-렌스피어 성	Rensphere Castle
-렌스피어_성_인근	Rensphere Castle Vicinity
-렌스피어 성 인근	Rensphere Castle Vicinity
-렌스피어 동쪽	Rensphere Eastern Area
-렌스피어 외성	Rensphere External Castle
 렌스피어 내부	Rensphere Inside
-렌스피어 내성	Rensphere Internal Castle
-렌스피어 남쪽	Rensphere Southern Area
-렌스피어 서쪽	Rensphere Western Area
-렌즈론	Rensron
-원정대의 길	Road of Expedition
-환희의 길	Road of Joy
-이름없는 자들의 방	Room of the Nameless Ones
-완곡의 봉우리	Round Peak
-루아아라	Rualala 
-루클리아 아메	Rucklia Amae
-사라미스 정원	Salarmis Garden
-사라미스의 정원	Salarmis Garden
-흐르는 모래 길	Sand Road
-정찰자의 터	Scouter Site
-봉인된_광산_2층	Sealed Mine 1st Floor 
-봉인된 광산 2층 입구	Sealed Mine 1st Floor Entrance
-봉인된_광산_3층	Sealed Mine 2nd Floor
-봉인된 광산 3층 입구	Sealed Mine 2nd Floor
-봉인된_광산_1층	Sealed Mine Ground Floor
-봉인된 광산 1층 입구	Sealed Mine Ground Floor Entrance
-비밀의 사원	Secret Temple
-오래된 천막촌	Settlers Camp
-그림자무덤	Shadow Grave
-쉬버스	Sheerbus
-아지랑이물가	Shimmerside
-샤인우드	Shinewood
-쉽헤드해안	Shiphead Seashore
-셤프마을	Shump Village
-공성지역	Siege Zone
-실란시움	Silancium
-침묵의숲	Silent Forest
-노래버섯지대	Singing Mushroom
-시로코고 천문관측소	Sirokogo Observatory
-공중 다리	Sky Bridge
-공중_다리	Sky Bridge
-공중다리	Sky Bridge
-공중감옥	Sky Prison
-솔시드산맥	Solcid Mountains
+폰 1층 입구	Asylum Ground Floor Entrance
+잊혀진_무덤_입구	Forgotten Grave Entrance
+가짜마적촌	Village of the Shadows
 솔시드석조	Solcid Sunset
-혼돈의 소로	Soro of Chaos
-진혼사원	Soul Temple
-셤프마을 남쪽	South of Shump Village
-남쪽땅의 사원	Southern Temple
-환희의 포자 지대	Spores of Joy
-환희의_포자	Spores of Joy
-승화의 계단	Stairs of Sublimation
-공명바위	Stone of Justice
-스톰로드	Storm Road
-스톰하이드산맥	Stormhide Mountains
-여름해변	Summer Beach
-일출의 해변	Sunrise Beach
-습지대 입구	Swamp Entrance
-타부토촌	Tabuto Village
-탈론 야드	Talon Yard
-탈론_야드	Talon Yard
-탈론야드	Talon Yard
-타스의 숲	Tas Forest
-시간의 사당	Temple of Time
-십년사막	Ten Year Desert
-테라노아	Terranoa
-테라노아 베틀게이트	Terranoa Battlegate
-테라토가 산맥	Terratoga Mountains
-납골당	The Crypt
-그루터기	The Great Stump
-쐐기삼각지	The Span
-오래된 땅	Thistle Vale
-시간이정지한 곳	Time Warp Area
-시간이정지한 곳	Time Warp Area
-틴텔의 북	Tintel's Book
-죽은자의 무덤	Tomb of the Dead
-죽은자의_무덤	Tomb of the Dead
-죽은 자의 무덤 2층	Tomb of the Dead 1st Floor
-죽은자의_무덤_2층	Tomb of the Dead 1st Floor
-죽은 자의 무덤 2층 입구	Tomb of the Dead 1st Floor Entrance
-죽은_자의_무덤_2층_입구	Tomb of the Dead 1st Floor Entrance
-죽은자의 무덤 2층 입구	Tomb of the Dead 1st Floor Entrance
-죽은 자의 무덤 2층 출구	Tomb of the Dead 1st Floor Exit
-죽은_자의_무덤_2층_출구	Tomb of the Dead 1st Floor Exit
-죽은 자의 무덤 3층	Tomb of the Dead 2nd Floor
-죽은자의_무덤_3층	Tomb of the Dead 2nd Floor
-죽은 자의 무덤 3층 입구	Tomb of the Dead 2nd Floor Entrance
-죽은_자의_무덤_3층_입구	Tomb of the Dead 2nd Floor Entrance
-죽은자의 무덤 3층 입구	Tomb of the Dead 2nd Floor Entrance
-죽은_자의_무덤_3층_출구	Tomb of the Dead 2nd Floor Exit
-죽은 자의 무덤 입구	Tomb of the Dead Entrance
-죽은_자의_무덤_입구	Tomb of the Dead Entrance
-죽은 자의 무덤 출구	Tomb of the Dead Exit
-죽은_자의_무덤_출구	Tomb of the Dead Exit
-죽은 자의 무덤 1층	Tomb of the Dead Ground Floor
-죽은자의  무덤 1층	Tomb of the Dead Ground Floor
-죽은자의_무덤_1층	Tomb of the Dead Ground Floor
-죽은_자의_무덤_1층_입구	Tomb of the Dead Ground Floor Entrance
-죽은자의 무덤 1층 입구	Tomb of the Dead Ground Floor Entrance
-죽은 자의 무덤 1층 출구	Tomb of the Dead Ground Floor Exit
-죽은_자의_무덤_1층_출구	Tomb of the Dead Ground Floor Exit
-죽은자의 무덤 1층 출구	Tomb of the Dead Ground Floor Exit
-행복한 묘지	Tomb of Tranquillity
-토르_요새	Tor Fortress
-토르요새	Tor Fortress
-배틀게이트 토르요새	Tor Fortress Battlegate 
-트라쿠아_성	Traqua Castle
-트라쿠아 성	Traqua Castle
-트라쿠아 성 내부	Traqua Castle Inside
-트라쿠아 성 성주 사냥터	Traqua Castle Secret Dungeon
-트라쿠아_성_인근	Traqua Castle Vicinity
-트라쿠아 성 인근	Traqua Castle Vicinity
-트라쿠아 외성문	Traqua External Gate
-트라쿠아 내부	Traqua Inside
-트라쿠아 내성문	Traqua Internal Gate
-트라쿠아 렌스피어 입구	Traqua Rensphere Entrance
-트라쿠아 성주 사냥터	Traqua Secret Dungeon
-트라쿠아_성주_사냥터	Traqua Secret Dungeon
-트라쿠아 성주 사냥터 입구	Traqua Secret Dungeon Entrance
-트라쿠아_성주_사냥터_입구	Traqua Secret Dungeon Entrance
-삼각_마을	Triangle Village
-삼각마을	Triangle Village
-트라이부츠	Triboots
-트릴가드	Trilgard
-배틀게이트 트릴가드	Trilgard Battlegate 
-도시 트릴가드	Trilgard City
-트릴가드 북시가지	Trilgard North Town
-트릴가드 남시가지	Trilgard South Town
-트릴가드 광장	Trilgard Square
-툴란	Tullan
-배틀게이트 툴란	Tullan Battlegate 
-도시 툴란	Tullan City
-툴란 동시가지	Tullan East Town
-툴란 광장	Tullan Square
-툴란 서시가지	Tullan West Town
-이름없는 무덤	Unmarked Grave
-이름없는_무덤	Unmarked Grave
-이름 없는 무덤 2층	Unmarked Grave 1st Floor
+보석의 땅	Jewel Land
+에리엘	Ariel
 이름없는_무덤_2층	Unmarked Grave 1st Floor
-이름없는 무덤 2층 입구	Unmarked Grave 1st Floor Entrance
-이름없는_무덤_2층_입구	Unmarked Grave 1st Floor Entrance
-이름없는 무덤 2층 출구	Unmarked Grave 1st Floor Exit
-이름없는_무덤_2층_출구	Unmarked Grave 1st Floor Exit
-이름 없는 무덤 2층출구	Unmarked Grave 1st Floor Exit
-이름 없는 무덤 2층입구	Unmarked Grave 1st Floor Entrance
-이름 없는 무덤 3층	Unmarked Grave 2nd Floor
-이름없는_무덤_3층	Unmarked Grave 2nd Floor
-이름없는 무덤 3층 입구	Unmarked Grave 2nd Floor Entrance
-이름없는_무덤_3층_입구	Unmarked Grave 2nd Floor Entrance
-이름없는_무덤_3층_출구	Unmarked Grave 2nd Floor Exit
-이름없는 무덤 입구	Unmarked Grave Entrance
-이름없는_무덤_입구	Unmarked Grave Entrance
-이름없는 무덤 출구	Unmarked Grave Exit
-이름없는_무덤_출구	Unmarked Grave Exit
-이름 없는 무덤 1층	Unmarked Grave Ground Floor
-이름없는_무덤_1층	Unmarked Grave Ground Floor
-이름없는 무덤 1층 입구	Unmarked Grave Ground Floor Entrance
-이름없는 무덤 1층 출구	Unmarked Grave Ground Floor Exit
-이름없는_무덤_1층_출구	Unmarked Grave Ground Floor Exit
-정원상층	Upper Garden
-우르트람강	Urtram River
-발브르언덕	Valbur Hill
-절규의 계곡	Valley of Screams
-뱀파이어 마을	Vampire Village
-뱀파이어_마을	Vampire Village
-뱀파이어마을	Vampire Village
-복수의 방	Vengeance Chamber
-복수의_방	Vengeance Chamber
-복수의_방2	Vengeance 2 Chamber
-복수의_방4	Vengeance 4 Chamber
-원혼의 분지	Vengeful Basin
-원혼의 분지입구	Vengeful Basin Entrance
-베르아크분지	Verark Basin
-비고로르	Vigorore
-비고로르동쪽	Vigorore Eastern
-비고로르_동쪽	Vigorore Eastern
-비고로르서쪽	Vigorore Western
-비고로르_서쪽	Vigorore Western
-비고로르남쪽	Vigorore Southern
-비고로르_남쪽	Vigorore Southern
-비고로르남서쪽	Vigorore South Western
-비고로르_남서쪽	Vigorore South Western
-휴식의 천막촌	Village of Rest
-가짜마적촌	Village of the Shadows
-땅끝해안	Viper Beach
-방문자의 숲	Visitor's Forest
-방랑자평야	Wanderer Plain
-전사의 평지	Warrior Plain
-용병마을	Warrior Village
-전사의 다리	Warrior's Bridge
-퍼피필드	Wasteland
-물의 길	Water Road
-파도 사구	Wave Dune
-하얀숲	White Forest
-바람평원	Wind Plain
-바람의 계곡	Wind Valley
-윈드릴	Windrill
-윈드릴_북쪽	Windrill Northern
-윈드릴의 동쪽 입구	Windrill Eastern Entrance
-윈드릴의 서쪽 입구	Windrill Western Entrance
-나무꾼의숲	Woodcutter Pass
-숭배자 정착지	Worshipper Settlement
-숭배자정착지	Worshipper Settlement
-우더링	Wuthering
-야아란	Yaran
-약탈의 평원	Zeno Plain
-자일록	Zylok
-배틀게이트 자일록	Zylok Battlegate 
-도시 자일록	Zylok City
-길드경기장_주변	Around Guild Battle Arena
-데리벨_길드_전투_경기장	Deribelle Guild Battle Arena
-데리벨 길드 전투 경기장	Deribelle Guild Battle Arena
-시련의 방	Hero's Reception
-시련의_방	Hero's Reception
-아르시안 비밀의 던전	Arthian Castle's Secret Dungeon
-인플레임 비밀의 던전	 Inflame Castle's Secret Dungeon
-트라쿠아 비밀의 던전	Traqua Castle's Secret Dungeon
-아르시안 비밀의 던전 입구	Arthian Castle's Secret Dungeon
-인플레임 비밀의 던전 입구	 Inflame Castle's Secret Dungeon
-트라쿠아 비밀의 던전 입구	Traqua Castle's Secret Dungeon
-의식의 방	Hero's Reception
-의식의_방	Hero's Reception
-인고의 방	Hero's Reception
-인고의_방	Hero's Reception
-파멸의 방	Chamber of Ruin
-파멸의_방	Chamber of Ruin
-툴란_길드_전투_경기장	Tullan Guild Battle Arena
-툴란 길드 전투 경기장	Tullan Guild Battle Arena
-트릴가드_길드_전투_경기장	Trilgard Guild Battle Arena
-트릴가드 길드 전투 경기장	Trilgard Guild Battle Arena
-얼음 정령계	The Frozen Infinity
-얼음_정령계	The Frozen Infinity
-독 정령계	Evergreen Paradise
-독_정령계	Evergreen Paradise
-번개 정령계	Teslon Outpost
-번개_정령계	Teslon Outpost
-붉은 궁륭	Red groin
-디스호프의 땅	Land of Dishope
-군주의 좌	Tyranny's Throne
-군주의_좌	Tyranny's Throne
-비명의 숲	Forest of Scream
-비명의_숲	Forest of Scream
-얼음의 대지	Land of Ice
-얼음의_대지	Land of Ice
-지하 감옥 1층	Dungeon 1F
-지하_감옥_1층	Dungeon 1F
-지하 감옥 2층	Dungeon 2F
-지하_감옥_2층	Dungeon 2F
-고통의 숲	Forest of Pain
-고통의_숲	Forest of Pain
-절망의 탑	Tower of Despair
-절망의_탑	Tower of Despair
-무한 지대	Infinity Hunt Event
-무한_지대	Infinity Hunt Event
-무한 지대 마을	Infinity Hunt Event Town
-무한_지대_마을	Infinity Hunt Event Town
-배틀 스퀘어 1층	Battle Square 1st Floor
-배틀 스퀘어 2층	Battle Square 2nd Floor
-배틀 스퀘어 3층	Battle Square 3rd Floor
-배틀 스퀘어 4층	Battle Square 4th Floor
-배틀 스퀘어 5층	Battle Square 5th Floor
-배틀 스퀘어 6층	Battle Square 6th Floor
-배틀스퀘어 1층	Battle Square 1st Floor
-배틀스퀘어 2층	Battle Square 2nd Floor
-배틀스퀘어 3층	Battle Square 3rd Floor
-배틀스퀘어 4층	Battle Square 4th Floor
-배틀스퀘어 5층	Battle Square 5th Floor
-배틀스퀘어 6층	Battle Square 6th Floor
-반목의 방	Chamber of Enmity
-집착의 방	Chamber of Obsession
-헤븐즈 헬	Heaven's Hell
-불꽃의 지옥	Flames of Hell
-생명의 핏줄	Bloodline of Life
-칼날 태풍 산맥	Blade Storm Mountain
-헤븐즈 헬의 옥좌	Throne of Heaven's Hell
-고통의 입구	Gate of Pain
-글렌데스틴 숲 남동부	Southeast Glendestine Forest
-드래곤시온 요새	DragonScion Fortress
-드래곤시온 요새 입구	DragonScion Fortress Entrance
-드래이거 내부	Drayger Inside
-드래이거 내성문	Drayger Castle Internal Gate
-드래이거 렌스피어 입구	Drayger Rensphere Entrance
-드래이거 성 내부	Drayger Castle Inside
-드래이거 성 성주 사냥터	Drayger Castle Secret Dungeon
-드래이거 성주 사냥터	Drayger Secret Dungeon
-드래이거 외성문	Drayger External Gate
-랜스피어 성 내부	Rensphere Castle Inside
-랜스피어 성주 사냥터	Rensphere Secret Dungeon
-랜스피어성 내부	Rensphere Inside
-렌스피어 남서쪽	Rensphere Southwest Area
-미련의 방	Chamber of Regret
-배틀게이트 스톨	Stull Battlegate
-배틀 로얄 경기장	Battle Royal Arena
-배틀 로얄 관중석	Battle Royal Bleachers
-배틀 로얄	Battle Royal
-벨제루크 동부	East Belzeruk
-벨제루크 북서부	Northwest Belzeruk
-분란의 방	Chamber of Disorder
-비난의 방	Chamber of Censure
-비애의 방	Chamber of Sorrow
-시련의 동굴 2층 입구	Cave of Trials 1st Floor Entrance
-시련의 동굴 2층 출구	Cave of Trials 1st Floor Exit
-시련의 동굴 입구	Cave of Trials Entrance
-시련의 동굴 출구	Cave of Trials Exit
-시련의 입구	Gate of Trials
-시엔 마을	Cien Village
-엘리시온 동쪽	Elyscion Eastern Area
-원망의 방	Chamber of Grudge
-원한의 입구	Gate of Grudge
-유폐된 광산 2층 입구	Abandoned Mine 1st Floor Entrance
-유폐된 광산 2층 출구	Abandoned Mine 1st Floor Exit
-유폐된 광산 3층 입구	Abandoned Mine 2nd Floor Entrance
-유폐된 광산 3층 출구	Abandoned Mine 2nd Floor Exit
-유폐된 광산 내부	Abandoned Mine Inside
-유폐된 광산 입구	Abandoned Mine Entrance
-유폐된 광산 출구	Abandoned Mine Exit
-유혹의 입구	Gate of Temptation
-젠클리어 남동부	Southeast Zenclier
-젠클리어 남동쪽	Zenclier Southeast Area
-젠클리어 남부	South Zenclier
-젠클리어 남쪽	Zenclier Southern Area
-젠클리어 동부	East Zenclier
-젠클리어 동쪽	Zenclier Eastern Area
-젠클리어 서부	West Zenclier
-젠클리어 서쪽	Zenclier Western Area
-젠클리어 중앙 동부	East Central Zenclier
-젠클리어 중앙 동쪽	Zenclier East Central Area
-젠클리어 중앙 서부	Central West Zenclier
-젠클리어 중앙 서쪽	Zenclier West Central Area
-좌절의 방	Chamber of Despair
-증오의 입구	Gate of Hatred
-질시의 방	Chamber of Jealousy
-탄식의 입구	Gate of Deplore
-탐욕의 무덤 2층 입구	Tomb of Greed 1st Floor Entrance
-탐욕의 무덤 2층 출구	Tomb of Greed 1st Floor Exit
-탐욕의 무덤 3층 입구	Tomb of Greed 2nd Floor Entrance
-탐욕의 무덤 3층 출구	Tomb of Greed 2nd Floor Exit
-탐욕의 무덤 내부	Tomb of Greed Inside
-탐욕의 무덤 입구	Tomb of Greed Entrance
-탐욕의 무덤 출구	Tomb of Greed Exit
-트레바인 남부	South Trebain
-트레바인 상부	Upper Trebain
-트레바인 하부	Lower Trebain
-파멸의 입구	Gate of Ruin
-포츈로드 동부	East Fortune Road
-포츈로드 북부	North Fortune Road
-혼돈의 방	Chamber of Chaos
-혼란의 입구	Gate of Chaos
-엘리시온	Elyscion
-루시아스	Lucious
-아뮤네시아	Amunesia
-벨제루크	Belzeruk
-멜트라인	Meltline
-드래이거 성	Drayger Castle
-드래이거 성 인근	Drayger Castle Vicinity
-포츈로드	Fortune Road
-시엔	Cien
-사리엔드	Sariend
-란파	Ranfa
-톤파	Tonfa
-스톨	Stull
-젠클리어 폭포	Zenclier Waterfall
-마다가르 파이프	Madagar Pipe
-룽페이수련장	Lungfei Dojo
-카르마관문	Karma Barrier
-와일드본 성전	Wild Bone Temple
-메멘토뉴엄	Mementonium
-드라카로 성전	Drakaro Church
-포스크랙	Poscrack
-피의 늪	Blood Swamp
-피의 산	Blood Mountain
-골램지역	Golem Territory
-피드밀	Feedmill
-사형장	Execution Ground
-나선의 길	Spiral Road
-글렌데스틴 숲	Glendestine Forest
-보화의 골짜기	Treasure Valley
-보화의_골짜기	Treasure Valley
-포세이큰의 둥지	Nest of the Forsaken
-푸세이큰의_둥지	Nest of the Forsaken
-스릴킬	Srilkil
-빙헬	Veihel
-시련의 길	Road of Trials
+잊혀진_무덤_2층	Forgotten Grave 1st Floor
+정령의 쉬라인 포탈(시온)	Spirit Shrine(Scion)
 글렌데스틴 화산	Glendestin Volcano
-할리엔	Halien
-트레바인	Trebain
-스톨 길드 전투 경기장	Stull Guild Battle Arena
-탐욕의 무덤1층	Tomb of Greed Ground Floor
-탐욕의_무덤1층	Tomb of Greed Ground Floor
-탐욕의 무덤2층	Tomb of Greed 1st Floor
-탐욕의_무덤2층	Tomb of Greed 1st Floor
-탐욕의 무덤3층	Tomb of Greed 2nd Floor
-탐욕의_무덤3층	Tomb of Greed 2nd Floor
-유폐된 광산1층	Abandoned Mine Ground Floor
-유폐된_광산1층	Abandoned Mine Ground Floor
-유폐된 광산2층	Abandoned Mine 1st Floor
-유폐된_광산2층	Abandoned Mine 1st Floor
-유폐된 광산3층	Abandoned Mine 2nd Floor
-유폐된_광산3층	Abandoned Mine 2nd Floor
-시련의 동굴1층	Cave of Trials Ground Floor
-시련의_동굴1층	Cave of Trials Ground Floor
-시련의 동굴2층	Cave of Trials 1st Floor
-시련의_동굴2층	Cave of Trials 1st Floor
-죽은자의 전장	Battleground of the Dead
-드래이거 비밀의 던전	Secret Dungeon of Drayger
-드래이거 비밀의 던전 입구	Entrance to the Secret Dungeon of Drayger
-번뇌의 방	Chamber of Agony
-드래곤시온 지역	DragonScion Territory
-드래곤시온 요새	DragonScion Fortress
-화합의 회랑	Corridor of Harmony
-혼돈의 중심	Center of Chaos
-오크 지역	Orc Zone
-휴먼 지역	Human Zone
-문엘프 지역	Moon Elf Zone
-베틀그라운드	Battle Ground
-드래곤시온 지역	Dragonscion Zone
-드래곤시온 요새	Dragonscion Fortress
-드래곤시온 요새 입구	Dragonscion Fortress Entrance
-오크 요새	Orc Fortress
-오크 요새 입구	Orc Fortress Entrance
-문엘프 요새	Moon Elf Fortress
-문엘프 요새 입구	Moon Elf Fortress
-휴먼 요새	Human Fortress
-휴먼 요새 입구	Human Fortress Entrance
-화전민마을	Village of Seethe
-버려진 과수원	Abandoned Orchard
-알게마분지	Algema Basin
-앵커빌	Anchorville
-배틀게이트 앵커빌	Anchorville Battlegate
-앵커빌 마을	Anchorville Village
-로만 파르칼	Ancient Parkal
-앙스펠호수	Angspel Lake
-에리엘	Ariel
-아르시안 성	Arthian Castle
-아르시안 성 인근	Arthian Castle Vicinity
-아르시안 내부	Arthian Castle Inside 
-아르시안 성 성주 사냥터	Arthian Castle Secret Dungeon
-아르시안 렌스피어 입구	Arthian Entrance
-아르시안 외성문	Arthian External Gate
-아르시안 성 내부	Arthian Inside
-아르시안 내성문	Arthian Internal Gate
-아르시안 성주 사냥터	Arthian Secret Dungeon
-자객마을	Assassin Village
-천문관측소	Astronomy Observatory
-폰 아이젠하우스	Asylum
-폰 아이젠하우스 2층	Asylum 1st Floor
-폰 2층 입구	Asylum 1st Floor Entrance
-폰 아이젠하우스 2층 입구	Asylum 1st Floor Entrance
-폰 아이젠하우스 2층 출구	Asylum 1st Floor Exit
-폰 아이젠하우스 3층	Asylum 2nd Floor
-폰 3층 입구	Asylum 2nd Floor Entrance
-폰 아이젠하우스 3층 입구	Asylum 2nd Floor Entrance
-폰 아이젠하우스 3층 출구	Asylum 2nd Floor Exit
-폰 아이젠하우스 4층	Asylum 3rd Floor
-폰 아이젠하우스 4층 입구	Asylum 3rd Floor Entrance
+푸세이큰의_둥지	Nest of the Forsaken
+트릴가드_길드_전투_경기장	Trilgard Guild Battle Arena
 폰 출구	Asylum Exit
-폰 입구	Asylum Gate
-폰 1층 입구	Asylum Ground Floor Entrance
-폰 아이젠하우스 1층 출구	Asylum Ground Floor Entrance
-알현의 방	Audience Chamber
-바라평원	Bala Plain
-발러의 왕좌	Balor's Throne
-산적마을	Bandit Village
-바란다이크	Baran Dyke
-바란다이크1요새	Baran Dyke Fortress One 
-바란다이크3요새	Baran Dyke Fortress Three
-바란다이크2요새	Baran Dyke Fortress Two
-바르도터	Bardother
-관문 마을	Barrier Village
-관문마을	Barrier Village
-배틀스퀘어	Battlesquare
-베틀스퀘어	Battlesquare
-바트나유적지	Battna Site
-베이컨마을	Beacon Village
-벨리가분지	Belliga Basin
-새의낙원	Bird's Heaven
-새의둥지	Bird's Nest
-피의 제단	Blood Altar
-피의 안식처	Blood Shelter
-흡혈사막	Bloodsyphon Desert
-블루리버강	Blue River 
-멧돼지사냥터	Boar Field
-경계의 다리	Boundary Bridge
-생사의 경계지	Boundary of Life
-경계석	Boundary Stone
-끊어진 다리	Broken Bridge
-북트라이부츠산맥	Buktributs Mountains
-불란트부화장	Bullant Hatchery
-범프필드	Bump Field
-고트곶	Cape Gotto
-케이브타운	Cave Town
-세벤트의 둥지	Cevent's Nest
-공포의 방	Chamber of Horror
-광기의 방	Chamber of Madness
-맹세의 방	Chamber of Oath
-고통의 방	Chamber of Pain
-절규의 방	Chamber of Screams
-죽은자들의 방	Chamber of the Dead
-잊혀진 자들의 방	Chamber of the Forgotten
-대기실	Chamber of Time
-통곡의 방	Chamber of Wailing
-참프로르 호수	Champor Lake
-칸트라 대륙	Chantra Continent
-사자의 예배당	Chapel of The Dead
-체스터 늪	Chester Swamp
-닫혀진 광산	Closed Mine
-닫혀진_광산	Closed Mine
-닫혀진 광산 2층	Closed Mine 1st Floor
-닫혀진 광산 2층 입구	Closed Mine 1st Floor Entrance
-닫혀진_광산_2층_입구	Closed Mine 1st Floor Entrance
-닫혀진 광산 2층 출구	Closed Mine 1st Floor Exit
-닫혀진_광산_2층_출구	Closed Mine 1st Floor Exit
-닫혀진 광산 3층	Closed Mine 2nd Floor
-닫혀진 광산 3층 입구	Closed Mine 2nd Floor Entrance
-닫혀진_광산_3층_입구	Closed Mine 2nd Floor Entrance
-닫혀진_광산_3층_출구	Closed Mine 2nd Floor Exit
-닫혀진 광산 입구	Closed Mine Entrance
-닫혀진_광산_입구	Closed Mine Entrance
-닫혀진 광산 출구	Closed Mine Exit
-닫혀진_광산_출구	Closed Mine Exit
-닫혀진 광산 1층	Closed Mine Ground Floor
-닫혀진 광산 1층 입구	Closed Mine Ground Floor Entrance
-닫혀진_광산_1층_출구	Closed Mine Ground Floor Entrance
-닫혀진 광산 1층 출구	Closed Mine Ground Floor Exit
-클라우드사원	Cloud Temple
-콘트라하우스	Contra House
-깊은 중심지	Core Arena
-염화의 동굴 2층	Corrosion Cave 1st Floor
-염화의 동굴 2층 입구	Corrosion Cave 1st Floor Entrance
-염화의_동굴_2층_입구	Corrosion Cave 1st Floor Entrance
-염화의 동굴 1층	Corrosion Cave Ground Floor
-염화의 동굴 1층 입구	Corrosion Cave Ground Floor Entrance
-염화의_동굴_1층_입구	Corrosion Cave Ground Floor Entrance
-염화의 동굴 1층 출구	Corrosion Cave Ground Floor Exit
-염화의_동굴_1층_출구	Corrosion Cave Ground Floor Exit
-기억의 망루	Cove of Memories
-크로우크로스	Crowcross
-저주의 계곡	Curse Valley
-다드홀	Dadhal
-검은 파도 마을	Dark Wave Village
-검은파도 마을	Dark Wave Village
-검은파도마을	Dark Wave Village
-죽은 앤트의 숲	Dead Arbor's Forest
-망자의 절벽	Dead Cliff
-데드라인	Dead Line
-사신의 평원	Death Plain
-델파라스	Delfaras
-배틀게이트 델파라스	Delfaras Battlegate
-델파라스 중앙광장	Delfaras Central Square
-도시 델파라스	Delfaras City
-델파라스 항구	Delfaras Harbor
-데리벨	Deribelle
-배틀게이트 데리벨	Deribelle Battlegate 
-도시 데리벨	Deribelle City
-데리벨 동문	Deribelle East Gate
-데리벨 동시가지	Deribelle East Town
-데리벨 북문	Deribelle North Gate
-데리벨 남문	Deribelle South Gate
-데리벨 남시가지	Deribelle South Town
-데리벨 서문	Deribelle West Gate
-데리벨 서시가지	Deribelle West Town
-사막족의 땅	Desert Tribe Land
-사막족 마을	Desert Tribe Village
-디난트야드	Dinant Yard
-현기증 습지	Dizzy Swamp
-드래곤여관터	Dragon Inn
-드래곤의 레어	Dragon's Lair
-용의 기둥	Dragon's Pillar
-꿈꾸는 절벽	Dreaming Cliff
-흐릿한 강변	Dull Riverbank
-용병사냥터	Dust Field
-마른강 평원	Dusty Creek
-동쪽분지	East Branch
-정령의 폭포	Elements Waterfall 
-엘로함망루	Elloham Watchtower
-엘로힘 망루	Elloham Watchtower
-엘로힘_망루	Elloham Watchtower
-엘로힘망루	Elloham Watchtower
-엘로르	Ellore
-배틀게이트 엘로르	Ellore Battlegate
-도시 엘로르	Ellore City
-엘름볼트	Elmbolt
-엘름볼트계곡	Elmbolt Valley
-영원의 제국	Eternal Empire
-영원동산	Eternal Hill
-석양의해변	Evening Sea
-모험도전지	Evor
-원정대 천막촌	Expedition Camp Site
-원정대천막촌	Expedition Camp Site
-에저로크	Ezerock
-낙석지대	Fallen Hills
-오선지대	Five Lines
-염랑의 동굴 2층	Flame Cave 1st Floor
-염랑의 동굴 2층 입구	Flame Cave 1st Floor Entrance
-염랑의_동굴_2층_입구	Flame Cave 1st Floor Entrance
-염랑의 동굴 입구	Flame Cave Entrance
-염랑의_동굴_입구	Flame Cave Entrance
-염랑의 동굴 1층	Flame Cave Ground Floor
-염랑의 동굴 1층 입구	Flame Cave Ground Floor Entrance
-염랑의_동굴_1층_입구	Flame Cave Ground Floor Entrance
-염랑의 동굴 1층 출구	Flame Cave Ground Floor Exit
-염랑의_동굴_1층_출구	Flame Cave Ground Floor Exit
-금지된_광산	Forbidden Mine
-금지된광산	Forbidden Mine
-금지된 광산 2층	Forbidden Mine 1st Floor
-금지된 광산 2층 입구	Forbidden Mine 1st Floor Entrance
-금지된_광산_2층_입구	Forbidden Mine 1st Floor Entrance
-금지된 광산 2층 출구	Forbidden Mine 1st Floor Exit
-금지된_광산_2층_출구	Forbidden Mine 1st Floor Exit
-금지된 광산 3층	Forbidden Mine 2nd Floor
-금지된 광산 3층 입구	Forbidden Mine 2nd Floor Entrance
-금지된_광산_3층_입구	Forbidden Mine 2nd Floor Entrance
-금지된 광산 입구	Forbidden Mine Entrance
-금지된_광산_입구	Forbidden Mine Entrance
-금지된 광산 출구	Forbidden Mine Exit
-금지된_광산_출구	Forbidden Mine Exit
-금지된 광산 1층	Forbidden Mine Ground Floor
-금지된 광산 1층 입구	Forbidden Mine Ground Floor Entrance
-금지된 광산 1층 출구	Forbidden Mine Ground Floor Exit
-금지된_광산_1층_출구	Forbidden Mine Ground Floor Exit
-포겔평원	Forgel Plains
-잊혀진 동굴	Forgotten Cave
-잊혀진 무덤	Forgotten Grave
-잊혀진_무덤	Forgotten Grave
-잊혀진 무덤 2층	Forgotten Grave 1st Floor 
-잊혀진 무덤 2층 입구	Forgotten Grave 1st Floor Entrance
-잊혀진_무덤_2층_입구	Forgotten Grave 1st Floor Entrance
-잊혀진 무덤 2층 출구	Forgotten Grave 1st Floor Exit
-잊혀진_무덤_2층_출구	Forgotten Grave 1st Floor Exit
-잊혀진 무덤 3층	Forgotten Grave 2nd Floor 
-잊혀진 무덤 3층 입구	Forgotten Grave 2nd Floor Entrance
-잊혀진_무덤_3층_입구	Forgotten Grave 2nd Floor Entrance
-잊혀진 무덤 입구	Forgotten Grave Entrance
-잊혀진_무덤_입구	Forgotten Grave Entrance
-잊혀진 무덤 출구	Forgotten Grave Exit
-잊혀진_무덤_출구	Forgotten Grave Exit
-잊혀진 무덤 1층	Forgotten Grave Ground Floor
-잊혀진 무덤 1층 입구	Forgotten Grave Ground Floor Entrance
-잊혀진 무덤 1층 출구	Forgotten Grave Ground Floor Exit
-잊혀진_무덤_1층_출구	Forgotten Grave Ground Floor Exit
-배틀스퀘어 <분열의 문>	Gate of Division
-분열의 문	Gate of Division
-배틀스퀘어 <탐욕의 문>	Gate of Greed
-탐욕의 문	Gate of Greed
-배틀스퀘어 <분노의 문>	Gate of Rage
-분노의 문	Gate of Rage
-배틀스퀘어 <슬픔의 문>	Gate of Sadness
-슬픔의 문	Gate of Sadness
-돌아오지 않는 길	Gauntlet Pass
-대장의 정원	General's Garden
-고스트분지	Ghost Valley
-거인의 가도	Giant's Highroad
-유리호수	Glass Lake
-글리터스	Glitters
-영광의 귀환지	Glory Port
-노움의굴	Gnome Cave
-고블린분지	Goblin Valley
-황금의길	Gold Road
-골룬도	Golundo
-배틀게이트 골룬도	Golundo Battle Gate
-골룬도 마을	Golundo Village
-골룬도마을	Golundo Village
-고토강	Gotto River
-그랜드크림슨	Grand Crimson
-망자의 묘	Grave of the Dead
-초록음악지	Green Music Hall
-그레이 계곡	Grey Valley
-그림로어	Grimlore
-그룬트반도	Groont Peninsula
-과다니니폭포	Guadanini Waterfall
-길드 경기장	Guild Battle Square
-길드경기장	Guild Battle Square
-집시촌	Gypsy Town
-망치계곡	Hammer Valley
-흉가주점	Haunted Inn
-매의고원	Hawk's Plateau
-하이드백	Hideback 
-하이드백 마을	Hideback Village
-하이드백마을	Hideback Village
-사냥꾼의 숲	Hunter's Forest
-무한의 수차	Infinite Mill
-인플레임 성	Inflame Castle
-인플레임 성 입구	Inflame Castle Entrance
-인플레임 성 내부	Inflame Castle Inside
-인플레임성 내부	Inflame Castle Inside
-인플레임성 내성문	Inflame Castle Internal Gate
-인플레임 성 성주 사냥터	Inflame Castle Secret Dungeon
-인플레임 성 인근	Inflame Castle Vicinity
-인플레임 외성문	Inflame External Gate
-인플레임 렌스피어 입구	Inflame Rensphere Entrance
-인플레임 성주 사냥터	Inflame Secret Dungeon
-상아무덤마을	Ivory Grave Village
-자무쉬의 봉인	Jamushi's Seal
-현악의 땅	Jaztero
-보석의 땅	Jewel Land
-칸디아광산	Kandia Mine
-캐러번 로드	Karebun Road
-캐러번_로드	Karebun Road
-캐러번로드	Karebun Road
-왕의 다리	King's Bridge
-왕의사냥터	King's Hunting Field
-카이젠폭포	Kisen Waterfall
-쿤	Kuhn
-배틀게이트 쿤	Kuhn Battlegate 
-도시 쿤	Kuhn City
-라트리아	Latria
-라플레시아	Laflesia
-배틀게이트 라프레시아	Laflesia Battlegate 
-도시 라플레시아	Laflesia City
-땅이 우는 곳	Lamentia
-상실의 땅	Land of Loss
+유폐된_광산_3층	Abandoned Mine 2nd Floor
+숭배자정착지	Worshipper Settlement
+공성지역	Siege Zone
+환희의 포자 지대	Spores of Joy
 랜드엔드	Lands End
-관현악의 땅	La Triah
-라임호수	Lime Lake
-라임라이트	Limelight
-리자드맨의 발톱	Lizardman's claw
-리자드맨의_발톱	Lizardman's claw
-낮은바람마을	Low Wind Village
-정원하층	Lower Garden
-러프풋 땅	Lufut Land
-루나웨이강	Lunaway River
-루나웨이 습지대	Lunaway Swamp
-러스트뷰린산	Lustbiurin Mountain
-마스트코트	Mastcot
-멜기노 산맥	Melgino Mountains
-멤브레덴	Membreathen
-멤브레덴 입구	Membreathen Entrance
-추모자의 방	Memorial Chamber
-기억의언덕	Memory Hill
-상인의 계곡	Merchant Valley
-메테오라	Meteora
-작열의 동굴 2층	Miasma Cave 1st Floor
-작열의 동굴 2층 입구	Miasma Cave 1st Floor Entrance
-작열의_동굴_2층_입구	Miasma Cave 1st Floor Entrance
-작열의_동굴_2층_출구	Miasma Cave 1st Floor Exit
-작열의 동굴 1층	Miasma Cave Ground Floor
-작열의 동굴 1층 입구	Miasma Cave Ground Floor Entrance
-작열의_동굴_1층_입구	Miasma Cave Ground Floor Entrance
-작열의 동굴 1층 출구	Miasma Cave Ground Floor Exit
+그랜드크림슨	Grand Crimson
+유폐된_광산1층	Abandoned Mine Ground Floor
+젠틀리어 폭포	Zenclier Waterfall
+드래곤시온지역	Dragonscion Zone
+죽은 자의 무덤 1층	Tomb of the Dead Ground Floor
+드래이거 성 성주 사냥터	Drayger Castle Secret Dungeon
 작열의_동굴_1층_출구	Miasma Cave Ground Floor Exit
-크랩터폰	Midok
-기후지도	Milieu
-기후제의 땅	Milieu island
-광산 입구	Mine Entrance
-광산_입구	Mine Entrance
-광산 마을	Mine Village
-광산_마을	Mine Village
-광산마을	Mine Village
-기적의샘	Miracle Fountain
-미라지안 호수	Mirasian Lake
-싱잉레인	Mist Plain
-모라비아요새	Morabia Fortress
-모르트수로	Mort Waterway
-음악관	Music Hall
-숨죽인 유적	Muted Site
-나르캉골 산맥	Narkangol Mountains
-악몽의 골짜기	Nightmare Valley
-노블하임산맥	Noblehaim Mountains
-녹턴야드	Nocturn Yard
-노린	Norine
-배틀게이트 노린	Norine Battlegate 
-노린 마을	Norine Village
-델파라스 북부	North Delfaras
-범프필드 북쪽	Northern Ridge Field 
-북쪽땅의 사원	Northern Temple 
-노르톱 마을	Nortop Village
-노르톱마을	Nortop Village
-오우거마을	Ogre Village
-올드캐빈	Old Cabin
-집시들의 옛터	Old Gypsy Town
-옛항구터	Old Harbor
-오래된 광산	Old Mine
-오래된_광산	Old Mine
-오래된 광산 2층 입구	Old Mine 1st Floor Entrance
+알게마분지	Algema Basin
+배틀스퀘어_5층	Battle Square 5th Floor
+아르시안 성 내부	Arthian Inside
+증오의 입구	Gate of Hatred
+바르도터서쪽	Bardother Western
+탐욕의_무덤2층	Tomb of Greed 1st Floor
+드래이거_성주_사냥터	Drayger Secret Dungeon
+정령의 쉬라인 오크지역	Spirit Shrine Orc Zone
+바란다이크3요새	Baran Dyke Fortress Three
+땅끝해안	Viper Beach
+샤인우드	Shinewood
+드래곤시온_요새	DragonScion Fortress
+과다니니폭포	Guadanini Waterfall
+탐욕의 무덤 2층 출구	Tomb of Greed 1st Floor Exit
+봉인된 광산 3층	Sealed Mine 2nd Floor
+랜스피어 성 내부	Rensphere Castle Inside
+폰_아이젠하우스	Asylum
+죽은자의  무덤 1층	Tomb of the Dead Ground Floor
+셤프마을	Shump Village
+분노의_문5	5 Gate of Rage
+배틀스퀘어_1층	Battle Square 1st Floor
+흐르는 모래 길	Sand Road
+폰 아이젠하우스 4층	Asylum 3rd Floor
+피의 제단	Blood Altar
 오래된_광산_2층_입구	Old Mine 1st Floor Entrance
-오래된 광산 2층 출구	Old Mine 1st Floor Exit
-오래된_광산_2층_출구	Old Mine 1st Floor Exit
-오래된 광산 3층 입구	Old Mine 2nd Floor Entrance
-오래된_광산_3층_입구	Old Mine 2nd Floor Entrance
-오래된_광산_3층_출구	Old Mine 2nd Floor Exit
-오래된 광산 입구	Old Mine Entrance
-오래된_광산_입구	Old Mine Entrance
-오래된 광산 출구	Old Mine Exit
-오래된_광산_출구	Old Mine Exit
-오래된 광산 1층 입구	Old Mine Ground Floor Entrance
-오래된 광산 1층 출구	Old Mine Ground Floor Exit
-오드오브	Old Orb
-낡은 창고	Old Storehouse
-옛사원 터	Old Temple 
-오아실리안	Orsilian
-오르하협곡	Oruha Canyon
-오르하협곡 입구	Oruha Canyon Entrance
-판다람고원	Pandaram Plateau
-출전의 길	Path of Entry
-영광의 길	Path of Glory
-열사의 한계	Patriot's Limit
-추적자고원	Persuer Plateau
-개척자의 길	Pioneer's Road
-왕자의 사냥터	Prince's Hunting Field
+닫혀진_광산_1층_출구	Closed Mine Ground Floor Entrance
+작열의 동굴 1층	Miasma Cave Ground Floor
+드래이거 내부	Drayger Inside
+폰 입구	Asylum Gate
+휴먼 요새 입구	Human Fortress Entrance
+작열의 동굴 1층 출구	Miasma Cave Ground Floor Exit
+비고로르_동쪽	Vigorore Eastern
+군주의_좌	Tyranny's Throne
+탐욕의 문6	6 Gate of Greed
+데리벨 북문	Deribelle North Gate
+반목의_방2	2 Chamber of Enmity
+죽은 자의 무덤 3층	Tomb of the Dead 2nd Floor
+탈론_야드	Talon Yard
+용암의 쉬라인 문엘프지역	Lava Shrine Moon Elf Zone
+불의 쉬라인 휴먼지역	Fire Shrine Human Zone
+바람의 쉬라인 드래곤시온지역	Wind Shrine Dragonscion Zone
+이름 없는 무덤 2층	Unmarked Grave 1st Floor
+물의 쉬라인 포탈(오크)	Water Shrine(Orc)
+인플레임 성 성주 사냥터	Inflame Castle Secret Dungeon
+광산_입구	Mine Entrance
+독 정령계	Evergreen Paradise
+체스터 늪	Chester Swamp
+시련의 동굴1층	Cave of Trials Ground Floor
+죽은자의 전장	Battleground of the Dead
+오선지대	Five Lines
 포박의 방	Prison Chamber
-금지된 광산	Prohibited Mine
+추모자의 방	Memorial Chamber
+베틀스퀘어	Battlesquare
+열사의 한계	Patriot's Limit
+뱀파이어마을	Vampire Village
+이름없는 무덤 2층	Unmarked Grave 1st Floor
+흐릿한 강변	Dull Riverbank
+나무꾼의숲	Woodcutter Pass
 울림의 늪지	Quake Zone
-퀄트천막촌	Qualt Camp
-사자의 여왕	Queen of Lion
-여왕의서식지	Queen's Habitat
-레비나일 강	Rabinile River
-레비나일강 	Rabinile River
-레비나일강입구	Rabinile River Entrance
-레인라이크	Rainreich
-붉은 자갈길	Red Stone Road
-레더후드	Redderhood
+행복한 묘지	Tomb of Tranquillity
+젠클리어 남동부	Southeast Zenclier
+멤브레덴_남쪽	Membreathen Southern
 렌스피어 성	Rensphere Castle
+아르시안 행 포탈	Portal bound for Arthian
+오래된 광산 입구	Old Mine Entrance
+흉가주점	Haunted Inn
+데리벨 남시가지	Deribelle South Town
+탐욕의_문	Gate of Greed
+불꽃의_지옥	Flames of Hell
+염랑의 동굴 2층	Flame Cave 1st Floor
+드래이거 내성문	Drayger Castle Internal Gate
+유폐된 광산 입구	Abandoned Mine Entrance
+이름없는 무덤 1층	Unmarked Grave Ground Floor
+노르톱마을	Nortop Village
+바람의 쉬라인 문엘프지역	Wind Shrine Moon Elf Zone
+골렘_지역	Golem Territory
+새의낙원	Bird's Heaven
+메테오라	Meteora
+대장의 정원	General's Garden
+바람의 쉬라인	Wind Shrine
+노린	Norine
+이름없는 무덤 출구	Unmarked Grave Exit
+라트리아_남쪽	Latria Southern
+닫혀진_광산	Closed Mine
+캐러번로드	Karebun Road
+케이브타운	Cave Town
+분열의 문5	5 Gate of Division
+멧돼지사냥터	Boar Field
+아르시안 내부	Arthian Castle Inside 
+붉은 자갈길	Red Stone Road
+폰 아이젠하우스 2층	Asylum 1st Floor
+이름없는 무덤 입구	Unmarked Grave Entrance
+렌스피어_성_인근	Rensphere Castle Vicinity
+고블린분지	Goblin Valley
+오래된 광산 3층 입구	Old Mine 2nd Floor Entrance
+엘로함망루	Elloham Watchtower
+크랩터폰	Midok
+트라쿠아 외성문	Traqua External Gate
+관현악의 땅	La Triah
+깊은 중심지	Core Arena
+이름없는_무덤	Unmarked Grave
+인플레임_성주_사냥터_입구	Inflame Secret Dungeon Entrance
+카이젠폭포	Kisen Waterfall
+공포의 방	Chamber of Horror
+탐욕의_문6	6 Gate of Greed
+금지된_광산_3층	Forbidden Mine 2nd Floor
+란파	Ranfa
+트릴가드	Trilgard
+탐욕의_문5	5 Gate of Greed
+현악의 땅	Jaztero
+금지된_광산_1층_출구	Forbidden Mine Ground Floor Exit
+오크요새	Orc Fortress
+벨제루크 동부	East Belzeruk
+분노의_문	Gate of Rage
+배틀게이트 스톨	Stull Battlegate
+분열의 문2	2 Gate of Division
+염랑의_동굴_1층_출구	Flame Cave Ground Floor Exit
+불의 쉬라인 드래곤시온지역	Fire Shrine Dragonscion Zone
+자객마을	Assassin Village
+폰_아이젠하우스2층_입구	Asylum 1st Floor Entrance
+아르시안_성주_사냥터	Arthian Secret Dungeon
+혼란의 입구	Gate of Chaos
+마스트코트	Mastcot
+하이드백	Hideback 
+죽은 자의 무덤 3층 입구	Tomb of the Dead 2nd Floor Entrance
+이름없는 무덤 3층	Unmarked Grave 2nd Floor
+봉인된 광산 1층 입구	Sealed Mine Ground Floor Entrance
+잊혀진 무덤 1층	Forgotten Grave Ground Floor
+드래곤시온 요새 입구	DragonScion Fortress Entrance
+멤브레덴_서쪽	Membreathen Western
+분열의 문6	6 Gate of Division
+인플레임 성 인근	Inflame Castle Vicinity
+탐욕의_무덤_1층	Tomb of Greed Ground Floor
+탐욕의 무덤1층	Tomb of Greed Ground Floor
+남쪽땅의 사원	Southern Temple
+인플레임성_인근	Inflame Castle Vicinity
+마른강 평원	Dusty Creek
+배틀로얄_관중석	Battle Royal Bleachers
+시리푸스의 쉬라인 외곽	Syripus Shrine Outskirts
+삼각_마을	Triangle Village
+시리푸스의 쉬라인	Syripus Shrine
+콘트라하우스	Contra House
+원정대천막촌	Expedition Camp Site
+크로우크로스	Crowcross
+유폐된 광산 출구	Abandoned Mine Exit
+이름없는 무덤 1층 출구	Unmarked Grave Ground Floor Exit
+클라우드사원	Cloud Temple
+동쪽분지	East Branch
+죽은_자의_무덤_2층_입구	Tomb of the Dead 1st Floor Entrance
+비밀의 사원	Secret Temple
+닫혀진_광산_입구	Closed Mine Entrance
+시로코고 천문관측소	Sirokogo Observatory
+시리푸스의 쉬라인 오크지역	Syripus Shrine Orc Zone
+드래이거 렌스피어 입구	Drayger Rensphere Entrance
+인플레임 성주 사냥터 입구	Inflame Secret Dungeon Entrance
+닫혀진 광산 3층	Closed Mine 2nd Floor
+무한의 수차	Infinite Mill
+절망의 탑	Tower of Despair
+시리푸스의 쉬라인 시온지역	Syripus Shrine scion Zone
+오래된_광산_출구	Old Mine Exit
+번개의 쉬라인 오크지역	Lightning Shrine Orc Zone
+트라쿠아 성주 사냥터 입구	Traqua Secret Dungeon Entrance
+용암의 쉬라인 포탈(시온)	Lava Shrine(Scion)
+오래된_광산	Old Mine
+봉인된 광산 1층	Sealed Mine Ground Floor
+쿤	Kuhn
+금지된_광산_1층	Forbidden Mine Ground Floor
+바르도터_북쪽	Bardother Northern
+베르아크분지	Verark Basin
+아르시안 성 진입로	Arthian approach
+배틀스퀘어 6층	Battle Square 6th Floor
+드래곤의 레어	Dragon's Lair
+독의 쉬라인 포탈(문엘프)	Poison Shrine(MoonElf)
+분노의 문6	6 Gate of Rage
+고토강	Gotto River
+봉인된_광산_2층	Sealed Mine 1st Floor 
+노블하임산맥	Noblehaim Mountains
+탐욕의_문2	2 Gate of Greed
+금지된 광산 1층	Forbidden Mine Ground Floor
+블루리버강	Blue River 
+탐욕의 무덤3층	Tomb of Greed 2nd Floor
+개척자의 길	Pioneer's Road
+발브르언덕	Valbur Hill
+엘로힘 망루	Elloham Watchtower
 렌스피어 성 인근	Rensphere Castle Vicinity
+랜스피어 성주 사냥터	Rensphere Secret Dungeon
+퀄트천막촌	Qualt Camp
+사라미스의 정원	Salarmis Garden
+잊혀진 무덤	Forgotten Grave
+탐욕의 문	Gate of Greed
+사리엔드	Sariend
+골램지역	Golem Territory
+도시 엘로르	Ellore City
+비고로르서쪽	Vigorore Western
+슬픔의 문2	2 Gate of Sadness
+사자의_예배당	Chapel of The Dead
+의식의_방	Hero's Reception
+닫혀진 광산 3층 입구	Closed Mine 2nd Floor Entrance
+에저로크_남쪽	Ezerock Southern
+염화의 동굴 2층	Corrosion Cave 1st Floor
+멤브레덴 남쪽	Membreathen Southern
+시련의_길	Road of Trials
+도시 델파라스	Delfaras City
+배틀_로얄_경기장	Battle Royal Arena
+지하 감옥 2층	Dungeon 2F
+젠클리어 서부	West Zenclier
+슬픔의_문4	4 Gate of Sadness
+독의 쉬라인 휴먼지역	Poison Shrine Human Zone
+번개_정령계	Teslon Outpost
+잊혀진 무덤 3층 입구	Forgotten Grave 2nd Floor Entrance
+통곡의_방	Chamber of Wailing
+분노의 문2	2 Gate of Rage
+젠클리어 남동쪽	Zenclier Southeast Area
+휴먼 요새	Human Fortress
+윈드릴_북쪽	Windrill Northern
+분노의_문3	3 Gate of Rage
+배틀_로얄_관중석	Battle Royal Bleachers
+멤브레덴	Membreathen
+화합의_회랑	Corridor of Harmony
+휴먼지역	Human Zone
+도시 트릴가드	Trilgard City
+피의 산	Blood Mountain
+도시 툴란	Tullan City
+관문마을	Barrier Village
+솔시드산맥	Solcid Mountains
+죽은_자의_무덤_3층_출구	Tomb of the Dead 2nd Floor Exit
+유혹의 입구	Gate of Temptation
+죽은_자의_무덤_2층_출구	Tomb of the Dead 1st Floor Exit
+룽페이수련장	Lungfei Dojo
+라트리아	Latria
+미련의 방	Chamber of Regret
+공명바위	Stone of Justice
+바람평원	Wind Plain
+끊어진 다리	Broken Bridge
+루클리아 아메	Rucklia Amae
+금지된_광산_2층_입구	Forbidden Mine 1st Floor Entrance
+세벤트의 둥지	Cevent's Nest
+죽은자의 무덤 3층 입구	Tomb of the Dead 2nd Floor Entrance
+생사의 경계지	Boundary of Life
+빙헬	Veihel
+추적자고원	Persuer Plateau
+시엔	Cien
+루시아스	Lucious
+비고로르	Vigorore
+잊혀진 무덤 출구	Forgotten Grave Exit
+사냥꾼의 숲	Hunter's Forest
+정령의 쉬라인	Spirit Shrine
+죽은자의_무덤	Tomb of the Dead
+번뇌의 방	Chamber of Agony
+드래이거 성 내부	Drayger Castle Inside
+룽페이 수련장	Lungfei Dojo
+닫혀진 광산 출구	Closed Mine Exit
+레인라이크	Rainreich
+트라쿠아 성 진입로	Traqua approach
+엘로힘망루	Elloham Watchtower
+염화의_동굴_2층_입구	Corrosion Cave 1st Floor Entrance
+그룬트반도	Groont Peninsula
+이름없는 무덤 3층 입구	Unmarked Grave 2nd Floor Entrance
+통곡의_방4	4 Chamber of Wailing
+봉인된 광산 2층 입구	Sealed Mine 1st Floor Entrance
+죽은 자의 무덤 입구	Tomb of the Dead Entrance
+혼돈의_중심	Center of Chaos
+탐욕의 무덤 2층 입구	Tomb of Greed 1st Floor Entrance
+문엘프 요새	Moon Elf Fortress
+배틀 스퀘어 4층	Battle Square 4th Floor
+퍼피필드	Wasteland
+배틀스퀘어 <탐욕의 문>	Gate of Greed
+불의 쉬라인 포탈(오크)	Fire Shrine(Orc)
+뱀파이어 마을	Vampire Village
+탐욕의_문3	3 Gate of Greed
+죽은자의 무덤 1층 입구	Tomb of the Dead Ground Floor Entrance
+분열의 문3	3 Gate of Division
+길드경기장	Guild Battle Square
+오래된 광산 1층 입구	Old Mine Ground Floor Entrance
+엘름볼트	Elmbolt
+습지대 입구	Swamp Entrance
+죽은자들의 방	Chamber of the Dead
+툴란 서시가지	Tullan West Town
+폰 아이젠하우스 2층 출구	Asylum 1st Floor Exit
+트라쿠아 성 인근	Traqua Castle Vicinity
+잊혀진_무덤_3층_입구	Forgotten Grave 2nd Floor Entrance
+삼각 마을	Triangle Village
+번개의 쉬라인	Lightning Shrine
+휴먼_요새	Human Fortress
+배틀게이트 데리벨	Deribelle Battlegate 
+상인의 계곡	Merchant Valley
+그루터기	The Great Stump
+배틀스퀘어_3층	Battle Square 3rd Floor
+유폐된_광산_2층	Abandoned Mine 1st Floor
+바르도터	Bardother
+헤븐즈_헬의_옥좌	Throne of Heaven's Hell
+금지된_광산_출구	Forbidden Mine Exit
+데드라인	Dead Line
+망치계곡	Hammer Valley
+죽은_자의_무덤_1층_출구	Tomb of the Dead Ground Floor Exit
+파도 사구	Wave Dune
+맹세의 방	Chamber of Oath
+원혼의 분지입구	Vengeful Basin Entrance
+오크 지역	Orc Zone
+배틀게이트 라프레시아	Laflesia Battlegate 
+라트리아 남쪽	Latria Southern
+죽은자의_무덤_1층	Tomb of the Dead Ground Floor
+슬픔의_문6	6 Gate of Sadness
+드레이거 행 포탈	Portal bound for Drayger
+사자의 여왕	Queen of Lion
+분열의_문6	6 Gate of Division
+배틀로얄 경기장	Battle Royal Arena
 렌스피어 동쪽	Rensphere Eastern Area
 렌스피어 외성	Rensphere External Castle
-렌스피어 내부	Rensphere Inside
-렌스피어 내성	Rensphere Internal Castle
-렌스피어 남쪽	Rensphere Southern Area
-렌스피어 서쪽	Rensphere Western Area
-렌즈론	Rensron
-원정대의 길	Road of Expedition
-환희의 길	Road of Joy
-이름없는 자들의 방	Room of the Nameless Ones
-완곡의 봉우리	Round Peak
-루아아라	Rualala 
-루클리아 아메	Rucklia Amae
-사라미스 정원	Salarmis Garden
-사라미스의 정원	Salarmis Garden
-흐르는 모래 길	Sand Road
-정찰자의 터	Scouter Site
-봉인된 광산 2층	Sealed Mine 1st Floor 
-봉인된 광산 2층 입구	Sealed Mine 1st Floor Entrance
-봉인된 광산 3층	Sealed Mine 2nd Floor
-봉인된 광산 3층 입구	Sealed Mine 2nd Floor
-봉인된 광산 1층	Sealed Mine Ground Floor
-봉인된 광산 1층 입구	Sealed Mine Ground Floor Entrance
-비밀의 사원	Secret Temple
-오래된 천막촌	Settlers Camp
-그림자무덤	Shadow Grave
-쉬버스	Sheerbus
-아지랑이물가	Shimmerside
-샤인우드	Shinewood
-쉽헤드해안	Shiphead Seashore
-셤프마을	Shump Village
-공성지역	Siege Zone
-실란시움	Silancium
-침묵의숲	Silent Forest
-노래버섯지대	Singing Mushroom
-시로코고 천문관측소	Sirokogo Observatory
-공중 다리	Sky Bridge
-공중_다리	Sky Bridge
-공중다리	Sky Bridge
-공중감옥	Sky Prison
-솔시드산맥	Solcid Mountains
-솔시드석조	Solcid Sunset
-혼돈의 소로	Soro of Chaos
-진혼사원	Soul Temple
-셤프마을 남쪽	South of Shump Village
-남쪽땅의 사원	Southern Temple
-환희의 포자 지대	Spores of Joy
-승화의 계단	Stairs of Sublimation
-공명바위	Stone of Justice
-스톰로드	Storm Road
-스톰하이드산맥	Stormhide Mountains
-여름해변	Summer Beach
-일출의 해변	Sunrise Beach
-습지대 입구	Swamp Entrance
-타부토촌	Tabuto Village
-탈론 야드	Talon Yard
-탈론_야드	Talon Yard
-탈론야드	Talon Yard
-타스의 숲	Tas Forest
-시간의 사당	Temple of Time
-십년사막	Ten Year Desert
-테라노아	Terranoa
-테라노아 베틀게이트	Terranoa Battlegate
-테라토가 산맥	Terratoga Mountains
-납골당	The Crypt
-그루터기	The Great Stump
-쐐기삼각지	The Span
-오래된 땅	Thistle Vale
-시간이정지한 곳	Time Warp Area
-시간이정지한 곳	Time Warp Area
-틴텔의 북	Tintel's Book
-죽은자의 무덤	Tomb of the Dead
-죽은자의_무덤	Tomb of the Dead
-죽은 자의 무덤 2층	Tomb of the Dead 1st Floor
-죽은자의 무덤 2층	Tomb of the Dead 1st Floor
-죽은 자의 무덤 2층 입구	Tomb of the Dead 1st Floor Entrance
-죽은_자의_무덤_2층_입구	Tomb of the Dead 1st Floor Entrance
-죽은자의 무덤 2층 입구	Tomb of the Dead 1st Floor Entrance
-죽은 자의 무덤 2층 출구	Tomb of the Dead 1st Floor Exit
-죽은_자의_무덤_2층_출구	Tomb of the Dead 1st Floor Exit
-죽은 자의 무덤 3층	Tomb of the Dead 2nd Floor
-죽은자의 무덤 3층	Tomb of the Dead 2nd Floor
-죽은 자의 무덤 3층 입구	Tomb of the Dead 2nd Floor Entrance
-죽은_자의_무덤_3층_입구	Tomb of the Dead 2nd Floor Entrance
-죽은자의 무덤 3층 입구	Tomb of the Dead 2nd Floor Entrance
-죽은_자의_무덤_3층_출구	Tomb of the Dead 2nd Floor Exit
-죽은 자의 무덤 입구	Tomb of the Dead Entrance
-죽은_자의_무덤_입구	Tomb of the Dead Entrance
-죽은 자의 무덤 출구	Tomb of the Dead Exit
-죽은_자의_무덤_출구	Tomb of the Dead Exit
-죽은 자의 무덤 1층	Tomb of the Dead Ground Floor
-죽은자의  무덤 1층	Tomb of the Dead Ground Floor
-죽은자의 무덤 1층	Tomb of the Dead Ground Floor
-죽은_자의_무덤_1층_입구	Tomb of the Dead Ground Floor Entrance
-죽은자의 무덤 1층 입구	Tomb of the Dead Ground Floor Entrance
-죽은 자의 무덤 1층 출구	Tomb of the Dead Ground Floor Exit
-죽은_자의_무덤_1층_출구	Tomb of the Dead Ground Floor Exit
-죽은자의 무덤 1층 출구	Tomb of the Dead Ground Floor Exit
-행복한 묘지	Tomb of Tranquillity
-토르 요새	Tor Fortress
-토르요새	Tor Fortress
-배틀게이트 토르요새	Tor Fortress Battlegate 
-트라쿠아 성	Traqua Castle
-트라쿠아 성 내부	Traqua Castle Inside
-트라쿠아 성 성주 사냥터	Traqua Castle Secret Dungeon
-트라쿠아 성 인근	Traqua Castle Vicinity
-트라쿠아 외성문	Traqua External Gate
-트라쿠아 내부	Traqua Inside
-트라쿠아 내성문	Traqua Internal Gate
-트라쿠아 렌스피어 입구	Traqua Rensphere Entrance
-트라쿠아 성주 사냥터	Traqua Secret Dungeon
-삼각 마을	Triangle Village
-삼각마을	Triangle Village
-트라이부츠	Triboots
-트릴가드	Trilgard
-배틀게이트 트릴가드	Trilgard Battlegate 
-도시 트릴가드	Trilgard City
-트릴가드 북시가지	Trilgard North Town
-트릴가드 남시가지	Trilgard South Town
-트릴가드 광장	Trilgard Square
-툴란	Tullan
-배틀게이트 툴란	Tullan Battlegate 
-도시 툴란	Tullan City
-툴란 동시가지	Tullan East Town
-툴란 광장	Tullan Square
-툴란 서시가지	Tullan West Town
-이름없는 무덤	Unmarked Grave
-이름없는_무덤	Unmarked Grave
-이름 없는 무덤 2층	Unmarked Grave 1st Floor
-이름없는 무덤 2층	Unmarked Grave 1st Floor
-이름없는 무덤 2층 입구	Unmarked Grave 1st Floor Entrance
-이름없는_무덤_2층_입구	Unmarked Grave 1st Floor Entrance
-이름없는 무덤 2층 출구	Unmarked Grave 1st Floor Exit
-이름없는_무덤_2층_출구	Unmarked Grave 1st Floor Exit
-이름 없는 무덤 2층출구	Unmarked Grave 1st Floor Exit
-이름 없는 무덤 2층입구	Unmarked Grave 1st Floor Entrance
-이름 없는 무덤 3층	Unmarked Grave 2nd Floor
-이름없는 무덤 3층	Unmarked Grave 2nd Floor
-이름없는 무덤 3층 입구	Unmarked Grave 2nd Floor Entrance
-이름없는_무덤_3층_입구	Unmarked Grave 2nd Floor Entrance
-이름없는_무덤_3층_출구	Unmarked Grave 2nd Floor Exit
-이름없는 무덤 입구	Unmarked Grave Entrance
-이름없는_무덤_입구	Unmarked Grave Entrance
-이름없는 무덤 출구	Unmarked Grave Exit
-이름없는_무덤_출구	Unmarked Grave Exit
-이름 없는 무덤 1층	Unmarked Grave Ground Floor
-이름없는 무덤 1층	Unmarked Grave Ground Floor
-이름없는 무덤 1층 입구	Unmarked Grave Ground Floor Entrance
-이름없는 무덤 1층 출구	Unmarked Grave Ground Floor Exit
-이름없는_무덤_1층_출구	Unmarked Grave Ground Floor Exit
-정원상층	Upper Garden
+드래곤시온 지역	DragonScion Territory
+스톨 행 포탈	Portal bound for Stull
+영광의 길	Path of Glory
+데리벨 행 포탈	Portal bound for Deribelle
+불의 쉬라인 오크지역	Fire Shrine Orc Zone
+하이드백_마을	Hideback Village
+깊은_중심지6	Core Arena 6F
+경계석	Boundary Stone
+젠클리어 서쪽	Zenclier Western Area
+왕자의 사냥터	Prince's Hunting Field
+라플레시아	Laflesia
+대기실	Chamber of Time
+스톨	Stull
 우르트람강	Urtram River
-발브르언덕	Valbur Hill
-절규의 계곡	Valley of Screams
-뱀파이어 마을	Vampire Village
-뱀파이어_마을	Vampire Village
-뱀파이어마을	Vampire Village
-복수의 방	Vengeance Chamber
-원혼의 분지	Vengeful Basin
-원혼의 분지입구	Vengeful Basin Entrance
-베르아크분지	Verark Basin
-비고로르	Vigorore
-휴식의 천막촌	Village of Rest
-가짜마적촌	Village of the Shadows
-땅끝해안	Viper Beach
-방문자의 숲	Visitor's Forest
-방랑자평야	Wanderer Plain
-전사의 평지	Warrior Plain
-용병마을	Warrior Village
-전사의 다리	Warrior's Bridge
-퍼피필드	Wasteland
-물의 길	Water Road
-파도 사구	Wave Dune
-하얀숲	White Forest
-바람평원	Wind Plain
-바람의 계곡	Wind Valley
-윈드릴	Windrill
-윈드릴 북쪽	Windrill Northern
-윈드릴_북쪽	Windrill Northern
+오크_요새	Orc Fortress
 윈드릴의 동쪽 입구	Windrill Eastern Entrance
-윈드릴의 서쪽 입구	Windrill Western Entrance
-나무꾼의숲	Woodcutter Pass
-숭배자 정착지	Worshipper Settlement
-숭배자정착지	Worshipper Settlement
-우더링	Wuthering
-야아란	Yaran
-약탈의 평원	Zeno Plain
-자일록	Zylok
-배틀게이트 자일록	Zylok Battlegate 
-도시 자일록	Zylok City
-길드 경기장 주변	Around Guild Battle Arena
-데리벨 길드 전투 경기장	Deribelle Guild Battle Arena
-시련의 방	Hero's Reception
-아르시안 비밀의 던전	Arthian Castle's Secret Dungeon
+배틀 로얄 관중석	Battle Royal Bleachers
+뱀파이어_마을	Vampire Village
+얼음_정령계	The Frozen Infinity
+기후지도	Milieu
+북쪽땅의 사원	Northern Temple 
+녹턴야드	Nocturn Yard
+드레이거 성 진입로	Drayger approach
+번개의 쉬라인 드래곤시온지역	Lightning Shrine Dragonscion Zone
+알현의_방	Audience Chamber
+오래된_광산_3층_출구	Old Mine 2nd Floor Exit
+배틀스퀘어 5층	Battle Square 5th Floor
 인플레임 비밀의 던전	 Inflame Castle's Secret Dungeon
-트라쿠아 비밀의 던전	Traqua Castle's Secret Dungeon
-아르시안 비밀의 던전 입구	Arthian Castle's Secret Dungeon
-인플레임 비밀의 던전 입구	 Inflame Castle's Secret Dungeon
-트라쿠아 비밀의 던전 입구	Traqua Castle's Secret Dungeon
-의식의 방	Hero's Reception
-인고의 방	Hero's Reception
-파멸의 방	Chamber of Ruin
-툴란 길드 전투 경기장	Tullan Guild Battle Arena
+물의 쉬라인	Water Shrine
+정령의 쉬라인 외곽	Spirit Shrine Outskirts
+드래이거 성주 사냥터	Drayger Secret Dungeon
+정찰자의 터	Scouter Site
+잊혀진_무덤_3층	Forgotten Grave 2nd Floor
+쐐기삼각지	The Span
+용암의 쉬라인 포탈(문엘프)	Lava Shrine(MoonElf)
+염화의 동굴 1층 출구	Corrosion Cave Ground Floor Exit
+영광의 귀환지	Glory Port
+물의 쉬라인 외곽	Water Shrine Outskirts
+베틀그라운드	Battle Ground
+여왕의서식지	Queen's Habitat
+정령의 쉬라인 드래곤시온지역	Spirit Shrine Dragonscion Zone
+드래곤시온요새	Dragonscion Fortress
+길드 경기장	Guild Battle Square
+닫혀진_광산_출구	Closed Mine Exit
+트라쿠아 성 성주 사냥터	Traqua Castle Secret Dungeon
+에저로크남쪽	Ezerock Southern
+모르트수로	Mort Waterway
+툴란 동시가지	Tullan East Town
+복수의 방	Vengeance Chamber
+유폐된_광산_1층	Abandoned Mine Ground Floor
+금지된광산	Forbidden Mine
+롱페이_수련장	Lungfei Dojo
+광산 마을	Mine Village
+아르시안 성 성주 사냥터	Arthian Castle Secret Dungeon
+그림자무덤	Shadow Grave
+비명의_숲	Forest of Scream
+디난트야드	Dinant Yard
+이름없는_무덤_3층	Unmarked Grave 2nd Floor
+카르마관문	Karma Barrier
+기억의언덕	Memory Hill
+배틀게이트 델파라스	Delfaras Battlegate
+집착의 방	Chamber of Obsession
+아르시안 내성문	Arthian Internal Gate
+물의 쉬라인 포탈(시온)	Water Shrine(Scion)
+바람의 쉬라인 포탈(휴먼)	Wind Shrine(Human)
+이름없는_무덤_출구	Unmarked Grave Exit
+마다가르_파이프	Madagar Pipe
+흡혈사막	Bloodsyphon Desert
+인플레임_성주_사냥터	Inflame Secret Dungeon
+산적마을	Bandit Village
+바람의 쉬라인 포탈(오크)	Wind Shrine(Orc)
+독의 쉬라인 문엘프지역	Poison Shrine Moon Elf Zone
+닫혀진 광산 1층	Closed Mine Ground Floor
+글렌데스틴 숲	Glendestine Forest
+절망의_탑	Tower of Despair
+금지된 광산 3층	Forbidden Mine 2nd Floor
+멤브레덴 서쪽	Membreathen Western
+유폐된_광산2층	Abandoned Mine 1st Floor
+기적의샘	Miracle Fountain
+혼돈의 소로	Soro of Chaos
+낮은바람마을	Low Wind Village
+라임라이트_남쪽	Limelight Southern
+바란다이크2요새	Baran Dyke Fortress Two
+공중감옥	Sky Prison
+인플레임 성 입구	Inflame Castle Entrance
+지하_감옥_1층	Dungeon 1F
+닫혀진_광산_3층	Closed Mine 2nd Floor
+파멸의 입구	Gate of Ruin
+델파라스 북부	North Delfaras
+러스트뷰린산	Lustbiurin Mountain
+염랑의 동굴 1층	Flame Cave Ground Floor
 트릴가드 길드 전투 경기장	Trilgard Guild Battle Arena
-얼음 정령계	The Frozen Infinity
-독 정령계	Evergreen Paradise
-번개 정령계	Teslon Outpost
-붉은 궁륭	Red groin
-디스호프의 땅	Land of Dishope
-군주의 좌	Tyranny's Throne
+이름없는_무덤_3층_출구	Unmarked Grave 2nd Floor Exit
+폰 3층 입구	Asylum 2nd Floor Entrance
+슬픔의_문	Gate of Sadness
+시련의_동굴_2층	Cave of Trials 1st Floor
+분열의 문4	4 Gate of Division
+금지된 광산 2층 입구	Forbidden Mine 1st Floor Entrance
+복수의_방	Vengeance Chamber
+고통의 입구	Gate of Pain
+죽은자의 무덤 1층 출구	Tomb of the Dead Ground Floor Exit
+젠클리어 중앙 서부	Central West Zenclier
+정원상층	Upper Garden
+옛사원 터	Old Temple 
+시련의 동굴 입구	Cave of Trials Entrance
+드래곤시온 요새	DragonScion Fortress
+배틀스퀘어 4층	Battle Square 4th Floor
+초록음악지	Green Music Hall
+시간이정지한 곳	Time Warp Area
+정원하층	Lower Garden
+오래된 광산 1층 출구	Old Mine Ground Floor Exit
+길드 경기장 주변	Around Guild Battle Arena
+고스트분지	Ghost Valley
+닫혀진 광산 2층 입구	Closed Mine 1st Floor Entrance
+젠클리어 중앙 동부	East Central Zenclier
+바람의 쉬라인 오크지역	Wind Shrine Orc Zone
+맹세의_방	Chamber of Oath
+불의 쉬라인 포탈(휴먼)	Fire Shrine(Human)
+틴텔의 북	Tintel's Book
+피드밀	Feedmill
+카르마_관문	Karma Barrier
+그림로어	Grimlore
+칸디아광산	Kandia Mine
+분열의_문3	3 Gate of Division
+물의 쉬라인 휴먼지역	Water Shrine Human Zone
+닫혀진_광산_2층_입구	Closed Mine 1st Floor Entrance
+폰_아이젠하우스_3층	Asylum 2nd Floor
+닫혀진 광산 입구	Closed Mine Entrance
+젠클리어_폭포	Zenclier Waterfall
+시간의 사당	Temple of Time
+상아무덤마을	Ivory Grave Village
+번개의 쉬라인 포탈(휴먼)	Lightning Shrine Portal(Human)
+드래이거 비밀의 던전 입구	Entrance to the Secret Dungeon of Drayger
+나선의_길	Spiral Road
+정령의 쉬라인 휴먼지역	Spirit Shrine Human Zone
+염화의_동굴_2층	Corrosion Cave 1st Floor
+염화의 동굴 1층	Corrosion Cave Ground Floor
+금지된_광산_입구	Forbidden Mine Entrance
+시련의 동굴 2층 출구	Cave of Trials 1st Floor Exit
+정령의 쉬라인 포탈(휴먼)	Spirit Shrine(Human)
+바람의 쉬라인 외곽	Wind Shrine Outskirts
+하얀숲	White Forest
+분열의 문	Gate of Division
+칸트라 대륙	Chantra Continent
+파멸의 방	Chamber of Ruin
+생명의 핏줄	Bloodline of Life
+사형장	Execution Ground
+불꽃의 지역	Flames of Zone
 비명의 숲	Forest of Scream
-얼음의 대지	Land of Ice
-지하 감옥 1층	Dungeon 1F
-지하 감옥 2층	Dungeon 2F
+골룬도	Golundo
+트릴가드 행 포탈	Portal bound for Trilgard
+벨제루크 북서부	Northwest Belzeruk
+검은파도마을	Dark Wave Village
+모라비아요새	Morabia Fortress
+원망의 방	Chamber of Grudge
+문엘프요새	Moon Elf Fortress
+용암의 쉬라인	Lava Shrine
+전사의 다리	Warrior's Bridge
+유폐된 광산 2층 출구	Abandoned Mine 1st Floor Exit
+툴란 남쪽 게이트	Tullan South Gate
+비고로르_남서쪽	Vigorore South Western
+인고의_방	Hero's Reception
+통곡의 방	Chamber of Wailing
+닫혀진_광산_3층_출구	Closed Mine 2nd Floor Exit
+염랑의_동굴_1층_입구	Flame Cave Ground Floor Entrance
+유폐된 광산 2층 입구	Abandoned Mine 1st Floor Entrance
+문엘프지역	Moon Elf Zone
+금지된 광산 1층 출구	Forbidden Mine Ground Floor Exit
+비난의 방	Chamber of Censure
+트라쿠아 성	Traqua Castle
+죽은_자의_무덤_입구	Tomb of the Dead Entrance
+죽은자의 무덤 3층	Tomb of the Dead 2nd Floor
+기억의 망루	Cove of Memories
+오래된 광산 2층 입구	Old Mine 1st Floor Entrance
+콘트라_하우스	Contra House
+엘리시온_남쪽	Elyscion Southern Area
+집착의_방2	2 Chamber of Obsession
+이름없는_무덤_1층	Unmarked Grave Ground Floor
+발러의_왕좌	Balor's Throne
+무한_지대	Infinity Hunt Event
+셤프마을 남쪽	South of Shump Village
+이름 없는 무덤 3층	Unmarked Grave 2nd Floor
+검은파도 마을	Dark Wave Village
+시련의_동굴1층	Cave of Trials Ground Floor
+상실의 땅	Land of Loss
+깊은_중심지2	Core Arena 2F
+랜스피어_성주_사냥터	Rensphere Secret Dungeon
+탐욕의_무덤_2층	Tomb of Greed 1st Floor
+보화의 골짜기	Treasure Valley
+봉인된 광산 3층 입구	Sealed Mine 2nd Floor
 고통의 숲	Forest of Pain
-절망의 탑	Tower of Despair
-무한 지대	Infinity Hunt Event
+바라평원	Bala Plain
+황금의길	Gold Road
+독_정령계	Evergreen Paradise
+죽은자의 무덤	Tomb of the Dead
+탐욕의 무덤 3층 출구	Tomb of Greed 2nd Floor Exit
+에저로크	Ezerock
+독의 쉬라인 드래곤시온지역	Poison Shrine Dragonscion Zone
+피의_산	Blood Mountain
+진혼사원	Soul Temple
+잊혀진 자들의 방	Chamber of the Forgotten
+탐욕의 무덤 출구	Tomb of Greed Exit
+배틀스퀘어 <분노의 문>	Gate of Rage
+휴식의 천막촌	Village of Rest
+방랑자평야	Wanderer Plain
+슬픔의_문2	2 Gate of Sadness
+실란시움	Silancium
+드래곤여관터	Dragon Inn
+분노의_문6	6 Gate of Rage
+길드경기장_주변	Around Guild Battle Arena
+죽은자의 무덤 1층	Tomb of the Dead Ground Floor
+이름없는 무덤	Unmarked Grave
+폰_아이젠하우스_2층	Asylum 1st Floor
+와일드본_성전	Wild Bone Temple
+전사의 평지	Warrior Plain
+작열의 동굴 2층 입구	Miasma Cave 1st Floor Entrance
+테라노아	Terranoa
+마다가르 파이프	Madagar Pipe
+데리벨 길드 전투 경기장	Deribelle Guild Battle Arena
+트릴가드 궁	Trilgard palace
+유폐된 광산 3층 출구	Abandoned Mine 2nd Floor Exit
+스릴킬	Srilkil
+데리벨 서문	Deribelle West Gate
+캐러번 로드	Karebun Road
+쉽헤드해안	Shiphead Seashore
+폰 아이젠하우스 3층 입구	Asylum 2nd Floor Entrance
+드래곤시온_지역	DragonScion Territory
+완곡의 봉우리	Round Peak
+금지된_광산_2층	Forbidden Mine 1st Floor
+공중_다리	Sky Bridge
+죽은_자의_무덤_3층_입구	Tomb of the Dead 2nd Floor Entrance
+탈론야드	Talon Yard
+폰 아이젠하우스 3층 출구	Asylum 2nd Floor Exit
+배틀스퀘어	Battlesquare
+정령의 쉬라인 포탈(문엘프)	Spirit Shrine(MoonElf)
+렌스피어 서쪽	Rensphere Western Area
+작열의_동굴_2층	Miasma Cave 1st Floor
+오르하협곡 입구	Oruha Canyon Entrance
+라임라이트	Limelight
+타스의 숲	Tas Forest
+비고로르남쪽	Vigorore Southern
+문엘프_요새	Moon Elf Fortress
+엘로르	Ellore
+광산_마을	Mine Village
+물의 쉬라인 문엘프지역	Water Shrine Moon Elf Zone
+물의 쉬라인 포탈(휴먼)	Water Shrine(Human)
+왕의사냥터	King's Hunting Field
+라임호수	Lime Lake
+집시들의 옛터	Old Gypsy Town
+새의둥지	Bird's Nest
+트릴가드 남시가지	Trilgard South Town
+헤븐즈 헬	Heaven's Hell
+배틀스퀘어 1층	Battle Square 1st Floor
+비고로르_남쪽	Vigorore Southern
+러프풋 땅	Lufut Land
+폰 아이젠하우스	Asylum
+죽은자의_무덤_3층	Tomb of the Dead 2nd Floor
+길드_경기장_주변	Around Guild Battle Arena
+불의 쉬라인 문엘프지역	Fire Shrine Moon Elf Zone
+석양의해변	Evening Sea
+물의 쉬라인 오크지역	Water Shrine Orc Zone
+중립지역	Dead Zone
+불의 쉬라인	Fire Shrine
+염랑의_동굴_2층_입구	Flame Cave 1st Floor Entrance
+용암의 쉬라인 외곽	Lava Shrine Outskirts
+슬픔의_문3	3 Gate of Sadness
+스톨 신전	Stull temple
+노움의굴	Gnome Cave
+바란다이크1요새	Baran Dyke Fortress One 
+원혼의 분지	Vengeful Basin
+탐욕의_문4	4 Gate of Greed
+금지된 광산 출구	Forbidden Mine Exit
+여름해변	Summer Beach
+독의 쉬라인 오크지역	Poison Shrine Orc Zone
+오래된_광산_2층_출구	Old Mine 1st Floor Exit
+군주의 좌	Tyranny's Throne
+글렌데스틴_숲	Glendestine Forest
+판다람고원	Pandaram Plateau
+이름없는 무덤 2층 입구	Unmarked Grave 1st Floor Entrance
+시리푸스의 쉬라인 포탈(휴먼)	Syripus Shrine(Human)
+아르시안 성주 사냥터 입구	Arthian Secret Dungeon Entrance
+용병사냥터	Dust Field
+랜스피어_성주_사냥터_입구	Rensphere Secret Dungeon Entrance
+영원동산	Eternal Hill
+잊혀진 무덤 2층 입구	Forgotten Grave 1st Floor Entrance
+벨리가분지	Belliga Basin
+유폐된 광산 내부	Abandoned Mine Inside
+악몽의 골짜기	Nightmare Valley
+죽은 자의 무덤 2층 입구	Tomb of the Dead 1st Floor Entrance
+바람의 쉬라인 포탈(시온)	Wind Shrine(Scion)
+분열의_문	Gate of Division
+유폐된 광산2층	Abandoned Mine 1st Floor
+이름 없는 무덤 1층	Unmarked Grave Ground Floor
+폰 아이젠하우스 1층 출구	Asylum Ground Floor Entrance
+배틀게이트 토르요새	Tor Fortress Battlegate 
+윈드릴	Windrill
+번개의 쉬라인 포탈(시온)	Lightning Shrine Portal(Scion)
+타부토촌	Tabuto Village
+쉬버스	Sheerbus
+비고로르_서쪽	Vigorore Western
+트레바인 하부	Lower Trebain
+골렘 지역	Golem Territory
+오크 요새 입구	Orc Fortress Entrance
+깊은_중심지	Core Arena
+배틀스퀘어 3층	Battle Square 3rd Floor
+데리벨 동문	Deribelle East Gate
+유리호수	Glass Lake
+시련의 동굴 2층 입구	Cave of Trials 1st Floor Entrance
+오래된_광산_입구	Old Mine Entrance
+자무쉬의 봉인	Jamushi's Seal
+용암의 쉬라인 포탈(오크)	Lava Shrine(Orc)
+원정대 천막촌	Expedition Camp Site
+그림로어_동쪽	Grimlore Eastern
+폰_아이젠하우스_입구	Asylum Ground Floor Entrance
+번개의 쉬라인 문엘프지역	Lightning Shrine Moon Elf Zone
+바르도터_서쪽	Bardother Western
+베틀그라운드_문엘프지역	Battle Ground Moon Elf Zone
+루나웨이강	Lunaway River
+젠클리어 중앙 서쪽	Zenclier West Central Area
+시련의_동굴2층	Cave of Trials 1st Floor
+인플레임_성	Inflame Castle
+물의 쉬라인 드래곤시온지역	Water Shrine Dragonscion Zone
+배틀스퀘어_4층	Battle Square 4th Floor
+트라이부츠	Triboots
+다드홀	Dadhal
+토르_요새	Tor Fortress
+베틀로얄경기장	Battle Royal Arena
+작열의 동굴 1층 입구	Miasma Cave Ground Floor Entrance
+아르시안_성_인근	Arthian Castle Vicinity
+아르시안 비밀의 던전	Arthian Castle's Secret Dungeon
+이름없는_무덤_1층_출구	Unmarked Grave Ground Floor Exit
+시련의 동굴2층	Cave of Trials 1st Floor
+야아란	Yaran
+숨죽인 유적	Muted Site
+시련의 방	Hero's Reception
+불꽃의_지역	Flames of Zone
+십년사막	Ten Year Desert
+파멸의_방	Chamber of Ruin
+용의 기둥	Dragon's Pillar
+이름없는_무덤_2층_입구	Unmarked Grave 1st Floor Entrance
+드라카로_성전	Drakaro Church
+바르도터남쪽	Bardother Southern
+통곡의_방2	2 Chamber of Wailing
+피의 안식처	Blood Shelter
+절규의 방	Chamber of Screams
+젠클리어 동쪽	Zenclier Eastern Area
+탐욕의_무덤3층	Tomb of Greed 2nd Floor
+정령의 쉬라인 포탈(오크)	Spirit Shrine(Orc)
+모험도전지	Evor
+침묵의숲	Silent Forest
+금지된_광산_2층_출구	Forbidden Mine 1st Floor Exit
+닫혀진_광산_2층_출구	Closed Mine 1st Floor Exit
+오래된 땅	Thistle Vale
+와일드본 성전	Wild Bone Temple
+앵커빌 마을	Anchorville Village
+탄식의 입구	Gate of Deplore
+번뇌의_방	Chamber of Agony
+나르캉골 산맥	Narkangol Mountains
+잊혀진 무덤 1층 출구	Forgotten Grave Ground Floor Exit
+툴란_길드_전투_경기장	Tullan Guild Battle Arena
+돌아오지 않는 길	Gauntlet Pass
+리자드맨의_발톱	Lizardman's claw
+옛항구터	Old Harbor
+슬픔의 문3	3 Gate of Sadness
+탐욕의 문3	3 Gate of Greed
+이름없는 자들의 방	Room of the Nameless Ones
+잊혀진 무덤 입구	Forgotten Grave Entrance
+툴란	Tullan
+금지된_광산	Forbidden Mine
+트라쿠아 성 내부	Traqua Castle Inside
+영원의 제국	Eternal Empire
+광산마을	Mine Village
+바람의 쉬라인 휴먼지역	Wind Shrine Human Zone
+방문자의 숲	Visitor's Forest
+기후제의 땅	Milieu island
+오르하협곡	Oruha Canyon
+휴먼요새	Human Fortress
+칼날 태풍 산맥	Blade Storm Mountain
+드래이거 성 인근	Drayger Castle Vicinity
+분란의 방	Chamber of Disorder
+집착의_방	Chamber of Obsession
+낡은 창고	Old Storehouse
+인플레임 성	Inflame Castle
+포츈로드 동부	East Fortune Road
+잊혀진_무덤_1층	Forgotten Grave Ground Floor
+염화의 동굴 2층 입구	Corrosion Cave 1st Floor Entrance
+탐욕의 무덤 3층 입구	Tomb of Greed 2nd Floor Entrance
+번개 정령계	Teslon Outpost
+앙스펠호수	Angspel Lake
+분노의_문2	2 Gate of Rage
+꿈꾸는 절벽	Dreaming Cliff
+환희의 길	Road of Joy
+트레바인 상부	Upper Trebain
+번개의 쉬라인 포탈(오크)	Lightning Shrine Portal(Orc)
+엘리시온 동쪽	Elyscion Eastern Area
+염랑의_동굴_2층	Flame Cave 1st Floor
+엘로힘_망루	Elloham Watchtower
+잊혀진 무덤 2층 출구	Forgotten Grave 1st Floor Exit
+분열의_문4	4 Gate of Division
+붉은 궁륭	Red groin
+독의 쉬라인 외곽	Poison Shrine Outskirts
+무한_지대_마을	Infinity Hunt Event Town
+불의 쉬라인 포탈(시온)	Fire Shrine(Scion)
+배틀 로얄	Battle Royal
+죽은 자의 무덤 2층	Tomb of the Dead 1st Floor
+올드캐빈	Old Cabin
+고통의_숲	Forest of Pain
+광산 입구	Mine Entrance
+봉인된_광산_1층	Sealed Mine Ground Floor
+원정대의 길	Road of Expedition
+얼음 정령계	The Frozen Infinity
+북트라이부츠산맥	Buktributs Mountains
+멤브레덴 입구	Membreathen Entrance
+도시 데리벨	Deribelle City
+트라쿠아 비밀의 던전	Traqua Castle's Secret Dungeon
+오래된 광산 출구	Old Mine Exit
+트라쿠아 내성문	Traqua Internal Gate
+독의 쉬라인	Poison Shrine
+글렌데스틴 숲 남동부	Southeast Glendestine Forest
+드래이거_성_인근	Drayger Castle Vicinity
+헤븐즈 헬의 옥좌	Throne of Heaven's Hell
+베틀그라운드_휴먼지역	Battle Ground Human Zone
+바람의 쉬라인 포탈(문엘프)	Wind Shrine(MoonElf)
+탈론 야드	Talon Yard
+길드_경기장	Guild Battle Square
+유폐된_광산3층	Abandoned Mine 2nd Floor
+화전민마을	Village of Seethe
+인플레임 성 내부	Inflame Castle Inside
+고통의 방	Chamber of Pain
+칼날_태풍_산맥	Blade Storm Mountain
+바르도터_동쪽	Bardother Eastern
+유폐된 광산1층	Abandoned Mine Ground Floor
+절규의 계곡	Valley of Screams
+골룬도마을	Golundo Village
+물의 쉬라인 포탈(문엘프)	Water Shrine(MoonElf)
+루나웨이 습지대	Lunaway Swamp
+천문관측소	Astronomy Observatory
+범프필드 북쪽	Northern Ridge Field 
+폰 아이젠하우스 입구	Asylum Ground Floor Entrance
+생명의_핏줄	Bloodline of Life
+분노의_문4	4 Gate of Rage
+불의 쉬라인 외곽	Fire Shrine Outskirts
+휴먼 지역	Human Zone
+금지된_광산_3층_입구	Forbidden Mine 2nd Floor Entrance
+트릴가드 광장	Trilgard Square
+아르시안_성	Arthian Castle
+탐욕의 무덤 내부	Tomb of Greed Inside
+폰 아이젠하우스 2층 입구	Asylum 1st Floor Entrance
+땅이 우는 곳	Lamentia
+시리푸스의 쉬라인 문엘프지역	Syripus Shrine Moon Elf Zone
+배틀 스퀘어 2층	Battle Square 2nd Floor
+숭배자 정착지	Worshipper Settlement
+테라토가 산맥	Terratoga Mountains
+질시의 방	Chamber of Jealousy
+깊은_중심지4	Core Arena 4F
+매의고원	Hawk's Plateau
+배틀 스퀘어 5층	Battle Square 5th Floor
+아르시안_성주_사냥터_입구	Arthian Secret Dungeon Entrance
+드라카로 성전	Drakaro Church
+잊혀진_무덤_1층_출구	Forgotten Grave Ground Floor Exit
+독의 쉬라인 포탈(오크)	Poison Shrine(Orc)
+톤파	Tonfa
+이름 없는 무덤 2층출구	Unmarked Grave 1st Floor Exit
+트릴가드 북시가지	Trilgard North Town
+피의 늪	Blood Swamp
+배틀게이트 자일록	Zylok Battlegate 
+아르시안 성 인근	Arthian Castle Vicinity
+출전의 길	Path of Entry
+렌스피어 남쪽	Rensphere Southern Area
+델파라스 항구	Delfaras Harbor
+싱잉레인	Mist Plain
+거인의 가도	Giant's Highroad
+글리터스	Glitters
+노르톱 마을	Nortop Village
+라임라이트 남쪽	Limelight Southern
+혼돈의 중심	Center of Chaos
+시리푸스의 쉬라인 포탈(시온)	Syripus Shrine(Scion)
+골룬도 마을	Golundo Village
+경계의 다리	Boundary Bridge
+엘름볼트계곡	Elmbolt Valley
+드래이거_성주_사냥터_입구	Drayger Secret Dungeon Entrance
+데리벨 중앙로	Deribelle Main Street
+왕의 다리	King's Bridge
+트라쿠아 렌스피어 입구	Traqua Rensphere Entrance
+트라쿠아_성	Traqua Castle
+비고로르남서쪽	Vigorore South Western
+아지랑이물가	Shimmerside
+젠클리어 남쪽	Zenclier Southern Area
+알현의 방	Audience Chamber
+젠클리어 폭포	Zenclier Waterfall
+자일록	Zylok
+젠클리어 중앙 동쪽	Zenclier East Central Area
+데리벨 남문	Deribelle South Gate
+얼음의 대지	Land of Ice
+레비나일 강	Rabinile River
+시엔 마을	Cien Village
+드래이거 비밀의 던전	Secret Dungeon of Drayger
+이름 없는 무덤 2층입구	Unmarked Grave 1st Floor Entrance
+메멘토뉴엄	Mementonium
+정령의 쉬라인 문엘프지역	Spirit Shrine Moon Elf Zone
 무한 지대 마을	Infinity Hunt Event Town
+시련의 길	Road of Trials
+독의 쉬라인 포탈(시온)	Poison Shrine(Scion)
+인플레임 성주 사냥터	Inflame Secret Dungeon
+낡은_창고	Old Storehouse
+레비나일강 	Rabinile River
+탐욕의 무덤2층	Tomb of Greed 1st Floor
+배틀로얄_경기장	Battle Royal Arena
+불란트부화장	Bullant Hatchery
+배틀게이트 노린	Norine Battlegate 
+화합의 회랑	Corridor of Harmony
+비애의 방	Chamber of Sorrow
+미라지안 호수	Mirasian Lake
+죽은_자의_무덤_출구	Tomb of the Dead Exit
+배틀스퀘어_6층	Battle Square 6th Floor
+의식의 방	Hero's Reception
+약탈의 평원	Zeno Plain
+포겔평원	Forgel Plains
+배틀스퀘어 2층	Battle Square 2nd Floor
+닫혀진 광산	Closed Mine
+배틀게이트 트릴가드	Trilgard Battlegate 
+작열의_동굴_1층_입구	Miasma Cave Ground Floor Entrance
+루아아라	Rualala 
+트레바인	Trebain
+용암의 쉬라인 드래곤시온지역	Lava Shrine Dragonscion Zone
+인고의 방	Hero's Reception
+잊혀진_무덤_출구	Forgotten Grave Exit
+스톨_길드_전투_경기장	Stull Guild Battle Arena
+번개의 쉬라인 외곽	Lightning Shrine Outskirts
+시련의 입구	Gate of Trials
+엘리시온	Elyscion
+베이컨마을	Beacon Village
+납골당	The Crypt
+배틀스퀘어 <슬픔의 문>	Gate of Sadness
+지하_감옥_2층	Dungeon 2F
+오우거마을	Ogre Village
+잊혀진_무덤_2층_출구	Forgotten Grave 1st Floor Exit
+포츈로드	Fortune Road
+슬픔의 문6	6 Gate of Sadness
+바르도터북쪽	Bardother Northern
+인플레임 외성문	Inflame External Gate
+렌스피어 남서쪽	Rensphere Southwest Area
+이름없는 무덤 1층 입구	Unmarked Grave Ground Floor Entrance
+윈드릴 북쪽	Windrill Northern
+오래된 광산 2층 출구	Old Mine 1st Floor Exit
+젠클리어 동부	East Zenclier
+번개의 쉬라인 포탈(문엘프)	Lightning Shrine Portal(MoonElf)
+닫혀진_광산_2층	Closed Mine 1st Floor
+오아실리안	Orsilian
+사라미스 정원	Salarmis Garden
+데리벨_길드_전투_경기장	Deribelle Guild Battle Arena
+금지된 광산 2층	Forbidden Mine 1st Floor
+깊은_중심지3	Core Arena 3F
+분열의_문5	5 Gate of Division
+데리벨 서시가지	Deribelle West Town
+멜기노 산맥	Melgino Mountains
+배틀 스퀘어 3층	Battle Square 3rd Floor
+검은 파도 마을	Dark Wave Village
+하이드백마을	Hideback Village
+트라쿠아 내부	Traqua Inside
+잊혀진_무덤	Forgotten Grave
+렌즈론	Rensron
+탐욕의 무덤 입구	Tomb of Greed Entrance
+얼음의_대지	Land of Ice
+작열의_동굴_2층_입구	Miasma Cave 1st Floor Entrance
+그레이 계곡	Grey Valley
+시리푸스의 쉬라인 휴먼지역	Syripus Shrine Human Zone
+정령의 폭포	Elements Waterfall 
+검은_파도_마을	Dark Wave Village
+아르시안 성주 사냥터	Arthian Secret Dungeon
+앵커빌	Anchorville
+염랑의_동굴_입구	Flame Cave Entrance
+탐욕의 문5	5 Gate of Greed
+염랑의 동굴 입구	Flame Cave Entrance
+슬픔의_문5	5 Gate of Sadness
+사자의 예배당	Chapel of The Dead
+금지된 광산 2층 출구	Forbidden Mine 1st Floor Exit
+바란다이크	Baran Dyke
+문엘프 요새 입구	Moon Elf Fortress
+툴란 북쪽 게이트	Tullan North Gate
+탐욕의_무덤1층	Tomb of Greed Ground Floor
+스톰로드	Storm Road
+포세이큰의 둥지	Nest of the Forsaken
+포스크랙	Poscrack
+리자드맨의 발톱	Lizardman's claw
+렌스피어 내성	Rensphere Internal Castle
+집시촌	Gypsy Town
+깊은_중심지5	Core Arena 5F
+아르시안 외성문	Arthian External Gate
+라임라이트_북쪽	Limelight Northern
+보화의_골짜기	Treasure Valley
+이름없는_무덤_2층_출구	Unmarked Grave 1st Floor Exit
+데리벨	Deribelle
+원한의 입구	Gate of Grudge
+작열의_동굴_2층_출구	Miasma Cave 1st Floor Exit
+오래된 천막촌	Settlers Camp
+닫혀진 광산 2층	Closed Mine 1st Floor
+죽은자의_전장	Battleground of the Dead
+바트나유적지	Battna Site
+복수의_방4	Vengeance 4 Chamber
+델파라스	Delfaras
+시련의_방	Hero's Reception
+우더링	Wuthering
+분열의_문2	2 Gate of Division
+토르 요새	Tor Fortress
+닫혀진 광산 1층 출구	Closed Mine Ground Floor Exit
+배틀게이트 툴란	Tullan Battlegate 
+인플레임성 내성문	Inflame Castle Internal Gate
+로만 파르칼	Ancient Parkal
+죽은 앤트의 숲	Dead Arbor's Forest
+속죄의 방	Chamber of Atone
+작열의 동굴 2층	Miasma Cave 1st Floor
+트라쿠아 비밀의 던전 입구	Traqua Castle's Secret Dungeon
+스톨 길드 전투 경기장	Stull Guild Battle Arena
+그림로어서쪽	Grimlore Western
+복수의_방2	Vengeance 2 Chamber
+인플레임성 내부	Inflame Castle Inside
+멜트라인	Meltline
+번개의 쉬라인 휴먼지역	Lightning Shrine Human Zone
+배틀그라운드	Battle Ground
+분노의 문	Gate of Rage
+시리푸스의 쉬라인 포탈(오크)	Syripus Shrine(Orc)
+염랑의 동굴 1층 출구	Flame Cave Ground Floor Exit
+인플레임 렌스피어 입구	Inflame Rensphere Entrance
+윈드릴의 서쪽 입구	Windrill Western Entrance
+낙석지대	Fallen Hills
+망자의 묘	Grave of the Dead
+망자의 절벽	Dead Cliff
+시리푸스의 쉬라인 포탈(문엘프)	Syripus Shrine(MoonElf)
+좌절의 방	Chamber of Despair
+음악관	Music Hall
+트레바인 남부	South Trebain
+유폐된 광산 3층 입구	Abandoned Mine 2nd Floor Entrance
+노린 마을	Norine Village
+반목의 방	Chamber of Enmity
+오크지역	Orc Zone
+멤브레덴 동쪽	Membreathen Eastern
+이름없는_무덤_입구	Unmarked Grave Entrance
+베틀그라운드_드래곤시온지역	Battle Ground DragonScion Territory
+바람의 계곡	Wind Valley
+캐러번_로드	Karebun Road
+배틀 스퀘어 1층	Battle Square 1st Floor
+레더후드	Redderhood
+폰 아이젠하우스 4층 입구	Asylum 3rd Floor Entrance
+광기의 방	Chamber of Madness
+인플레임_성_인근	Inflame Castle Vicinity
+이름없는_무덤_3층_입구	Unmarked Grave 2nd Floor Entrance
+트라쿠아_성주_사냥터_입구	Traqua Secret Dungeon Entrance
+닫혀진 광산 1층 입구	Closed Mine Ground Floor Entrance
+젠클리어 남부	South Zenclier
+드래이거 성	Drayger Castle
+슬픔의 문4	4 Gate of Sadness
+용암의 쉬라인 휴먼지역	Lava Shrine Human Zone
+오드오브	Old Orb
+바르도터동쪽	Bardother Eastern
+염랑의_동굴_1층	Flame Cave Ground Floor
+분노의 문5	5 Gate of Rage
+사막족의 땅	Desert Tribe Land
+폰_아이젠하우스_4층	Asylum 3rd Floor
+용암의 쉬라인 포탈(휴먼)	Lava Shrine(Human)
+금지된 광산	Prohibited Mine
+배틀게이트 앵커빌	Anchorville Battlegate
+잊혀진_무덤_2층_입구	Forgotten Grave 1st Floor Entrance
+죽은 자의 무덤 출구	Tomb of the Dead Exit
+디스호프의 땅	Land of Dishope
+테라노아 베틀게이트	Terranoa Battlegate
+잊혀진 동굴	Forgotten Cave
+염화의 동굴 1층 입구	Corrosion Cave Ground Floor Entrance
+델파라스 중앙광장	Delfaras Central Square
+참프로르 호수	Champor Lake
+잊혀진 무덤 1층 입구	Forgotten Grave Ground Floor Entrance
+잊혀진 무덤 2층	Forgotten Grave 1st Floor
+닫혀진 광산 2층 출구	Closed Mine 1st Floor Exit
+라임라이트 북쪽	Limelight Northern
+폰 아이젠하우스 3층	Asylum 2nd Floor
+버려진 과수원	Abandoned Orchard
+작열의_동굴_1층	Miasma Cave Ground Floor
+할리엔	Halien
+환희의_포자	Spores of Joy
+슬픔의 문	Gate of Sadness
+P1326454800	Black Rock area
+관문 마을	Barrier Village
+닫혀진_광산_1층	Closed Mine Ground Floor
+잊혀진 무덤 3층	Forgotten Grave 2nd Floor
+벨제루크	Belzeruk
+염랑의 동굴 1층 입구	Flame Cave Ground Floor Entrance
+물의 길	Water Road
+죽은자의 무덤 2층	Tomb of the Dead 1st Floor
+유폐된 광산3층	Abandoned Mine 2nd Floor
+랜스피어 성주 사냥터 입구	Rensphere Secret Dungeon Entrance
+발러의 왕좌	Balor's Throne
+불의 쉬라인 포탈(문엘프)	Fire Shrine(MoonElf)
+배틀스퀘어_2층	Battle Square 2nd Floor
+승화의 계단	Stairs of Sublimation
+렌스피어_성	Rensphere Castle
+도시 라플레시아	Laflesia City
+도시 자일록	Zylok City
+분노의 문3	3 Gate of Rage
+글렌데스틴_화산	Glendestin Volcano
+시련의_동굴_1층	Cave of Trials Ground Floor
+레비나일강입구	Rabinile River Entrance
+비고로르동쪽	Vigorore Eastern
+세벤트의_둥지	Cevent's Nest
+범프필드	Bump Field
+툴란 광장	Tullan Square
+사막족 마을	Desert Tribe Village
+반목의_방	Chamber of Enmity
+아르시안 성	Arthian Castle
+아뮤네시아	Amunesia
+일출의 해변	Sunrise Beach
+지하 감옥 1층	Dungeon 1F
+오크 요새	Orc Fortress
+죽은자의_무덤_2층	Tomb of the Dead 1st Floor
+하이드백 마을	Hideback Village
+문엘프 지역	Moon Elf Zone
+무한 지대	Infinity Hunt Event
+염화의_동굴_1층_출구	Corrosion Cave Ground Floor Exit
+노르톱_마을	Nortop Village
+툴란 길드 전투 경기장	Tullan Guild Battle Arena
+오래된_광산_3층_입구	Old Mine 2nd Floor Entrance
+봉인된 광산 2층	Sealed Mine 1st Floor 
+노래버섯지대	Singing Mushroom
+배틀 로얄 경기장	Battle Royal Arena
+죽은 자의 무덤 1층 출구	Tomb of the Dead Ground Floor Exit
+드래이거_성	Drayger Castle
+염화의_동굴_1층_입구	Corrosion Cave Ground Floor Entrance
+배틀 스퀘어 6층	Battle Square 6th Floor
+토르요새	Tor Fortress
+배틀게이트 골룬도	Golundo Battle Gate
+피의_늪	Blood Swamp
+금지된 광산 1층 입구	Forbidden Mine Ground Floor Entrance
+고트곶	Cape Gotto
+시련의 동굴 출구	Cave of Trials Exit
+죽은_자의_무덤_1층_입구	Tomb of the Dead Ground Floor Entrance
+그림로어_서쪽	Grimlore Western
+죽은 자의 무덤 2층 출구	Tomb of the Dead 1st Floor Exit
+랜스피어성 내부	Rensphere Inside
+이름없는 무덤 2층 출구	Unmarked Grave 1st Floor Exit
+용병마을	Warrior Village
+불꽃의 지옥	Flames of Hell
+금지된 광산 3층 입구	Forbidden Mine 2nd Floor Entrance
+삼각마을	Triangle Village
+드래이거 외성문	Drayger External Gate
+인플레임 비밀의 던전 입구	 Inflame Castle's Secret Dungeon
+탐욕의 문4	4 Gate of Greed
+오래된 광산	Old Mine
+포세이큰_둥지	Nest of the Forsaken
+배틀게이트 쿤	Kuhn Battlegate 
+아르시안 렌스피어 입구	Arthian Entrance
+봉인된_광산_3층	Sealed Mine 2nd Floor
+분노의 문4	4 Gate of Rage
+베틀그라운드_오크지역	Battle Ground Orc Zone
+죽은자의 무덤 2층 입구	Tomb of the Dead 1st Floor Entrance
+공중다리	Sky Bridge
+사신의 평원	Death Plain
+용암의 쉬라인 오크지역	Lava Shrine Orc Zone
+스톰하이드산맥	Stormhide Mountains
+데리벨 동시가지	Deribelle East Town
+바르도터_남쪽	Bardother Southern
+슬픔의 문5	5 Gate of Sadness
+염랑의 동굴 2층 입구	Flame Cave 1st Floor Entrance
+현기증 습지	Dizzy Swamp
+멤브레덴_동쪽	Membreathen Eastern
+혼돈의 방	Chamber of Chaos
+아르시안 비밀의 던전 입구	Arthian Castle's Secret Dungeon
+트라쿠아_성_인근	Traqua Castle Vicinity
+트라쿠아 성주 사냥터	Traqua Secret Dungeon
+탐욕의 문2	2 Gate of Greed
+폰 2층 입구	Asylum 1st Floor Entrance
+나선의 길	Spiral Road
+금지된 광산 입구	Forbidden Mine Entrance
+도시 쿤	Kuhn City
+저주의 계곡	Curse Valley
+트라쿠아 행 포탈	Portal bound for Traqua
+독의 쉬라인 포탈(휴먼)	Poison Shrine(Human)
+배틀스퀘어 <분열의 문>	Gate of Division
+탐욕의_무덤_3층	Tomb of Greed 2nd Floor
+닫혀진_광산_3층_입구	Closed Mine 2nd Floor Entrance
+염화의_동굴_1층	Corrosion Cave Ground Floor
+그림로어동쪽	Grimlore Eastern
+포츈로드 북부	North Fortune Road
+공중 다리	Sky Bridge
+속죄의_방	Chamber of Atone
+드래이거 성주 사냥터 입구	Drayger Secret Dungeon Entrance
+트라쿠아_성주_사냥터	Traqua Secret Dungeon
+베틀로얄_관중석	Battle Royal Bleachers

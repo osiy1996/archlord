@@ -156,7 +156,7 @@ static inline boolean canteleport(
 	for (i = 0; i < src->target_group_count && !linked; i++) {
 		uint32_t j;
 		for (j = 0; j < dst->group_count; j++) {
-			if (strcmp(dst->groups[j].name, src->target_groups[i].name) == 0) {
+			if (dst->groups[j] == src->target_groups[i]) {
 				linked = TRUE;
 				break;
 			}

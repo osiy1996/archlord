@@ -433,10 +433,48 @@ struct ap_event_manager_attachment * ap_event_manager_get_attachment(
 	}
 }
 
+struct ap_event_manager_event * ap_event_manager_add_function(
+	struct ap_event_manager_module * mod,
+	struct ap_event_manager_attachment * attachment,
+	enum ap_event_manager_function_type function,
+	void * source)
+{
+	struct ap_event_manager_event * e;
+	if (function < 0 || function >= AP_EVENT_MANAGER_FUNCTION_COUNT)
+		return NULL;
+	if (attachment->event_count >= AP_EVENT_MANAGER_MAX_EVENT_COUNT)
+		return NULL;
+	e = &attachment->events[attachment->event_count++];
+	e->eid = 0;
+	e->function = function;
+	e->data = NULL;
+	e->cond.target = NULL;
+	e->cond.area = NULL;
+	e->cond.time = NULL;
+	e->source = source;
+	e->event_start_time = 0;
+	if (mod->event_ctor[e->function])
+		mod->event_ctor[e->function](mod->event_module[e->function], e);
+	return e;
+}
+
+void ap_event_manager_remove_function(
+	struct ap_event_manager_module * mod,
+	struct ap_event_manager_attachment * attachment,
+	uint32_t index)
+{
+	struct ap_event_manager_event * e = &attachment->events[index];
+	assert(index < attachment->event_count);
+	if (mod->event_dtor[e->function])
+		mod->event_dtor[e->function](mod->event_module[e->function], e);
+	memmove(&attachment->events[index], &attachment->events[index + 1],
+		(size_t)--attachment->event_count * sizeof(attachment->events[0]));
+}
+
 struct ap_event_manager_event * ap_event_manager_get_function(
 	struct ap_event_manager_module * mod,
 	void * source,
-	enum ap_event_manager_function function)
+	enum ap_event_manager_function_type function)
 {
 	uint32_t i;
 	struct ap_event_manager_attachment * a = 

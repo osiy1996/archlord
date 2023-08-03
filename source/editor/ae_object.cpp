@@ -23,6 +23,8 @@
 #include "client/ac_terrain.h"
 #include "client/ac_texture.h"
 
+#include "editor/ae_event_refinery.h"
+#include "editor/ae_event_teleport.h"
 #include "editor/ae_texture.h"
 
 enum tool_type {
@@ -48,10 +50,14 @@ struct move_tool {
 
 struct ae_object_module {
 	struct ap_module_instance instance;
+	struct ap_config_module * ap_config;
+	struct ap_event_manager_module * ap_event_manager;
 	struct ap_object_module * ap_object;
 	struct ac_object_module * ac_object;
 	struct ac_render_module * ac_render;
 	struct ac_terrain_module * ac_terrain;
+	struct ae_event_refinery_module * ae_event_refinery;
+	struct ae_event_teleport_module * ae_event_teleport;
 	boolean display_outliner;
 	boolean display_properties;
 	struct ap_object ** objects;
@@ -179,31 +185,16 @@ static boolean onregister(
 	struct ae_object_module * mod,
 	struct ap_module_registry * registry)
 {
-	mod->ap_object = (struct ap_object_module *)ap_module_registry_get_module(registry, AP_OBJECT_MODULE_NAME);
-	if (!mod->ap_object) {
-		ERROR("Failed to retrieve module (%s).", AP_OBJECT_MODULE_NAME);
-		return FALSE;
-	}
-	if (ap_object_attach_data(mod->ap_object, AP_OBJECT_MDI_OBJECT, 
-			0, mod, NULL, (ap_module_default_t)cbobjectdtor) == SIZE_MAX) {
-		ERROR("Failed to attach object data.");
-		return FALSE;
-	}
-	mod->ac_object = (struct ac_object_module *)ap_module_registry_get_module(registry, AC_OBJECT_MODULE_NAME);
-	if (!mod->ac_object) {
-		ERROR("Failed to retrieve module (%s).", AC_OBJECT_MODULE_NAME);
-		return FALSE;
-	}
-	mod->ac_render = (struct ac_render_module *)ap_module_registry_get_module(registry, AC_RENDER_MODULE_NAME);
-	if (!mod->ac_render) {
-		ERROR("Failed to retrieve module (%s).", AC_RENDER_MODULE_NAME);
-		return FALSE;
-	}
-	mod->ac_terrain = (struct ac_terrain_module *)ap_module_registry_get_module(registry, AC_TERRAIN_MODULE_NAME);
-	if (!mod->ac_terrain) {
-		ERROR("Failed to retrieve module (%s).", AC_TERRAIN_MODULE_NAME);
-		return FALSE;
-	}
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_config, AP_CONFIG_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_manager, AP_EVENT_MANAGER_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_object, AP_OBJECT_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_object, AC_OBJECT_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_render, AC_RENDER_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_terrain, AC_TERRAIN_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_event_refinery, AE_EVENT_REFINERY_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_event_teleport, AE_EVENT_TELEPORT_MODULE_NAME);
+	ap_object_attach_data(mod->ap_object, AP_OBJECT_MDI_OBJECT, 0, 
+		mod, NULL, (ap_module_default_t)cbobjectdtor);
 	return TRUE;
 }
 
@@ -361,10 +352,26 @@ boolean ae_object_on_key_down(
 		}
 		break;
 	case SDLK_s: {
-		if (state[SDL_SCANCODE_LCTRL] ||
-			state[SDL_SCANCODE_RCTRL]) {
-			ac_object_commit_changes(mod->ac_object);
-			return TRUE;
+		if (state[SDL_SCANCODE_LCTRL] || state[SDL_SCANCODE_RCTRL]) {
+			static char serverpath[1024];
+			static char clientpath[1024];
+			snprintf(serverpath, sizeof(serverpath), "%s/objects", 
+				ap_config_get(mod->ap_config, "ServerIniDir"));
+			snprintf(clientpath, sizeof(clientpath), "%s/ini",
+				ap_config_get(mod->ap_config, "ClientDir"));
+			uint32_t x;
+			for (x = 0; x < AP_SECTOR_WORLD_INDEX_WIDTH; x++) {
+				uint32_t z;
+				for (z = 0; z < AP_SECTOR_WORLD_INDEX_HEIGHT; z++) {
+					struct ac_object_sector * s = 
+						ac_object_get_sector_by_index(mod->ac_object, x, z);
+					if (s->flags & AC_OBJECT_SECTOR_HAS_CHANGES) {
+						ac_object_export_sector(mod->ac_object, s, serverpath);
+						ac_object_export_sector(mod->ac_object, s, clientpath);
+						s->flags &= ~AC_OBJECT_SECTOR_HAS_CHANGES;
+					}
+				}
+			}
 		}
 		break;
 	case SDLK_x:
@@ -490,6 +497,8 @@ static void render_properties(struct ae_object_module * mod)
 {
 	struct ap_object * obj = mod->active_object;
 	struct ac_object * objc;
+	struct ap_event_manager_attachment * eventattachment;
+	boolean changed = FALSE;
 	if (!ImGui::Begin("Properties", (bool *)&mod->display_properties) || !obj) {
 		ImGui::End();
 		return;
@@ -560,6 +569,13 @@ static void render_properties(struct ae_object_module * mod)
 			"DONOT_CULL");
 		ImGui::TreePop();
 	}
+	eventattachment = ap_event_manager_get_attachment(mod->ap_event_manager, obj);
+	changed |= ae_event_refinery_render_as_node(mod->ae_event_refinery, obj, 
+		eventattachment);
+	changed |= ae_event_teleport_render_as_node(mod->ae_event_teleport, obj, 
+		eventattachment);
+	if (changed)
+		objc->sector->flags |= AC_OBJECT_SECTOR_HAS_CHANGES;
 	ImGui::End();
 }
 

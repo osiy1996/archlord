@@ -147,6 +147,35 @@ int strcasecmp(const char * s1, const char * s2)
 	return result;
 }
 
+char * stristr(const char * string, const char * substring)
+{
+	char * pptr = (char *)substring;
+	char * sptr;
+	char * start = (char *)string;
+	size_t  slen = strlen(string);
+	size_t plen = strlen(substring);
+	for (; slen >= plen; start++, slen--) {
+		/* find start of pattern in string */
+		while (toupper(*start) != toupper(*substring)) {
+			start++;
+			slen--;
+			/* if pattern longer than string */
+			if (slen < plen)
+				return NULL;
+		}
+		sptr = start;
+		pptr = (char *)substring;
+		while (toupper(*sptr) == toupper(*pptr)) {
+			sptr++;
+			pptr++;
+			/* if end of pattern then pattern was found */
+			if ('\0' == *pptr)
+				return start;
+		}
+	}
+	return NULL;
+}
+
 boolean strisempty(const char * str)
 {
 	return (str[0] == '\0');
