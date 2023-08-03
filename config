@@ -18,3 +18,5 @@ DropRate=1.0
 RareDropRate=10.0
 UniqueAccessoryDropRate=100.0
 GoldDropRate=10.0
+
+EditorStartPosition=-475600.000,4515.568,-63400.000

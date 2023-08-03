@@ -765,6 +765,20 @@ static void update_camera(
 	ac_camera_update(cam, dt);
 }
 
+static void setspawnpos(struct ac_camera * cam)
+{
+	vec3 center = { -462922.5f,3217.9f,-44894.8f };
+	const char * config = ap_config_get(g_ApConfig, "EditorStartPosition");
+	if (config) {
+		vec3 c = { 0 };
+		if (sscanf(config, "%f,%f,%f", &c[0], &c[1], &c[2]))
+			glm_vec3_copy(c, center);
+	}
+	ac_camera_init(cam, center, 5000.0f, 45.0f, 30.0f, 60.0f, 200.0f, 40000.0f);
+	ac_terrain_sync(g_AcTerrain, cam->center, TRUE);
+	ac_object_sync(g_AcObject, cam->center, TRUE);
+}
+
 int main(int argc, char * argv[])
 {
 	uint64_t last = 0;
@@ -800,11 +814,8 @@ int main(int argc, char * argv[])
 		return -1;
 	}
 	{
-		vec3 center = { -462922.5f,3217.9f,-44894.8f };
-		ac_camera_init(&cam, center, 5000.0f, 45.0f, 30.0f, 60.0f, 200.0f, 40000.0f);
-		ac_terrain_sync(g_AcTerrain, cam.center, TRUE);
-		ac_object_sync(g_AcObject, cam.center, TRUE);
 	}
+	setspawnpos(&cam);
 	last = ap_tick_get(g_ApTick);
 	INFO("Entering main loop..");
 	while (!core_should_shutdown()) {
