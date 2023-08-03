@@ -693,6 +693,7 @@ static void render(struct ac_camera * cam, float dt)
 		ImGui::EndMenu();
 	}
 	if (ImGui::BeginMenu("View", true)) {
+		ae_editor_action_render_view_menu(g_AeEditorAction);
 		ImGui::EndMenu();
 	}
 	ac_console_render_icon(g_AcConsole);
@@ -704,6 +705,7 @@ static void render(struct ac_camera * cam, float dt)
 	ac_console_render(g_AcConsole);
 	ae_terrain_imgui(g_AeTerrain);
 	ae_object_imgui(g_AeObject);
+	ae_editor_action_render_editors(g_AeEditorAction);
 	ac_imgui_begin_toolbox(g_AcImgui);
 	ae_terrain_toolbox(g_AeTerrain);
 	ac_imgui_end_toolbox(g_AcImgui);

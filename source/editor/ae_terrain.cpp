@@ -21,6 +21,7 @@
 #include "client/ac_texture.h"
 #include "client/ac_render.h"
 
+#include "editor/ae_editor_action.h"
 #include "editor/ae_texture.h"
 
 #include "vendor/imgui/imgui.h"
@@ -189,6 +190,7 @@ struct ae_terrain_module {
 	struct ac_render_module * ac_render;
 	struct ac_terrain_module * ac_terrain;
 	struct ac_texture_module * ac_texture;
+	struct ae_editor_action_module * ae_editor_action;
 	struct ae_texture_module * ae_texture;
 	bool is_toolkit_open;
 	enum edit_mode edit_mode;
@@ -1622,40 +1624,28 @@ static boolean cb_segment_modification(
 	return TRUE;
 }
 
+static boolean cbcommitchanges(
+	struct ae_terrain_module * mod, 
+	void * data)
+{
+	ac_terrain_commit_changes(mod->ac_terrain);
+	return TRUE;
+}
+
 static boolean onregister(
 	struct ae_terrain_module * mod,
 	struct ap_module_registry * registry)
 {
-	mod->ap_map = (struct ap_map_module *)ap_module_registry_get_module(registry, AP_MAP_MODULE_NAME);
-	if (!mod->ap_map) {
-		ERROR("Failed to retrieve module (%s).", AP_MAP_MODULE_NAME);
-		return FALSE;
-	}
-	mod->ac_render = (struct ac_render_module *)ap_module_registry_get_module(registry, AC_RENDER_MODULE_NAME);
-	if (!mod->ac_render) {
-		ERROR("Failed to retrieve module (%s).", AC_RENDER_MODULE_NAME);
-		return FALSE;
-	}
-	mod->ac_terrain = (struct ac_terrain_module *)ap_module_registry_get_module(registry, AC_TERRAIN_MODULE_NAME);
-	if (!mod->ac_terrain) {
-		ERROR("Failed to retrieve module (%s).", AC_TERRAIN_MODULE_NAME);
-		return FALSE;
-	}
-	ac_terrain_add_callback(mod->ac_terrain, AC_TERRAIN_CB_POST_LOAD_SECTOR,
-		mod, (ap_module_default_t)cb_post_load_sector);
-	ac_terrain_add_callback(mod->ac_terrain, AC_TERRAIN_CB_SEGMENT_MODIFICATION,
-		mod, (ap_module_default_t)cb_segment_modification);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_map, AP_MAP_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_render, AC_RENDER_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_terrain, AC_TERRAIN_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_texture, AC_TEXTURE_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_editor_action, AE_EDITOR_ACTION_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_texture, AE_TEXTURE_MODULE_NAME);
+	ac_terrain_add_callback(mod->ac_terrain, AC_TERRAIN_CB_POST_LOAD_SECTOR, mod, (ap_module_default_t)cb_post_load_sector);
+	ac_terrain_add_callback(mod->ac_terrain, AC_TERRAIN_CB_SEGMENT_MODIFICATION, mod, (ap_module_default_t)cb_segment_modification);
 	mod->region.length = ac_terrain_get_view_distance(mod->ac_terrain) * 2.0f;
-	mod->ac_texture = (struct ac_texture_module *)ap_module_registry_get_module(registry, AC_TEXTURE_MODULE_NAME);
-	if (!mod->ac_texture) {
-		ERROR("Failed to retrieve module (%s).", AC_TEXTURE_MODULE_NAME);
-		return FALSE;
-	}
-	mod->ae_texture = (struct ae_texture_module *)ap_module_registry_get_module(registry, AE_TEXTURE_MODULE_NAME);
-	if (!mod->ae_texture) {
-		ERROR("Failed to retrieve module (%s).", AE_TEXTURE_MODULE_NAME);
-		return FALSE;
-	}
+	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_COMMIT_CHANGES, mod, (ap_module_default_t)cbcommitchanges);
 	return TRUE;
 }
 
@@ -2058,16 +2048,6 @@ boolean ae_terrain_on_mwheel(struct ae_terrain_module * mod, float delta)
 
 boolean ae_terrain_on_key_down(struct ae_terrain_module * mod, uint32_t keycode)
 {
-	switch (keycode) {
-	case SDLK_s: {
-		const boolean * state = ac_render_get_key_state(mod->ac_render);
-		if (state[SDL_SCANCODE_LCTRL] ||
-			state[SDL_SCANCODE_RCTRL]) {
-			ac_terrain_commit_changes(mod->ac_terrain);
-		}
-		break;
-	}
-	}
 	return FALSE;
 }
 

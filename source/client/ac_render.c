@@ -55,7 +55,7 @@ static boolean init_bgfx(struct ac_render_module * mod)
 #endif
 	init.resolution.width = mod->width;
 	init.resolution.height = mod->height;
-#ifdef _DEBUG
+#ifdef DEBUGRENDER
 	init.debug = true;
 	init.profile = true;
 #endif

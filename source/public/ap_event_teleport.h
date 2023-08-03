@@ -67,6 +67,7 @@ enum ap_event_teleport_packet_type {
 
 enum ap_event_teleport_module_data_index {
 	AP_EVENT_TELEPORT_MDI_TELEPORT_POINT,
+	AP_EVENT_TELEPORT_MDI_TELEPORT_GROUP,
 };
 
 enum ap_event_teleport_callback_id {
@@ -82,6 +83,7 @@ union ap_event_teleport_target {
 
 struct ap_event_teleport_group {
 	char name[AP_EVENT_TELEPORT_MAX_GROUP_NAME_LENGTH + 1];
+	char description[AP_EVENT_TELEPORT_MAX_GROUP_DESCRIPTION_LENGTH + 1];
 	struct ap_event_teleport_point * source_points[AP_EVENT_TELEPORT_MAX_GROUP_POINT_COUNT];
 	uint32_t source_point_count;
 	struct ap_event_teleport_point * destination_points[AP_EVENT_TELEPORT_MAX_GROUP_POINT_COUNT];
@@ -161,6 +163,11 @@ boolean ap_event_teleport_write_teleport_points(
 	const char * file_path, 
 	boolean encrypt);
 
+boolean ap_event_teleport_write_teleport_groups(
+	struct ap_event_teleport_module * mod,
+	const char * file_path, 
+	boolean encrypt);
+
 struct ap_event_teleport_point * ap_event_teleport_add_point(
 	struct ap_event_teleport_module * mod,
 	const char * point_name,
@@ -170,11 +177,6 @@ void ap_event_teleport_remove_point(
 	struct ap_event_teleport_module * mod,
 	struct ap_event_teleport_point * point);
 
-struct ap_event_teleport_point * ap_event_teleport_find_point_by_id(
-	struct ap_event_teleport_module * mod,
-	enum ap_base_type type,
-	uint32_t id);
-
 struct ap_event_teleport_point * ap_event_teleport_find_point_by_name(
 	struct ap_event_teleport_module * mod,
 	const char * point_name);
@@ -182,6 +184,10 @@ struct ap_event_teleport_point * ap_event_teleport_find_point_by_name(
 struct ap_event_teleport_point * ap_event_teleport_iterate(
 	struct ap_event_teleport_module * mod,
 	size_t * index);
+
+struct ap_event_teleport_group * ap_event_teleport_add_group(
+	struct ap_event_teleport_module * mod,
+	const char * group_name);
 
 struct ap_event_teleport_group * ap_event_teleport_iterate_groups(
 	struct ap_event_teleport_module * mod,

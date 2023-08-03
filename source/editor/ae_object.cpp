@@ -23,6 +23,7 @@
 #include "client/ac_terrain.h"
 #include "client/ac_texture.h"
 
+#include "editor/ae_editor_action.h"
 #include "editor/ae_event_refinery.h"
 #include "editor/ae_event_teleport.h"
 #include "editor/ae_texture.h"
@@ -56,6 +57,7 @@ struct ae_object_module {
 	struct ac_object_module * ac_object;
 	struct ac_render_module * ac_render;
 	struct ac_terrain_module * ac_terrain;
+	struct ae_editor_action_module * ae_editor_action;
 	struct ae_event_refinery_module * ae_event_refinery;
 	struct ae_event_teleport_module * ae_event_teleport;
 	boolean display_outliner;
@@ -181,6 +183,32 @@ static boolean cbobjectdtor(struct ae_object_module * mod, struct ap_object * ob
 	return TRUE;
 }
 
+static boolean cbcommitchanges(
+	struct ae_object_module * mod,
+	void * data)
+{
+	char serverpath[1024];
+	char clientpath[1024];
+	snprintf(serverpath, sizeof(serverpath), "%s/objects", 
+		ap_config_get(mod->ap_config, "ServerIniDir"));
+	snprintf(clientpath, sizeof(clientpath), "%s/ini",
+		ap_config_get(mod->ap_config, "ClientDir"));
+	uint32_t x;
+	for (x = 0; x < AP_SECTOR_WORLD_INDEX_WIDTH; x++) {
+		uint32_t z;
+		for (z = 0; z < AP_SECTOR_WORLD_INDEX_HEIGHT; z++) {
+			struct ac_object_sector * s = 
+				ac_object_get_sector_by_index(mod->ac_object, x, z);
+			if (s->flags & AC_OBJECT_SECTOR_HAS_CHANGES) {
+				ac_object_export_sector(mod->ac_object, s, serverpath);
+				ac_object_export_sector(mod->ac_object, s, clientpath);
+				s->flags &= ~AC_OBJECT_SECTOR_HAS_CHANGES;
+			}
+		}
+	}
+	return TRUE;
+}
+
 static boolean onregister(
 	struct ae_object_module * mod,
 	struct ap_module_registry * registry)
@@ -191,10 +219,11 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_object, AC_OBJECT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_render, AC_RENDER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_terrain, AC_TERRAIN_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_editor_action, AE_EDITOR_ACTION_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_event_refinery, AE_EVENT_REFINERY_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_event_teleport, AE_EVENT_TELEPORT_MODULE_NAME);
-	ap_object_attach_data(mod->ap_object, AP_OBJECT_MDI_OBJECT, 0, 
-		mod, NULL, (ap_module_default_t)cbobjectdtor);
+	ap_object_attach_data(mod->ap_object, AP_OBJECT_MDI_OBJECT, 0, mod, NULL, (ap_module_default_t)cbobjectdtor);
+	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_COMMIT_CHANGES, mod, (ap_module_default_t)cbcommitchanges);
 	return TRUE;
 }
 
@@ -351,29 +380,6 @@ boolean ae_object_on_key_down(
 			mod->move_tool.dy = 0;
 		}
 		break;
-	case SDLK_s: {
-		if (state[SDL_SCANCODE_LCTRL] || state[SDL_SCANCODE_RCTRL]) {
-			static char serverpath[1024];
-			static char clientpath[1024];
-			snprintf(serverpath, sizeof(serverpath), "%s/objects", 
-				ap_config_get(mod->ap_config, "ServerIniDir"));
-			snprintf(clientpath, sizeof(clientpath), "%s/ini",
-				ap_config_get(mod->ap_config, "ClientDir"));
-			uint32_t x;
-			for (x = 0; x < AP_SECTOR_WORLD_INDEX_WIDTH; x++) {
-				uint32_t z;
-				for (z = 0; z < AP_SECTOR_WORLD_INDEX_HEIGHT; z++) {
-					struct ac_object_sector * s = 
-						ac_object_get_sector_by_index(mod->ac_object, x, z);
-					if (s->flags & AC_OBJECT_SECTOR_HAS_CHANGES) {
-						ac_object_export_sector(mod->ac_object, s, serverpath);
-						ac_object_export_sector(mod->ac_object, s, clientpath);
-						s->flags &= ~AC_OBJECT_SECTOR_HAS_CHANGES;
-					}
-				}
-			}
-		}
-		break;
 	case SDLK_x:
 		switch (mod->tool_type) {
 		case TOOL_TYPE_MOVE:
@@ -414,7 +420,6 @@ boolean ae_object_on_key_down(
 		}
 		mod->tool_type = TOOL_TYPE_NONE;
 		return TRUE;
-	}
 	case SDLK_DELETE:
 		if (mod->active_object) {
 			ap_object_destroy(mod->ap_object, mod->active_object);

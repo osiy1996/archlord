@@ -55,8 +55,7 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_map, AP_MAP_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_editor_action, AE_EDITOR_ACTION_MODULE_NAME);
 	ap_map_add_callback(mod->ap_map, AP_MAP_CB_ADD_GLOSSARY, mod, cbaddglossary);
-	ae_editor_action_add_callback(mod->ae_editor_action, 
-		AE_EDITOR_ACTION_CB_COMMIT_CHANGES, mod, cbcommitchanges);
+	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_COMMIT_CHANGES, mod, cbcommitchanges);
 	return TRUE;
 }
 
