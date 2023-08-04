@@ -160,7 +160,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;bx$(Configuration).lib;bgfx$(Configuration).lib;bimg$(Configuration).lib;bimg_decode$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;bxDebug.lib;bgfxDebug.lib;bimgDebug.lib;bimg_decodeDebug.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -218,7 +218,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;bx$(Configuration).lib;bgfx$(Configuration).lib;bimg$(Configuration).lib;bimg_decode$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;bxDebug.lib;bgfxDebug.lib;bimgDebug.lib;bimg_decodeDebug.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -276,6 +276,7 @@
     <ClInclude Include="..\..\..\source\core\types.h" />
     <ClInclude Include="..\..\..\source\core\vector.h" />
     <ClInclude Include="..\..\..\source\editor\ae_editor_action.h" />
+    <ClInclude Include="..\..\..\source\editor\ae_event_binding.h" />
     <ClInclude Include="..\..\..\source\editor\ae_event_refinery.h" />
     <ClInclude Include="..\..\..\source\editor\ae_event_teleport.h" />
     <ClInclude Include="..\..\..\source\editor\ae_item.h" />
@@ -393,6 +394,7 @@
     <ClCompile Include="..\..\..\source\core\string_conv_win32.c" />
     <ClCompile Include="..\..\..\source\core\vector.c" />
     <ClCompile Include="..\..\..\source\editor\ae_editor_action.c" />
+    <ClCompile Include="..\..\..\source\editor\ae_event_binding.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_event_refinery.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_event_teleport.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_item.c" />

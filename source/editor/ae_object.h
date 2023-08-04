@@ -4,9 +4,19 @@
 #include "core/macros.h"
 #include "core/types.h"
 
+#include "public/ap_module_instance.h"
+
+#include "vendor/bgfx/c99/bgfx.h"
+
 #define AE_OBJECT_MODULE_NAME "AgemObject"
 
 BEGIN_DECLS
+
+extern size_t g_AeObjectTemplateOffset;
+
+struct ae_object_template {
+	int dummy;
+};
 
 struct ac_camera;
 
@@ -40,6 +50,13 @@ boolean ae_object_on_key_down(
 	struct ae_object_module * mod,
 	struct ac_camera * cam,
 	uint32_t keycode);
+
+static inline struct ae_object_template * ae_object_get_template(
+	struct ap_object_template * temp)
+{
+	return (struct ae_object_template *)ap_module_get_attached_data(temp, 
+		g_AeObjectTemplateOffset);
+}
 
 END_DECLS
 

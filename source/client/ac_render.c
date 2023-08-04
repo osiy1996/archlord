@@ -39,6 +39,8 @@ struct ac_render_module {
 	mouse_button is_mouse_btn_down;
 	boolean key_state[SDL_NUM_SCANCODES];
 	uint32_t reset_flags;
+	int view_cursor;
+	int view_id;
 };
 
 static boolean init_bgfx(struct ac_render_module * mod)
@@ -172,6 +174,7 @@ struct ac_render_module * ac_render_create_module()
 	mod->width = 1024;
 	mod->height = 768;
 	mod->reset_flags = BGFX_RESET_VSYNC;
+	mod->view_cursor = 1;
 	return mod;
 }
 
@@ -388,4 +391,21 @@ boolean ac_render_stream_read_crt(
 		return FALSE;
 	}
 	return TRUE;
+}
+
+int ac_render_allocate_view(struct ac_render_module * mod)
+{
+	return mod->view_cursor++;
+}
+
+int ac_render_set_view(struct ac_render_module * mod, int view_id)
+{
+	int view = mod->view_id;
+	mod->view_id = view_id;
+	return view;
+}
+
+int ac_render_get_view(struct ac_render_module * mod)
+{
+	return mod->view_id;
 }

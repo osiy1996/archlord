@@ -86,6 +86,12 @@ boolean ac_render_stream_read_crt(
 	struct ap_module_stream * stream,
 	struct ac_render_crt * crt);
 
+int ac_render_allocate_view(struct ac_render_module * mod);
+
+int ac_render_set_view(struct ac_render_module * mod, int view_id);
+
+int ac_render_get_view(struct ac_render_module * mod);
+
 END_DECLS
 
 #endif /* _AC_RENDER_H_ */

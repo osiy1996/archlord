@@ -6,6 +6,7 @@
 #include "core/string.h"
 #include "core/vector.h"
 
+#include "public/ap_admin.h"
 #include "public/ap_config.h"
 #include "public/ap_octree.h"
 #include "public/ap_sector.h"
@@ -29,7 +30,7 @@
 struct ap_object_module {
 	struct ap_module_instance instance;
 	struct ap_config_module * ap_config;
-	struct ap_object_template * templates;
+	struct ap_admin template_admin;
 };
 
 static boolean template_read(
@@ -212,17 +213,27 @@ static boolean onregister(
 	return (mod->ap_config != NULL);
 }
 
+static void onclose(struct ap_object_module * mod)
+{
+	size_t index = 0;
+	void * object;
+	while (ap_admin_iterate_id(&mod->template_admin, &index, &object)) {
+		ap_module_destruct_module_data(mod, AP_OBJECT_MDI_OBJECT_TEMPLATE, 
+			*(struct ap_object_template **)object);
+	}
+	ap_admin_clear_objects(&mod->template_admin);
+}
+
 static void onshutdown(struct ap_object_module * mod)
 {
-	/* TODO: Clean-up module */
-	vec_free(mod->templates);
+	ap_admin_destroy(&mod->template_admin);
 }
 
 struct ap_object_module * ap_object_create_module()
 {
 	struct ap_object_module * mod = ap_module_instance_new(AP_OBJECT_MODULE_NAME,
 		sizeof(*mod), onregister, NULL, NULL, onshutdown);
-	mod->templates = vec_new(sizeof(*mod->templates));
+	ap_admin_init(&mod->template_admin, sizeof(struct ap_object_template *), 128);
 	ap_object_add_stream_callback(mod, AP_OBJECT_MDI_OBJECT_TEMPLATE,
 		AP_OBJECT_MODULE_NAME, mod, template_read, template_write);
 	ap_object_add_stream_callback(mod, AP_OBJECT_MDI_OBJECT,
@@ -302,18 +313,23 @@ boolean ap_object_load_templates(
 		return FALSE;
 	}
 	count = ap_module_stream_get_section_count(stream);
-	mod->templates = vec_reserve(mod->templates, 
-		sizeof(*mod->templates), count);
-	vec_set_count(mod->templates, count);
 	for (i = 0; i < count; i++) {
 		uint32_t template_id = strtoul(
 			ap_module_stream_read_section_name(stream, i), NULL, 10);
-		struct ap_object_template * tmp = &mod->templates[i];
-		tmp->tid = template_id;
+		struct ap_object_template ** object = ap_admin_add_object_by_id(
+			&mod->template_admin, template_id);
+		struct ap_object_template * temp;
+		if (!object) {
+			ERROR("Invalid object template id (%u).", template_id);
+			ap_module_stream_destroy(stream);
+			return FALSE;
+		}
+		temp = ap_module_create_module_data(mod, AP_OBJECT_MDI_OBJECT_TEMPLATE);
+		temp->tid = template_id;
+		*object = temp;
 		if (!ap_module_stream_enum_read(mod, stream, 
-				AP_OBJECT_MDI_OBJECT_TEMPLATE, tmp)) {
-			ERROR("Failed to read object template (tid = %u).",
-				template_id);
+				AP_OBJECT_MDI_OBJECT_TEMPLATE, temp)) {
+			ERROR("Failed to read object template (tid = %u).", template_id);
 			ap_module_stream_destroy(stream);
 			return FALSE;
 		}
@@ -363,13 +379,23 @@ struct ap_object_template * ap_object_get_template(
 	struct ap_object_module * mod,
 	uint32_t tid)
 {
-	uint32_t i;
-	uint32_t count = vec_count(mod->templates);
-	for (i = 0; i < count; i++) {
-		if (mod->templates[i].tid == tid)
-			return &mod->templates[i];
-	}
-	return NULL;
+	struct ap_object_template ** object = 
+		ap_admin_get_object_by_id(&mod->template_admin, tid);
+	if (object)
+		return *object;
+	else
+		return NULL;
+}
+
+struct ap_object_template * ap_object_iterate_templates(
+	struct ap_object_module * mod,
+	size_t * index)
+{
+	struct ap_object_template ** object;
+	if (!ap_admin_iterate_id(&mod->template_admin, index, (void **)&object))
+		return NULL;
+	else
+		return  *object;
 }
 
 struct ap_object * ap_object_create(struct ap_object_module * mod)

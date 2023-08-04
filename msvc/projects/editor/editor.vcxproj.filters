@@ -402,6 +402,9 @@
     <ClInclude Include="..\..\..\source\editor\ae_editor_action.h">
       <Filter>source\editor</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\editor\ae_event_binding.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\core\hash_map.c">
@@ -729,6 +732,9 @@
       <Filter>source\editor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\editor\ae_editor_action.c">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\editor\ae_event_binding.cpp">
       <Filter>source\editor</Filter>
     </ClCompile>
   </ItemGroup>

@@ -101,6 +101,10 @@ struct ap_object_template * ap_object_get_template(
 	struct ap_object_module * mod,
 	uint32_t tid);
 
+struct ap_object_template * ap_object_iterate_templates(
+	struct ap_object_module * mod,
+	size_t * index);
+
 struct ap_object * ap_object_create(struct ap_object_module * mod);
 
 struct ap_object * ap_object_duplicate(

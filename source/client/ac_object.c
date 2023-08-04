@@ -48,14 +48,16 @@
 #define INI_NAME_DNF_3					"DID_NOT_FINISH_WESTERN"
 #define INI_NAME_DNF_4					"DID_NOT_FINISH_JAPAN"
 
+size_t g_AcObjectTemplateOffset = SIZE_MAX;
+
 struct ac_object_module {
 	struct ap_module_instance instance;
 	struct ap_config_module * ap_config;
 	struct ap_object_module * ap_object;
 	struct ac_dat_module * ac_dat;
 	struct ac_mesh_module * ac_mesh;
+	struct ac_render_module * ac_render;
 	struct ac_texture_module * ac_texture;
-	struct ac_object_template * templates;
 	vec2 last_sync_pos;
 	float view_distance;
 	struct ap_scr_index * visible_sectors;
@@ -123,12 +125,10 @@ static struct ac_anim_data * add_anim(
 
 boolean ac_object_template_read(
 	struct ac_object_module * mod, 
-	void * data, 
+	struct ap_object_template * t,
 	struct ap_module_stream * stream)
 {
-	struct ap_object_template * t = data;
-	struct ac_object_template * tmp = vec_add_empty(&mod->templates);
-	tmp->tid = t->tid;
+	struct ac_object_template * tmp = ac_object_get_template(t);
 	while (ap_module_stream_read_next_value(stream)) {
 		const char * value_name = ap_module_stream_get_value_name(stream);
 		const char * value = ap_module_stream_get_value(stream);
@@ -286,6 +286,7 @@ boolean ac_object_object_write(
 	}
 	return TRUE;
 }
+
 static uint32_t get_unique_object_id(
 	struct ac_object_module * mod,
 	uint32_t sector_x,
@@ -293,10 +294,8 @@ static uint32_t get_unique_object_id(
 {
 	uint32_t i;
 	uint32_t div_index;
-	if (!ap_scr_div_index_from_sector_index(sector_x, 
-			sector_z, &div_index)) {
+	if (!ap_scr_div_index_from_sector_index(sector_x, sector_z, &div_index))
 		return UINT32_MAX;
-	}
 	div_index <<= 16;
 	for (i = 1; i < 0xFFFF; i++) {
 		uint32_t x;
@@ -449,10 +448,9 @@ static void set_object_octree_node(
 	mat4 m;
 	struct ac_object_template_group * grp;
 	boolean intersects = FALSE;
-	if (!objc->temp)
-		return;
+	struct ac_object_template * temp = ac_object_get_template(obj->temp);
 	create_transform(obj, m);
-	grp = objc->temp->group_list;
+	grp = temp->group_list;
 	while (grp) {
 		float scale = 
 			MAX(obj->scale.x, MAX(obj->scale.y, obj->scale.z));
@@ -508,70 +506,6 @@ static void clear_object_octree_id_list(struct ap_object * obj)
 	}
 	obj->octree_id_list = NULL;
 	obj->octree_id = 0;
-}
-
-static void save_sector(
-	struct ac_object_module * mod, 
-	struct ac_object_sector * s)
-{
-	assert(s->flags & AC_OBJECT_SECTOR_IS_LOADED);
-	if (s->objects) {
-		uint32_t count = vec_count(s->objects);
-		uint32_t i;
-		uint32_t * ids = read_object_ids(mod, s->index_x, s->index_z);
-		boolean write = TRUE;
-		for (i = 0; i < count; i++) {
-			struct ap_object * obj = s->objects[i];
-			uint32_t x;
-			clear_object_octree_id_list(obj);
-			for (x = s->index_x - 4; x < s->index_x + 4; x++) {
-				uint32_t z;
-				for (z = s->index_z - 4; z < s->index_z + 4; z++) {
-					struct ap_octree_root_list * r;
-					if (!ap_scr_is_index_valid(x, z))
-						continue;
-					if (!mod->sectors[x][z].octree_roots)
-						continue;
-					r = mod->sectors[x][z].octree_roots->roots;
-					while (r) {
-						set_object_octree_node(obj,
-							ac_object_get_object(mod, obj),
-							r->node, x, z);
-						r = r->next;
-					}
-				}
-			}
-			if (!obj->object_id) {
-				uint32_t id;
-				if (ids) {
-					id = get_unique_object_id_from_list(ids,
-						s->index_x, s->index_z);
-					vec_push_back(&ids, &id);
-				}
-				else {
-					id = get_unique_object_id(mod, s->index_x,
-						s->index_z);
-				}
-				if (id == UINT32_MAX) {
-					ERROR("Ran out of available object IDs.");
-					write = FALSE;
-					break;
-				}
-				obj->object_id = id;
-			}
-		}
-		vec_free(ids);
-		if (write) {
-			ap_object_write_sector(mod->ap_object, 
-				ap_config_get(mod->ap_config, "ClientDir"), s->index_x, s->index_z, 
-				s->objects);
-			/* TODO */
-		}
-	}
-	s->flags &= ~AC_OBJECT_SECTOR_HAS_CHANGES;
-	INFO("Commited object sector (%u,%u) changes to file (obj%05u.ini).",
-		s->index_x, s->index_z, 
-		(s->index_x / 16) * 100 + (s->index_z / 16));
 }
 
 static void calc_visible_sectors(
@@ -723,43 +657,37 @@ static struct ac_mesh_clump * load_object_clump(
 	return NULL;
 }
 
-static boolean aco_cb_init_object(struct ac_object_module * mod, void * data)
+static boolean cbobjectinit(struct ac_object_module * mod, void * data)
 {
 	struct ap_object * obj = data;
 	struct ac_object * objc = ac_object_get_object(mod, obj);
+	struct ac_object_template * temp;
 	assert(obj != NULL);
 	assert(objc != NULL);
-	objc->temp = ac_object_get_template(mod, obj->tid);
-	if (!objc->temp) {
-		WARN("Invalid object template id: %u", obj->tid);
-		return TRUE;
-	}
-	objc->temp->refcount++;
-	if (objc->temp->status == AC_OBJECT_STATUS_INIT) {
-		struct ac_object_template_group * grp =
-			objc->temp->group_list;
-		while (grp) {
-			grp->clump = load_object_clump(mod, grp->dff_name);
-			grp = grp->next;
-		}
-		objc->temp->status = AC_OBJECT_STATUS_LOAD_TEMPLATE;
-	}
+	temp = ac_object_get_template(obj->temp);
+	ac_object_reference_template(mod, temp);
 	return TRUE;
 }
 
-static boolean aco_cb_copy_object(struct ac_object_module * mod, void * data)
+static boolean cbobjectcopy(struct ac_object_module * mod, void * data)
 {
 	struct ap_object_cb_copy_object_data * d = data;
 	struct ac_object * src = ac_object_get_object(mod, d->src);
 	struct ac_object * dst = ac_object_get_object(mod, d->dst);
-	dst->obj = d->dst;
+	struct ac_object_template * temp;
+	uint32_t id = get_unique_object_id(mod, src->sector->index_x, 
+		src->sector->index_z);
+	if (id != UINT32_MAX) {
+		d->dst->object_id = id;
+	}
+	else {
+		ERROR("Ran out of available object IDs.");
+	}
 	dst->is_group_child = src->is_group_child;
 	dst->object_type = src->object_type;
-	if (src->temp) {
-		assert(src->temp->refcount != 0);
-		dst->temp = src->temp;
-		src->temp->refcount++;
-	}
+	temp = ac_object_get_template(d->src->temp);
+	assert(temp->refcount != 0);
+	temp->refcount++;
 	dst->status = src->status;
 	assert(src->sector);
 	dst->sector = src->sector;
@@ -774,18 +702,8 @@ static boolean cbobjectdtor(struct ac_object_module * mod, void * data)
 	struct ac_object_template * temp;
 	assert(obj != NULL);
 	assert(objc != NULL);
-	temp = objc->temp;
-	if (temp && --temp->refcount == 0) {
-		struct ac_object_template_group * grp = temp->group_list;
-		while (grp) {
-			if (grp->clump) {
-				ac_mesh_destroy_clump(mod->ac_mesh, grp->clump);
-				grp->clump = NULL;
-			}
-			grp = grp->next;
-		}
-		temp->status = AC_OBJECT_STATUS_INIT;
-	}
+	temp = ac_object_get_template(obj->temp);
+	ac_object_release_template(mod, temp);
 	if (objc->sector) {
 		uint32_t i;
 		boolean erased = FALSE;
@@ -806,7 +724,7 @@ static boolean cbobjectdtor(struct ac_object_module * mod, void * data)
 	return TRUE;
 }
 
-static boolean aco_cb_move_object(struct ac_object_module * mod, void * data)
+static boolean cbobjectmove(struct ac_object_module * mod, void * data)
 {
 	struct ap_object_cb_move_object_data * d = data;
 	struct ac_object * objc = ac_object_get_object(mod, d->obj);
@@ -830,11 +748,17 @@ static boolean aco_cb_move_object(struct ac_object_module * mod, void * data)
 		assert(erased != FALSE);
 		if (!erased)
 			return TRUE;
-		if (!ap_scr_is_same_division(s->index_x, 
-				objc->sector->index_x) ||
-			!ap_scr_is_same_division(s->index_z, 
-				objc->sector->index_z)) {
+		if (!ap_scr_is_same_division(s->index_x, objc->sector->index_x) ||
+			!ap_scr_is_same_division(s->index_z, objc->sector->index_z)) {
+			uint32_t id;
 			d->obj->object_id = 0;
+			id = get_unique_object_id(mod, s->index_x, s->index_z);
+			if (id != UINT32_MAX) {
+				d->obj->object_id = id;
+			}
+			else {
+				ERROR("Ran out of available object IDs.");
+			}
 		}
 		s->flags |= AC_OBJECT_SECTOR_HAS_CHANGES;
 		if (!s->objects)
@@ -864,6 +788,7 @@ static void render_clump(
 	struct ac_object_render_data * rd)
 {
 	struct ac_mesh_geometry * g = c->glist;
+	int view = ac_render_get_view(mod->ac_render);
 	while (g) {
 		const uint8_t discard = 
 			BGFX_DISCARD_BINDINGS |
@@ -907,7 +832,7 @@ static void render_clump(
 				}
 			}
 			bgfx_set_state(rd->state, 0xffffffff);
-			bgfx_submit(0, rd->program, 0, discard);
+			bgfx_submit(view, rd->program, 0, discard);
 		}
 		g = g->next;
 	}
@@ -919,10 +844,9 @@ static void render_obj(
 	struct ac_object_render_data * rd)
 {
 	struct ac_object * objc = ac_object_get_object(mod, obj);
+	struct ac_object_template * temp = ac_object_get_template(obj->temp);
 	struct ac_object_template_group * grp;
-	if (!objc->temp)
-		return;
-	grp = objc->temp->group_list;
+	grp = temp->group_list;
 	while (grp) {
 		if (grp->clump)
 			render_clump(mod, obj, grp->clump, rd);
@@ -947,8 +871,11 @@ static void unload_sector(
 	s->flags &= ~AC_OBJECT_SECTOR_IS_LOADED;
 }
 
-void ac_object_destroy_template(struct ac_object_template * t)
+static boolean cbobjecttemplatedtor(
+	struct ac_object_module * mod,
+	struct ap_object_template * temp)
 {
+	struct ac_object_template * t = ac_object_get_template(temp);
 	struct ac_object_template_group * cur = t->group_list;
 	while (cur) {
 		struct ac_object_template_group * next = cur->next;
@@ -957,6 +884,7 @@ void ac_object_destroy_template(struct ac_object_template * t)
 		cur = next;
 	}
 	t->group_list = NULL;
+	return TRUE;
 }
 
 static boolean onregister(
@@ -967,19 +895,16 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_object, AP_OBJECT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_dat, AC_DAT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_mesh, AC_MESH_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_render, AC_RENDER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_texture, AC_TEXTURE_MODULE_NAME);
-	ap_object_add_callback(mod->ap_object, AP_OBJECT_CB_INIT_OBJECT, mod,  
-		aco_cb_init_object);
-	ap_object_add_callback(mod->ap_object, AP_OBJECT_CB_COPY_OBJECT, mod, 
-		aco_cb_copy_object);
-	ap_object_add_callback(mod->ap_object, AP_OBJECT_CB_MOVE_OBJECT, mod, 
-		aco_cb_move_object);
+	ap_object_add_callback(mod->ap_object, AP_OBJECT_CB_INIT_OBJECT, mod,  cbobjectinit);
+	ap_object_add_callback(mod->ap_object, AP_OBJECT_CB_COPY_OBJECT, mod, cbobjectcopy);
+	ap_object_add_callback(mod->ap_object, AP_OBJECT_CB_MOVE_OBJECT, mod, cbobjectmove);
 	mod->object_offset = ap_object_attach_data(mod->ap_object, AP_OBJECT_MDI_OBJECT,
 		sizeof(struct ac_object), mod, NULL, cbobjectdtor);
-	if (mod->object_offset == SIZE_MAX) {
-		ERROR("Failed to attach object data.");
-		return FALSE;
-	}
+	g_AcObjectTemplateOffset = ap_object_attach_data(mod->ap_object, 
+		AP_OBJECT_MDI_OBJECT_TEMPLATE, sizeof(struct ac_object_template),
+		mod, NULL, cbobjecttemplatedtor);
 	ap_object_add_stream_callback(mod->ap_object, AP_OBJECT_MDI_OBJECT,
 		AC_OBJECT_MODULE_NAME, mod, ac_object_object_read, ac_object_object_write);
 	ap_object_add_stream_callback(mod->ap_object, AP_OBJECT_MDI_OBJECT_TEMPLATE,
@@ -1052,7 +977,6 @@ static boolean oninitialize(struct ac_object_module * mod)
 
 static void onclose(struct ac_object_module * mod)
 {
-	uint32_t count;
 	uint32_t i;
 	uint32_t x;
 	uint32_t z;
@@ -1075,16 +999,12 @@ static void onclose(struct ac_object_module * mod)
 			bgfx_destroy_uniform(mod->sampler[i]);
 	}
 	bgfx_destroy_program(mod->program);
-	count = vec_count(mod->templates);
-	for (i = 0; i < count; i++)
-		ac_object_destroy_template(&mod->templates[i]);
 }
 
 static void onshutdown(struct ac_object_module * mod)
 {
 	vec_free(mod->visible_sectors);
 	vec_free(mod->visible_sectors_tmp);
-	vec_free(mod->templates);
 }
 
 struct ac_object_module * ac_object_create_module()
@@ -1094,7 +1014,6 @@ struct ac_object_module * ac_object_create_module()
 	uint32_t x;
 	uint32_t z;
 	uint32_t i;
-	mod->templates = vec_new(sizeof(*mod->templates));
 	mod->view_distance = AP_SECTOR_WIDTH * 4;
 	for (x = 0; x < AP_SECTOR_WORLD_INDEX_WIDTH; x++) {
 		for (z = 0; z < AP_SECTOR_WORLD_INDEX_HEIGHT; z++) {
@@ -1124,19 +1043,6 @@ struct ac_object_module * ac_object_create_module()
 	return mod;
 }
 
-struct ac_object_template * ac_object_get_template(
-	struct ac_object_module * mod, 
-	uint32_t tid)
-{
-	uint32_t i;
-	uint32_t count = vec_count(mod->templates);
-	for (i = 0; i < count; i++) {
-		if (mod->templates[i].tid == tid)
-			return &mod->templates[i];
-	}
-	return NULL;
-}
-
 struct ac_object_template_group * ac_object_get_group(
 	struct ac_object_module * mod,
 	struct ac_object_template * t,
@@ -1163,6 +1069,66 @@ struct ac_object_template_group * ac_object_get_group(
 		return link;
 	}
 	return NULL;
+}
+
+void ac_object_reference_template(
+	struct ac_object_module * mod, 
+	struct ac_object_template * temp)
+{
+	temp->refcount++;
+	if (temp->status == AC_OBJECT_STATUS_INIT) {
+		struct ac_object_template_group * grp = temp->group_list;
+		while (grp) {
+			grp->clump = load_object_clump(mod, grp->dff_name);
+			grp = grp->next;
+		}
+		temp->status = AC_OBJECT_STATUS_LOAD_TEMPLATE;
+	}
+}
+
+void ac_object_release_template(
+	struct ac_object_module * mod, 
+	struct ac_object_template * temp)
+{
+	assert(temp->refcount != 0);
+	if (--temp->refcount == 0) {
+		struct ac_object_template_group * grp = temp->group_list;
+		while (grp) {
+			if (grp->clump) {
+				ac_mesh_destroy_clump(mod->ac_mesh, grp->clump);
+				grp->clump = NULL;
+			}
+			grp = grp->next;
+		}
+		temp->status = AC_OBJECT_STATUS_INIT;
+	}
+}
+
+void ac_object_get_bounding_sphere(
+	struct ac_object_module * mod, 
+	struct ac_object_template * temp,
+	vec4 sphere)
+{
+	struct ac_object_template_group * group = temp->group_list;
+	float * high = NULL;
+	glm_vec4_scale(sphere, 0.0f, sphere);
+	while (group) {
+		struct ac_mesh_geometry * geometry;
+		if (!group->clump) {
+			group = group->next;
+			continue;
+		}
+		geometry = group->clump->glist;
+		while (geometry) {
+			if (!high || geometry->bsphere.radius > *high)
+				high = &geometry->bsphere.radius;
+			vec4 s = { geometry->bsphere.center.x, geometry->bsphere.center.y, 
+				geometry->bsphere.center.z, geometry->bsphere.radius };
+			glm_sphere_merge(s, sphere, sphere);
+			geometry = geometry->next;
+		}
+		group = group->next;
+	}
 }
 
 struct ac_object * ac_object_get_object(
@@ -1337,7 +1303,7 @@ struct ap_object * ac_object_pick(
 		for (j = 0; j < count; j++) {
 			struct ac_object * obj = ac_object_get_object(mod, s->objects[j]);
 			struct ac_object_template_group * grp = 
-				obj->temp->group_list;
+				ac_object_get_template(s->objects[j]->temp)->group_list;;
 			mat4 m;
 			create_transform(s->objects[j], m);
 			while (grp) {
@@ -1388,7 +1354,73 @@ void ac_object_render_object(
 	struct ap_object * obj, 
 	struct ac_object_render_data * render_data)
 {
+	if (!BGFX_HANDLE_IS_VALID(render_data->program))
+		render_data->program = mod->program;
 	render_obj(mod, obj, render_data);
+}
+
+void ac_object_render_object_template(
+	struct ac_object_module * mod, 
+	struct ap_object_template * temp, 
+	struct ac_object_render_data * render_data,
+	const struct au_pos * position)
+{
+	struct ac_object_template * attachment = ac_object_get_template(temp);
+	struct ac_object_template_group * grp;
+	if (!BGFX_HANDLE_IS_VALID(render_data->program))
+		render_data->program = mod->program;
+	grp = attachment->group_list;
+	while (grp) {
+		if (grp->clump) {
+			struct ac_mesh_geometry * g = grp->clump->glist;
+			int view = ac_render_get_view(mod->ac_render);
+			while (g) {
+				const uint8_t discard = 
+					BGFX_DISCARD_BINDINGS |
+					BGFX_DISCARD_INDEX_BUFFER |
+					BGFX_DISCARD_INSTANCE_DATA |
+					BGFX_DISCARD_STATE;
+				mat4 model;
+				uint32_t j;
+				vec3 pos = { 0.0f, 0.0, 0.0f };
+				vec3 scale = { 1.0f, 1.0f, 1.0f };
+				if (!BGFX_HANDLE_IS_VALID(g->vertex_buffer)) {
+					g = g->next;
+					continue;
+				}
+				glm_mat4_identity(model);
+				glm_translate(model, pos);
+				glm_scale(model, scale);
+				bgfx_set_transform(&model, 1);
+				bgfx_set_vertex_buffer(0, g->vertex_buffer, 0, g->vertex_count);
+				for (j = 0; j < g->split_count; j++) {
+					struct ac_mesh_split * s = &g->splits[j];
+					bgfx_set_index_buffer(g->index_buffer,
+						s->index_offset, s->index_count);
+					if (!render_data->no_texture) {
+						struct ac_mesh_material * mat = 
+							&g->materials[s->material_index];
+						uint32_t k;
+						for (k = 0; k < COUNT_OF(mod->sampler); k++) {
+							if (BGFX_HANDLE_IS_VALID(mat->tex_handle[k])) {
+								ac_texture_test(mod->ac_texture, mat->tex_handle[k]);
+								bgfx_set_texture(k, mod->sampler[k], 
+									mat->tex_handle[k], UINT32_MAX);
+							}
+							else {
+								bgfx_set_texture(k, mod->sampler[k], 
+									mod->null_tex, UINT32_MAX);
+							}
+						}
+					}
+					bgfx_set_state(render_data->state, 0xffffffff);
+					bgfx_submit(view, render_data->program, 0, discard);
+				}
+				g = g->next;
+			}
+		}
+		grp = grp->next;
+	}
 }
 
 boolean ac_object_get_min_height(
@@ -1460,22 +1492,10 @@ void ac_object_export_sector(
 				}
 			}
 			if (!obj->object_id) {
-				uint32_t id;
-				if (ids) {
-					id = get_unique_object_id_from_list(ids,
-						sector->index_x, sector->index_z);
-					vec_push_back(&ids, &id);
-				}
-				else {
-					id = get_unique_object_id(mod, sector->index_x,
-						sector->index_z);
-				}
-				if (id == UINT32_MAX) {
-					ERROR("Ran out of available object IDs.");
-					write = FALSE;
-					break;
-				}
-				obj->object_id = id;
+				assert(0);
+				ERROR("Object id cannot be 0.");
+				write = FALSE;
+				break;
 			}
 		}
 		vec_free(ids);

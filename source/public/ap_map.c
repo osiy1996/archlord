@@ -26,10 +26,14 @@ static void match_glossary(struct ap_map_module * mod)
 	uint32_t i;
 	for (i = 0; i <= COUNT_OF(mod->region_templates); i++) {
 		struct ap_map_region_template * t = &mod->region_templates[i];
+		struct ap_map_region_glossary * glossary;
 		if (!t->in_use)
 			continue;
-		t->glossary = ap_admin_get_object_by_name(&mod->glossary_admin, t->name);
-		if (!t->glossary) {
+		glossary = ap_admin_get_object_by_name(&mod->glossary_admin, t->name);
+		if (glossary) {
+			t->glossary = glossary->label;
+		}
+		else {
 			t->glossary = "";
 			WARN("Region name doesn't have a matching glossary (Id = %u).",
 				t->id);

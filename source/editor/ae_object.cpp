@@ -8,6 +8,7 @@
 #include "core/log.h"
 #include "core/string.h"
 #include "core/vector.h"
+
 #include "task/task.h"
 
 #include "public/ap_config.h"
@@ -24,9 +25,17 @@
 #include "client/ac_texture.h"
 
 #include "editor/ae_editor_action.h"
+#include "editor/ae_event_binding.h"
 #include "editor/ae_event_refinery.h"
 #include "editor/ae_event_teleport.h"
 #include "editor/ae_texture.h"
+
+#define PREVIEW_QUEUE_MAX_SIZE 128
+#define PREVIEW_MAX_READ_BACK_TEXTURE_COUNT 16
+#define PREVIEW_WIDTH 256
+#define PREVIEW_HEIGHT 256
+
+size_t g_AeObjectTemplateOffset = SIZE_MAX;
 
 enum tool_type {
 	TOOL_TYPE_NONE,
@@ -58,6 +67,7 @@ struct ae_object_module {
 	struct ac_render_module * ac_render;
 	struct ac_terrain_module * ac_terrain;
 	struct ae_editor_action_module * ae_editor_action;
+	struct ae_event_binding_module * ae_event_binding;
 	struct ae_event_refinery_module * ae_event_refinery;
 	struct ae_event_teleport_module * ae_event_teleport;
 	boolean display_outliner;
@@ -69,6 +79,8 @@ struct ae_object_module {
 	enum tool_type tool_type;
 	/* Object move tool context. */
 	struct move_tool move_tool;
+	bool select_object_template;
+	char select_object_template_search_input[256];
 };
 
 inline void set_move_tool_axis(
@@ -175,6 +187,22 @@ static boolean create_shaders(struct ae_object_module * mod)
 	return TRUE;
 }
 
+static boolean cbobjecttemplatector(
+	struct ae_object_module * mod, 
+	struct ap_object_template * temp)
+{
+	struct ae_object_template * attachment = ae_object_get_template(temp);
+	return TRUE;
+}
+
+static boolean cbobjecttemplatedtor(
+	struct ae_object_module * mod, 
+	struct ap_object_template * temp)
+{
+	struct ae_object_template * attachment = ae_object_get_template(temp);
+	return TRUE;
+}
+
 static boolean cbobjectdtor(struct ae_object_module * mod, struct ap_object * obj)
 {
 	assert(obj != NULL);
@@ -220,9 +248,15 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_render, AC_RENDER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_terrain, AC_TERRAIN_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_editor_action, AE_EDITOR_ACTION_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_event_binding, AE_EVENT_BINDING_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_event_refinery, AE_EVENT_REFINERY_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_event_teleport, AE_EVENT_TELEPORT_MODULE_NAME);
-	ap_object_attach_data(mod->ap_object, AP_OBJECT_MDI_OBJECT, 0, mod, NULL, (ap_module_default_t)cbobjectdtor);
+	g_AeObjectTemplateOffset = ap_object_attach_data(mod->ap_object, 
+		AP_OBJECT_MDI_OBJECT_TEMPLATE, sizeof(struct ae_object_template), mod, 
+		(ap_module_default_t)cbobjecttemplatector, 
+		(ap_module_default_t)cbobjecttemplatedtor);
+	ap_object_attach_data(mod->ap_object, AP_OBJECT_MDI_OBJECT, 0, mod, NULL, 
+		(ap_module_default_t)cbobjectdtor);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_COMMIT_CHANGES, mod, (ap_module_default_t)cbcommitchanges);
 	return TRUE;
 }
@@ -239,7 +273,8 @@ static boolean oninitialize(struct ae_object_module * mod)
 static void onshutdown(struct ae_object_module * mod)
 {
 	vec_free(mod->objects);
-	bgfx_destroy_program(mod->program);
+	if (BGFX_HANDLE_IS_VALID(mod->program))
+		bgfx_destroy_program(mod->program);
 }
 
 struct ae_object_module * ae_object_create_module()
@@ -255,7 +290,7 @@ struct ae_object_module * ae_object_create_module()
 	return mod;
 }
 
-void ae_object_update(float dt)
+void ae_object_update(struct ae_object_module * mod, float dt)
 {
 }
 
@@ -331,8 +366,9 @@ boolean ae_object_on_mmove(
 				struct ac_object * objc = 
 					ac_object_get_object(mod->ac_object, mod->active_object);
 				float minh;
-				if (objc->temp && 
-					ac_object_get_min_height(mod->ac_object, objc->temp, &minh)) {
+				struct ac_object_template * temp = 
+					ac_object_get_template(mod->active_object->temp);
+				if (ac_object_get_min_height(mod->ac_object, temp, &minh)) {
 					struct au_pos pos =  {
 						pos.x = point[0],
 						pos.y = point[1] - minh,
@@ -504,6 +540,7 @@ static void render_properties(struct ae_object_module * mod)
 	struct ac_object * objc;
 	struct ap_event_manager_attachment * eventattachment;
 	boolean changed = FALSE;
+	char label[128];
 	if (!ImGui::Begin("Properties", (bool *)&mod->display_properties) || !obj) {
 		ImGui::End();
 		return;
@@ -512,9 +549,9 @@ static void render_properties(struct ae_object_module * mod)
 	ImGui::InputScalar("Object ID", ImGuiDataType_U32, 
 		&obj->object_id, NULL, NULL, NULL, 
 		ImGuiInputTextFlags_ReadOnly);
-	ImGui::InputScalar("Object TID", ImGuiDataType_U32, 
-		&obj->tid, NULL, NULL, NULL, 
-		ImGuiInputTextFlags_ReadOnly);
+	snprintf(label, sizeof(label), "[%u] %s", obj->tid, obj->temp->name);
+	if (ImGui::Button(label, ImVec2(ImGui::GetContentRegionAvail().x, 25.0f)))
+		mod->select_object_template = true;
 	obj_transform(mod, obj);
 	if (ImGui::TreeNodeEx("Public Properties", 
 			ImGuiTreeNodeFlags_Framed)) {
@@ -579,8 +616,54 @@ static void render_properties(struct ae_object_module * mod)
 		eventattachment);
 	changed |= ae_event_teleport_render_as_node(mod->ae_event_teleport, obj, 
 		eventattachment);
+	changed |= ae_event_binding_render_as_node(mod->ae_event_binding, obj, 
+		eventattachment);
 	if (changed)
 		objc->sector->flags |= AC_OBJECT_SECTOR_HAS_CHANGES;
+	ImGui::End();
+}
+
+static void rendertemplateselectionwindow(struct ae_object_module * mod)
+{
+	ImVec2 size = ImVec2(200.0f, 400.0f);
+	ImVec2 center = ImGui::GetMainViewport()->GetWorkCenter() - (size / 2.0f);
+	size_t index = 0;
+	struct ap_object_template * temp;
+	if (!mod->select_object_template)
+		return;
+	if (!mod->active_object) {
+		mod->select_object_template = false;
+		return;
+	}
+	ImGui::SetNextWindowSize(size, ImGuiCond_Appearing);
+	ImGui::SetNextWindowPos(center, ImGuiCond_Appearing);
+	if (!ImGui::Begin("Select Object Template", &mod->select_object_template)) {
+		ImGui::End();
+		return;
+	}
+	ImGui::InputText("Search", mod->select_object_template_search_input, 
+		sizeof(mod->select_object_template_search_input));
+	while (temp = ap_object_iterate_templates(mod->ap_object, &index)) {
+		struct ac_object_template * attachment = ac_object_get_template(temp);
+		char label[128];
+		snprintf(label, sizeof(label), "[%05u] %s", temp->tid, temp->name);
+		if (!strisempty(mod->select_object_template_search_input) && 
+			!stristr(label, mod->select_object_template_search_input)) {
+			continue;
+		}
+		if (ImGui::Selectable(label)) {
+			ac_object_release_template(mod->ac_object,
+				ac_object_get_template(mod->active_object->temp));
+			ac_object_reference_template(mod->ac_object, attachment);
+			mod->active_object->temp = temp;
+			mod->active_object->tid = temp->tid;
+			ac_object_get_object(mod->ac_object, mod->active_object)->sector->flags |= 
+				AC_OBJECT_SECTOR_HAS_CHANGES;
+			mod->select_object_template = false;
+			mod->select_object_template_search_input[0] = '\0';
+			break;
+		}
+	}
 	ImGui::End();
 }
 
@@ -588,4 +671,5 @@ void ae_object_imgui(struct ae_object_module * mod)
 {
 	render_outliner(mod);
 	render_properties(mod);
+	rendertemplateselectionwindow(mod);
 }

@@ -25,6 +25,8 @@
 
 BEGIN_DECLS
 
+extern size_t g_AcObjectTemplateOffset;
+
 enum ac_object_type {
 	AC_OBJECT_TYPE_NONE = 0x0000,
 	AC_OBJECT_TYPE_OBJECT = 0x0001,
@@ -88,7 +90,6 @@ struct ac_object_template_group {
 };
 
 struct ac_object_template {
-	uint32_t tid;
 	char category[AC_OBJECT_CATEGORY_LENGTH];
 	char collision_dff_name[AC_OBJECT_DFF_NAME_LENGTH];
 	char picking_dff_name[AC_OBJECT_DFF_NAME_LENGTH];
@@ -115,7 +116,6 @@ struct ac_object_group {
 };
 
 struct ac_object {
-	struct ap_object * obj;
 	struct ac_object_group * groups;
 	//OcTreeRenderData	m_stOcTreeData;
 	//RpAtomic			*m_pstCollisionAtomic;
@@ -123,7 +123,6 @@ struct ac_object {
 	boolean is_group_child;
 	//GroupChildInfo		*m_pInfoGroup;
 	uint32_t object_type;
-	struct ac_object_template * temp;
 	uint32_t status;
 	struct ac_object_sector * sector;
 	struct ac_object * next;
@@ -147,15 +146,24 @@ struct ac_object_render_data {
 
 struct ac_object_module * ac_object_create_module();
 
-struct ac_object_template * ac_object_get_template(
-	struct ac_object_module * mod, 
-	uint32_t tid);
-
 struct ac_object_template_group * ac_object_get_group(
 	struct ac_object_module * mod, 
 	struct ac_object_template * t,
 	uint32_t index,
 	boolean add);
+
+void ac_object_reference_template(
+	struct ac_object_module * mod, 
+	struct ac_object_template * temp);
+
+void ac_object_release_template(
+	struct ac_object_module * mod, 
+	struct ac_object_template * temp);
+
+void ac_object_get_bounding_sphere(
+	struct ac_object_module * mod, 
+	struct ac_object_template * temp,
+	vec4 sphere);
 
 struct ac_object * ac_object_get_object(
 	struct ac_object_module * mod, 
@@ -199,6 +207,12 @@ void ac_object_render_object(
 	struct ap_object * obj, 
 	struct ac_object_render_data * render_data);
 
+void ac_object_render_object_template(
+	struct ac_object_module * mod, 
+	struct ap_object_template * temp, 
+	struct ac_object_render_data * render_data,
+	const struct au_pos * position);
+
 /*
  * Finds the lowest vertex in object.
  */
@@ -211,6 +225,13 @@ void ac_object_export_sector(
 	struct ac_object_module * mod,
 	struct ac_object_sector * sector,
 	const char * export_directory);
+
+static inline struct ac_object_template * ac_object_get_template(
+	struct ap_object_template * temp)
+{
+	return (struct ac_object_template *)ap_module_get_attached_data(temp, 
+		g_AcObjectTemplateOffset);
+}
 
 END_DECLS
 

@@ -85,6 +85,7 @@
 #include "client/ac_texture.h"
 
 #include "editor/ae_editor_action.h"
+#include "editor/ae_event_binding.h"
 #include "editor/ae_event_refinery.h"
 #include "editor/ae_event_teleport.h"
 #include "editor/ae_item.h"
@@ -173,6 +174,7 @@ static struct ac_terrain_module * g_AcTerrain;
 static struct ac_object_module * g_AcObject;
 
 static struct ae_editor_action_module * g_AeEditorAction;
+static struct ae_event_binding_module * g_AeEventBinding;
 static struct ae_event_refinery_module * g_AeEventRefinery;
 static struct ae_event_teleport_module * g_AeEventTeleport;
 static struct ae_item_module * g_AeItem;
@@ -249,6 +251,7 @@ static struct module_desc g_Modules[] = {
 	{ AE_TEXTURE_MODULE_NAME, ae_texture_create_module, NULL, &g_AeTexture },
 	{ AE_TERRAIN_MODULE_NAME, ae_terrain_create_module, NULL, &g_AeTerrain },
 	{ AE_MAP_MODULE_NAME, ae_map_create_module, NULL, &g_AeMap },
+	{ AE_EVENT_BINDING_MODULE_NAME, ae_event_binding_create_module, NULL, &g_AeEventBinding },
 	{ AE_EVENT_REFINERY_MODULE_NAME, ae_event_refinery_create_module, NULL, &g_AeEventRefinery },
 	{ AE_EVENT_TELEPORT_MODULE_NAME, ae_event_teleport_create_module, NULL, &g_AeEventTeleport },
 	{ AE_OBJECT_MODULE_NAME, ae_object_create_module, NULL, &g_AeObject },
@@ -813,8 +816,6 @@ int main(int argc, char * argv[])
 		ERROR("Failed to initialize.");
 		return -1;
 	}
-	{
-	}
 	setspawnpos(&cam);
 	last = ap_tick_get(g_ApTick);
 	INFO("Entering main loop..");
@@ -886,6 +887,7 @@ int main(int argc, char * argv[])
 		ac_object_update(g_AcObject, dt);
 		ae_terrain_update(g_AeTerrain, dt);
 		ae_texture_process_loading_queue(g_AeTexture, 5);
+		ae_object_update(g_AeObject, dt);
 		render(&cam, dt);
 		task_do_post_cb();
 		sleep(1);
