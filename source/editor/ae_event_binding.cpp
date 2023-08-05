@@ -70,6 +70,30 @@ struct ae_event_binding_module * ae_event_binding_create_module()
 	return mod;
 }
 
+static const char * getbindinglabel(int type)
+{
+	switch (type) {
+	case AP_EVENT_BINDING_TYPE_NONE:
+		return "None";
+	case AP_EVENT_BINDING_TYPE_RESURRECTION:
+		return "Resurrection";
+	case AP_EVENT_BINDING_TYPE_NEW_CHARACTER:
+		return "New Character";
+	case AP_EVENT_BINDING_TYPE_SIEGEWAR_OFFENSE:
+		return "Siegewar Offense";
+	case AP_EVENT_BINDING_TYPE_SIEGEWAR_DEFENSE_INNER:
+		return "Siegewar Defense Inner";
+	case AP_EVENT_BINDING_TYPE_SIEGEWAR_ARCHLORD:
+		return "Siegewar Archlord";
+	case AP_EVENT_BINDING_TYPE_SIEGEWAR_ARCHLORD_ATTACKER:
+		return "Siegewar Archlord Attacker";
+	case AP_EVENT_BINDING_TYPE_SIEGEWAR_DEFENSE_OUTTER:
+		return "Siegewar Defense Outter";
+	default:
+		return "Invalid";
+	}
+}
+
 boolean ae_event_binding_render_as_node(
 	struct ae_event_binding_module * mod,
 	void * source,
@@ -131,6 +155,24 @@ boolean ae_event_binding_render_as_node(
 	}
 	if (ImGui::Button(label, ImVec2(ImGui::GetContentRegionAvail().x, 25.0f)))
 		mod->select_region = true;
+	changed |= ImGui::InputScalar("Radius", ImGuiDataType_U32, &binding->radius);
+	if (ImGui::BeginCombo("Binding Type", getbindinglabel(binding->binding_type))) {
+		const enum ap_event_binding_type types[] = { AP_EVENT_BINDING_TYPE_NONE, 
+			AP_EVENT_BINDING_TYPE_RESURRECTION, 
+			AP_EVENT_BINDING_TYPE_NEW_CHARACTER, 
+			AP_EVENT_BINDING_TYPE_SIEGEWAR_OFFENSE, 
+			AP_EVENT_BINDING_TYPE_SIEGEWAR_DEFENSE_INNER, 
+			AP_EVENT_BINDING_TYPE_SIEGEWAR_ARCHLORD, 
+			AP_EVENT_BINDING_TYPE_SIEGEWAR_ARCHLORD_ATTACKER, 
+			AP_EVENT_BINDING_TYPE_SIEGEWAR_DEFENSE_OUTTER };
+		for (i = 0; i < COUNT_OF(types); i++) {
+			if (ImGui::Selectable(getbindinglabel(types[i]), binding->binding_type == types[i])) {
+				binding->binding_type = types[i];
+				changed = true;
+			}
+		}
+		ImGui::EndCombo();
+	}
 	ImGui::TreePop();
 	if (mod->select_region) {
 		ImVec2 size = ImVec2(200.0f, 400.0f);
