@@ -44,7 +44,7 @@ static boolean event_read(
 	void * data, 
 	struct ap_module_stream * stream)
 {
-	struct ap_event_binding_event * e = ap_event_binding_get_event(mod, data);
+	struct ap_event_binding_event * e = ap_event_binding_get_event(data);
 	struct ap_event_binding * b = &e->binding;
 	while (ap_module_stream_read_next_value(stream)) {
 		const char * value_name = 
@@ -105,7 +105,7 @@ static boolean event_write(
 	void * data, 
 	struct ap_module_stream * stream)
 {
-	struct ap_event_binding_event * e = ap_event_binding_get_event(mod, data);
+	struct ap_event_binding_event * e = ap_event_binding_get_event(data);
 	struct ap_event_binding * b = &e->binding;
 	if (!ap_module_stream_write_value(stream, 
 			STREAM_BINDING_NAME, b->binding_name)) {
@@ -168,11 +168,4 @@ struct ap_event_binding_module * ap_event_binding_create_module()
 	struct ap_event_binding_module * mod = ap_module_instance_new(AP_EVENT_BINDING_MODULE_NAME,
 		sizeof(*mod), onregister, NULL, NULL, NULL);
 	return mod;
-}
-
-struct ap_event_binding_event * ap_event_binding_get_event(
-	struct ap_event_binding_module * mod,
-	struct ap_event_manager_event * e)
-{
-	return e->data;
 }

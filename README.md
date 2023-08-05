@@ -2,6 +2,7 @@
 Requirements:
 - Windows.
 - Visual Studio 2022.
+- PostgreSQL 9.6
 
 After installing the required programs, open `msvc/archlord.sln`, set platform to `x64` and build the solution.
 

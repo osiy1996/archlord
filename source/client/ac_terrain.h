@@ -139,6 +139,10 @@ struct ac_terrain_sector * ac_terrain_get_sector_at(
 	struct ac_terrain_module * mod, 
 	const vec3 p);
 
+struct ac_terrain_segment ac_terrain_get_segment(
+	struct ac_terrain_module * mod, 
+	const struct au_pos * position);
+
 void ac_terrain_set_view_distance(
 	struct ac_terrain_module * mod, 
 	float view_distance);

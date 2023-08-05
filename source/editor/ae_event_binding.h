@@ -17,6 +17,11 @@ boolean ae_event_binding_render_as_node(
 	void * source,
 	struct ap_event_manager_attachment * attachment);
 
+void ae_event_binding_sync_region(
+	struct ae_event_binding_module * mod,
+	void * source,
+	const struct au_pos * position);
+
 END_DECLS
 
 #endif /* _AE_EVENT_BINDING_H_ */

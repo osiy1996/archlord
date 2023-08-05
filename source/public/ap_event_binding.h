@@ -5,6 +5,7 @@
 #include "core/types.h"
 
 #include "public/ap_define.h"
+#include "public/ap_event_manager.h"
 #include "public/ap_factors.h"
 
 #define AP_EVENT_BINDING_MODULE_NAME "AgpmEventBinding"
@@ -44,9 +45,11 @@ struct ap_event_binding_event {
 
 struct ap_event_binding_module * ap_event_binding_create_module();
 
-struct ap_event_binding_event * ap_event_binding_get_event(
-	struct ap_event_binding_module * mod,
-	struct ap_event_manager_event * e);
+static inline struct ap_event_binding_event * ap_event_binding_get_event(
+	struct ap_event_manager_event * e)
+{
+	return (struct ap_event_binding_event *)e->data;
+}
 
 END_DECLS
 

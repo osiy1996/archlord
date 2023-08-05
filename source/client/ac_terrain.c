@@ -11,6 +11,7 @@
 #include "task/task.h"
 
 #include "public/ap_config.h"
+#include "public/ap_define.h"
 #include "public/ap_sector.h"
 
 #include "client/ac_mesh.h"
@@ -1495,6 +1496,19 @@ struct ac_terrain_sector * ac_terrain_get_sector_at(
 	if (!ap_scr_pos_to_index(p, &sx, &sz))
 		return NULL;
 	return &mod->sectors[sx][sz];
+}
+
+struct ac_terrain_segment ac_terrain_get_segment(
+	struct ac_terrain_module * mod, 
+	const struct au_pos * position)
+{
+	vec3 p = { position->x, position->y, position->z };
+	struct ac_terrain_sector * sector = ac_terrain_get_sector_at(mod, p);
+	if (!sector) {
+		struct ac_terrain_segment segment = { 0 };
+		return segment;
+	}
+	return *get_segment_by_pos(sector, p[0], p[2]);
 }
 
 void ac_terrain_set_view_distance(

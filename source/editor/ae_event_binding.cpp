@@ -9,6 +9,7 @@
 #include "public/ap_map.h"
 
 #include "client/ac_imgui.h"
+#include "client/ac_terrain.h"
 
 #include "editor/ae_editor_action.h"
 
@@ -20,15 +21,12 @@ struct ae_event_binding_module {
 	struct ap_event_manager_module * ap_event_manager;
 	struct ap_event_binding_module * ap_event_binding;
 	struct ap_map_module * ap_map;
+	struct ac_terrain_module * ac_terrain;
 	struct ae_editor_action_module * ae_editor_action;
 	boolean has_pending_changes;
-	bool display_group_editor;
-	char group_search_input[AP_MAP_MAX_REGION_NAME_SIZE];
 	bool filter_empty_groups;
-	bool add_point;
-	struct ap_event_binding_group * add_point_to_group;
-	boolean add_point_to_source;
-	char point_search_input[AP_EVENT_BINDING_MAX_NAME + 1];
+	bool select_region;
+	char region_selection_search_input[AP_EVENT_BINDING_MAX_NAME + 1];
 };
 
 static boolean cbcommitchanges(
@@ -58,6 +56,7 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_manager, AP_EVENT_MANAGER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_binding, AP_EVENT_BINDING_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_map, AP_MAP_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_terrain, AC_TERRAIN_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_editor_action, AE_EDITOR_ACTION_MODULE_NAME);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_COMMIT_CHANGES, mod, (ap_module_default_t)cbcommitchanges);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_EDITORS, mod, (ap_module_default_t)cbrendereditors);
@@ -130,8 +129,74 @@ boolean ae_event_binding_render_as_node(
 	else {
 		strcpy(label, "Select Binding Region");
 	}
-	if (ImGui::Button(label, ImVec2(ImGui::GetContentRegionAvail().x, 25.0f))) {
-	}
+	if (ImGui::Button(label, ImVec2(ImGui::GetContentRegionAvail().x, 25.0f)))
+		mod->select_region = true;
 	ImGui::TreePop();
+	if (mod->select_region) {
+		ImVec2 size = ImVec2(200.0f, 400.0f);
+		ImVec2 center = ImGui::GetMainViewport()->GetWorkCenter() - (size / 2.0f);
+		ImGui::SetNextWindowSize(size, ImGuiCond_Appearing);
+		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing);
+		if (ImGui::Begin("Select Binding Region", &mod->select_region)) {
+			ImGui::InputText("Search", mod->region_selection_search_input, 
+				sizeof(mod->region_selection_search_input));
+			uint32_t i;
+			for (i = 0; i < AP_MAP_MAX_REGION_COUNT; i++) {
+				region = ap_map_get_region_template(mod->ap_map, i);
+				if (!region)
+					continue;
+				snprintf(label, sizeof(label), "[%03u] %s", region->id, region->glossary);
+				if (!strisempty(mod->region_selection_search_input) && 
+					!stristr(label, mod->region_selection_search_input)) {
+					continue;
+				}
+				if (ImGui::Selectable(label)) {
+					strlcpy(binding->town_name, region->name, 
+						sizeof(binding->town_name));
+					mod->select_region = false;
+					mod->region_selection_search_input[0] = '\0';
+					changed = true;
+					break;
+				}
+			}
+		}
+		ImGui::End();
+	}
 	return changed;
+}
+
+void ae_event_binding_sync_region(
+	struct ae_event_binding_module * mod,
+	void * source,
+	const struct au_pos * position)
+{
+	struct ap_event_manager_attachment * attachment = 
+		ap_event_manager_get_attachment(mod->ap_event_manager, source);
+	uint32_t i;
+	struct ap_event_manager_event * e = NULL;
+	struct ap_event_binding_event * eventbinding;
+	struct ap_event_binding * binding;
+	struct ap_map_region_template * region;
+	struct ac_terrain_segment segment;
+	for (i = 0 ; i < attachment->event_count; i++) {
+		if (attachment->events[i].function == AP_EVENT_MANAGER_FUNCTION_BINDING) {
+			e = &attachment->events[i];
+			break;
+		}
+	}
+	if (!e)
+		return;
+	eventbinding = ap_event_binding_get_event(e);
+	binding = &eventbinding->binding;
+	segment = ac_terrain_get_segment(mod->ac_terrain, position);
+	if (!segment.region_id) {
+		memset(binding->town_name, 0, sizeof(binding->town_name));
+		return;
+	}
+	region = ap_map_get_region_template(mod->ap_map, segment.region_id);
+	if (!region) {
+		memset(binding->town_name, 0, sizeof(binding->town_name));
+		return;
+	}
+	strlcpy(binding->town_name, region->name, sizeof(binding->town_name));
 }

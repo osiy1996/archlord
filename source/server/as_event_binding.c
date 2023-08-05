@@ -111,8 +111,7 @@ static boolean cbobjectinit(
 		struct ap_event_manager_event * e = &events->events[i];
 		switch (e->function) {
 		case AP_EVENT_MANAGER_FUNCTION_BINDING: {
-			struct ap_event_binding_event * binding = 
-				ap_event_binding_get_event(mod->ap_event_binding, e);
+			struct ap_event_binding_event * binding = ap_event_binding_get_event(e);
 			if (!parsebinding(mod, obj, binding)) {
 				ERROR("Failed to parse binding (%u).", 
 					binding->binding_id);

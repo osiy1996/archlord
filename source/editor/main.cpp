@@ -859,9 +859,12 @@ int main(int argc, char * argv[])
 						SDL_GetMouseState(NULL, NULL);
 					if (mb_state & SDL_BUTTON(SDL_BUTTON_RIGHT))
 						break;
-					if (ae_object_on_mdown(g_AeObject, &cam, e.button.x, e.button.y))
+					if (ae_object_on_lmb_down(g_AeObject, &cam, e.button.x, e.button.y))
 						break;
 					ae_terrain_on_mdown(g_AeTerrain, &cam, e.button.x, e.button.y);
+				}
+				else if (e.button.button == SDL_BUTTON_RIGHT) {
+					ae_object_on_rmb_down(g_AeObject, &cam, e.button.x, e.button.y);
 				}
 				break;
 			case SDL_KEYDOWN:

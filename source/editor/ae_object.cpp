@@ -211,6 +211,15 @@ static boolean cbobjectdtor(struct ae_object_module * mod, struct ap_object * ob
 	return TRUE;
 }
 
+static boolean cbobjectmove(
+	struct ae_object_module * mod, 
+	struct ap_object_cb_move_object_data * data)
+{
+	ae_event_binding_sync_region(mod->ae_event_binding, data->obj, 
+		&data->obj->position);
+	return TRUE;
+}
+
 static boolean cbcommitchanges(
 	struct ae_object_module * mod,
 	void * data)
@@ -257,6 +266,7 @@ static boolean onregister(
 		(ap_module_default_t)cbobjecttemplatedtor);
 	ap_object_attach_data(mod->ap_object, AP_OBJECT_MDI_OBJECT, 0, mod, NULL, 
 		(ap_module_default_t)cbobjectdtor);
+	ap_object_add_callback(mod->ap_object, AP_OBJECT_CB_MOVE_OBJECT, mod, (ap_module_default_t)cbobjectmove);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_COMMIT_CHANGES, mod, (ap_module_default_t)cbcommitchanges);
 	return TRUE;
 }
@@ -316,7 +326,7 @@ void ae_object_render(struct ae_object_module * mod, struct ac_camera * cam)
 {
 }
 
-boolean ae_object_on_mdown(
+boolean ae_object_on_lmb_down(
 	struct ae_object_module * mod,
 	struct ac_camera *  cam,
 	int mouse_x,
@@ -332,6 +342,24 @@ boolean ae_object_on_mdown(
 	case TOOL_TYPE_MOVE:
 		mod->tool_type = TOOL_TYPE_NONE;
 		return TRUE;
+	}
+	return FALSE;
+}
+
+boolean ae_object_on_rmb_down(
+	struct ae_object_module * mod,
+	struct ac_camera * cam,
+	int mouse_x,
+	int mouse_y)
+{
+	switch (mod->tool_type) {
+	case TOOL_TYPE_MOVE:
+		if (mod->active_object) {
+			ap_object_move_object(mod->ap_object, mod->active_object, 
+				&mod->move_tool.prev_pos);
+		}
+		mod->tool_type = TOOL_TYPE_NONE;
+		break;
 	}
 	return FALSE;
 }
@@ -447,8 +475,8 @@ boolean ae_object_on_key_down(
 		switch (mod->tool_type) {
 		case TOOL_TYPE_MOVE:
 			if (mod->active_object) {
-				mod->active_object->position = 
-					mod->move_tool.prev_pos;
+				ap_object_move_object(mod->ap_object, mod->active_object, 
+					&mod->move_tool.prev_pos);
 			}
 			break;
 		default:
