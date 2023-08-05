@@ -109,7 +109,7 @@ struct ap_event_teleport_point {
 	uint32_t target_group_count;
 	enum ap_event_teleport_region_type region_type;
 	enum ap_event_teleport_special_type special_type;
-	enum ap_event_teleport_use_type use_type;
+	uint32_t use_type;
 };
 
 struct ap_event_teleport_attach {

@@ -285,6 +285,54 @@ struct ae_event_teleport_module * ae_event_teleport_create_module()
 	return mod;
 }
 
+static const char * getregiontypelabel(enum ap_event_teleport_region_type type)
+{
+	switch (type) {
+	case AP_EVENT_TELEPORT_REGION_NORMAL:
+		return "Normal";
+	case AP_EVENT_TELEPORT_REGION_PVP:
+		return "PvP";
+	default:
+		return "Invalid";
+	}
+}
+
+static const char * getspecialtypelabel(enum ap_event_teleport_special_type type)
+{
+	switch (type) {
+	case AP_EVENT_TELEPORT_SPECIAL_NORMAL:
+		return "Normal";
+	case AP_EVENT_TELEPORT_SPECIAL_RETURN_ONLY:
+		return "Return Only";
+	case AP_EVENT_TELEPORT_SPECIAL_SIEGEWAR:
+		return "Siegewar";
+	case AP_EVENT_TELEPORT_SPECIAL_CASTLE_TO_DUNGEON:
+		return "Castle To Dungeon";
+	case AP_EVENT_TELEPORT_SPECIAL_DUNGEON_TO_LANSPHERE:
+		return "Dungeon To Lansphere";
+	case AP_EVENT_TELEPORT_SPECIAL_LANSPHERE:
+		return "Lansphere";
+	default:
+		return "Invalid";
+	}
+}
+
+static const char * getusetypelabel(enum ap_event_teleport_use_type type)
+{
+	switch (type) {
+	case AP_EVENT_TELEPORT_USE_HUMAN:
+		return "Human";
+	case AP_EVENT_TELEPORT_USE_ORC:
+		return "Orc";
+	case AP_EVENT_TELEPORT_USE_MOONELF:
+		return "Moonelf";
+	case AP_EVENT_TELEPORT_USE_DRAGONSCION:
+		return "Dragonscion";
+	default:
+		return "Invalid";
+	}
+}
+
 boolean ae_event_teleport_render_as_node(
 	struct ae_event_teleport_module * mod,
 	void * source,
@@ -341,6 +389,7 @@ boolean ae_event_teleport_render_as_node(
 	if (teleport->point) {
 		struct ap_event_teleport_point * point = teleport->point;
 		bool pointchanged = false;
+		bool check;
 		glossaryentry = ap_map_get_glossary(mod->ap_map, point->point_name);
 		if (glossaryentry)
 			strlcpy(glossary, glossaryentry, sizeof(glossary));
@@ -352,6 +401,65 @@ boolean ae_event_teleport_render_as_node(
 			sizeof(point->description));
 		pointchanged |= ImGui::InputFloat("Min. Radius", &point->radius_min);
 		pointchanged |= ImGui::InputFloat("Max. Radius", &point->radius_max);
+		if (ImGui::BeginCombo("Region Type", getregiontypelabel(point->region_type))) {
+			const enum ap_event_teleport_region_type types[] = { 
+				AP_EVENT_TELEPORT_REGION_NORMAL,
+				AP_EVENT_TELEPORT_REGION_PVP };
+			for (i = 0; i < COUNT_OF(types); i++) {
+				if (ImGui::Selectable(getregiontypelabel(types[i]), point->region_type == types[i])) {
+					point->region_type = types[i];
+					pointchanged = true;
+				}
+			}
+			ImGui::EndCombo();
+		}
+		if (ImGui::BeginCombo("Special Type", getspecialtypelabel(point->special_type))) {
+			const enum ap_event_teleport_special_type types[] = { 
+				AP_EVENT_TELEPORT_SPECIAL_NORMAL,
+				AP_EVENT_TELEPORT_SPECIAL_RETURN_ONLY,
+				AP_EVENT_TELEPORT_SPECIAL_SIEGEWAR,
+				AP_EVENT_TELEPORT_SPECIAL_CASTLE_TO_DUNGEON,
+				AP_EVENT_TELEPORT_SPECIAL_DUNGEON_TO_LANSPHERE,
+				AP_EVENT_TELEPORT_SPECIAL_LANSPHERE };
+			for (i = 0; i < COUNT_OF(types); i++) {
+				if (ImGui::Selectable(getspecialtypelabel(types[i]), point->special_type == types[i])) {
+					point->special_type = types[i];
+					pointchanged = true;
+				}
+			}
+			ImGui::EndCombo();
+		}
+		{
+			uint32_t types[] = { 
+				AP_EVENT_TELEPORT_USE_HUMAN,
+				AP_EVENT_TELEPORT_USE_ORC,
+				AP_EVENT_TELEPORT_USE_MOONELF,
+				AP_EVENT_TELEPORT_USE_DRAGONSCION };
+			const char * labels[] = {
+				"Can Be Used By Humans",
+				"Can Be Used By Orcs",
+				"Can Be Used By Moonelves",
+				"Can Be Used By Dragonscions" };
+			for (i = 0; i < COUNT_OF(types); i++) {
+				check = (point->use_type & types[i]) != 0 || !point->use_type;
+				if (ImGui::Checkbox(labels[i], &check)) {
+					if (check) {
+						point->use_type |= types[i];
+					}
+					else if (!point->use_type) {
+						uint32_t j;
+						for (j = 0; j < COUNT_OF(types); j++) {
+							if (i != j)
+								point->use_type |= types[j];
+						}
+					}
+					else {
+						point->use_type &= ~types[i];
+					}
+					pointchanged = true;
+				}
+			}
+		}
 		if (pointchanged)
 			mod->has_pending_changes = TRUE;
 	}
