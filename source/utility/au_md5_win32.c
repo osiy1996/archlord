@@ -1,5 +1,8 @@
 #include "utility/au_md5.h"
 
+#include "core/file_system.h"
+#include "core/malloc.h"
+
 #define WIN32_LEAN_AND_MEAN
 #define NOGDI
 #include <Windows.h>
@@ -55,4 +58,25 @@ boolean au_md5_crypt(
 	CryptDestroyHash(hash);
 	LeaveCriticalSection(&lock);
 	return TRUE;
+}
+
+boolean au_md5_copy_and_encrypt_file(const char * src_path, const char * dst_path)
+{
+	void * data;
+	size_t size = 0;
+	boolean result;
+	if (!get_file_size(src_path, &size))
+		return FALSE;
+	data = alloc(size);
+	if (!load_file(src_path, data, size)) {
+		dealloc(data);
+		return FALSE;
+	}
+	if (!au_md5_crypt(data, size, "1111", 4)) {
+		dealloc(data);
+		return FALSE;
+	}
+	result = make_file(dst_path, data, size);
+	dealloc(data);
+	return result;
 }

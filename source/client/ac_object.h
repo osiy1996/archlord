@@ -13,6 +13,8 @@
 
 #include "client/ac_animation.h"
 #include "client/ac_define.h"
+#include "client/ac_lod.h"
+#include "client/ac_octree.h"
 #include "client/ac_render.h"
 
 #define AC_OBJECT_MODULE_NAME "AgcmObject"
@@ -95,7 +97,7 @@ struct ac_object_template {
 	char picking_dff_name[AC_OBJECT_DFF_NAME_LENGTH];
 	//struct ac_mesh_geometry * collision_geometry;
 	//struct ac_mesh_geometry * picking_geometry;
-	//OcTreeRenderData			m_stOcTreeData;
+	struct ac_octree_render_data octree_data;
 	RwRGBA pre_light;
 	uint32_t object_type;
 	struct ac_lod lod;
@@ -103,7 +105,7 @@ struct ac_object_template {
 	uint32_t refcount;
 	enum ac_object_status status;
 	enum ap_map_material_type ridable_material_type;
-	uint32_t dnf;
+	uint32_t did_not_finish;
 };
 
 struct ac_object_group {

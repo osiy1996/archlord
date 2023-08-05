@@ -12,6 +12,7 @@
 #include "public/ap_sector.h"
 
 #include <assert.h>
+#include <ctype.h>
 #include <stdlib.h>
 
 #define INI_NAME_NAME			"Name"
@@ -42,8 +43,14 @@ static boolean template_read(
 	while (ap_module_stream_read_next_value(stream)) {
 		const char * value_name = ap_module_stream_get_value_name(stream);
 		if (strcmp(value_name, INI_NAME_NAME) == 0) {
-			ap_module_stream_get_str(stream, tmp->name, 
-				sizeof(tmp->name));
+			size_t i;
+			size_t len;
+			ap_module_stream_get_str(stream, tmp->name, sizeof(tmp->name));
+			len = strlen(tmp->name);
+			for (i = 0; i < len; i++) {
+				if (!isascii(tmp->name[i]))
+					tmp->name[i] = '\0';
+			}
 		}
 		else if (strcmp(value_name, INI_NAME_OBJECT_TYPE) == 0) {
 			ap_module_stream_get_u32(stream, &tmp->type);
@@ -57,10 +64,13 @@ static boolean template_read(
 
 static boolean template_write(
 	struct ap_object_module * mod,
-	void * data, 
+	struct ap_object_template * temp,
 	struct ap_module_stream * stream)
 {
-	return TRUE;
+	boolean result = TRUE;
+	result &= ap_module_stream_write_value(stream, INI_NAME_NAME, temp->name);
+	result &= ap_module_stream_write_i32(stream, INI_NAME_OBJECT_TYPE, temp->type);
+	return result;
 }
 
 boolean ap_object_object_read(
@@ -333,6 +343,60 @@ boolean ap_object_load_templates(
 			ap_module_stream_destroy(stream);
 			return FALSE;
 		}
+	}
+	ap_module_stream_destroy(stream);
+	return TRUE;
+}
+
+static int sorttemplates(
+	const struct ap_object_template * const * t1,
+	const struct ap_object_template * const * t2)
+{
+	return ((*t1)->tid - (*t2)->tid);
+}
+
+boolean ap_object_write_templates(
+	struct ap_object_module * mod,
+	const char * file_path, 
+	boolean encrypt)
+{
+	struct ap_module_stream * stream;
+	size_t index = 0;
+	size_t count = 0;
+	void * object;
+	struct ap_object_template * temp;
+	struct ap_object_template ** list = vec_new_reserved(sizeof(*list), 
+		ap_admin_get_object_count(&mod->template_admin));
+	stream = ap_module_stream_create();
+	ap_module_stream_set_mode(stream, AU_INI_MGR_MODE_NAME_OVERWRITE);
+	ap_module_stream_set_type(stream, AU_INI_MGR_TYPE_KEY_INDEX);
+	while (ap_admin_iterate_id(&mod->template_admin, &index, &object))
+		vec_push_back((void **)&list, object);
+	count = vec_count(list);
+	qsort(list, count, sizeof(*list), sorttemplates);
+	for (index = 0; index < count; index++) {
+		char name[32];
+		temp = list[index];
+		snprintf(name, sizeof(name), "%u", temp->tid);
+		if (!ap_module_stream_set_section_name(stream, name)) {
+			ERROR("Failed to set section name.");
+			ap_module_stream_destroy(stream);
+			vec_free(list);
+			return FALSE;
+		}
+		if (!ap_module_stream_enum_write(mod, stream, 
+				AP_OBJECT_MDI_OBJECT_TEMPLATE, temp)) {
+			ERROR("Failed to write object template (%s).", name);
+			ap_module_stream_destroy(stream);
+			vec_free(list);
+			return FALSE;
+		}
+	}
+	vec_free(list);
+	if (!ap_module_stream_write(stream, file_path, 0, encrypt)) {
+		ERROR("Failed to write object templates..");
+		ap_module_stream_destroy(stream);
+		return FALSE;
 	}
 	ap_module_stream_destroy(stream);
 	return TRUE;

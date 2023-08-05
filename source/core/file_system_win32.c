@@ -334,6 +334,14 @@ boolean make_file(
 	return r;
 }
 
+boolean copy_file(
+	const char * src_path, 
+	const char * dst_path, 
+	boolean fail_if_exists)
+{
+	return CopyFileA(src_path, dst_path, fail_if_exists);
+}
+
 boolean enum_dir(
 	char * directory_path,
 	size_t maxcount,

@@ -12,6 +12,8 @@ boolean au_md5_crypt(
 	const uint8_t * key,
 	uint32_t key_size);
 
+boolean au_md5_copy_and_encrypt_file(const char * src_path, const char * dst_path);
+
 END_DECLS
 
 #endif /* _AU_MD5_H_ */

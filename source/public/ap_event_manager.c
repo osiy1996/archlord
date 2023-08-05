@@ -64,6 +64,22 @@ static void destroyattachment(
 	}
 }
 
+static boolean cbobjecttemplatestreamread(
+	struct ap_event_manager_module * mod, 
+	void * data, 
+	struct ap_module_stream * stream)
+{
+	return TRUE;
+}
+
+static boolean cbobjecttemplatestreamwrite(
+	struct ap_event_manager_module * mod, 
+	void * data, 
+	struct ap_module_stream * stream)
+{
+	return TRUE;
+}
+
 static boolean streamread(
 	struct ap_event_manager_module * mod, 
 	void * data, 
@@ -324,6 +340,9 @@ static boolean onregister(
 		ERROR("Failed to attach object data.");
 		return FALSE;
 	}
+	ap_object_add_stream_callback(mod->ap_object, AP_OBJECT_MDI_OBJECT_TEMPLATE,
+		AP_EVENT_MANAGER_MODULE_NAME, mod, 
+		cbobjecttemplatestreamread, cbobjecttemplatestreamwrite);
 	ap_object_add_stream_callback(mod->ap_object, AP_OBJECT_MDI_OBJECT,
 		AP_EVENT_MANAGER_MODULE_NAME, mod, streamread, streamwrite);
 	mod->ap_base = ap_module_registry_get_module(registry, AP_BASE_MODULE_NAME);

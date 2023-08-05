@@ -76,8 +76,10 @@
 #include "client/ac_camera.h"
 #include "client/ac_console.h"
 #include "client/ac_dat.h"
+#include "client/ac_event_effect.h"
 #include "client/ac_event_point_light.h"
 #include "client/ac_imgui.h"
+#include "client/ac_lod.h"
 #include "client/ac_mesh.h"
 #include "client/ac_object.h"
 #include "client/ac_render.h"
@@ -162,16 +164,18 @@ static struct ap_tick_module * g_ApTick;
 static struct ap_ui_status_module * g_ApUiStatus;
 static struct ap_world_module * g_ApWorld;
 
+static struct ac_ambient_occlusion_map_module * g_AcAmbientOcclusionMap;
 static struct ac_console_module * g_AcConsole;
-static ap_module_t g_AcAmbientOcclusionMap;
-static ap_module_t g_AcEventPointLight;
-static ap_module_t g_AcDat;
-static struct ac_render_module * g_AcRender;
+static struct ac_dat_module * g_AcDat;
+static struct ac_event_effect_module * g_AcEventEffect;
+static struct ac_event_point_light_module * g_AcEventPointLight;
 static struct ac_imgui_module * g_AcImgui;
-static ap_module_t g_AcTexture;
-static ap_module_t g_AcMesh;
-static struct ac_terrain_module * g_AcTerrain;
+static struct ac_lod_module * g_AcLOD;
+static struct ac_mesh_module * g_AcMesh;
 static struct ac_object_module * g_AcObject;
+static struct ac_render_module * g_AcRender;
+static struct ac_terrain_module * g_AcTerrain;
+static struct ac_texture_module * g_AcTexture;
 
 static struct ae_editor_action_module * g_AeEditorAction;
 static struct ae_event_binding_module * g_AeEventBinding;
@@ -244,8 +248,10 @@ static struct module_desc g_Modules[] = {
 	{ AC_IMGUI_MODULE_NAME, ac_imgui_create_module, NULL, &g_AcImgui },
 	{ AC_CONSOLE_MODULE_NAME, ac_console_create_module, NULL, &g_AcConsole },
 	{ AC_MESH_MODULE_NAME, ac_mesh_create_module, NULL, &g_AcMesh },
+	{ AC_LOD_MODULE_NAME, ac_lod_create_module, NULL, &g_AcLOD },
 	{ AC_TERRAIN_MODULE_NAME, ac_terrain_create_module, NULL, &g_AcTerrain },
 	{ AC_OBJECT_MODULE_NAME, ac_object_create_module, NULL, &g_AcObject },
+	{ AC_EVENT_EFFECT_MODULE_NAME, ac_event_effect_create_module, NULL, &g_AcEventEffect },
 	/* Editor modules. */
 	{ AE_EDITOR_ACTION_MODULE_NAME, ae_editor_action_create_module, NULL, &g_AeEditorAction },
 	{ AE_TEXTURE_MODULE_NAME, ae_texture_create_module, NULL, &g_AeTexture },

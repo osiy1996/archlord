@@ -393,6 +393,26 @@ boolean ac_render_stream_read_crt(
 	return TRUE;
 }
 
+boolean ac_render_stream_write_clump_render_type(
+	struct ap_module_stream * stream,
+	struct ac_render_crt * crt)
+{
+	boolean result = TRUE;
+	char valuename[256];
+	char value[256];
+	if (crt->set_count > 0) {
+		uint32_t i;
+		result &= ap_module_stream_write_i32(stream, AC_RENDER_CRT_STREAM_NUM, crt->set_count);
+		for (i = 0; i < crt->set_count; i++) {
+			snprintf(valuename, sizeof(valuename), "%s%d", AC_RENDER_CRT_STREAM_RENDERTYPE, i);
+			snprintf(value, sizeof(value), "%d:%d:%d", i, 
+				crt->render_type.render_type[i], crt->render_type.cust_data[i]);
+			result &= ap_module_stream_write_value(stream, valuename, value);
+		}
+	}
+	return result;
+}
+
 int ac_render_allocate_view(struct ac_render_module * mod)
 {
 	return mod->view_cursor++;

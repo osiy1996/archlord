@@ -22,6 +22,7 @@
 #include "client/ac_texture.h"
 
 #include <assert.h>
+#include <ctype.h>
 #include <stdlib.h>
 
 #define INI_NAME_DFF					"DFF"
@@ -42,6 +43,7 @@
 #define GET_ANIM_NAME					"OBJECT_ANIM"
 #define INI_NAME_OCTREEDATANUM			"OCTREE_DNUM"
 #define INI_NAME_OCTREEDATA				"OCTREE_DATA"
+#define INI_NAME_OCTREEDATA_LENGTH		11
 #define INI_NAME_OCTREEDATA_MAXBBOX		"OCTREE_MAXBBOX"
 #define INI_NAME_DNF_1					"DID_NOT_FINISH_KOREA"
 #define INI_NAME_DNF_2					"DID_NOT_FINISH_CHINA"
@@ -55,6 +57,7 @@ struct ac_object_module {
 	struct ap_config_module * ap_config;
 	struct ap_object_module * ap_object;
 	struct ac_dat_module * ac_dat;
+	struct ac_lod_module * ac_lod;
 	struct ac_mesh_module * ac_mesh;
 	struct ac_render_module * ac_render;
 	struct ac_texture_module * ac_texture;
@@ -123,15 +126,27 @@ static struct ac_anim_data * add_anim(
 	return ad;
 }
 
-boolean ac_object_template_read(
+static boolean cbobjecttemplatestreamread(
 	struct ac_object_module * mod, 
 	struct ap_object_template * t,
 	struct ap_module_stream * stream)
 {
 	struct ac_object_template * tmp = ac_object_get_template(t);
+	int occindex = 0;
 	while (ap_module_stream_read_next_value(stream)) {
 		const char * value_name = ap_module_stream_get_value_name(stream);
 		const char * value = ap_module_stream_get_value(stream);
+		enum ac_lod_stream_read_result readresult = 
+			ac_lod_stream_read(mod->ac_lod, stream, &tmp->lod);
+		switch (readresult) {
+		case AC_LOD_STREAM_READ_RESULT_ERROR:
+			ERROR("Failed to read object lod stream.");
+			return FALSE;
+		case AC_LOD_STREAM_READ_RESULT_PASS:
+			break;
+		case AC_LOD_STREAM_READ_RESULT_READ:
+			continue;
+		}
 		if (strcmp(value_name, INI_NAME_DFF) == 0) {
 			char temp[256];
 			uint32_t index;
@@ -218,7 +233,14 @@ boolean ac_object_template_read(
 			}
 		}
 		else if (strcmp(value_name, INI_NAME_CATEGORY) == 0) {
+			size_t i;
+			size_t len;
 			strlcpy(tmp->category, value, sizeof(tmp->category));
+			len = strlen(tmp->category);
+			for (i = 0; i < len; i++) {
+				if (!isascii(tmp->category[i]))
+					tmp->category[i] = '\0';
+			}
 		}
 		else if (strcmp(value_name, INI_NAME_OBJECT_TYPE) == 0) {
 			tmp->object_type = strtoul(value, NULL, 10);
@@ -231,16 +253,209 @@ boolean ac_object_template_read(
 			strlcpy(tmp->picking_dff_name, value, 
 				sizeof(tmp->picking_dff_name));
 		}
+		else if (strcmp(value_name, INI_NAME_OCTREEDATANUM) == 0) {
+			tmp->octree_data.occluder_box_count = (int8_t)strtol(value, NULL, 10);
+			if (tmp->octree_data.occluder_box_count) {
+				tmp->octree_data.top_verts = alloc(tmp->octree_data.occluder_box_count * 
+					4 * sizeof(*tmp->octree_data.top_verts));
+				memset(tmp->octree_data.top_verts, 0, tmp->octree_data.occluder_box_count * 
+					4 * sizeof(*tmp->octree_data.top_verts));
+			}
+		}
+		else if (strncmp(value_name, INI_NAME_OCTREEDATA, INI_NAME_OCTREEDATA_LENGTH) == 0) {
+			int isoccluder;
+			if (occindex >= tmp->octree_data.occluder_box_count) {
+				ERROR("Too many octree data.");
+				return FALSE;
+			}
+			if (sscanf(value, "%d:%f:%f:%f:%f:%f:%f:%f:%f:%f:%f:%f:%f",
+					&isoccluder,
+					&tmp->octree_data.top_verts[occindex * 4 + 0].x,
+					&tmp->octree_data.top_verts[occindex * 4 + 0].y,
+					&tmp->octree_data.top_verts[occindex * 4 + 0].z,
+					&tmp->octree_data.top_verts[occindex * 4 + 1].x,
+					&tmp->octree_data.top_verts[occindex * 4 + 1].y,
+					&tmp->octree_data.top_verts[occindex * 4 + 1].z,
+					&tmp->octree_data.top_verts[occindex * 4 + 2].x,
+					&tmp->octree_data.top_verts[occindex * 4 + 2].y,
+					&tmp->octree_data.top_verts[occindex * 4 + 2].z,
+					&tmp->octree_data.top_verts[occindex * 4 + 3].x,
+					&tmp->octree_data.top_verts[occindex * 4 + 3].y,
+					&tmp->octree_data.top_verts[occindex * 4 + 3].z) != 13) {
+				ERROR("Failed to read octree data.");
+				return FALSE;
+			}
+			occindex++;
+		}
+		else if (strcmp(value_name, INI_NAME_OCTREEDATA_MAXBBOX) == 0) {
+			if (sscanf(value, "%f:%f:%f:%f:%f:%f:%f:%f:%f:%f:%f:%f",
+					&tmp->octree_data.top_verts_max[0].x,
+					&tmp->octree_data.top_verts_max[0].y,
+					&tmp->octree_data.top_verts_max[0].z,
+					&tmp->octree_data.top_verts_max[1].x,
+					&tmp->octree_data.top_verts_max[1].y,
+					&tmp->octree_data.top_verts_max[1].z,
+					&tmp->octree_data.top_verts_max[2].x,
+					&tmp->octree_data.top_verts_max[2].y,
+					&tmp->octree_data.top_verts_max[2].z,
+					&tmp->octree_data.top_verts_max[3].x,
+					&tmp->octree_data.top_verts_max[3].y,
+					&tmp->octree_data.top_verts_max[3].z) != 12) {
+				ERROR("Failed to read octree max. box.");
+				return FALSE;
+			}
+		}
+		else if (strcmp(value_name, INI_NAME_PRE_LIGHT) == 0) {
+			int buf[4];
+			if (sscanf(value, "%d %d %d %d", &buf[0], &buf[1], &buf[2], &buf[3]) != 4) {
+				ERROR("Failed to read pre-light data.");
+				return FALSE;
+			}
+			tmp->pre_light.red = (RwUInt8)buf[0];
+			tmp->pre_light.green = (RwUInt8)buf[1];
+			tmp->pre_light.blue = (RwUInt8)buf[2];
+			tmp->pre_light.alpha = (RwUInt8)buf[3];
+		}
+		else if (strcmp(value_name, INI_NAME_RIDABLEMATERIALTYPE) == 0) {
+			tmp->ridable_material_type = strtol(value, NULL, 10);
+		}
+		else if (strcmp(value_name, INI_NAME_DNF_1) == 0) {
+			int didnotfinish = strtol(value, NULL, 10);
+			if (didnotfinish)
+				tmp->did_not_finish |= 1u << 0;
+		}
+		else if (strcmp(value_name, INI_NAME_DNF_2) == 0) {
+			int didnotfinish = strtol(value, NULL, 10);
+			if (didnotfinish)
+				tmp->did_not_finish |= 1u << 1;
+		}
+		else if (strcmp(value_name, INI_NAME_DNF_3) == 0) {
+			int didnotfinish = strtol(value, NULL, 10);
+			if (didnotfinish)
+				tmp->did_not_finish |= 1u << 2;
+		}
+		else if (strcmp(value_name, INI_NAME_DNF_4) == 0) {
+			int didnotfinish = strtol(value, NULL, 10);
+			if (didnotfinish)
+				tmp->did_not_finish |= 1u << 3;
+		}
+		else {
+			assert(0);
+		}
 	}
 	return TRUE;
 }
 
-boolean ac_object_template_write(
+static boolean writegroups(
 	struct ac_object_module * mod, 
-	void * data, 
+	struct ap_module_stream * stream,
+	struct ac_object_template * temp)
+{
+	boolean result = TRUE;
+	char valuename[128];
+	char value[256];
+	struct ac_object_template_group * group = temp->group_list;
+	int index = 0;
+	while (group) {
+		if (!strisempty(group->dff_name)) {
+			snprintf(value, sizeof(value), "%d:%s", group->index, group->dff_name);
+			result &= ap_module_stream_write_value(stream, INI_NAME_DFF, value);
+		}
+		if (group->animation && 
+			group->animation->head && 
+			!strisempty(group->animation->head->rt_anim_name)) {
+			snprintf(value, sizeof(value), "%d:%d:%d:%d:%s", group->index, 
+				0, 0, 0, group->animation->head->rt_anim_name);
+			result &= ap_module_stream_write_value(stream, INI_NAME_ANIMATION, value);
+			snprintf(value, sizeof(value), "%d:%d:%f", group->index, 0, group->anim_speed);
+			result &= ap_module_stream_write_value(stream, INI_NAME_ANIM_SPEED, value);
+		}
+		au_ini_mgr_print_compact(value, "%d:%f:%f:%f:%f", group->index,
+			group->bsphere.center.x, group->bsphere.center.y, 
+			group->bsphere.center.z, group->bsphere.radius);
+		result &= ap_module_stream_write_value(stream, INI_NAME_BSPHERE, value);
+		if (group->clump_render_type.set_count > 0) {
+			snprintf(valuename, sizeof(valuename), "%s%d", AC_RENDER_CRT_STREAM_CUSTOM_DATA1, index);
+			result &= ap_module_stream_write_i32(stream, valuename, group->index);
+			result &= ac_render_stream_write_clump_render_type(stream, &group->clump_render_type);
+			snprintf(valuename, sizeof(valuename), "%s%d", AC_RENDER_CRT_STREAM_CUSTOM_DATA2, group->index);
+			result &= ap_module_stream_write_i32(stream, valuename, index);
+		}
+		group = group->next;
+		index++;
+	}
+	return result;
+}
+
+static boolean cbobjecttemplatestreamwrite(
+	struct ac_object_module * mod, 
+	struct ap_object_template * temp,
 	struct ap_module_stream * stream)
 {
-	return TRUE;
+	struct ac_object_template * attachment = ac_object_get_template(temp);
+	boolean result = TRUE;
+	char valuename[128];
+	char buffer[1024];
+	result &= ap_module_stream_write_value(stream, INI_NAME_CATEGORY, attachment->category);
+	result &= ap_module_stream_write_i32(stream, INI_NAME_OBJECT_TYPE, attachment->object_type);
+	if (!strisempty(attachment->collision_dff_name))
+		result &= ap_module_stream_write_value(stream, INI_NAME_COLLISION_DFF, attachment->collision_dff_name);
+	if (!strisempty(attachment->picking_dff_name))
+		result &= ap_module_stream_write_value(stream, INI_NAME_PICK_DFF, attachment->picking_dff_name);
+	result &= ap_module_stream_write_i32(stream, INI_NAME_RIDABLEMATERIALTYPE, attachment->ridable_material_type);
+	if (attachment->object_type & AC_OBJECT_TYPE_OCCLUDER) {
+		int i;
+		result &= ap_module_stream_write_i32(stream, INI_NAME_OCTREEDATANUM, attachment->octree_data.occluder_box_count);
+		for (i = 0; i < attachment->octree_data.occluder_box_count; i++) {
+			snprintf(valuename, sizeof(valuename), "%s%d", INI_NAME_OCTREEDATA, i);
+			snprintf(buffer, sizeof(buffer), "%d:%f:%f:%f:%f:%f:%f:%f:%f:%f:%f:%f:%f",
+				1,
+				attachment->octree_data.top_verts[i * 4].x,
+				attachment->octree_data.top_verts[i * 4].y,
+				attachment->octree_data.top_verts[i * 4].z,
+				attachment->octree_data.top_verts[i * 4 + 1].x,
+				attachment->octree_data.top_verts[i * 4 + 1].y,
+				attachment->octree_data.top_verts[i * 4 + 1].z,
+				attachment->octree_data.top_verts[i * 4 + 2].x,
+				attachment->octree_data.top_verts[i * 4 + 2].y,
+				attachment->octree_data.top_verts[i * 4 + 2].z,
+				attachment->octree_data.top_verts[i * 4 + 3].x,
+				attachment->octree_data.top_verts[i * 4 + 3].y,
+				attachment->octree_data.top_verts[i * 4 + 3].z);
+			result &= ap_module_stream_write_value(stream, valuename, buffer);
+		}
+	}
+	au_ini_mgr_print_compact(buffer, "%f:%f:%f:%f:%f:%f:%f:%f:%f:%f:%f:%f",
+		attachment->octree_data.top_verts_max[0].x,
+		attachment->octree_data.top_verts_max[0].y,
+		attachment->octree_data.top_verts_max[0].z,
+		attachment->octree_data.top_verts_max[1].x,
+		attachment->octree_data.top_verts_max[1].y,
+		attachment->octree_data.top_verts_max[1].z,
+		attachment->octree_data.top_verts_max[2].x,
+		attachment->octree_data.top_verts_max[2].y,
+		attachment->octree_data.top_verts_max[2].z,
+		attachment->octree_data.top_verts_max[3].x,
+		attachment->octree_data.top_verts_max[3].y,
+		attachment->octree_data.top_verts_max[3].z);
+	result &= ap_module_stream_write_value(stream, INI_NAME_OCTREEDATA_MAXBBOX, buffer);
+	result &= writegroups(mod, stream, attachment);
+	result &= ac_lod_stream_write(mod->ac_lod, stream, &attachment->lod);
+	if (attachment->object_type & AC_OBJECT_TYPE_USE_PRE_LIGHT) {
+		snprintf(buffer, sizeof(buffer), "%d %d %d %d",
+			attachment->pre_light.red,
+			attachment->pre_light.green,
+			attachment->pre_light.blue,
+			attachment->pre_light.alpha);
+		result &= ap_module_stream_write_value(stream, INI_NAME_PRE_LIGHT, buffer);
+	}
+	result &= ap_module_stream_write_i32(stream, INI_NAME_DNF_1, 
+		(attachment->did_not_finish & AP_GETSERVICEAREAFLAG(AP_SERVICE_AREA_KOREA)) ? 1 : 0);
+	result &= ap_module_stream_write_i32(stream, INI_NAME_DNF_2, 
+		(attachment->did_not_finish & AP_GETSERVICEAREAFLAG(AP_SERVICE_AREA_CHINA)) ? 1 : 0);
+	result &= ap_module_stream_write_i32(stream, INI_NAME_DNF_4, 
+		(attachment->did_not_finish & AP_GETSERVICEAREAFLAG(AP_SERVICE_AREA_JAPAN)) ? 1 : 0);
+	return result;
 }
 
 boolean ac_object_object_read(
@@ -894,6 +1109,7 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_config, AP_CONFIG_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_object, AP_OBJECT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_dat, AC_DAT_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_lod, AC_LOD_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_mesh, AC_MESH_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_render, AC_RENDER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_texture, AC_TEXTURE_MODULE_NAME);
@@ -909,7 +1125,7 @@ static boolean onregister(
 		AC_OBJECT_MODULE_NAME, mod, ac_object_object_read, ac_object_object_write);
 	ap_object_add_stream_callback(mod->ap_object, AP_OBJECT_MDI_OBJECT_TEMPLATE,
 		AC_OBJECT_MODULE_NAME, mod, 
-		ac_object_template_read, ac_object_template_write);
+		cbobjecttemplatestreamread, cbobjecttemplatestreamwrite);
 	return TRUE;
 }
 

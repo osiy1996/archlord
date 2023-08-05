@@ -75,6 +75,11 @@ boolean ap_object_load_templates(
 	const char * file_path, 
 	boolean decrypt);
 
+boolean ap_object_write_templates(
+	struct ap_object_module * mod,
+	const char * file_path, 
+	boolean encrypt);
+
 void ap_object_add_callback(
 	struct ap_object_module * mod,
 	enum ap_object_callback_id id,

@@ -115,6 +115,11 @@ boolean make_file(
 	const void * buffer,
 	size_t count);
 
+boolean copy_file(
+	const char * src_path, 
+	const char * dst_path, 
+	boolean fail_if_exists);
+
 boolean enum_dir(
 	char * directory_path,
 	size_t maxcount,

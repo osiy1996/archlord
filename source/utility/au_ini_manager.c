@@ -1006,7 +1006,7 @@ boolean au_ini_mgr_set_type(
 	struct au_ini_mgr_ctx * ctx,
 	enum au_ini_mgr_type type)
 {
-	if (type >= AU_INI_MGR_MODE_COUNT)
+	if (type >= AU_INI_MGR_TYPE_COUNT)
 		return FALSE;
 	ctx->type = type;
 	return TRUE;

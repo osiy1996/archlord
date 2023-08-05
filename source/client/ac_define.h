@@ -65,30 +65,6 @@ BEGIN_DECLS
 
 #define AC_EXPORT_TRACE_FILE				"ERROR_EXPORT_RESOURCE.TXT"
 
-struct ac_lod;
-
-struct ac_lod_data {
-	uint32_t index;
-	boolean has_bill_count;
-	uint32_t bill_count[AP_LOD_MAX_NUM];
-	uint32_t max_lod_level;
-	uint32_t lod_distance[AP_LOD_MAX_NUM];
-	uint32_t boundary;
-	uint32_t max_distance_ratio;
-	struct ac_lod * lod;
-};
-
-struct ac_lod_list {
-	struct ac_lod_data data;
-	struct ac_lod_list * next;
-};
-
-struct ac_lod {
-	uint32_t count;
-	uint32_t distance_type;
-	struct ac_lod_list * list;
-};
-
 #define ARGB32_TO_UINT(a,r,g,b)	((r & 0xff) + ((g & 0xff) << 8) + ((b & 0xff) << 16) + ((a & 0xff) << 24))
 #define ARGB_TO_ABGR(color)	( ((color << 8) >> 24) | ((color << 24) >> 8) | ((color & 0xff00ff00)) )
 

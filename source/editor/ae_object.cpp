@@ -4,12 +4,15 @@
 #include <string.h>
 
 #include "core/core.h"
+#include "core/file_system.h"
 #include "core/malloc.h"
 #include "core/log.h"
 #include "core/string.h"
 #include "core/vector.h"
 
 #include "task/task.h"
+
+#include "utility/au_md5.h"
 
 #include "public/ap_config.h"
 #include "public/ap_map.h"
@@ -30,10 +33,9 @@
 #include "editor/ae_event_teleport.h"
 #include "editor/ae_texture.h"
 
-#define PREVIEW_QUEUE_MAX_SIZE 128
-#define PREVIEW_MAX_READ_BACK_TEXTURE_COUNT 16
-#define PREVIEW_WIDTH 256
-#define PREVIEW_HEIGHT 256
+#include <ctype.h>
+
+#define MAX_EDIT_TEMPLATE_COUNT 32
 
 size_t g_AeObjectTemplateOffset = SIZE_MAX;
 
@@ -81,6 +83,11 @@ struct ae_object_module {
 	struct move_tool move_tool;
 	bool select_object_template;
 	char select_object_template_search_input[256];
+	bool display_template_editor;
+	uint32_t templates_in_edit[MAX_EDIT_TEMPLATE_COUNT];
+	uint32_t templates_in_edit_count;
+	char template_editor_search_input[128];
+	boolean has_pending_template_changes;
 };
 
 inline void set_move_tool_axis(
@@ -238,13 +245,193 @@ static boolean cbcommitchanges(
 				ac_object_get_sector_by_index(mod->ac_object, x, z);
 			if (s->flags & AC_OBJECT_SECTOR_HAS_CHANGES) {
 				ac_object_export_sector(mod->ac_object, s, serverpath);
-				ac_object_export_sector(mod->ac_object, s, clientpath);
+				copy_file(serverpath, clientpath, FALSE);
 				s->flags &= ~AC_OBJECT_SECTOR_HAS_CHANGES;
 			}
 		}
 	}
+	if (mod->has_pending_template_changes) {
+		snprintf(serverpath, sizeof(serverpath), "%s/objecttemplate.ini", 
+			ap_config_get(mod->ap_config, "ServerIniDir"));
+		if (!ap_object_write_templates(mod->ap_object, serverpath, FALSE)) {
+			ERROR("Failed to commit object template changes.");
+		}
+		else {
+			mod->has_pending_template_changes = FALSE;
+		}
+		snprintf(clientpath, sizeof(clientpath), "%s/ini/objecttemplate.ini", 
+			ap_config_get(mod->ap_config, "ClientDir"));
+		if (!au_md5_copy_and_encrypt_file(serverpath, clientpath)) {
+			ERROR("Failed to reflect object template changes to client.");
+		}
+	}
 	return TRUE;
 }
+
+static boolean cbrenderviewmenu(struct ae_object_module * mod, void * data)
+{
+	ImGui::Selectable("Object Template Editor", &mod->display_template_editor);
+	return TRUE;
+}
+
+static bool rendertypeprop(
+	uint32_t * object_type, 
+	uint32_t bit,
+	const char * label)
+{
+	bool b = (*object_type & bit) != 0;
+	if (ImGui::Checkbox(label, &b)) {
+		if (b) {
+			*object_type |= bit;
+			return true;
+		}
+		else {
+			*object_type &= ~bit;
+			return true;
+		}
+	}
+	return true;
+}
+
+static bool rendertypeprops(uint32_t * type)
+{
+	bool changed = false;
+	if (ImGui::TreeNodeEx("Public Properties", ImGuiTreeNodeFlags_Framed)) {
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_BLOCKING, "BLOCKING");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_RIDABLE, "RIDABLE");
+		ImGui::TreePop();
+	}
+	return changed;
+}
+
+static bool renderclienttypeprops(uint32_t * type)
+{
+	bool changed = false;
+	if (ImGui::TreeNodeEx("Client Properties", ImGuiTreeNodeFlags_Framed)) {
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_BLOCKING, "BLOCKING");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_RIDABLE, "RIDABLE");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_NO_CAMERA_ALPHA, "NO_CAMERA_ALPHA");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_USE_ALPHA, "USE_ALPHA");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_USE_AMBIENT, "USE_AMBIENT");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_USE_LIGHT, "USE_LIGHT");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_USE_PRE_LIGHT, "USE_PRE_LIGHT");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_USE_FADE_IN_OUT, "USE_FADE_IN_OUT");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_IS_SYSTEM_OBJECT, "IS_SYSTEM_OBJECT");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_MOVE_INSECTOR, "MOVE_INSECTOR");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_NO_INTERSECTION, "NO_INTERSECTION");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_WORLDADD, "WORLDADD");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_OBJECTSHADOW, "OBJECTSHADOW");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_RENDER_UDA, "RENDER_UDA");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_USE_ALPHAFUNC, "USE_ALPHAFUNC");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_OCCLUDER, "OCCLUDER");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_DUNGEON_STRUCTURE, "DUNGEON_STRUCTURE");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_DUNGEON_DOME, "DUNGEON_DOME");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_CAM_ZOOM, "CAM_ZOOM");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_CAM_ALPHA, "CAM_ALPHA");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_INVISIBLE, "INVISIBLE");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_FORCED_RENDER_EFFECT, "FORCED_RENDER_EFFECT");
+		changed |= rendertypeprop(type, AC_OBJECT_TYPE_DONOT_CULL, "DONOT_CULL");
+		ImGui::TreePop();
+	}
+	return changed;
+}
+
+static boolean isinedit(
+	struct ae_object_module * mod, 
+	struct ap_object_template * temp)
+{
+	uint32_t i;
+	for (i = 0; i < mod->templates_in_edit_count; i++) {
+		if (mod->templates_in_edit[i] == temp->tid)
+			return TRUE;
+	}
+	return FALSE;
+}
+
+static inline size_t eraseinedit(
+	struct ae_object_module * mod, 
+	size_t index)
+{
+	memmove(&mod->templates_in_edit[index], &mod->templates_in_edit[index + 1],
+		(size_t)--mod->templates_in_edit_count * sizeof(mod->templates_in_edit[0]));
+	return index;
+}
+
+static void rendertemplateeditor(struct ae_object_module * mod)
+{
+	ImVec2 size = ImVec2(200.0f, 300.0f);
+	ImVec2 center = ImGui::GetMainViewport()->GetWorkCenter() - (size / 2.0f);
+	size_t index = 0;
+	struct ap_object_template * temp;
+	ImGui::SetNextWindowSize(size, ImGuiCond_Appearing);
+	ImGui::SetNextWindowPos(center, ImGuiCond_Appearing);
+	if (!ImGui::Begin("Object Template Editor", &mod->display_template_editor)) {
+		ImGui::End();
+		return;
+	}
+	ImGui::InputText("Search", mod->template_editor_search_input, 
+		sizeof(mod->template_editor_search_input));
+	while (temp = ap_object_iterate_templates(mod->ap_object, &index)) {
+		char label[128];
+		struct ac_object_template * attachment = ac_object_get_template(temp);
+		if (!strisempty(attachment->category)) {
+			snprintf(label, sizeof(label), "[%05u] (%s) %s", temp->tid, 
+				attachment->category, temp->name);
+		}
+		else {
+			snprintf(label, sizeof(label), "[%05u] %s", temp->tid, temp->name);
+		}
+		if (!strisempty(mod->template_editor_search_input) &&
+			!stristr(label, mod->template_editor_search_input)) {
+			continue;
+		}
+		if (ImGui::Selectable(label) && 
+			mod->templates_in_edit_count < MAX_EDIT_TEMPLATE_COUNT &&
+			!isinedit(mod, temp)) {
+			mod->templates_in_edit[mod->templates_in_edit_count++] = temp->tid;
+		}
+	}
+	ImGui::End();
+	for (index = 0; index < mod->templates_in_edit_count; index++) {
+		char label[128];
+		bool open = true;
+		struct ac_object_template * attachment;
+		bool changed = FALSE;
+		temp = ap_object_get_template(mod->ap_object, mod->templates_in_edit[index]);
+		if (!temp) {
+			index = eraseinedit(mod, index);
+			continue;
+		}
+		size = ImVec2(300.0f, 300.0f);
+		center = ImGui::GetMainViewport()->GetWorkCenter() - (size / 2.0f);
+		ImGui::SetNextWindowSize(size, ImGuiCond_Appearing);
+		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing);
+		snprintf(label, sizeof(label), "Object Template - [%05u] %s###ObjTemp%u", 
+			temp->tid, temp->name, temp->tid);
+		if (!ImGui::Begin(label, &open) || !open) {
+			if (!open)
+				index = eraseinedit(mod, index);
+			ImGui::End();
+			continue;
+		}
+		attachment = ac_object_get_template(temp);
+		changed |= ImGui::InputText("Name", temp->name, sizeof(temp->name));
+		changed |= ImGui::InputText("Category", attachment->category, sizeof(attachment->category));
+		changed |= ImGui::InputText("Collision DFF Name", attachment->collision_dff_name, sizeof(attachment->collision_dff_name));
+		changed |= ImGui::InputText("Picking DFF Name", attachment->picking_dff_name, sizeof(attachment->picking_dff_name));
+		changed |= rendertypeprops(&temp->type);
+		changed |= renderclienttypeprops(&attachment->object_type);
+		ImGui::End();
+	}
+}
+
+static boolean cbrendereditors(struct ae_object_module * mod, void * data)
+{
+	if (mod->display_template_editor)
+		rendertemplateeditor(mod);
+	return TRUE;
+}
+
 
 static boolean onregister(
 	struct ae_object_module * mod,
@@ -268,6 +455,8 @@ static boolean onregister(
 		(ap_module_default_t)cbobjectdtor);
 	ap_object_add_callback(mod->ap_object, AP_OBJECT_CB_MOVE_OBJECT, mod, (ap_module_default_t)cbobjectmove);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_COMMIT_CHANGES, mod, (ap_module_default_t)cbcommitchanges);
+	ae_editor_action_add_view_menu_callback(mod->ae_editor_action, "Object Template Editor", mod, (ap_module_default_t)cbrenderviewmenu);
+	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_EDITORS, mod, (ap_module_default_t)cbrendereditors);
 	return TRUE;
 }
 
@@ -530,36 +719,22 @@ static void render_outliner(struct ae_object_module * mod)
 	ImGui::End();
 }
 
-static void obj_type_prop(
-	uint32_t * object_type, 
-	uint32_t bit,
-	const char * label)
-{
-	bool b = (*object_type & bit) != 0;
-	if (ImGui::Checkbox(label, &b)) {
-		if (b) {
-			*object_type |= bit;
-		}
-		else {
-			*object_type &= ~bit;
-		}
-	}
-}
-
-static void obj_transform(struct ae_object_module * mod, struct ap_object * obj)
+static boolean obj_transform(struct ae_object_module * mod, struct ap_object * obj)
 {
 	struct au_pos pos = obj->position;
 	bool move = false;
+	bool changed = false;
 	move |= ImGui::DragFloat("Position X", &pos.x);
 	move |= ImGui::DragFloat("Position Y", &pos.y);
 	move |= ImGui::DragFloat("Position Z", &pos.z);
-	ImGui::DragFloat("Scale X", &obj->scale.x, 0.001f);
-	ImGui::DragFloat("Scale Y", &obj->scale.y, 0.001f);
-	ImGui::DragFloat("Scale Z", &obj->scale.z, 0.001f);
-	ImGui::DragFloat("Rotation X", &obj->rotation_x);
-	ImGui::DragFloat("Rotation Y", &obj->rotation_y);
+	changed |= ImGui::DragFloat("Scale X", &obj->scale.x, 0.001f);
+	changed |= ImGui::DragFloat("Scale Y", &obj->scale.y, 0.001f);
+	changed |= ImGui::DragFloat("Scale Z", &obj->scale.z, 0.001f);
+	changed |= ImGui::DragFloat("Rotation X", &obj->rotation_x);
+	changed |= ImGui::DragFloat("Rotation Y", &obj->rotation_y);
 	if (move)
 		ap_object_move_object(mod->ap_object, obj, &pos);
+	return (move | changed);
 }
 
 static void render_properties(struct ae_object_module * mod)
@@ -580,65 +755,9 @@ static void render_properties(struct ae_object_module * mod)
 	snprintf(label, sizeof(label), "[%u] %s", obj->tid, obj->temp->name);
 	if (ImGui::Button(label, ImVec2(ImGui::GetContentRegionAvail().x, 25.0f)))
 		mod->select_object_template = true;
-	obj_transform(mod, obj);
-	if (ImGui::TreeNodeEx("Public Properties", 
-			ImGuiTreeNodeFlags_Framed)) {
-		obj_type_prop(&obj->object_type, AC_OBJECT_TYPE_BLOCKING, 
-			"BLOCKING");
-		obj_type_prop(&obj->object_type, AC_OBJECT_TYPE_RIDABLE, 
-			"RIDABLE");
-		ImGui::TreePop();
-	}
-	if (ImGui::TreeNodeEx("Client Properties", 
-			ImGuiTreeNodeFlags_Framed)) {
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_BLOCKING, 
-			"BLOCKING");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_RIDABLE, 
-			"RIDABLE");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_NO_CAMERA_ALPHA, 
-			"NO_CAMERA_ALPHA");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_USE_ALPHA, 
-			"USE_ALPHA");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_USE_AMBIENT, 
-			"USE_AMBIENT");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_USE_LIGHT, 
-			"USE_LIGHT");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_USE_PRE_LIGHT, 
-			"USE_PRE_LIGHT");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_USE_FADE_IN_OUT, 
-			"USE_FADE_IN_OUT");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_IS_SYSTEM_OBJECT, 
-			"IS_SYSTEM_OBJECT");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_MOVE_INSECTOR, 
-			"MOVE_INSECTOR");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_NO_INTERSECTION, 
-			"NO_INTERSECTION");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_WORLDADD, 
-			"WORLDADD");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_OBJECTSHADOW, 
-			"OBJECTSHADOW");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_RENDER_UDA, 
-			"RENDER_UDA");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_USE_ALPHAFUNC, 
-			"USE_ALPHAFUNC");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_OCCLUDER, 
-			"OCCLUDER");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_DUNGEON_STRUCTURE, 
-			"DUNGEON_STRUCTURE");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_DUNGEON_DOME, 
-			"DUNGEON_DOME");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_CAM_ZOOM, 
-			"CAM_ZOOM");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_CAM_ALPHA, 
-			"CAM_ALPHA");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_INVISIBLE, 
-			"INVISIBLE");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_FORCED_RENDER_EFFECT, 
-			"FORCED_RENDER_EFFECT");
-		obj_type_prop(&objc->object_type, AC_OBJECT_TYPE_DONOT_CULL, 
-			"DONOT_CULL");
-		ImGui::TreePop();
-	}
+	changed |= obj_transform(mod, obj);
+	changed |= (boolean)rendertypeprops(&obj->object_type);
+	changed |= (boolean)renderclienttypeprops(&objc->object_type);
 	eventattachment = ap_event_manager_get_attachment(mod->ap_event_manager, obj);
 	changed |= ae_event_refinery_render_as_node(mod->ae_event_refinery, obj, 
 		eventattachment);

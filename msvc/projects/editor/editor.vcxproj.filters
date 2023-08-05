@@ -405,6 +405,15 @@
     <ClInclude Include="..\..\..\source\editor\ae_event_binding.h">
       <Filter>source\editor</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_octree.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_lod.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_event_effect.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\core\hash_map.c">
@@ -736,6 +745,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\editor\ae_event_binding.cpp">
       <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_octree.c">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_lod.c">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_event_effect.c">
+      <Filter>source\client</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
