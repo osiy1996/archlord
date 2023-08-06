@@ -359,12 +359,12 @@ static inline size_t eraseinedit(
 
 static void rendertemplateeditor(struct ae_object_module * mod)
 {
-	ImVec2 size = ImVec2(200.0f, 300.0f);
+	ImVec2 size = ImVec2(350.0f, 300.0f);
 	ImVec2 center = ImGui::GetMainViewport()->GetWorkCenter() - (size / 2.0f);
 	size_t index = 0;
 	struct ap_object_template * temp;
-	ImGui::SetNextWindowSize(size, ImGuiCond_Appearing);
-	ImGui::SetNextWindowPos(center, ImGuiCond_Appearing);
+	ImGui::SetNextWindowSize(size, ImGuiCond_FirstUseEver);
+	ImGui::SetNextWindowPos(center, ImGuiCond_FirstUseEver);
 	if (!ImGui::Begin("Object Template Editor", &mod->display_template_editor)) {
 		ImGui::End();
 		return;
@@ -421,6 +421,8 @@ static void rendertemplateeditor(struct ae_object_module * mod)
 		changed |= ImGui::InputText("Picking DFF Name", attachment->picking_dff_name, sizeof(attachment->picking_dff_name));
 		changed |= rendertypeprops(&temp->type);
 		changed |= renderclienttypeprops(&attachment->object_type);
+		if (changed)
+			mod->has_pending_template_changes = TRUE;
 		ImGui::End();
 	}
 }
@@ -772,7 +774,7 @@ static void render_properties(struct ae_object_module * mod)
 
 static void rendertemplateselectionwindow(struct ae_object_module * mod)
 {
-	ImVec2 size = ImVec2(200.0f, 400.0f);
+	ImVec2 size = ImVec2(350.0f, 400.0f);
 	ImVec2 center = ImGui::GetMainViewport()->GetWorkCenter() - (size / 2.0f);
 	size_t index = 0;
 	struct ap_object_template * temp;
@@ -782,8 +784,8 @@ static void rendertemplateselectionwindow(struct ae_object_module * mod)
 		mod->select_object_template = false;
 		return;
 	}
-	ImGui::SetNextWindowSize(size, ImGuiCond_Appearing);
-	ImGui::SetNextWindowPos(center, ImGuiCond_Appearing);
+	ImGui::SetNextWindowSize(size, ImGuiCond_FirstUseEver);
+	ImGui::SetNextWindowPos(center, ImGuiCond_FirstUseEver);
 	if (!ImGui::Begin("Select Object Template", &mod->select_object_template)) {
 		ImGui::End();
 		return;
