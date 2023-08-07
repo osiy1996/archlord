@@ -100,6 +100,7 @@ struct paint_tool {
 	bgfx_program_handle_t program;
 	bgfx_program_handle_t program_grid;
 	struct ac_mesh_vertex * vertices;
+	struct ac_mesh_material * materials;
 	uint32_t max_triangle_count;
 	uint32_t scale_tex;
 	uint32_t tex_browser;
@@ -187,6 +188,7 @@ struct tile_tool {
 struct ae_terrain_module {
 	struct ap_module_instance instance;
 	struct ap_map_module * ap_map;
+	struct ac_mesh_module * ac_mesh;
 	struct ac_render_module * ac_render;
 	struct ac_terrain_module * ac_terrain;
 	struct ac_texture_module * ac_texture;
@@ -828,6 +830,21 @@ static void snap_to_triangle(
 	dst[2] = cz + side * (AP_SECTOR_STEPSIZE * 0.25f);
 }
 
+static void snaptoquad(
+	vec3 dst,
+	const vec3 src)
+{
+	float ix = (int)(src[0] / AP_SECTOR_STEPSIZE) * AP_SECTOR_STEPSIZE;
+	float iz = (int)(src[2] / AP_SECTOR_STEPSIZE) * AP_SECTOR_STEPSIZE;
+	if (src[0] < 0.0f)
+		ix -= AP_SECTOR_STEPSIZE;
+	if (src[2] < 0.0f)
+		iz -= AP_SECTOR_STEPSIZE;
+	dst[0] = ix;
+	dst[1] = src[1];
+	dst[2] = iz;
+}
+
 static void paint_adjust_texcoord(struct paint_tool * paint)
 {
 	float texcoords[4][4][4] = { 0 };
@@ -908,33 +925,63 @@ static struct paint_tile_info * paint_get_tile(
 	return NULL;
 }
 
-static struct ac_mesh_vertex * paint_get_selection(
+static boolean paint_get_selection(
 	struct ae_terrain_module * mod,
 	struct paint_tool * paint,
-	const vec3 p)
+	const vec3 p,
+	struct ac_mesh_vertex ** triangle1,
+	struct ac_mesh_vertex ** triangle2)
 {
 	uint32_t count = vec_count(paint->vertices) / 3;
-	struct ac_mesh_vertex vertices[3];
+	struct ac_mesh_vertex vertices[6];
+	struct ac_mesh_material materials[2];
 	uint32_t i;
-	if (!ac_terrain_get_triangle(mod->ac_terrain, p, vertices, NULL)) {
-		ERROR("Failed to retrieve triangle.");
-		return NULL;
+	boolean add[2] = { TRUE, TRUE };
+	struct ac_mesh_vertex ** triangles[2] = { triangle1, triangle2 };
+	if (!ac_terrain_get_quad(mod->ac_terrain, p, AP_SECTOR_STEPSIZE, 
+			vertices, materials)) {
+		ERROR("Failed to retrieve quad.");
+		return FALSE;
 	}
 	for (i = 0; i < count; i++) {
-		if (ac_mesh_eq_pos(&paint->vertices[i * 3 + 0], 
-				&vertices[0]) &&
-			ac_mesh_eq_pos(&paint->vertices[i * 3 + 1], 
-				&vertices[1]) &&
-			ac_mesh_eq_pos(&paint->vertices[i * 3 + 2], 
-				&vertices[2])) {
-			return &paint->vertices[i * 3];
+		uint32_t j;
+		for (j = 0; j < 2; j++) {
+			if (ac_mesh_eq_pos(&paint->vertices[i * 3 + 0], 
+					&vertices[j * 3 + 0]) &&
+				ac_mesh_eq_pos(&paint->vertices[i * 3 + 1], 
+					&vertices[j * 3 + 1]) &&
+				ac_mesh_eq_pos(&paint->vertices[i * 3 + 2], 
+					&vertices[j * 3 + 2])) {
+				*(triangles[j]) = &paint->vertices[i * 3];
+				add[j] = FALSE;
+			}
 		}
 	}
-	if (count >= paint->max_triangle_count)
+	assert(add[0] == add[1]);
+	if (add[0] != add[1]) {
+		for (i = 0; i < COUNT_OF(materials); i++)
+			ac_mesh_release_material(mod->ac_mesh, &materials[i]);
+		return FALSE;
+	}
+	if (!add[0]) {
+		for (i = 0; i < COUNT_OF(materials); i++)
+			ac_mesh_release_material(mod->ac_mesh, &materials[i]);
+		return TRUE;
+	}
+	if (count + 6 > paint->max_triangle_count) {
+		for (i = 0; i < COUNT_OF(materials); i++)
+			ac_mesh_release_material(mod->ac_mesh, &materials[i]);
 		return NULL;
-	for (i = 0; i < 3; i++)
-		vec_push_back((void **)&paint->vertices, &vertices[i]);
-	return &paint->vertices[vec_count(paint->vertices) - 3];
+	}
+	for (i = 0; i < 2; i++) {
+		uint32_t j;
+		for (j = 0; j < 3; j++)
+			vec_push_back((void **)&paint->vertices, &vertices[i * 3 + j]);
+		*(triangles[i]) = &paint->vertices[vec_count(paint->vertices) - 3];
+	}
+	for (i = 0; i < COUNT_OF(materials); i++)
+		vec_push_back((void **)&paint->materials, &materials[i]);
+	return TRUE;
 }
 
 /*
@@ -1392,7 +1439,7 @@ static void paint_get_combined_uv(
 static void paint_set_quad(
 	struct ae_terrain_module * mod,
 	struct paint_tool * paint,
-	vec3 points[2],
+	vec3 start,
 	float offset_x,
 	float offset_z,
 	enum paint_tile_type tile)
@@ -1401,20 +1448,9 @@ static void paint_set_quad(
 	struct ac_mesh_vertex * vertices[2] = { 0 };
 	vec2 uv0;
 	vec2 uv1;
-	for (i = 0; i < COUNT_OF(vertices); i++) {
-		vec3 p = { points[i][0] + offset_x, points[i][1], 
-			points[i][2] + offset_z };
-		vertices[i] = paint_get_selection(mod, paint, p);
-		if (!vertices[i]) {
-			if (i > 0) {
-				/* We cannot make a whole quad, 
-				 * remove previous triangle. */
-				vec_set_count(paint->vertices, 
-					vec_count(paint->vertices) - i * 3);
-			}
-			return;
-		}
-	}
+	vec3 p = { start[0] + offset_x, start[1], start[2] + offset_z };
+	if (!paint_get_selection(mod, paint, p, &vertices[0], &vertices[1]))
+		return;
 	paint_get_combined_uv(paint, paint_get_tile_type(vertices), 
 		tile, uv0, uv1);
 	for (i = 0; i < COUNT_OF(vertices); i++) {
@@ -1462,25 +1498,27 @@ static void paint_select(
 	const vec3 p)
 {
 	vec3 tri_point[2] = { 0 };
+	vec3 start = { 0 };
 	snap_to_triangle(tri_point[0], p, 1.0f);
 	snap_to_triangle(tri_point[1], p, -1.0f);
-	paint_set_quad(mod, paint, tri_point, -400.0f, -400.0f, 
+	snaptoquad(start, p);
+	paint_set_quad(mod, paint, start, -400.0f, -400.0f, 
 		PAINT_TILE_TOP_LEFT);
-	paint_set_quad(mod, paint, tri_point, 0.0f, -400.0f, 
+	paint_set_quad(mod, paint, start, 0.0f, -400.0f, 
 		PAINT_TILE_TOP);
-	paint_set_quad(mod, paint, tri_point, 400.0f, -400.0f, 
+	paint_set_quad(mod, paint, start, 400.0f, -400.0f, 
 		PAINT_TILE_TOP_RIGHT);
-	paint_set_quad(mod, paint, tri_point, -400.0f, 0.0f, 
+	paint_set_quad(mod, paint, start, -400.0f, 0.0f, 
 		PAINT_TILE_LEFT);
-	paint_set_quad(mod, paint, tri_point, 0.0f, 0.0f, 
+	paint_set_quad(mod, paint, start, 0.0f, 0.0f, 
 		PAINT_TILE_CENTER);
-	paint_set_quad(mod, paint, tri_point, 400.0f, 0.0f, 
+	paint_set_quad(mod, paint, start, 400.0f, 0.0f, 
 		PAINT_TILE_RIGHT);
-	paint_set_quad(mod, paint, tri_point, -400.0f, 400.0f, 
+	paint_set_quad(mod, paint, start, -400.0f, 400.0f, 
 		PAINT_TILE_BOTTOM_LEFT);
-	paint_set_quad(mod, paint, tri_point, 0.0f, 400.0f, 
+	paint_set_quad(mod, paint, start, 0.0f, 400.0f, 
 		PAINT_TILE_BOTTOM);
-	paint_set_quad(mod, paint, tri_point, 400.0f, 400.0f, 
+	paint_set_quad(mod, paint, start, 400.0f, 400.0f, 
 		PAINT_TILE_BOTTOM_RIGHT);
 }
 
@@ -1637,6 +1675,7 @@ static boolean onregister(
 	struct ap_module_registry * registry)
 {
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_map, AP_MAP_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_mesh, AC_MESH_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_render, AC_RENDER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_terrain, AC_TERRAIN_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_texture, AC_TEXTURE_MODULE_NAME);
@@ -1710,6 +1749,21 @@ boolean oninitialize(struct ae_terrain_module * mod)
 	return TRUE;
 }
 
+static void clearpaintselection(struct ae_terrain_module * mod)
+{
+	uint32_t i;
+	uint32_t count = vec_count(mod->paint.materials);
+	for (i = 0; i < count; i++)
+		ac_mesh_release_material(mod->ac_mesh, &mod->paint.materials[i]);
+	vec_clear(mod->paint.materials);
+	vec_clear(mod->paint.vertices);
+}
+
+static void onclose(struct ae_terrain_module * mod)
+{
+	clearpaintselection(mod);
+}
+
 static void onshutdown(struct ae_terrain_module * mod)
 {
 	uint32_t i;
@@ -1720,11 +1774,10 @@ static void onshutdown(struct ae_terrain_module * mod)
 	ac_texture_release(mod->ac_texture, mod->paint.tex);
 	ac_texture_release(mod->ac_texture, mod->paint.tex_alpha);
 	vec_free(mod->paint.vertices);
+	vec_free(mod->paint.materials);
 	bgfx_destroy_program(mod->paint.program);
 	bgfx_destroy_program(mod->paint.program_grid);
 	bgfx_destroy_uniform(mod->paint.sampler);
-	if (BGFX_HANDLE_IS_VALID(mod->paint.tex))
-		ac_texture_release(mod->ac_texture, mod->paint.tex);
 	ac_texture_release(mod->ac_texture, mod->height.icon);
 	bgfx_destroy_program(mod->height.program);
 	bgfx_destroy_uniform(mod->height.uniform);
@@ -1746,7 +1799,8 @@ struct ae_terrain_module * ae_terrain_create_module()
 	struct ae_terrain_module  * mod = (struct ae_terrain_module *)ap_module_instance_new(
 		AE_TERRAIN_MODULE_NAME, sizeof(*mod), 
 		(ap_module_instance_register_t)onregister, 
-		(ap_module_instance_initialize_t)oninitialize, NULL, 
+		(ap_module_instance_initialize_t)oninitialize, 
+		(ap_module_instance_close_t)onclose, 
 		(ap_module_instance_shutdown_t)onshutdown);
 	uint32_t i;
 	mod->edit_mode = EDIT_MODE_NONE;
@@ -1756,6 +1810,8 @@ struct ae_terrain_module * ae_terrain_create_module()
 	mod->paint.scale_tex = 1;
 	mod->paint.vertices = (struct ac_mesh_vertex *)vec_new_reserved(
 		sizeof(*mod->paint.vertices), 128);
+	mod->paint.materials = (struct ac_mesh_material *)vec_new_reserved(
+		sizeof(*mod->paint.materials), 128);
 	paint_setup_tile_combinations(&mod->paint);
 	mod->height.size = 10.0f;
 	mod->height.strength = 1.0f;
@@ -1835,7 +1891,7 @@ void ae_terrain_render(struct ae_terrain_module * mod, struct ac_camera * cam)
 			count, true)) {
 			ERROR("Failed to allocate transient buffers.");
 			calc_max_triangle_count(p);
-			vec_clear(p->vertices);
+			clearpaintselection(mod);
 			break;
 		}
 		memcpy(tvb.data, p->vertices,
@@ -2170,6 +2226,26 @@ void falloff_controls(
 	ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
 }
 
+static void replacetexture(
+	struct ae_terrain_module * mod,
+	struct ac_mesh_material * material,
+	uint32_t index,
+	const char * tex_name,
+	bgfx_texture_handle_t tex)
+{
+	if (BGFX_HANDLE_IS_VALID(material->tex_handle[index]))
+		ac_texture_release(mod->ac_texture, material->tex_handle[index]);
+	if (BGFX_HANDLE_IS_VALID(tex)) {
+		ac_texture_copy(mod->ac_texture, tex);
+		material->tex_handle[index] = tex;
+		strlcpy(material->tex_name[index], tex_name, sizeof(material->tex_name[index]));
+	}
+	else {
+		material->tex_handle[index] = BGFX_INVALID_HANDLE;
+		memset(material->tex_name[index], 0, sizeof(material->tex_name[index]));
+	}
+}
+
 void ae_terrain_toolbar(struct ae_terrain_module * mod)
 {
 	float toolkit_height = ImGui::GetContentRegionAvail().y;
@@ -2214,9 +2290,9 @@ void ae_terrain_toolbar(struct ae_terrain_module * mod)
 			}
 			ImGui::EndCombo();
 		}
-		ImGui::SameLine(0.f, -1.f);
+		ImGui::SameLine();
 		ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
-		ImGui::SameLine(0.f, -1.f);
+		ImGui::SameLine();
 		ImGui::SetNextItemWidth(120.f);
 		if (ImGui::DragScalar("Texture To Node Ratio",
 				ImGuiDataType_U32, &mod->paint.scale_tex, 0.05f, 
@@ -2224,6 +2300,63 @@ void ae_terrain_toolbar(struct ae_terrain_module * mod)
 			mod->paint.scale_tex == 0) {
 			mod->paint.scale_tex = 1;
 		}
+		ImGui::SameLine();
+		if (ImGui::Button("Apply")) {
+			uint32_t i;
+			uint32_t count = vec_count(mod->paint.materials);
+			switch (mod->paint.layer) {
+			case PAINT_LAYER_BASE:
+				for (i = 0; i < count; i++) {
+					replacetexture(mod, &mod->paint.materials[i], 0, 
+						mod->paint.tex_name, mod->paint.tex);
+				}
+				ac_terrain_set_base(mod->ac_terrain, vec_count(mod->paint.materials),
+					mod->paint.scale_tex, mod->paint.vertices, mod->paint.materials);
+				break;
+			case PAINT_LAYER_0:
+				for (i = 0; i < count; i++) {
+					if (BGFX_HANDLE_IS_VALID(mod->paint.tex)) {
+						replacetexture(mod, &mod->paint.materials[i], 1, 
+							mod->paint.tex_alpha_name, mod->paint.tex_alpha);
+						replacetexture(mod, &mod->paint.materials[i], 2, 
+							mod->paint.tex_name, mod->paint.tex);
+					}
+					else {
+						replacetexture(mod, &mod->paint.materials[i], 1, 
+							NULL, BGFX_INVALID_HANDLE);
+						replacetexture(mod, &mod->paint.materials[i], 2, 
+							NULL, BGFX_INVALID_HANDLE);
+					}
+				}
+				ac_terrain_set_layer(mod->ac_terrain, 0,
+					vec_count(mod->paint.materials), mod->paint.scale_tex,
+					mod->paint.vertices, mod->paint.materials);
+				break;
+			case PAINT_LAYER_1:
+				for (i = 0; i < count; i++) {
+					if (BGFX_HANDLE_IS_VALID(mod->paint.tex)) {
+						replacetexture(mod, &mod->paint.materials[i], 3, 
+							mod->paint.tex_alpha_name, mod->paint.tex_alpha);
+						replacetexture(mod, &mod->paint.materials[i], 4, 
+							mod->paint.tex_name, mod->paint.tex);
+					}
+					else {
+						replacetexture(mod, &mod->paint.materials[i], 3, 
+							NULL, BGFX_INVALID_HANDLE);
+						replacetexture(mod, &mod->paint.materials[i], 4, 
+							NULL, BGFX_INVALID_HANDLE);
+					}
+				}
+				ac_terrain_set_layer(mod->ac_terrain, 1,
+					vec_count(mod->paint.materials), mod->paint.scale_tex,
+					mod->paint.vertices, mod->paint.materials);
+				break;
+			}
+			clearpaintselection(mod);
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("Clear"))
+			clearpaintselection(mod);
 		ImGui::PopStyleVar(1);
 		break;
 	}
@@ -2410,13 +2543,11 @@ void ae_terrain_imgui(struct ae_terrain_module * mod)
 		ac_texture_release(mod->ac_texture, mod->paint.tex);
 		mod->paint.tex = paint_tex;
 		if (BGFX_HANDLE_IS_VALID(paint_tex)) {
-			ac_texture_copy(mod->ac_texture, paint_tex);
 			ac_texture_get_name(mod->ac_texture, paint_tex, TRUE,
 				mod->paint.tex_name, sizeof(mod->paint.tex_name));
 		}
 		else {
-			memset(mod->paint.tex_name, 0,
-				sizeof(mod->paint.tex_name));
+			memset(mod->paint.tex_name, 0, sizeof(mod->paint.tex_name));
 		}
 	}
 }

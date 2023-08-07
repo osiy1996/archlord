@@ -645,8 +645,7 @@ size_t arm_calc_geo_size(
 		+ vertex_count * sizeof(RwRGBA)
 		+ triangle_count * sizeof(struct ac_mesh_triangle)
 		+ (size_t)triangle_count * 3 * sizeof(uint16_t)
-		+ material_count * sizeof(struct ac_mesh_split)
-		+ material_count * sizeof(struct ac_mesh_material));
+		+ material_count * sizeof(struct ac_mesh_split));
 }
 
 struct ac_mesh_geometry * arm_alloc_geo(
@@ -678,8 +677,8 @@ struct ac_mesh_geometry * arm_alloc_geo(
 	set_and_advance(&g->splits, &mem,
 		g->split_count * sizeof(*g->splits));
 	g->material_count = material_count;
-	set_and_advance(&g->materials, &mem,
-		g->material_count * sizeof(*g->materials));
+	g->materials = alloc(material_count * sizeof(*g->materials));
+	memset(g->materials, 0, g->material_count * sizeof(*g->materials));
 	return g;
 }
 
@@ -1286,6 +1285,8 @@ int ac_mesh_cmp_material(
 	uint32_t i;
 	for (i = 0; i < COUNT_OF(m1->tex_name); i++) {
 		int n = strcasecmp(m1->tex_name[i], m2->tex_name[i]);
+		assert(m1->tex_name[i][0] != -51);
+		assert(m2->tex_name[i][0] != -51);
 		if (n != 0)
 			return (n < 0) ? -1 : 1;
 	}
@@ -1383,12 +1384,10 @@ struct ac_mesh_geometry * ac_mesh_rebuild_splits(
 {
 	struct ac_mesh_geometry * ng = NULL;
 	uint32_t i;
-	uint32_t * indices = alloc(
-		g->material_count * sizeof(*indices));
+	uint32_t * indices = alloc(g->material_count * sizeof(*indices));
 	uint32_t * split_index_count = alloc(
 		g->material_count * sizeof(*split_index_count));
-	uint32_t * mat_table = alloc(
-		g->material_count * sizeof(*mat_table));
+	uint32_t * mat_table = alloc(g->material_count * sizeof(*mat_table));
 	uint32_t count = 0;
 	memset(split_index_count, 0,
 		g->material_count * sizeof(*split_index_count));
@@ -1446,6 +1445,10 @@ struct ac_mesh_geometry * ac_mesh_rebuild_splits(
 		if (!in_use)
 			ac_mesh_release_material(mod, &g->materials[i]);
 	}
+	dealloc(indices);
+	dealloc(split_index_count);
+	dealloc(mat_table);
+	dealloc(g->materials);
 	dealloc(g);
 	return ng;
 }
@@ -1458,8 +1461,7 @@ boolean ac_mesh_set_material(
 {
 	struct ac_mesh_material * nm;
 	uint32_t i;
-	if (ac_mesh_cmp_material(
-		&g->materials[tri->material_index], m) == 0)
+	if (ac_mesh_cmp_material(&g->materials[tri->material_index], m) == 0)
 		return FALSE;
 	for (i = 0; i < g->material_count; i++) {
 		if (ac_mesh_cmp_material(&g->materials[i], m) == 0) {

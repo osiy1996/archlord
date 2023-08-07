@@ -177,8 +177,8 @@ boolean ae_event_binding_render_as_node(
 	if (mod->select_region) {
 		ImVec2 size = ImVec2(200.0f, 400.0f);
 		ImVec2 center = ImGui::GetMainViewport()->GetWorkCenter() - (size / 2.0f);
-		ImGui::SetNextWindowSize(size, ImGuiCond_Appearing);
-		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing);
+		ImGui::SetNextWindowSize(size, ImGuiCond_FirstUseEver);
+		ImGui::SetNextWindowPos(center, ImGuiCond_FirstUseEver);
 		if (ImGui::Begin("Select Binding Region", &mod->select_region)) {
 			ImGui::InputText("Search", mod->region_selection_search_input, 
 				sizeof(mod->region_selection_search_input));

@@ -174,6 +174,13 @@ boolean ac_terrain_raycast(
 	const float * dir,
 	float * hit_point);
 
+boolean ac_terrain_get_quad(
+	struct ac_terrain_module * mod,
+	const vec3 start,
+	float dimension,
+	struct ac_mesh_vertex * vertices,
+	struct ac_mesh_material * materials);
+
 boolean ac_terrain_get_triangle(
 	struct ac_terrain_module * mod,
 	const vec3 pos,
@@ -183,6 +190,21 @@ boolean ac_terrain_get_triangle(
 boolean ac_terrain_set_triangle(
 	struct ac_terrain_module * mod,
 	uint32_t triangle_count,
+	const struct ac_mesh_vertex * vertices,
+	const struct ac_mesh_material * materials);
+
+boolean ac_terrain_set_base(
+	struct ac_terrain_module * mod,
+	uint32_t triangle_count,
+	uint32_t tile_ratio,
+	const struct ac_mesh_vertex * vertices,
+	const struct ac_mesh_material * materials);
+
+boolean ac_terrain_set_layer(
+	struct ac_terrain_module * mod,
+	uint32_t layer,
+	uint32_t triangle_count,
+	uint32_t tile_ratio,
 	const struct ac_mesh_vertex * vertices,
 	const struct ac_mesh_material * materials);
 

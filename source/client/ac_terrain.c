@@ -1144,8 +1144,9 @@ static void add_to_batch(
 		const struct ac_mesh_split * s = &g->splits[i];
 		uint32_t j;
 		if (ac_mesh_cmp_material(&b->material,
-				&g->materials[s->material_index]) != 0)
+				&g->materials[s->material_index]) != 0) {
 			continue;
+		}
 		for (j = 0; j < s->index_count; j++) {
 			uint32_t idx = b->first_index + b->index_count + j;
 			buf->indices[idx] = vertex_offset + 
@@ -1273,6 +1274,7 @@ static boolean construct_draw_buffer(
 			const struct ac_mesh_split * sp = &g->splits[j];
 			uint32_t k;
 			struct draw_batch * b = NULL;
+			uint32_t back = buf->index_count;
 			buf->index_count += sp->index_count;
 			for (k = 0; k < vec_count(buf->batch); k++) {
 				if (ac_mesh_cmp_material(&buf->batch[k].material,
@@ -1282,11 +1284,9 @@ static boolean construct_draw_buffer(
 				}
 			}
 			if (!b) {
-				struct draw_batch nb;
-				memset(&nb, 0, sizeof(nb));
-				ac_mesh_copy_material(data->mod->ac_mesh, &nb.material,
+				struct draw_batch * nb = vec_add_empty(&buf->batch);
+				ac_mesh_copy_material(data->mod->ac_mesh, &nb->material,
 					&g->materials[sp->material_index]);
-				vec_push_back(&buf->batch, &nb);
 			}
 		}
 	}
@@ -1771,6 +1771,72 @@ boolean ac_terrain_raycast(
 	return hit;
 }
 
+static boolean istriangleinquad(
+	const vec3 start,
+	float dimension,
+	const struct ac_mesh_vertex * vertices[3])
+{
+	vec2 center = { 0 };
+	uint32_t i;
+	for (i = 0; i < 3; i++) {
+		center[0] += vertices[i]->position[0];
+		center[1] += vertices[i]->position[2];
+	}
+	center[0] /= 3.0f;
+	center[1] /= 3.0f;
+	if (center[0] >= start[0] && center[0] <= start[0] + dimension &&
+		center[1] >= start[2] && center[1] <= start[2] + dimension) {
+		return TRUE;
+	}
+	else {
+		return FALSE;
+	}
+}
+
+boolean ac_terrain_get_quad(
+	struct ac_terrain_module * mod,
+	const vec3 start,
+	float dimension,
+	struct ac_mesh_vertex * vertices,
+	struct ac_mesh_material * materials)
+{
+	uint32_t x;
+	uint32_t z;
+	struct ac_terrain_sector * s;
+	struct ac_mesh_geometry * g;
+	uint32_t i;
+	uint32_t index = 0;
+	if (!ap_scr_pos_to_index(start, &x, &z))
+		return FALSE;
+	s = &mod->sectors[x][z];
+	if (!(s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED))
+		return FALSE;
+	g = s->geometry;
+	for (i = 0; i < g->split_count && index < 2; i++) {
+		const struct ac_mesh_split * split =
+			&s->geometry->splits[i];
+		uint32_t j;
+		for (j = 0; j < split->index_count / 3 && index < 2; j++) {
+			uint16_t * ind =
+				&g->indices[split->index_offset + j * 3];
+			const struct ac_mesh_vertex * v[3] = { &g->vertices[ind[0]], 
+				&g->vertices[ind[1]], &g->vertices[ind[2]] };
+			if (istriangleinquad(start, dimension, v)) {
+				uint32_t k;
+				for (k = 0; k < 3; k++)
+					memcpy(&vertices[index * 3 + k], v[k], sizeof(*vertices));
+				if (materials) {
+					ac_mesh_copy_material(mod->ac_mesh, &materials[index],
+						&g->materials[split->material_index]);
+				}
+				index++;
+			}
+		}
+	}
+	assert(index == 2);
+	return (index == 2);
+}
+
 boolean ac_terrain_get_triangle(
 	struct ac_terrain_module * mod,
 	const vec3 pos,
@@ -1884,6 +1950,177 @@ boolean ac_terrain_set_triangle(
 			}
 		}
 	}
+	for (i = 0; i < changed; i++) {
+		sectors[i]->geometry = ac_mesh_rebuild_splits(mod->ac_mesh,
+			sectors[i]->geometry);
+		sectors[i]->flags |= AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES;
+		if (!mod->update_draw_buffer_in)
+			mod->update_draw_buffer_in = 50;
+	}
+	return (changed == triangle_count);
+}
+
+static void settriangletile(
+	struct ac_mesh_vertex * vertices[3],
+	uint32_t index,
+	uint32_t tile_ratio)
+{
+	vec2 center = { 0 };
+	vec2 start;
+	float tilesize = tile_ratio * AP_SECTOR_STEPSIZE;
+	uint32_t i;
+	for (i = 0; i < 3; i++) {
+		center[0] += vertices[i]->position[0];
+		center[1] += vertices[i]->position[2];
+	}
+	center[0] /= 3.0f;
+	center[1] /= 3.0f;
+	start[0] = (int)(fabsf(center[0]) / tilesize) * tilesize;
+	start[1] = (int)(fabsf(center[1]) / tilesize) * tilesize;
+	for (i = 0; i < 3; i++) {
+		float x = fabsf(vertices[i]->position[0]);
+		float tiledx = x - start[0];
+		float y = fabsf(vertices[i]->position[2]);
+		float tiledy = y - start[1];
+		vertices[i]->texcoord[index][0] = tiledx / tilesize;
+		vertices[i]->texcoord[index][1] = tiledy / tilesize;
+	}
+}
+
+boolean ac_terrain_set_base(
+	struct ac_terrain_module * mod,
+	uint32_t triangle_count,
+	uint32_t tile_ratio,
+	const struct ac_mesh_vertex * vertices,
+	const struct ac_mesh_material * materials)
+{
+	uint32_t i;
+	uint32_t changed = 0;
+	static struct ac_terrain_sector * sectors[256] = { 0 };
+	if (mod->task_state != TASK_STATE_IDLE)
+		return FALSE;
+	for (i = 0; i < triangle_count && changed < COUNT_OF(sectors); i++) {
+		struct ac_terrain_sector * s =
+			from_triangle(mod, &vertices[i * 3]);
+		struct ac_mesh_geometry * g;
+		uint32_t j;
+		uint32_t x[3] = {
+			snap_to_step_x(vertices[i * 3 + 0].position[0]),
+			snap_to_step_x(vertices[i * 3 + 1].position[0]),
+			snap_to_step_x(vertices[i * 3 + 2].position[0]) };
+		uint32_t z[3] = {
+			snap_to_step_z(vertices[i * 3 + 0].position[2]),
+			snap_to_step_z(vertices[i * 3 + 1].position[2]),
+			snap_to_step_z(vertices[i * 3 + 2].position[2]) };
+		if (!s || !(s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED))
+			return FALSE;
+		g = s->geometry;
+		for (j = 0; j < g->triangle_count; j++) {
+			struct ac_mesh_vertex * v[3] = {
+				&g->vertices[g->triangles[j].indices[0]],
+				&g->vertices[g->triangles[j].indices[1]],
+				&g->vertices[g->triangles[j].indices[2]] };
+			boolean found = TRUE;
+			uint32_t k;
+			for (k = 0; k < 3; k++) {
+				if (snap_to_step_x(v[k]->position[0]) != x[k] ||
+					snap_to_step_z(v[k]->position[2]) != z[k]) {
+					found = FALSE;
+					break;
+				}
+			}
+			if (found) {
+				found = FALSE;
+				settriangletile(v, 0, tile_ratio);
+				ac_mesh_set_material(mod->ac_mesh, g, &g->triangles[j],
+					&materials[i]);
+				for (k = 0; k < changed; k++) {
+					if (sectors[k] == s) {
+						found = TRUE;
+						break;
+					}
+				}
+				if (!found)
+					sectors[changed++] = s;
+				break;
+			}
+		}
+	}
+	for (i = 0; i < changed; i++) {
+		sectors[i]->geometry = ac_mesh_rebuild_splits(mod->ac_mesh,
+			sectors[i]->geometry);
+		sectors[i]->flags |= AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES;
+		if (!mod->update_draw_buffer_in)
+			mod->update_draw_buffer_in = 50;
+	}
+	return (changed == triangle_count);
+}
+
+boolean ac_terrain_set_layer(
+	struct ac_terrain_module * mod,
+	uint32_t layer,
+	uint32_t triangle_count,
+	uint32_t tile_ratio,
+	const struct ac_mesh_vertex * vertices,
+	const struct ac_mesh_material * materials)
+{
+	uint32_t i;
+	uint32_t changed = 0;
+	static struct ac_terrain_sector * sectors[256] = { 0 };
+	if (mod->task_state != TASK_STATE_IDLE)
+		return FALSE;
+	for (i = 0; i < triangle_count && changed < COUNT_OF(sectors); i++) {
+		struct ac_terrain_sector * s =
+			from_triangle(mod, &vertices[i * 3]);
+		struct ac_mesh_geometry * g;
+		uint32_t j;
+		uint32_t x[3] = {
+			snap_to_step_x(vertices[i * 3 + 0].position[0]),
+			snap_to_step_x(vertices[i * 3 + 1].position[0]),
+			snap_to_step_x(vertices[i * 3 + 2].position[0]) };
+		uint32_t z[3] = {
+			snap_to_step_z(vertices[i * 3 + 0].position[2]),
+			snap_to_step_z(vertices[i * 3 + 1].position[2]),
+			snap_to_step_z(vertices[i * 3 + 2].position[2]) };
+		if (!s || !(s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED))
+			return FALSE;
+		g = s->geometry;
+		for (j = 0; j < g->triangle_count; j++) {
+			struct ac_mesh_vertex * v[3] = {
+				&g->vertices[g->triangles[j].indices[0]],
+				&g->vertices[g->triangles[j].indices[1]],
+				&g->vertices[g->triangles[j].indices[2]] };
+			boolean found = TRUE;
+			uint32_t k;
+			for (k = 0; k < 3; k++) {
+				if (snap_to_step_x(v[k]->position[0]) != x[k] ||
+					snap_to_step_z(v[k]->position[2]) != z[k]) {
+					found = FALSE;
+					break;
+				}
+			}
+			if (found) {
+				found = FALSE;
+				for (k = 0; k < 3; k++) {
+					v[k]->texcoord[1 + layer * 2 + 0][0] = vertices[i * 3 + k].texcoord[0][0];
+					v[k]->texcoord[1 + layer * 2 + 0][1] = vertices[i * 3 + k].texcoord[0][1];
+				}
+				settriangletile(v, 1 + layer * 2 + 1, tile_ratio);
+				ac_mesh_set_material(mod->ac_mesh, g, &g->triangles[j],
+					&materials[i]);
+				for (k = 0; k < changed; k++) {
+					if (sectors[k] == s) {
+						found = TRUE;
+						break;
+					}
+				}
+				if (!found)
+					sectors[changed++] = s;
+				break;
+			}
+		}
+	}
+	assert(changed < COUNT_OF(sectors));
 	for (i = 0; i < changed; i++) {
 		sectors[i]->geometry = ac_mesh_rebuild_splits(mod->ac_mesh,
 			sectors[i]->geometry);

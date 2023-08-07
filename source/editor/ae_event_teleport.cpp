@@ -83,8 +83,8 @@ static void rendergroupeditor(struct ae_event_teleport_module * mod)
 	size_t index = 0;
 	struct ap_event_teleport_group * group;
 	struct ap_event_teleport_point * point;
-	ImGui::SetNextWindowSize(size, ImGuiCond_Appearing);
-	ImGui::SetNextWindowPos(center, ImGuiCond_Appearing);
+	ImGui::SetNextWindowSize(size, ImGuiCond_FirstUseEver);
+	ImGui::SetNextWindowPos(center, ImGuiCond_FirstUseEver);
 	if (!ImGui::Begin("Teleport Group Editor", &mod->display_group_editor)) {
 		ImGui::End();
 		return;
@@ -211,8 +211,8 @@ static void rendergroupeditor(struct ae_event_teleport_module * mod)
 		return;
 	size = ImVec2(200.0f, 400.0f);
 	center = ImGui::GetMainViewport()->GetWorkCenter() - (size / 2.0f);
-	ImGui::SetNextWindowSize(size, ImGuiCond_Appearing);
-	ImGui::SetNextWindowPos(center, ImGuiCond_Appearing);
+	ImGui::SetNextWindowSize(size, ImGuiCond_FirstUseEver);
+	ImGui::SetNextWindowPos(center, ImGuiCond_FirstUseEver);
 	if (!ImGui::Begin("Add Teleport Point", &mod->add_point)) {
 		ImGui::End();
 		return;
