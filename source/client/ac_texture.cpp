@@ -19,6 +19,7 @@
 #include "vendor/bimg/decode.h"
 #include "vendor/bx/allocator.h"
 
+#include <assert.h>
 #include <time.h>
 
 #define HAS_ALPHA           (1<<0)
@@ -598,7 +599,22 @@ bgfx_texture_handle_t ac_texture_load_packed(
 	if (dir < 0 || dir >= AC_DAT_DIR_COUNT) {
 		dir = get_current_dir(mod);
 		if (dir == AC_DAT_DIR_COUNT) {
-			ERROR("Invalid directory.");
+			for (i = 0; i < COUNT_OF(ext); i++) {
+				char name_with_ext[128];
+				snprintf(name_with_ext, sizeof(name_with_ext), "%s.%s",
+					file_name, ext[i]);
+				make_path(file_path, sizeof(file_path), "Default/%s",
+					name_with_ext);
+				lock_mutex(mod->mutex);
+				e = find_entry(mod, file_path);
+				if (e) {
+					if (info)
+						memcpy(info, &e->info, sizeof(*info));
+					unlock_mutex(mod->mutex);
+					return e->handle;
+				}
+				unlock_mutex(mod->mutex);
+			}
 			return BGFX_INVALID_HANDLE;
 		}
 	}
@@ -825,4 +841,165 @@ boolean ac_texture_get_name(
 		r = (strlcpy(e->name, dst, maxcount) < maxcount);
 	unlock_mutex(mod->mutex);
 	return r;
+}
+
+struct rwStreamTexDictionary {
+	/* This is required as to be backward compatible, we need to convert
+	with the 32 bit endian function.... */
+#ifdef rwLITTLEENDIAN
+	RwUInt16 numTextures;
+	RwUInt16 deviceId;
+#else /* rwLITTLEENDIAN */
+	RwUInt16           deviceId;
+	RwUInt16           numTextures;
+#endif /* rwLITTLEENDIAN */
+};
+
+struct rwD3D9NativeTexture {
+	RwInt32 id; /* RwPlatformID,(rwID_D3D9) defined in batype.h */
+	RwInt32 filterAndAddress; /* Same as in babintex.c */
+	RwChar  name[rwTEXTUREBASENAMELENGTH]; /* Texture name */
+	RwChar  mask[rwTEXTUREBASENAMELENGTH]; /* Texture mask name */
+};
+
+struct rwD3D9NativeRaster {
+	RwUInt32    format;         /* Raster format flags */
+	int         d3dFormat;      /* D3D pixel format */
+	RwUInt16    width;          /* Raster width */
+	RwUInt16    height;         /* Raster height */
+	RwUInt8     depth;          /* Raster depth */
+	RwUInt8     numMipLevels;   /* The number of mip levels to load */
+	RwUInt8     type;           /* The raster type */
+	RwUInt8     flags;          /* This raster has an alpha component, automipmapgen, etc */
+};
+
+boolean ac_texture_add_to_default_dictionary_from_stream(
+	struct ac_texture_module * mod,
+	struct bin_stream * stream)
+{
+	struct texture_entry * e;
+	struct bin_stream * dds;
+	RwChunkHeaderInfo c;
+	RwUInt16 count;
+	RwUInt32 filter_addr;
+	RwUInt32 fmt;
+	RwUInt32 d3d_fmt;
+	RwUInt16 width;
+	RwUInt16 height;
+	RwUInt8 depth;
+	RwUInt8 mip_levels;
+	RwUInt8 type;
+	RwUInt8 flags;
+	uint32_t tmp;
+	char name[32];
+	char filename[64];
+	bgfx_texture_handle_t handle;
+	size_t offset;
+	if (!ac_renderware_find_chunk(stream, rwID_TEXDICTIONARY, &c)) {
+		ERROR("Failed to find chunk (rwID_TEXDICTIONARY).");
+		return FALSE;
+	}
+	offset = bstream_offset(stream) + c.length;
+	if (!ac_renderware_find_chunk(stream, rwID_STRUCT, NULL)) {
+		ERROR("Failed to find rwID_STRUCT.");
+		return FALSE;
+	}
+	if (!bstream_read_u16(stream, &count)) {
+		ERROR("Stream ended unexpectedly.");
+		return FALSE;
+	}
+	if (count != 1) {
+		ERROR("Multiple textures in same stream is not supported.");
+		return FALSE;
+	}
+	/* Skip device id. */
+	if (!bstream_advance(stream, 2)) {
+		ERROR("Stream ended unexpectedly.");
+		return FALSE;
+	}
+	if (!ac_renderware_find_chunk(stream, rwID_TEXTURENATIVE, NULL)) {
+		ERROR("Failed to find rwID_TEXTURENATIVE.");
+		return FALSE;
+	}
+	if (!ac_renderware_find_chunk(stream, rwID_STRUCT, &c)) {
+		ERROR("Failed to find rwID_STRUCT.");
+		return FALSE;
+	}
+	if (!bstream_advance(stream, 4) || /* rwID_PCD3D9. */
+		!bstream_read_u32(stream, &filter_addr) ||
+		!bstream_read(stream, name, sizeof(name)) ||
+		!bstream_advance(stream, 32) || /* Mask */
+		!bstream_read_u32(stream, &fmt) ||
+		!bstream_read_u32(stream, &d3d_fmt) ||
+		!bstream_read_u16(stream, &width) ||
+		!bstream_read_u16(stream, &height) ||
+		!bstream_read_u8(stream, &depth) ||
+		!bstream_read_u8(stream, &mip_levels) ||
+		!bstream_read_u8(stream, &type) ||
+		!bstream_read_u8(stream, &flags)) {
+		ERROR("Stream ended unexpectedly.");
+		return FALSE;
+	}
+	if (!mip_levels) {
+		ERROR("At least one mip level is required.");
+		return FALSE;
+	}
+	if (flags & IS_CUBE) {
+		ERROR("Cube textures are not supported.");
+		return FALSE;
+	}
+	if (!(flags & IS_COMPRESSED)) {
+		ERROR("Uncompressed textures are not supported.");
+		return FALSE;
+	}
+	make_path(filename, sizeof(filename), "Default/%s.dds", name);
+	e = find_entry(mod, filename);
+	if (e) {
+		bstream_seek(stream, offset);
+		return TRUE;
+	}
+	bstream_for_write(NULL, stream->size * 2, &dds);
+	bstream_write_u32(dds, DDS_MAGIC);
+	bstream_write_u32(dds, DDS_HEADER_SIZE);
+	tmp = DDSD_CAPS | DDSD_HEIGHT | DDSD_WIDTH |
+		DDSD_PIXELFORMAT;
+	if (mip_levels > 1)
+		tmp |= DDSD_MIPMAPCOUNT;
+	bstream_write_u32(dds, tmp);
+	bstream_write_u32(dds, height);
+	bstream_write_u32(dds, width);
+	bstream_write_u32(dds, 0); /* Pictxh */
+	bstream_write_u32(dds, 0); /* Depth */
+	bstream_write_u32(dds, mip_levels);
+	bstream_fill(dds, 0, 44); /* Reserved */
+	bstream_write_u32(dds, 4); /* Pixel format size */
+	tmp = DDPF_FOURCC;
+	if (flags & HAS_ALPHA)
+		tmp |= DDPF_ALPHAPIXELS;
+	bstream_write_u32(dds, tmp); /* Pixel flags */
+	bstream_write_u32(dds, d3d_fmt); /* FourCC */
+	bstream_write_u32(dds, 0); /* Bit count */
+	bstream_fill(dds, 0, 16); /* Bit mask */
+	tmp = DDSCAPS_COMPLEX | DDSCAPS_TEXTURE;
+	if (mip_levels > 1)
+		tmp |= DDSCAPS_MIPMAP;
+	bstream_write_u32(dds, tmp); /* Caps[0] */
+	bstream_write_u32(dds, 0); /* Caps[1] */
+	bstream_write_u32(dds, 0); /* Caps[2] */
+	bstream_write_u32(dds, 0); /* Caps[3] */
+	bstream_write_u32(dds, 0); /* Reserved */
+	for (tmp = 0; tmp < mip_levels; tmp++) {
+		uint32_t sz;
+		if (!bstream_read_u32(stream, &sz) ||
+			!bstream_write(dds, stream->cursor, sz) ||
+			!bstream_advance(stream, sz)) {
+			ERROR("Stream ended unexpectedly.");
+			bstream_destroy(dds);
+			return FALSE;
+		}
+	}
+	handle = load_internal(mod, filename, dds->head, dds->size, NULL);
+	bstream_destroy(dds);
+	bstream_seek(stream, offset);
+	return BGFX_HANDLE_IS_VALID(handle);
 }

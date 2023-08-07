@@ -165,6 +165,7 @@ static struct ap_ui_status_module * g_ApUiStatus;
 static struct ap_world_module * g_ApWorld;
 
 static struct ac_ambient_occlusion_map_module * g_AcAmbientOcclusionMap;
+static struct ac_camera_module * g_AcCamera;
 static struct ac_console_module * g_AcConsole;
 static struct ac_dat_module * g_AcDat;
 static struct ac_event_effect_module * g_AcEventEffect;
@@ -240,6 +241,7 @@ static struct module_desc g_Modules[] = {
 	{ AP_LOGIN_MODULE_NAME, ap_login_create_module, NULL, &g_ApLogin },
 	{ AP_WORLD_MODULE_NAME, ap_world_create_module, NULL, &g_ApWorld },
 	/* Client modules. */
+	{ AC_CAMERA_MODULE_NAME, ac_camera_create_module, NULL, &g_AcCamera },
 	{ AC_AMBIENT_OCCLUSION_MAP_MODULE_NAME, ac_ambient_occlusion_map_create_module, NULL, &g_AcAmbientOcclusionMap },
 	{ AC_EVENT_POINT_LIGHT_MODULE_NAME, ac_event_point_light_create_module, NULL, &g_AcEventPointLight },
 	{ AC_DAT_MODULE_NAME, ac_dat_create_module, NULL, &g_AcDat },
@@ -783,7 +785,7 @@ static void setspawnpos(struct ac_camera * cam)
 		if (sscanf(config, "%f,%f,%f", &c[0], &c[1], &c[2]))
 			glm_vec3_copy(c, center);
 	}
-	ac_camera_init(cam, center, 5000.0f, 45.0f, 30.0f, 60.0f, 200.0f, 40000.0f);
+	ac_camera_init(cam, center, 5000.0f, 45.0f, 30.0f, 60.0f, 100.0f, 400000.0f);
 	ac_terrain_sync(g_AcTerrain, cam->center, TRUE);
 	ac_object_sync(g_AcObject, cam->center, TRUE);
 }
@@ -794,7 +796,7 @@ int main(int argc, char * argv[])
 	float dt = 0.0f;
 	float accum = 0.0f;
 	struct ap_module_registry * registry = NULL;
-	struct ac_camera cam = { 0 };
+	struct ac_camera * cam;
 	struct camera_controls cam_ctrl = { 0 };
 	if (!log_init()) {
 		fprintf(stderr, "log_init() failed.\n");
@@ -822,7 +824,8 @@ int main(int argc, char * argv[])
 		ERROR("Failed to initialize.");
 		return -1;
 	}
-	setspawnpos(&cam);
+	cam = ac_camera_get_main(g_AcCamera);
+	setspawnpos(cam);
 	last = ap_tick_get(g_ApTick);
 	INFO("Entering main loop..");
 	while (!core_should_shutdown()) {
@@ -836,19 +839,19 @@ int main(int argc, char * argv[])
 			switch (e.type) {
 			case SDL_MOUSEMOTION:
 				if (ac_render_button_down(g_AcRender, AC_RENDER_BUTTON_RIGHT)) {
-					ac_camera_rotate(&cam,
+					ac_camera_rotate(cam,
 						e.motion.yrel * .3f,
 						e.motion.xrel * .3f);
 				}
 				else if (ac_render_button_down(g_AcRender, AC_RENDER_BUTTON_MIDDLE)) {
-					ac_camera_slide(&cam,
+					ac_camera_slide(cam,
 						-(float)e.motion.xrel * 10.f,
 						(float)e.motion.yrel * 10.f);
 				}
 				else {
-					if (ae_terrain_on_mmove(g_AeTerrain, &cam, e.motion.x, 
+					if (ae_terrain_on_mmove(g_AeTerrain, cam, e.motion.x, 
 							e.motion.y) ||
-						ae_object_on_mmove(g_AeObject, &cam, 
+						ae_object_on_mmove(g_AeObject, cam, 
 							e.motion.x, e.motion.y, 
 							e.motion.xrel, e.motion.yrel)) {
 						break;
@@ -857,7 +860,7 @@ int main(int argc, char * argv[])
 				break;
 			case SDL_MOUSEWHEEL:
 				if (!ae_terrain_on_mwheel(g_AeTerrain, e.wheel.preciseY))
-					ac_camera_zoom(&cam, e.wheel.preciseY * 1000.f);
+					ac_camera_zoom(cam, e.wheel.preciseY * 1000.f);
 				break;
 			case SDL_MOUSEBUTTONDOWN:
 				if (e.button.button == SDL_BUTTON_LEFT) {
@@ -865,17 +868,17 @@ int main(int argc, char * argv[])
 						SDL_GetMouseState(NULL, NULL);
 					if (mb_state & SDL_BUTTON(SDL_BUTTON_RIGHT))
 						break;
-					if (ae_object_on_lmb_down(g_AeObject, &cam, e.button.x, e.button.y))
+					if (ae_object_on_lmb_down(g_AeObject, cam, e.button.x, e.button.y))
 						break;
-					ae_terrain_on_mdown(g_AeTerrain, &cam, e.button.x, e.button.y);
+					ae_terrain_on_mdown(g_AeTerrain, cam, e.button.x, e.button.y);
 				}
 				else if (e.button.button == SDL_BUTTON_RIGHT) {
-					ae_object_on_rmb_down(g_AeObject, &cam, e.button.x, e.button.y);
+					ae_object_on_rmb_down(g_AeObject, cam, e.button.x, e.button.y);
 				}
 				break;
 			case SDL_KEYDOWN:
 				if (ae_terrain_on_key_down(g_AeTerrain, e.key.keysym.sym) ||
-					ae_object_on_key_down(g_AeObject, &cam, e.key.keysym.sym)) {
+					ae_object_on_key_down(g_AeObject, cam, e.key.keysym.sym)) {
 					break;
 				}
 				on_keydown_cam(&cam_ctrl, ac_render_get_key_state(g_AcRender), &e.key);
@@ -889,15 +892,15 @@ int main(int argc, char * argv[])
 		while (accum >= STEPTIME) {
 			accum -= STEPTIME;
 		}
-		update_camera(&cam, &cam_ctrl, dt);
-		ac_terrain_sync(g_AcTerrain, cam.center, FALSE);
+		update_camera(cam, &cam_ctrl, dt);
+		ac_terrain_sync(g_AcTerrain, cam->center, FALSE);
 		ac_terrain_update(g_AcTerrain, dt);
-		ac_object_sync(g_AcObject, cam.center, FALSE);
+		ac_object_sync(g_AcObject, cam->center, FALSE);
 		ac_object_update(g_AcObject, dt);
 		ae_terrain_update(g_AeTerrain, dt);
 		ae_texture_process_loading_queue(g_AeTexture, 5);
 		ae_object_update(g_AeObject, dt);
-		render(&cam, dt);
+		render(cam, dt);
 		task_do_post_cb();
 		sleep(1);
 	}

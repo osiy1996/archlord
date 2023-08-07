@@ -22,15 +22,16 @@ struct ac_camera;
 enum ac_terrain_sector_flag_bits {
 	AC_TERRAIN_SECTOR_NONE = 0,
 	AC_TERRAIN_SECTOR_SEGMENT_IS_LOADED = 1u << 0,
-	AC_TERRAIN_SECTOR_DETAIL_IS_LOADED = 1u << 1,
+	AC_TERRAIN_SECTOR_ROUGH_IS_LOADED = 1u << 1,
+	AC_TERRAIN_SECTOR_DETAIL_IS_LOADED = 1u << 2,
 	/* When editor makes changes to sector segments, 
 	 * it will set this flag to retain sector state until 
 	 * changes are commited and this flag is removed. */
-	AC_TERRAIN_SECTOR_HAS_SEGMENT_CHANGES = 1u << 2,
+	AC_TERRAIN_SECTOR_HAS_SEGMENT_CHANGES = 1u << 3,
 	/* When editor makes changes to sector geometry, 
 	 * it will set this flag to retain sector state until 
 	 * changes are commited and this flag is removed. */
-	AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES = 1u << 3,
+	AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES = 1u << 4,
 };
 
 enum ac_terrain_tile_type{
@@ -105,6 +106,7 @@ struct ac_terrain_sector {
 	vec2 extent_end;
 	uint32_t flags;
 	struct ac_terrain_segment_info * segment_info;
+	struct ac_mesh_geometry * rough_geometry;
 	struct ac_mesh_geometry * geometry;
 };
 
@@ -120,6 +122,11 @@ struct ac_terrain_cb_post_load_sector {
 struct ac_terrain_cb_segment_modification {
 	struct ac_terrain_sector ** visible_sectors;
 	uint32_t visible_sector_count;
+};
+
+struct ac_terrain_cb_custom_render {
+	uint64_t state;
+	bgfx_program_handle_t program;
 };
 
 struct ac_terrain_module * ac_terrain_create_module();
@@ -158,10 +165,10 @@ void ac_terrain_update(struct ac_terrain_module * mod, float dt);
 
 void ac_terrain_render(struct ac_terrain_module * mod);
 
-/*
- * Binds vertex and index buffers.
- */
-boolean ac_terrain_bind_buffers(struct ac_terrain_module * mod);
+void ac_terrain_custom_render(
+	struct ac_terrain_module * mod,
+	ap_module_t callback_module,
+	ap_module_default_t callback);
 
 void ac_terrain_set_tex(
 	struct ac_terrain_module * mod, 

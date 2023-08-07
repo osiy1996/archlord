@@ -60,6 +60,10 @@ boolean ac_texture_get_name(
 	char * dst,
 	size_t maxcount);
 
+boolean ac_texture_add_to_default_dictionary_from_stream(
+	struct ac_texture_module * mod,
+	struct bin_stream * stream);
+
 END_DECLS
 
 #endif /* _AC_TEXTURE_H_ */

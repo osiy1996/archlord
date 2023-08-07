@@ -210,8 +210,6 @@ boolean arm_read_texture(
 		ERROR("Stream ended unexpectedly.");
 		return FALSE;
 	}
-	assert(filter_addr == 0x1106 || filter_addr == 0x1101 ||
-		filter_addr == 0x011106 || filter_addr == 0x011101);
 	if (dst) {
 		if (!arm_read_string(stream, dst, maxcount)) {
 			ERROR("Failed to read diffuse texture name.");
@@ -363,6 +361,8 @@ boolean arm_read_material(
 		}
 		m->tex_handle[0] = ac_texture_load_packed(mod->ac_texture, 
 			AC_DAT_DIR_COUNT, m->tex_name[0], TRUE, NULL);
+		if (!BGFX_HANDLE_IS_VALID(m->tex_handle[0]))
+			memset(m->tex_name[0], 0, sizeof(m->tex_handle[0]));
 	}
 	if (!ac_renderware_find_chunk(stream, rwID_EXTENSION, &c)) {
 		ERROR("Failed to find rwID_EXTENSION.");
@@ -407,6 +407,8 @@ boolean arm_read_material(
 					m->tex_handle[i + 1] = ac_texture_load_packed(mod->ac_texture,
 						AC_DAT_DIR_COUNT, m->tex_name[i + 1],
 						TRUE, NULL);
+					if (!BGFX_HANDLE_IS_VALID(m->tex_handle[i + 1]))
+						memset(m->tex_name[i + 1], 0, sizeof(m->tex_handle[i + 1]));
 				}
 			}
 		}

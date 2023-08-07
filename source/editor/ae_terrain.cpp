@@ -524,10 +524,15 @@ void rebuild_tile_tex(
 	dealloc(tex_data);
 }
 
-static void render_tile(struct ae_terrain_module * mod)
+static boolean cbcustomrendertile(
+	struct ae_terrain_module * mod, 
+	struct ac_terrain_cb_custom_render * cb)
 {
-	mat4 model;
-	uint64_t state = BGFX_STATE_WRITE_RGB |
+	struct tile_tool * t = mod->tile;
+	vec4 uniform[2] = {
+		{ t->begin[0], t->begin[1], t->length, 0.0f },
+		{ t->opacity, 0.0f, 0.0f, 0.0f } };
+	cb->state = BGFX_STATE_WRITE_RGB |
 		BGFX_STATE_DEPTH_TEST_LEQUAL |
 		BGFX_STATE_CULL_CW |
 		BGFX_STATE_BLEND_FUNC_SEPARATE(
@@ -535,19 +540,17 @@ static void render_tile(struct ae_terrain_module * mod)
 			BGFX_STATE_BLEND_INV_SRC_ALPHA,
 			BGFX_STATE_BLEND_ZERO,
 			BGFX_STATE_BLEND_ONE);
-	struct tile_tool * t = mod->tile;
-	vec4 uniform[2] = {
-		{ t->begin[0], t->begin[1], t->length, 0.0f },
-		{ t->opacity, 0.0f, 0.0f, 0.0f } };
-	if (!ac_terrain_bind_buffers(mod->ac_terrain))
-		return;
-	glm_mat4_identity(model);
-	bgfx_set_transform(&model, 1);
-	bgfx_set_state(state, 0xffffffff);
+	cb->program = t->program;
 	bgfx_set_uniform(t->uniform, uniform, 2);
 	bgfx_set_texture(0, t->sampler,
 		mod->segment_tex[t->tex_type], UINT32_MAX);
-	bgfx_submit(0, t->program, 0, 0xff);
+	return TRUE;
+}
+
+static void render_tile(struct ae_terrain_module * mod)
+{
+	ac_terrain_custom_render(mod->ac_terrain, mod, 
+		(ap_module_default_t)cbcustomrendertile);
 }
 
 void render_tile_toolbar(struct ae_terrain_module * mod)
@@ -1857,6 +1860,88 @@ void ae_terrain_update(struct ae_terrain_module * mod, float dt)
 	}
 }
 
+static boolean cbcustomrenderpaint(
+	struct ae_terrain_module * mod, 
+	struct ac_terrain_cb_custom_render * cb)
+{
+	cb->state = BGFX_STATE_WRITE_RGB |
+		BGFX_STATE_DEPTH_TEST_LEQUAL |
+		BGFX_STATE_CULL_CW |
+		BGFX_STATE_BLEND_FUNC_SEPARATE(
+			BGFX_STATE_BLEND_SRC_ALPHA,
+			BGFX_STATE_BLEND_INV_SRC_ALPHA,
+			BGFX_STATE_BLEND_ZERO,
+			BGFX_STATE_BLEND_ONE);
+	cb->program = mod->paint.program_grid;
+	return TRUE;
+}
+
+static boolean cbcustomrenderheight(
+	struct ae_terrain_module * mod, 
+	struct ac_terrain_cb_custom_render * cb)
+{
+	vec4 uniform = {
+		mod->height.center[0], mod->height.center[1],
+		mod->height.size * HEIGHT_TOOL_SIZE_SCALE, 0.0f };
+	if (!mod->height.preview)
+		uniform[2] = 0.0f;
+	cb->state = BGFX_STATE_WRITE_RGB |
+		BGFX_STATE_DEPTH_TEST_LEQUAL |
+		BGFX_STATE_CULL_CW |
+		BGFX_STATE_BLEND_FUNC_SEPARATE(
+			BGFX_STATE_BLEND_SRC_ALPHA,
+			BGFX_STATE_BLEND_INV_SRC_ALPHA,
+			BGFX_STATE_BLEND_ZERO,
+			BGFX_STATE_BLEND_ONE);
+	cb->program = mod->height.program;
+	bgfx_set_uniform(mod->height.uniform, uniform, 1);
+	return TRUE;
+}
+
+static boolean cbcustomrenderlevel(
+	struct ae_terrain_module * mod, 
+	struct ac_terrain_cb_custom_render * cb)
+{
+	vec4 uniform = {
+		mod->level.center[0], mod->level.center[1],
+		mod->level.size * LEVEL_TOOL_SIZE_SCALE, 0.0f };
+	if (!mod->level.preview)
+		uniform[2] = 0.0f;
+	cb->state = BGFX_STATE_WRITE_RGB |
+		BGFX_STATE_DEPTH_TEST_LEQUAL |
+		BGFX_STATE_CULL_CW |
+		BGFX_STATE_BLEND_FUNC_SEPARATE(
+			BGFX_STATE_BLEND_SRC_ALPHA,
+			BGFX_STATE_BLEND_INV_SRC_ALPHA,
+			BGFX_STATE_BLEND_ZERO,
+			BGFX_STATE_BLEND_ONE);
+	cb->program = mod->level.program;
+	bgfx_set_uniform(mod->level.uniform, uniform, 1);
+	return TRUE;
+}
+
+static boolean cbcustomrenderregion(
+	struct ae_terrain_module * mod, 
+	struct ac_terrain_cb_custom_render * cb)
+{
+	vec4 uniform[2] = {
+		{ mod->region.begin[0], mod->region.begin[1], mod->region.length, 0.0f },
+		{ mod->region.opacity, 0.0f, 0.0f, 0.0f } };
+	cb->state = BGFX_STATE_WRITE_RGB |
+		BGFX_STATE_DEPTH_TEST_LEQUAL |
+		BGFX_STATE_CULL_CW |
+		BGFX_STATE_BLEND_FUNC_SEPARATE(
+			BGFX_STATE_BLEND_SRC_ALPHA,
+			BGFX_STATE_BLEND_INV_SRC_ALPHA,
+			BGFX_STATE_BLEND_ZERO,
+			BGFX_STATE_BLEND_ONE);
+	cb->program = mod->region.program;
+	bgfx_set_uniform(mod->region.uniform, uniform, 2);
+	bgfx_set_texture(0, mod->region.sampler,
+		mod->segment_tex[SEGMENT_TEX_REGION], UINT32_MAX);
+	return TRUE;
+}
+
 void ae_terrain_render(struct ae_terrain_module * mod, struct ac_camera * cam)
 {
 	switch (mod->edit_mode) {
@@ -1876,12 +1961,8 @@ void ae_terrain_render(struct ae_terrain_module * mod, struct ac_camera * cam)
 		uint32_t i;
 		struct paint_tool * p = &mod->paint;
 		uint32_t count;
-		if (!ac_terrain_bind_buffers(mod->ac_terrain))
-			break;
-		glm_mat4_identity(model);
-		bgfx_set_transform(&model, 1);
-		bgfx_set_state(state, 0xffffffff);
-		bgfx_submit(0, p->program_grid, 0, 0xff);
+		ac_terrain_custom_render(mod->ac_terrain, mod, 
+			(ap_module_default_t)cbcustomrenderpaint);
 		count = vec_count(p->vertices);
 		if (!count)
 			break;
@@ -1908,76 +1989,18 @@ void ae_terrain_render(struct ae_terrain_module * mod, struct ac_camera * cam)
 		break;
 	}
 	case EDIT_MODE_HEIGHT: {
-		mat4 model;
-		uint64_t state = BGFX_STATE_WRITE_RGB |
-			BGFX_STATE_DEPTH_TEST_LEQUAL |
-			BGFX_STATE_CULL_CW |
-			BGFX_STATE_BLEND_FUNC_SEPARATE(
-				BGFX_STATE_BLEND_SRC_ALPHA,
-				BGFX_STATE_BLEND_INV_SRC_ALPHA,
-				BGFX_STATE_BLEND_ZERO,
-				BGFX_STATE_BLEND_ONE);
-		vec4 uniform = {
-			mod->height.center[0], mod->height.center[1],
-			mod->height.size * HEIGHT_TOOL_SIZE_SCALE, 0.0f };
-		if (!ac_terrain_bind_buffers(mod->ac_terrain))
-			break;
-		if (!mod->height.preview)
-			uniform[2] = 0.0f;
-		glm_mat4_identity(model);
-		bgfx_set_transform(&model, 1);
-		bgfx_set_state(state, 0xffffffff);
-		bgfx_set_uniform(mod->height.uniform, uniform, 1);
-		bgfx_submit(0, mod->height.program, 0, 0xff);
+		ac_terrain_custom_render(mod->ac_terrain, mod, 
+			(ap_module_default_t)cbcustomrenderheight);
 		break;
 	}
 	case EDIT_MODE_LEVEL: {
-		mat4 model;
-		uint64_t state = BGFX_STATE_WRITE_RGB |
-			BGFX_STATE_DEPTH_TEST_LEQUAL |
-			BGFX_STATE_CULL_CW |
-			BGFX_STATE_BLEND_FUNC_SEPARATE(
-				BGFX_STATE_BLEND_SRC_ALPHA,
-				BGFX_STATE_BLEND_INV_SRC_ALPHA,
-				BGFX_STATE_BLEND_ZERO,
-				BGFX_STATE_BLEND_ONE);
-		vec4 uniform = {
-			mod->level.center[0], mod->level.center[1],
-			mod->level.size * LEVEL_TOOL_SIZE_SCALE, 0.0f };
-		if (!ac_terrain_bind_buffers(mod->ac_terrain))
-			break;
-		if (!mod->level.preview)
-			uniform[2] = 0.0f;
-		glm_mat4_identity(model);
-		bgfx_set_transform(&model, 1);
-		bgfx_set_state(state, 0xffffffff);
-		bgfx_set_uniform(mod->level.uniform, uniform, 1);
-		bgfx_submit(0, mod->level.program, 0, 0xff);
+		ac_terrain_custom_render(mod->ac_terrain, mod, 
+			(ap_module_default_t)cbcustomrenderlevel);
 		break;
 	}
 	case EDIT_MODE_REGION: {
-		mat4 model;
-		uint64_t state = BGFX_STATE_WRITE_RGB |
-			BGFX_STATE_DEPTH_TEST_LEQUAL |
-			BGFX_STATE_CULL_CW |
-			BGFX_STATE_BLEND_FUNC_SEPARATE(
-				BGFX_STATE_BLEND_SRC_ALPHA,
-				BGFX_STATE_BLEND_INV_SRC_ALPHA,
-				BGFX_STATE_BLEND_ZERO,
-				BGFX_STATE_BLEND_ONE);
-		vec4 uniform[2] = {
-			{ mod->region.begin[0], mod->region.begin[1],
-			mod->region.length, 0.0f },
-			{ mod->region.opacity, 0.0f, 0.0f, 0.0f } };
-		if (!ac_terrain_bind_buffers(mod->ac_terrain))
-			break;
-		glm_mat4_identity(model);
-		bgfx_set_transform(&model, 1);
-		bgfx_set_state(state, 0xffffffff);
-		bgfx_set_uniform(mod->region.uniform, uniform, 2);
-		bgfx_set_texture(0, mod->region.sampler,
-			mod->segment_tex[SEGMENT_TEX_REGION], UINT32_MAX);
-		bgfx_submit(0, mod->region.program, 0, 0xff);
+		ac_terrain_custom_render(mod->ac_terrain, mod, 
+			(ap_module_default_t)cbcustomrenderregion);
 		break;
 	}
 	case EDIT_MODE_TILE:

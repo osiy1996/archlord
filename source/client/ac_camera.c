@@ -1,5 +1,38 @@
 #include "client/ac_camera.h"
 
+#include "core/log.h"
+
+#include "public/ap_config.h"
+
+struct ac_camera_module {
+	struct ap_module_instance instance;
+	struct ap_config_module * ap_config;
+	struct ac_camera main_camera;
+};
+
+static boolean onregister(
+	struct ac_camera_module * mod, 
+	struct ap_module_registry * registry)
+{
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_config, AP_CONFIG_MODULE_NAME);
+	return TRUE;
+}
+
+struct ac_camera_module * ac_camera_create_module()
+{
+	struct ac_camera_module * mod = ap_module_instance_new(AC_CAMERA_MODULE_NAME,
+		sizeof(*mod), onregister, NULL, NULL, NULL);
+	vec3 center = { 0 };
+	ac_camera_init(&mod->main_camera, center, 1000.0f, 30.0f, 0.0f, 60.0f, 
+		200.0f, 400000.0f);
+	return mod;
+}
+
+struct ac_camera * ac_camera_get_main(struct ac_camera_module * mod)
+{
+	return &mod->main_camera;
+}
+
 static void calc_eye(struct ac_camera * cam)
 {
 	vec3 v  = { 0.f, 0, -cam->distance };

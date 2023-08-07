@@ -14,6 +14,7 @@
 #include "public/ap_define.h"
 #include "public/ap_sector.h"
 
+#include "client/ac_camera.h"
 #include "client/ac_mesh.h"
 #include "client/ac_render.h"
 #include "client/ac_renderware.h"
@@ -67,9 +68,6 @@ struct normal_set {
 enum task_state {
 	TASK_STATE_IDLE,
 	TASK_STATE_LOAD_SECTOR,
-	TASK_STATE_PRE_DRAW_BUFFER,
-	TASK_STATE_DRAW_BUFFER,
-	TASK_STATE_FLUSH,
 };
 
 struct packed_file {
@@ -84,22 +82,6 @@ struct pack {
 	struct packed_file files[256];
 };
 
-struct draw_batch {
-	uint32_t first_index;
-	uint32_t index_count;
-	struct ac_mesh_material material;
-};
-
-struct draw_buffer {
-	uint32_t vertex_count;
-	struct ac_mesh_vertex * vertices;
-	uint32_t index_count;
-	uint32_t * indices;
-	struct draw_batch * batch;
-	bgfx_vertex_buffer_handle_t vertex_buffer;
-	bgfx_index_buffer_handle_t index_buffer;
-};
-
 struct sector_load_data {
 	struct ac_terrain_module * mod;
 	uint32_t x;
@@ -107,22 +89,17 @@ struct sector_load_data {
 	size_t work_size;
 	void * work_mem;
 	struct ac_terrain_segment_info * segment_info;
+	struct ac_mesh_geometry * rough_geometry;
 	struct ac_mesh_geometry * geometry;
 	struct sector_load_data * next;
-};
-
-struct draw_construct_data {
-	struct ac_terrain_module * mod;
-	struct draw_buffer buf;
-	struct ac_terrain_sector ** sector_list;
-	uint32_t * vertex_offsets;
 };
 
 struct ac_terrain_module {
 	struct ap_module_instance instance;
 	struct ap_config_module * ap_config;
-	ap_module_t ac_mesh;
-	ap_module_t ac_texture;
+	struct ac_camera_module * ac_camera;
+	struct ac_mesh_module * ac_mesh;
+	struct ac_texture_module * ac_texture;
 	float view_distance;
 	vec2 last_sync_pos;
 	struct ac_terrain_sector sectors[AP_SECTOR_WORLD_INDEX_WIDTH][AP_SECTOR_WORLD_INDEX_HEIGHT];
@@ -130,9 +107,7 @@ struct ac_terrain_module {
 	struct ap_scr_index * visible_sectors_tmp;
 	struct ap_scr_index * pending_unload_sectors;
 	struct sector_load_data * load_data_freelist;
-	struct draw_construct_data draw_construct_data;
 	struct task_descriptor * task_freelist;
-	struct draw_buffer draw_buf;
 	bgfx_texture_handle_t null_tex;
 	bgfx_uniform_handle_t sampler[5];
 	bgfx_program_handle_t program;
@@ -176,6 +151,28 @@ void free_task(
 {
 	task->next = mod->task_freelist;
 	mod->task_freelist = task;
+}
+
+static struct ac_terrain_sector * from_triangle(
+	struct ac_terrain_module * mod,
+	const struct ac_mesh_vertex * vertices)
+{
+	vec3 c = { 0.0f, 0.0f, 0.0f };
+	uint32_t i;
+	for (i = 0; i < 3; i++)
+		c[0] += vertices[i].position[0];
+	for (i = 0; i < 3; i++)
+		c[2] += vertices[i].position[2];
+	c[0] /= 3.0f;
+	c[2] /= 3.0f;
+	return ac_terrain_get_sector_at(mod, c);
+}
+
+static struct ac_terrain_sector * from_sector_index(
+	struct ac_terrain_module * mod,
+	const struct ap_scr_index * index)
+{
+	return &mod->sectors[index->x][index->z];
 }
 
 struct pack * create_pack()
@@ -540,6 +537,62 @@ static boolean load_segments(struct sector_load_data * d)
 	return TRUE;
 }
 
+static boolean loadrough(struct sector_load_data * d)
+{
+	struct pack * pack;
+	uint32_t file_idx;
+	struct bin_stream * stream;
+	boolean exists = FALSE;
+	d->rough_geometry = NULL;
+	if (!unpack_terrain_file("%s/world/a00%02u%02ux.ma2",
+			FALSE, &pack, ap_config_get(d->mod->ap_config, "ClientDir"),
+			d->x / 16, d->z / 16)) {
+		/* This sector may be empty. */
+		return FALSE;
+	}
+	file_idx = sector_map_offset(d->z) * 16 + sector_map_offset(d->x);
+	if (!decompress_packed_file(&pack->files[file_idx],
+			&d->work_mem, &d->work_size)) {
+		WARN("Failed to decompress sector.");
+		destroy_pack(pack);
+		return FALSE;
+	}
+	bstream_from_buffer(pack->files[file_idx].data,
+		(size_t)pack->files[file_idx].size, FALSE, &stream);
+	if (!ac_texture_add_to_default_dictionary_from_stream(d->mod->ac_texture, 
+			stream)) {
+		WARN("Failed to read rough texture.");
+		destroy_pack(pack);
+		return FALSE;
+	}
+	if (!bstream_read_i32(stream, &exists)) {
+		ERROR("Stream ended unexpectedly.");
+		bstream_destroy(stream);
+		destroy_pack(pack);
+		return FALSE;
+	}
+	if (!exists) {
+		bstream_destroy(stream);
+		destroy_pack(pack);
+		return FALSE;
+	}
+	if (!ac_renderware_find_chunk(stream, rwID_ATOMIC, NULL)) {
+		ERROR("Failed to find rwID_ATOMIC.");
+		bstream_destroy(stream);
+		destroy_pack(pack);
+		return FALSE;
+	}
+	ac_texture_set_dictionary(d->mod->ac_texture, AC_DAT_DIR_COUNT);
+	d->rough_geometry = ac_mesh_read_rp_atomic(d->mod->ac_mesh, stream, NULL, 0);
+	bstream_destroy(stream);
+	destroy_pack(pack);
+	if (!d->rough_geometry) {
+		ERROR("Failed to read RpAtomic.");
+		return FALSE;
+	}
+	return TRUE;
+}
+
 static boolean sector_load_task(void * data)
 {
 	struct sector_load_data * d = data;
@@ -549,6 +602,7 @@ static boolean sector_load_task(void * data)
 	boolean exists = FALSE;
 	d->geometry = NULL;
 	load_segments(d);
+	loadrough(d);
 	if (!unpack_terrain_file("%s/world/b00%02u%02ux.ma2",
 			FALSE, &pack, ap_config_get(d->mod->ap_config, "ClientDir"),
 			d->x / 16, d->z / 16)) {
@@ -594,6 +648,66 @@ static boolean sector_load_task(void * data)
 	return TRUE;
 }
 
+static void creategeometrybuffers(struct ac_mesh_geometry * geometry)
+{
+	bgfx_vertex_layout_t layout = ac_mesh_vertex_layout();
+	const bgfx_memory_t * mem;
+	if (BGFX_HANDLE_IS_VALID(geometry->vertex_buffer))
+		bgfx_destroy_vertex_buffer(geometry->vertex_buffer);
+	mem = bgfx_copy(geometry->vertices, 
+		geometry->vertex_count * sizeof(*geometry->vertices));
+	geometry->vertex_buffer = bgfx_create_vertex_buffer(mem, &layout,
+		BGFX_BUFFER_NONE);
+	if (!BGFX_HANDLE_IS_VALID(geometry->vertex_buffer)) {
+		ERROR("Failed to rough geometry create vertex buffer.");
+		return;
+	}
+	if (BGFX_HANDLE_IS_VALID(geometry->index_buffer))
+		bgfx_destroy_index_buffer(geometry->index_buffer);
+	mem = bgfx_copy(geometry->indices,
+		geometry->index_count * sizeof(*geometry->indices));
+	geometry->index_buffer = bgfx_create_index_buffer(mem, 0);
+	if (!BGFX_HANDLE_IS_VALID(geometry->index_buffer)) {
+		ERROR("Failed to rough geometry create index buffer.");
+		bgfx_destroy_vertex_buffer(geometry->vertex_buffer);
+		BGFX_INVALIDATE_HANDLE(geometry->vertex_buffer);
+	}
+}
+
+static void unloadrough(
+	struct ac_terrain_module * mod, 
+	struct ac_terrain_sector * s)
+{
+	if (!(s->flags & AC_TERRAIN_SECTOR_ROUGH_IS_LOADED)) {
+		assert(0);
+		ERROR("Attempting to unload a sector that is not loaded.");
+		return;
+	}
+	if (s->flags & AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES)
+		WARN("Unloading a sector that has pending detail changes.");
+	ac_mesh_destroy_geometry(mod->ac_mesh, s->rough_geometry);
+	s->rough_geometry = NULL;
+	s->flags &= ~AC_TERRAIN_SECTOR_ROUGH_IS_LOADED;
+}
+
+static void unloaddetail(
+	struct ac_terrain_module * mod, 
+	struct ac_terrain_sector * s)
+{
+	if (!(s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED)) {
+		assert(0);
+		ERROR("Attempting to unload a sector that is not loaded.");
+		return;
+	}
+	if (s->flags & AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES)
+		WARN("Unloading a sector that has pending detail changes.");
+	if (s->flags & AC_TERRAIN_SECTOR_HAS_SEGMENT_CHANGES)
+		WARN("Unloading a sector that has pending segment changes.");
+	ac_mesh_destroy_geometry(mod->ac_mesh, s->geometry);
+	s->geometry = NULL;
+	s->flags &= ~AC_TERRAIN_SECTOR_DETAIL_IS_LOADED;
+}
+
 static void sector_load_post_task(
 	struct task_descriptor * task,
 	void * data,
@@ -605,22 +719,79 @@ static void sector_load_post_task(
 	struct ap_scr_index idx = { d->x, d->z };
 	assert(mod->ongoing_load_task_count != 0);
 	if (!--mod->ongoing_load_task_count)
-		mod->task_state = TASK_STATE_PRE_DRAW_BUFFER;
+		mod->task_state = TASK_STATE_IDLE;
 	free_task(mod, task);
 	if (d->segment_info) {
 		s->segment_info = d->segment_info;
 		s->flags |= AC_TERRAIN_SECTOR_SEGMENT_IS_LOADED;
 	}
-	if (d->geometry) {
-		if (!ap_scr_find_index(mod->visible_sectors, &idx)) {
-			ac_mesh_destroy_geometry(mod->ac_mesh, d->geometry);
-			free_load_data(mod, d);
-			return;
+	if (d->rough_geometry) {
+		if (ap_scr_find_index(mod->visible_sectors, &idx)) {
+			creategeometrybuffers(d->rough_geometry);
+			s->rough_geometry = d->rough_geometry;
+			s->flags |= AC_TERRAIN_SECTOR_ROUGH_IS_LOADED;
 		}
-		s->geometry = d->geometry;
-		s->flags |= AC_TERRAIN_SECTOR_DETAIL_IS_LOADED;
+		else {
+			ac_mesh_destroy_geometry(mod->ac_mesh, d->rough_geometry);
+		}
+	}
+	if (d->geometry) {
+		if (ap_scr_find_index(mod->visible_sectors, &idx)) {
+			creategeometrybuffers(d->geometry);
+			s->geometry = d->geometry;
+			s->flags |= AC_TERRAIN_SECTOR_DETAIL_IS_LOADED;
+		}
+		else {
+			ac_mesh_destroy_geometry(mod->ac_mesh, d->geometry);
+		}
 	}
 	free_load_data(mod, d);
+	if (mod->task_state == TASK_STATE_IDLE) {
+		uint32_t i;
+		uint32_t count;
+		size_t size;
+		struct ac_terrain_cb_post_load_sector * cb;
+		/* Unload sectors that are no longer visible. */
+		for (i = 0; i < vec_count(mod->pending_unload_sectors); i++) {
+			struct ac_terrain_sector * s = from_sector_index(mod,
+				&mod->pending_unload_sectors[i]);
+			/* Unload only if sector hasn't become visible. */
+			if (!ap_scr_find_index(mod->visible_sectors,
+				&mod->pending_unload_sectors[i]) &&
+				!(s->flags & AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES) &&
+				!(s->flags & AC_TERRAIN_SECTOR_HAS_SEGMENT_CHANGES)) {
+				if (s->flags & AC_TERRAIN_SECTOR_ROUGH_IS_LOADED)
+					unloadrough(mod, s);
+				if (s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED)
+					unloaddetail(mod, s);
+			}
+		}
+		vec_clear(mod->pending_unload_sectors);
+		mod->task_state = TASK_STATE_IDLE;
+		count = 0;
+		for (i = 0; i < vec_count(mod->visible_sectors); i++) {
+			struct ac_terrain_sector * s = from_sector_index(mod,
+				&mod->visible_sectors[i]);
+			if (s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED)
+				count++;
+		}
+		size = sizeof(*cb) + count * sizeof(struct ac_terrain_sector *);
+		cb = alloc(size);
+		memset(cb, 0, size);
+		glm_vec2_copy(mod->last_sync_pos, cb->sync_pos);
+		cb->view_distance = mod->view_distance;
+		cb->sectors = (struct ac_terrain_sector **)&cb[1];
+		cb->sector_count = count;
+		count = 0;
+		for (i = 0; i < vec_count(mod->visible_sectors); i++) {
+			struct ac_terrain_sector * s = from_sector_index(mod,
+				&mod->visible_sectors[i]);
+			if (s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED)
+				cb->sectors[count++] = s;
+		}
+		ap_module_enum_callback(mod, AC_TERRAIN_CB_POST_LOAD_SECTOR, cb);
+		dealloc(cb);
+	}
 }
 
 static boolean save_sector_geometry(
@@ -873,82 +1044,6 @@ static void include_in_ntri(
 	vec_push_back(buf, n);
 }
 
-static void calc_normals(
-	struct draw_construct_data * dcd,
-	struct normal_triangle * nbuf)
-{
-	uint32_t i;
-	uint32_t count = vec_count(nbuf);
-	struct normal_vertex * nvtx =
-		vec_new_reserved(sizeof(*nvtx), 128);
-	for (i = 0; i < count; i++) {
-		struct ac_mesh_triangle * t = nbuf[i].t;
-		struct ac_mesh_geometry * g = nbuf[i].g;
-		struct ac_mesh_vertex * vtx[3] = {
-			&g->vertices[t->indices[0]],
-			&g->vertices[t->indices[1]],
-			&g->vertices[t->indices[2]] };
-		uint32_t j;
-		for (j = 0; j < vec_count(dcd->sector_list); j++) {
-			struct ac_terrain_sector * s = dcd->sector_list[j];
-			struct ac_mesh_geometry * g = s->geometry;
-			uint32_t k;
-			if (!(s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED))
-				continue;
-			for (k = 0; k < g->vertex_count; k++) {
-				uint32_t l;
-				for (l = 0; l < 3; l++) {
-					if (ac_mesh_eq_pos(vtx[l], &g->vertices[k])) {
-						struct normal_vertex n = { 
-							&g->vertices[k], g, j };
-						include_in_nvtx(&nvtx, &n);
-						break;
-					}
-				}
-			}
-		}
-	}
-	count = vec_count(nvtx);
-	for (i = 0; i < count ;i++) {
-		struct ac_mesh_vertex * v = nvtx[i].v;
-		uint32_t j;
-		for (j = 0; j < vec_count(dcd->sector_list); j++) {
-			struct ac_terrain_sector * s = dcd->sector_list[j];
-			struct ac_mesh_geometry * g = s->geometry;
-			uint32_t k;
-			if (!(s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED))
-				continue;
-			for (k = 0; k < g->triangle_count; k++) {
-				struct ac_mesh_triangle * t = &g->triangles[k];
-				struct ac_mesh_vertex * vtx[3] = {
-					&g->vertices[t->indices[0]],
-					&g->vertices[t->indices[1]],
-					&g->vertices[t->indices[2]] };
-				uint32_t l;
-				for (l = 0; l < 3; l++) {
-					if (ac_mesh_eq_pos(vtx[l], v)) {
-						vec3 n;
-						ac_mesh_calculate_surface_normal(g, t, n);
-						v->normal[0] += n[0];
-						v->normal[1] += n[1];
-						v->normal[2] += n[2];
-						break;
-					}
-				}
-			}
-		}
-	}
-	for (i = 0; i < count ;i++) {
-		struct ac_mesh_vertex * v = nvtx[i].v;
-		vec3 n = { v->normal[0], v->normal[1], v->normal[2] };
-		glm_vec3_normalize(n);
-		v->normal[0] = n[0];
-		v->normal[1] = n[1];
-		v->normal[2] = n[2];
-	}
-	vec_free(nvtx);
-}
-
 static struct ac_terrain_segment * get_segment_by_pos(
 	struct ac_terrain_sector * s,
 	float x,
@@ -976,28 +1071,6 @@ static uint32_t snap_to_step_z(float z)
 	assert(z >= AP_SECTOR_WORLD_START_Z);
 	return (uint32_t)(((z - AP_SECTOR_WORLD_START_Z) + 
 		(AP_SECTOR_STEPSIZE / 2.0f)) / AP_SECTOR_STEPSIZE);
-}
-
-static struct ac_terrain_sector * from_triangle(
-	struct ac_terrain_module * mod,
-	const struct ac_mesh_vertex * vertices)
-{
-	vec3 c = { 0.0f, 0.0f, 0.0f };
-	uint32_t i;
-	for (i = 0; i < 3; i++)
-		c[0] += vertices[i].position[0];
-	for (i = 0; i < 3; i++)
-		c[2] += vertices[i].position[2];
-	c[0] /= 3.0f;
-	c[2] /= 3.0f;
-	return ac_terrain_get_sector_at(mod, c);
-}
-
-static struct ac_terrain_sector * from_sector_index(
-	struct ac_terrain_module * mod,
-	const struct ap_scr_index * index)
-{
-	return &mod->sectors[index->x][index->z];
 }
 
 static void calc_visible_sectors(
@@ -1115,217 +1188,6 @@ static boolean create_shaders(struct ac_terrain_module * mod)
 	return TRUE;
 }
 
-static void unload_sector(
-	struct ac_terrain_module * mod, 
-	struct ac_terrain_sector * s)
-{
-	if (!(s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED)) {
-		assert(0);
-		ERROR("Attempting to unload a sector that is not loaded.");
-		return;
-	}
-	if (s->flags & AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES)
-		WARN("Unloading a sector that has pending detail changes.");
-	if (s->flags & AC_TERRAIN_SECTOR_HAS_SEGMENT_CHANGES)
-		WARN("Unloading a sector that has pending segment changes.");
-	ac_mesh_destroy_geometry(mod->ac_mesh, s->geometry);
-	s->geometry = NULL;
-	s->flags &= ~AC_TERRAIN_SECTOR_DETAIL_IS_LOADED;
-}
-
-static void add_to_batch(
-	struct draw_buffer * buf,
-	struct draw_batch * b,
-	const struct ac_mesh_geometry * g,
-	uint32_t vertex_offset)
-{
-	uint32_t i;
-	for (i = 0; i < g->split_count; i++) {
-		const struct ac_mesh_split * s = &g->splits[i];
-		uint32_t j;
-		if (ac_mesh_cmp_material(&b->material,
-				&g->materials[s->material_index]) != 0) {
-			continue;
-		}
-		for (j = 0; j < s->index_count; j++) {
-			uint32_t idx = b->first_index + b->index_count + j;
-			buf->indices[idx] = vertex_offset + 
-				g->indices[s->index_offset + j];
-		}
-		b->index_count += j;
-	}
-}
-
-static boolean recreate_vertex_buffer(struct draw_buffer *  buf)
-{
-	bgfx_vertex_layout_t layout = ac_mesh_vertex_layout();
-	const bgfx_memory_t * mem;
-	if (BGFX_HANDLE_IS_VALID(buf->vertex_buffer))
-		bgfx_destroy_vertex_buffer(buf->vertex_buffer);
-	mem = bgfx_copy(buf->vertices,
-		buf->vertex_count * sizeof(*buf->vertices));
-	buf->vertex_buffer = bgfx_create_vertex_buffer(mem, &layout,
-		BGFX_BUFFER_NONE);
-	if (!BGFX_HANDLE_IS_VALID(buf->vertex_buffer)) {
-		ERROR("Failed to create vertex buffer.");
-		return FALSE;
-	}
-	return TRUE;
-}
-
-static boolean create_buffers(struct draw_buffer * buf)
-{
-	bgfx_vertex_layout_t layout = ac_mesh_vertex_layout();
-	const bgfx_memory_t * mem;
-	mem = bgfx_copy(buf->vertices,
-		buf->vertex_count * sizeof(*buf->vertices));
-	buf->vertex_buffer = bgfx_create_vertex_buffer(mem, &layout,
-		BGFX_BUFFER_NONE);
-	if (!BGFX_HANDLE_IS_VALID(buf->vertex_buffer)) {
-		ERROR("Failed to create vertex buffer.");
-		return FALSE;
-	}
-	mem = bgfx_copy(buf->indices,
-		buf->index_count * sizeof(*buf->indices));
-	buf->index_buffer = bgfx_create_index_buffer(mem, 
-		BGFX_BUFFER_INDEX32);
-	if (!BGFX_HANDLE_IS_VALID(buf->index_buffer)) {
-		ERROR("Failed to create index buffer.");
-		return FALSE;
-	}
-	return TRUE;
-}
-
-static void init_draw_buf(struct draw_buffer * buf)
-{
-	buf->vertex_buffer =
-		(bgfx_vertex_buffer_handle_t)BGFX_INVALID_HANDLE;
-	buf->index_buffer =
-		(bgfx_index_buffer_handle_t)BGFX_INVALID_HANDLE;
-	buf->batch = vec_new_reserved(sizeof(*buf->batch), 128);
-}
-
-static void clear_draw_buffer(
-	struct ac_terrain_module * mod, 
-	struct draw_buffer * buf)
-{
-	uint32_t i;
-	/* Free resources. */
-	if (BGFX_HANDLE_IS_VALID(buf->vertex_buffer)) {
-		bgfx_destroy_vertex_buffer(buf->vertex_buffer);
-		buf->vertex_buffer =
-			(bgfx_vertex_buffer_handle_t)BGFX_INVALID_HANDLE;
-	}
-	if (BGFX_HANDLE_IS_VALID(buf->index_buffer)) {
-		bgfx_destroy_index_buffer(buf->index_buffer);
-		buf->index_buffer =
-			(bgfx_index_buffer_handle_t)BGFX_INVALID_HANDLE;
-	}
-	dealloc(buf->vertices);
-	buf->vertices = NULL;
-	dealloc(buf->indices);
-	buf->indices = NULL;
-	for (i = 0; i < vec_count(buf->batch); i++)
-		ac_mesh_release_material(mod->ac_mesh, &buf->batch[i].material);
-	vec_clear(buf->batch);
-}
-
-static void destroy_draw_buf(
-	struct ac_terrain_module * mod, 
-	struct draw_buffer * buf)
-{
-	clear_draw_buffer(mod, buf);
-	vec_free(buf->batch);
-}
-
-static boolean construct_draw_buffer(
-	struct draw_construct_data * data)
-{
-	uint32_t i;
-	uint32_t vo_idx = 0;
-	struct draw_buffer * buf = &data->buf;
-	/* Construct combined buffers. */
-	buf->vertex_count = 0;
-	for (i = 0; i < vec_count(data->sector_list); i++) {
-		buf->vertex_count +=
-			data->sector_list[i]->geometry->vertex_count;
-	}
-	buf->vertices = alloc(
-		buf->vertex_count * sizeof(*buf->vertices));
-	buf->vertex_count = 0;
-	vec_clear(data->vertex_offsets);
-	for (i = 0; i < vec_count(data->sector_list); i++) {
-		struct ac_mesh_geometry * g =
-			data->sector_list[i]->geometry;
-		memcpy(&buf->vertices[buf->vertex_count],
-			g->vertices,
-			g->vertex_count * sizeof(*buf->vertices));
-		vec_push_back(&data->vertex_offsets,
-			&buf->vertex_count);
-		buf->vertex_count += g->vertex_count;
-	}
-	vec_clear(buf->batch);
-	buf->index_count = 0;
-	for (i = 0; i < vec_count(data->sector_list); i++) {
-		const struct ac_mesh_geometry * g =
-			data->sector_list[i]->geometry;
-		uint32_t j;
-		for (j = 0; j < g->split_count; j++) {
-			const struct ac_mesh_split * sp = &g->splits[j];
-			uint32_t k;
-			struct draw_batch * b = NULL;
-			uint32_t back = buf->index_count;
-			buf->index_count += sp->index_count;
-			for (k = 0; k < vec_count(buf->batch); k++) {
-				if (ac_mesh_cmp_material(&buf->batch[k].material,
-					&g->materials[sp->material_index]) == 0) {
-					b = &buf->batch[k];
-					break;
-				}
-			}
-			if (!b) {
-				struct draw_batch * nb = vec_add_empty(&buf->batch);
-				ac_mesh_copy_material(data->mod->ac_mesh, &nb->material,
-					&g->materials[sp->material_index]);
-			}
-		}
-	}
-	buf->indices = alloc(buf->index_count * sizeof(*buf->indices));
-	buf->index_count = 0;
-	for (i = 0; i < vec_count(buf->batch); i++) {
-		struct draw_batch * b = &buf->batch[i];
-		uint32_t j;
-		b->first_index = buf->index_count;
-		vo_idx = 0;
-		for (j = 0; j < vec_count(data->sector_list); j++) {
-			add_to_batch(buf, b, data->sector_list[j]->geometry,
-				data->vertex_offsets[vo_idx]);
-			vo_idx++;
-		}
-		buf->index_count += b->index_count;
-	}
-	if (!create_buffers(buf)) {
-		ERROR("Failed to create vertex/index buffers.");
-		return FALSE;
-	}
-	return TRUE;
-}
-
-static boolean draw_construct_task(void * data)
-{
-	return construct_draw_buffer(data);
-}
-
-static void draw_construct_post_task(
-	struct task_descriptor * task,
-	void * data,
-	boolean result)
-{
-	struct draw_construct_data * d = data;
-	free_task(d->mod, task);
-	d->mod->task_state = TASK_STATE_FLUSH;
-}
-
 static void modified_segments(struct ac_terrain_module * mod)
 {
 	uint32_t i;
@@ -1365,6 +1227,7 @@ static boolean onregister(
 	struct ap_module_registry * registry)
 {
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_config, AP_CONFIG_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_camera, AC_CAMERA_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_mesh, AC_MESH_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_texture, AC_TEXTURE_MODULE_NAME);
 	return TRUE;
@@ -1391,8 +1254,10 @@ static void onshutdown(struct ac_terrain_module * mod)
 	for (x = 0; x < AP_SECTOR_WORLD_INDEX_WIDTH; x++) {
 		for (z = 0; z < AP_SECTOR_WORLD_INDEX_HEIGHT; z++) {
 			struct ac_terrain_sector * s = &mod->sectors[x][z];
+			if (s->flags & AC_TERRAIN_SECTOR_ROUGH_IS_LOADED)
+				unloadrough(mod, s);
 			if (s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED)
-				unload_sector(mod, s);
+				unloaddetail(mod, s);
 		}
 	}
 	d = mod->load_data_freelist;
@@ -1411,15 +1276,12 @@ static void onshutdown(struct ac_terrain_module * mod)
 	vec_free(mod->visible_sectors);
 	vec_free(mod->visible_sectors_tmp);
 	vec_free(mod->pending_unload_sectors);
-	vec_free(mod->draw_construct_data.vertex_offsets);
 	bgfx_destroy_texture(mod->null_tex);
 	for (i = 0; i < COUNT_OF(mod->sampler); i++) {
 		if (BGFX_HANDLE_IS_VALID(mod->sampler[i]))
 			bgfx_destroy_uniform(mod->sampler[i]);
 	}
 	bgfx_destroy_program(mod->program);
-	destroy_draw_buf(mod, &mod->draw_buf);
-	destroy_draw_buf(mod, &mod->draw_construct_data.buf);
 }
 
 struct ac_terrain_module * ac_terrain_create_module()
@@ -1452,13 +1314,6 @@ struct ac_terrain_module * ac_terrain_create_module()
 		sizeof(struct ap_scr_index), 128);
 	mod->pending_unload_sectors = vec_new_reserved(
 		sizeof(struct ap_scr_index), 128);
-	init_draw_buf(&mod->draw_buf);
-	init_draw_buf(&mod->draw_construct_data.buf);
-	mod->draw_construct_data.mod = mod;
-	mod->draw_construct_data.sector_list = vec_new_reserved(
-		sizeof(*mod->draw_construct_data.sector_list), 128);
-	mod->draw_construct_data.vertex_offsets = vec_new_reserved(
-		sizeof(uint32_t), 128);
 	mod->null_tex = (bgfx_texture_handle_t)BGFX_INVALID_HANDLE;
 	for (i = 0; i < COUNT_OF(mod->sampler); i++) {
 		mod->sampler[i] =
@@ -1551,7 +1406,6 @@ void ac_terrain_sync(
 			!(s->flags & AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES) &&
 			!(s->flags & AC_TERRAIN_SECTOR_HAS_SEGMENT_CHANGES)) {
 			vec_push_back(&mod->pending_unload_sectors, idx);
-			mod->task_state = TASK_STATE_PRE_DRAW_BUFFER;
 		}
 	}
 	for (i = 0; i < vec_count(mod->visible_sectors); i++) {
@@ -1567,96 +1421,68 @@ void ac_terrain_sync(
 
 void ac_terrain_update(struct ac_terrain_module * mod, float dt)
 {
-	if (mod->update_draw_buffer_in) {
-		uint32_t ms = (uint32_t)(dt * 1000.0f);
-		if (ms < mod->update_draw_buffer_in) {
-			mod->update_draw_buffer_in -= ms;
-		}
-		else if (mod->task_state == TASK_STATE_IDLE) {
-			mod->update_draw_buffer_in = 0;
-			mod->task_state = TASK_STATE_PRE_DRAW_BUFFER;
-		}
-	}
-	switch (mod->task_state) {
-	case TASK_STATE_PRE_DRAW_BUFFER: {
-		struct task_descriptor * t = alloc_task(mod);
-		struct draw_construct_data * data = 
-			&mod->draw_construct_data;
-		uint32_t i;
-		vec_clear(data->sector_list);
-		for (i = 0; i < vec_count(mod->visible_sectors); i++) {
-			struct ac_terrain_sector * s = from_sector_index(mod,
-				&mod->visible_sectors[i]);
-			if (s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED)
-				vec_push_back((void **)&data->sector_list, &s);
-		}
-		t->data = data;
-		t->work_cb = draw_construct_task;
-		t->post_cb = draw_construct_post_task;
-		task_add(t, TRUE);
-		mod->task_state = TASK_STATE_DRAW_BUFFER;
-		break;
-	}
-	case TASK_STATE_FLUSH: {
-		struct draw_buffer * prev = &mod->draw_buf;
-		struct draw_buffer * next = &mod->draw_construct_data.buf;
-		struct draw_batch * tmp;
-		uint32_t i;
-		uint32_t count;
-		size_t cb_size;
-		struct ac_terrain_cb_post_load_sector * cb_data;
-		/* Unload sectors that are no longer visible. */
-		for (i = 0; i < vec_count(mod->pending_unload_sectors); i++) {
-			struct ac_terrain_sector * s = from_sector_index(mod,
-				&mod->pending_unload_sectors[i]);
-			/* Unload only if sector hasn't become visible. */
-			if (!ap_scr_find_index(mod->visible_sectors,
-				&mod->pending_unload_sectors[i]) &&
-				!(s->flags & AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES) &&
-				!(s->flags & AC_TERRAIN_SECTOR_HAS_SEGMENT_CHANGES)) {
-				unload_sector(mod, s);
-			}
-		}
-		vec_clear(mod->pending_unload_sectors);
-		clear_draw_buffer(mod, prev);
-		tmp = prev->batch;
-		memcpy(prev, next, sizeof(*prev));
-		memset(next, 0, sizeof(*next));
-		MAKE_VB_INVALID(next->vertex_buffer);
-		MAKE_IB_INVALID(next->index_buffer);
-		next->batch = tmp;
-		mod->task_state = TASK_STATE_IDLE;
-		count = 0;
-		for (i = 0; i < vec_count(mod->visible_sectors); i++) {
-			struct ac_terrain_sector * s = from_sector_index(mod,
-				&mod->visible_sectors[i]);
-			if (s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED)
-				count++;
-		}
-		cb_size = sizeof(*cb_data) + 
-			count * sizeof(struct ac_terrain_sector *);
-		cb_data = alloc(cb_size);
-		memset(cb_data, 0, cb_size);
-		glm_vec2_copy(mod->last_sync_pos, cb_data->sync_pos);
-		cb_data->view_distance = mod->view_distance;
-		cb_data->sectors = (struct ac_terrain_sector **)&cb_data[1];
-		cb_data->sector_count = count;
-		count = 0;
-		for (i = 0; i < vec_count(mod->visible_sectors); i++) {
-			struct ac_terrain_sector * s = from_sector_index(mod,
-				&mod->visible_sectors[i]);
-			if (s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED)
-				cb_data->sectors[count++] = s;
-		}
-		ap_module_enum_callback(mod, AC_TERRAIN_CB_POST_LOAD_SECTOR, cb_data);
-		dealloc(cb_data);
-		break;
-	}
-	}
 }
 
 void ac_terrain_render(struct ac_terrain_module * mod)
 {
+	struct ac_camera * cam = ac_camera_get_main(mod->ac_camera);
+	uint32_t i;
+	uint32_t count = vec_count(mod->visible_sectors);
+	for (i = 0; i < count; i++) {
+		struct ap_scr_index * index = &mod->visible_sectors[i];
+		struct ac_terrain_sector * sector = &mod->sectors[index->x][index->z];
+		struct ac_mesh_geometry * geometry = NULL;;
+		if (sector->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED) {
+			vec3 center = { sector->geometry->bsphere.center.x,
+				sector->geometry->bsphere.center.y,
+				sector->geometry->bsphere.center.z };
+			float distance = glm_vec3_distance(cam->eye, center);
+			geometry = sector->geometry;
+			if (distance > 10000.0f && (sector->flags & AC_TERRAIN_SECTOR_ROUGH_IS_LOADED))
+				geometry = sector->rough_geometry;
+		}
+		else if (sector->flags & AC_TERRAIN_SECTOR_ROUGH_IS_LOADED) {
+			geometry = sector->rough_geometry;
+		}
+		if (geometry) {
+			uint32_t j;
+			const uint8_t discard = 
+				BGFX_DISCARD_BINDINGS |
+				BGFX_DISCARD_INDEX_BUFFER |
+				BGFX_DISCARD_INSTANCE_DATA |
+				BGFX_DISCARD_STATE;
+			uint64_t state = BGFX_STATE_WRITE_MASK |
+				BGFX_STATE_DEPTH_TEST_LESS |
+				BGFX_STATE_CULL_CW;
+			mat4 model;
+			glm_mat4_identity(model);
+			bgfx_set_transform(&model, 1);
+			bgfx_set_vertex_buffer(0, geometry->vertex_buffer, 0,
+				 geometry->vertex_count);
+			for (j = 0; j < geometry->split_count; j++) {
+				uint32_t k;
+				const struct ac_mesh_split * split = &geometry->splits[j];
+				const struct ac_mesh_material * mat = 
+					&geometry->materials[split->material_index];
+				bgfx_set_index_buffer(geometry->index_buffer,
+					split->index_offset, split->index_count);
+				for (k = 0; k < COUNT_OF(mod->sampler); k++) {
+					if (BGFX_HANDLE_IS_VALID(mat->tex_handle[k])) {
+						bgfx_set_texture(k, mod->sampler[k], 
+							mat->tex_handle[k], UINT32_MAX);
+					}
+					else {
+						bgfx_set_texture(k, mod->sampler[k], 
+							mod->null_tex, UINT32_MAX);
+					}
+				}
+				bgfx_set_state(state, 0xffffffff);
+				//bgfx_set_debug(BGFX_DEBUG_WIREFRAME);
+				bgfx_submit(0, mod->program, 0, discard);
+			}
+		}
+	}
+	/*
 	uint32_t i;
 	uint32_t count = 0;
 	mat4 model;
@@ -1698,18 +1524,61 @@ void ac_terrain_render(struct ac_terrain_module * mod)
 		count++;
 	}
 	//INFO("DrawCallCount = %u", count);
+	*/
 }
 
-boolean ac_terrain_bind_buffers(struct ac_terrain_module * mod)
+void ac_terrain_custom_render(
+	struct ac_terrain_module * mod,
+	ap_module_t callback_module,
+	ap_module_default_t callback)
 {
-	if (!BGFX_HANDLE_IS_VALID(mod->draw_buf.vertex_buffer) ||
-		!BGFX_HANDLE_IS_VALID(mod->draw_buf.index_buffer))
-		return FALSE;
-	bgfx_set_vertex_buffer(0, mod->draw_buf.vertex_buffer, 0,
-		 mod->draw_buf.vertex_count);
-	bgfx_set_index_buffer(mod->draw_buf.index_buffer, 0,
-		mod->draw_buf.index_count);
-	return TRUE;
+	struct ac_camera * cam = ac_camera_get_main(mod->ac_camera);
+	uint32_t i;
+	uint32_t count = vec_count(mod->visible_sectors);
+	for (i = 0; i < count; i++) {
+		struct ap_scr_index * index = &mod->visible_sectors[i];
+		struct ac_terrain_sector * sector = &mod->sectors[index->x][index->z];
+		struct ac_mesh_geometry * geometry = NULL;;
+		if (sector->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED) {
+			vec3 center = { sector->geometry->bsphere.center.x,
+				sector->geometry->bsphere.center.y,
+				sector->geometry->bsphere.center.z };
+			float distance = glm_vec3_distance(cam->eye, center);
+			geometry = sector->geometry;
+			if (distance > 10000.0f && (sector->flags & AC_TERRAIN_SECTOR_ROUGH_IS_LOADED))
+				geometry = sector->rough_geometry;
+		}
+		else if (sector->flags & AC_TERRAIN_SECTOR_ROUGH_IS_LOADED) {
+			geometry = sector->rough_geometry;
+		}
+		if (geometry) {
+			uint32_t j;
+			const uint8_t discard = 
+				BGFX_DISCARD_BINDINGS |
+				BGFX_DISCARD_INDEX_BUFFER |
+				BGFX_DISCARD_INSTANCE_DATA |
+				BGFX_DISCARD_STATE;
+			mat4 model;
+			glm_mat4_identity(model);
+			bgfx_set_transform(&model, 1);
+			bgfx_set_vertex_buffer(0, geometry->vertex_buffer, 0,
+				 geometry->vertex_count);
+			for (j = 0; j < geometry->split_count; j++) {
+				const struct ac_mesh_split * split = &geometry->splits[j];
+				struct ac_terrain_cb_custom_render cb = { 0 };
+				bgfx_set_index_buffer(geometry->index_buffer,
+					split->index_offset, split->index_count);
+				cb.state = BGFX_STATE_WRITE_MASK |
+					BGFX_STATE_DEPTH_TEST_LESS |
+					BGFX_STATE_CULL_CW;
+				cb.program = mod->program;
+				callback(callback_module, &cb);
+				//bgfx_set_debug(BGFX_DEBUG_WIREFRAME);
+				bgfx_set_state(cb.state, 0xffffffff);
+				bgfx_submit(0, cb.program, 0, discard);
+			}
+		}
+	}
 }
 
 void ac_terrain_set_tex(
@@ -2140,18 +2009,20 @@ void ac_terrain_adjust_height(
 {
 	vec2 posxz = { pos[0], pos[2] };
 	uint32_t count = 0;
-	struct draw_construct_data * dcd = &mod->draw_construct_data;
 	uint32_t i;
 	struct normal_set * nset;
 	struct normal_set * nset_edit;
 	struct ac_mesh_vertex ** nvtx;
+	struct ac_terrain_sector * rebuild[256];
+	uint32_t rebuildcount = 0;
 	if (mod->task_state != TASK_STATE_IDLE)
 		return;
 	nset = vec_new_reserved(sizeof(*nset), 128);
 	nset_edit = vec_new_reserved(sizeof(*nset_edit), 128);
 	nvtx = vec_new_reserved(sizeof(*nvtx), 128);
-	for (i = 0; i < vec_count(dcd->sector_list); i++) {
-		struct ac_terrain_sector * s = dcd->sector_list[i];
+	for (i = 0; i < vec_count(mod->visible_sectors) && rebuildcount < COUNT_OF(rebuild); i++) {
+		struct ap_scr_index * index = &mod->visible_sectors[i];
+		struct ac_terrain_sector * s = &mod->sectors[index->x][index->z];
 		struct ac_mesh_geometry * g = s->geometry;
 		uint32_t j;
 		boolean update_geometry = FALSE;
@@ -2184,8 +2055,7 @@ void ac_terrain_adjust_height(
 						added_edit = TRUE;
 					}
 				}
-				if (!added &&
-					distance < radius + AP_SECTOR_STEPSIZE * 3) {
+				if (!added && distance < radius + AP_SECTOR_STEPSIZE * 3) {
 					struct normal_set set = { t, g, i };
 					vec_push_back(&nset, &set);
 					added = TRUE;
@@ -2193,10 +2063,7 @@ void ac_terrain_adjust_height(
 			}
 		}
 		if (update_geometry) {
-			struct ac_mesh_vertex * vd = mod->draw_buf.vertices;
-			const uint32_t * vo = dcd->vertex_offsets;
-			memcpy(&vd[vo[i]], g->vertices,
-				g->vertex_count * sizeof(*vd));
+			rebuild[rebuildcount++] = s;
 			bsphere_from_points(&g->bsphere,
 				g->vertices->position,
 				g->vertex_count,
@@ -2262,21 +2129,8 @@ void ac_terrain_adjust_height(
 			v->normal[2] = n[2];
 		}
 	}
-	if (count) {
-		for (i = 0; i < vec_count(dcd->sector_list); i++) {
-			struct ac_terrain_sector * s = dcd->sector_list[i];
-			struct ac_mesh_geometry * g = s->geometry;
-			struct ac_mesh_vertex * vd;
-			const uint32_t * vo;
-			if (!(s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED))
-				continue;
-			vd = mod->draw_buf.vertices;
-			vo = dcd->vertex_offsets;
-			memcpy(&vd[vo[i]], g->vertices,
-				g->vertex_count * sizeof(*vd));
-		}
-		recreate_vertex_buffer(&mod->draw_buf);
-	}
+	for (i = 0; i < rebuildcount; i++)
+		creategeometrybuffers(rebuild[i]->geometry);
 	vec_free(nset);
 	vec_free(nset_edit);
 	vec_free(nvtx);
@@ -2292,15 +2146,15 @@ void ac_terrain_level(
 	vec2 posxz = { pos[0], pos[2] };
 	float height = 0.0f;
 	uint32_t count = 0;
-	struct draw_construct_data * dcd = &mod->draw_construct_data;
 	uint32_t i;
 	struct normal_set * nset;
 	struct normal_set * nset_edit;
 	struct ac_mesh_vertex ** nvtx;
 	if (mod->task_state != TASK_STATE_IDLE)
 		return;
-	for (i = 0; i < vec_count(dcd->sector_list); i++) {
-		struct ac_terrain_sector * s = dcd->sector_list[i];
+	for (i = 0; i < vec_count(mod->visible_sectors); i++) {
+		struct ap_scr_index * index = &mod->visible_sectors[i];
+		struct ac_terrain_sector * s = &mod->sectors[index->x][index->z];
 		uint32_t j;
 		if (!(s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED))
 			continue;
@@ -2321,8 +2175,9 @@ void ac_terrain_level(
 	nset_edit = vec_new_reserved(sizeof(*nset_edit), count / 3);
 	nvtx = vec_new_reserved(sizeof(*nvtx), count / 3);
 	height /= (float)count;
-	for (i = 0; i < vec_count(dcd->sector_list); i++) {
-		struct ac_terrain_sector * s = dcd->sector_list[i];
+	for (i = 0; i < vec_count(mod->visible_sectors); i++) {
+		struct ap_scr_index * index = &mod->visible_sectors[i];
+		struct ac_terrain_sector * s = &mod->sectors[index->x][index->z];
 		struct ac_mesh_geometry * g = s->geometry;
 		uint32_t j;
 		boolean update_geometry = FALSE;
@@ -2368,10 +2223,6 @@ void ac_terrain_level(
 			}
 		}
 		if (update_geometry) {
-			struct ac_mesh_vertex * vd = mod->draw_buf.vertices;
-			const uint32_t * vo = dcd->vertex_offsets;
-			memcpy(&vd[vo[i]], g->vertices,
-				g->vertex_count * sizeof(*vd));
 			bsphere_from_points(&g->bsphere,
 				g->vertices->position,
 				g->vertex_count,
@@ -2436,21 +2287,6 @@ void ac_terrain_level(
 			v->normal[1] = n[1];
 			v->normal[2] = n[2];
 		}
-	}
-	if (count) {
-		for (i = 0; i < vec_count(dcd->sector_list); i++) {
-			struct ac_terrain_sector * s = dcd->sector_list[i];
-			struct ac_mesh_geometry * g = s->geometry;
-			struct ac_mesh_vertex * vd;
-			const uint32_t * vo;
-			if (!(s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED))
-				continue;
-			vd = mod->draw_buf.vertices;
-			vo = dcd->vertex_offsets;
-			memcpy(&vd[vo[i]], g->vertices,
-				g->vertex_count * sizeof(*vd));
-		}
-		recreate_vertex_buffer(&mod->draw_buf);
 	}
 	vec_free(nset);
 	vec_free(nset_edit);

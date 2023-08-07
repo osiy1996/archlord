@@ -32,6 +32,10 @@ struct ac_camera {
 	mat4 proj;
 };
 
+struct ac_camera_module * ac_camera_create_module();
+
+struct ac_camera * ac_camera_get_main(struct ac_camera_module * mod);
+
 void ac_camera_init(
 	struct ac_camera * cam,
 	vec3 center,
