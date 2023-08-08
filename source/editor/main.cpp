@@ -693,6 +693,7 @@ static void render(struct ac_camera * cam, float dt)
 	if (!ac_render_begin_frame(g_AcRender, cam, dt))
 		return;
 	ac_terrain_render(g_AcTerrain);
+	ac_terrain_render_rough_textures(g_AcTerrain);
 	ae_terrain_render(g_AeTerrain, cam);
 	ac_object_render(g_AcObject);
 	ae_object_render_outline(g_AeObject, cam);

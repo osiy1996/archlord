@@ -32,6 +32,8 @@ enum ac_terrain_sector_flag_bits {
 	 * it will set this flag to retain sector state until 
 	 * changes are commited and this flag is removed. */
 	AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES = 1u << 4,
+	AC_TERRAIN_SECTOR_REQUIRE_ROUGH_TEXTURE = 1u << 5,
+	AC_TERRAIN_SECTOR_FLUSH_ROUGH_TEXTURE = 1u << 6,
 };
 
 enum ac_terrain_tile_type{
@@ -169,6 +171,8 @@ void ac_terrain_custom_render(
 	struct ac_terrain_module * mod,
 	ap_module_t callback_module,
 	ap_module_default_t callback);
+
+void ac_terrain_render_rough_textures(struct ac_terrain_module * mod);
 
 void ac_terrain_set_tex(
 	struct ac_terrain_module * mod, 

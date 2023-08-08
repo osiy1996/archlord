@@ -64,6 +64,12 @@ boolean ac_texture_add_to_default_dictionary_from_stream(
 	struct ac_texture_module * mod,
 	struct bin_stream * stream);
 
+boolean ac_texture_replace_texture(
+	struct ac_texture_module * mod,
+	const char * name,
+	bgfx_texture_handle_t tex,
+	bgfx_texture_handle_t tex_to_replace);
+
 END_DECLS
 
 #endif /* _AC_TEXTURE_H_ */

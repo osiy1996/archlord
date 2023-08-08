@@ -286,7 +286,8 @@ static void insert_entry(
 	struct ac_texture_module * mod,
 	const char * file_path,
 	bgfx_texture_handle_t handle,
-	bgfx_texture_info_t * info)
+	bgfx_texture_info_t * info,
+	boolean reference)
 {
 	texture_entry e;
 	handle_name_pair p = { 0 };
@@ -295,7 +296,8 @@ static void insert_entry(
 	e.name = (char *)alloc(e.len + 1);
 	memcpy(e.name, file_path, e.len + 1);
 	e.handle = handle;
-	e.refcount = 1;
+	if (reference)
+		e.refcount = 1;
 	memcpy(&e.info, info, sizeof(*info));
 	p.handle = handle;
 	p.name = e.name;
@@ -441,7 +443,8 @@ static bgfx_texture_handle_t load_internal(
 	const char * file_path,
 	void * data,
 	size_t size,
-	bgfx_texture_info_t * info)
+	bgfx_texture_info_t * info,
+	boolean reference)
 {
 	bimg::ImageContainer * img;
 	const bgfx_memory_t * mem;
@@ -500,7 +503,7 @@ static bgfx_texture_handle_t load_internal(
 		(uint16_t)img->m_height, (uint16_t)img->m_depth,
 		img->m_cubeMap, img->m_numMips > 1, img->m_numLayers,
 		(bgfx_texture_format)img->m_format);
-	insert_entry(mod, file_path, handle, &ninfo);
+	insert_entry(mod, file_path, handle, &ninfo, reference);
 	if (info)
 		memcpy(info, &ninfo, sizeof(ninfo));
 	return handle;
@@ -572,7 +575,7 @@ bgfx_texture_handle_t ac_texture_load(
 		dealloc(data);
 		return BGFX_INVALID_HANDLE;
 	}
-	handle = load_internal(mod, file_path, data, size, info);
+	handle = load_internal(mod, file_path, data, size, info, TRUE);
 	dealloc(data);
 	return handle;
 }
@@ -654,7 +657,7 @@ bgfx_texture_handle_t ac_texture_load_packed(
 			unlock_mutex(mod->mutex);
 			continue;
 		}
-		handle = load_internal(mod, file_path, data, size, info);
+		handle = load_internal(mod, file_path, data, size, info, TRUE);
 		unlock_mutex(mod->mutex);
 		dealloc(data);
 		if (BGFX_HANDLE_IS_VALID(handle))
@@ -998,8 +1001,61 @@ boolean ac_texture_add_to_default_dictionary_from_stream(
 			return FALSE;
 		}
 	}
-	handle = load_internal(mod, filename, dds->head, dds->size, NULL);
+	handle = load_internal(mod, filename, dds->head, dds->size, NULL, FALSE);
 	bstream_destroy(dds);
 	bstream_seek(stream, offset);
 	return BGFX_HANDLE_IS_VALID(handle);
+}
+
+boolean ac_texture_replace_texture(
+	struct ac_texture_module * mod,
+	const char * name,
+	bgfx_texture_handle_t tex,
+	bgfx_texture_handle_t tex_to_replace)
+{
+	char stripped[128];
+	uint32_t i;
+	texture_entry * e;
+	texture_entry fe = { 0 };
+	handle_name_pair * pair_ref = NULL;
+	lock_mutex(mod->mutex);
+	for (i = 0; i < vec_count(mod->handle_name_pairs); i++) {
+		if (mod->handle_name_pairs[i].handle.idx == tex.idx) {
+			pair_ref = &mod->handle_name_pairs[i];
+			break;
+		}
+	}
+	if (!pair_ref) {
+		unlock_mutex(mod->mutex);
+		ERROR("Invalid handle value!");
+		return FALSE;
+	}
+	fe.len = strlen(pair_ref->name);
+	fe.name = (char *)pair_ref->name;
+	fe.handle = tex;
+	e = (texture_entry *)hmap_get(mod->tex_map,
+		(const void *)&fe);
+	if (!e) {
+		ERROR("Texture entry was removed, but handle still exists (%s).",
+			fe.name);
+		unlock_mutex(mod->mutex);
+		return FALSE;
+	}
+	assert(e->handle.idx == tex.idx);
+	assert(strcmp(e->name, name) == 0);
+	if (strip_file_name(e->name, stripped, sizeof(stripped)) >= sizeof(stripped)) {
+		assert(0);
+		unlock_mutex(mod->mutex);
+		return FALSE;
+	}
+	if (e->refcount > 1) {
+		assert(0);
+		unlock_mutex(mod->mutex);
+		return FALSE;
+	}
+	bgfx_destroy_texture(tex);
+	pair_ref->handle = tex_to_replace;
+	e->handle = tex_to_replace;
+	unlock_mutex(mod->mutex);
+	return TRUE;
 }

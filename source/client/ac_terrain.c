@@ -36,6 +36,8 @@
 #define ALEF_COMPACT_FILE_VERSION3	0x1002
 #define ALEF_COMPACT_FILE_VERSION4	0x1003
 
+#define ROUGH_TEXTURE_SIZE 128
+
 struct sector_save_data {
 	struct ac_terrain_module * mod;
 	uint32_t x;
@@ -99,6 +101,7 @@ struct ac_terrain_module {
 	struct ap_config_module * ap_config;
 	struct ac_camera_module * ac_camera;
 	struct ac_mesh_module * ac_mesh;
+	struct ac_render_module * ac_render;
 	struct ac_texture_module * ac_texture;
 	float view_distance;
 	vec2 last_sync_pos;
@@ -111,11 +114,14 @@ struct ac_terrain_module {
 	bgfx_texture_handle_t null_tex;
 	bgfx_uniform_handle_t sampler[5];
 	bgfx_program_handle_t program;
+	bgfx_program_handle_t program_bake_rough;
 	uint32_t ongoing_load_task_count;
 	enum task_state task_state;
 	uint32_t update_draw_buffer_in;
 	uint32_t save_task_count;
 	uint32_t completed_save_task_count;
+	bgfx_frame_buffer_handle_t rough_frame_buffer;
+	int rough_render_view;
 };
 
 inline uint32_t sector_map_offset(uint32_t index)
@@ -1163,6 +1169,19 @@ static boolean create_shaders(struct ac_terrain_module * mod)
 		ERROR("Failed to create program.");
 		return FALSE;
 	}
+	if (!ac_render_load_shader("ac_terrain_bake_rough.vs", &vsh)) {
+		ERROR("Failed to load vertex shader.");
+		return FALSE;
+	}
+	if (!ac_render_load_shader("ac_terrain_bake_rough.fs", &fsh)) {
+		ERROR("Failed to load fragment shader.");
+		return FALSE;
+	}
+	mod->program_bake_rough = bgfx_create_program(vsh, fsh, true);
+	if (!BGFX_HANDLE_IS_VALID(mod->program_bake_rough)) {
+		ERROR("Failed to create bake rough program.");
+		return FALSE;
+	}
 #define CREATE_SAMPLER(name, handle) {\
 		mod->handle = bgfx_create_uniform(name, \
 			BGFX_UNIFORM_TYPE_SAMPLER, 1);\
@@ -1229,16 +1248,28 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_config, AP_CONFIG_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_camera, AC_CAMERA_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_mesh, AC_MESH_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_render, AC_RENDER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_texture, AC_TEXTURE_MODULE_NAME);
 	return TRUE;
 }
 
 static boolean oninitialize(struct ac_terrain_module * mod)
 {
+	bgfx_texture_handle_t textures[2];
 	if (!create_shaders(mod)) {
 		ERROR("Failed to create terrain shaders.");
 		return FALSE;
 	}
+	textures[0] = bgfx_create_texture_2d(ROUGH_TEXTURE_SIZE, ROUGH_TEXTURE_SIZE, 
+		false, 1, BGFX_TEXTURE_FORMAT_RGBA8, BGFX_TEXTURE_RT, NULL);
+	textures[1] = bgfx_create_texture_2d(ROUGH_TEXTURE_SIZE, ROUGH_TEXTURE_SIZE, 
+		false, 1, BGFX_TEXTURE_FORMAT_D24S8, BGFX_TEXTURE_RT_WRITE_ONLY, NULL);
+	mod->rough_frame_buffer = bgfx_create_frame_buffer_from_handles(2, textures, true);
+	if (!BGFX_HANDLE_IS_VALID(mod->rough_frame_buffer)) {
+		ERROR("Failed to create frame buffer for rendering rough geometry.");
+		return FALSE;
+	}
+	mod->rough_render_view = ac_render_allocate_view(mod->ac_render);
 	return TRUE;
 }
 
@@ -1282,6 +1313,8 @@ static void onshutdown(struct ac_terrain_module * mod)
 			bgfx_destroy_uniform(mod->sampler[i]);
 	}
 	bgfx_destroy_program(mod->program);
+	bgfx_destroy_program(mod->program_bake_rough);
+	bgfx_destroy_frame_buffer(mod->rough_frame_buffer);
 }
 
 struct ac_terrain_module * ac_terrain_create_module()
@@ -1425,6 +1458,7 @@ void ac_terrain_update(struct ac_terrain_module * mod, float dt)
 
 void ac_terrain_render(struct ac_terrain_module * mod)
 {
+	int view = ac_render_get_view(mod->ac_render);
 	struct ac_camera * cam = ac_camera_get_main(mod->ac_camera);
 	uint32_t i;
 	uint32_t count = vec_count(mod->visible_sectors);
@@ -1478,7 +1512,7 @@ void ac_terrain_render(struct ac_terrain_module * mod)
 				}
 				bgfx_set_state(state, 0xffffffff);
 				//bgfx_set_debug(BGFX_DEBUG_WIREFRAME);
-				bgfx_submit(0, mod->program, 0, discard);
+				bgfx_submit(view, mod->program, 0, discard);
 			}
 		}
 	}
@@ -1532,6 +1566,7 @@ void ac_terrain_custom_render(
 	ap_module_t callback_module,
 	ap_module_default_t callback)
 {
+	int view = ac_render_get_view(mod->ac_render);
 	struct ac_camera * cam = ac_camera_get_main(mod->ac_camera);
 	uint32_t i;
 	uint32_t count = vec_count(mod->visible_sectors);
@@ -1575,9 +1610,122 @@ void ac_terrain_custom_render(
 				callback(callback_module, &cb);
 				//bgfx_set_debug(BGFX_DEBUG_WIREFRAME);
 				bgfx_set_state(cb.state, 0xffffffff);
-				bgfx_submit(0, cb.program, 0, discard);
+				bgfx_submit(view, cb.program, 0, discard);
 			}
 		}
+	}
+}
+
+static struct ac_terrain_sector * fromindex(
+	struct ac_terrain_module * mod,
+	uint32_t index)
+{
+	struct ap_scr_index * idx = &mod->visible_sectors[index];
+	return &mod->sectors[idx->x][idx->z];
+}
+
+void ac_terrain_render_rough_textures(struct ac_terrain_module * mod)
+{
+	uint32_t i;
+	uint32_t count = vec_count(mod->visible_sectors);
+	static bgfx_texture_handle_t tex = BGFX_INVALID_HANDLE;
+	boolean wait = FALSE;
+	for (i = 0; i < count; i++) {
+		struct ac_terrain_sector * sector = fromindex(mod, i);
+		if (!(sector->flags & AC_TERRAIN_SECTOR_FLUSH_ROUGH_TEXTURE))
+			continue;
+		tex = bgfx_create_texture_2d(ROUGH_TEXTURE_SIZE, ROUGH_TEXTURE_SIZE, 
+			false, 1, BGFX_TEXTURE_FORMAT_RGBA8,
+			BGFX_TEXTURE_BLIT_DST, NULL);
+		if (BGFX_HANDLE_IS_VALID(tex)) {
+			uint32_t j;
+			bgfx_blit(mod->rough_render_view, tex, 0, 0, 0, 0, 
+				bgfx_get_texture(mod->rough_frame_buffer, 0), 0, 0,0 ,0, 
+				ROUGH_TEXTURE_SIZE, ROUGH_TEXTURE_SIZE, 0);
+			for (j = 0; j < sector->rough_geometry->material_count; j++) {
+				struct ac_mesh_material * material = &sector->rough_geometry->materials[j];
+				if (BGFX_HANDLE_IS_VALID(material->tex_handle[0])) {
+					char buf[128];
+					make_path(buf, sizeof(buf), "Default/R%u,%u.dds", 
+						sector->index_x, sector->index_z);
+					if (ac_texture_replace_texture(mod->ac_texture, buf, 
+							material->tex_handle[0], tex)) {
+						material->tex_handle[0] = tex;
+					}
+					break;
+				}
+			}
+		}
+		sector->flags &= ~AC_TERRAIN_SECTOR_FLUSH_ROUGH_TEXTURE;
+		wait = TRUE;
+		break;
+	}
+	if (wait)
+		return;
+	for (i = 0; i < count; i++) {
+		struct ac_terrain_sector * sector = fromindex(mod, i);
+		uint32_t j;
+		const uint8_t discard = 
+			BGFX_DISCARD_BINDINGS |
+			BGFX_DISCARD_INDEX_BUFFER |
+			BGFX_DISCARD_INSTANCE_DATA |
+			BGFX_DISCARD_STATE;
+		uint64_t state = BGFX_STATE_WRITE_MASK |
+			BGFX_STATE_DEPTH_TEST_ALWAYS |
+			BGFX_STATE_CULL_CW;
+		mat4 model;
+		struct ac_mesh_geometry * geometry;
+		vec3 eye;
+		mat4 view;
+		mat4 proj;
+		vec3 dir = { 0.0f, -1.0f, 0.0f };
+		vec3 up = { 0.0f, 0.0f, -1.0f };
+		if (!(sector->flags & AC_TERRAIN_SECTOR_REQUIRE_ROUGH_TEXTURE))
+			continue;
+		if (!(sector->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED))
+			continue;
+		geometry = sector->geometry;
+		glm_mat4_identity(model);
+		bgfx_set_transform(&model, 1);
+		eye[0] = sector->extent_start[0] + (AP_SECTOR_WIDTH / 2.0f);
+		eye[1] = geometry->bsphere.center.y + 10000.0f;
+		eye[2] = sector->extent_start[1] + (AP_SECTOR_WIDTH / 2.0f);
+		glm_look(eye, dir, up, view);
+		glm_ortho(-AP_SECTOR_WIDTH / 2, AP_SECTOR_WIDTH / 2, -AP_SECTOR_WIDTH / 2, 
+			AP_SECTOR_WIDTH / 2, 100000.0f, 100.0f, proj);
+		bgfx_set_view_clear(mod->rough_render_view, 
+			BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0xff0000ff, 1.0f, 0);
+		bgfx_set_view_frame_buffer(mod->rough_render_view, mod->rough_frame_buffer);
+		bgfx_set_view_rect(mod->rough_render_view, 0, 0, ROUGH_TEXTURE_SIZE, 
+			ROUGH_TEXTURE_SIZE);
+		bgfx_set_view_transform(mod->rough_render_view, view, proj);
+		bgfx_touch(mod->rough_render_view);
+		bgfx_set_vertex_buffer(0, geometry->vertex_buffer, 0,
+			 geometry->vertex_count);
+		for (j = 0; j < geometry->split_count; j++) {
+			uint32_t k;
+			const struct ac_mesh_split * split = &geometry->splits[j];
+			const struct ac_mesh_material * mat = 
+				&geometry->materials[split->material_index];
+			bgfx_set_index_buffer(geometry->index_buffer,
+				split->index_offset, split->index_count);
+			for (k = 0; k < COUNT_OF(mod->sampler); k++) {
+				if (BGFX_HANDLE_IS_VALID(mat->tex_handle[k])) {
+					bgfx_set_texture(k, mod->sampler[k], 
+						mat->tex_handle[k], UINT32_MAX);
+				}
+				else {
+					bgfx_set_texture(k, mod->sampler[k], 
+						mod->null_tex, UINT32_MAX);
+				}
+			}
+			bgfx_set_state(state, 0xffffffff);
+			//bgfx_set_debug(BGFX_DEBUG_WIREFRAME);
+			bgfx_submit(mod->rough_render_view, mod->program_bake_rough, 0, discard);
+		}
+		sector->flags &= ~AC_TERRAIN_SECTOR_REQUIRE_ROUGH_TEXTURE;
+		sector->flags |= AC_TERRAIN_SECTOR_FLUSH_ROUGH_TEXTURE;
+		break;
 	}
 }
 
@@ -1822,6 +1970,7 @@ boolean ac_terrain_set_triangle(
 	for (i = 0; i < changed; i++) {
 		sectors[i]->geometry = ac_mesh_rebuild_splits(mod->ac_mesh,
 			sectors[i]->geometry);
+		creategeometrybuffers(sectors[i]->geometry);
 		sectors[i]->flags |= AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES;
 		if (!mod->update_draw_buffer_in)
 			mod->update_draw_buffer_in = 50;
@@ -1918,7 +2067,9 @@ boolean ac_terrain_set_base(
 	for (i = 0; i < changed; i++) {
 		sectors[i]->geometry = ac_mesh_rebuild_splits(mod->ac_mesh,
 			sectors[i]->geometry);
-		sectors[i]->flags |= AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES;
+		creategeometrybuffers(sectors[i]->geometry);
+		sectors[i]->flags |= AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES |
+			AC_TERRAIN_SECTOR_REQUIRE_ROUGH_TEXTURE;
 		if (!mod->update_draw_buffer_in)
 			mod->update_draw_buffer_in = 50;
 	}
@@ -1993,11 +2144,58 @@ boolean ac_terrain_set_layer(
 	for (i = 0; i < changed; i++) {
 		sectors[i]->geometry = ac_mesh_rebuild_splits(mod->ac_mesh,
 			sectors[i]->geometry);
-		sectors[i]->flags |= AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES;
+		creategeometrybuffers(sectors[i]->geometry);
+		sectors[i]->flags |= AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES |
+			AC_TERRAIN_SECTOR_REQUIRE_ROUGH_TEXTURE;
 		if (!mod->update_draw_buffer_in)
 			mod->update_draw_buffer_in = 50;
 	}
 	return (changed == triangle_count);
+}
+
+static void rebuildrough(
+	struct ac_terrain_module * mod,
+	struct ac_terrain_sector * sector)
+{
+	struct ac_mesh_geometry * rough;
+	struct ac_mesh_geometry * detail;
+	uint32_t i;
+	if (!(sector->flags & AC_TERRAIN_SECTOR_ROUGH_IS_LOADED))
+		return;
+	detail = sector->geometry;
+	rough = ac_mesh_alloc_geometry(detail->vertex_count, detail->triangle_count, 1);
+	memcpy(rough->vertices, detail->vertices, 
+		detail->vertex_count * sizeof(*detail->vertices));
+	for (i = 0; i < rough->vertex_count; i++) {
+		struct ac_mesh_vertex * vertex = &rough->vertices[i];
+		vertex->texcoord[0][0] = (vertex->position[0] - 
+			sector->extent_start[0]) / AP_SECTOR_WIDTH;
+		vertex->texcoord[0][1] = (vertex->position[2] - 
+			sector->extent_start[1]) / AP_SECTOR_WIDTH;
+	}
+	memcpy(rough->vertex_colors, detail->vertex_colors, 
+		detail->vertex_count * sizeof(*detail->vertex_colors));
+	memcpy(rough->triangles, detail->triangles, 
+		detail->triangle_count * sizeof(*detail->triangles));
+	memcpy(rough->indices, detail->indices, 
+		detail->index_count * sizeof(*detail->indices));
+	rough->bsphere = detail->bsphere;
+	for (i = 0; i < rough->triangle_count; i++)
+		rough->triangles[i].material_index = 0;
+	rough->splits[0].index_offset = 0;
+	rough->splits[0].index_count = rough->index_count;
+	rough->splits[0].material_index = 0;
+	assert(sector->rough_geometry->material_count != 0);
+	for (i = 0; i < sector->rough_geometry->material_count; i++) {
+		if (BGFX_HANDLE_IS_VALID(sector->rough_geometry->materials[i].tex_handle[0])) {
+			ac_mesh_copy_material(mod->ac_mesh, &rough->materials[0], 
+				&sector->rough_geometry->materials[i]);
+			ac_mesh_destroy_geometry(mod->ac_mesh, sector->rough_geometry);
+			break;
+		}
+	}
+	sector->rough_geometry = rough;
+	creategeometrybuffers(rough);
 }
 
 void ac_terrain_adjust_height(
@@ -2129,8 +2327,10 @@ void ac_terrain_adjust_height(
 			v->normal[2] = n[2];
 		}
 	}
-	for (i = 0; i < rebuildcount; i++)
+	for (i = 0; i < rebuildcount; i++) {
 		creategeometrybuffers(rebuild[i]->geometry);
+		rebuildrough(mod, rebuild[i]);
+	}
 	vec_free(nset);
 	vec_free(nset_edit);
 	vec_free(nvtx);

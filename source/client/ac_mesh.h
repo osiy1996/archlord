@@ -174,6 +174,11 @@ boolean ac_mesh_eq_pos(
 
 void ac_mesh_destroy_clump(struct ac_mesh_module * mod, struct ac_mesh_clump * c);
 
+struct ac_mesh_geometry * ac_mesh_alloc_geometry(
+	uint32_t vertex_count,
+	uint32_t triangle_count,
+	uint32_t material_count);
+
 END_DECLS
 
 #endif /* _AC_MESH_H_ */

@@ -636,7 +636,7 @@ static boolean write_binmesh_plg(
 	return TRUE;
 }
 
-size_t arm_calc_geo_size(
+static size_t arm_calc_geo_size(
 	uint32_t vertex_count,
 	uint32_t triangle_count,
 	uint32_t split_count,
@@ -650,7 +650,7 @@ size_t arm_calc_geo_size(
 		+ material_count * sizeof(struct ac_mesh_split));
 }
 
-struct ac_mesh_geometry * arm_alloc_geo(
+static struct ac_mesh_geometry * arm_alloc_geo(
 	uint32_t vertex_count,
 	uint32_t triangle_count,
 	uint32_t split_count,
@@ -660,6 +660,7 @@ struct ac_mesh_geometry * arm_alloc_geo(
 		split_count, material_count);
 	void * mem = alloc(sz);
 	struct ac_mesh_geometry * g = NULL;
+	uint32_t i;
 	memset(mem, 0, sz);
 	set_and_advance(&g, &mem, sizeof(*g));
 	BGFX_INVALIDATE_HANDLE(g->vertex_buffer);
@@ -681,6 +682,12 @@ struct ac_mesh_geometry * arm_alloc_geo(
 	g->material_count = material_count;
 	g->materials = alloc(material_count * sizeof(*g->materials));
 	memset(g->materials, 0, g->material_count * sizeof(*g->materials));
+	for (i = 0; i < g->material_count; i++) {
+		struct ac_mesh_material * material = &g->materials[i];
+		uint32_t j;
+		for (j = 0; j < COUNT_OF(material->tex_handle); j++)
+			BGFX_INVALIDATE_HANDLE(material->tex_handle[j]);
+	}
 	return g;
 }
 
@@ -1316,8 +1323,8 @@ void ac_mesh_release_material(
 	for (i = 0; i < COUNT_OF(m->tex_handle); i++) {
 		if (BGFX_HANDLE_IS_VALID(m->tex_handle[i]))
 			ac_texture_release(mod->ac_texture, m->tex_handle[i]);
-		m->tex_handle[i] =
-			(bgfx_texture_handle_t)BGFX_INVALID_HANDLE;
+		m->tex_handle[i] = (bgfx_texture_handle_t)BGFX_INVALID_HANDLE;
+		memset(m->tex_name[i], 0, sizeof(m->tex_name[i]));
 	}
 }
 
@@ -1450,6 +1457,10 @@ struct ac_mesh_geometry * ac_mesh_rebuild_splits(
 	dealloc(indices);
 	dealloc(split_index_count);
 	dealloc(mat_table);
+	if (BGFX_HANDLE_IS_VALID(g->vertex_buffer))
+		bgfx_destroy_vertex_buffer(g->vertex_buffer);
+	if (BGFX_HANDLE_IS_VALID(g->index_buffer))
+		bgfx_destroy_index_buffer(g->index_buffer);
 	dealloc(g->materials);
 	dealloc(g);
 	return ng;
@@ -1602,4 +1613,12 @@ void ac_mesh_destroy_clump(struct ac_mesh_module * mod, struct ac_mesh_clump * c
 		ac_mesh_destroy_geometry(mod, g);
 		g = next;
 	}
+}
+
+struct ac_mesh_geometry * ac_mesh_alloc_geometry(
+	uint32_t vertex_count,
+	uint32_t triangle_count,
+	uint32_t material_count)
+{
+	return arm_alloc_geo(vertex_count, triangle_count, material_count, material_count);
 }
