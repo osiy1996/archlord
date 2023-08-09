@@ -1457,10 +1457,28 @@ struct ac_mesh_geometry * ac_mesh_rebuild_splits(
 	dealloc(indices);
 	dealloc(split_index_count);
 	dealloc(mat_table);
-	if (BGFX_HANDLE_IS_VALID(g->vertex_buffer))
+	if (BGFX_HANDLE_IS_VALID(g->vertex_buffer)) {
+		bgfx_vertex_layout_t layout = ac_mesh_vertex_layout();
+		const bgfx_memory_t * mem;
 		bgfx_destroy_vertex_buffer(g->vertex_buffer);
-	if (BGFX_HANDLE_IS_VALID(g->index_buffer))
+		mem = bgfx_copy(ng->vertices, ng->vertex_count * sizeof(*ng->vertices));
+		ng->vertex_buffer = bgfx_create_vertex_buffer(mem, &layout,
+			BGFX_BUFFER_NONE);
+		if (!BGFX_HANDLE_IS_VALID(ng->vertex_buffer)) {
+			ERROR("Failed to rough geometry create vertex buffer.");
+		}
+	}
+	if (BGFX_HANDLE_IS_VALID(g->index_buffer)) {
+		const bgfx_memory_t * mem;
 		bgfx_destroy_index_buffer(g->index_buffer);
+		mem = bgfx_copy(ng->indices, ng->index_count * sizeof(*ng->indices));
+		ng->index_buffer = bgfx_create_index_buffer(mem, 0);
+		if (!BGFX_HANDLE_IS_VALID(ng->index_buffer)) {
+			ERROR("Failed to rough geometry create index buffer.");
+			bgfx_destroy_vertex_buffer(ng->vertex_buffer);
+			BGFX_INVALIDATE_HANDLE(ng->vertex_buffer);
+		}
+	}
 	dealloc(g->materials);
 	dealloc(g);
 	return ng;

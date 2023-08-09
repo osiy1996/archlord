@@ -220,6 +220,15 @@ boolean ac_terrain_set_layer(
 	const struct ac_mesh_vertex * vertices,
 	const struct ac_mesh_material * materials);
 
+boolean ac_terrain_replace_texture(
+	struct ac_terrain_module * mod,
+	uint32_t triangle_count,
+	uint32_t tile_ratio,
+	const struct ac_mesh_vertex * vertices,
+	bgfx_texture_handle_t tex_to_replace,
+	bgfx_texture_handle_t tex,
+	const char * tex_name);
+
 void ac_terrain_adjust_height(
 	struct ac_terrain_module * mod,
 	vec3 pos,

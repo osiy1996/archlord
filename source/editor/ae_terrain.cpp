@@ -81,6 +81,11 @@ enum paint_tile_type {
 	PAINT_TILE_COUNT
 };
 
+enum paint_mode {
+	PAINT_MODE_FREEHAND,
+	PAINT_MODE_REPLACEMENT,
+};
+
 enum segment_texture_type {
 	SEGMENT_TEX_REGION,
 	SEGMENT_TEX_TILE_TYPE,
@@ -95,6 +100,7 @@ struct paint_vertex {
 };
 
 struct paint_tool {
+	enum paint_mode mode;
 	bgfx_texture_handle_t icon;
 	enum paint_layer layer;
 	bgfx_program_handle_t program;
@@ -104,6 +110,7 @@ struct paint_tool {
 	uint32_t max_triangle_count;
 	uint32_t scale_tex;
 	uint32_t tex_browser;
+	bgfx_texture_handle_t tex_to_replace;
 	bgfx_texture_handle_t tex;
 	char tex_name[64];
 	bgfx_texture_handle_t tex_alpha;
@@ -111,6 +118,8 @@ struct paint_tool {
 	bgfx_uniform_handle_t sampler;
 	enum paint_tile_type tile_combinations[256];
 	boolean preview;
+	bool browse_masked_textures;
+	bgfx_texture_handle_t * masked_textures;
 };
 
 struct height_tool {
@@ -1774,10 +1783,12 @@ static void onshutdown(struct ae_terrain_module * mod)
 		ac_texture_release(mod->ac_texture, mod->interp_tex[i]);
 	ac_texture_release(mod->ac_texture, mod->placeholder_tex);
 	ac_texture_release(mod->ac_texture, mod->paint.icon);
+	ac_texture_release(mod->ac_texture, mod->paint.tex_to_replace);
 	ac_texture_release(mod->ac_texture, mod->paint.tex);
 	ac_texture_release(mod->ac_texture, mod->paint.tex_alpha);
 	vec_free(mod->paint.vertices);
 	vec_free(mod->paint.materials);
+	vec_free(mod->paint.masked_textures);
 	bgfx_destroy_program(mod->paint.program);
 	bgfx_destroy_program(mod->paint.program_grid);
 	bgfx_destroy_uniform(mod->paint.sampler);
@@ -1809,12 +1820,15 @@ struct ae_terrain_module * ae_terrain_create_module()
 	mod->edit_mode = EDIT_MODE_NONE;
 	BGFX_INVALIDATE_HANDLE(mod->paint.icon);
 	mod->paint.tex_browser = UINT32_MAX;
+	BGFX_INVALIDATE_HANDLE(mod->paint.tex_to_replace);
 	BGFX_INVALIDATE_HANDLE(mod->paint.tex);
 	mod->paint.scale_tex = 1;
 	mod->paint.vertices = (struct ac_mesh_vertex *)vec_new_reserved(
 		sizeof(*mod->paint.vertices), 128);
 	mod->paint.materials = (struct ac_mesh_material *)vec_new_reserved(
 		sizeof(*mod->paint.materials), 128);
+	mod->paint.masked_textures = (bgfx_texture_handle_t *)vec_new_reserved(
+		sizeof(*mod->paint.masked_textures), 128);
 	paint_setup_tile_combinations(&mod->paint);
 	mod->height.size = 10.0f;
 	mod->height.strength = 1.0f;
@@ -2269,37 +2283,142 @@ static void replacetexture(
 	}
 }
 
-void ae_terrain_toolbar(struct ae_terrain_module * mod)
+static const char * getpaintmodetag(enum paint_mode mode)
 {
-	float toolkit_height = ImGui::GetContentRegionAvail().y;
-	switch (mod->edit_mode) {
-	case EDIT_MODE_PAINT: {
-		uint16_t tex_id = BGFX_HANDLE_IS_VALID(mod->paint.tex) ?
-			mod->paint.tex.idx : mod->placeholder_tex.idx;
+	switch (mode) {
+	case PAINT_MODE_FREEHAND:
+		return "Freehand";
+	case PAINT_MODE_REPLACEMENT:
+		return "Replacement";
+	default:
+		return "Invalid";
+	}
+}
+
+static void browsemaskedtextures(
+	struct ae_terrain_module * mod,
+	struct paint_tool * paint)
+{
+	ImVec2 size = ImVec2(580.0f, 580.0f);
+	uint32_t i;
+	uint32_t count;
+	uint32_t masked = 0;
+	ImGui::SetNextWindowSize(size, ImGuiCond_FirstUseEver);
+	if (!ImGui::Begin("Selected Texture Browser", &paint->browse_masked_textures)) {
+		ImGui::End();
+		return;
+	}
+	vec_clear(paint->masked_textures);
+	count = vec_count(paint->materials);
+	for (i = 0; i < count; i++) {
+		struct ac_mesh_material * material = &paint->materials[i];
+		uint32_t j;
+		for (j = 0; j < COUNT_OF(material->tex_handle); j++) {
+			uint32_t k;
+			boolean add = TRUE;
+			if (!BGFX_HANDLE_IS_VALID(material->tex_handle[j]))
+				continue;
+			for (k = 0; k < masked; k++) {
+				if (paint->masked_textures[k].idx == material->tex_handle[j].idx) {
+					add = FALSE;
+					break;
+				}
+			}
+			if (add) {
+				vec_push_back((void **)&paint->masked_textures, &material->tex_handle[j]);
+				masked++;
+			}
+		}
+	}
+	for (i = 0; i < masked; i++) {
+		ImVec2 avail;
+		bgfx_texture_handle_t tex = paint->masked_textures[i];
+		if (i)
+			ImGui::SameLine(0.0f, -1.0f);
+		avail = ImGui::GetContentRegionAvail();
+		if (avail.x < 128.f)
+			ImGui::NewLine();
+		if (BGFX_HANDLE_IS_VALID(tex)) {
+			ImGui::Image((ImTextureID)tex.idx,
+				ImVec2(128.f, 128.f),
+				ImVec2(0.f, 0.f), ImVec2(1.f, 1.f),
+				ImVec4(1.f, 1.f, 1.f, 1.f),
+				ImVec4(.2f, 0.2f, 0.2f, 0.2f));
+		}
+		else {
+			ImGui::Dummy(ImVec2(128.f, 128.f));
+		}
+		if (ImGui::IsItemHovered()) {
+			char name[64];
+			if (ac_texture_get_name(mod->ac_texture, tex, TRUE, 
+					name, sizeof(name)) &&
+				ImGui::BeginTooltip()) {
+				ImGui::Text("Name: %s", name);
+				ImGui::EndTooltip();
+			}
+		}
+		if (ImGui::IsItemClicked(ImGuiMouseButton_Left)) {
+			if (BGFX_HANDLE_IS_VALID(paint->tex_to_replace))
+				ac_texture_release(mod->ac_texture, paint->tex_to_replace);
+			paint->tex_to_replace = tex;
+			ac_texture_copy(mod->ac_texture, tex);
+			paint->browse_masked_textures = false;
+			break;
+		}
+	}
+	ImGui::End();
+}
+
+static void renderpainttoolbar(
+	struct ae_terrain_module * mod,
+	struct paint_tool * paint,
+	float toolbar_height)
+{
+	ImGui::SameLine();
+	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding,
+		ImVec2(4.f, 5.f));
+	ImGui::SetNextItemWidth(120.f);
+	if (ImGui::BeginCombo("##PaintMode", getpaintmodetag(paint->mode))) {
+		const enum paint_mode modes[] = {
+			PAINT_MODE_FREEHAND,
+			PAINT_MODE_REPLACEMENT };
+		uint32_t i;
+		for (i = 0; i < COUNT_OF(modes); i++) {
+			if (ImGui::Selectable(getpaintmodetag(modes[i]),
+					paint->mode == modes[i])) {
+				paint->mode = modes[i];
+			}
+		}
+		ImGui::EndCombo();
+	}
+	ImGui::SameLine();
+	ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
+	switch (paint->mode) {
+	case PAINT_MODE_FREEHAND: {
+		uint16_t tex_id = BGFX_HANDLE_IS_VALID(paint->tex) ?
+			paint->tex.idx : mod->placeholder_tex.idx;
 		ImGui::SameLine();
 		if (ImGui::ImageButton((ImTextureID)tex_id,
-				ImVec2(toolkit_height - 4.f, toolkit_height - 4.f),
+				ImVec2(toolbar_height - 4.f, toolbar_height - 4.f),
 				ImVec2(0.f, 0.f), ImVec2(1.f, 1.f), 2,
 				ImVec4(0.f, 0.f, 0.f, 0.f),
 				ImVec4(1.f, 1.f, 1.f, 1.f)) &&
-			mod->paint.tex_browser == UINT32_MAX) {
-			mod->paint.tex_browser = ae_texture_browse(mod->ae_texture,
+			paint->tex_browser == UINT32_MAX) {
+			paint->tex_browser = ae_texture_browse(mod->ae_texture,
 				AC_DAT_DIR_TEX_WORLD, "Select Texture");
 		}
 		if (ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
-			ac_texture_release(mod->ac_texture, mod->paint.tex);
-			mod->paint.tex = BGFX_INVALID_HANDLE;
-			memset(mod->paint.tex_name, 0,
-				sizeof(mod->paint.tex_name));
+			ac_texture_release(mod->ac_texture, paint->tex);
+			paint->tex = BGFX_INVALID_HANDLE;
+			memset(paint->tex_name, 0,
+				sizeof(paint->tex_name));
 		}
 		ImGui::SameLine();
 		ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
 		ImGui::SameLine();
-		ImGui::PushStyleVar(ImGuiStyleVar_FramePadding,
-			ImVec2(4.f, 5.f));
 		ImGui::SetNextItemWidth(120.f);
 		if (ImGui::BeginCombo("##PaintLayer",
-				paint_layer_tag(mod->paint.layer), 0)) {
+				paint_layer_tag(paint->layer), 0)) {
 			const enum paint_layer layers[] = {
 				PAINT_LAYER_BASE,
 				PAINT_LAYER_0,
@@ -2307,9 +2426,9 @@ void ae_terrain_toolbar(struct ae_terrain_module * mod)
 			uint32_t i;
 			for (i = 0; i < COUNT_OF(layers); i++) {
 				if (ImGui::Selectable(paint_layer_tag(layers[i]),
-						mod->paint.layer == layers[i],
+						paint->layer == layers[i],
 						0, ImVec2( 0.f, 0.f )))
-					mod->paint.layer = layers[i];
+					paint->layer = layers[i];
 			}
 			ImGui::EndCombo();
 		}
@@ -2318,61 +2437,61 @@ void ae_terrain_toolbar(struct ae_terrain_module * mod)
 		ImGui::SameLine();
 		ImGui::SetNextItemWidth(120.f);
 		if (ImGui::DragScalar("Texture To Node Ratio",
-				ImGuiDataType_U32, &mod->paint.scale_tex, 0.05f, 
+				ImGuiDataType_U32, &paint->scale_tex, 0.05f, 
 				NULL, NULL, "%u", 0) &&
-			mod->paint.scale_tex == 0) {
-			mod->paint.scale_tex = 1;
+			paint->scale_tex == 0) {
+			paint->scale_tex = 1;
 		}
 		ImGui::SameLine();
 		if (ImGui::Button("Apply")) {
 			uint32_t i;
-			uint32_t count = vec_count(mod->paint.materials);
-			switch (mod->paint.layer) {
+			uint32_t count = vec_count(paint->materials);
+			switch (paint->layer) {
 			case PAINT_LAYER_BASE:
 				for (i = 0; i < count; i++) {
-					replacetexture(mod, &mod->paint.materials[i], 0, 
-						mod->paint.tex_name, mod->paint.tex);
+					replacetexture(mod, &paint->materials[i], 0, 
+						paint->tex_name, paint->tex);
 				}
-				ac_terrain_set_base(mod->ac_terrain, vec_count(mod->paint.materials),
-					mod->paint.scale_tex, mod->paint.vertices, mod->paint.materials);
+				ac_terrain_set_base(mod->ac_terrain, vec_count(paint->materials),
+					paint->scale_tex, paint->vertices, paint->materials);
 				break;
 			case PAINT_LAYER_0:
 				for (i = 0; i < count; i++) {
-					if (BGFX_HANDLE_IS_VALID(mod->paint.tex)) {
-						replacetexture(mod, &mod->paint.materials[i], 1, 
-							mod->paint.tex_alpha_name, mod->paint.tex_alpha);
-						replacetexture(mod, &mod->paint.materials[i], 2, 
-							mod->paint.tex_name, mod->paint.tex);
+					if (BGFX_HANDLE_IS_VALID(paint->tex)) {
+						replacetexture(mod, &paint->materials[i], 1, 
+							paint->tex_alpha_name, paint->tex_alpha);
+						replacetexture(mod, &paint->materials[i], 2, 
+							paint->tex_name, paint->tex);
 					}
 					else {
-						replacetexture(mod, &mod->paint.materials[i], 1, 
+						replacetexture(mod, &paint->materials[i], 1, 
 							NULL, BGFX_INVALID_HANDLE);
-						replacetexture(mod, &mod->paint.materials[i], 2, 
+						replacetexture(mod, &paint->materials[i], 2, 
 							NULL, BGFX_INVALID_HANDLE);
 					}
 				}
 				ac_terrain_set_layer(mod->ac_terrain, 0,
-					vec_count(mod->paint.materials), mod->paint.scale_tex,
-					mod->paint.vertices, mod->paint.materials);
+					vec_count(paint->materials), paint->scale_tex,
+					paint->vertices, paint->materials);
 				break;
 			case PAINT_LAYER_1:
 				for (i = 0; i < count; i++) {
-					if (BGFX_HANDLE_IS_VALID(mod->paint.tex)) {
-						replacetexture(mod, &mod->paint.materials[i], 3, 
-							mod->paint.tex_alpha_name, mod->paint.tex_alpha);
-						replacetexture(mod, &mod->paint.materials[i], 4, 
-							mod->paint.tex_name, mod->paint.tex);
+					if (BGFX_HANDLE_IS_VALID(paint->tex)) {
+						replacetexture(mod, &paint->materials[i], 3, 
+							paint->tex_alpha_name, paint->tex_alpha);
+						replacetexture(mod, &paint->materials[i], 4, 
+							paint->tex_name, paint->tex);
 					}
 					else {
-						replacetexture(mod, &mod->paint.materials[i], 3, 
+						replacetexture(mod, &paint->materials[i], 3, 
 							NULL, BGFX_INVALID_HANDLE);
-						replacetexture(mod, &mod->paint.materials[i], 4, 
+						replacetexture(mod, &paint->materials[i], 4, 
 							NULL, BGFX_INVALID_HANDLE);
 					}
 				}
 				ac_terrain_set_layer(mod->ac_terrain, 1,
-					vec_count(mod->paint.materials), mod->paint.scale_tex,
-					mod->paint.vertices, mod->paint.materials);
+					vec_count(paint->materials), paint->scale_tex,
+					paint->vertices, paint->materials);
 				break;
 			}
 			clearpaintselection(mod);
@@ -2380,7 +2499,83 @@ void ae_terrain_toolbar(struct ae_terrain_module * mod)
 		ImGui::SameLine();
 		if (ImGui::Button("Clear"))
 			clearpaintselection(mod);
-		ImGui::PopStyleVar(1);
+		break;
+	}
+	case PAINT_MODE_REPLACEMENT: {
+		uint16_t toreplaceid = BGFX_HANDLE_IS_VALID(paint->tex_to_replace) ?
+			paint->tex_to_replace.idx : mod->placeholder_tex.idx;
+		ImGui::SameLine();
+		if (ImGui::ImageButton((ImTextureID)toreplaceid,
+				ImVec2(toolbar_height - 4.f, toolbar_height - 4.f),
+				ImVec2(0.f, 0.f), ImVec2(1.f, 1.f), 2) &&
+			!paint->browse_masked_textures) {
+			paint->browse_masked_textures = true;
+		}
+		if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
+			ImGui::Text("Texture to be replaced");
+			ImGui::EndTooltip();
+		}
+		if (ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
+			ac_texture_release(mod->ac_texture, paint->tex_to_replace);
+			paint->tex_to_replace = BGFX_INVALID_HANDLE;
+		}
+		if (BGFX_HANDLE_IS_VALID(paint->tex_to_replace)) {
+			uint16_t texid = BGFX_HANDLE_IS_VALID(paint->tex) ?
+				paint->tex.idx : mod->placeholder_tex.idx;
+			ImGui::SameLine();
+			if (ImGui::ImageButton((ImTextureID)texid,
+					ImVec2(toolbar_height - 4.f, toolbar_height - 4.f),
+					ImVec2(0.f, 0.f), ImVec2(1.f, 1.f), 2,
+					ImVec4(0.f, 0.f, 0.f, 0.f),
+					ImVec4(1.f, 1.f, 1.f, 1.f)) &&
+				paint->tex_browser == UINT32_MAX) {
+				paint->tex_browser = ae_texture_browse(mod->ae_texture,
+					AC_DAT_DIR_TEX_WORLD, "Select Texture");
+			}
+			if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
+				ImGui::Text("Texture to replace current texture");
+				ImGui::EndTooltip();
+			}
+			if (ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
+				ac_texture_release(mod->ac_texture, paint->tex);
+				paint->tex = BGFX_INVALID_HANDLE;
+				memset(paint->tex_name, 0, sizeof(paint->tex_name));
+			}
+		}
+		ImGui::SameLine();
+		ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
+		ImGui::SameLine();
+		ImGui::SetNextItemWidth(120.f);
+		if (ImGui::DragScalar("Texture To Node Ratio",
+				ImGuiDataType_U32, &paint->scale_tex, 0.05f, 
+				NULL, NULL, "%u", 0) &&
+			paint->scale_tex == 0) {
+			paint->scale_tex = 1;
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("Apply")) {
+			ac_terrain_replace_texture(mod->ac_terrain, vec_count(paint->materials),
+				paint->scale_tex, paint->vertices, paint->tex_to_replace,
+				paint->tex, paint->tex_name);
+			clearpaintselection(mod);
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("Clear"))
+			clearpaintselection(mod);
+		if (paint->browse_masked_textures)
+			browsemaskedtextures(mod, paint);
+		break;
+	}
+	}
+	ImGui::PopStyleVar(1);
+}
+
+void ae_terrain_toolbar(struct ae_terrain_module * mod)
+{
+	float toolkit_height = ImGui::GetContentRegionAvail().y;
+	switch (mod->edit_mode) {
+	case EDIT_MODE_PAINT: {
+		renderpainttoolbar(mod, &mod->paint, toolkit_height);
 		break;
 	}
 	case EDIT_MODE_HEIGHT: {

@@ -259,8 +259,7 @@ boolean ae_texture_do_browser(
 		else {
 			ImGui::Dummy(ImVec2(128.f, 128.f));
 		}
-		if (ImGui::IsItemHovered(0)) {
-			ImGui::BeginTooltip();
+		if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
 			ImGui::Text("Name: %s", t->name);
 			ImGui::Text("Size: %ux%u", t->info.width, t->info.height);
 			ImGui::EndTooltip();

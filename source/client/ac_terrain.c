@@ -120,7 +120,6 @@ struct ac_terrain_module {
 	bgfx_program_handle_t program_bake_rough;
 	uint32_t ongoing_load_task_count;
 	enum task_state task_state;
-	uint32_t update_draw_buffer_in;
 	uint32_t save_task_count;
 	uint32_t completed_save_task_count;
 	bgfx_frame_buffer_handle_t rough_frame_buffer;
@@ -2097,10 +2096,7 @@ boolean ac_terrain_set_triangle(
 	for (i = 0; i < changed; i++) {
 		sectors[i]->geometry = ac_mesh_rebuild_splits(mod->ac_mesh,
 			sectors[i]->geometry);
-		creategeometrybuffers(sectors[i]->geometry);
 		sectors[i]->flags |= AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES;
-		if (!mod->update_draw_buffer_in)
-			mod->update_draw_buffer_in = 50;
 	}
 	return (changed == triangle_count);
 }
@@ -2141,6 +2137,7 @@ boolean ac_terrain_set_base(
 {
 	uint32_t i;
 	uint32_t changed = 0;
+	uint32_t changedtriangles = 0;
 	static struct ac_terrain_sector * sectors[256] = { 0 };
 	if (mod->task_state != TASK_STATE_IDLE)
 		return FALSE;
@@ -2175,6 +2172,7 @@ boolean ac_terrain_set_base(
 				}
 			}
 			if (found) {
+				changedtriangles++;
 				found = FALSE;
 				settriangletile(v, 0, tile_ratio);
 				ac_mesh_set_material(mod->ac_mesh, g, &g->triangles[j],
@@ -2194,13 +2192,10 @@ boolean ac_terrain_set_base(
 	for (i = 0; i < changed; i++) {
 		sectors[i]->geometry = ac_mesh_rebuild_splits(mod->ac_mesh,
 			sectors[i]->geometry);
-		creategeometrybuffers(sectors[i]->geometry);
 		sectors[i]->flags |= AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES |
 			AC_TERRAIN_SECTOR_REQUIRE_ROUGH_TEXTURE;
-		if (!mod->update_draw_buffer_in)
-			mod->update_draw_buffer_in = 50;
 	}
-	return (changed == triangle_count);
+	return (changedtriangles == triangle_count);
 }
 
 boolean ac_terrain_set_layer(
@@ -2213,6 +2208,7 @@ boolean ac_terrain_set_layer(
 {
 	uint32_t i;
 	uint32_t changed = 0;
+	uint32_t changedtriangles = 0;
 	static struct ac_terrain_sector * sectors[256] = { 0 };
 	if (mod->task_state != TASK_STATE_IDLE)
 		return FALSE;
@@ -2247,6 +2243,7 @@ boolean ac_terrain_set_layer(
 				}
 			}
 			if (found) {
+				changedtriangles++;
 				found = FALSE;
 				for (k = 0; k < 3; k++) {
 					v[k]->texcoord[1 + layer * 2 + 0][0] = vertices[i * 3 + k].texcoord[0][0];
@@ -2271,13 +2268,95 @@ boolean ac_terrain_set_layer(
 	for (i = 0; i < changed; i++) {
 		sectors[i]->geometry = ac_mesh_rebuild_splits(mod->ac_mesh,
 			sectors[i]->geometry);
-		creategeometrybuffers(sectors[i]->geometry);
 		sectors[i]->flags |= AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES |
 			AC_TERRAIN_SECTOR_REQUIRE_ROUGH_TEXTURE;
-		if (!mod->update_draw_buffer_in)
-			mod->update_draw_buffer_in = 50;
 	}
-	return (changed == triangle_count);
+	return (changedtriangles == triangle_count);
+}
+
+boolean ac_terrain_replace_texture(
+	struct ac_terrain_module * mod,
+	uint32_t triangle_count,
+	uint32_t tile_ratio,
+	const struct ac_mesh_vertex * vertices,
+	bgfx_texture_handle_t tex_to_replace,
+	bgfx_texture_handle_t tex,
+	const char * tex_name)
+{
+	uint32_t i;
+	uint32_t changed = 0;
+	uint32_t changedtriangles = 0;
+	static struct ac_terrain_sector * sectors[256] = { 0 };
+	if (mod->task_state != TASK_STATE_IDLE)
+		return FALSE;
+	for (i = 0; i < triangle_count && changed < COUNT_OF(sectors); i++) {
+		struct ac_terrain_sector * s =
+			from_triangle(mod, &vertices[i * 3]);
+		struct ac_mesh_geometry * g;
+		uint32_t j;
+		uint32_t x[3] = {
+			snap_to_step_x(vertices[i * 3 + 0].position[0]),
+			snap_to_step_x(vertices[i * 3 + 1].position[0]),
+			snap_to_step_x(vertices[i * 3 + 2].position[0]) };
+		uint32_t z[3] = {
+			snap_to_step_z(vertices[i * 3 + 0].position[2]),
+			snap_to_step_z(vertices[i * 3 + 1].position[2]),
+			snap_to_step_z(vertices[i * 3 + 2].position[2]) };
+		if (!s || !(s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED))
+			return FALSE;
+		g = s->geometry;
+		for (j = 0; j < g->triangle_count; j++) {
+			struct ac_mesh_vertex * v[3] = {
+				&g->vertices[g->triangles[j].indices[0]],
+				&g->vertices[g->triangles[j].indices[1]],
+				&g->vertices[g->triangles[j].indices[2]] };
+			boolean found = TRUE;
+			uint32_t k;
+			for (k = 0; k < 3; k++) {
+				if (snap_to_step_x(v[k]->position[0]) != x[k] ||
+					snap_to_step_z(v[k]->position[2]) != z[k]) {
+					found = FALSE;
+					break;
+				}
+			}
+			if (found) {
+				struct ac_mesh_material replacement = 
+					g->materials[g->triangles[j].material_index];
+				boolean replace = FALSE;
+				changedtriangles++;
+				found = FALSE;
+				for (k = 0; k < COUNT_OF(replacement.tex_handle); k++) {
+					if (replacement.tex_handle[k].idx == tex_to_replace.idx) {
+						replace = TRUE;
+						replacement.tex_handle[k] = tex;
+						strlcpy(replacement.tex_name[k], tex_name,
+							sizeof(replacement.tex_name[k]));
+					}
+				}
+				if (replace) {
+					ac_mesh_set_material(mod->ac_mesh, g, &g->triangles[j], 
+						&replacement);
+					for (k = 0; k < changed; k++) {
+						if (sectors[k] == s) {
+							found = TRUE;
+							break;
+						}
+					}
+					if (!found)
+						sectors[changed++] = s;
+				}
+				break;
+			}
+		}
+	}
+	assert(changed < COUNT_OF(sectors));
+	for (i = 0; i < changed; i++) {
+		sectors[i]->geometry = ac_mesh_rebuild_splits(mod->ac_mesh,
+			sectors[i]->geometry);
+		sectors[i]->flags |= AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES |
+			AC_TERRAIN_SECTOR_REQUIRE_ROUGH_TEXTURE;
+	}
+	return (changedtriangles == triangle_count);
 }
 
 static void rebuildrough(
