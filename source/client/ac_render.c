@@ -41,6 +41,7 @@ struct ac_render_module {
 	uint32_t reset_flags;
 	int view_cursor;
 	int view_id;
+	uint32_t current_frame;
 };
 
 static boolean init_bgfx(struct ac_render_module * mod)
@@ -293,7 +294,12 @@ boolean ac_render_begin_frame(
 
 void ac_render_end_frame(struct ac_render_module * mod)
 {
-	bgfx_frame(false);
+	mod->current_frame = bgfx_frame(false);
+}
+
+uint32_t ac_render_get_current_frame(struct ac_render_module * mod)
+{
+	return mod->current_frame;
 }
 
 boolean ac_render_load_shader(

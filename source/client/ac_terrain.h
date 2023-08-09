@@ -109,6 +109,7 @@ struct ac_terrain_sector {
 	uint32_t flags;
 	struct ac_terrain_segment_info * segment_info;
 	struct ac_mesh_geometry * rough_geometry;
+	void * rough_texture_data;
 	struct ac_mesh_geometry * geometry;
 };
 

@@ -40,6 +40,9 @@
     <Filter Include="source\vendor\aplib">
       <UniqueIdentifier>{da590861-1daa-41ac-a312-1139ffdf7bae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\vendor\nvtt">
+      <UniqueIdentifier>{13fe145a-05e1-48c7-a805-dec22ec3d3d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\core\getopt.h">
@@ -413,6 +416,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\source\client\ac_event_effect.h">
       <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\nvtt\nvtt_lowlevel.h">
+      <Filter>source\vendor\nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\nvtt\nvtt_wrapper.h">
+      <Filter>source\vendor\nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\nvtt\nvtt.h">
+      <Filter>source\vendor\nvtt</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

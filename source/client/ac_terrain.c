@@ -44,6 +44,9 @@ struct sector_save_data {
 	uint32_t z;
 	struct ac_mesh_geometry * geometry;
 	boolean geometry_save_result;
+	struct ac_mesh_geometry * rough_geometry;
+	void * rough_texture_data;
+	boolean rough_geometry_save_result;
 	struct ac_terrain_segment_info * segment_info;
 	boolean segment_save_result;
 	struct sector_save_data * head;
@@ -122,6 +125,10 @@ struct ac_terrain_module {
 	uint32_t completed_save_task_count;
 	bgfx_frame_buffer_handle_t rough_frame_buffer;
 	int rough_render_view;
+	bgfx_texture_handle_t rough_read_back;
+	uint32_t rough_read_back_frame;
+	struct ac_terrain_sector * rough_read_back_sector;
+	void * rough_read_back_data;
 };
 
 inline uint32_t sector_map_offset(uint32_t index)
@@ -694,6 +701,11 @@ static void unloadrough(
 	ac_mesh_destroy_geometry(mod->ac_mesh, s->rough_geometry);
 	s->rough_geometry = NULL;
 	s->flags &= ~AC_TERRAIN_SECTOR_ROUGH_IS_LOADED;
+	if (s->rough_texture_data) {
+		if (s->rough_texture_data != mod->rough_read_back_data)
+			dealloc(s->rough_texture_data);
+		s->rough_texture_data = NULL;
+	}
 }
 
 static void unloaddetail(
@@ -736,6 +748,8 @@ static void sector_load_post_task(
 			creategeometrybuffers(d->rough_geometry);
 			s->rough_geometry = d->rough_geometry;
 			s->flags |= AC_TERRAIN_SECTOR_ROUGH_IS_LOADED;
+			if (d->geometry)
+				s->flags |= AC_TERRAIN_SECTOR_REQUIRE_ROUGH_TEXTURE;
 		}
 		else {
 			ac_mesh_destroy_geometry(mod->ac_mesh, d->rough_geometry);
@@ -834,6 +848,48 @@ static boolean save_sector_geometry(
 	return TRUE;
 }
 
+static boolean saveroughgeometry(
+	struct ac_terrain_module * mod,
+	uint32_t x,
+	uint32_t z,
+	struct ac_mesh_geometry * g,
+	const void * texture_data)
+{
+	struct bin_stream * stream;
+	char path[512];
+	bstream_for_write(NULL, (size_t)1u << 20, &stream);
+	snprintf(path, sizeof(path), "R%03u,%03u", x, z);
+	if (!ac_texture_write_compressed_rws(stream, path, ROUGH_TEXTURE_SIZE, 
+			ROUGH_TEXTURE_SIZE, texture_data)) {
+		ERROR("Failed to write texture.");
+		bstream_destroy(stream);
+		return FALSE;
+	}
+	if (!bstream_write_i32(stream, 1)) {
+		ERROR("Stream ended unexpectedly.");
+		bstream_destroy(stream);
+		return FALSE;
+	}
+	if (!ac_mesh_write_rp_atomic(stream, g)) {
+		ERROR("Failed to write atomic.");
+		bstream_destroy(stream);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/world/R%03u,%03u.dff",
+			ap_config_get(mod->ap_config, "ClientDir"), x, z)) {
+		ERROR("Failed to create path.");
+		bstream_destroy(stream);
+		return FALSE;
+	}
+	if (!make_file(path, stream->head, bstream_offset(stream))) {
+		ERROR("Failed to create output file.");
+		bstream_destroy(stream);
+		return FALSE;
+	}
+	bstream_destroy(stream);
+	return TRUE;
+}
+
 static boolean save_sector_segments(
 	struct ac_terrain_module * mod,
 	uint32_t x,
@@ -903,6 +959,10 @@ static boolean sector_save_task(void * data)
 		d->geometry_save_result = save_sector_geometry(d->mod,
 			d->x, d->z, d->geometry);
 	}
+	if (d->rough_geometry) {
+		d->rough_geometry_save_result = saveroughgeometry(d->mod,
+			d->x, d->z, d->rough_geometry, d->rough_texture_data);
+	}
 	if (d->segment_info) {
 		d->segment_save_result = save_sector_segments(d->mod,
 			d->x, d->z, d->segment_info);
@@ -925,6 +985,18 @@ static void sector_save_post_task(
 	else if (d->geometry_save_result) {
 		s->flags &= ~AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES;
 		INFO("(%u/%u) Saved file D%03u%03u.dff.",
+			mod->completed_save_task_count, mod->save_task_count,
+			d->x, d->z);
+	}
+	else {
+		ERROR("(%u/%u) Failed to save file D%03u%03u.dff.",
+			mod->completed_save_task_count, mod->save_task_count,
+			d->x, d->z);
+	}
+	if (!d->rough_geometry) {
+	}
+	else if (d->rough_geometry_save_result) {
+		INFO("(%u/%u) Saved file R%03u%03u.dff.",
 			mod->completed_save_task_count, mod->save_task_count,
 			d->x, d->z);
 	}
@@ -988,6 +1060,13 @@ void create_sector_save_tasks(struct ac_terrain_module * mod)
 			if ((s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED) &&
 				(s->flags & AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES)) {
 				d.geometry = s->geometry;
+				skip = FALSE;
+			}
+			if ((s->flags & AC_TERRAIN_SECTOR_ROUGH_IS_LOADED) &&
+				(s->flags & AC_TERRAIN_SECTOR_HAS_DETAIL_CHANGES)) {
+				d.rough_geometry = s->rough_geometry;
+				d.rough_texture_data = s->rough_texture_data;
+				d.rough_geometry_save_result = FALSE;
 				skip = FALSE;
 			}
 			if ((s->flags & AC_TERRAIN_SECTOR_SEGMENT_IS_LOADED) &&
@@ -1270,6 +1349,9 @@ static boolean oninitialize(struct ac_terrain_module * mod)
 		return FALSE;
 	}
 	mod->rough_render_view = ac_render_allocate_view(mod->ac_render);
+	mod->rough_read_back = bgfx_create_texture_2d(ROUGH_TEXTURE_SIZE, ROUGH_TEXTURE_SIZE, 
+		false, 1, BGFX_TEXTURE_FORMAT_RGBA8, 
+		BGFX_TEXTURE_BLIT_DST | BGFX_TEXTURE_READ_BACK, NULL);
 	return TRUE;
 }
 
@@ -1315,6 +1397,7 @@ static void onshutdown(struct ac_terrain_module * mod)
 	bgfx_destroy_program(mod->program);
 	bgfx_destroy_program(mod->program_bake_rough);
 	bgfx_destroy_frame_buffer(mod->rough_frame_buffer);
+	bgfx_destroy_texture(mod->rough_read_back);
 }
 
 struct ac_terrain_module * ac_terrain_create_module()
@@ -1352,6 +1435,7 @@ struct ac_terrain_module * ac_terrain_create_module()
 		mod->sampler[i] =
 			(bgfx_uniform_handle_t)BGFX_INVALID_HANDLE;
 	}
+	mod->rough_read_back_frame = UINT32_MAX;
 	return mod;
 }
 
@@ -1624,15 +1708,47 @@ static struct ac_terrain_sector * fromindex(
 	return &mod->sectors[idx->x][idx->z];
 }
 
+static boolean issectorvisible(
+	struct ac_terrain_module * mod,
+	struct ac_terrain_sector * sector)
+{
+	uint32_t i;
+	uint32_t count = vec_count(mod->visible_sectors);
+	for (i = 0; i < count; i++) {
+		if (fromindex(mod, i) == sector)
+			return TRUE;
+	}
+	return FALSE;
+}
+
+static boolean readbackrough(struct ac_terrain_module * mod)
+{
+	struct ac_terrain_sector * sector;
+	if (mod->rough_read_back_frame == UINT32_MAX)
+		return FALSE;
+	if (mod->rough_read_back_frame >= ac_render_get_current_frame(mod->ac_render))
+		return TRUE;
+	sector = mod->rough_read_back_sector;
+	if (!(sector->flags & AC_TERRAIN_SECTOR_ROUGH_IS_LOADED))
+		dealloc(mod->rough_read_back_data);
+	mod->rough_read_back_frame = UINT32_MAX;
+	mod->rough_read_back_data = NULL;
+	return TRUE;
+}
+
 void ac_terrain_render_rough_textures(struct ac_terrain_module * mod)
 {
 	uint32_t i;
 	uint32_t count = vec_count(mod->visible_sectors);
-	static bgfx_texture_handle_t tex = BGFX_INVALID_HANDLE;
 	boolean wait = FALSE;
+	if (readbackrough(mod))
+		return;
 	for (i = 0; i < count; i++) {
 		struct ac_terrain_sector * sector = fromindex(mod, i);
+		bgfx_texture_handle_t tex = BGFX_INVALID_HANDLE;
 		if (!(sector->flags & AC_TERRAIN_SECTOR_FLUSH_ROUGH_TEXTURE))
+			continue;
+		if (!(sector->flags & AC_TERRAIN_SECTOR_ROUGH_IS_LOADED))
 			continue;
 		tex = bgfx_create_texture_2d(ROUGH_TEXTURE_SIZE, ROUGH_TEXTURE_SIZE, 
 			false, 1, BGFX_TEXTURE_FORMAT_RGBA8,
@@ -1655,6 +1771,17 @@ void ac_terrain_render_rough_textures(struct ac_terrain_module * mod)
 					break;
 				}
 			}
+			if (!sector->rough_texture_data) {
+				sector->rough_texture_data = alloc(ROUGH_TEXTURE_SIZE * 
+					ROUGH_TEXTURE_SIZE * 4);
+			}
+			bgfx_blit(mod->rough_render_view, mod->rough_read_back, 0, 0, 0, 0, 
+				bgfx_get_texture(mod->rough_frame_buffer, 0), 0, 0,0 ,0, 
+				ROUGH_TEXTURE_SIZE, ROUGH_TEXTURE_SIZE, 0);
+			mod->rough_read_back_frame = bgfx_read_texture(mod->rough_read_back, 
+				sector->rough_texture_data, 0);
+			mod->rough_read_back_sector = sector;
+			mod->rough_read_back_data = sector->rough_texture_data;
 		}
 		sector->flags &= ~AC_TERRAIN_SECTOR_FLUSH_ROUGH_TEXTURE;
 		wait = TRUE;

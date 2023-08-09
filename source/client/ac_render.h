@@ -68,6 +68,8 @@ boolean ac_render_begin_frame(
  */
 void ac_render_end_frame(struct ac_render_module * mod);
 
+uint32_t ac_render_get_current_frame(struct ac_render_module * mod);
+
 /*
  * Attempts to load a shader.
  *

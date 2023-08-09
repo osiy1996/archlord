@@ -142,7 +142,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;bx$(Configuration).lib;bgfx$(Configuration).lib;bimg$(Configuration).lib;bimg_decode$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>nvtt30203.lib;SDL2.lib;SDL2main.lib;bx$(Configuration).lib;bgfx$(Configuration).lib;bimg$(Configuration).lib;bimg_decode$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugRender|Win32'">
@@ -160,7 +160,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;bxDebug.lib;bgfxDebug.lib;bimgDebug.lib;bimg_decodeDebug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>nvtt30203.lib;SDL2.lib;SDL2main.lib;bxDebug.lib;bgfxDebug.lib;bimgDebug.lib;bimg_decodeDebug.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -182,7 +182,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;bx$(Configuration).lib;bgfx$(Configuration).lib;bimg$(Configuration).lib;bimg_decode$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>nvtt30203.lib;SDL2.lib;SDL2main.lib;bx$(Configuration).lib;bgfx$(Configuration).lib;bimg$(Configuration).lib;bimg_decode$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -200,7 +200,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;bx$(Configuration).lib;bgfx$(Configuration).lib;bimg$(Configuration).lib;bimg_decode$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>nvtt30203.lib;SDL2.lib;SDL2main.lib;bx$(Configuration).lib;bgfx$(Configuration).lib;bimg$(Configuration).lib;bimg_decode$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugRender|x64'">
@@ -218,7 +218,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;bxDebug.lib;bgfxDebug.lib;bimgDebug.lib;bimg_decodeDebug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>nvtt30203.lib;SDL2.lib;SDL2main.lib;bxDebug.lib;bgfxDebug.lib;bimgDebug.lib;bimg_decodeDebug.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -240,7 +240,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;bx$(Configuration).lib;bgfx$(Configuration).lib;bimg$(Configuration).lib;bimg_decode$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>nvtt30203.lib;SDL2.lib;SDL2main.lib;bx$(Configuration).lib;bgfx$(Configuration).lib;bimg$(Configuration).lib;bimg_decode$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -367,6 +367,9 @@
     <ClInclude Include="..\..\..\source\vendor\imgui\imstb_rectpack.h" />
     <ClInclude Include="..\..\..\source\vendor\imgui\imstb_textedit.h" />
     <ClInclude Include="..\..\..\source\vendor\imgui\imstb_truetype.h" />
+    <ClInclude Include="..\..\..\source\vendor\nvtt\nvtt.h" />
+    <ClInclude Include="..\..\..\source\vendor\nvtt\nvtt_lowlevel.h" />
+    <ClInclude Include="..\..\..\source\vendor\nvtt\nvtt_wrapper.h" />
     <ClInclude Include="..\..\..\source\vendor\pcg\pcg_basic.h" />
   </ItemGroup>
   <ItemGroup>

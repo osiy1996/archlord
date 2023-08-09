@@ -70,6 +70,13 @@ boolean ac_texture_replace_texture(
 	bgfx_texture_handle_t tex,
 	bgfx_texture_handle_t tex_to_replace);
 
+boolean ac_texture_write_compressed_rws(
+	struct bin_stream * stream,
+	const char * name,
+	uint16_t width,
+	uint16_t height,
+	const void * data);
+
 END_DECLS
 
 #endif /* _AC_TEXTURE_H_ */

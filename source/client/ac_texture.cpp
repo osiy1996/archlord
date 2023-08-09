@@ -18,6 +18,7 @@
 
 #include "vendor/bimg/decode.h"
 #include "vendor/bx/allocator.h"
+#include "vendor/nvtt/nvtt.h"
 
 #include <assert.h>
 #include <time.h>
@@ -1058,4 +1059,102 @@ boolean ac_texture_replace_texture(
 	e->handle = tex_to_replace;
 	unlock_mutex(mod->mutex);
 	return TRUE;
+}
+
+struct OutputHandler : public nvtt::OutputHandler {
+	struct bin_stream * stream;
+
+	OutputHandler() : stream(nullptr) {}
+
+	virtual void beginImage(int size, int width, int height, int depth, int face, int miplevel)
+	{
+	}
+
+	virtual bool writeData(const void * data, int size)
+	{
+		return (bstream_write_u32(stream, size) && bstream_write(stream, data, size));
+	}
+
+	virtual void endImage()
+	{
+	}
+};
+
+boolean ac_texture_write_compressed_rws(
+	struct bin_stream * stream,
+	const char * name,
+	uint16_t width,
+	uint16_t height,
+	const void * data)
+{
+	size_t size = width * height * 4 * 4 + 512;
+	nvtt::Context ctx;
+	nvtt::CompressionOptions options;
+	nvtt::OutputOptions output;
+	nvtt::Surface img;
+	OutputHandler handler;
+	size_t dictionary = 0;
+	size_t dictionarystruct = 0;
+	size_t texnative = 0;
+	size_t texnativestruct = 0;
+	size_t extension = 0;
+	uint8_t * shifted = (uint8_t *)alloc(4 * width * height);
+	int currentmip = 0;
+	boolean result = TRUE;
+	char fixedstring[32] = { 0 };
+	for (size_t x = 0; x < width; x++) {
+		for (size_t y = 0; y < height; y++) {
+			uint8_t r = ((uint8_t *)data)[(y * width + x) * 4 + 0];
+			uint8_t g = ((uint8_t *)data)[(y * width + x) * 4 + 1];
+			uint8_t b = ((uint8_t *)data)[(y * width + x) * 4 + 2];
+			uint8_t a = ((uint8_t *)data)[(y * width + x) * 4 + 3];
+			shifted[(y * width + x) * 4 + 0] = b;
+			shifted[(y * width + x) * 4 + 1] = g;
+			shifted[(y * width + x) * 4 + 2] = r;
+			shifted[(y * width + x) * 4 + 3] = a;
+		}
+	}
+	if (!img.setImage(nvtt::InputFormat_BGRA_8UB, width, height, 1, shifted)) {
+		ERROR("Failed to image from texture data.");
+		dealloc(shifted);
+		return FALSE;
+	}
+	dealloc(shifted);
+	options.setFormat(nvtt::Format_BC1);
+	result &= ac_renderware_begin_chunk(stream, rwID_TEXDICTIONARY, &dictionary);
+	result &= ac_renderware_begin_chunk(stream, rwID_STRUCT, &dictionarystruct);
+	result &= bstream_write_u16(stream, 1); /* Texture count. */
+	result &= bstream_write_u16(stream, 2); /* Device id. */
+	result &= ac_renderware_end_chunk(stream, dictionarystruct);
+	result &= ac_renderware_begin_chunk(stream, rwID_TEXTURENATIVE, &texnative);
+	result &= ac_renderware_begin_chunk(stream, rwID_STRUCT, &texnativestruct);
+	result &= bstream_write_u32(stream, rwID_PCD3D9);
+	result &= bstream_write_u32(stream, 0x3302); /* Filter addressing. */
+	strlcpy(fixedstring, name, sizeof(fixedstring));
+	result &= bstream_write(stream, fixedstring, sizeof(fixedstring));
+	result &= bstream_write_str(stream, "", 32); /* Mask name. */
+	result &= bstream_write_u32(stream, rwRASTERFORMAT565 | rwRASTERFORMATMIPMAP);
+	result &= bstream_write_u32(stream, options.d3d9Format());
+	result &= bstream_write_u16(stream, width);
+	result &= bstream_write_u16(stream, height);
+	result &= bstream_write_u8(stream, 16); /* Depth. */
+	result &= bstream_write_u8(stream, img.countMipmaps());
+	result &= bstream_write_u8(stream, rwRASTERTYPETEXTURE);
+	result &= bstream_write_u8(stream, HAS_ALPHA | IS_COMPRESSED);
+	handler.stream = stream;
+	output.setOutputHandler(&handler);
+	do {
+		if (!ctx.compress(img, 0, currentmip++, options, output)) {
+			ERROR("Failed to compress texture.");
+			return FALSE;
+		}
+	} while(img.buildNextMipmap(nvtt::MipmapFilter_Box));
+	result &= ac_renderware_end_chunk(stream, texnativestruct);
+	result &= ac_renderware_begin_chunk(stream, rwID_EXTENSION, &extension);
+	result &= ac_renderware_end_chunk(stream, extension);
+	result &= ac_renderware_end_chunk(stream, texnative);
+	result &= ac_renderware_begin_chunk(stream, rwID_EXTENSION, &extension);
+	result &= ac_renderware_end_chunk(stream, extension);
+	result &= ac_renderware_end_chunk(stream, dictionary);
+	return result;
 }
