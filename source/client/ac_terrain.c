@@ -1434,6 +1434,9 @@ static void onshutdown(struct ac_terrain_module * mod)
 	}
 	bgfx_destroy_program(mod->program);
 	bgfx_destroy_program(mod->program_bake_rough);
+	bgfx_destroy_program(mod->program_render_view[AC_TERRAIN_RENDER_VIEW_BASE]);
+	bgfx_destroy_program(mod->program_render_view[AC_TERRAIN_RENDER_VIEW_LAYER0]);
+	bgfx_destroy_program(mod->program_render_view[AC_TERRAIN_RENDER_VIEW_LAYER1]);
 	bgfx_destroy_frame_buffer(mod->rough_frame_buffer);
 	bgfx_destroy_texture(mod->rough_read_back);
 }
@@ -2588,6 +2591,8 @@ void ac_terrain_level(
 	struct normal_set * nset;
 	struct normal_set * nset_edit;
 	struct ac_mesh_vertex ** nvtx;
+	struct ac_terrain_sector * rebuild[256];
+	uint32_t rebuildcount = 0;
 	if (mod->task_state != TASK_STATE_IDLE)
 		return;
 	for (i = 0; i < vec_count(mod->visible_sectors); i++) {
@@ -2613,7 +2618,7 @@ void ac_terrain_level(
 	nset_edit = vec_new_reserved(sizeof(*nset_edit), count / 3);
 	nvtx = vec_new_reserved(sizeof(*nvtx), count / 3);
 	height /= (float)count;
-	for (i = 0; i < vec_count(mod->visible_sectors); i++) {
+	for (i = 0; i < vec_count(mod->visible_sectors) && rebuildcount < COUNT_OF(rebuild); i++) {
 		struct ap_scr_index * index = &mod->visible_sectors[i];
 		struct ac_terrain_sector * s = &mod->sectors[index->x][index->z];
 		struct ac_mesh_geometry * g = s->geometry;
@@ -2661,6 +2666,7 @@ void ac_terrain_level(
 			}
 		}
 		if (update_geometry) {
+			rebuild[rebuildcount++] = s;
 			bsphere_from_points(&g->bsphere,
 				g->vertices->position,
 				g->vertex_count,
@@ -2725,6 +2731,10 @@ void ac_terrain_level(
 			v->normal[1] = n[1];
 			v->normal[2] = n[2];
 		}
+	}
+	for (i = 0; i < rebuildcount; i++) {
+		creategeometrybuffers(rebuild[i]->geometry);
+		rebuildrough(mod, rebuild[i]);
 	}
 	vec_free(nset);
 	vec_free(nset_edit);
