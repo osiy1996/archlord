@@ -59,11 +59,12 @@ enum ap_map_callback_id {
 	/** \brief Triggered after region templates are read. */
 	AP_MAP_CB_INIT_REGION,
 	AP_MAP_CB_ADD_GLOSSARY,
+	AP_MAP_CB_UPDATE_GLOSSARY,
 };
 
 struct ap_map_region_properties {
-	enum ap_map_field_type field_type : 2;
-	enum ap_map_safety_type safety_type : 2;
+	uint8_t field_type : 2;
+	uint8_t safety_type : 2;
 	uint8_t is_ridable : 1;
 	uint8_t allow_pets : 1;
 	uint8_t allow_round_trip : 1;
@@ -95,7 +96,7 @@ struct ap_map_region_template {
 	int32_t parent_id;
 	char name[AP_MAP_MAX_REGION_NAME_SIZE];
 	char comment[AP_MAP_MAX_REGION_NAME_SIZE];
-	const char * glossary;
+	char glossary[AP_MAP_MAX_REGION_NAME_SIZE];
 	union ap_map_region_type type;
 	uint32_t peculiarity;
 	uint32_t world_map_index;
@@ -127,26 +128,18 @@ void ap_map_add_callback(
 
 /*
  * Reads region templates from file.
- *
- * `region_tmp` is expected to be an array of 
- * size `AP_MAP_MAX_REGION_ID + 1`.
  */
-boolean ap_map_read_region_tmp(
+boolean ap_map_read_region_templates(
 	struct ap_map_module * mod,
 	const char * file_path,
-	struct ap_map_region_template * region_tmp,
 	boolean decrypt);
 
 /*
  * Writes region templates to file.
- *
- * `region_tmp` is expected to be an array of 
- * size `AP_MAP_MAX_REGION_ID + 1`.
  */
-boolean ap_map_write_region_tmp(
+boolean ap_map_write_region_templates(
 	struct ap_map_module * mod,
 	const char * file_path,
-	const struct ap_map_region_template * region_tmp,
 	boolean encrypt);
 
 /**
@@ -162,6 +155,9 @@ boolean ap_map_write_region_glossary(
 	const char * file_path,
 	boolean encrypt);
 
+struct ap_map_region_template * ap_map_add_region_template(
+	struct ap_map_module * mod);
+
 struct ap_map_region_template * ap_map_get_region_template(
 	struct ap_map_module * mod,
 	uint32_t region_id);
@@ -171,6 +167,11 @@ struct ap_map_region_template * ap_map_get_region_template_by_name(
 	const char * region_name);
 
 boolean ap_map_add_glossary(
+	struct ap_map_module * mod, 
+	const char * name,
+	const char * label);
+
+boolean ap_map_update_glossary(
 	struct ap_map_module * mod, 
 	const char * name,
 	const char * label);

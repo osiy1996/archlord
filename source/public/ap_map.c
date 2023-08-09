@@ -31,12 +31,11 @@ static void match_glossary(struct ap_map_module * mod)
 			continue;
 		glossary = ap_admin_get_object_by_name(&mod->glossary_admin, t->name);
 		if (glossary) {
-			t->glossary = glossary->label;
+			strlcpy(t->glossary, glossary->label, sizeof(t->glossary));
 		}
 		else {
-			t->glossary = "";
-			WARN("Region name doesn't have a matching glossary (Id = %u).",
-				t->id);
+			t->glossary[0] = '\0';
+			WARN("Region name doesn't have a matching glossary (Id = %u).", t->id);
 		}
 	}
 }
@@ -63,7 +62,7 @@ static boolean oninitialize(struct ap_map_module * mod)
 			inidir);
 		return FALSE;
 	}
-	if (!ap_map_read_region_tmp(mod, path, mod->region_templates, FALSE)) {
+	if (!ap_map_read_region_templates(mod, path, FALSE)) {
 		ERROR("Failed to read region templates.");
 		return FALSE;
 	}
@@ -127,10 +126,9 @@ static char * load_and_decrypt(
 	return buf;
 }
 
-boolean ap_map_read_region_tmp(
+boolean ap_map_read_region_templates(
 	struct ap_map_module * mod,
 	const char * file_path,
-	struct ap_map_region_template * region_tmp,
 	boolean decrypt)
 {
 	char * buf;
@@ -164,7 +162,7 @@ boolean ap_map_read_region_tmp(
 				dealloc(head);
 				return FALSE;
 			}
-			tmp = &region_tmp[id];
+			tmp = &mod->region_templates[id];
 			if (tmp->in_use) {
 				ERROR("More than one region template with same id (%u) in file (%s), line %u.",
 					id, file_path, line_number);
@@ -174,6 +172,7 @@ boolean ap_map_read_region_tmp(
 			memset(tmp, 0, sizeof(*tmp));
 			tmp->in_use = TRUE;
 			tmp->id = id;
+			tmp->world_map_index = UINT32_MAX;
 			count++;
 			continue;
 		}
@@ -276,7 +275,7 @@ boolean ap_map_read_region_tmp(
 	}
 	dealloc(head);
 	for (i = 0; i < count; i++) {
-		struct ap_map_region_template * r = &region_tmp[i];
+		struct ap_map_region_template * r = &mod->region_templates[i];
 		if (!r->in_use)
 			continue;
 		if (!ap_module_enum_callback(mod, AP_MAP_CB_INIT_REGION, r)) {
@@ -289,10 +288,9 @@ boolean ap_map_read_region_tmp(
 	return TRUE;
 }
 
-boolean ap_map_write_region_tmp(
+boolean ap_map_write_region_templates(
 	struct ap_map_module * mod,
 	const char * file_path,
-	const struct ap_map_region_template * region_tmp,
 	boolean encrypt)
 {
 	size_t maxcount = (size_t)1u << 20;
@@ -300,7 +298,7 @@ boolean ap_map_write_region_tmp(
 	void * head = buf;
 	uint32_t i;
 	for (i = 0; i <= AP_MAP_MAX_REGION_ID; i++) {
-		const struct ap_map_region_template * tmp = &region_tmp[i];
+		const struct ap_map_region_template * tmp = &mod->region_templates[i];
 		if (!tmp->in_use)
 			continue;
 		buf = write_line_bufferv(buf, maxcount, "[%u]", tmp->id);
@@ -318,14 +316,24 @@ boolean ap_map_write_region_tmp(
 			"ResurrectionX=%d", (int)tmp->resurrection_pos[0]);
 		buf = write_line_bufferv(buf, maxcount,
 			"ResurrectionZ=%d", (int)tmp->resurrection_pos[1]);
-		buf = write_line_bufferv(buf, maxcount,
-			"WorldMap=%u", tmp->world_map_index);
+		if (tmp->world_map_index != UINT32_MAX) {
+			buf = write_line_bufferv(buf, maxcount, "WorldMap=%u", 
+				tmp->world_map_index);
+		}
 		buf = write_line_bufferv(buf, maxcount,
 			"SkySet=%u", tmp->sky_index);
 		buf = write_line_bufferv(buf, maxcount,
 			"VisibleDistance=%d", (int)tmp->visible_distance);
 		buf = write_line_bufferv(buf, maxcount,
 			"TopViewHeight=%d", (int)tmp->max_camera_height);
+		if (tmp->peculiarity & AP_MAP_RP_DISABLE_SUMMON)
+			buf = write_line_bufferv(buf, maxcount, "DisableSummon=%d", 1);
+		if (tmp->peculiarity & AP_MAP_RP_DISABLE_GO)
+			buf = write_line_bufferv(buf, maxcount, "DisableGo=%d", 1);
+		if (tmp->peculiarity & AP_MAP_RP_DISABLE_PARTY)
+			buf = write_line_bufferv(buf, maxcount, "DisableParty=%d", 1);
+		if (tmp->peculiarity & AP_MAP_RP_DISABLE_LOGIN)
+			buf = write_line_bufferv(buf, maxcount, "DisableLogin=%d", 1);
 		if (tmp->level_limit) {
 			buf = write_line_bufferv(buf, maxcount,
 				"LevelLimit=%u", tmp->level_limit);
@@ -468,6 +476,27 @@ boolean ap_map_write_region_glossary(
 	return r;
 }
 
+struct ap_map_region_template * ap_map_add_region_template(
+	struct ap_map_module * mod)
+{
+	uint32_t i;
+	for (i = 0; i < AP_MAP_MAX_REGION_COUNT; i++) {
+		if (!mod->region_templates[i].in_use) {
+			char name[AP_MAP_MAX_REGION_NAME_SIZE] = { 0 };
+			snprintf(name, sizeof(name), "Region%u", i);
+			if (ap_map_get_region_template_by_name(mod, name))
+				continue;
+			mod->region_templates[i].in_use = TRUE;
+			mod->region_templates[i].id = i;
+			mod->region_templates[i].world_map_index = UINT32_MAX;
+			memcpy(mod->region_templates[i].name, name, sizeof(name));
+			ap_map_add_glossary(mod, name, "Region%u");
+			return &mod->region_templates[i];
+		}
+	}
+	return NULL;
+}
+
 struct ap_map_region_template * ap_map_get_region_template(
 	struct ap_map_module * mod,
 	uint32_t region_id)
@@ -517,6 +546,23 @@ boolean ap_map_add_glossary(
 		else {
 			return FALSE;
 		}
+	}
+}
+
+boolean ap_map_update_glossary(
+	struct ap_map_module * mod, 
+	const char * name,
+	const char * label)
+{
+	struct ap_map_region_glossary * glossary = 
+		ap_admin_get_object_by_name(&mod->glossary_admin, name);
+	if (glossary) {
+		strlcpy(glossary->label, label, sizeof(glossary->label));
+		ap_module_enum_callback(mod, AP_MAP_CB_UPDATE_GLOSSARY, NULL);
+		return TRUE;
+	}
+	else {
+		return FALSE;
 	}
 }
 

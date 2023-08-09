@@ -749,7 +749,7 @@
     <ClCompile Include="..\..\..\source\editor\ae_event_teleport.cpp">
       <Filter>source\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\editor\ae_map.c">
+    <ClCompile Include="..\..\..\source\editor\ae_map.cpp">
       <Filter>source\editor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\editor\ae_editor_action.c">

@@ -407,7 +407,7 @@
     <ClCompile Include="..\..\..\source\editor\ae_event_refinery.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_event_teleport.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_item.c" />
-    <ClCompile Include="..\..\..\source\editor\ae_map.c" />
+    <ClCompile Include="..\..\..\source\editor\ae_map.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_object.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_terrain.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_texture.cpp" />
