@@ -101,6 +101,7 @@ struct paint_vertex {
 
 struct paint_tool {
 	enum paint_mode mode;
+	int selection_size;
 	bgfx_texture_handle_t icon;
 	enum paint_layer layer;
 	bgfx_program_handle_t program;
@@ -1511,27 +1512,43 @@ static void paint_select(
 {
 	vec3 tri_point[2] = { 0 };
 	vec3 start = { 0 };
+	int i;
 	snap_to_triangle(tri_point[0], p, 1.0f);
 	snap_to_triangle(tri_point[1], p, -1.0f);
 	snaptoquad(start, p);
-	paint_set_quad(mod, paint, start, -400.0f, -400.0f, 
-		PAINT_TILE_TOP_LEFT);
-	paint_set_quad(mod, paint, start, 0.0f, -400.0f, 
-		PAINT_TILE_TOP);
-	paint_set_quad(mod, paint, start, 400.0f, -400.0f, 
-		PAINT_TILE_TOP_RIGHT);
-	paint_set_quad(mod, paint, start, -400.0f, 0.0f, 
-		PAINT_TILE_LEFT);
-	paint_set_quad(mod, paint, start, 0.0f, 0.0f, 
-		PAINT_TILE_CENTER);
-	paint_set_quad(mod, paint, start, 400.0f, 0.0f, 
-		PAINT_TILE_RIGHT);
-	paint_set_quad(mod, paint, start, -400.0f, 400.0f, 
-		PAINT_TILE_BOTTOM_LEFT);
+	paint_set_quad(mod, paint, start, -400.0f * paint->selection_size, 
+		-400.0f * paint->selection_size, PAINT_TILE_TOP_LEFT);
+	for (i = 1 - paint->selection_size; i < paint->selection_size; i++) {
+		paint_set_quad(mod, paint, start, 400.0f * i, 
+			-400.0f * paint->selection_size, PAINT_TILE_TOP);
+	}
+	paint_set_quad(mod, paint, start, 400.0f * paint->selection_size, 
+		-400.0f * paint->selection_size, PAINT_TILE_TOP_RIGHT);
+	for (i = 1 - paint->selection_size; i < paint->selection_size; i++) {
+		paint_set_quad(mod, paint, start, -400.0f * paint->selection_size, 
+			400.0f * i, PAINT_TILE_LEFT);
+	}
+	for (i = 1 - paint->selection_size; i < paint->selection_size; i++) {
+		int j;
+		for (j = 1 - paint->selection_size; j < paint->selection_size; j++) {
+			paint_set_quad(mod, paint, start, 400.0f * i, 400.0f * j, 
+				PAINT_TILE_CENTER);
+		}
+	}
+	for (i = 1 - paint->selection_size; i < paint->selection_size; i++) {
+		paint_set_quad(mod, paint, start, 400.0f * paint->selection_size, 
+			400.0f * i, PAINT_TILE_RIGHT);
+	}
+	paint_set_quad(mod, paint, start, -400.0f * paint->selection_size, 
+		400.0f * paint->selection_size, PAINT_TILE_BOTTOM_LEFT);
 	paint_set_quad(mod, paint, start, 0.0f, 400.0f, 
 		PAINT_TILE_BOTTOM);
-	paint_set_quad(mod, paint, start, 400.0f, 400.0f, 
-		PAINT_TILE_BOTTOM_RIGHT);
+	for (i = 1 - paint->selection_size; i < paint->selection_size; i++) {
+		paint_set_quad(mod, paint, start, 400.0f * i, 
+			400.0f * paint->selection_size, PAINT_TILE_BOTTOM);
+	}
+	paint_set_quad(mod, paint, start, 400.0f * paint->selection_size, 
+		400.0f * paint->selection_size, PAINT_TILE_BOTTOM_RIGHT);
 }
 
 static inline void bake_segments(
@@ -1682,6 +1699,43 @@ static boolean cbcommitchanges(
 	return TRUE;
 }
 
+static const char * getrenderviewtag(enum ac_terrain_render_view view)
+{
+	switch (view) {
+	case AC_TERRAIN_RENDER_VIEW_ALL:
+		return "All";
+	case AC_TERRAIN_RENDER_VIEW_BASE:
+		return "Base";
+	case AC_TERRAIN_RENDER_VIEW_LAYER0:
+		return "Layer 1";
+	case AC_TERRAIN_RENDER_VIEW_LAYER1:
+		return "Layer 2";
+	default:
+		return "Invalid";
+	}
+}
+
+static boolean cbrenderviewmenu(
+	struct ae_terrain_module * mod, 
+	void * data)
+{
+	if (ImGui::BeginMenu("Terrain Render View")) {
+		enum ac_terrain_render_view views[] = {
+			AC_TERRAIN_RENDER_VIEW_ALL,
+			AC_TERRAIN_RENDER_VIEW_BASE,
+			AC_TERRAIN_RENDER_VIEW_LAYER0,
+			AC_TERRAIN_RENDER_VIEW_LAYER1 };
+		uint32_t i;
+		enum ac_terrain_render_view current = ac_terrain_get_render_view(mod->ac_terrain);
+		for (i = 0; i < COUNT_OF(views); i++) {
+			if (ImGui::Selectable(getrenderviewtag(views[i]), current == views[i]))
+				ac_terrain_set_render_view(mod->ac_terrain, views[i]);
+		}
+		ImGui::EndMenu();
+	}
+	return TRUE;
+}
+
 static boolean onregister(
 	struct ae_terrain_module * mod,
 	struct ap_module_registry * registry)
@@ -1697,6 +1751,7 @@ static boolean onregister(
 	ac_terrain_add_callback(mod->ac_terrain, AC_TERRAIN_CB_SEGMENT_MODIFICATION, mod, (ap_module_default_t)cb_segment_modification);
 	mod->region.length = ac_terrain_get_view_distance(mod->ac_terrain) * 2.0f;
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_COMMIT_CHANGES, mod, (ap_module_default_t)cbcommitchanges);
+	ae_editor_action_add_view_menu_callback(mod->ae_editor_action, "Terrain Render View", mod, (ap_module_default_t)cbrenderviewmenu);
 	return TRUE;
 }
 
@@ -1818,6 +1873,7 @@ struct ae_terrain_module * ae_terrain_create_module()
 		(ap_module_instance_shutdown_t)onshutdown);
 	uint32_t i;
 	mod->edit_mode = EDIT_MODE_NONE;
+	mod->paint.selection_size = 1;
 	BGFX_INVALIDATE_HANDLE(mod->paint.icon);
 	mod->paint.tex_browser = UINT32_MAX;
 	BGFX_INVALIDATE_HANDLE(mod->paint.tex_to_replace);
@@ -1962,7 +2018,7 @@ void ae_terrain_render(struct ae_terrain_module * mod, struct ac_camera * cam)
 	case EDIT_MODE_PAINT: {
 		mat4 model;
 		uint64_t state = BGFX_STATE_WRITE_RGB |
-			BGFX_STATE_DEPTH_TEST_LEQUAL |
+			BGFX_STATE_DEPTH_TEST_ALWAYS |
 			BGFX_STATE_CULL_CW |
 			BGFX_STATE_BLEND_FUNC_SEPARATE(
 				BGFX_STATE_BLEND_SRC_ALPHA,
@@ -2443,6 +2499,15 @@ static void renderpainttoolbar(
 			paint->scale_tex = 1;
 		}
 		ImGui::SameLine();
+		ImGui::SetNextItemWidth(120.f);
+		if (ImGui::DragScalar("Selection Scale",
+				ImGuiDataType_U32, &paint->selection_size, 0.05f)) {
+			if (paint->selection_size <= 1)
+				paint->selection_size = 1;
+			else if (paint->selection_size >= 10)
+				paint->selection_size = 10;
+		}
+		ImGui::SameLine();
 		if (ImGui::Button("Apply")) {
 			uint32_t i;
 			uint32_t count = vec_count(paint->materials);
@@ -2546,18 +2611,19 @@ static void renderpainttoolbar(
 		ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
 		ImGui::SameLine();
 		ImGui::SetNextItemWidth(120.f);
-		if (ImGui::DragScalar("Texture To Node Ratio",
-				ImGuiDataType_U32, &paint->scale_tex, 0.05f, 
-				NULL, NULL, "%u", 0) &&
-			paint->scale_tex == 0) {
-			paint->scale_tex = 1;
+		if (ImGui::DragScalar("Selection Scale",
+				ImGuiDataType_U32, &paint->selection_size, 0.05f)) {
+			if (paint->selection_size <= 1)
+				paint->selection_size = 1;
+			else if (paint->selection_size >= 10)
+				paint->selection_size = 10;
 		}
 		ImGui::SameLine();
 		if (ImGui::Button("Apply")) {
-			ac_terrain_replace_texture(mod->ac_terrain, vec_count(paint->materials),
-				paint->scale_tex, paint->vertices, paint->tex_to_replace,
+			ac_terrain_replace_texture(mod->ac_terrain, 
+				vec_count(paint->materials), paint->scale_tex, paint->vertices, 
+				paint->materials, paint->tex_to_replace,
 				paint->tex, paint->tex_name);
-			clearpaintselection(mod);
 		}
 		ImGui::SameLine();
 		if (ImGui::Button("Clear"))

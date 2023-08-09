@@ -70,6 +70,14 @@ enum ac_terrain_geometry_block {
 	AC_TERRAIN_GB_SKY = 1u << 1,
 };
 
+enum ac_terrain_render_view {
+	AC_TERRAIN_RENDER_VIEW_ALL,
+	AC_TERRAIN_RENDER_VIEW_BASE,
+	AC_TERRAIN_RENDER_VIEW_LAYER0,
+	AC_TERRAIN_RENDER_VIEW_LAYER1,
+	AC_TERRAIN_RENDER_VIEW_COUNT
+};
+
 enum ac_terrain_callback_id {
 	AC_TERRAIN_CB_POST_LOAD_SECTOR,
 	AC_TERRAIN_CB_SEGMENT_MODIFICATION,
@@ -159,6 +167,13 @@ void ac_terrain_set_view_distance(
 
 float ac_terrain_get_view_distance(struct ac_terrain_module * mod);
 
+void ac_terrain_set_render_view(
+	struct ac_terrain_module * mod, 
+	enum ac_terrain_render_view view);
+
+enum ac_terrain_render_view ac_terrain_get_render_view(
+	struct ac_terrain_module * mod);
+
 void ac_terrain_sync(
 	struct ac_terrain_module * mod, 
 	const float * pos, 
@@ -225,6 +240,7 @@ boolean ac_terrain_replace_texture(
 	uint32_t triangle_count,
 	uint32_t tile_ratio,
 	const struct ac_mesh_vertex * vertices,
+	struct ac_mesh_material * materials,
 	bgfx_texture_handle_t tex_to_replace,
 	bgfx_texture_handle_t tex,
 	const char * tex_name);
