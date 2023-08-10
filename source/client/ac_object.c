@@ -944,27 +944,35 @@ static boolean cbobjectmove(struct ac_object_module * mod, void * data)
 	struct ap_object_cb_move_object_data * d = data;
 	struct ac_object * objc = ac_object_get_object(mod, d->obj);
 	struct ac_object_sector * s = ac_object_get_sector(mod, &d->obj->position);
-	/* Regardless of whether object moves to a new sector, 
-	 * the previous sector will be flagged dirty. */
-	objc->sector->flags |= AC_OBJECT_SECTOR_HAS_CHANGES;
+	if (objc->sector) {
+		/* Regardless of whether object moves to a new sector, 
+		 * the previous sector will be flagged dirty. */
+		objc->sector->flags |= AC_OBJECT_SECTOR_HAS_CHANGES;
+	}
 	if (s && s != objc->sector) {
-		uint32_t i;
-		uint32_t count;
-		boolean erased = FALSE;
-		count = vec_count(objc->sector->objects);
-		for (i = 0; i < count; i++) {
-			if (objc->sector->objects[i] == d->obj) {
-				vec_erase(objc->sector->objects, 
-					&objc->sector->objects[i]);
-				erased = TRUE;
-				break;
+		boolean assignid = TRUE;
+		if (objc->sector) {
+			uint32_t i;
+			uint32_t count;
+			boolean erased = FALSE;
+			count = vec_count(objc->sector->objects);
+			for (i = 0; i < count; i++) {
+				if (objc->sector->objects[i] == d->obj) {
+					vec_erase(objc->sector->objects, 
+						&objc->sector->objects[i]);
+					erased = TRUE;
+					break;
+				}
+			}
+			assert(erased);
+			if (!erased)
+				return TRUE;
+			if (ap_scr_is_same_division(s->index_x, objc->sector->index_x) &&
+				ap_scr_is_same_division(s->index_z, objc->sector->index_z)) {
+				assignid = FALSE;
 			}
 		}
-		assert(erased != FALSE);
-		if (!erased)
-			return TRUE;
-		if (!ap_scr_is_same_division(s->index_x, objc->sector->index_x) ||
-			!ap_scr_is_same_division(s->index_z, objc->sector->index_z)) {
+		if (assignid) {
 			uint32_t id;
 			d->obj->object_id = 0;
 			id = get_unique_object_id(mod, s->index_x, s->index_z);

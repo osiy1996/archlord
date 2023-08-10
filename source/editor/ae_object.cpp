@@ -65,6 +65,7 @@ struct ae_object_module {
 	struct ap_config_module * ap_config;
 	struct ap_event_manager_module * ap_event_manager;
 	struct ap_object_module * ap_object;
+	struct ac_camera_module * ac_camera;
 	struct ac_object_module * ac_object;
 	struct ac_render_module * ac_render;
 	struct ac_terrain_module * ac_terrain;
@@ -83,6 +84,8 @@ struct ae_object_module {
 	struct move_tool move_tool;
 	bool select_object_template;
 	char select_object_template_search_input[256];
+	bool add_object;
+	char add_object_search_input[256];
 	bool display_template_editor;
 	uint32_t templates_in_edit[MAX_EDIT_TEMPLATE_COUNT];
 	uint32_t templates_in_edit_count;
@@ -442,6 +445,7 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_config, AP_CONFIG_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_manager, AP_EVENT_MANAGER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_object, AP_OBJECT_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_camera, AC_CAMERA_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_object, AC_OBJECT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_render, AC_RENDER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_terrain, AC_TERRAIN_MODULE_NAME);
@@ -620,10 +624,14 @@ boolean ae_object_on_key_down(
 {
 	const boolean * state = ac_render_get_key_state(mod->ac_render);
 	switch (keycode) {
+	case SDLK_a:
+		if (state[SDL_SCANCODE_LSHIFT])
+			mod->add_object = true;
+		break;
 	case SDLK_d:
 		if (state[SDL_SCANCODE_LSHIFT] && mod->active_object) {
-			mod->active_object = 
-				ap_object_duplicate(mod->ap_object, mod->active_object);
+			mod->active_object = ap_object_duplicate(mod->ap_object, 
+				mod->active_object);
 		}
 	case SDLK_g:
 		if (mod->tool_type != TOOL_TYPE_MOVE && 
@@ -816,9 +824,61 @@ static void rendertemplateselectionwindow(struct ae_object_module * mod)
 	ImGui::End();
 }
 
+static void renderaddobjectpopup(struct ae_object_module * mod)
+{
+	ImVec2 size = ImVec2(350.0f, 400.0f);
+	ImVec2 center = ImGui::GetMainViewport()->GetWorkCenter() - (size / 2.0f);
+	size_t index = 0;
+	struct ap_object_template * temp;
+	if (!mod->add_object)
+		return;
+	ImGui::SetNextWindowSize(size, ImGuiCond_FirstUseEver);
+	ImGui::SetNextWindowPos(center, ImGuiCond_FirstUseEver);
+	if (!ImGui::Begin("Add Object", &mod->add_object)) {
+		ImGui::End();
+		return;
+	}
+	ImGui::InputText("Search", mod->add_object_search_input, 
+		sizeof(mod->add_object_search_input));
+	while (temp = ap_object_iterate_templates(mod->ap_object, &index)) {
+		struct ac_object_template * attachment = ac_object_get_template(temp);
+		char label[128];
+		snprintf(label, sizeof(label), "[%05u] %s", temp->tid, temp->name);
+		if (!strisempty(mod->add_object_search_input) && 
+			!stristr(label, mod->add_object_search_input)) {
+			continue;
+		}
+		if (ImGui::Selectable(label)) {
+			struct ap_object * obj = ap_object_create(mod->ap_object);
+			struct ac_object * objc = ac_object_get_object(mod->ac_object, obj);
+			struct ac_camera * cam = ac_camera_get_main(mod->ac_camera);
+			struct au_pos pos = { cam->center[0], cam->center[1], cam->center[2] };
+			obj->tid = temp->tid;
+			obj->temp = temp;
+			obj->scale.x = 1.0f;
+			obj->scale.y = 1.0f;
+			obj->scale.z = 1.0f;
+			obj->object_type = temp->type;
+			objc->object_type = attachment->object_type;
+			ap_object_move_object(mod->ap_object, obj, &pos);
+			ac_object_reference_template(mod->ac_object, attachment);
+			mod->active_object = obj;
+			mod->tool_type = TOOL_TYPE_MOVE;
+			mod->move_tool.axis = MOVE_AXIS_NONE;
+			mod->move_tool.prev_pos = pos;
+			mod->move_tool.dx = 0.0f;
+			mod->move_tool.dy = 0.0f;
+			mod->add_object = false;
+			break;
+		}
+	}
+	ImGui::End();
+}
+
 void ae_object_imgui(struct ae_object_module * mod)
 {
 	render_outliner(mod);
 	render_properties(mod);
 	rendertemplateselectionwindow(mod);
+	renderaddobjectpopup(mod);
 }

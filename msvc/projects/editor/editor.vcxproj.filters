@@ -426,6 +426,9 @@
     <ClInclude Include="..\..\..\source\vendor\nvtt\nvtt.h">
       <Filter>source\vendor\nvtt</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_effect.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\core\hash_map.c">
@@ -765,6 +768,9 @@
       <Filter>source\client</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\client\ac_event_effect.c">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_effect.c">
       <Filter>source\client</Filter>
     </ClCompile>
   </ItemGroup>

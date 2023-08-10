@@ -41,6 +41,7 @@ struct ap_object {
 	uint32_t object_id;
 	uint32_t dimension;
 	uint32_t tid;
+	struct ap_object_template * temp;
 	struct au_pos scale;
 	struct au_pos position;
 	struct au_matrix matrix;
@@ -55,7 +56,6 @@ struct ap_object {
 	struct ap_octree_id_list * octree_id_list;
 	uint32_t remove_time_msec;
 	boolean added_to_world;
-	struct ap_object_template * temp;
 };
 
 struct ap_object_cb_copy_object_data {

@@ -248,6 +248,7 @@
     <ClInclude Include="..\..\..\source\client\ac_camera.h" />
     <ClInclude Include="..\..\..\source\client\ac_console.h" />
     <ClInclude Include="..\..\..\source\client\ac_dat.h" />
+    <ClInclude Include="..\..\..\source\client\ac_effect.h" />
     <ClInclude Include="..\..\..\source\client\ac_event_effect.h" />
     <ClInclude Include="..\..\..\source\client\ac_event_point_light.h" />
     <ClInclude Include="..\..\..\source\client\ac_imgui.h" />
@@ -377,6 +378,7 @@
     <ClCompile Include="..\..\..\source\client\ac_camera.c" />
     <ClCompile Include="..\..\..\source\client\ac_console.cpp" />
     <ClCompile Include="..\..\..\source\client\ac_dat.c" />
+    <ClCompile Include="..\..\..\source\client\ac_effect.c" />
     <ClCompile Include="..\..\..\source\client\ac_event_effect.c" />
     <ClCompile Include="..\..\..\source\client\ac_event_point_light.c" />
     <ClCompile Include="..\..\..\source\client\ac_imgui.cpp" />
