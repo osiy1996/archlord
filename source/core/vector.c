@@ -2,24 +2,6 @@
 #include "core/malloc.h"
 #include <string.h>
 
-struct vheader {
-	size_t ele_size;
-	uint32_t size;
-	uint32_t count;
-};
-
-static const struct vheader * getconstheader(const void * v)
-{
-	return (const struct vheader *)(
-		(uintptr_t)v - sizeof(struct vheader));
-}
-
-static struct vheader * getheader(void * v)
-{
-	return (struct vheader *)(
-		(uintptr_t)v - sizeof(struct vheader));
-}
-
 void * vec_new(size_t element_size)
 {
 	return vec_reserve(NULL, element_size, 0);
@@ -32,16 +14,16 @@ void * vec_new_reserved(size_t element_size, uint32_t size)
 
 void * vec_reserve(void * v, size_t element_size, uint32_t size)
 {
-	struct vheader * h;
+	struct vec_header * h;
 	if (!v) {
 		h = alloc(sizeof(*h) + element_size * size);
-		h->ele_size = element_size;
+		h->element_size = element_size;
 		h->size = size;
 		h->count = 0;
 		v = (void *)((uintptr_t)h + sizeof(*h));
 		return v;
 	}
-	h = getheader(v);
+	h = vec__get_header(v);
 	if (h->size < size) {
 		h = reallocate(h, sizeof(*h) + element_size * size);
 		h->size = size;
@@ -53,132 +35,104 @@ void * vec_reserve(void * v, size_t element_size, uint32_t size)
 void vec_copy(void ** dst, const void * src)
 {
 	void * d = *dst;
-	const struct vheader * sh = getconstheader(src);
-	struct vheader * dh = getheader(d);
+	const struct vec_header * sh = vec__get_const_header(src);
+	struct vec_header * dh = vec__get_header(d);
 	if (dh->size < sh->size) {
-		d = vec_reserve(d, sh->ele_size, sh->size);
-		dh = getheader(d);
+		d = vec_reserve(d, sh->element_size, sh->size);
+		dh = vec__get_header(d);
 		*dst = d;
 	}
-	memcpy(d, src, sh->ele_size * sh->count);
+	memcpy(d, src, sh->element_size * sh->count);
 	dh->count = sh->count;
-}
-
-boolean vec_is_empty(const void * v)
-{
-	return (getconstheader(v)->count == 0);
-}
-
-uint32_t vec_count(const void * v)
-{
-	return getconstheader(v)->count;
-}
-
-uint32_t vec_size(const void * v)
-{
-	return getconstheader(v)->size;
 }
 
 void vec_push_back(void ** v, const void * e)
 {
 	void * vec = *v;
-	struct vheader * h = getheader(vec);
+	struct vec_header * h = vec__get_header(vec);
 	if (h->count == h->size) {
 		uint32_t sz = !h->size ? 8 : h->size * 2;
-		vec = vec_reserve(vec, h->ele_size, sz);
-		h = getheader(vec);
+		vec = vec_reserve(vec, h->element_size, sz);
+		h = vec__get_header(vec);
 		*v = vec;
 	}
-	memcpy((void *)((uintptr_t)vec + (uintptr_t)h->count++ * h->ele_size), e, 
-		h->ele_size);
+	memcpy((void *)((uintptr_t)vec + (uintptr_t)h->count++ * h->element_size), e, 
+		h->element_size);
 }
 
 void * vec_add_empty(void ** v)
 {
 	void * vec = *v;
-	struct vheader * h = getheader(vec);
+	struct vec_header * h = vec__get_header(vec);
 	void * p;
 	if (h->count == h->size) {
 		uint32_t sz = !h->size ? 8 : h->size * 2;
-		vec = vec_reserve(vec, h->ele_size, sz);
-		h = getheader(vec);
+		vec = vec_reserve(vec, h->element_size, sz);
+		h = vec__get_header(vec);
 		*v = vec;
 	}
-	p = (void *)((uintptr_t)vec + (uintptr_t)h->count++ * h->ele_size);
-	memset(p, 0, h->ele_size);
+	p = (void *)((uintptr_t)vec + (uintptr_t)h->count++ * h->element_size);
+	memset(p, 0, h->element_size);
 	return p;
 }
 
 void * vec_back(void * v)
 {
-	struct vheader * h = getheader(v);
+	struct vec_header * h = vec__get_header(v);
 	if (!h->count)
 		return NULL;
 	return (void *)((uintptr_t)v +
-		(uintptr_t)h->ele_size * ((uintptr_t)h->count - 1));
+		(uintptr_t)h->element_size * ((uintptr_t)h->count - 1));
 }
 
 void * vec_at(void * v, uint32_t index)
 {
-	struct vheader * h = getheader(v);
-	return (void *)((uintptr_t)v + (uintptr_t)index * h->ele_size);
-}
-
-static uint32_t eindex(
-	const struct vheader * h,
-	const void * v,
-	const void * e)
-{
-	return (uint32_t)(((uintptr_t)e - (uintptr_t)v) / h->ele_size);
+	struct vec_header * h = vec__get_header(v);
+	return (void *)((uintptr_t)v + (uintptr_t)index * h->element_size);
 }
 
 uint32_t vec_index(void * v, const void * e)
 {
-	return eindex(getheader(v), v, e);
+	return vec__element_index(vec__get_header(v), v, e);
 }
 
 void vec_erase(void * v, const void * e)
 {
-	struct vheader * h = getheader(v);
-	uint32_t i = eindex(h, v, e);
-	memmove((void *)e, (void *)((uintptr_t)e + h->ele_size),
-		(size_t)(--h->count - i) * h->ele_size);
+	struct vec_header * h = vec__get_header(v);
+	uint32_t i = vec__element_index(h, v, e);
+	memmove((void *)e, (void *)((uintptr_t)e + h->element_size),
+		(size_t)(--h->count - i) * h->element_size);
 }
 
 uint32_t vec_erase_iterator(void * v, uint32_t index)
 {
-	struct vheader * h = getheader(v);
-	void * e = (void *)((uintptr_t)v + index * h->ele_size);
-	memmove((void *)e, (void *)((uintptr_t)e + h->ele_size),
-		(size_t)(--h->count - index) * h->ele_size);
+	struct vec_header * h = vec__get_header(v);
+	void * e = (void *)((uintptr_t)v + index * h->element_size);
+	memmove((void *)e, (void *)((uintptr_t)e + h->element_size),
+		(size_t)(--h->count - index) * h->element_size);
 	return index;
 }
 
 void vec_erase_chunk(void * v, uint32_t begin, uint32_t end)
 {
-	struct vheader * h = getheader(v);
+	struct vec_header * h = vec__get_header(v);
 	memmove(
-		(void *)((uintptr_t)v + begin * (uintptr_t)h->ele_size),
-		(void *)((uintptr_t)v + end * (uintptr_t)h->ele_size),
-		(size_t)((h->count - end) + 1) * h->ele_size);
+		(void *)((uintptr_t)v + begin * (uintptr_t)h->element_size),
+		(void *)((uintptr_t)v + end * (uintptr_t)h->element_size),
+		(size_t)((h->count - end) + 1) * h->element_size);
 	h->count -= end - begin;
-}
-
-void vec_clear(void * v)
-{
-	getheader(v)->count = 0;
 }
 
 void vec_free(void * v)
 {
 	if (!v)
 		return;
-	dealloc(getheader(v));
+	dealloc(vec__get_header(v));
 }
 
 boolean vec_set_count(void * v, uint32_t count)
 {
-	struct vheader * h = getheader(v);
+	struct vec_header * h = vec__get_header(v);
 	if (h->size < count)
 		return FALSE;
 	h->count = count;

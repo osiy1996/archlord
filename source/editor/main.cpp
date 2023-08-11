@@ -76,6 +76,7 @@
 #include "client/ac_camera.h"
 #include "client/ac_console.h"
 #include "client/ac_dat.h"
+#include "client/ac_effect.h"
 #include "client/ac_event_effect.h"
 #include "client/ac_event_point_light.h"
 #include "client/ac_imgui.h"
@@ -168,6 +169,7 @@ static struct ac_ambient_occlusion_map_module * g_AcAmbientOcclusionMap;
 static struct ac_camera_module * g_AcCamera;
 static struct ac_console_module * g_AcConsole;
 static struct ac_dat_module * g_AcDat;
+static struct ac_effect_module * g_AcEffect;
 static struct ac_event_effect_module * g_AcEventEffect;
 static struct ac_event_point_light_module * g_AcEventPointLight;
 static struct ac_imgui_module * g_AcImgui;
@@ -252,6 +254,7 @@ static struct module_desc g_Modules[] = {
 	{ AC_MESH_MODULE_NAME, ac_mesh_create_module, NULL, &g_AcMesh },
 	{ AC_LOD_MODULE_NAME, ac_lod_create_module, NULL, &g_AcLOD },
 	{ AC_TERRAIN_MODULE_NAME, ac_terrain_create_module, NULL, &g_AcTerrain },
+	{ AC_EFFECT_MODULE_NAME, ac_effect_create_module, NULL, &g_AcEffect },
 	{ AC_OBJECT_MODULE_NAME, ac_object_create_module, NULL, &g_AcObject },
 	{ AC_EVENT_EFFECT_MODULE_NAME, ac_event_effect_create_module, NULL, &g_AcEventEffect },
 	/* Editor modules. */

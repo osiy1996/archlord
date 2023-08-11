@@ -7,6 +7,7 @@
 #include "public/ap_module_instance.h"
 
 #include "vendor/bgfx/c99/bgfx.h"
+#include "vendor/cglm/cglm.h"
 #include "vendor/RenderWare/rwcore.h"
 #include "vendor/RenderWare/rpspline.h"
 #include "vendor/RenderWare/rtanim.h"
@@ -199,7 +200,7 @@ enum ac_effect_light_type {
 	AC_EFFECT_LIGHT_SOFTSPOT = rpLIGHTSPOTSOFT,
 };
 
-enum ac_effect_move_frame_type {
+enum ac_effect_moving_frame_type {
 	AC_EFFECT_MFRM_SHAKE = 0,
 	AC_EFFECT_MFRM_SPLINE,
 	AC_EFFECT_MFRM_COUNT
@@ -364,8 +365,8 @@ struct ac_effect_animation {
 	boolean (*DeleteValue)(struct ac_effect_animation * anim, uint32_t time);
 	void (*SetLife)(struct ac_effect_animation * anim, uint32_t life);
 	int32_t (*UpdateValue)(struct ac_effect_animation * anim, uint32_t accumulate_time, struct ac_effect_control_base * base, uint32_t flag_reserved);
-	int32_t (*ToFile)(struct ac_effect_animation * anim, file * fp);
-	int32_t (*FromFile)(struct ac_effect_animation * anim, file * fp);
+	int32_t (*StreamWrite)(struct ac_effect_module * mod, struct ac_effect_animation * anim, struct bin_stream * stream);
+	int32_t (*StreamRead)(struct ac_effect_module * mod, struct ac_effect_animation * anim, struct bin_stream * stream);
 
 	enum ac_effect_animation_type type;
 	uint32_t flags;
@@ -490,12 +491,18 @@ struct ac_effect_texture_info {
 	struct ac_effect_texture * texture;
 };
 
+struct ac_effect_var_size_info {
+	uint32_t texture_count;
+	uint32_t base_count;
+	uint32_t base_dependancy_count;
+};
+
 struct ac_effect_base {
 	const RwMatrix * (*GetTranslationMatrix)(const struct ac_effect_base * effect);
 	const RwMatrix * (*GetRotationMatrix)(const struct ac_effect_base * effect);
 	boolean (*IsRenderBase)(const struct ac_effect_base * effect);
-	boolean (*ToFile)(const struct ac_effect_base * effect, file * fp);
-	boolean (*FromFile)(struct ac_effect_base * effect, file * fp);
+	boolean (*StreamWrite)(struct ac_effect_module * mod, const struct ac_effect_base * effect, struct bin_stream * stream);
+	boolean (*StreamRead)(struct ac_effect_module * mod, struct ac_effect_base * effect, struct bin_stream * stream);
 
 	enum ac_effect_type type;
 	char base_title[AC_EFFECT_MAX_BASE_TITLE_SIZE];
@@ -514,12 +521,12 @@ struct ac_effect_render_base {
 	struct ac_effect_texture_info texture_info;
 	RwV3d initial_position;
 	struct ac_effect_revolution initial_revolution;
-	RwMatrix translate;
-	RwMatrix rotate;
+	float translate[4][4];
+	float rotate[4][4];
 };
 
 struct ac_effect_board {
-	struct ac_effect_base base;
+	struct ac_effect_render_base base;
 };
 
 struct ac_effect_camera {
@@ -534,7 +541,7 @@ struct ac_effect_light {
 	struct ac_effect_base base;
 	enum ac_effect_light_type light_type;
 	RwV3d center;
-	struct ac_effect_animation_revolution revolution; /* dir */
+	struct ac_effect_revolution revolution; /* dir */
 	float con_angle;
 	RwSurfaceProperties surface_prop;
 	RwRGBA color;
@@ -542,9 +549,9 @@ struct ac_effect_light {
 	RwMatrix rotate;
 };
 
-struct ac_effect_move_frame {
+struct ac_effect_moving_frame {
 	struct ac_effect_base base;
-	enum ac_effect_move_frame_type type;
+	enum ac_effect_moving_frame_type type;
 	enum ac_effect_oscillation_axis axis;
 	enum ac_effect_whose_frame whose;
 	float amplitude;
@@ -648,7 +655,7 @@ struct ac_effect_particle_system {
 	struct ac_effect_particle_prop particle_prop;
 };
 
-struct ac_effect_particle_sys_simple_black_hole {
+struct ac_effect_particle_system_simple_black_hole {
 	struct ac_effect_render_base base;
 	int32_t capacity;
 	int32_t one_shoot_count;
@@ -663,6 +670,16 @@ struct ac_effect_particle_sys_simple_black_hole {
 	float radius;
 };
 
+struct ac_effect_tail {
+	struct ac_effect_render_base base;
+	int32_t max_count; /* Maximum number of rectangles..  */
+	uint32_t time_gap; /*  Time to add points.  */
+	uint32_t point_life; /*  Duration of the added point.  */
+	float inverse_point_life; /* 1.f/m_dwPointLife  */
+	float height1; /* height base  */
+	float height2; /* In case of node base, this value is ignored. */
+};
+
 struct ac_effect_post_fx {
 	struct ac_effect_base base;
 	enum ac_effect_fx_type fx_type;
@@ -670,7 +687,7 @@ struct ac_effect_post_fx {
 	uint32_t flags;
 };
 
-struct ac_effect_post_sound {
+struct ac_effect_sound {
 	struct ac_effect_base base;
 	enum ac_effect_sound_type sound_type;
 	char sound_file_name[AC_EFFECT_MAX_FILE_NAME_SIZE];
@@ -775,16 +792,10 @@ struct ac_effect_missile_info {
 	RwV3d offsetm_v3dOffset; /* Relative to missile direction. */
 };
 
-struct ac_effect_var_size_info {
-	int32_t texture_count;
-	int32_t base_count;
-	int32_t base_dependancy_count;
-};
-
 struct ac_effect_base_dependancy {
 	int32_t parent_index;
 	int32_t child_index;
-	uint32_t bae_dependancy_flags;
+	uint32_t flags;
 };
 
 struct ac_effect_set {
@@ -971,9 +982,9 @@ struct ac_effect_ctrl_light {
 	boolean added_to_world;
 };
 
-struct ac_effect_ctrl_move_frame {
+struct ac_effect_ctrl_moving_frame {
 	struct ac_effect_ctrl_base base;
-	RwFrame * framem;
+	RwFrame * frame;
 };
 
 struct ac_effect_ctrl_sound {
@@ -999,6 +1010,26 @@ struct ac_effect_ctrl_camera {
 };
 
 struct ac_effect_module * ac_effect_create_module();
+
+struct ac_effect_set * ac_effect_new_set(struct ac_effect_module * mod);
+
+void ac_effect_release_set(struct ac_effect_module * mod, struct ac_effect_set * set);
+
+struct ac_effect_base * ac_effect_new_effect(
+	struct ac_effect_module * mod, 
+	enum ac_effect_type type);
+
+void ac_effect_free_effect(
+	struct ac_effect_module * mod, 
+	struct ac_effect_base * effect);
+
+struct ac_effect_animation * ac_effect_new_animation(
+	struct ac_effect_module * mod, 
+	enum ac_effect_animation_type type);
+
+void ac_effect_free_animation(
+	struct ac_effect_module * mod, 
+	struct ac_effect_animation * anim);
 
 END_DECLS
 

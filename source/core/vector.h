@@ -6,6 +6,12 @@
 
 BEGIN_DECLS
 
+struct vec_header {
+	size_t element_size;
+	uint32_t size;
+	uint32_t count;
+};
+
 /*
  * Allocates an empty vector.
  */
@@ -110,6 +116,45 @@ void vec_fillz(void * v, uint32_t count);
  * Returns FALSE if vector's capacity is less than `count`.
  */
 boolean vec_set_count(void * v, uint32_t count);
+
+static inline const struct vec_header * vec__get_const_header(const void * v)
+{
+	return (const struct vec_header *)((uintptr_t)v - sizeof(struct vec_header));
+}
+
+static inline struct vec_header * vec__get_header(void * v)
+{
+	return (struct vec_header *)((uintptr_t)v - sizeof(struct vec_header));
+}
+
+static inline boolean vec_is_empty(const void * v)
+{
+	return (vec__get_const_header(v)->count == 0);
+}
+
+static inline uint32_t vec_count(const void * v)
+{
+	return vec__get_const_header(v)->count;
+}
+
+static inline uint32_t vec_size(const void * v)
+{
+	return vec__get_const_header(v)->size;
+}
+
+static inline uint32_t vec__element_index(
+	const struct vec_header * h,
+	const void * v,
+	const void * e)
+{
+	return (uint32_t)(((uintptr_t)e - (uintptr_t)v) / h->element_size);
+}
+
+static inline void vec_clear(void * v)
+{
+	vec__get_header(v)->count = 0;
+}
+
 
 END_DECLS
 
