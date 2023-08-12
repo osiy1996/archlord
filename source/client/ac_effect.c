@@ -50,6 +50,329 @@ static const RwV3d AXISWX = { -1.0f, 0.0f, 0.0f };
 static const RwV3d AXISWY = { 0.0f, -1.0f, 0.0f };
 static const RwV3d AXISWZ = { 0.0f, 0.0f, -1.0f };
 
+static inline float linearinterp(float a, float b, float t)
+{
+	assert(t >= 0.0f);
+	assert(t <= 1.0f);
+	return (a + (b - a) * t);
+}
+
+static inline void linearinterpuv(
+	struct ac_effect_uv_rect * out,
+	const struct ac_effect_uv_rect * a, 
+	const struct ac_effect_uv_rect * b, 
+	float t)
+{
+	struct ac_effect_uv_rect d = { b->left - a->left, b->top - a->top, 
+		b->right - a->right, b->bottom - a->bottom };
+	assert(t >= 0.0f);
+	assert(t <= 1.0f);
+	d.left *= t;
+	d.top *= t;
+	d.right *= t;
+	d.bottom *= t;
+	out->left = a->left + d.left;
+	out->top = a->top + d.top;
+	out->right = a->right + d.right;
+	out->bottom = a->bottom + d.bottom;
+}
+
+static inline void linearinterpvec3(
+	RwV3d * out,
+	const RwV3d * a, 
+	const RwV3d * b, 
+	float t)
+{
+	RwV3d d = { b->x - a->x, b->y - a->y, b->z - a->z };
+	assert(t >= 0.0f);
+	assert(t <= 1.0f);
+	d.x *= t;
+	d.y *= t;
+	d.z *= t;
+	out->x = a->x + d.x;
+	out->y = a->y + d.y;
+	out->z = a->z + d.z;
+}
+
+static inline void linearinterpcolor(
+	RwRGBA * out,
+	const RwRGBA * a, 
+	const RwRGBA * b, 
+	float t)
+{
+	RwRGBA d = { b->red - a->red, b->green - a->green, b->blue - a->blue, b->alpha - a->alpha };
+	assert(t >= 0.0f);
+	assert(t <= 1.0f);
+	d.red = (RwUInt8)(t * d.red);
+	d.green = (RwUInt8)(t * d.green);
+	d.blue = (RwUInt8)(t * d.blue);
+	d.alpha = (RwUInt8)(t * d.alpha);
+	out->red = a->red + d.red;
+	out->green = a->green + d.green;
+	out->blue = a->blue + d.blue;
+	out->alpha = a->alpha + d.alpha;
+}
+
+static boolean getinterpolatedvalue(
+	const struct ac_effect_time_value * table, 
+	float * out, 
+	uint32_t time)
+{
+	const struct ac_effect_time_value * current = NULL;
+	const struct ac_effect_time_value * last = NULL;
+	if (vec_is_empty(table))
+		return FALSE;
+	current = &table[0];
+	last = &table[vec_count(table)];
+	for (; current != last; current++) {
+		if (current->time > time)
+			break;
+	}
+	if (current == &table[0]) {
+		*out = current->value;
+	}
+	else if (current = last) {
+		*out = (last - 1)->value;
+	}
+	else {
+		*out = linearinterp((current - 1)->value, current->value, 
+			(time - (current - 1)->time) / (float)(current->time - 
+				(current - 1)->time));
+	}
+	return TRUE;
+}
+
+static boolean getinterpolatedcolor(
+	const struct ac_effect_time_value_color * table, 
+	RwRGBA * out, 
+	uint32_t time)
+{
+	const struct ac_effect_time_value_color * current = NULL;
+	const struct ac_effect_time_value_color * last = NULL;
+	if (vec_is_empty(table))
+		return FALSE;
+	current = &table[0];
+	last = &table[vec_count(table)];
+	for (; current != last; current++) {
+		if (current->time > time)
+			break;
+	}
+	if (current == &table[0]) {
+		*out = current->value;
+	}
+	else if (current = last) {
+		*out = (last - 1)->value;
+	}
+	else {
+		linearinterpcolor(out, &(current - 1)->value, &current->value, 
+			(time - (current - 1)->time) / (float)(current->time - 
+				(current - 1)->time));
+	}
+	return TRUE;
+}
+
+static boolean getinterpolateduv(
+	const struct ac_effect_time_value_uv * table, 
+	struct ac_effect_uv_rect * out, 
+	uint32_t time)
+{
+	const struct ac_effect_time_value_uv * current = NULL;
+	const struct ac_effect_time_value_uv * last = NULL;
+	if (vec_is_empty(table))
+		return FALSE;
+	current = &table[0];
+	last = &table[vec_count(table)];
+	for (; current != last; current++) {
+		if (current->time > time)
+			break;
+	}
+	if (current == &table[0]) {
+		*out = current->value;
+	}
+	else if (current = last) {
+		*out = (last - 1)->value;
+	}
+	else {
+		linearinterpuv(out, &(current - 1)->value, &current->value, 
+			(time - (current - 1)->time) / (float)(current->time - 
+				(current - 1)->time));
+	}
+	return TRUE;
+}
+
+static boolean getinterpolatedvec3(
+	const struct ac_effect_time_value_vec3 * table, 
+	RwV3d * out, 
+	uint32_t time)
+{
+	const struct ac_effect_time_value_vec3 * current = NULL;
+	const struct ac_effect_time_value_vec3 * last = NULL;
+	if (vec_is_empty(table))
+		return FALSE;
+	current = &table[0];
+	last = &table[vec_count(table)];
+	for (; current != last; current++) {
+		if (current->time > time)
+			break;
+	}
+	if (current == &table[0]) {
+		*out = current->value;
+	}
+	else if (current = last) {
+		*out = (last - 1)->value;
+	}
+	else {
+		linearinterpvec3(out, &(current - 1)->value, &current->value, 
+			(time - (current - 1)->time) / (float)(current->time - 
+				(current - 1)->time));
+	}
+	return TRUE;
+}
+
+enum update_value_result {
+	UPDATE_VALUE_RESULT_ERROR,
+	UPDATE_VALUE_RESULT_CONTINUE,
+	UPDATE_VALUE_RESULT_END
+};
+
+static enum update_value_result calckeytime(
+	uint32_t * key_time, 
+	enum ac_effect_loop_option loop_option,
+	uint32_t accumulated_time,
+	uint32_t last_time)
+{
+	switch (loop_option) {
+	case AC_EFFECT_LOOP_NONE:
+		if (accumulated_time > last_time) {
+			*key_time = last_time;
+			return UPDATE_VALUE_RESULT_END;
+		}
+		*key_time = accumulated_time;
+		break;
+	case AC_EFFECT_LOOP_INFINITY:
+		*key_time = accumulated_time;
+		break;
+	case AC_EFFECT_LOOP_ONE_DIRECTION:
+		if (!last_time) {
+			*key_time	= last_time;
+			break;
+		}
+		if (accumulated_time > last_time)
+			*key_time = accumulated_time % last_time;
+		else
+			*key_time = accumulated_time;			
+		break;
+	case AC_EFFECT_LOOP_POSITIVE:
+		if (accumulated_time > last_time) {
+			uint32_t devid;
+			if (!last_time) {
+				*key_time = last_time;
+				break;
+			}
+			devid = accumulated_time / last_time;
+			*key_time = accumulated_time - devid * last_time;
+			if (devid & 1)
+				*key_time = last_time - *key_time;
+		}
+		else {
+			*key_time = accumulated_time;
+		}
+		break;
+	default:
+		ERROR("Failed to calculate effect keyframe time.");
+		return UPDATE_VALUE_RESULT_ERROR;
+	}
+	return UPDATE_VALUE_RESULT_CONTINUE;
+}
+
+static void applyrgbascale(struct ac_effect_ctrl_base * ctrl, RwRGBA * rgba)
+{
+	RwRGBA scale = ctrl->ctrl_set->rgba_scale;
+	RwV4d colrscl = { /* 1/255 == 0.00392157f */
+		(float)(scale.red) * 0.00392157f,
+		(float)(scale.green) * 0.00392157f,
+		(float)(scale.blue) * 0.00392157f,
+		(float)(scale.alpha) * 0.00392157f };
+	RwUInt32 r;
+	RwUInt32 g;
+	RwUInt32 b;
+	RwUInt32 a;
+	if (*(const RwUInt32 *)&scale == 0xFFFFFFFF)
+		return;
+	r = (RwUInt32)((float)(rgba->red) * colrscl.x);
+	g = (RwUInt32)((float)(rgba->green) * colrscl.y);
+	b = (RwUInt32)((float)(rgba->blue) * colrscl.z);
+	a = (RwUInt32)((float)(rgba->alpha) * colrscl.w);
+	rgba->red = r > 255UL ? 255 : (RwUInt8)(r);
+	rgba->green = g > 255UL ? 255 : (RwUInt8)(g);
+	rgba->blue = b > 255UL ? 255 : (RwUInt8)(b);
+	rgba->alpha = a > 255UL ? 255 : (RwUInt8)(a);
+}
+
+static enum update_value_result updatevaluecolor(
+	struct ac_effect_animation * base,
+	uint32_t accumulated_time,
+	struct ac_effect_ctrl_base * ctrl,
+	uint32_t flag_reserved)
+{
+	uint32_t keytime = 0;
+	enum update_value_result r = calckeytime(&keytime, base->loop_option,
+		accumulated_time, base->life_time);
+	if (r != UPDATE_VALUE_RESULT_CONTINUE)
+		return r;
+	ctrl->update_flags |= AC_EFFECT_CTRL_UPDATEFLAG_COLR;
+	getinterpolatedcolor(((struct ac_effect_animation_color *)base)->time_table,
+		&ctrl->rgba, keytime);
+	applyrgbascale(ctrl, &ctrl->rgba);
+	if (ctrl->effect_base->type == AC_EFFECT_OBJECT) {
+		struct ac_effect_ctrl_object * ctrlobj = 
+			(struct ac_effect_ctrl_object *)ctrl;
+		struct ac_effect_render_base * render = 
+			(struct ac_effect_render_base *)ctrl->effect_base;
+		assert(ctrl->effect_base->IsRenderBase(ctrl->effect_base));
+		if (ctrlobj->added_to_world && render->blend_type == AC_EFFECT_BLEND_NONE) {
+			/* Enable/Disable alpha-blend based on if the object is opaque. */
+			if (ctrl->rgba.alpha == 255)
+				ctrlobj->current_blend_type = AC_EFFECT_BLEND_NONE;
+			else if (ctrlobj->current_blend_type == AC_EFFECT_BLEND_NONE)
+				ctrlobj->current_blend_type = AC_EFFECT_BLEND_ADD_SRCA_INVSRCA;
+		}
+	}
+	return UPDATE_VALUE_RESULT_CONTINUE;
+}
+
+static enum update_value_result updatevalueuv(
+	struct ac_effect_animation * base,
+	uint32_t accumulated_time,
+	struct ac_effect_ctrl_base * ctrl,
+	uint32_t flag_reserved)
+{
+	uint32_t keytime = 0;
+	enum update_value_result r = calckeytime(&keytime, base->loop_option,
+		accumulated_time, base->life_time);
+	if (r != UPDATE_VALUE_RESULT_CONTINUE)
+		return r;
+	ctrl->update_flags |= AC_EFFECT_CTRL_UPDATEFLAG_UVRECT;
+	getinterpolateduv(((struct ac_effect_animation_uv *)base)->time_table,
+		&ctrl->uv, keytime);
+	return UPDATE_VALUE_RESULT_CONTINUE;
+}
+
+static enum update_value_result updatevaluemissile(
+	struct ac_effect_animation * base,
+	uint32_t accumulated_time,
+	struct ac_effect_ctrl_base * ctrl,
+	uint32_t flag_reserved)
+{
+	struct ac_effect_animation_missile * anim = 
+		(struct ac_effect_animation_missile *)base;
+	const struct ac_effect_missile_info * missile = 
+		&ctrl->ctrl_set->effect_set->missile_info;
+	const struct ac_effect_missile_target_info * target = 
+		&ctrl->ctrl_set->missile_target_info;
+	return UPDATE_VALUE_RESULT_CONTINUE;
+}
+
 static boolean onregister(
 	struct ac_effect_module * mod,
 	struct ap_module_registry * registry)
@@ -481,9 +804,9 @@ static void setinitialrevolution(
 	const struct ac_effect_revolution * rev)
 {
 	mat4 m;
-	vec3 x = { 1.0f, 0.0f, 0.0f };
-	vec3 y = { 0.0f, 1.0f, 0.0f };
-	vec3 z = { 0.0f, 0.0f, 1.0f };
+	vec3 x = { AXISWX.x, AXISWX.y, AXISWX.z };
+	vec3 y = { AXISWY.x, AXISWY.y, AXISWY.z };
+	vec3 z = { AXISWZ.x, AXISWZ.y, AXISWZ.z };
 	glm_mat4_identity(m);
 	render->initial_revolution = *rev;
 	if (render->base.type == AC_EFFECT_OBJECT) {

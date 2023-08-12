@@ -498,8 +498,8 @@ struct ac_effect_var_size_info {
 };
 
 struct ac_effect_base {
-	const RwMatrix * (*GetTranslationMatrix)(const struct ac_effect_base * effect);
-	const RwMatrix * (*GetRotationMatrix)(const struct ac_effect_base * effect);
+	void (*GetTranslationMatrix)(const struct ac_effect_base * effect, mat4 m);
+	void (*GetRotationMatrix)(const struct ac_effect_base * effect, mat4 m);
 	boolean (*IsRenderBase)(const struct ac_effect_base * effect);
 	boolean (*StreamWrite)(struct ac_effect_module * mod, const struct ac_effect_base * effect, struct bin_stream * stream);
 	boolean (*StreamRead)(struct ac_effect_module * mod, struct ac_effect_base * effect, struct bin_stream * stream);
