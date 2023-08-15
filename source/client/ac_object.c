@@ -220,13 +220,11 @@ static boolean cbobjecttemplatestreamread(
 			while (ap_module_stream_read_next_value(stream)) {
 				const char * value_name = 
 					ap_module_stream_get_value_name(stream);
-				if (strncmp(value_name, 
-					AC_RENDER_CRT_STREAM_CUSTOM_DATA2,
-					strlen(AC_RENDER_CRT_STREAM_CUSTOM_DATA2)) == 0) {
+				if (strncmp(value_name, AC_RENDER_CRT_STREAM_CUSTOM_DATA2,
+						strlen(AC_RENDER_CRT_STREAM_CUSTOM_DATA2)) == 0) {
 					break;
 				}
-				if (!ac_render_stream_read_crt(stream, 
-						&d->clump_render_type)) {
+				if (ac_render_stream_read_crt(stream, &d->clump_render_type) == AC_RENDER_STREAM_READ_RESULT_ERROR) {
 					ERROR("Failed to read CRT stream.");
 					return FALSE;
 				}
@@ -858,7 +856,6 @@ static struct ac_mesh_clump * load_object_clump(
 			}
 			return c;
 		}
-
 		default:
 			if (!bstream_advance(stream, ch.length)) {
 				WARN("Stream ended unexpectedly (%s).", dff);

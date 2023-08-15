@@ -246,6 +246,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\source\client\ac_ambient_occlusion_map.h" />
     <ClInclude Include="..\..\..\source\client\ac_camera.h" />
+    <ClInclude Include="..\..\..\source\client\ac_character.h" />
     <ClInclude Include="..\..\..\source\client\ac_console.h" />
     <ClInclude Include="..\..\..\source\client\ac_dat.h" />
     <ClInclude Include="..\..\..\source\client\ac_effect.h" />
@@ -285,6 +286,7 @@
     <ClInclude Include="..\..\..\source\editor\ae_event_teleport.h" />
     <ClInclude Include="..\..\..\source\editor\ae_item.h" />
     <ClInclude Include="..\..\..\source\editor\ae_map.h" />
+    <ClInclude Include="..\..\..\source\editor\ae_npc.h" />
     <ClInclude Include="..\..\..\source\editor\ae_object.h" />
     <ClInclude Include="..\..\..\source\editor\ae_terrain.h" />
     <ClInclude Include="..\..\..\source\editor\ae_texture.h" />
@@ -376,6 +378,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\source\client\ac_ambient_occlusion_map.c" />
     <ClCompile Include="..\..\..\source\client\ac_camera.c" />
+    <ClCompile Include="..\..\..\source\client\ac_character.c" />
     <ClCompile Include="..\..\..\source\client\ac_console.cpp" />
     <ClCompile Include="..\..\..\source\client\ac_dat.c" />
     <ClCompile Include="..\..\..\source\client\ac_effect.c" />
@@ -404,12 +407,13 @@
     <ClCompile Include="..\..\..\source\core\string.c" />
     <ClCompile Include="..\..\..\source\core\string_conv_win32.c" />
     <ClCompile Include="..\..\..\source\core\vector.c" />
-    <ClCompile Include="..\..\..\source\editor\ae_editor_action.c" />
+    <ClCompile Include="..\..\..\source\editor\ae_editor_action.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_event_binding.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_event_refinery.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_event_teleport.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_item.c" />
     <ClCompile Include="..\..\..\source\editor\ae_map.cpp" />
+    <ClCompile Include="..\..\..\source\editor\ae_npc.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_object.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_terrain.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_texture.cpp" />

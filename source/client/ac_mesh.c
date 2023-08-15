@@ -1631,6 +1631,7 @@ void ac_mesh_destroy_clump(struct ac_mesh_module * mod, struct ac_mesh_clump * c
 		ac_mesh_destroy_geometry(mod, g);
 		g = next;
 	}
+	dealloc(c);
 }
 
 struct ac_mesh_geometry * ac_mesh_alloc_geometry(

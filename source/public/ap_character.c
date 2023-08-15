@@ -1379,7 +1379,7 @@ void ap_character_add_stream_callback(
 		ERROR("Invalid stream data index: %u.");
 		return;
 	}
-	ap_module_stream_add_callback(&mod->instance.context, data_index,
+	ap_module_stream_add_callback(mod, data_index,
 		module_name, callback_module, read_cb, write_cb);
 }
 
@@ -1391,6 +1391,9 @@ void ap_character_set_template(
 	const struct ap_factor * src = &temp->factor;
 	struct ap_factor * dst = &character->factor;
 	struct ap_factor * dstpoint = &character->factor_point;
+	struct ap_character_cb_set_template cb = { 0 };
+	cb.character = character;
+	cb.previous_temp = character->temp;
 	character->tid = temp->tid;
 	character->temp = temp;
 	ap_factors_copy(&character->factor, &temp->factor);
@@ -1399,6 +1402,7 @@ void ap_character_set_template(
 	dstpoint->char_point_max.defense_rating = 
 		src->char_point_max.defense_rating;
 	dstpoint->damage = src->damage;
+	ap_module_enum_callback(mod, AP_CHARACTER_CB_SET_TEMPLATE, &cb);
 }
 
 struct ap_character_template * ap_character_get_template(

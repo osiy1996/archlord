@@ -437,6 +437,110 @@ static boolean cbrendereditors(struct ae_object_module * mod, void * data)
 	return TRUE;
 }
 
+static boolean cbpick(
+	struct ae_object_module * mod, 
+	struct ae_editor_action_cb_pick * cb)
+{
+	switch (mod->tool_type) {
+	case TOOL_TYPE_NONE: {
+		struct ap_object * obj = pick_object(mod, cb->camera, cb->x, cb->y);
+		struct au_pos eye = { cb->camera->eye[0], cb->camera->eye[1], cb->camera->eye[2] };
+		float distance;
+		mod->active_object = NULL;
+		if (!obj)
+			break;
+		distance = au_distance2d(&obj->position, &eye);
+		if (!cb->picked_any) {
+			cb->picked_any = TRUE;
+			cb->distance = distance;
+			mod->active_object = obj;
+		}
+		else if (cb->distance > distance) {
+			cb->distance = distance;
+			mod->active_object = obj;
+		}
+		break;
+	}
+	case TOOL_TYPE_MOVE:
+		mod->tool_type = TOOL_TYPE_NONE;
+		return TRUE;
+	}
+	return TRUE;
+}
+
+static void cbrenderoutliner(
+	struct ae_object_module * mod,
+	struct ae_editor_action_cb_render_outliner * cb)
+{
+	ImGuiListClipper clipper;
+	vec_clear(mod->objects);
+	ac_object_query_visible_objects(mod->ac_object, &mod->objects);
+	clipper.Begin((int)vec_count(mod->objects));
+	if (cb->selected_new_entity)
+		mod->active_object = NULL;
+	while (clipper.Step()) {
+		for (int i = clipper.DisplayStart; i < clipper.DisplayEnd; i++) {
+			struct ap_object * obj = mod->objects[i];
+			struct ac_object * objc = ac_object_get_object(mod->ac_object, obj);
+			char label[128];
+			snprintf(label, sizeof(label), "[OBJ] %u##%p", obj->object_id, obj);
+			if (ImGui::Selectable(label, obj == mod->active_object) && 
+				!cb->selected_new_entity) {
+				mod->active_object = obj;
+				cb->selected_new_entity = TRUE;
+			}
+		}
+	}
+	clipper.End();
+}
+
+static boolean objtransform(struct ae_object_module * mod, struct ap_object * obj)
+{
+	struct au_pos pos = obj->position;
+	bool move = false;
+	bool changed = false;
+	move |= ImGui::DragFloat("Position X", &pos.x);
+	move |= ImGui::DragFloat("Position Y", &pos.y);
+	move |= ImGui::DragFloat("Position Z", &pos.z);
+	changed |= ImGui::DragFloat("Scale X", &obj->scale.x, 0.001f);
+	changed |= ImGui::DragFloat("Scale Y", &obj->scale.y, 0.001f);
+	changed |= ImGui::DragFloat("Scale Z", &obj->scale.z, 0.001f);
+	changed |= ImGui::DragFloat("Rotation X", &obj->rotation_x);
+	changed |= ImGui::DragFloat("Rotation Y", &obj->rotation_y);
+	if (move)
+		ap_object_move_object(mod->ap_object, obj, &pos);
+	return (move | changed);
+}
+
+static void cbrenderproperties(struct ae_object_module * mod, void * data)
+{
+	struct ap_object * obj = mod->active_object;
+	struct ac_object * objc;
+	struct ap_event_manager_attachment * eventattachment;
+	boolean changed = FALSE;
+	char label[128];
+	if (!obj)
+		return;
+	objc = ac_object_get_object(mod->ac_object, obj);
+	ImGui::InputScalar("Object ID", ImGuiDataType_U32, 
+		&obj->object_id, NULL, NULL, NULL, 
+		ImGuiInputTextFlags_ReadOnly);
+	snprintf(label, sizeof(label), "[%u] %s", obj->tid, obj->temp->name);
+	if (ImGui::Button(label, ImVec2(ImGui::GetContentRegionAvail().x, 25.0f)))
+		mod->select_object_template = true;
+	changed |= objtransform(mod, obj);
+	changed |= (boolean)rendertypeprops(&obj->object_type);
+	changed |= (boolean)renderclienttypeprops(&objc->object_type);
+	eventattachment = ap_event_manager_get_attachment(mod->ap_event_manager, obj);
+	changed |= ae_event_refinery_render_as_node(mod->ae_event_refinery, obj, 
+		eventattachment);
+	changed |= ae_event_teleport_render_as_node(mod->ae_event_teleport, obj, 
+		eventattachment);
+	changed |= ae_event_binding_render_as_node(mod->ae_event_binding, obj, 
+		eventattachment);
+	if (changed)
+		objc->sector->flags |= AC_OBJECT_SECTOR_HAS_CHANGES;
+}
 
 static boolean onregister(
 	struct ae_object_module * mod,
@@ -463,6 +567,9 @@ static boolean onregister(
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_COMMIT_CHANGES, mod, (ap_module_default_t)cbcommitchanges);
 	ae_editor_action_add_view_menu_callback(mod->ae_editor_action, "Object Template Editor", mod, (ap_module_default_t)cbrenderviewmenu);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_EDITORS, mod, (ap_module_default_t)cbrendereditors);
+	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_PICK, mod, (ap_module_default_t)cbpick);
+	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_OUTLINER, mod, (ap_module_default_t)cbrenderoutliner);
+	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_PROPERTIES, mod, (ap_module_default_t)cbrenderproperties);
 	return TRUE;
 }
 
@@ -519,26 +626,6 @@ void ae_object_render_outline(struct ae_object_module * mod, struct ac_camera * 
 
 void ae_object_render(struct ae_object_module * mod, struct ac_camera * cam)
 {
-}
-
-boolean ae_object_on_lmb_down(
-	struct ae_object_module * mod,
-	struct ac_camera *  cam,
-	int mouse_x,
-	int mouse_y)
-{
-	switch (mod->tool_type) {
-	case TOOL_TYPE_NONE:
-		mod->active_object = 
-			pick_object(mod, cam, mouse_x, mouse_y);
-		if (mod->active_object)
-			return TRUE;
-		break;
-	case TOOL_TYPE_MOVE:
-		mod->tool_type = TOOL_TYPE_NONE;
-		return TRUE;
-	}
-	return FALSE;
 }
 
 boolean ae_object_on_rmb_down(
@@ -702,84 +789,6 @@ boolean ae_object_on_key_down(
 	return FALSE;
 }
 
-static void render_outliner(struct ae_object_module * mod)
-{
-	ImGuiListClipper clipper;
-	if (!ImGui::Begin("Objects", (bool *)&mod->display_outliner)) {
-		ImGui::End();
-		return;
-	}
-	vec_clear(mod->objects);
-	ac_object_query_visible_objects(mod->ac_object, &mod->objects);
-	clipper.Begin((int)vec_count(mod->objects));
-	while (clipper.Step()) {
-		for (int i = clipper.DisplayStart; i < clipper.DisplayEnd; i++) {
-			struct ap_object * obj = mod->objects[i];
-			struct ac_object * objc = ac_object_get_object(mod->ac_object, obj);
-			char label[128];
-			snprintf(label, sizeof(label), "%u (tid = %u)##%p", 
-				obj->object_id, obj->tid, obj);
-			if (ImGui::Selectable(label, 
-					obj == mod->active_object)) {
-				mod->active_object = obj;
-			}
-		}
-	}
-	clipper.End();
-	ImGui::End();
-}
-
-static boolean obj_transform(struct ae_object_module * mod, struct ap_object * obj)
-{
-	struct au_pos pos = obj->position;
-	bool move = false;
-	bool changed = false;
-	move |= ImGui::DragFloat("Position X", &pos.x);
-	move |= ImGui::DragFloat("Position Y", &pos.y);
-	move |= ImGui::DragFloat("Position Z", &pos.z);
-	changed |= ImGui::DragFloat("Scale X", &obj->scale.x, 0.001f);
-	changed |= ImGui::DragFloat("Scale Y", &obj->scale.y, 0.001f);
-	changed |= ImGui::DragFloat("Scale Z", &obj->scale.z, 0.001f);
-	changed |= ImGui::DragFloat("Rotation X", &obj->rotation_x);
-	changed |= ImGui::DragFloat("Rotation Y", &obj->rotation_y);
-	if (move)
-		ap_object_move_object(mod->ap_object, obj, &pos);
-	return (move | changed);
-}
-
-static void render_properties(struct ae_object_module * mod)
-{
-	struct ap_object * obj = mod->active_object;
-	struct ac_object * objc;
-	struct ap_event_manager_attachment * eventattachment;
-	boolean changed = FALSE;
-	char label[128];
-	if (!ImGui::Begin("Properties", (bool *)&mod->display_properties) || !obj) {
-		ImGui::End();
-		return;
-	}
-	objc = ac_object_get_object(mod->ac_object, obj);
-	ImGui::InputScalar("Object ID", ImGuiDataType_U32, 
-		&obj->object_id, NULL, NULL, NULL, 
-		ImGuiInputTextFlags_ReadOnly);
-	snprintf(label, sizeof(label), "[%u] %s", obj->tid, obj->temp->name);
-	if (ImGui::Button(label, ImVec2(ImGui::GetContentRegionAvail().x, 25.0f)))
-		mod->select_object_template = true;
-	changed |= obj_transform(mod, obj);
-	changed |= (boolean)rendertypeprops(&obj->object_type);
-	changed |= (boolean)renderclienttypeprops(&objc->object_type);
-	eventattachment = ap_event_manager_get_attachment(mod->ap_event_manager, obj);
-	changed |= ae_event_refinery_render_as_node(mod->ae_event_refinery, obj, 
-		eventattachment);
-	changed |= ae_event_teleport_render_as_node(mod->ae_event_teleport, obj, 
-		eventattachment);
-	changed |= ae_event_binding_render_as_node(mod->ae_event_binding, obj, 
-		eventattachment);
-	if (changed)
-		objc->sector->flags |= AC_OBJECT_SECTOR_HAS_CHANGES;
-	ImGui::End();
-}
-
 static void rendertemplateselectionwindow(struct ae_object_module * mod)
 {
 	ImVec2 size = ImVec2(350.0f, 400.0f);
@@ -877,8 +886,6 @@ static void renderaddobjectpopup(struct ae_object_module * mod)
 
 void ae_object_imgui(struct ae_object_module * mod)
 {
-	render_outliner(mod);
-	render_properties(mod);
 	rendertemplateselectionwindow(mod);
 	renderaddobjectpopup(mod);
 }

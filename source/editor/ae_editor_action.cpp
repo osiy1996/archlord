@@ -2,6 +2,8 @@
 
 #include "core/log.h"
 
+#include "client/ac_imgui.h"
+
 #include <assert.h>
 #include <stdlib.h>
 
@@ -15,6 +17,8 @@ struct ae_editor_action_module {
 	struct ap_module_instance instance;
 	struct sorted_callback callbacks[AP_MODULE_MAX_CALLBACK_ID][AP_MODULE_MAX_CALLBACK_COUNT];
 	uint32_t callback_count[AP_MODULE_MAX_CALLBACK_ID];
+	bool display_outliner;
+	bool display_properties;
 };
 
 static boolean onregister(
@@ -46,9 +50,11 @@ void ae_editor_action_commit_changes(struct ae_editor_action_module * mod)
 }
 
 static int sortlabels(
-	const struct sorted_callback * c1, 
-	const struct sorted_callback * c2)
+	const void * a, 
+	const void * b)
 {
+	const struct sorted_callback * c1 = (const struct sorted_callback *)a;
+	const struct sorted_callback * c2 = (const struct sorted_callback *)b;
 	return strcmp(c1->label, c2->label);
 }
 
@@ -65,7 +71,8 @@ void ae_editor_action_add_view_menu_callback(
 	mod->callbacks[id][index].label = label;
 	mod->callbacks[id][index].callback_module = callback_module;
 	mod->callbacks[id][index].callback = callback;
-	qsort(mod->callbacks[id], index + 1, sizeof(struct sorted_callback), sortlabels);
+	qsort(mod->callbacks[id], (size_t)index + 1, sizeof(struct sorted_callback), 
+		sortlabels);
 }
 
 void ae_editor_action_render_view_menu(struct ae_editor_action_module * mod)
@@ -81,4 +88,33 @@ void ae_editor_action_render_view_menu(struct ae_editor_action_module * mod)
 void ae_editor_action_render_editors(struct ae_editor_action_module * mod)
 {
 	ap_module_enum_callback(mod, AE_EDITOR_ACTION_CB_RENDER_EDITORS, NULL);
+}
+
+void ae_editor_action_pick(
+	struct ae_editor_action_module * mod,
+	struct ac_camera * cam,
+	int x,
+	int y)
+{
+	struct ae_editor_action_cb_pick cb = { 0 };
+	cb.camera = cam;
+	cb.x = x;
+	cb.y = y;
+	ap_module_enum_callback(mod, AE_EDITOR_ACTION_CB_PICK, &cb);
+}
+
+void ae_editor_action_render_outliner(struct ae_editor_action_module * mod)
+{
+	if (ImGui::Begin("Outliner", &mod->display_outliner)) {
+		struct ae_editor_action_cb_render_outliner cb = { 0 };
+		ap_module_enum_callback(mod, AE_EDITOR_ACTION_CB_RENDER_OUTLINER, &cb);
+	}
+	ImGui::End();
+}
+
+void ae_editor_action_render_properties(struct ae_editor_action_module * mod)
+{
+	if (ImGui::Begin("Properties", &mod->display_properties))
+		ap_module_enum_callback(mod, AE_EDITOR_ACTION_CB_RENDER_PROPERTIES, NULL);
+	ImGui::End();
 }

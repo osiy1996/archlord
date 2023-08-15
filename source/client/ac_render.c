@@ -363,7 +363,7 @@ void ac_render_reserve_crt_set(
 	crt->set_count = count;
 }
 
-boolean ac_render_stream_read_crt(
+enum ac_render_stream_read_result ac_render_stream_read_crt(
 	struct ap_module_stream * stream,
 	struct ac_render_crt * crt)
 {
@@ -383,20 +383,19 @@ boolean ac_render_stream_read_crt(
 		if (sscanf(value, "%u:%d:%d", &index, &render_type, 
 				&cust_data) != 3) {
 			ERROR("sscanf() failed.");
-			return FALSE;
+			return AC_RENDER_STREAM_READ_RESULT_ERROR;
 		}
 		if (index >= crt->set_count) {
 			ERROR("Invalid index value.");
-			return FALSE;
+			return AC_RENDER_STREAM_READ_RESULT_ERROR;
 		}
 		crt->render_type.render_type[index] = render_type;
 		crt->render_type.cust_data[index] = cust_data;
 	}
 	else {
-		/* Evaluate unrecognized value as an error. */
-		return FALSE;
+		return AC_RENDER_STREAM_READ_RESULT_PASS;
 	}
-	return TRUE;
+	return AC_RENDER_STREAM_READ_RESULT_READ;
 }
 
 boolean ac_render_stream_write_clump_render_type(

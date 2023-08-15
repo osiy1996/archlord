@@ -429,6 +429,12 @@
     <ClInclude Include="..\..\..\source\client\ac_effect.h">
       <Filter>source\client</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\client\ac_character.h">
+      <Filter>source\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\editor\ae_npc.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\core\hash_map.c">
@@ -755,7 +761,7 @@
     <ClCompile Include="..\..\..\source\editor\ae_map.cpp">
       <Filter>source\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\editor\ae_editor_action.c">
+    <ClCompile Include="..\..\..\source\editor\ae_editor_action.cpp">
       <Filter>source\editor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\editor\ae_event_binding.cpp">
@@ -772,6 +778,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\client\ac_effect.c">
       <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\client\ac_character.c">
+      <Filter>source\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\editor\ae_npc.cpp">
+      <Filter>source\editor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

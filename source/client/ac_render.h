@@ -19,6 +19,12 @@
 
 BEGIN_DECLS
 
+enum ac_render_stream_read_result {
+	AC_RENDER_STREAM_READ_RESULT_ERROR = 0,
+	AC_RENDER_STREAM_READ_RESULT_PASS,
+	AC_RENDER_STREAM_READ_RESULT_READ,
+};
+
 enum ac_render_button_bits {
 	AC_RENDER_BUTTON_LEFT = 1u << 0,
 	AC_RENDER_BUTTON_RIGHT = 1u << 1,
@@ -84,7 +90,7 @@ void ac_render_reserve_crt_set(
 	struct ac_render_crt * crt,
 	uint32_t count);
 
-boolean ac_render_stream_read_crt(
+enum ac_render_stream_read_result ac_render_stream_read_crt(
 	struct ap_module_stream * stream,
 	struct ac_render_crt * crt);
 

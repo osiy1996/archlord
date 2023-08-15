@@ -686,6 +686,7 @@ enum ap_character_callback_id {
 	AP_CHARACTER_CB_GAIN_EXPERIENCE,
 	/** \brief Triggered once character action status is changed. */
 	AP_CHARACTER_CB_SET_ACTION_STATUS,
+	AP_CHARACTER_CB_SET_TEMPLATE,
 };
 
 struct ap_character_action_info {
@@ -694,6 +695,15 @@ struct ap_character_action_info {
 	boolean broadcast_factor;
 	uint32_t additional_effect;
 	int defense_penalty;
+};
+
+struct ap_character_action {
+	enum ap_character_action_type action_type;
+	boolean force_action;
+	void * target_base;
+	struct au_pos target_pos;
+	int user_data[5];
+	uint32_t additional_effect;
 };
 
 struct ap_character_template {
@@ -974,6 +984,12 @@ struct ap_character_cb_gain_experience {
 struct ap_character_cb_set_action_status {
 	struct ap_character * character;
 	enum ap_character_action_status previous_status;
+};
+
+/** \brief AP_CHARACTER_CB_SET_TEMPLATE callback data. */
+struct ap_character_cb_set_template {
+	struct ap_character * character;
+	struct ap_character_template * previous_temp;
 };
 
 struct ap_character_module * ap_character_create_module();

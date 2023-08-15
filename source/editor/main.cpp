@@ -74,6 +74,7 @@
 
 #include "client/ac_ambient_occlusion_map.h"
 #include "client/ac_camera.h"
+#include "client/ac_character.h"
 #include "client/ac_console.h"
 #include "client/ac_dat.h"
 #include "client/ac_effect.h"
@@ -93,6 +94,7 @@
 #include "editor/ae_event_teleport.h"
 #include "editor/ae_item.h"
 #include "editor/ae_map.h"
+#include "editor/ae_npc.h"
 #include "editor/ae_object.h"
 #include "editor/ae_terrain.h"
 #include "editor/ae_texture.h"
@@ -167,6 +169,7 @@ static struct ap_world_module * g_ApWorld;
 
 static struct ac_ambient_occlusion_map_module * g_AcAmbientOcclusionMap;
 static struct ac_camera_module * g_AcCamera;
+static struct ac_character_module * g_AcCharacter;
 static struct ac_console_module * g_AcConsole;
 static struct ac_dat_module * g_AcDat;
 static struct ac_effect_module * g_AcEffect;
@@ -186,6 +189,7 @@ static struct ae_event_refinery_module * g_AeEventRefinery;
 static struct ae_event_teleport_module * g_AeEventTeleport;
 static struct ae_item_module * g_AeItem;
 static struct ae_map_module * g_AeMap;
+static struct ae_npc_module * g_AeNpc;
 static struct ae_object_module * g_AeObject;
 static struct ae_terrain_module * g_AeTerrain;
 static struct ae_texture_module * g_AeTexture;
@@ -257,6 +261,7 @@ static struct module_desc g_Modules[] = {
 	{ AC_EFFECT_MODULE_NAME, ac_effect_create_module, NULL, &g_AcEffect },
 	{ AC_OBJECT_MODULE_NAME, ac_object_create_module, NULL, &g_AcObject },
 	{ AC_EVENT_EFFECT_MODULE_NAME, ac_event_effect_create_module, NULL, &g_AcEventEffect },
+	{ AC_CHARACTER_MODULE_NAME, ac_character_create_module, NULL, &g_AcCharacter },
 	/* Editor modules. */
 	{ AE_EDITOR_ACTION_MODULE_NAME, ae_editor_action_create_module, NULL, &g_AeEditorAction },
 	{ AE_TEXTURE_MODULE_NAME, ae_texture_create_module, NULL, &g_AeTexture },
@@ -267,6 +272,7 @@ static struct module_desc g_Modules[] = {
 	{ AE_EVENT_TELEPORT_MODULE_NAME, ae_event_teleport_create_module, NULL, &g_AeEventTeleport },
 	{ AE_OBJECT_MODULE_NAME, ae_object_create_module, NULL, &g_AeObject },
 	{ AE_ITEM_MODULE_NAME, ae_item_create_module, NULL, &g_AeItem },
+	{ AE_NPC_MODULE_NAME, ae_npc_create_module, NULL, &g_AeNpc },
 };
 
 /* With this definition added, any module context 
@@ -364,6 +370,7 @@ static boolean initialize()
 	char path[1024];
 	uint32_t i;
 	const char * inidir = NULL;
+	const char * clientdir = NULL;
 	INFO("Initializing..");
 	for (i = 0; i < COUNT_OF(g_Modules); i++) {
 		const struct module_desc * m = &g_Modules[i];
@@ -376,6 +383,11 @@ static boolean initialize()
 	inidir = ap_config_get(g_ApConfig, "ServerIniDir");
 	if (!inidir) {
 		ERROR("Failed to retrieve ServerIniDir config.");
+		return FALSE;
+	}
+	clientdir = ap_config_get(g_ApConfig, "ClientDir");
+	if (!clientdir) {
+		ERROR("Failed to retrieve ClientDir config.");
 		return FALSE;
 	}
 	if (!make_path(path, sizeof(path), "%s/chartype.ini", inidir)) {
@@ -595,14 +607,6 @@ static boolean initialize()
 		ERROR("Failed to read npc trade list templates.");
 		return FALSE;
 	}
-	if (!make_path(path, sizeof(path), "%s/npc.ini", inidir)) {
-		ERROR("Failed to create path (npc.ini).");
-		return FALSE;
-	}
-	if (!ap_character_read_static(g_ApCharacter, path, FALSE)) {
-		ERROR("Failed to read static characters (%s).", path);
-		return FALSE;
-	}
 	if (!make_path(path, sizeof(path), "%s/spawndatatable.txt", inidir)) {
 		ERROR("Failed to create path (spawndatatable.txt).");
 		return FALSE;
@@ -621,6 +625,22 @@ static boolean initialize()
 	}
 	if (!ac_imgui_init(g_AcImgui, 255, ac_render_get_window(g_AcRender))) {
 		ERROR("Failed to initialize ImGui.");
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/ini/charactertemplateclient.ini", clientdir)) {
+		ERROR("Failed to create path (charactertemplateclient.ini).");
+		return FALSE;
+	}
+	if (!ac_character_read_templates(g_AcCharacter, path, TRUE)) {
+		ERROR("Failed to read character client templates (%s).", path);
+		return FALSE;
+	}
+	if (!make_path(path, sizeof(path), "%s/npc.ini", inidir)) {
+		ERROR("Failed to create path (npc.ini).");
+		return FALSE;
+	}
+	if (!ap_character_read_static(g_ApCharacter, path, FALSE)) {
+		ERROR("Failed to read static characters (%s).", path);
 		return FALSE;
 	}
 	INFO("Completed initialization.");
@@ -700,6 +720,7 @@ static void render(struct ac_camera * cam, float dt)
 	ae_terrain_render(g_AeTerrain, cam);
 	ac_object_render(g_AcObject);
 	ae_object_render_outline(g_AeObject, cam);
+	ae_npc_render(g_AeNpc);
 	ac_imgui_new_frame(g_AcImgui);
 	ImGui::BeginMainMenuBar();
 	if (ImGui::BeginMenu("File", true)) {
@@ -721,6 +742,8 @@ static void render(struct ac_camera * cam, float dt)
 	ae_terrain_imgui(g_AeTerrain);
 	ae_object_imgui(g_AeObject);
 	ae_editor_action_render_editors(g_AeEditorAction);
+	ae_editor_action_render_outliner(g_AeEditorAction);
+	ae_editor_action_render_properties(g_AeEditorAction);
 	ac_imgui_begin_toolbox(g_AcImgui);
 	ae_terrain_toolbox(g_AeTerrain);
 	ac_imgui_end_toolbox(g_AcImgui);
@@ -868,16 +891,19 @@ int main(int argc, char * argv[])
 				break;
 			case SDL_MOUSEBUTTONDOWN:
 				if (e.button.button == SDL_BUTTON_LEFT) {
-					uint32_t mb_state = 
-						SDL_GetMouseState(NULL, NULL);
+					uint32_t mb_state = SDL_GetMouseState(NULL, NULL);
 					if (mb_state & SDL_BUTTON(SDL_BUTTON_RIGHT))
-						break;
-					if (ae_object_on_lmb_down(g_AeObject, cam, e.button.x, e.button.y))
 						break;
 					ae_terrain_on_mdown(g_AeTerrain, cam, e.button.x, e.button.y);
 				}
 				else if (e.button.button == SDL_BUTTON_RIGHT) {
 					ae_object_on_rmb_down(g_AeObject, cam, e.button.x, e.button.y);
+				}
+				break;
+			case SDL_MOUSEBUTTONUP:
+				if (e.button.button == SDL_BUTTON_LEFT) {
+					ae_editor_action_pick(g_AeEditorAction, cam, 
+						e.button.x, e.button.y);
 				}
 				break;
 			case SDL_KEYDOWN:
