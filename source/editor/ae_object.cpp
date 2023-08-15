@@ -428,8 +428,10 @@ static void cbrenderoutliner(
 	vec_clear(mod->objects);
 	ac_object_query_visible_objects(mod->ac_object, &mod->objects);
 	clipper.Begin((int)vec_count(mod->objects));
-	if (cb->selected_new_entity)
+	if (cb->selected_new_entity && mod->active_object) {
+		ae_transform_tool_cancel_target(mod->ae_transform_tool);
 		mod->active_object = NULL;
+	}
 	while (clipper.Step()) {
 		for (int i = clipper.DisplayStart; i < clipper.DisplayEnd; i++) {
 			struct ap_object * obj = mod->objects[i];
@@ -438,8 +440,10 @@ static void cbrenderoutliner(
 			snprintf(label, sizeof(label), "[OBJ] %u##%p", obj->object_id, obj);
 			if (ImGui::Selectable(label, obj == mod->active_object) && 
 				!cb->selected_new_entity) {
+				ae_transform_tool_cancel_target(mod->ae_transform_tool);
 				mod->active_object = obj;
 				cb->selected_new_entity = TRUE;
+				settooltarget(mod, obj);
 			}
 		}
 	}

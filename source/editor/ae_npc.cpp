@@ -49,6 +49,7 @@ struct ae_npc_module {
 	struct ae_editor_action_module * ae_editor_action;
 	struct ae_transform_tool_module * ae_transform_tool;
 	struct ap_admin npc_admin;
+	bgfx_program_handle_t program;
 	bool add_npc;
 	char add_npc_search_input[256];
 	bool display_npc_editor;
@@ -427,8 +428,32 @@ static boolean onregister(
 	return TRUE;
 }
 
+static boolean createshaders(struct ae_npc_module * mod)
+{
+	bgfx_shader_handle_t vsh;
+	bgfx_shader_handle_t fsh;
+	if (!ac_render_load_shader("ae_npc_outline.vs", &vsh)) {
+		ERROR("Failed to load vertex shader.");
+		return FALSE;
+	}
+	if (!ac_render_load_shader("ae_npc_outline.fs", &fsh)) {
+		ERROR("Failed to load fragment shader.");
+		return FALSE;
+	}
+	mod->program = bgfx_create_program(vsh, fsh, true);
+	if (!BGFX_HANDLE_IS_VALID(mod->program)) {
+		ERROR("Failed to create program.");
+		return FALSE;
+	}
+	return TRUE;
+}
+
 static boolean oninitialize(struct ae_npc_module * mod)
 {
+	if (!createshaders(mod)) {
+		ERROR("Failed to create shaders.");
+		return FALSE;
+	}
 	return TRUE;
 }
 
@@ -446,6 +471,7 @@ static void onclose(struct ae_npc_module * mod)
 static void onshutdown(struct ae_npc_module * mod)
 {
 	ap_admin_destroy(&mod->npc_admin);
+	bgfx_destroy_program(mod->program);
 }
 
 struct ae_npc_module * ae_npc_create_module()
@@ -469,7 +495,25 @@ void ae_npc_render(struct ae_npc_module * mod)
 	struct au_pos cameracenter = { maincam->center[0], maincam->center[1], maincam->center[2] };
 	while (ap_admin_iterate_id(&mod->npc_admin, &index, &obj)) {
 		struct ap_character * npc = *(struct ap_character **)obj;
+		struct ac_character_render_data render = { 0 };
+		render.program = BGFX_INVALID_HANDLE;
+		render.no_texture = FALSE;
+		render.state = BGFX_STATE_WRITE_MASK |
+			BGFX_STATE_DEPTH_TEST_LESS |
+			BGFX_STATE_CULL_CW;
 		if (au_distance2d(&npc->pos, &cameracenter) <= viewdistance)
-			ac_character_render(mod->ac_character, npc);
+			ac_character_render(mod->ac_character, npc, &render);
+	}
+	if (mod->active_npc) {
+		struct ac_character_render_data render = { 0 };
+		render.state = BGFX_STATE_WRITE_MASK | BGFX_STATE_DEPTH_TEST_ALWAYS |
+			BGFX_STATE_BLEND_FUNC_SEPARATE(
+				BGFX_STATE_BLEND_SRC_ALPHA,
+				BGFX_STATE_BLEND_INV_SRC_ALPHA,
+				BGFX_STATE_BLEND_ZERO,
+				BGFX_STATE_BLEND_ONE);
+		render.program = mod->program;
+		render.no_texture = TRUE;
+		ac_character_render(mod->ac_character, mod->active_npc, &render);
 	}
 }

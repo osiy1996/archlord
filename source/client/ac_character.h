@@ -378,6 +378,12 @@ struct ac_character {
 	//AuCharacterLightInfo m_aLightInfo[ AGPMITEM_PART_V_BODY ];
 };
 
+struct ac_character_render_data {
+	uint64_t state;
+	bgfx_program_handle_t program;
+	boolean no_texture;
+};
+
 struct ac_character_module * ac_character_create_module();
 
 boolean ac_character_read_templates(
@@ -387,7 +393,8 @@ boolean ac_character_read_templates(
 
 void ac_character_render(
 	struct ac_character_module * mod,
-	struct ap_character * character);
+	struct ap_character * character,
+	struct ac_character_render_data * render_data);
 
 static inline struct ac_character_template * ac_character_get_template(
 	struct ap_character_template * temp)

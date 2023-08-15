@@ -396,7 +396,8 @@ boolean ac_character_read_templates(
 
 void ac_character_render(
 	struct ac_character_module * mod,
-	struct ap_character * character)
+	struct ap_character * character,
+	struct ac_character_render_data * render_data)
 {
 	struct ac_character_template * attachment;
 	struct ac_mesh_geometry * g = NULL;
@@ -408,6 +409,8 @@ void ac_character_render(
 		return;
 	view = ac_render_get_view(mod->ac_render);
 	g = attachment->clump->glist;
+	if (!BGFX_HANDLE_IS_VALID(render_data->program))
+		render_data->program = mod->program;
 	while (g) {
 		const uint8_t discard = 
 			BGFX_DISCARD_BINDINGS |
@@ -433,21 +436,25 @@ void ac_character_render(
 			struct ac_mesh_split * s = &g->splits[j];
 			struct ac_mesh_material * mat = &g->materials[s->material_index];
 			uint32_t k;
-			uint64_t state = BGFX_STATE_WRITE_MASK |
-				BGFX_STATE_DEPTH_TEST_LESS |
-				BGFX_STATE_CULL_CW;
 			bgfx_set_index_buffer(g->index_buffer, s->index_offset, s->index_count);
-			for (k = 0; k < COUNT_OF(mod->sampler); k++) {
-				if (BGFX_HANDLE_IS_VALID(mat->tex_handle[k])) {
-					bgfx_set_texture(k, mod->sampler[k], 
-						mat->tex_handle[k], UINT32_MAX);
-				}
-				else {
+			if (render_data->no_texture) {
+				for (k = 0; k < COUNT_OF(mod->sampler); k++)
 					bgfx_set_texture(k, mod->sampler[k], mod->null_tex, UINT32_MAX);
+			}
+			else {
+				for (k = 0; k < COUNT_OF(mod->sampler); k++) {
+					if (BGFX_HANDLE_IS_VALID(mat->tex_handle[k])) {
+						bgfx_set_texture(k, mod->sampler[k], 
+							mat->tex_handle[k], UINT32_MAX);
+					}
+					else {
+						bgfx_set_texture(k, mod->sampler[k], mod->null_tex, 
+							UINT32_MAX);
+					}
 				}
 			}
-			bgfx_set_state(state, 0xffffffff);
-			bgfx_submit(view, mod->program, 0, discard);
+			bgfx_set_state(render_data->state, 0xffffffff);
+			bgfx_submit(view, render_data->program, 0, discard);
 		}
 		g = g->next;
 	}

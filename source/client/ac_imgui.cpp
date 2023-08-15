@@ -195,7 +195,7 @@ void ac_imgui_viewport(struct ac_imgui_module * mod)
 		ImGuiID dock_id_down = ImGui::DockBuilderSplitNode(
 			dockspace_id, ImGuiDir_Down, 0.25f, 
 			nullptr, &dockspace_id);
-		ImGui::DockBuilderDockWindow("Objects", dock_id_up);
+		ImGui::DockBuilderDockWindow("Outliner", dock_id_up);
 		ImGui::DockBuilderDockWindow("Properties", dock_id_down);
 		ImGui::DockBuilderFinish(
 			ImGui::GetID(AC_IMGUI_MAIN_DOCK_ID));
