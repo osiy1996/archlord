@@ -98,6 +98,7 @@
 #include "editor/ae_object.h"
 #include "editor/ae_terrain.h"
 #include "editor/ae_texture.h"
+#include "editor/ae_transform_tool.h"
 
 /* 20 FPS */
 #define STEPTIME (1.0f / 50.0f)
@@ -193,6 +194,7 @@ static struct ae_npc_module * g_AeNpc;
 static struct ae_object_module * g_AeObject;
 static struct ae_terrain_module * g_AeTerrain;
 static struct ae_texture_module * g_AeTexture;
+static struct ae_transform_tool_module * g_AeTransformTool;
 
 static struct module_desc g_Modules[] = {
 	/* Public modules. */
@@ -266,6 +268,7 @@ static struct module_desc g_Modules[] = {
 	{ AE_EDITOR_ACTION_MODULE_NAME, ae_editor_action_create_module, NULL, &g_AeEditorAction },
 	{ AE_TEXTURE_MODULE_NAME, ae_texture_create_module, NULL, &g_AeTexture },
 	{ AE_TERRAIN_MODULE_NAME, ae_terrain_create_module, NULL, &g_AeTerrain },
+	{ AE_TRANSFORM_TOOL_MODULE_NAME, ae_transform_tool_create_module, NULL, &g_AeTransformTool },
 	{ AE_MAP_MODULE_NAME, ae_map_create_module, NULL, &g_AeMap },
 	{ AE_EVENT_BINDING_MODULE_NAME, ae_event_binding_create_module, NULL, &g_AeEventBinding },
 	{ AE_EVENT_REFINERY_MODULE_NAME, ae_event_refinery_create_module, NULL, &g_AeEventRefinery },
@@ -817,6 +820,60 @@ static void setspawnpos(struct ac_camera * cam)
 	ac_object_sync(g_AcObject, cam->center, TRUE);
 }
 
+static void handleinput(
+	SDL_Event * e, 
+	struct ac_camera * cam,
+	struct camera_controls * ctrl)
+{
+	if (ac_imgui_process_event(g_AcImgui, e))
+		return;
+	if (ac_render_process_window_event(g_AcRender, e))
+		return;
+	switch (e->type) {
+	case SDL_MOUSEMOTION:
+		if (ac_render_button_down(g_AcRender, AC_RENDER_BUTTON_RIGHT)) {
+			ac_camera_rotate(cam, e->motion.yrel * .3f, e->motion.xrel * .3f);
+		}
+		else if (ac_render_button_down(g_AcRender, AC_RENDER_BUTTON_MIDDLE)) {
+			ac_camera_slide(cam, -(float)e->motion.xrel * 10.f,
+				(float)e->motion.yrel * 10.f);
+		}
+		else {
+			if (ae_terrain_on_mmove(g_AeTerrain, cam, e->motion.x, e->motion.y))
+				break;
+		}
+		break;
+	case SDL_MOUSEWHEEL:
+		if (!ae_terrain_on_mwheel(g_AeTerrain, e->wheel.preciseY))
+			ac_camera_zoom(cam, e->wheel.preciseY * 1000.f);
+		break;
+	case SDL_MOUSEBUTTONDOWN:
+		if (e->button.button == SDL_BUTTON_LEFT) {
+			uint32_t mb_state = SDL_GetMouseState(NULL, NULL);
+			if (mb_state & SDL_BUTTON(SDL_BUTTON_RIGHT))
+				break;
+			ae_terrain_on_mdown(g_AeTerrain, cam, e->button.x, e->button.y);
+		}
+		break;
+	case SDL_MOUSEBUTTONUP:
+		if (e->button.button == SDL_BUTTON_LEFT) {
+			ae_editor_action_pick(g_AeEditorAction, cam, 
+				e->button.x, e->button.y);
+		}
+		break;
+	case SDL_KEYDOWN:
+		if (ae_terrain_on_key_down(g_AeTerrain, e->key.keysym.sym)) {
+			break;
+		}
+		on_keydown_cam(ctrl, ac_render_get_key_state(g_AcRender), &e->key);
+		break;
+	case SDL_KEYUP:
+		on_keyup_cam(ctrl, &e->key);
+		break;
+	}
+	ae_editor_action_handle_input(g_AeEditorAction, e);
+}
+
 int main(int argc, char * argv[])
 {
 	uint64_t last = 0;
@@ -859,65 +916,8 @@ int main(int argc, char * argv[])
 		uint64_t tick = ap_tick_get(g_ApTick);
 		SDL_Event e;
 		updatetick(&last, &dt);
-		while (ac_render_poll_window_event(g_AcRender, &e)) {
-			if (ac_imgui_process_event(g_AcImgui, &e))
-				continue;
-			ac_render_process_window_event(g_AcRender, &e);
-			switch (e.type) {
-			case SDL_MOUSEMOTION:
-				if (ac_render_button_down(g_AcRender, AC_RENDER_BUTTON_RIGHT)) {
-					ac_camera_rotate(cam,
-						e.motion.yrel * .3f,
-						e.motion.xrel * .3f);
-				}
-				else if (ac_render_button_down(g_AcRender, AC_RENDER_BUTTON_MIDDLE)) {
-					ac_camera_slide(cam,
-						-(float)e.motion.xrel * 10.f,
-						(float)e.motion.yrel * 10.f);
-				}
-				else {
-					if (ae_terrain_on_mmove(g_AeTerrain, cam, e.motion.x, 
-							e.motion.y) ||
-						ae_object_on_mmove(g_AeObject, cam, 
-							e.motion.x, e.motion.y, 
-							e.motion.xrel, e.motion.yrel)) {
-						break;
-					}
-				}
-				break;
-			case SDL_MOUSEWHEEL:
-				if (!ae_terrain_on_mwheel(g_AeTerrain, e.wheel.preciseY))
-					ac_camera_zoom(cam, e.wheel.preciseY * 1000.f);
-				break;
-			case SDL_MOUSEBUTTONDOWN:
-				if (e.button.button == SDL_BUTTON_LEFT) {
-					uint32_t mb_state = SDL_GetMouseState(NULL, NULL);
-					if (mb_state & SDL_BUTTON(SDL_BUTTON_RIGHT))
-						break;
-					ae_terrain_on_mdown(g_AeTerrain, cam, e.button.x, e.button.y);
-				}
-				else if (e.button.button == SDL_BUTTON_RIGHT) {
-					ae_object_on_rmb_down(g_AeObject, cam, e.button.x, e.button.y);
-				}
-				break;
-			case SDL_MOUSEBUTTONUP:
-				if (e.button.button == SDL_BUTTON_LEFT) {
-					ae_editor_action_pick(g_AeEditorAction, cam, 
-						e.button.x, e.button.y);
-				}
-				break;
-			case SDL_KEYDOWN:
-				if (ae_terrain_on_key_down(g_AeTerrain, e.key.keysym.sym) ||
-					ae_object_on_key_down(g_AeObject, cam, e.key.keysym.sym)) {
-					break;
-				}
-				on_keydown_cam(&cam_ctrl, ac_render_get_key_state(g_AcRender), &e.key);
-				break;
-			case SDL_KEYUP:
-				on_keyup_cam(&cam_ctrl, &e.key);
-				break;
-			}
-		}
+		while (ac_render_poll_window_event(g_AcRender, &e))
+			handleinput(&e, cam, &cam_ctrl);
 		accum += dt;
 		while (accum >= STEPTIME) {
 			accum -= STEPTIME;

@@ -32,33 +32,13 @@
 #include "editor/ae_event_refinery.h"
 #include "editor/ae_event_teleport.h"
 #include "editor/ae_texture.h"
+#include "editor/ae_transform_tool.h"
 
 #include <ctype.h>
 
 #define MAX_EDIT_TEMPLATE_COUNT 32
 
 size_t g_AeObjectTemplateOffset = SIZE_MAX;
-
-enum tool_type {
-	TOOL_TYPE_NONE,
-	TOOL_TYPE_MOVE,
-	TOOL_TYPE_COUNT
-};
-
-enum move_axis {
-	MOVE_AXIS_NONE,
-	MOVE_AXIS_X,
-	MOVE_AXIS_Y,
-	MOVE_AXIS_Z,
-	MOVE_AXIS_COUNT
-};
-
-struct move_tool {
-	enum move_axis axis;
-	struct au_pos prev_pos;
-	float dx;
-	float dy;
-};
 
 struct ae_object_module {
 	struct ap_module_instance instance;
@@ -73,15 +53,12 @@ struct ae_object_module {
 	struct ae_event_binding_module * ae_event_binding;
 	struct ae_event_refinery_module * ae_event_refinery;
 	struct ae_event_teleport_module * ae_event_teleport;
+	struct ae_transform_tool_module * ae_transform_tool;
 	boolean display_outliner;
 	boolean display_properties;
 	struct ap_object ** objects;
 	struct ap_object * active_object;
 	bgfx_program_handle_t program;
-	/* Active tool type. */
-	enum tool_type tool_type;
-	/* Object move tool context. */
-	struct move_tool move_tool;
 	bool select_object_template;
 	char select_object_template_search_input[256];
 	bool add_object;
@@ -92,16 +69,6 @@ struct ae_object_module {
 	char template_editor_search_input[128];
 	boolean has_pending_template_changes;
 };
-
-inline void set_move_tool_axis(
-	struct move_tool * t, 
-	enum move_axis axis,
-	struct ap_object * obj)
-{
-	if (obj)
-		obj->position = t->prev_pos;
-	t->axis = axis;
-}
 
 static struct ap_object * pick_object(
 	struct ae_object_module * mod,
@@ -137,44 +104,6 @@ static boolean raycast_terrain(
 	ac_camera_ray(cam, (mouse_x / (w * 0.5f)) - 1.f,
 		1.f - (mouse_y / (h * 0.5f)), dir);
 	return ac_terrain_raycast(mod->ac_terrain, cam->eye, dir, point);
-}
-
-static void apply_move(
-	struct ae_object_module * mod,
-	struct ac_camera * cam,
-	struct move_tool * tool,
-	struct ap_object * obj)
-{
-	if (!obj)
-		return;
-	switch (tool->axis) {
-	case MOVE_AXIS_NONE:
-		break;
-	case MOVE_AXIS_X: {
-		vec3 right;
-		struct au_pos pos = obj->position;
-		ac_camera_right(cam, right);
-		pos.x = tool->prev_pos.x + right[0] * tool->dx;
-		pos.z = tool->prev_pos.z + right[2] * tool->dx;
-		ap_object_move_object(mod->ap_object, obj, &pos);
-		break;
-	}
-	case MOVE_AXIS_Y: {
-		struct au_pos pos = obj->position;
-		pos.y = tool->prev_pos.y - tool->dy;
-		ap_object_move_object(mod->ap_object, obj, &pos);
-		break;
-	}
-	case MOVE_AXIS_Z: {
-		vec3 front;
-		struct au_pos pos = obj->position;
-		ac_camera_front(cam, front);
-		pos.x = tool->prev_pos.x - front[0] * tool->dy;
-		pos.z = tool->prev_pos.z - front[2] * tool->dy;
-		ap_object_move_object(mod->ap_object, obj, &pos);
-		break;
-	}
-	}
 }
 
 static boolean create_shaders(struct ae_object_module * mod)
@@ -437,33 +366,56 @@ static boolean cbrendereditors(struct ae_object_module * mod, void * data)
 	return TRUE;
 }
 
+static void cbtooltranslate(
+	struct ae_object_module * mod, 
+	const struct au_pos * pos)
+{
+	if (mod->active_object)
+		ap_object_move_object(mod->ap_object, mod->active_object, pos);
+	else
+		ae_transform_tool_cancel_target(mod->ae_transform_tool);
+}
+
+static float getminheight(struct ae_object_module * mod, struct ap_object * obj)
+{
+	float minh;
+	struct ac_object_template * temp = ac_object_get_template(obj->temp);
+	if (ac_object_get_min_height(mod->ac_object, temp, &minh))
+		return minh;
+	else
+		return 10.0f;
+}
+
+static void settooltarget(struct ae_object_module * mod, struct ap_object * obj)
+{
+	ae_transform_tool_set_target(mod->ae_transform_tool, mod, 
+		(ae_transform_tool_translate_callback_t)cbtooltranslate, 
+		obj, &obj->position, getminheight(mod, obj));
+}
+
 static boolean cbpick(
 	struct ae_object_module * mod, 
 	struct ae_editor_action_cb_pick * cb)
 {
-	switch (mod->tool_type) {
-	case TOOL_TYPE_NONE: {
-		struct ap_object * obj = pick_object(mod, cb->camera, cb->x, cb->y);
-		struct au_pos eye = { cb->camera->eye[0], cb->camera->eye[1], cb->camera->eye[2] };
-		float distance;
+	struct ap_object * obj;
+	struct au_pos eye;
+	float distance;
+	if (mod->active_object) {
+		ae_transform_tool_cancel_target(mod->ae_transform_tool);
 		mod->active_object = NULL;
-		if (!obj)
-			break;
-		distance = au_distance2d(&obj->position, &eye);
-		if (!cb->picked_any) {
-			cb->picked_any = TRUE;
-			cb->distance = distance;
-			mod->active_object = obj;
-		}
-		else if (cb->distance > distance) {
-			cb->distance = distance;
-			mod->active_object = obj;
-		}
-		break;
 	}
-	case TOOL_TYPE_MOVE:
-		mod->tool_type = TOOL_TYPE_NONE;
+	obj = pick_object(mod, cb->camera, cb->x, cb->y);
+	if (!obj)
 		return TRUE;
+	eye.x = cb->camera->eye[0];
+	eye.y = cb->camera->eye[1];
+	eye.z = cb->camera->eye[2];
+	distance = au_distance2d(&obj->position, &eye);
+	if (!cb->picked_any || distance < cb->distance) {
+		cb->picked_any = TRUE;
+		cb->distance = distance;
+		mod->active_object = obj;
+		settooltarget(mod, obj);
 	}
 	return TRUE;
 }
@@ -557,6 +509,7 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_event_binding, AE_EVENT_BINDING_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_event_refinery, AE_EVENT_REFINERY_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_event_teleport, AE_EVENT_TELEPORT_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_transform_tool, AE_TRANSFORM_TOOL_MODULE_NAME);
 	g_AeObjectTemplateOffset = ap_object_attach_data(mod->ap_object, 
 		AP_OBJECT_MDI_OBJECT_TEMPLATE, sizeof(struct ae_object_template), mod, 
 		(ap_module_default_t)cbobjecttemplatector, 
@@ -628,82 +581,6 @@ void ae_object_render(struct ae_object_module * mod, struct ac_camera * cam)
 {
 }
 
-boolean ae_object_on_rmb_down(
-	struct ae_object_module * mod,
-	struct ac_camera * cam,
-	int mouse_x,
-	int mouse_y)
-{
-	switch (mod->tool_type) {
-	case TOOL_TYPE_MOVE:
-		if (mod->active_object) {
-			ap_object_move_object(mod->ap_object, mod->active_object, 
-				&mod->move_tool.prev_pos);
-		}
-		mod->tool_type = TOOL_TYPE_NONE;
-		break;
-	}
-	return FALSE;
-}
-
-boolean ae_object_on_mmove(
-	struct ae_object_module * mod,
-	struct ac_camera *  cam,
-	int mouse_x,
-	int mouse_y,
-	int dx,
-	int dy)
-{
-	switch (mod->tool_type) {
-	case TOOL_TYPE_MOVE: {
-		struct move_tool * tool = &mod->move_tool;
-		float mul = 25.0f;
-		const boolean * state = ac_render_get_key_state(mod->ac_render);
-		if (!mod->active_object)
-			break;
-		if (state[SDL_SCANCODE_LSHIFT] ||
-			state[SDL_SCANCODE_RSHIFT]) {
-			mul = 5.0f;
-		}
-		tool->dx += dx * mul;
-		tool->dy += dy * mul;
-		switch (tool->axis) {
-		case MOVE_AXIS_NONE: {
-			vec3 point = { 0 };
-			boolean hit;
-			hit = raycast_terrain(mod, cam, mouse_x, mouse_y, point);
-			if (hit) {
-				struct ac_object * objc = 
-					ac_object_get_object(mod->ac_object, mod->active_object);
-				float minh;
-				struct ac_object_template * temp = 
-					ac_object_get_template(mod->active_object->temp);
-				if (ac_object_get_min_height(mod->ac_object, temp, &minh)) {
-					struct au_pos pos =  {
-						pos.x = point[0],
-						pos.y = point[1] - minh,
-						pos.z = point[2] };
-					ap_object_move_object(mod->ap_object, mod->active_object, &pos);
-				}
-				return TRUE;
-			}
-			break;
-		}
-		default:
-			apply_move(mod, cam, &mod->move_tool, mod->active_object);
-			return TRUE;
-		}
-		break;
-	}
-	}
-	return FALSE;
-}
-
-boolean ae_object_on_mwheel(struct ae_object_module * mod, float delta)
-{
-	return FALSE;
-}
-
 boolean ae_object_on_key_down(
 	struct ae_object_module * mod,
 	struct ac_camera * cam,
@@ -720,56 +597,6 @@ boolean ae_object_on_key_down(
 			mod->active_object = ap_object_duplicate(mod->ap_object, 
 				mod->active_object);
 		}
-	case SDLK_g:
-		if (mod->tool_type != TOOL_TYPE_MOVE && 
-			mod->active_object) {
-			mod->tool_type = TOOL_TYPE_MOVE;
-			mod->move_tool.axis = MOVE_AXIS_NONE;
-			mod->move_tool.prev_pos = mod->active_object->position;
-			mod->move_tool.dx = 0;
-			mod->move_tool.dy = 0;
-		}
-		break;
-	case SDLK_x:
-		switch (mod->tool_type) {
-		case TOOL_TYPE_MOVE:
-			set_move_tool_axis(&mod->move_tool, MOVE_AXIS_X, 
-				mod->active_object);
-			apply_move(mod, cam, &mod->move_tool, mod->active_object);
-			break;
-		}
-		break;
-	case SDLK_y:
-		switch (mod->tool_type) {
-		case TOOL_TYPE_MOVE:
-			set_move_tool_axis(&mod->move_tool, MOVE_AXIS_Y, 
-				mod->active_object);
-			apply_move(mod, cam, &mod->move_tool, mod->active_object);
-			break;
-		}
-		break;
-	case SDLK_z:
-		switch (mod->tool_type) {
-		case TOOL_TYPE_MOVE:
-			set_move_tool_axis(&mod->move_tool, MOVE_AXIS_Z, 
-				mod->active_object);
-			apply_move(mod, cam, &mod->move_tool, mod->active_object);
-			break;
-		}
-		break;
-	case SDLK_ESCAPE:
-		switch (mod->tool_type) {
-		case TOOL_TYPE_MOVE:
-			if (mod->active_object) {
-				ap_object_move_object(mod->ap_object, mod->active_object, 
-					&mod->move_tool.prev_pos);
-			}
-			break;
-		default:
-			return FALSE;
-		}
-		mod->tool_type = TOOL_TYPE_NONE;
-		return TRUE;
 	case SDLK_DELETE:
 		if (mod->active_object) {
 			ap_object_destroy(mod->ap_object, mod->active_object);
@@ -872,11 +699,7 @@ static void renderaddobjectpopup(struct ae_object_module * mod)
 			ap_object_move_object(mod->ap_object, obj, &pos);
 			ac_object_reference_template(mod->ac_object, attachment);
 			mod->active_object = obj;
-			mod->tool_type = TOOL_TYPE_MOVE;
-			mod->move_tool.axis = MOVE_AXIS_NONE;
-			mod->move_tool.prev_pos = pos;
-			mod->move_tool.dx = 0.0f;
-			mod->move_tool.dy = 0.0f;
+			settooltarget(mod, obj);
 			mod->add_object = false;
 			break;
 		}

@@ -30,27 +30,6 @@ void ae_object_render(struct ae_object_module * mod, struct ac_camera * cam);
 
 void ae_object_imgui(struct ae_object_module * mod);
 
-boolean ae_object_on_rmb_down(
-	struct ae_object_module * mod,
-	struct ac_camera * cam,
-	int mouse_x,
-	int mouse_y);
-
-boolean ae_object_on_mmove(
-	struct ae_object_module * mod,
-	struct ac_camera * cam,
-	int mouse_x,
-	int mouse_y,
-	int dx,
-	int dy);
-
-boolean ae_object_on_mwheel(struct ae_object_module * mod, float delta);
-
-boolean ae_object_on_key_down(
-	struct ae_object_module * mod,
-	struct ac_camera * cam,
-	uint32_t keycode);
-
 static inline struct ae_object_template * ae_object_get_template(
 	struct ap_object_template * temp)
 {

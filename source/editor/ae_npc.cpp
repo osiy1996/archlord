@@ -29,8 +29,7 @@
 #include "editor/ae_event_binding.h"
 #include "editor/ae_event_refinery.h"
 #include "editor/ae_event_teleport.h"
-#include "editor/ae_texture.h"
-
+#include "editor/ae_transform_tool.h"
 
 #include <assert.h>
 #include <ctype.h>
@@ -48,6 +47,7 @@ struct ae_npc_module {
 	struct ac_render_module * ac_render;
 	struct ac_terrain_module * ac_terrain;
 	struct ae_editor_action_module * ae_editor_action;
+	struct ae_transform_tool_module * ae_transform_tool;
 	struct ap_admin npc_admin;
 	bool add_npc;
 	char add_npc_search_input[256];
@@ -304,25 +304,68 @@ static struct ap_character * picknpc(
 	return hitnpc;
 }
 
+static void cbtooltranslate(
+	struct ae_npc_module * mod, 
+	const struct au_pos * pos)
+{
+	if (mod->active_npc)
+		ap_character_move(mod->ap_character, mod->active_npc, pos);
+	else
+		ae_transform_tool_cancel_target(mod->ae_transform_tool);
+}
+
+static float getminheight(struct ap_character * npc)
+{
+	float minh;
+	struct ac_character_template * temp = ac_character_get_template(npc->temp);
+	boolean first = TRUE;
+	struct ac_mesh_geometry * cg;
+	if (!temp->clump)
+		return 10.0f;
+	cg = temp->clump->glist;
+	while (cg) {
+		uint32_t i;
+		for (i = 0; i < cg->vertex_count; i++) {
+			if (first || cg->vertices[i].position[1] < minh) {
+				first = FALSE;
+				minh = cg->vertices[i].position[1];
+			}
+		}
+		cg = cg->next;
+	}
+	return first ? 10.0f : minh;
+}
+
+static void settooltarget(struct ae_npc_module * mod, struct ap_character * npc)
+{
+	ae_transform_tool_set_target(mod->ae_transform_tool, mod, 
+		(ae_transform_tool_translate_callback_t)cbtooltranslate, 
+		npc, &npc->pos, getminheight(npc));
+}
+
 static boolean cbpick(
 	struct ae_npc_module * mod, 
 	struct ae_editor_action_cb_pick * cb)
 {
-	struct ap_character * npc = picknpc(mod, cb->camera, cb->x, cb->y);
-	struct au_pos eye = { cb->camera->eye[0], cb->camera->eye[1], cb->camera->eye[2] };
+	struct ap_character * npc;
+	struct au_pos eye;
 	float distance;
-	mod->active_npc = NULL;
+	if (mod->active_npc) {
+		ae_transform_tool_cancel_target(mod->ae_transform_tool);
+		mod->active_npc = NULL;
+	}
+	npc = picknpc(mod, cb->camera, cb->x, cb->y);
 	if (!npc)
 		return TRUE;
+	eye.x = cb->camera->eye[0];
+	eye.y = cb->camera->eye[1];
+	eye.z = cb->camera->eye[2];
 	distance = au_distance2d(&npc->pos, &eye);
-	if (!cb->picked_any) {
+	if (!cb->picked_any || distance < cb->distance) {
 		cb->picked_any = TRUE;
 		cb->distance = distance;
 		mod->active_npc = npc;
-	}
-	else if (cb->distance > distance) {
-		cb->distance = distance;
-		mod->active_npc = npc;
+		settooltarget(mod, npc);
 	}
 	return TRUE;
 }
@@ -374,6 +417,7 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_render, AC_RENDER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_terrain, AC_TERRAIN_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_editor_action, AE_EDITOR_ACTION_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_transform_tool, AE_TRANSFORM_TOOL_MODULE_NAME);
 	ap_character_add_callback(mod->ap_character, AP_CHARACTER_CB_INIT_STATIC, mod, (ap_module_default_t)cbcharinitstatic);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_COMMIT_CHANGES, mod, (ap_module_default_t)cbcommitchanges);
 	ae_editor_action_add_view_menu_callback(mod->ae_editor_action, "NPC Editor", mod, (ap_module_default_t)cbrenderviewmenu);

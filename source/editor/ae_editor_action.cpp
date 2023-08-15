@@ -118,3 +118,32 @@ void ae_editor_action_render_properties(struct ae_editor_action_module * mod)
 		ap_module_enum_callback(mod, AE_EDITOR_ACTION_CB_RENDER_PROPERTIES, NULL);
 	ImGui::End();
 }
+
+void ae_editor_action_add_input_callback(
+	struct ae_editor_action_module * mod,
+	ap_module_t callback_module,
+	ap_module_default_t callback)
+{
+	uint32_t id = AE_EDITOR_ACTION_CB_HANDLE_INPUT;
+	uint32_t index;
+	assert(mod->callback_count[id] < AP_MODULE_MAX_CALLBACK_COUNT);
+	index = mod->callback_count[id]++;
+	mod->callbacks[id][index].label = "NotSet";
+	mod->callbacks[id][index].callback_module = callback_module;
+	mod->callbacks[id][index].callback = callback;
+}
+
+void ae_editor_action_handle_input(
+	struct ae_editor_action_module * mod,
+	const SDL_Event * input)
+{
+	struct ae_editor_action_cb_handle_input cb = { 0 };
+	uint32_t id = AE_EDITOR_ACTION_CB_HANDLE_INPUT;
+	uint32_t i;
+	cb.input = input;
+	for (i = 0; i < mod->callback_count[id]; i++) {
+		struct sorted_callback * callback = &mod->callbacks[id][i];
+		if (callback->callback(callback->callback_module, &cb))
+			break;
+	}
+}
