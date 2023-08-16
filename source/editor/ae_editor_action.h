@@ -20,6 +20,7 @@ enum ae_editor_action_callback_id {
 	AE_EDITOR_ACTION_CB_RENDER_OUTLINER,
 	AE_EDITOR_ACTION_CB_RENDER_PROPERTIES,
 	AE_EDITOR_ACTION_CB_HANDLE_INPUT,
+	AE_EDITOR_ACTION_CB_RENDER_ADD_MENU,
 };
 
 struct ae_editor_action_cb_pick {
@@ -68,7 +69,7 @@ void ae_editor_action_render_outliner(struct ae_editor_action_module * mod);
 
 void ae_editor_action_render_properties(struct ae_editor_action_module * mod);
 
-void ae_editor_action_add_input_callback(
+void ae_editor_action_add_input_handler(
 	struct ae_editor_action_module * mod,
 	ap_module_t callback_module,
 	ap_module_default_t callback);
@@ -76,6 +77,8 @@ void ae_editor_action_add_input_callback(
 void ae_editor_action_handle_input(
 	struct ae_editor_action_module * mod,
 	const SDL_Event * input);
+
+void ae_editor_action_render_add_menu(struct ae_editor_action_module * mod);
 
 END_DECLS
 

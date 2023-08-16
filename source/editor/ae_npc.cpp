@@ -26,9 +26,7 @@
 #include "client/ac_terrain.h"
 
 #include "editor/ae_editor_action.h"
-#include "editor/ae_event_binding.h"
-#include "editor/ae_event_refinery.h"
-#include "editor/ae_event_teleport.h"
+#include "editor/ae_event_auction.h"
 #include "editor/ae_transform_tool.h"
 
 #include <assert.h>
@@ -47,6 +45,7 @@ struct ae_npc_module {
 	struct ac_render_module * ac_render;
 	struct ac_terrain_module * ac_terrain;
 	struct ae_editor_action_module * ae_editor_action;
+	struct ae_event_auction_module * ae_event_auction;
 	struct ae_transform_tool_module * ae_transform_tool;
 	struct ap_admin npc_admin;
 	bgfx_program_handle_t program;
@@ -81,10 +80,22 @@ static boolean cbcommitchanges(
 {
 	char serverpath[1024];
 	char clientpath[1024];
-	snprintf(serverpath, sizeof(serverpath), "%s/npcs", 
+	snprintf(serverpath, sizeof(serverpath), "%s/npc.ini", 
 		ap_config_get(mod->ap_config, "ServerIniDir"));
-	snprintf(clientpath, sizeof(clientpath), "%s/ini",
+	snprintf(clientpath, sizeof(clientpath), "%s/ini/npc.ini",
 		ap_config_get(mod->ap_config, "ClientDir"));
+	if (mod->has_pending_changes) {
+		if (!ap_character_write_static(mod->ap_character, serverpath, FALSE, 
+				&mod->npc_admin)) {
+			ERROR("Failed to write NPCs.");
+		}
+		else if (!copy_file(serverpath, clientpath, FALSE)) {
+			ERROR("Failed to copy npc.ini to client.");
+		}
+		else {
+			mod->has_pending_changes = FALSE;
+		}
+	}
 	return TRUE;
 }
 
@@ -180,10 +191,124 @@ static void rendertemplateeditor(struct ae_npc_module * mod)
 	}
 }
 
+static float getminheight(struct ap_character * npc)
+{
+	float minh;
+	struct ac_character_template * temp = ac_character_get_template(npc->temp);
+	boolean first = TRUE;
+	struct ac_mesh_geometry * cg;
+	if (!temp->clump)
+		return 10.0f;
+	cg = temp->clump->glist;
+	while (cg) {
+		uint32_t i;
+		for (i = 0; i < cg->vertex_count; i++) {
+			if (first || cg->vertices[i].position[1] < minh) {
+				first = FALSE;
+				minh = cg->vertices[i].position[1];
+			}
+		}
+		cg = cg->next;
+	}
+	return first ? 10.0f : minh;
+}
+
+static void cbtooltranslate(
+	struct ae_npc_module * mod, 
+	const struct au_pos * pos)
+{
+	if (mod->active_npc)
+		ap_character_move(mod->ap_character, mod->active_npc, pos);
+	else
+		ae_transform_tool_cancel_target(mod->ae_transform_tool);
+}
+
+static void settooltarget(struct ae_npc_module * mod, struct ap_character * npc)
+{
+	ae_transform_tool_set_target(mod->ae_transform_tool, mod, 
+		(ae_transform_tool_translate_callback_t)cbtooltranslate, 
+		npc, &npc->pos, getminheight(npc));
+}
+
+static uint32_t getuniqueid(struct ae_npc_module * mod)
+{
+	uint32_t i;
+	for (i = 1; i < 10000; i++) {
+		if (!ap_admin_get_object_by_id(&mod->npc_admin, i))
+			return i;
+	}
+	return 0;
+}
+
+static void renderaddnpcpopup(struct ae_npc_module * mod)
+{
+	ImVec2 size = ImVec2(350.0f, 400.0f);
+	ImVec2 center = ImGui::GetMainViewport()->GetWorkCenter() - (size / 2.0f);
+	size_t index = 0;
+	struct ap_character_template * temp;
+	ImGui::SetNextWindowSize(size, ImGuiCond_FirstUseEver);
+	ImGui::SetNextWindowPos(center, ImGuiCond_FirstUseEver);
+	if (!ImGui::Begin("Add NPC", &mod->add_npc)) {
+		ImGui::End();
+		return;
+	}
+	ImGui::InputText("Search", mod->add_npc_search_input, 
+		sizeof(mod->add_npc_search_input));
+	while (temp = ap_character_iterate_templates(mod->ap_character, &index)) {
+		char label[128];
+		snprintf(label, sizeof(label), "[%04u] %s", temp->tid, temp->name);
+		if (!strisempty(mod->add_npc_search_input) && 
+			!stristr(label, mod->add_npc_search_input)) {
+			continue;
+		}
+		if (ImGui::Selectable(label)) {
+			struct ap_character * npc = ap_character_new(mod->ap_character);
+			struct ac_camera * cam = ac_camera_get_main(mod->ac_camera);
+			struct au_pos pos = { cam->center[0], cam->center[1], cam->center[2] };
+			struct ap_character_cb_init_static cb = { 0 };
+			npc->id = getuniqueid(mod);
+			if (!npc->id) {
+				WARN("Failed to assign unique NPC id.");
+				ap_character_free(mod->ap_character, npc);
+				assert(0);
+				continue;
+			}
+			npc->login_status = AP_CHARACTER_STATUS_IN_GAME_WORLD;
+			npc->char_type = AP_CHARACTER_TYPE_NPC;
+			npc->npc_display_for_map = TRUE;
+			npc->npc_display_for_nameboard = TRUE;
+			ap_character_set_template(mod->ap_character, npc, temp);
+			cb.character = npc;
+			cb.acquired_ownership = FALSE;
+			if (!ap_module_enum_callback(mod->ap_character, 
+					AP_CHARACTER_CB_INIT_STATIC, &cb)) {
+				ERROR("Failed to initialize static character.");
+				ap_character_free(mod->ap_character, npc);
+				continue;
+			}
+			if (!cb.acquired_ownership) {
+				WARN("Static character ownership was not acquired by any module.");
+				ap_character_free(mod->ap_character, npc);
+				assert(0);
+				continue;
+			}
+			mod->active_npc = npc;
+			settooltarget(mod, npc);
+			ae_transform_tool_switch_translate(mod->ae_transform_tool);
+			mod->add_npc = false;
+			mod->has_pending_changes = TRUE;
+			break;
+		}
+	}
+	ImGui::End();
+}
+
 static boolean cbrendereditors(struct ae_npc_module * mod, void * data)
 {
 	if (mod->display_npc_editor)
 		rendertemplateeditor(mod);
+	if (mod->add_npc)
+		renderaddnpcpopup(mod);
 	return TRUE;
 }
 
@@ -305,45 +430,6 @@ static struct ap_character * picknpc(
 	return hitnpc;
 }
 
-static void cbtooltranslate(
-	struct ae_npc_module * mod, 
-	const struct au_pos * pos)
-{
-	if (mod->active_npc)
-		ap_character_move(mod->ap_character, mod->active_npc, pos);
-	else
-		ae_transform_tool_cancel_target(mod->ae_transform_tool);
-}
-
-static float getminheight(struct ap_character * npc)
-{
-	float minh;
-	struct ac_character_template * temp = ac_character_get_template(npc->temp);
-	boolean first = TRUE;
-	struct ac_mesh_geometry * cg;
-	if (!temp->clump)
-		return 10.0f;
-	cg = temp->clump->glist;
-	while (cg) {
-		uint32_t i;
-		for (i = 0; i < cg->vertex_count; i++) {
-			if (first || cg->vertices[i].position[1] < minh) {
-				first = FALSE;
-				minh = cg->vertices[i].position[1];
-			}
-		}
-		cg = cg->next;
-	}
-	return first ? 10.0f : minh;
-}
-
-static void settooltarget(struct ae_npc_module * mod, struct ap_character * npc)
-{
-	ae_transform_tool_set_target(mod->ae_transform_tool, mod, 
-		(ae_transform_tool_translate_callback_t)cbtooltranslate, 
-		npc, &npc->pos, getminheight(npc));
-}
-
 static boolean cbpick(
 	struct ae_npc_module * mod, 
 	struct ae_editor_action_cb_pick * cb)
@@ -386,14 +472,14 @@ static boolean npctransform(struct ae_npc_module * mod, struct ap_character * np
 	return (move | changed);
 }
 
-static void cbrenderproperties(struct ae_npc_module * mod, void * data)
+static boolean cbrenderproperties(struct ae_npc_module * mod, void * data)
 {
 	struct ap_character * npc = mod->active_npc;
 	struct ap_event_manager_attachment * eventattachment;
 	boolean changed = FALSE;
 	char label[128];
 	if (!npc)
-		return;
+		return TRUE;
 	ImGui::InputScalar("NPC ID", ImGuiDataType_U32, 
 		&npc->id, NULL, NULL, NULL, 
 		ImGuiInputTextFlags_ReadOnly);
@@ -402,8 +488,53 @@ static void cbrenderproperties(struct ae_npc_module * mod, void * data)
 		mod->select_npc_template = true;
 	changed |= npctransform(mod, npc);
 	eventattachment = ap_event_manager_get_attachment(mod->ap_event_manager, npc);
+	changed |= ae_event_auction_render_as_node(mod->ae_event_auction, npc, eventattachment);
 	if (changed)
 		mod->has_pending_changes = TRUE;
+	return TRUE;
+}
+
+static boolean cbhandleinput(
+	struct ae_npc_module * mod,
+	struct ae_editor_action_cb_handle_input * cb)
+{
+	const SDL_Event * e = cb->input;
+	switch (cb->input->type) {
+	case SDL_KEYDOWN: {
+		const boolean * state = ac_render_get_key_state(mod->ac_render);
+		switch (e->key.keysym.sym) {
+		case SDLK_DELETE:
+			if (mod->active_npc) {
+				ap_admin_remove_object_by_id(&mod->npc_admin, mod->active_npc->id);
+				ap_character_free(mod->ap_character, mod->active_npc);
+				mod->active_npc = NULL;
+			}
+			break;
+		case SDLK_KP_PERIOD:
+			if (mod->active_npc) {
+				vec3 center = { mod->active_npc->pos.x,
+					mod->active_npc->pos.y,
+					mod->active_npc->pos.z };
+				ac_camera_focus_on(ac_camera_get_main(mod->ac_camera), center, 
+					1000.0f);
+				return TRUE;
+			}
+			break;
+		}
+		return FALSE;
+		break;
+	}
+	}
+	return FALSE;
+}
+
+static boolean cbrenderaddmenu(struct ae_npc_module * mod, void * data)
+{
+	if (ImGui::Selectable("NPC")) {
+		mod->add_npc = true;
+		return TRUE;
+	}
+	return FALSE;
 }
 
 static boolean onregister(
@@ -418,13 +549,16 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_render, AC_RENDER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_terrain, AC_TERRAIN_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_editor_action, AE_EDITOR_ACTION_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_event_auction, AE_EVENT_AUCTION_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_transform_tool, AE_TRANSFORM_TOOL_MODULE_NAME);
 	ap_character_add_callback(mod->ap_character, AP_CHARACTER_CB_INIT_STATIC, mod, (ap_module_default_t)cbcharinitstatic);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_COMMIT_CHANGES, mod, (ap_module_default_t)cbcommitchanges);
-	ae_editor_action_add_view_menu_callback(mod->ae_editor_action, "NPC Editor", mod, (ap_module_default_t)cbrenderviewmenu);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_EDITORS, mod, (ap_module_default_t)cbrendereditors);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_PICK, mod, (ap_module_default_t)cbpick);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_PROPERTIES, mod, (ap_module_default_t)cbrenderproperties);
+	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_ADD_MENU, mod, (ap_module_default_t)cbrenderaddmenu);
+	ae_editor_action_add_view_menu_callback(mod->ae_editor_action, "NPC Editor", mod, (ap_module_default_t)cbrenderviewmenu);
+	ae_editor_action_add_input_handler(mod->ae_editor_action, mod, (ap_module_default_t)cbhandleinput);
 	return TRUE;
 }
 
@@ -461,6 +595,9 @@ static void onclose(struct ae_npc_module * mod)
 {
 	size_t index = 0;
 	void * obj = NULL;
+	if (mod->has_pending_changes) {
+		WARN("There are pending NPC changes that will be lost.");
+	}
 	while (ap_admin_iterate_id(&mod->npc_admin, &index, &obj)) {
 		struct ap_character * character = *(struct ap_character **)obj;
 		ap_character_free(mod->ap_character, character);

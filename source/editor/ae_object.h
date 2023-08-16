@@ -28,6 +28,11 @@ void ae_object_render_outline(struct ae_object_module * mod, struct ac_camera * 
 
 void ae_object_render(struct ae_object_module * mod, struct ac_camera * cam);
 
+boolean ae_object_on_key_down(
+	struct ae_object_module * mod,
+	struct ac_camera * cam,
+	uint32_t keycode);
+
 void ae_object_imgui(struct ae_object_module * mod);
 
 static inline struct ae_object_template * ae_object_get_template(

@@ -168,6 +168,7 @@
     <ClInclude Include="..\..\..\source\core\types.h" />
     <ClInclude Include="..\..\..\source\core\vector.h" />
     <ClInclude Include="..\..\..\source\editor\ae_editor_action.h" />
+    <ClInclude Include="..\..\..\source\editor\ae_event_auction.h" />
     <ClInclude Include="..\..\..\source\editor\ae_event_binding.h" />
     <ClInclude Include="..\..\..\source\editor\ae_event_refinery.h" />
     <ClInclude Include="..\..\..\source\editor\ae_event_teleport.h" />
@@ -296,6 +297,7 @@
     <ClCompile Include="..\..\..\source\core\string_conv_win32.c" />
     <ClCompile Include="..\..\..\source\core\vector.c" />
     <ClCompile Include="..\..\..\source\editor\ae_editor_action.cpp" />
+    <ClCompile Include="..\..\..\source\editor\ae_event_auction.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_event_binding.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_event_refinery.cpp" />
     <ClCompile Include="..\..\..\source\editor\ae_event_teleport.cpp" />

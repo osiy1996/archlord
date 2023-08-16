@@ -468,7 +468,7 @@ static boolean objtransform(struct ae_object_module * mod, struct ap_object * ob
 	return (move | changed);
 }
 
-static void cbrenderproperties(struct ae_object_module * mod, void * data)
+static boolean cbrenderproperties(struct ae_object_module * mod, void * data)
 {
 	struct ap_object * obj = mod->active_object;
 	struct ac_object * objc;
@@ -476,7 +476,7 @@ static void cbrenderproperties(struct ae_object_module * mod, void * data)
 	boolean changed = FALSE;
 	char label[128];
 	if (!obj)
-		return;
+		return TRUE;
 	objc = ac_object_get_object(mod->ac_object, obj);
 	ImGui::InputScalar("Object ID", ImGuiDataType_U32, 
 		&obj->object_id, NULL, NULL, NULL, 
@@ -496,6 +496,16 @@ static void cbrenderproperties(struct ae_object_module * mod, void * data)
 		eventattachment);
 	if (changed)
 		objc->sector->flags |= AC_OBJECT_SECTOR_HAS_CHANGES;
+	return TRUE;
+}
+
+static boolean cbrenderaddmenu(struct ae_object_module * mod, void * data)
+{
+	if (ImGui::Selectable("Object")) {
+		mod->add_object = true;
+		return TRUE;
+	}
+	return FALSE;
 }
 
 static boolean onregister(
@@ -527,6 +537,7 @@ static boolean onregister(
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_PICK, mod, (ap_module_default_t)cbpick);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_OUTLINER, mod, (ap_module_default_t)cbrenderoutliner);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_PROPERTIES, mod, (ap_module_default_t)cbrenderproperties);
+	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_ADD_MENU, mod, (ap_module_default_t)cbrenderaddmenu);
 	return TRUE;
 }
 
@@ -592,15 +603,12 @@ boolean ae_object_on_key_down(
 {
 	const boolean * state = ac_render_get_key_state(mod->ac_render);
 	switch (keycode) {
-	case SDLK_a:
-		if (state[SDL_SCANCODE_LSHIFT])
-			mod->add_object = true;
-		break;
 	case SDLK_d:
 		if (state[SDL_SCANCODE_LSHIFT] && mod->active_object) {
 			mod->active_object = ap_object_duplicate(mod->ap_object, 
 				mod->active_object);
 		}
+		break;
 	case SDLK_DELETE:
 		if (mod->active_object) {
 			ap_object_destroy(mod->ap_object, mod->active_object);
@@ -704,6 +712,7 @@ static void renderaddobjectpopup(struct ae_object_module * mod)
 			ac_object_reference_template(mod->ac_object, attachment);
 			mod->active_object = obj;
 			settooltarget(mod, obj);
+			ae_transform_tool_switch_translate(mod->ae_transform_tool);
 			mod->add_object = false;
 			break;
 		}

@@ -3,6 +3,7 @@
 #include "core/log.h"
 
 #include "client/ac_imgui.h"
+#include "client/ac_render.h"
 
 #include <assert.h>
 #include <stdlib.h>
@@ -15,16 +16,19 @@ struct sorted_callback {
 
 struct ae_editor_action_module {
 	struct ap_module_instance instance;
+	struct ac_render_module * ac_render;
 	struct sorted_callback callbacks[AP_MODULE_MAX_CALLBACK_ID][AP_MODULE_MAX_CALLBACK_COUNT];
 	uint32_t callback_count[AP_MODULE_MAX_CALLBACK_ID];
 	bool display_outliner;
 	bool display_properties;
+	bool display_add_menu;
 };
 
 static boolean onregister(
 	struct ae_editor_action_module * mod,
 	struct ap_module_registry * registry)
 {
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_render, AC_RENDER_MODULE_NAME);
 	return TRUE;
 }
 
@@ -119,7 +123,7 @@ void ae_editor_action_render_properties(struct ae_editor_action_module * mod)
 	ImGui::End();
 }
 
-void ae_editor_action_add_input_callback(
+void ae_editor_action_add_input_handler(
 	struct ae_editor_action_module * mod,
 	ap_module_t callback_module,
 	ap_module_default_t callback)
@@ -140,10 +144,38 @@ void ae_editor_action_handle_input(
 	struct ae_editor_action_cb_handle_input cb = { 0 };
 	uint32_t id = AE_EDITOR_ACTION_CB_HANDLE_INPUT;
 	uint32_t i;
+	const boolean * state = ac_render_get_key_state(mod->ac_render);
+	switch (input->type) {
+	case SDL_KEYDOWN:
+		switch (input->key.keysym.sym) {
+		case SDLK_a:
+			if (state[SDL_SCANCODE_LSHIFT]) {
+				mod->display_add_menu = true;
+				return;
+			}
+			break;
+		}
+		break;
+	}
 	cb.input = input;
 	for (i = 0; i < mod->callback_count[id]; i++) {
 		struct sorted_callback * callback = &mod->callbacks[id][i];
 		if (callback->callback(callback->callback_module, &cb))
 			break;
+	}
+}
+
+void ae_editor_action_render_add_menu(struct ae_editor_action_module * mod)
+{
+	if (mod->display_add_menu) {
+		mod->display_add_menu = false;
+		ImGui::OpenPopup("Add Menu");
+	}
+	if (ImGui::BeginPopup("Add Menu")) {
+		ImGui::Text("Add");
+		ImGui::Separator();
+		if (ap_module_enum_callback(mod, AE_EDITOR_ACTION_CB_RENDER_ADD_MENU, NULL))
+			ImGui::CloseCurrentPopup();
+		ImGui::EndPopup();
 	}
 }

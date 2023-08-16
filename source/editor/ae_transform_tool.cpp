@@ -218,9 +218,7 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_render, AC_RENDER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_terrain, AC_TERRAIN_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_editor_action, AE_EDITOR_ACTION_MODULE_NAME);
-	//ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_PICK, mod, (ap_module_default_t)cbpick);
-	//ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_PROPERTIES, mod, (ap_module_default_t)cbrenderproperties);
-	ae_editor_action_add_input_callback(mod->ae_editor_action, mod, (ap_module_default_t)cbhandleinput);
+	ae_editor_action_add_input_handler(mod->ae_editor_action, mod, (ap_module_default_t)cbhandleinput);
 	return TRUE;
 }
 
@@ -245,6 +243,15 @@ void ae_transform_tool_set_target(
 	mod->target_base = target_base;
 	mod->target_height = target_height;
 	mod->initial_pos = *position;
+}
+
+void ae_transform_tool_switch_translate(struct ae_transform_tool_module * mod)
+{
+	assert(mod->target_base != NULL);
+	mod->transform_type = TRANSFORM_TRANSLATE;
+	mod->axis = BOUND_AXIS_NONE;
+	mod->dx = 0.0f;
+	mod->dy = 0.0f;
 }
 
 void ae_transform_tool_cancel_target(struct ae_transform_tool_module * mod)

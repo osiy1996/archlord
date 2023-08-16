@@ -24,6 +24,8 @@ void ae_transform_tool_set_target(
 	const struct au_pos * position,
 	float target_height);
 
+void ae_transform_tool_switch_translate(struct ae_transform_tool_module * mod);
+
 void ae_transform_tool_cancel_target(struct ae_transform_tool_module * mod);
 
 END_DECLS

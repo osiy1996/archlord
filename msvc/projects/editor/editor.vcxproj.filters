@@ -438,6 +438,9 @@
     <ClInclude Include="..\..\..\source\editor\ae_transform_tool.h">
       <Filter>source\editor</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\editor\ae_event_auction.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\core\hash_map.c">
@@ -789,6 +792,9 @@
       <Filter>source\editor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\editor\ae_transform_tool.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\editor\ae_event_auction.cpp">
       <Filter>source\editor</Filter>
     </ClCompile>
   </ItemGroup>

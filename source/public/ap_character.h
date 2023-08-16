@@ -1011,6 +1011,12 @@ boolean ap_character_read_static(
 	const char * file_path, 
 	boolean decrypt);
 
+boolean ap_character_write_static(
+	struct ap_character_module * mod,
+	const char * file_path, 
+	boolean encrypt,
+	struct ap_admin * admin);
+
 boolean ap_character_read_import_data(
 	struct ap_character_module * mod,
 	const char * file_path, 
@@ -1066,6 +1072,10 @@ void ap_character_set_template(
 struct ap_character_template * ap_character_get_template(
 	struct ap_character_module * mod,
 	uint32_t tid);
+
+struct ap_character_template * ap_character_iterate_templates(
+	struct ap_character_module * mod,
+	size_t * index);
 
 void ap_character_move(
 	struct ap_character_module * mod,

@@ -1,14 +1,12 @@
-#include <assert.h>
-#include <stdarg.h>
-#include <stdlib.h>
+#include "public/ap_character.h"
 
 #include "core/file_system.h"
 #include "core/log.h"
 #include "core/malloc.h"
 #include "core/string.h"
+#include "core/vector.h"
 
 #include "public/ap_admin.h"
-#include "public/ap_character.h"
 #include "public/ap_define.h"
 #include "public/ap_item.h"
 #include "public/ap_module.h"
@@ -18,6 +16,10 @@
 
 #include "utility/au_packet.h"
 #include "utility/au_table.h"
+
+#include <assert.h>
+#include <stdarg.h>
+#include <stdlib.h>
 
 #define MAX_GROW_UP_FACTOR_COUNT 20
 
@@ -132,7 +134,7 @@ boolean apchar_template_read(
 	return TRUE;
 }
 
-boolean apchar_static_read(
+boolean cbstaticread(
 	struct ap_character_module * mod,
 	struct ap_character * character, 
 	struct ap_module_stream * stream)
@@ -188,6 +190,24 @@ boolean apchar_static_read(
 		}
 	}
 	return TRUE;
+}
+
+boolean cbstaticwrite(
+	struct ap_character_module * mod,
+	struct ap_character * character, 
+	struct ap_module_stream * stream)
+{
+	boolean r = TRUE;
+	char buffer[256];
+	r &= ap_module_stream_write_value(stream, INI_NAME_NAME, character->name);
+	r &= ap_module_stream_write_i32(stream, INI_NAME_TID, character->tid);
+	snprintf(buffer, sizeof(buffer), "%f,%f,%f", character->pos.x, 
+		character->pos.y, character->pos.z);
+	r &= ap_module_stream_write_value(stream, INI_NAME_POSITION, buffer);
+	snprintf(buffer, sizeof(buffer), "%f,%f", character->rotation_x, 
+		character->rotation_y);
+	r &= ap_module_stream_write_value(stream, INI_NAME_DEGREE, buffer);
+	return r;
 }
 
 boolean apchar_read_import(
@@ -1167,7 +1187,7 @@ struct ap_character_module * ap_character_create_module()
 	ap_character_add_stream_callback(ctx, AP_CHARACTER_MDI_TEMPLATE, 
 		"AgpmCharacter", ctx, apchar_template_read, NULL);
 	ap_character_add_stream_callback(ctx, AP_CHARACTER_MDI_STATIC, 
-		"AgpmCharacter", ctx, apchar_static_read, NULL);
+		"AgpmCharacter", ctx, cbstaticread, cbstaticwrite);
 	return ctx;
 }
 
@@ -1287,6 +1307,61 @@ boolean ap_character_read_static(
 	}
 	ap_module_stream_destroy(stream);
 	INFO("Loaded %u static characters.", count);
+	return TRUE;
+}
+
+static int sortstatic(
+	const struct ap_character * const * s1,
+	const struct ap_character * const * s2)
+{
+	return ((*s1)->id - (*s2)->id);
+}
+
+boolean ap_character_write_static(
+	struct ap_character_module * mod,
+	const char * file_path, 
+	boolean encrypt,
+	struct ap_admin * admin)
+{
+	struct ap_module_stream * stream;
+	size_t index = 0;
+	size_t count = 0;
+	void * object;
+	struct ap_character * npc;
+	struct ap_character ** list = vec_new_reserved(sizeof(*list), 
+		ap_admin_get_object_count(admin));
+	stream = ap_module_stream_create();
+	ap_module_stream_set_mode(stream, AU_INI_MGR_MODE_NAME_OVERWRITE);
+	ap_module_stream_set_type(stream, AU_INI_MGR_TYPE_NORMAL);
+	while (ap_admin_iterate_id(admin, &index, &object))
+		vec_push_back((void **)&list, object);
+	count = vec_count(list);
+	qsort(list, count, sizeof(*list), sortstatic);
+	for (index = 0; index < count; index++) {
+		char name[32];
+		npc = list[index];
+		snprintf(name, sizeof(name), "%u", npc->id);
+		if (!ap_module_stream_set_section_name(stream, name)) {
+			ERROR("Failed to set section name.");
+			ap_module_stream_destroy(stream);
+			vec_free(list);
+			return FALSE;
+		}
+		if (!ap_module_stream_enum_write(mod, stream, 
+				AP_CHARACTER_MDI_STATIC, npc)) {
+			ERROR("Failed to write static character (%s).", name);
+			ap_module_stream_destroy(stream);
+			vec_free(list);
+			return FALSE;
+		}
+	}
+	vec_free(list);
+	if (!ap_module_stream_write(stream, file_path, 0, encrypt)) {
+		ERROR("Failed to write static characters.");
+		ap_module_stream_destroy(stream);
+		return FALSE;
+	}
+	ap_module_stream_destroy(stream);
 	return TRUE;
 }
 
@@ -1414,6 +1489,17 @@ struct ap_character_template * ap_character_get_template(
 	if (!obj)
 		return NULL;
 	return *obj;
+}
+
+struct ap_character_template * ap_character_iterate_templates(
+	struct ap_character_module * mod,
+	size_t * index)
+{
+	void * obj;
+	if (ap_admin_iterate_id(&mod->template_admin, index, &obj))
+		return *(struct ap_character_template **)obj;
+	else
+		return NULL;
 }
 
 void ap_character_move(

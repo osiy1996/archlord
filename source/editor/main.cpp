@@ -89,6 +89,7 @@
 #include "client/ac_texture.h"
 
 #include "editor/ae_editor_action.h"
+#include "editor/ae_event_auction.h"
 #include "editor/ae_event_binding.h"
 #include "editor/ae_event_refinery.h"
 #include "editor/ae_event_teleport.h"
@@ -185,6 +186,7 @@ static struct ac_terrain_module * g_AcTerrain;
 static struct ac_texture_module * g_AcTexture;
 
 static struct ae_editor_action_module * g_AeEditorAction;
+static struct ae_event_auction_module * g_AeEventAuction;
 static struct ae_event_binding_module * g_AeEventBinding;
 static struct ae_event_refinery_module * g_AeEventRefinery;
 static struct ae_event_teleport_module * g_AeEventTeleport;
@@ -242,6 +244,7 @@ static struct module_desc g_Modules[] = {
 	{ AP_EVENT_QUEST_MODULE_NAME, ap_event_quest_create_module, NULL, &g_ApEventQuest },
 	{ AP_EVENT_TELEPORT_MODULE_NAME, ap_event_teleport_create_module, NULL, &g_ApEventTeleport },
 	{ AP_EVENT_REFINERY_MODULE_NAME, ap_event_refinery_create_module, NULL, &g_ApEventRefinery },
+	{ AP_AUCTION_MODULE_NAME, ap_auction_create_module, NULL, &g_ApAuction },
 	{ AP_SERVICE_NPC_MODULE_NAME, ap_service_npc_create_module, NULL, &g_ApServiceNpc },
 	{ AP_OPTIMIZED_PACKET2_MODULE_NAME, ap_optimized_packet2_create_module, NULL, &g_ApOptimizedPacket2 },
 	{ AP_CHAT_MODULE_NAME, ap_chat_create_module, NULL, &g_ApChat },
@@ -270,6 +273,7 @@ static struct module_desc g_Modules[] = {
 	{ AE_TERRAIN_MODULE_NAME, ae_terrain_create_module, NULL, &g_AeTerrain },
 	{ AE_TRANSFORM_TOOL_MODULE_NAME, ae_transform_tool_create_module, NULL, &g_AeTransformTool },
 	{ AE_MAP_MODULE_NAME, ae_map_create_module, NULL, &g_AeMap },
+	{ AE_EVENT_AUCTION_MODULE_NAME, ae_event_auction_create_module, NULL, &g_AeEventAuction },
 	{ AE_EVENT_BINDING_MODULE_NAME, ae_event_binding_create_module, NULL, &g_AeEventBinding },
 	{ AE_EVENT_REFINERY_MODULE_NAME, ae_event_refinery_create_module, NULL, &g_AeEventRefinery },
 	{ AE_EVENT_TELEPORT_MODULE_NAME, ae_event_teleport_create_module, NULL, &g_AeEventTeleport },
@@ -750,6 +754,7 @@ static void render(struct ac_camera * cam, float dt)
 	ac_imgui_begin_toolbox(g_AcImgui);
 	ae_terrain_toolbox(g_AeTerrain);
 	ac_imgui_end_toolbox(g_AcImgui);
+	ae_editor_action_render_add_menu(g_AeEditorAction);
 	ac_imgui_render(g_AcImgui);
 	//ar_dd_begin();
 	//ar_dd_end();
@@ -825,6 +830,7 @@ static void handleinput(
 	struct ac_camera * cam,
 	struct camera_controls * ctrl)
 {
+	const boolean * state = ac_render_get_key_state(g_AcRender);
 	if (ac_imgui_process_event(g_AcImgui, e))
 		return;
 	if (ac_render_process_window_event(g_AcRender, e))
@@ -853,18 +859,16 @@ static void handleinput(
 			if (mb_state & SDL_BUTTON(SDL_BUTTON_RIGHT))
 				break;
 			ae_terrain_on_mdown(g_AeTerrain, cam, e->button.x, e->button.y);
+			ae_editor_action_pick(g_AeEditorAction, cam, e->button.x, e->button.y);
 		}
 		break;
 	case SDL_MOUSEBUTTONUP:
-		if (e->button.button == SDL_BUTTON_LEFT) {
-			ae_editor_action_pick(g_AeEditorAction, cam, 
-				e->button.x, e->button.y);
-		}
 		break;
 	case SDL_KEYDOWN:
-		if (ae_terrain_on_key_down(g_AeTerrain, e->key.keysym.sym)) {
+		if (ae_terrain_on_key_down(g_AeTerrain, e->key.keysym.sym))
 			break;
-		}
+		if (ae_object_on_key_down(g_AeObject, cam, e->key.keysym.sym))
+			break;
 		on_keydown_cam(ctrl, ac_render_get_key_state(g_AcRender), &e->key);
 		break;
 	case SDL_KEYUP:
