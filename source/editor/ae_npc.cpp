@@ -14,6 +14,7 @@
 #include "public/ap_admin.h"
 #include "public/ap_character.h"
 #include "public/ap_config.h"
+#include "public/ap_event_manager.h"
 #include "public/ap_map.h"
 #include "public/ap_sector.h"
 
@@ -26,7 +27,6 @@
 #include "client/ac_terrain.h"
 
 #include "editor/ae_editor_action.h"
-#include "editor/ae_event_auction.h"
 #include "editor/ae_transform_tool.h"
 
 #include <assert.h>
@@ -45,7 +45,6 @@ struct ae_npc_module {
 	struct ac_render_module * ac_render;
 	struct ac_terrain_module * ac_terrain;
 	struct ae_editor_action_module * ae_editor_action;
-	struct ae_event_auction_module * ae_event_auction;
 	struct ae_transform_tool_module * ae_transform_tool;
 	struct ap_admin npc_admin;
 	bgfx_program_handle_t program;
@@ -472,6 +471,48 @@ static boolean npctransform(struct ae_npc_module * mod, struct ap_character * np
 	return (move | changed);
 }
 
+static boolean rendereventfunction(
+	struct ae_npc_module * mod,
+	enum ap_event_manager_function_type function,
+	const char * checkbox_id,
+	const char * label,
+	void * source,
+	struct ap_event_manager_attachment * attachment)
+{
+	static bool checkbox;
+	uint32_t i;
+	uint32_t index;
+	struct ap_event_manager_event * e = NULL;
+	bool changed;
+	for (i = 0 ; i < attachment->event_count; i++) {
+		if (attachment->events[i].function == function) {
+			index = i;
+			e = &attachment->events[i];
+			break;
+		}
+	}
+	checkbox = e != NULL;
+	changed = ImGui::Checkbox(checkbox_id, &checkbox);
+	ImGui::SameLine();
+	ImGui::Text(label);
+	if (changed) {
+		if (checkbox) {
+			if (!e) {
+				e = ap_event_manager_add_function(mod->ap_event_manager, attachment,
+					function, source);
+				if (!e)
+					return FALSE;
+				return TRUE;
+			}
+		}
+		else if (e) {
+			ap_event_manager_remove_function(mod->ap_event_manager, attachment, index);
+			return TRUE;
+		}
+	}
+	return FALSE;
+}
+
 static boolean cbrenderproperties(struct ae_npc_module * mod, void * data)
 {
 	struct ap_character * npc = mod->active_npc;
@@ -480,15 +521,33 @@ static boolean cbrenderproperties(struct ae_npc_module * mod, void * data)
 	char label[128];
 	if (!npc)
 		return TRUE;
-	ImGui::InputScalar("NPC ID", ImGuiDataType_U32, 
+	ImGui::InputScalar("ID", ImGuiDataType_U32, 
 		&npc->id, NULL, NULL, NULL, 
 		ImGuiInputTextFlags_ReadOnly);
+	ImGui::InputText("Name", npc->name, sizeof(npc->name));
 	snprintf(label, sizeof(label), "[%u] %s", npc->tid, npc->temp->name);
 	if (ImGui::Button(label, ImVec2(ImGui::GetContentRegionAvail().x, 25.0f)))
 		mod->select_npc_template = true;
 	changed |= npctransform(mod, npc);
 	eventattachment = ap_event_manager_get_attachment(mod->ap_event_manager, npc);
-	changed |= ae_event_auction_render_as_node(mod->ae_event_auction, npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_AUCTION, 
+		"##EventAuctionEnabled", "Event Function (Auction)", npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_BANK, 
+		"##EventBankEnabled", "Event Function (Bank)", npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_GUILD, 
+		"##EventGuildEnabled", "Event Function (Guild)", npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_GUILD_WAREHOUSE, 
+		"##EventGuildBankEnabled", "Event Function (Guild Bank)", npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_REMISSION, 
+		"##EventRemissionEnabled", "Event Function (Remission)", npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_SIEGEWAR_NPC, 
+		"##EventSiegeEnabled", "Event Function (Siege)", npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_TAX, 
+		"##EventTaxEnabled", "Event Function (Tax)", npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_ITEMCONVERT, 
+		"##EventUpgradeEnabled", "Event Function (Upgrade)", npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_WANTEDCRIMINAL, 
+		"##EventWantedEnabled", "Event Function (Wanted)", npc, eventattachment);
 	if (changed)
 		mod->has_pending_changes = TRUE;
 	return TRUE;
@@ -549,7 +608,6 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_render, AC_RENDER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_terrain, AC_TERRAIN_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_editor_action, AE_EDITOR_ACTION_MODULE_NAME);
-	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_event_auction, AE_EVENT_AUCTION_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ae_transform_tool, AE_TRANSFORM_TOOL_MODULE_NAME);
 	ap_character_add_callback(mod->ap_character, AP_CHARACTER_CB_INIT_STATIC, mod, (ap_module_default_t)cbcharinitstatic);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_COMMIT_CHANGES, mod, (ap_module_default_t)cbcommitchanges);

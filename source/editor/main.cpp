@@ -89,7 +89,6 @@
 #include "client/ac_texture.h"
 
 #include "editor/ae_editor_action.h"
-#include "editor/ae_event_auction.h"
 #include "editor/ae_event_binding.h"
 #include "editor/ae_event_refinery.h"
 #include "editor/ae_event_teleport.h"
@@ -273,7 +272,6 @@ static struct module_desc g_Modules[] = {
 	{ AE_TERRAIN_MODULE_NAME, ae_terrain_create_module, NULL, &g_AeTerrain },
 	{ AE_TRANSFORM_TOOL_MODULE_NAME, ae_transform_tool_create_module, NULL, &g_AeTransformTool },
 	{ AE_MAP_MODULE_NAME, ae_map_create_module, NULL, &g_AeMap },
-	{ AE_EVENT_AUCTION_MODULE_NAME, ae_event_auction_create_module, NULL, &g_AeEventAuction },
 	{ AE_EVENT_BINDING_MODULE_NAME, ae_event_binding_create_module, NULL, &g_AeEventBinding },
 	{ AE_EVENT_REFINERY_MODULE_NAME, ae_event_refinery_create_module, NULL, &g_AeEventRefinery },
 	{ AE_EVENT_TELEPORT_MODULE_NAME, ae_event_teleport_create_module, NULL, &g_AeEventTeleport },
