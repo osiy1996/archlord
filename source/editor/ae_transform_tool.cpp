@@ -36,6 +36,7 @@ struct ae_transform_tool_module {
 	enum transform_type transform_type;
 	enum bound_axis axis;
 	struct au_pos initial_pos;
+	struct au_pos pos;
 	float dx;
 	float dy;
 	ap_module_t callback_module;
@@ -44,12 +45,20 @@ struct ae_transform_tool_module {
 	float target_height;
 };
 
+static inline void updatepos(
+	struct ae_transform_tool_module * mod, 
+	const struct au_pos * pos)
+{
+	mod->pos = *pos;
+	if (mod->translate_cb)
+		mod->translate_cb(mod->callback_module, pos);
+}
+
 static inline void bindtoaxis(
 	struct ae_transform_tool_module * mod,
 	enum bound_axis axis)
 {
-	if (mod->translate_cb)
-		mod->translate_cb(mod->callback_module, &mod->initial_pos);
+	updatepos(mod, &mod->initial_pos);
 	mod->axis = axis;
 }
 
@@ -85,13 +94,13 @@ static void applytranslate(
 		ac_camera_right(cam, right);
 		pos.x = mod->initial_pos.x + right[0] * mod->dx;
 		pos.z = mod->initial_pos.z + right[2] * mod->dx;
-		mod->translate_cb(mod->callback_module, &pos);
+		updatepos(mod, &pos);
 		break;
 	}
 	case BOUND_AXIS_Y: {
 		struct au_pos pos = mod->initial_pos;
 		pos.y = mod->initial_pos.y - mod->dy;
-		mod->translate_cb(mod->callback_module, &pos);
+		updatepos(mod, &pos);
 		break;
 	}
 	case BOUND_AXIS_Z: {
@@ -100,7 +109,7 @@ static void applytranslate(
 		ac_camera_front(cam, front);
 		pos.x = mod->initial_pos.x - front[0] * mod->dy;
 		pos.z = mod->initial_pos.z - front[2] * mod->dy;
-		mod->translate_cb(mod->callback_module, &pos);
+		updatepos(mod, &pos);
 		break;
 	}
 	}
@@ -132,7 +141,7 @@ static boolean cbhandleinput(
 						pos.x = point[0],
 						pos.y = point[1] - mod->target_height,
 						pos.z = point[2] };
-					mod->translate_cb(mod->callback_module, &pos);
+					updatepos(mod, &pos);
 				}
 				break;
 			}
@@ -155,7 +164,7 @@ static boolean cbhandleinput(
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
 			switch (mod->transform_type) {
 			case TRANSFORM_TRANSLATE:
-				mod->translate_cb(mod->callback_module, &mod->initial_pos);
+				updatepos(mod, &mod->initial_pos);
 				mod->transform_type = TRANSFORM_NONE;
 				return TRUE;
 			}
@@ -199,7 +208,7 @@ static boolean cbhandleinput(
 		case SDLK_ESCAPE:
 			switch (mod->transform_type) {
 			case TRANSFORM_TRANSLATE:
-				mod->translate_cb(mod->callback_module, &mod->initial_pos);
+				updatepos(mod, &mod->initial_pos);
 				mod->transform_type = TRANSFORM_NONE;
 				return TRUE;
 			}
@@ -230,6 +239,15 @@ struct ae_transform_tool_module * ae_transform_tool_create_module()
 	return mod;
 }
 
+void ae_transform_tool_add_callback(
+	struct ae_transform_tool_module * mod,
+	enum ae_transform_tool_callback_id id,
+	ap_module_t callback_module,
+	ap_module_default_t callback)
+{
+	ap_module_add_callback(mod, id, callback_module, callback);
+}
+
 void ae_transform_tool_set_target(
 	struct ae_transform_tool_module * mod,
 	ap_module_t callback_module,
@@ -238,11 +256,14 @@ void ae_transform_tool_set_target(
 	const struct au_pos * position,
 	float target_height)
 {
+	if (mod->target_base)
+		ae_transform_tool_cancel_target(mod);
 	mod->callback_module = callback_module;
 	mod->translate_cb = translate_cb;
 	mod->target_base = target_base;
 	mod->target_height = target_height;
 	mod->initial_pos = *position;
+	mod->pos = *position;
 }
 
 void ae_transform_tool_switch_translate(struct ae_transform_tool_module * mod)
@@ -260,9 +281,22 @@ void ae_transform_tool_cancel_target(struct ae_transform_tool_module * mod)
 		return;
 	switch (mod->transform_type) {
 	case TRANSFORM_TRANSLATE:
-		mod->translate_cb(mod->callback_module, &mod->initial_pos);
+		updatepos(mod, &mod->initial_pos);
 		break;
 	}
 	mod->target_base = NULL;
 	mod->transform_type = TRANSFORM_NONE;
+	ap_module_enum_callback(mod, AE_TRANSFORM_TOOL_CB_CANCEL_TARGET, NULL);
+}
+
+boolean ae_transform_tool_complete_transform(struct ae_transform_tool_module * mod)
+{
+	if (!mod->target_base)
+		return FALSE;
+	switch (mod->transform_type) {
+	case TRANSFORM_TRANSLATE:
+		mod->initial_pos = mod->pos;
+		return TRUE;
+	}
+	return FALSE;
 }

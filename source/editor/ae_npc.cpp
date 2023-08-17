@@ -580,8 +580,6 @@ static void cbtooltranslate(
 {
 	if (mod->active_npc)
 		ap_character_move(mod->ap_character, mod->active_npc, pos);
-	else
-		ae_transform_tool_cancel_target(mod->ae_transform_tool);
 }
 
 static void settooltarget(struct ae_npc_module * mod, struct ap_character * npc)
@@ -638,6 +636,7 @@ static void renderaddnpcpopup(struct ae_npc_module * mod)
 			}
 			npc->login_status = AP_CHARACTER_STATUS_IN_GAME_WORLD;
 			npc->char_type = AP_CHARACTER_TYPE_NPC;
+			npc->pos = pos;
 			npc->npc_display_for_map = TRUE;
 			npc->npc_display_for_nameboard = TRUE;
 			ap_character_set_template(mod->ap_character, npc, temp);
@@ -655,8 +654,8 @@ static void renderaddnpcpopup(struct ae_npc_module * mod)
 				assert(0);
 				continue;
 			}
-			mod->active_npc = npc;
 			settooltarget(mod, npc);
+			mod->active_npc = npc;
 			ae_transform_tool_switch_translate(mod->ae_transform_tool);
 			mod->add_npc = false;
 			mod->has_pending_changes = TRUE;
@@ -799,10 +798,10 @@ static boolean cbpick(
 {
 	struct ap_character * npc;
 	struct au_pos eye;
-	if (mod->active_npc) {
+	if (ae_transform_tool_complete_transform(mod->ae_transform_tool))
+		return TRUE;
+	if (mod->active_npc)
 		ae_transform_tool_cancel_target(mod->ae_transform_tool);
-		mod->active_npc = NULL;
-	}
 	npc = picknpc(mod, cb->camera, cb->x, cb->y);
 	if (!npc)
 		return TRUE;
@@ -812,8 +811,8 @@ static boolean cbpick(
 	if (!cb->picked_any) {
 		cb->picked_any = TRUE;
 		cb->distance = au_distance2d(&npc->pos, &eye);
-		mod->active_npc = npc;
 		settooltarget(mod, npc);
+		mod->active_npc = npc;
 	}
 	return TRUE;
 }
@@ -837,8 +836,10 @@ static boolean cbhandleinput(
 		switch (e->key.keysym.sym) {
 		case SDLK_DELETE:
 			if (mod->active_npc) {
-				ap_admin_remove_object_by_id(&mod->npc_admin, mod->active_npc->id);
-				ap_character_free(mod->ap_character, mod->active_npc);
+				struct ap_character * npc = mod->active_npc;
+				ae_transform_tool_cancel_target(mod->ae_transform_tool);
+				ap_admin_remove_object_by_id(&mod->npc_admin, npc->id);
+				ap_character_free(mod->ap_character, npc);
 				mod->active_npc = NULL;
 			}
 			break;
@@ -869,6 +870,13 @@ static boolean cbrenderaddmenu(struct ae_npc_module * mod, void * data)
 	return FALSE;
 }
 
+static boolean cbtransformcanceltarget(struct ae_npc_module * mod, void * data)
+{
+	if (mod->active_npc)
+		mod->active_npc = NULL;
+	return TRUE;
+}
+
 static boolean onregister(
 	struct ae_npc_module * mod,
 	struct ap_module_registry * registry)
@@ -892,6 +900,7 @@ static boolean onregister(
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_ADD_MENU, mod, (ap_module_default_t)cbrenderaddmenu);
 	ae_editor_action_add_view_menu_callback(mod->ae_editor_action, "NPC Editor", mod, (ap_module_default_t)cbrenderviewmenu);
 	ae_editor_action_add_input_handler(mod->ae_editor_action, mod, (ap_module_default_t)cbhandleinput);
+	ae_transform_tool_add_callback(mod->ae_transform_tool, AE_TRANSFORM_TOOL_CB_CANCEL_TARGET, mod, (ap_module_default_t)cbtransformcanceltarget);
 	return TRUE;
 }
 

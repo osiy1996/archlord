@@ -145,8 +145,10 @@ static boolean cbobjecttemplatedtor(
 static boolean cbobjectdtor(struct ae_object_module * mod, struct ap_object * obj)
 {
 	assert(obj != NULL);
-	if (mod->active_object == obj)
+	if (mod->active_object == obj) {
+		ae_transform_tool_cancel_target(mod->ae_transform_tool);
 		mod->active_object = NULL;
+	}
 	return TRUE;
 }
 
@@ -372,8 +374,6 @@ static void cbtooltranslate(
 {
 	if (mod->active_object)
 		ap_object_move_object(mod->ap_object, mod->active_object, pos);
-	else
-		ae_transform_tool_cancel_target(mod->ae_transform_tool);
 }
 
 static float getminheight(struct ae_object_module * mod, struct ap_object * obj)
@@ -399,10 +399,10 @@ static boolean cbpick(
 {
 	struct ap_object * obj;
 	struct au_pos eye;
-	if (mod->active_object) {
+	if (ae_transform_tool_complete_transform(mod->ae_transform_tool))
+		return TRUE;
+	if (mod->active_object)
 		ae_transform_tool_cancel_target(mod->ae_transform_tool);
-		mod->active_object = NULL;
-	}
 	obj = pick_object(mod, cb->camera, cb->x, cb->y);
 	if (!obj)
 		return TRUE;
@@ -412,8 +412,8 @@ static boolean cbpick(
 	if (!cb->picked_any) {
 		cb->picked_any = TRUE;
 		cb->distance = au_distance2d(&obj->position, &eye);
-		mod->active_object = obj;
 		settooltarget(mod, obj);
+		mod->active_object = obj;
 	}
 	return TRUE;
 }
@@ -426,10 +426,8 @@ static void cbrenderoutliner(
 	vec_clear(mod->objects);
 	ac_object_query_visible_objects(mod->ac_object, &mod->objects);
 	clipper.Begin((int)vec_count(mod->objects));
-	if (cb->selected_new_entity && mod->active_object) {
+	if (cb->selected_new_entity && mod->active_object)
 		ae_transform_tool_cancel_target(mod->ae_transform_tool);
-		mod->active_object = NULL;
-	}
 	while (clipper.Step()) {
 		for (int i = clipper.DisplayStart; i < clipper.DisplayEnd; i++) {
 			struct ap_object * obj = mod->objects[i];
@@ -439,9 +437,9 @@ static void cbrenderoutliner(
 			if (ImGui::Selectable(label, obj == mod->active_object) && 
 				!cb->selected_new_entity) {
 				ae_transform_tool_cancel_target(mod->ae_transform_tool);
-				mod->active_object = obj;
 				cb->selected_new_entity = TRUE;
 				settooltarget(mod, obj);
+				mod->active_object = obj;
 			}
 		}
 	}
@@ -506,6 +504,13 @@ static boolean cbrenderaddmenu(struct ae_object_module * mod, void * data)
 	return FALSE;
 }
 
+static boolean cbtransformcanceltarget(struct ae_object_module * mod, void * data)
+{
+	if (mod->active_object)
+		mod->active_object = NULL;
+	return TRUE;
+}
+
 static boolean onregister(
 	struct ae_object_module * mod,
 	struct ap_module_registry * registry)
@@ -536,6 +541,7 @@ static boolean onregister(
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_OUTLINER, mod, (ap_module_default_t)cbrenderoutliner);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_PROPERTIES, mod, (ap_module_default_t)cbrenderproperties);
 	ae_editor_action_add_callback(mod->ae_editor_action, AE_EDITOR_ACTION_CB_RENDER_ADD_MENU, mod, (ap_module_default_t)cbrenderaddmenu);
+	ae_transform_tool_add_callback(mod->ae_transform_tool, AE_TRANSFORM_TOOL_CB_CANCEL_TARGET, mod, (ap_module_default_t)cbtransformcanceltarget);
 	return TRUE;
 }
 
@@ -609,7 +615,9 @@ boolean ae_object_on_key_down(
 		break;
 	case SDLK_DELETE:
 		if (mod->active_object) {
-			ap_object_destroy(mod->ap_object, mod->active_object);
+			struct ap_object * obj = mod->active_object;
+			ae_transform_tool_cancel_target(mod->ae_transform_tool);
+			ap_object_destroy(mod->ap_object, obj);
 			mod->active_object = NULL;
 		}
 		break;
@@ -708,8 +716,8 @@ static void renderaddobjectpopup(struct ae_object_module * mod)
 			objc->object_type = attachment->object_type;
 			ap_object_move_object(mod->ap_object, obj, &pos);
 			ac_object_reference_template(mod->ac_object, attachment);
-			mod->active_object = obj;
 			settooltarget(mod, obj);
+			mod->active_object = obj;
 			ae_transform_tool_switch_translate(mod->ae_transform_tool);
 			mod->add_object = false;
 			break;
