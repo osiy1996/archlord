@@ -15,6 +15,11 @@
 #include "public/ap_character.h"
 #include "public/ap_config.h"
 #include "public/ap_event_manager.h"
+#include "public/ap_event_npc_dialog.h"
+#include "public/ap_event_npc_trade.h"
+#include "public/ap_event_product.h"
+#include "public/ap_event_skill_master.h"
+#include "public/ap_event_quest.h"
 #include "public/ap_map.h"
 #include "public/ap_sector.h"
 
@@ -40,6 +45,8 @@ struct ae_npc_module {
 	struct ap_config_module * ap_config;
 	struct ap_character_module * ap_character;
 	struct ap_event_manager_module * ap_event_manager;
+	struct ap_event_npc_dialog_module * ap_event_npc_dialog;
+	struct ap_event_npc_trade_module * ap_event_npc_trade;
 	struct ac_camera_module * ac_camera;
 	struct ac_character_module * ac_character;
 	struct ac_render_module * ac_render;
@@ -125,6 +132,367 @@ static inline size_t eraseinedit(
 	return index;
 }
 
+static boolean npctransform(struct ae_npc_module * mod, struct ap_character * npc)
+{
+	struct au_pos pos = npc->pos;
+	bool move = false;
+	bool changed = false;
+	move |= ImGui::DragFloat("Position X", &pos.x);
+	move |= ImGui::DragFloat("Position Y", &pos.y);
+	move |= ImGui::DragFloat("Position Z", &pos.z);
+	changed |= ImGui::DragFloat("Rotation X", &npc->rotation_x);
+	changed |= ImGui::DragFloat("Rotation Y", &npc->rotation_y);
+	if (move)
+		ap_character_move(mod->ap_character, npc, &pos);
+	return (move | changed);
+}
+
+static boolean rendereventfunction(
+	struct ae_npc_module * mod,
+	enum ap_event_manager_function_type function,
+	const char * checkbox_id,
+	const char * label,
+	void * source,
+	struct ap_event_manager_attachment * attachment)
+{
+	static bool checkbox;
+	uint32_t i;
+	uint32_t index;
+	struct ap_event_manager_event * e = NULL;
+	bool changed;
+	for (i = 0 ; i < attachment->event_count; i++) {
+		if (attachment->events[i].function == function) {
+			index = i;
+			e = &attachment->events[i];
+			break;
+		}
+	}
+	checkbox = e != NULL;
+	changed = ImGui::Checkbox(checkbox_id, &checkbox);
+	ImGui::SameLine();
+	ImGui::Text(label);
+	if (changed) {
+		if (checkbox) {
+			if (!e) {
+				e = ap_event_manager_add_function(mod->ap_event_manager, attachment,
+					function, source);
+				if (!e)
+					return FALSE;
+				return TRUE;
+			}
+		}
+		else if (e) {
+			ap_event_manager_remove_function(mod->ap_event_manager, attachment, index);
+			return TRUE;
+		}
+	}
+	return FALSE;
+}
+
+static boolean rendereventtrade(
+	struct ae_npc_module * mod,
+	void * source,
+	struct ap_event_manager_attachment * attachment)
+{
+	static bool checkbox;
+	uint32_t i;
+	uint32_t index;
+	struct ap_event_manager_event * e = NULL;
+	struct ap_event_npc_trade_data * eventtrade;
+	bool changed;
+	bool nodeopen;
+	uint32_t template_id;
+	for (i = 0 ; i < attachment->event_count; i++) {
+		if (attachment->events[i].function == AP_EVENT_MANAGER_FUNCTION_NPCTRADE) {
+			index = i;
+			e = &attachment->events[i];
+			break;
+		}
+	}
+	checkbox = e != NULL;
+	changed = ImGui::Checkbox("##EventNPCTradeEnabled", &checkbox);
+	ImGui::SameLine();
+	nodeopen = ImGui::TreeNodeEx("Event Function (Trade)", ImGuiTreeNodeFlags_Framed);
+	if (!e) {
+		if (nodeopen)
+			ImGui::TreePop();
+		if (changed && checkbox) {
+			e = ap_event_manager_add_function(mod->ap_event_manager, attachment,
+				AP_EVENT_MANAGER_FUNCTION_NPCTRADE, source);
+			if (!e)
+				return FALSE;
+			return TRUE;
+		}
+		return FALSE;
+	}
+	eventtrade = (struct ap_event_npc_trade_data *)e->data;
+	if (changed && !checkbox) {
+		if (nodeopen)
+			ImGui::TreePop();
+		ap_event_manager_remove_function(mod->ap_event_manager, attachment, index);
+		return TRUE;
+	}
+	if (!nodeopen)
+		return FALSE;
+	changed = false;
+	template_id = eventtrade->npc_trade_template_id;
+	if (ImGui::InputScalar("Trade Template Id", ImGuiDataType_U32, &template_id)) {
+		struct ap_event_npc_trade_template * temp = 
+			ap_event_npc_trade_get_template(mod->ap_event_npc_trade, template_id);
+		if (temp) {
+			eventtrade->npc_trade_template_id = template_id;
+			eventtrade->temp = temp;
+			changed = true;
+		}
+	}
+	ImGui::TreePop();
+	return changed;
+}
+
+static boolean rendereventdialog(
+	struct ae_npc_module * mod,
+	void * source,
+	struct ap_event_manager_attachment * attachment)
+{
+	static bool checkbox;
+	uint32_t i;
+	uint32_t index;
+	struct ap_event_manager_event * e = NULL;
+	struct ap_event_npc_dialog_data * eventdialog;
+	bool changed;
+	bool nodeopen;
+	for (i = 0 ; i < attachment->event_count; i++) {
+		if (attachment->events[i].function == AP_EVENT_MANAGER_FUNCTION_NPCDIALOG) {
+			index = i;
+			e = &attachment->events[i];
+			break;
+		}
+	}
+	checkbox = e != NULL;
+	changed = ImGui::Checkbox("##EventNPCDialogEnabled", &checkbox);
+	ImGui::SameLine();
+	nodeopen = ImGui::TreeNodeEx("Event Function (Dialog)", ImGuiTreeNodeFlags_Framed);
+	if (!e) {
+		if (nodeopen)
+			ImGui::TreePop();
+		if (changed && checkbox) {
+			e = ap_event_manager_add_function(mod->ap_event_manager, attachment,
+				AP_EVENT_MANAGER_FUNCTION_NPCDIALOG, source);
+			if (!e)
+				return FALSE;
+			return TRUE;
+		}
+		return FALSE;
+	}
+	eventdialog = (struct ap_event_npc_dialog_data *)e->data;
+	if (changed && !checkbox) {
+		if (nodeopen)
+			ImGui::TreePop();
+		ap_event_manager_remove_function(mod->ap_event_manager, attachment, index);
+		return TRUE;
+	}
+	if (!nodeopen)
+		return FALSE;
+	changed = ImGui::InputScalar("Dialog Text Id", ImGuiDataType_U32, 
+		&eventdialog->npc_dialog_text_id);
+	ImGui::TreePop();
+	return changed;
+}
+
+static boolean rendereventproduct(
+	struct ae_npc_module * mod,
+	void * source,
+	struct ap_event_manager_attachment * attachment)
+{
+	static bool checkbox;
+	uint32_t i;
+	uint32_t index;
+	struct ap_event_manager_event * e = NULL;
+	struct ap_event_product_event * eventproduct;
+	bool changed;
+	bool nodeopen;
+	for (i = 0 ; i < attachment->event_count; i++) {
+		if (attachment->events[i].function == AP_EVENT_MANAGER_FUNCTION_PRODUCT) {
+			index = i;
+			e = &attachment->events[i];
+			break;
+		}
+	}
+	checkbox = e != NULL;
+	changed = ImGui::Checkbox("##EventProductEnabled", &checkbox);
+	ImGui::SameLine();
+	nodeopen = ImGui::TreeNodeEx("Event Function (Product)", ImGuiTreeNodeFlags_Framed);
+	if (!e) {
+		if (nodeopen)
+			ImGui::TreePop();
+		if (changed && checkbox) {
+			e = ap_event_manager_add_function(mod->ap_event_manager, attachment,
+				AP_EVENT_MANAGER_FUNCTION_PRODUCT, source);
+			if (!e)
+				return FALSE;
+			return TRUE;
+		}
+		return FALSE;
+	}
+	eventproduct = (struct ap_event_product_event *)e->data;
+	if (changed && !checkbox) {
+		if (nodeopen)
+			ImGui::TreePop();
+		ap_event_manager_remove_function(mod->ap_event_manager, attachment, index);
+		return TRUE;
+	}
+	if (!nodeopen)
+		return FALSE;
+	changed = ImGui::InputScalar("Product Category", ImGuiDataType_U32, 
+		&eventproduct->product_category);
+	ImGui::TreePop();
+	return changed;
+}
+
+static boolean rendereventskillmaster(
+	struct ae_npc_module * mod,
+	void * source,
+	struct ap_event_manager_attachment * attachment)
+{
+	static bool checkbox;
+	uint32_t i;
+	uint32_t index;
+	struct ap_event_manager_event * e = NULL;
+	struct ap_event_skill_master_data * eventskillmaster;
+	bool changed;
+	bool nodeopen;
+	for (i = 0 ; i < attachment->event_count; i++) {
+		if (attachment->events[i].function == AP_EVENT_MANAGER_FUNCTION_SKILLMASTER) {
+			index = i;
+			e = &attachment->events[i];
+			break;
+		}
+	}
+	checkbox = e != NULL;
+	changed = ImGui::Checkbox("##EventSkillMasterEnabled", &checkbox);
+	ImGui::SameLine();
+	nodeopen = ImGui::TreeNodeEx("Event Function (Skill Master)", ImGuiTreeNodeFlags_Framed);
+	if (!e) {
+		if (nodeopen)
+			ImGui::TreePop();
+		if (changed && checkbox) {
+			e = ap_event_manager_add_function(mod->ap_event_manager, attachment,
+				AP_EVENT_MANAGER_FUNCTION_SKILLMASTER, source);
+			if (!e)
+				return FALSE;
+			return TRUE;
+		}
+		return FALSE;
+	}
+	eventskillmaster = (struct ap_event_skill_master_data *)e->data;
+	if (changed && !checkbox) {
+		if (nodeopen)
+			ImGui::TreePop();
+		ap_event_manager_remove_function(mod->ap_event_manager, attachment, index);
+		return TRUE;
+	}
+	if (!nodeopen)
+		return FALSE;
+	changed = ImGui::InputScalar("Race", ImGuiDataType_U32, 
+		&eventskillmaster->race);
+	changed = ImGui::InputScalar("Class", ImGuiDataType_U32, 
+		&eventskillmaster->class_);
+	ImGui::TreePop();
+	return changed;
+}
+
+static boolean rendereventquest(
+	struct ae_npc_module * mod,
+	void * source,
+	struct ap_event_manager_attachment * attachment)
+{
+	static bool checkbox;
+	uint32_t i;
+	uint32_t index;
+	struct ap_event_manager_event * e = NULL;
+	struct ap_event_quest_event * eventquest;
+	bool changed;
+	bool nodeopen;
+	for (i = 0 ; i < attachment->event_count; i++) {
+		if (attachment->events[i].function == AP_EVENT_MANAGER_FUNCTION_QUEST) {
+			index = i;
+			e = &attachment->events[i];
+			break;
+		}
+	}
+	checkbox = e != NULL;
+	changed = ImGui::Checkbox("##EventQuestEnabled", &checkbox);
+	ImGui::SameLine();
+	nodeopen = ImGui::TreeNodeEx("Event Function (Quest)", ImGuiTreeNodeFlags_Framed);
+	if (!e) {
+		if (nodeopen)
+			ImGui::TreePop();
+		if (changed && checkbox) {
+			e = ap_event_manager_add_function(mod->ap_event_manager, attachment,
+				AP_EVENT_MANAGER_FUNCTION_QUEST, source);
+			if (!e)
+				return FALSE;
+			return TRUE;
+		}
+		return FALSE;
+	}
+	eventquest = (struct ap_event_quest_event *)e->data;
+	if (changed && !checkbox) {
+		if (nodeopen)
+			ImGui::TreePop();
+		ap_event_manager_remove_function(mod->ap_event_manager, attachment, index);
+		return TRUE;
+	}
+	if (!nodeopen)
+		return FALSE;
+	changed = ImGui::InputScalar("Quest Group Id", ImGuiDataType_U32, 
+		&eventquest->quest_group_id);
+	ImGui::TreePop();
+	return changed;
+}
+
+static boolean rendernpcprops(struct ae_npc_module * mod, struct ap_character * npc)
+{
+	struct ap_event_manager_attachment * eventattachment;
+	boolean changed = FALSE;
+	char label[128];
+	ImGui::InputScalar("ID", ImGuiDataType_U32, 
+		&npc->id, NULL, NULL, NULL, 
+		ImGuiInputTextFlags_ReadOnly);
+	ImGui::InputText("Name", npc->name, sizeof(npc->name));
+	snprintf(label, sizeof(label), "[%u] %s", npc->tid, npc->temp->name);
+	if (ImGui::Button(label, ImVec2(ImGui::GetContentRegionAvail().x, 25.0f)))
+		mod->select_npc_template = true;
+	changed |= npctransform(mod, npc);
+	eventattachment = ap_event_manager_get_attachment(mod->ap_event_manager, npc);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_AUCTION, 
+		"##EventAuctionEnabled", "Event Function (Auction)", npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_BANK, 
+		"##EventBankEnabled", "Event Function (Bank)", npc, eventattachment);
+	changed |= rendereventdialog(mod, npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_GUILD, 
+		"##EventGuildEnabled", "Event Function (Guild)", npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_GUILD_WAREHOUSE, 
+		"##EventGuildBankEnabled", "Event Function (Guild Bank)", npc, eventattachment);
+	changed |= rendereventproduct(mod, npc, eventattachment);
+	changed |= rendereventquest(mod, npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_REMISSION, 
+		"##EventRemissionEnabled", "Event Function (Remission)", npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_SIEGEWAR_NPC, 
+		"##EventSiegeEnabled", "Event Function (Siege)", npc, eventattachment);
+	changed |= rendereventskillmaster(mod, npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_TAX, 
+		"##EventTaxEnabled", "Event Function (Tax)", npc, eventattachment);
+	changed |= rendereventtrade(mod, npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_ITEMCONVERT, 
+		"##EventUpgradeEnabled", "Event Function (Upgrade)", npc, eventattachment);
+	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_WANTEDCRIMINAL, 
+		"##EventWantedEnabled", "Event Function (Wanted)", npc, eventattachment);
+	if (changed)
+		mod->has_pending_changes = TRUE;
+	return TRUE;
+}
+
 static void rendertemplateeditor(struct ae_npc_module * mod)
 {
 	ImVec2 size = ImVec2(350.0f, 300.0f);
@@ -157,8 +525,8 @@ static void rendertemplateeditor(struct ae_npc_module * mod)
 	for (index = 0; index < mod->npcs_in_edit_count; index++) {
 		char label[128];
 		bool open = true;
-		bool changed = FALSE;
 		struct ap_character * npc;
+		struct ac_character_template * attachment;
 		obj = ap_admin_get_object_by_id(&mod->npc_admin, mod->npcs_in_edit[index]);
 		if (!obj) {
 			index = eraseinedit(mod, index);
@@ -177,14 +545,8 @@ static void rendertemplateeditor(struct ae_npc_module * mod)
 			ImGui::End();
 			continue;
 		}
-		struct ac_character_template * attachment = ac_character_get_template(npc->temp);
-		changed |= ImGui::InputText("Name", npc->name, sizeof(npc->name));
-		changed |= ImGui::DragFloat("Position X", &npc->pos.x);
-		changed |= ImGui::DragFloat("Position Y", &npc->pos.y);
-		changed |= ImGui::DragFloat("Position Z", &npc->pos.z);
-		changed |= ImGui::DragFloat("Rotation X", &npc->rotation_x);
-		changed |= ImGui::DragFloat("Rotation Y", &npc->rotation_y);
-		if (changed)
+		attachment = ac_character_get_template(npc->temp);
+		if (rendernpcprops(mod, npc))
 			mod->has_pending_changes = TRUE;
 		ImGui::End();
 	}
@@ -255,6 +617,8 @@ static void renderaddnpcpopup(struct ae_npc_module * mod)
 		sizeof(mod->add_npc_search_input));
 	while (temp = ap_character_iterate_templates(mod->ap_character, &index)) {
 		char label[128];
+		if (!(temp->char_type & AP_CHARACTER_TYPE_NPC))
+			continue;
 		snprintf(label, sizeof(label), "[%04u] %s", temp->tid, temp->name);
 		if (!strisempty(mod->add_npc_search_input) && 
 			!stristr(label, mod->add_npc_search_input)) {
@@ -435,7 +799,6 @@ static boolean cbpick(
 {
 	struct ap_character * npc;
 	struct au_pos eye;
-	float distance;
 	if (mod->active_npc) {
 		ae_transform_tool_cancel_target(mod->ae_transform_tool);
 		mod->active_npc = NULL;
@@ -446,109 +809,19 @@ static boolean cbpick(
 	eye.x = cb->camera->eye[0];
 	eye.y = cb->camera->eye[1];
 	eye.z = cb->camera->eye[2];
-	distance = au_distance2d(&npc->pos, &eye);
-	if (!cb->picked_any || distance < cb->distance) {
+	if (!cb->picked_any) {
 		cb->picked_any = TRUE;
-		cb->distance = distance;
+		cb->distance = au_distance2d(&npc->pos, &eye);
 		mod->active_npc = npc;
 		settooltarget(mod, npc);
 	}
 	return TRUE;
 }
 
-static boolean npctransform(struct ae_npc_module * mod, struct ap_character * npc)
-{
-	struct au_pos pos = npc->pos;
-	bool move = false;
-	bool changed = false;
-	move |= ImGui::DragFloat("Position X", &pos.x);
-	move |= ImGui::DragFloat("Position Y", &pos.y);
-	move |= ImGui::DragFloat("Position Z", &pos.z);
-	changed |= ImGui::DragFloat("Rotation X", &npc->rotation_x);
-	changed |= ImGui::DragFloat("Rotation Y", &npc->rotation_y);
-	if (move)
-		ap_character_move(mod->ap_character, npc, &pos);
-	return (move | changed);
-}
-
-static boolean rendereventfunction(
-	struct ae_npc_module * mod,
-	enum ap_event_manager_function_type function,
-	const char * checkbox_id,
-	const char * label,
-	void * source,
-	struct ap_event_manager_attachment * attachment)
-{
-	static bool checkbox;
-	uint32_t i;
-	uint32_t index;
-	struct ap_event_manager_event * e = NULL;
-	bool changed;
-	for (i = 0 ; i < attachment->event_count; i++) {
-		if (attachment->events[i].function == function) {
-			index = i;
-			e = &attachment->events[i];
-			break;
-		}
-	}
-	checkbox = e != NULL;
-	changed = ImGui::Checkbox(checkbox_id, &checkbox);
-	ImGui::SameLine();
-	ImGui::Text(label);
-	if (changed) {
-		if (checkbox) {
-			if (!e) {
-				e = ap_event_manager_add_function(mod->ap_event_manager, attachment,
-					function, source);
-				if (!e)
-					return FALSE;
-				return TRUE;
-			}
-		}
-		else if (e) {
-			ap_event_manager_remove_function(mod->ap_event_manager, attachment, index);
-			return TRUE;
-		}
-	}
-	return FALSE;
-}
-
 static boolean cbrenderproperties(struct ae_npc_module * mod, void * data)
 {
 	struct ap_character * npc = mod->active_npc;
-	struct ap_event_manager_attachment * eventattachment;
-	boolean changed = FALSE;
-	char label[128];
-	if (!npc)
-		return TRUE;
-	ImGui::InputScalar("ID", ImGuiDataType_U32, 
-		&npc->id, NULL, NULL, NULL, 
-		ImGuiInputTextFlags_ReadOnly);
-	ImGui::InputText("Name", npc->name, sizeof(npc->name));
-	snprintf(label, sizeof(label), "[%u] %s", npc->tid, npc->temp->name);
-	if (ImGui::Button(label, ImVec2(ImGui::GetContentRegionAvail().x, 25.0f)))
-		mod->select_npc_template = true;
-	changed |= npctransform(mod, npc);
-	eventattachment = ap_event_manager_get_attachment(mod->ap_event_manager, npc);
-	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_AUCTION, 
-		"##EventAuctionEnabled", "Event Function (Auction)", npc, eventattachment);
-	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_BANK, 
-		"##EventBankEnabled", "Event Function (Bank)", npc, eventattachment);
-	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_GUILD, 
-		"##EventGuildEnabled", "Event Function (Guild)", npc, eventattachment);
-	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_GUILD_WAREHOUSE, 
-		"##EventGuildBankEnabled", "Event Function (Guild Bank)", npc, eventattachment);
-	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_REMISSION, 
-		"##EventRemissionEnabled", "Event Function (Remission)", npc, eventattachment);
-	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_SIEGEWAR_NPC, 
-		"##EventSiegeEnabled", "Event Function (Siege)", npc, eventattachment);
-	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_TAX, 
-		"##EventTaxEnabled", "Event Function (Tax)", npc, eventattachment);
-	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_ITEMCONVERT, 
-		"##EventUpgradeEnabled", "Event Function (Upgrade)", npc, eventattachment);
-	changed |= rendereventfunction(mod, AP_EVENT_MANAGER_FUNCTION_WANTEDCRIMINAL, 
-		"##EventWantedEnabled", "Event Function (Wanted)", npc, eventattachment);
-	if (changed)
+	if (npc && rendernpcprops(mod, npc))
 		mod->has_pending_changes = TRUE;
 	return TRUE;
 }
@@ -602,6 +875,8 @@ static boolean onregister(
 {
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_config, AP_CONFIG_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_manager, AP_EVENT_MANAGER_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_npc_dialog, AP_EVENT_NPC_DIALOG_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_npc_trade, AP_EVENT_NPC_TRADE_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_character, AP_CHARACTER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_camera, AC_CAMERA_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ac_character, AC_CHARACTER_MODULE_NAME);

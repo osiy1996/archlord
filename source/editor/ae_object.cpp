@@ -399,7 +399,6 @@ static boolean cbpick(
 {
 	struct ap_object * obj;
 	struct au_pos eye;
-	float distance;
 	if (mod->active_object) {
 		ae_transform_tool_cancel_target(mod->ae_transform_tool);
 		mod->active_object = NULL;
@@ -410,10 +409,9 @@ static boolean cbpick(
 	eye.x = cb->camera->eye[0];
 	eye.y = cb->camera->eye[1];
 	eye.z = cb->camera->eye[2];
-	distance = au_distance2d(&obj->position, &eye);
-	if (!cb->picked_any || distance < cb->distance) {
+	if (!cb->picked_any) {
 		cb->picked_any = TRUE;
-		cb->distance = distance;
+		cb->distance = au_distance2d(&obj->position, &eye);
 		mod->active_object = obj;
 		settooltarget(mod, obj);
 	}

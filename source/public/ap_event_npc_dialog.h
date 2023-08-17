@@ -225,12 +225,6 @@ void ap_event_npc_dialog_make_packet(
 	const struct ap_event_manager_event * event,
 	uint32_t * character_id);
 
-	struct ap_event_npc_dialog_grant_packet base;
-	enum ap_event_npc_dialog_msg_box_type msg_box_type;
-	char message[AP_EVENT_NPC_DIALOG_MAX_MESSAGE_LENGTH + 1];
-	uint32_t item_tid;
-	uint32_t skill_tid;
-
 void ap_event_npc_dialog_make_grant_msg_box_packet(
 	struct ap_event_npc_dialog_module * mod,
 	uint32_t character_id,
@@ -245,7 +239,7 @@ void ap_event_npc_dialog_make_grant_menu_packet(
 	uint32_t npc_id,
 	struct ap_event_npc_dialog_menu_item * menu);
 
-inline struct ap_event_npc_dialog_data * ap_event_npc_dialog_get_data(
+static inline struct ap_event_npc_dialog_data * ap_event_npc_dialog_get_data(
 	struct ap_event_manager_event * event)
 {
 	return (struct ap_event_npc_dialog_data *)event->data;
