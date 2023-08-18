@@ -253,13 +253,11 @@ static boolean cbchardeath(
 	struct ap_character_cb_death * cb)
 {
 	struct ap_character * c = cb->character;
-	uint64_t flags = AP_CHARACTER_BIT_ACTION_STATUS;
 	if (c->factor.char_point.hp != 0) {
 		c->factor.char_point.hp = 0;
-		flags |= AP_FACTORS_BIT_HP;
+		ap_character_update(mod->ap_character, c, AP_FACTORS_BIT_HP, FALSE);
 	}
 	ap_character_set_action_status(mod->ap_character, c, AP_CHARACTER_ACTION_STATUS_DEAD);
-	ap_character_update(mod->ap_character, c, flags, FALSE);
 	return TRUE;
 }
 

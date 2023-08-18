@@ -449,8 +449,7 @@ static boolean cbreceive(
 		character->factor.char_point.hp = character->factor.char_point_max.hp;
 		character->factor.char_point.mp = character->factor.char_point_max.mp;
 		ap_character_update(mod->ap_character, character, 
-			AP_FACTORS_BIT_HP | AP_FACTORS_BIT_MP | AP_CHARACTER_BIT_ACTION_STATUS, 
-			FALSE);
+			AP_FACTORS_BIT_HP | AP_FACTORS_BIT_MP, FALSE);
 		ap_character_special_status_on(mod->ap_character, character, 
 			AP_CHARACTER_SPECIAL_STATUS_INVINCIBLE, 10000);
 		ap_event_teleport_start(mod->ap_event_teleport, character, destination);
