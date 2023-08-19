@@ -721,9 +721,9 @@ static boolean initialize()
 		strcpy(account->account_id, "archer");
 		account->creation_date = time(NULL);
 		account->chantra_coins = 100000;
-		as_login_generate_salt(account->pw_salt, 
+		as_account_generate_salt(account->pw_salt, 
 			sizeof(account->pw_salt));
-		if (!as_login_hash_password("pwdpwd", 
+		if (!as_account_hash_password("pwdpwd", 
 				account->pw_salt, sizeof(account->pw_salt), 
 				account->pw_hash, sizeof(account->pw_hash)) ||
 			!as_account_create_in_db(g_AsAccount, 

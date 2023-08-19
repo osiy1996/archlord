@@ -9,6 +9,10 @@
 #include "public/ap_tick.h"
 
 #include "server/as_database.h"
+#include "server/as_http_server.h"
+
+#include "vendor/PostgreSQL/openssl/evp.h"
+#include "vendor/pcg/pcg_basic.h"
 
 #include <assert.h>
 #include <time.h>
@@ -30,7 +34,6 @@ struct load_task {
 struct load_callback {
 	as_account_deferred_t cb;
 	void * user_data;
-
 	struct load_callback * next;
 };
 
@@ -38,7 +41,6 @@ struct update_entry {
 	char account_id[AP_LOGIN_MAX_ID_LENGTH + 1];
 	struct as_database_codec * codec;
 	boolean linked;
-
 	struct update_entry * next;
 };
 
@@ -48,12 +50,19 @@ struct update_task {
 	struct update_entry * entries;
 };
 
+struct create_task {
+	struct as_account_module * mod;
+	char account_id[AP_LOGIN_MAX_ID_LENGTH + 1];
+	struct as_database_codec * codec;
+};
+
 struct as_account_module {
 	struct ap_module_instance instance;
 	struct ap_character_module * ap_character;
 	struct ap_tick_module * ap_tick;
 	struct as_character_module * as_character;
 	struct as_database_module * as_database;
+	struct as_http_server_module * as_http_server;
 	uint32_t stream_module_id[AS_DATABASE_MAX_STREAM_COUNT];
 	uint32_t stream_count;
 	struct ap_admin account_admin;
@@ -61,6 +70,8 @@ struct as_account_module {
 	struct ap_admin load_admin;
 	struct load_callback * callback_freelist;
 	struct update_entry * entry_freelist;
+	struct create_entry * create_freelist;
+	struct as_account * create_buffer;
 };
 
 static struct load_callback * getcallback(
@@ -285,6 +296,42 @@ static boolean cbdatabaseconnect(struct as_account_module * mod, void * data)
 	return TRUE;
 }
 
+static boolean cbhttprequest(
+	struct as_account_module * mod, 
+	struct as_http_server_cb_request * cb)
+{
+	if (strcmp(cb->request, "/createaccount") == 0) {
+		struct as_account * account = mod->create_buffer;
+		char pwd[32] = "";
+		enum as_account_create_result result;
+		memset(account, 0, sizeof(*account));
+		as_http_server_get_request_param(mod->as_http_server, "accountid", 
+			account->account_id, sizeof(account->account_id));
+		as_http_server_get_request_param(mod->as_http_server, "pwd", 
+			pwd, sizeof(pwd));
+		as_http_server_get_request_param(mod->as_http_server, "email", 
+			account->email, sizeof(account->email));
+		account->creation_date = time(NULL);
+		as_account_generate_salt(account->pw_salt, sizeof(account->pw_salt));
+		if (!as_account_hash_password(pwd, 
+				account->pw_salt, sizeof(account->pw_salt), 
+				account->pw_hash, sizeof(account->pw_hash))) {
+			as_http_server_set_response(mod->as_http_server, "HashFailed");
+			return FALSE;
+		}
+		result = as_account_create_deferred(mod, account);
+		switch (result) {
+		case AS_ACCOUNT_CREATE_RESULT_UNAVAILABLE_ID:
+			as_http_server_set_response(mod->as_http_server, "UnavailableId");
+			break;
+		case AS_ACCOUNT_CREATE_RESULT_QUEUED:
+			as_http_server_set_response(mod->as_http_server, "Queued");
+			break;
+		}
+	}
+	return TRUE;
+}
+
 static struct as_account * getcached(
 	struct as_account_module * mod,
 	const char * account_id)
@@ -497,6 +544,49 @@ static void task_update_post(
 	as_database_free_task(mod->as_database, task);
 }
 
+static boolean taskcreate(struct as_database_task_data * task)
+{
+	struct create_task * d = task->data;
+	PGresult * res;
+	const char * values[2] = { d->account_id, d->codec->data };
+	int lengths[2] = { 
+		(int)strlen(d->account_id), 
+		(int)as_database_get_encoded_length(d->codec) };
+	const int formats[2] = { 0, 1 };
+	res = PQexec(task->conn, "BEGIN");
+	if (PQresultStatus(res) != PGRES_COMMAND_OK) {
+		PQclear(res);
+		return FALSE;
+	}
+	PQclear(res);
+	res = PQexecPrepared(task->conn, STMT_INSERT, 2, values, lengths, formats, 0);
+	if (PQresultStatus(res) != PGRES_COMMAND_OK) {
+		PQclear(res);
+		return FALSE;
+	}
+	PQclear(res);
+	res = PQexec(task->conn, "END");
+	if (PQresultStatus(res) != PGRES_COMMAND_OK) {
+		PQclear(res);
+		return FALSE;
+	}
+	PQclear(res);
+	return TRUE;
+}
+
+static void taskcreatepost(
+	struct task_descriptor * task,
+	struct as_database_task_data * tdata, 
+	boolean result)
+{
+	struct create_task * d = tdata->data;
+	struct as_account_module * mod = d->mod;
+	if (!result)
+		ap_admin_remove_object_by_name(&mod->account_id_admin, d->account_id);
+	as_database_free_codec(mod->as_database, d->codec);
+	as_database_free_task(mod->as_database, task);
+}
+
 static struct update_entry * process_commit(
 	struct as_account_module * mod,
 	struct update_entry * list,
@@ -556,14 +646,23 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_tick, AP_TICK_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_character, AS_CHARACTER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_database, AS_DATABASE_MODULE_NAME);
-	as_database_add_callback(mod->as_database, AS_DATABASE_CB_CONNECT, 
-		mod, cbdatabaseconnect);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_http_server, AS_HTTP_SERVER_MODULE_NAME);
+	as_database_add_callback(mod->as_database, AS_DATABASE_CB_CONNECT, mod, cbdatabaseconnect);
+	as_http_server_add_callback(mod->as_http_server, AS_HTTP_SERVER_CB_REQUEST, mod, cbhttprequest);
+	return TRUE;
+}
+
+static boolean oninitialize(struct as_account_module * mod)
+{
+	mod->create_buffer = as_account_new(mod);
 	return TRUE;
 }
 
 static void onclose(struct as_account_module * mod)
 {
 	as_account_commit(mod, TRUE);
+	as_account_free(mod, mod->create_buffer);
+	mod->create_buffer = NULL;
 }
 
 static void onshutdown(struct as_account_module * mod)
@@ -592,15 +691,12 @@ static void onshutdown(struct as_account_module * mod)
 struct as_account_module * as_account_create_module()
 {
 	struct as_account_module * mod = ap_module_instance_new(AS_ACCOUNT_MODULE_NAME,
-		sizeof(*mod), onregister, NULL, onclose, onshutdown);
+		sizeof(*mod), onregister, oninitialize, onclose, onshutdown);
 	ap_module_set_module_data(mod, AS_ACCOUNT_MDI_ACCOUNT, sizeof(struct as_account),
 		NULL, NULL);
-	ap_admin_init(&mod->account_admin, 
-		sizeof(struct as_account *), 1024);
-	ap_admin_init(&mod->account_id_admin, 
-		sizeof(boolean), 1024);
-	ap_admin_init(&mod->load_admin, 
-		sizeof(struct load_callback *), 16);
+	ap_admin_init(&mod->account_admin, sizeof(struct as_account *), 1024);
+	ap_admin_init(&mod->account_id_admin, sizeof(boolean), 1024);
+	ap_admin_init(&mod->load_admin, sizeof(struct load_callback *), 16);
 	return mod;
 }
 
@@ -860,6 +956,33 @@ void * as_account_load_deferred(
 	}
 }
 
+void as_account_generate_salt(uint8_t * salt, size_t size)
+{
+	pcg32_random_t rng;
+	uint64_t init[2] = PCG32_INITIALIZER;
+	size_t i;
+	pcg32_srandom_r(&rng, init[0] ^ time(NULL), init[1]);
+	for (i = 0; i < size; i++)
+		salt[i] = 1 + (uint8_t)pcg32_boundedrand_r(&rng, 255);
+}
+
+boolean as_account_hash_password(
+	const char * password,
+	const uint8_t * salt,
+	size_t saltsize,
+	uint8_t * hash,
+	size_t hashsize)
+{
+	int r = PKCS5_PBKDF2_HMAC_SHA1(
+		password, (int)strlen(password),
+		salt, 
+		(int)saltsize,
+		AS_ACCOUNT_HASH_ITERATION,
+		(int)hashsize,
+		hash);
+	return (r == 1);
+}
+
 boolean as_account_create_in_db(
 	struct as_account_module * mod,
 	PGconn  * conn,
@@ -907,10 +1030,31 @@ boolean as_account_create_in_db(
 	return TRUE;
 }
 
+enum as_account_create_result as_account_create_deferred(
+	struct as_account_module * mod,
+	struct as_account * account)
+{
+	struct create_task * task;
+	struct as_database_codec * codec;
+	codec = encode_account(mod, account);
+	if (!codec)
+		return AS_ACCOUNT_CREATE_RESULT_UNAVAILABLE_ID;
+	if (!as_account_cache_id(mod, account->account_id)) {
+		as_database_free_codec(mod->as_database, codec);
+		return AS_ACCOUNT_CREATE_RESULT_UNAVAILABLE_ID;
+	}
+	task = as_database_add_task(mod->as_database, taskcreate, taskcreatepost, 
+		sizeof(*task));
+	memset(task, 0, sizeof(*task));
+	task->mod = mod;
+	task->codec = codec;
+	strlcpy(task->account_id, account->account_id, sizeof(task->account_id));
+	return AS_ACCOUNT_CREATE_RESULT_QUEUED;
+}
+
 boolean as_account_cache_id(struct as_account_module * mod, const char * account_id)
 {
-	return (ap_admin_add_object_by_name(&mod->account_id_admin,
-		account_id) != NULL);
+	return (ap_admin_add_object_by_name(&mod->account_id_admin, account_id) != NULL);
 }
 
 boolean as_account_cache(
@@ -918,9 +1062,8 @@ boolean as_account_cache(
 	struct as_account * account, 
 	boolean reference)
 {
-	struct as_account ** object = 
-		ap_admin_add_object_by_name(&mod->account_admin,
-			account->account_id);
+	struct as_account ** object = ap_admin_add_object_by_name(&mod->account_admin,
+		account->account_id);
 	if (!object)
 		return FALSE;
 	assert(account->refcount == 0);

@@ -15,6 +15,8 @@
 #define AS_ACCOUNT_PW_SALT_SIZE 16
 #define AS_ACCOUNT_PW_HASH_SIZE 32
 
+#define AS_ACCOUNT_HASH_ITERATION 1173
+
 BEGIN_DECLS
 
 struct as_account;
@@ -40,6 +42,11 @@ enum as_account_database_id {
 
 enum as_account_flag_bits {
 	AS_ACCOUNT_BLOCKED = 0x01,
+};
+
+enum as_account_create_result {
+	AS_ACCOUNT_CREATE_RESULT_UNAVAILABLE_ID,
+	AS_ACCOUNT_CREATE_RESULT_QUEUED,
 };
 
 enum as_account_module_data_index {
@@ -180,6 +187,15 @@ void * as_account_load_deferred(
 	as_account_deferred_t callback,
 	size_t user_data_size);
 
+void as_account_generate_salt(uint8_t * salt, size_t size);
+
+boolean as_account_hash_password(
+	const char * password,
+	const uint8_t * salt,
+	size_t saltsize,
+	uint8_t * hash,
+	size_t hashsize);
+
 /**
  * Creates an account in database.
  *
@@ -190,6 +206,10 @@ void * as_account_load_deferred(
 boolean as_account_create_in_db(
 	struct as_account_module * mod,
 	PGconn * conn,
+	struct as_account * account);
+
+enum as_account_create_result as_account_create_deferred(
+	struct as_account_module * mod,
 	struct as_account * account);
 
 /**

@@ -23,7 +23,6 @@
 #define REQ_VERSION_MINOR 0
 #define ENCRYPT_STRING "12345678"
 #define ENCRYPT_STRING_LENGTH 8
-#define HASH_ITER 1173
 
 struct deferred_login_data {
 	uint64_t conn_id;
@@ -129,7 +128,7 @@ static void handle_login(
 	uint8_t hash[AS_ACCOUNT_PW_HASH_SIZE];
 	/* Login stage must be verified by the calling function. */
 	assert(conn_login->stage == AS_LOGIN_STAGE_AWAIT_LOGIN);
-	if (!as_login_hash_password(password, 
+	if (!as_account_hash_password(password, 
 			account->pw_salt, sizeof(account->pw_salt),
 			hash, sizeof(hash)) ||
 		memcmp(account->pw_hash, hash, sizeof(hash)) != 0) {
@@ -349,10 +348,8 @@ static boolean cb_receive(struct as_login_module * mod, void * data)
 			return FALSE;
 		}
 		cdb = as_character_new_db(mod->as_character);
-		ad->account->characters[ad->account->character_count++] =
-			cdb;
-		strlcpy(cdb->name, d->char_info->char_name, 
-			sizeof(cdb->name));
+		ad->account->characters[ad->account->character_count++] = cdb;
+		strlcpy(cdb->name, d->char_info->char_name, sizeof(cdb->name));
 		cdb->creation_date = time(NULL);
 		cdb->slot = slot;
 		cdb->tid = preset->tid;
@@ -514,33 +511,6 @@ struct as_login_conn_ad * as_login_get_attached_conn_data(
 	struct as_server_conn * conn)
 {
 	return ap_module_get_attached_data(conn, mod->conn_ad_offset);
-}
-
-void as_login_generate_salt(uint8_t * salt, size_t size)
-{
-	pcg32_random_t rng;
-	uint64_t init[2] = PCG32_INITIALIZER;
-	size_t i;
-	pcg32_srandom_r(&rng, init[0] ^ time(NULL), init[1]);
-	for (i = 0; i < size; i++)
-		salt[i] = 1 + (uint8_t)pcg32_boundedrand_r(&rng, 255);
-}
-
-boolean as_login_hash_password(
-	const char * password,
-	const uint8_t * salt,
-	size_t saltsize,
-	uint8_t * hash,
-	size_t hashsize)
-{
-	int r = PKCS5_PBKDF2_HMAC_SHA1(
-		password, (int)strlen(password),
-		salt, 
-		(int)saltsize,
-		HASH_ITER,
-		(int)hashsize,
-		hash);
-	return (r == 1);
 }
 
 boolean as_login_confirm_auth_key(

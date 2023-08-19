@@ -51,15 +51,6 @@ struct as_login_conn_ad * as_login_get_attached_conn_data(
 	struct as_login_module * mod,
 	struct as_server_conn * conn);
 
-void as_login_generate_salt(uint8_t * salt, size_t size);
-
-boolean as_login_hash_password(
-	const char * password,
-	const uint8_t * salt,
-	size_t saltsize,
-	uint8_t * hash,
-	size_t hashsize);
-
 boolean as_login_confirm_auth_key(
 	struct as_login_module * mod,
 	const char * character_name,
