@@ -302,6 +302,7 @@ static boolean cb_receive(struct as_login_module * mod, void * data)
 		struct as_character_db * cdb;
 		struct ap_character * preset = NULL;
 		struct ap_character * c = NULL;
+		struct as_account * cached;
 		if (ad->stage != AS_LOGIN_STAGE_LOGGED_IN || !d->char_info)
 			return FALSE;
 		if (!as_character_is_name_valid(mod->as_character, d->char_info->char_name)) {
@@ -328,6 +329,11 @@ static boolean cb_receive(struct as_login_module * mod, void * data)
 			return FALSE;
 		assert(ad->character_count == ad->account->character_count);
 		if (ad->character_count >= AS_ACCOUNT_MAX_CHARACTER)
+			return FALSE;
+		cached = as_account_load_from_cache(mod->as_account, 
+			ad->account->account_id, FALSE);
+		assert(cached != NULL);
+		if (!cached || cached->character_count >= AS_ACCOUNT_MAX_CHARACTER)
 			return FALSE;
 		for (i = 0; i < ad->account->character_count; i++) {
 			cdb = ad->account->characters[i];
@@ -363,6 +369,8 @@ static boolean cb_receive(struct as_login_module * mod, void * data)
 		/** \todo Add skills and setup quickbelt. */
 		c = as_character_from_db(mod->as_character, cdb);
 		ad->characters[ad->character_count++] = c;
+		cached->characters[cached->character_count++] = as_character_copy_database(
+			mod->as_character, cdb);
 		ap_login_make_new_char_name_packet(mod->ap_login, cdb->name, cdb->slot,
 			ad->account->character_count);
 		as_server_send_packet(mod->as_server, conn);

@@ -1689,7 +1689,7 @@ uint32_t ap_character_calc_physical_attack(
 	float normal_min;
 	float normal_max;
 	const struct ap_factor * cf = &character->factor;
-	const struct ap_factor * tf = &character->factor;
+	const struct ap_factor * tf = &target->factor;
 	float defense = tf->defense.point.physical;
 	float resist = MIN(tf->defense.rate.physical, 80.f) - 
 		action->defense_penalty;
