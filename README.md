@@ -61,3 +61,10 @@ Open `(repo)/config` with any text editor.
 
 ## Creating a test account
 After preparing the database, compiling the project and editing configuration file, it is now possible to create an account and enter the game.
+
+In your config file, you will see 'WebServerIP' and 'WebServerPort'. These will be used to create an HTTP server that can handle certain GET requests. You can use your browser to create a test account with:
+```
+WebServerIP:WebServerPort/createaccount?accountid=..&pwd=..&email=..
+ex: 192.168.1.35:8080/createaccount?accountid=hunter&pwd=password&email=nomail@foo.com
+```
+
