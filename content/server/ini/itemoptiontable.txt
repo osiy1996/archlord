@@ -1622,8 +1622,8 @@ tid	Description	Upper_Body	Lower_Body	Weapon	Shield	Head	Ring	Necklace	Shoes	Glo
 2617	0.4% chance on hit to deal target 110% damage						O				0		100				1	1	4	1																																															1		0.400000006	110														¡Û																		
 2618	2% chance on hit to stun your target for 1 sec.			O	O						0		100				1	1	4	300																																															2		2		1000													¡Û																		
 2619	3% chance on hit to stun your target for 1 sec.			O	O						0		100				1	1	4	150																																															2		3		1000													¡Û																		
-2620	4% chance on hit to stun your target for 3 sec.				O						0		100				1	1	4	38																																															2		4		3000													¡Û																		
-2621	5% chance on hit to stun your target for 3 sec.				O						0		100				1	1	4	1																																															2		5		3000													¡Û																		
+2620	4% chance on hit to stun your target for 1 sec.				O						0		100				1	1	4	38																																															2		4		1000													¡Û																		
+2621	5% chance on hit to stun your target for 1 sec.				O						0		100				1	1	4	1																																															2		5		1000													¡Û																		
 2622	0.1% chance on hit to stun target for 1 sec.			O	O						0		100				1	1	4	300																																															2		0.1000000015		1000													¡Û																		
 2623	0.2% chance on hit to stun target for 1 sec.			O	O						0		100				1	1	4	150																																															2		0.200000003		1000													¡Û																		
 2624	0.3% chance on hit to stun target for 1 sec.			O	O						0		100				1	1	4	60																																															2		0.3000000119		1000													¡Û																		

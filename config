@@ -1,6 +1,6 @@
 ServerIniDir=content/server/ini
 ServerNodePath=content/server/world/node_data
-ClientDir=D:/ArchLord_Main/archonia-client-live
+ClientDir=D:/ArchLord_Main/client
 
 LoginServerIP=192.168.1.35
 LoginServerPort=11002

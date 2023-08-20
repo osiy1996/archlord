@@ -71,16 +71,7 @@ Troll Boss	34	2		5023	1	1	40
 Troll Boss	34	2		5009	1	1	40
 Troll Boss	34	2		6053	1	1	1500
 Troll Boss	34	2		4755	1	1	100000
-Wyvern	38	2		5011	1	1	30
-Wyvern	38	2		1857	1	1	500
-Wyvern	38	2		1862	1	1	500
-Wyvern	38	2		1892	1	1	500
-Wyvern	38	2		1867	1	1	500
-Wyvern	38	2		1872	1	1	500
-Wyvern	38	2		1877	1	1	500
-Wyvern	38	2		1882	1	1	500
-Wyvern	38	2		1887	1	1	500
-Wyvern	38	2		6076	1	1	500
+Wyvern	38	2		11029	5	5	100000
 Midas	40	2		5005	1	1	30
 Midas	40	2		5028	1	1	30
 Midas	40	2		1855	1	1	500
@@ -1283,16 +1274,7 @@ Dartan	638	2		1876	1	1	500
 Dartan	638	2		1881	1	1	500
 Dartan	638	2		1886	1	1	500
 Dartan	638	2		6075	1	1	500
-Gazuth	642	1		6351	1	1	400
-Gazuth	642	1		13588	1	1	45
-Gazuth	642	1		13589	1	1	45
-Gazuth	642	1		13590	1	1	45
-Gazuth	642	1		13591	1	1	45
-Gazuth	642	1		13592	1	1	45
-Gazuth	642	1		13598	1	1	200
-Gazuth	642	1		14531	1	1	167
-Gazuth	642	1		7394	1	1	10000
-Gazuth	642	1		3311	1	1	500
+Gazuth	642	1		11029	1	1	10000
 Windmempsi	653	2		5008	1	1	30
 Windmempsi	653	2		1856	1	1	500
 Windmempsi	653	2		1861	1	1	500
@@ -2004,7 +1986,7 @@ Invader Guardian	819	3		3311	1	1	6000
 Invader Guardian	819	3		2117	1	1	2000
 Invader Guardian	819	3		2119	1	1	2000
 Invader Guardian	819	3		535	1	1	5000
-Invader Guardian	819	3		14591	1	1	12500
+Invader Guardian	819	3		14591	1	1	20000
 Noble Lich	821	2		5021	1	1	30
 Noble Lich	821	2		1857	1	1	500
 Noble Lich	821	2		1862	1	1	500
@@ -2025,16 +2007,7 @@ High Rank Freezy Bondman	824	2		1877	1	1	500
 High Rank Freezy Bondman	824	2		1882	1	1	500
 High Rank Freezy Bondman	824	2		1887	1	1	500
 High Rank Freezy Bondman	824	2		6076	1	1	500
-Gorgoth	825	1		6351	1	1	400
-Gorgoth	825	1		13588	1	1	45
-Gorgoth	825	1		13589	1	1	45
-Gorgoth	825	1		13590	1	1	45
-Gorgoth	825	1		13591	1	1	45
-Gorgoth	825	1		13592	1	1	45
-Gorgoth	825	1		13598	1	1	200
-Gorgoth	825	1		14531	1	1	167
-Gorgoth	825	1		7394	1	1	10000
-Gorgoth	825	1		3311	1	1	500
+Gorgoth	825	1		6148	1	1	10000
 Adult Hawkarrow	829	2		5011	1	1	30
 Adult Hawkarrow	829	2		5021	1	1	30
 Adult Hawkarrow	829	2		1857	1	1	500
@@ -3772,6 +3745,10 @@ Sky Avenger Soldier	1590	1		7392	1	1	30000
 Sky Avenger Soldier	1590	1		7393	1	1	20000
 Sky Avenger Soldier	1590	1		7394	1	1	10000
 Sky Avenger Soldier	1590	1		14541	1	1	100
+Lakatamara [E]	1614	1		11076	5	5	100000
+Rune Manticore [E]	1616	1		11076	5	5	100000
+Pain Evoker [E]	1628	1		11076	10	10	100000
+Dishope [E]	1629	1		11076	15	15	100000
 Event Monster in Land of Ice	1726	1		12799	1	1	100000
 Event Monster in Frozen	1727	1		12799	1	1	100000
 Irion Gest	1735	2		5006	1	1	20
@@ -3801,7 +3778,7 @@ Patriot Sergeant	1740	2		13592	1	1	80
 Patriot Sergeant	1740	2		13598	1	1	350
 Patriot Sergeant	1740	2		7394	1	1	10000
 Patriot Sergeant	1740	2		3311	1	1	500
-Patriot Marauder	1741	1		14531	1	1	167
+Patriot Marauder	1741	1		14531	1	1	80
 Patriot Marauder	1741	1		14589	1	1	1350
 Patriot Marauder	1741	1		13588	1	1	45
 Patriot Marauder	1741	1		13589	1	1	45
@@ -3811,7 +3788,7 @@ Patriot Marauder	1741	1		13592	1	1	45
 Patriot Marauder	1741	1		13598	1	1	200
 Patriot Marauder	1741	1		7393	1	1	10000
 Patriot Marauder	1741	1		3311	1	1	500
-Patriot Marauder	1741	1		6351	1	1	400
+Patriot Marauder	1741	1		6351	1	1	100
 Regia	1748	2		5005	1	1	30
 Regia	1748	2		5028	1	1	30
 Regia	1748	2		1855	1	1	500
@@ -3900,32 +3877,33 @@ Guldin	1756	2		1876	1	1	500
 Guldin	1756	2		1881	1	1	500
 Guldin	1756	2		1886	1	1	500
 Guldin	1756	2		6075	1	1	500
-Chariot Shooter	1766	1		14590	1	1	900
-Chariot Shooter	1766	1		1175	1	1	50
-Chariot Shooter	1766	1		1178	1	1	50
-Chariot Shooter	1766	1		7392	1	1	10000
-Chariot Charger	1767	1		14531	1	1	167
-Chariot Charger	1767	1		14590	1	1	1350
-Chariot Charger	1767	1		13588	1	1	45
-Chariot Charger	1767	1		13589	1	1	45
-Chariot Charger	1767	1		13590	1	1	45
-Chariot Charger	1767	1		13591	1	1	45
-Chariot Charger	1767	1		13592	1	1	45
-Chariot Charger	1767	1		13598	1	1	200
-Chariot Charger	1767	1		7393	1	1	10000
-Chariot Charger	1767	1		3311	1	1	500
-Chariot Charger	1767	1		6351	1	1	400
-Chariot Gladiator	1768	2		14531	1	1	250
-Chariot Gladiator	1768	2		14590	1	1	2000
-Chariot Gladiator	1768	2		6351	1	1	800
-Chariot Gladiator	1768	2		13588	1	1	80
-Chariot Gladiator	1768	2		13589	1	1	80
-Chariot Gladiator	1768	2		13590	1	1	80
-Chariot Gladiator	1768	2		13591	1	1	80
-Chariot Gladiator	1768	2		13592	1	1	80
-Chariot Gladiator	1768	2		13598	1	1	350
-Chariot Gladiator	1768	2		7394	1	1	10000
-Chariot Gladiator	1768	2		3311	1	1	500
+Chariot Slave	1766	1		14590	1	1	900
+Chariot Slave	1766	1		1175	1	1	100
+Chariot Slave	1766	1		1178	1	1	100
+Chariot Slave	1766	1		7392	1	1	10000
+Chariot Slave	1766	1		3311	1	1	250
+Chariot Marauder	1767	1		14531	1	1	80
+Chariot Marauder	1767	1		14590	1	1	1350
+Chariot Marauder	1767	1		13588	1	1	45
+Chariot Marauder	1767	1		13589	1	1	45
+Chariot Marauder	1767	1		13590	1	1	45
+Chariot Marauder	1767	1		13591	1	1	45
+Chariot Marauder	1767	1		13592	1	1	45
+Chariot Marauder	1767	1		13598	1	1	200
+Chariot Marauder	1767	1		7393	1	1	10000
+Chariot Marauder	1767	1		3311	1	1	500
+Chariot Marauder	1767	1		6351	1	1	100
+Chariot Sergeant	1768	2		14531	1	1	250
+Chariot Sergeant	1768	2		14590	1	1	2000
+Chariot Sergeant	1768	2		6351	1	1	800
+Chariot Sergeant	1768	2		13588	1	1	80
+Chariot Sergeant	1768	2		13589	1	1	80
+Chariot Sergeant	1768	2		13590	1	1	80
+Chariot Sergeant	1768	2		13591	1	1	80
+Chariot Sergeant	1768	2		13592	1	1	80
+Chariot Sergeant	1768	2		13598	1	1	350
+Chariot Sergeant	1768	2		7394	1	1	10000
+Chariot Sergeant	1768	2		3311	1	1	500
 Forsaken Rain	1777	2		5009	1	1	20
 Forsaken Rain	1777	2		1856	1	1	500
 Forsaken Rain	1777	2		1861	1	1	500
@@ -3936,22 +3914,13 @@ Forsaken Rain	1777	2		1876	1	1	500
 Forsaken Rain	1777	2		1881	1	1	500
 Forsaken Rain	1777	2		1886	1	1	500
 Forsaken Rain	1777	2		6075	1	1	500
-Haken Hollow	1780	2		5008	1	1	30
-Haken Hollow	1780	2		1856	1	1	500
-Haken Hollow	1780	2		1861	1	1	500
-Haken Hollow	1780	2		1891	1	1	500
-Haken Hollow	1780	2		1866	1	1	500
-Haken Hollow	1780	2		1871	1	1	500
-Haken Hollow	1780	2		1876	1	1	500
-Haken Hollow	1780	2		1881	1	1	500
-Haken Hollow	1780	2		1886	1	1	500
-Haken Hollow	1780	2		6075	1	1	500
+Haken Hollow	1780	2		6482	5	5	100000
 Lanternrider Slave	1781	1		14591	1	1	900
 Lanternrider Slave	1781	1		1175	1	1	100
 Lanternrider Slave	1781	1		1178	1	1	100
 Lanternrider Slave	1781	1		7392	1	1	10000
 Lanternrider Slave	1781	1		3311	1	1	250
-Lanternrider Marauder	1782	1		14531	1	1	100
+Lanternrider Marauder	1782	1		14531	1	1	80
 Lanternrider Marauder	1782	1		14591	1	1	1350
 Lanternrider Marauder	1782	1		13588	1	1	45
 Lanternrider Marauder	1782	1		13589	1	1	45
@@ -3961,8 +3930,8 @@ Lanternrider Marauder	1782	1		13592	1	1	45
 Lanternrider Marauder	1782	1		13598	1	1	200
 Lanternrider Marauder	1782	1		7393	1	1	10000
 Lanternrider Marauder	1782	1		3311	1	1	500
-Lanternrider Marauder	1782	1		6351	1	1	400
-Lanternrider Sergeant	1783	2		14531	1	1	200
+Lanternrider Marauder	1782	1		6351	1	1	100
+Lanternrider Sergeant	1783	2		14531	1	1	250
 Lanternrider Sergeant	1783	2		14591	1	1	2000
 Lanternrider Sergeant	1783	2		6351	1	1	800
 Lanternrider Sergeant	1783	2		13588	1	1	80
@@ -3984,17 +3953,7 @@ Nine Vital	1786	2		1876	1	1	500
 Nine Vital	1786	2		1881	1	1	500
 Nine Vital	1786	2		1886	1	1	500
 Nine Vital	1786	2		6075	1	1	500
-Dark Age	1787	2		5019	1	1	30
-Dark Age	1787	2		5009	1	1	20
-Dark Age	1787	2		1856	1	1	500
-Dark Age	1787	2		1861	1	1	500
-Dark Age	1787	2		1891	1	1	500
-Dark Age	1787	2		1866	1	1	500
-Dark Age	1787	2		1871	1	1	500
-Dark Age	1787	2		1876	1	1	500
-Dark Age	1787	2		1881	1	1	500
-Dark Age	1787	2		1886	1	1	500
-Dark Age	1787	2		6075	1	1	500
+Dark Age	1787	2		6352	5	5	100000
 Guston	1788	2		5007	1	1	10
 Guston	1788	2		1855	1	1	500
 Guston	1788	2		1860	1	1	500
@@ -4597,16 +4556,8 @@ Griffin	2019	2		597	1	1	500
 Griffin	2019	2		1890	1	1	500
 Griffin	2019	2		465	1	1	500
 Gnoll King [Dungeon 1F]	2028	2		6259	1	1	100000
-Xelgoth	2036	1		6351	1	1	800
-Xelgoth	2036	1		13588	1	1	80
-Xelgoth	2036	1		13589	1	1	80
-Xelgoth	2036	1		13590	1	1	80
-Xelgoth	2036	1		13591	1	1	80
-Xelgoth	2036	1		13592	1	1	80
-Xelgoth	2036	1		13598	1	1	350
-Xelgoth	2036	1		14531	1	1	250
-Xelgoth	2036	1		7394	1	1	10000
-Xelgoth	2036	1		3311	1	1	500
+Xelgoth	2036	1		6147	1	1	10000
+Xelgoth	2036	1		6053	1	1	10000
 Soccer Ball of Newzealand	2138	1		5026	1	1	30
 Soccer Ball of Honduras	2139	1		5026	1	1	30
 Soccer Ball of Honduras	2139	1		5005	1	1	30
@@ -4699,13 +4650,5 @@ Invader Captain [Vigorore]	2197	3		14542	1	1	100000
 Invader Captain [Vigorore]	2197	3		1175	5	5	100000
 Invader Captain [Vigorore]	2197	3		1178	5	5	100000
 Invader Captain [Vigorore]	2197	3		14591	5	5	100000
-Kazath	2204	1		6351	1	1	400
-Kazath	2204	1		13588	1	1	45
-Kazath	2204	1		13589	1	1	45
-Kazath	2204	1		13590	1	1	45
-Kazath	2204	1		13591	1	1	45
-Kazath	2204	1		13592	1	1	45
-Kazath	2204	1		13598	1	1	200
-Kazath	2204	1		14531	1	1	167
-Kazath	2204	1		7394	1	1	10000
-Kazath	2204	1		3311	1	1	500
+Kazath	2204	1		6147	1	1	10000
+Kazath	2204	1		6053	1	1	10000

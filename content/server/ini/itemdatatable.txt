@@ -6062,7 +6062,7 @@ TID	ItemName	Level	SuitableLevelMin	SuitableLevelMax	Class	Race	Gender	Part	Kind
 6061	Unmarked Grave Passport									1	4	2																		99																																																																											1	343200;8440;84200					1																				
 6062	Closed Mine Passport									1	4	2																		99																																																																											1	209400;15127;-4600					1																				
 6063	Miasma Cave Passport									1	4	2																		99																																																																											1	187717;6233.25;99147					1																				
-6064	Asylum Passport									1	4	2																		99																																																																											1	-42795;2264;282337					1																				
+6064	Asylum Passport									1	4	2											1000000							99																																																																											1	-42795;2264;282337					1																				
 6065	Test Life Potion									1	0																			99																																																								2000	250																																												
 6066	Demon Wings<3 Days>									1	12	0																		10																																																													660	1													3			4320	40		2	1																			
 6067	Demon Wings<14 Days>									1	12	0																		10																																																													660	1													3			20160	40		2	1																			
@@ -14606,6 +14606,9 @@ TID	ItemName	Level	SuitableLevelMin	SuitableLevelMax	Class	Race	Gender	Part	Kind
 14605	Careleon of Dickaddict	36				3		14	32	0		609		1									200000	25000									252000																																																																							20000																											
 14606	Careleon of Granit	36				3		14	32	0		609		1									200000	25000									252000																																																																							20000																											
 14607	Storm Careleon of Lun4	35				3		14	32	0		440		1									3400000	425000									252000																																																																							20000																											
+14608	Storm Black Horse of Tehluka	35				1		14	32	0		437		1									3400000	425000									252000																																																																							20000																											
+14609	White Horse of Raiky	35				1		14	32	0		567		1									200000	25000									252000																																																																							20000																											
+14610	Lightly-armored Black Horse of Danger	35				1		14	32	0		571		1									1600000	200000									252000																																																																							20000																											
 20001	Administrator's Karon							9	2	0	24																				1							0	0	0	0																																																																																										
 20002	Administrator's Xenon							10	2	0	26																				1							0	0	0	0																																																																																										
 20003	Administrator's Prayer Stone	1								1	9	0									11968874									99		1																																																																																			3253																

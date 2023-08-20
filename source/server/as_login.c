@@ -1,4 +1,4 @@
-#include <assert.h>
+#include "server/as_login.h"
 
 #include "core/log.h"
 #include "core/malloc.h"
@@ -13,11 +13,12 @@
 
 #include "server/as_account.h"
 #include "server/as_event_binding.h"
-#include "server/as_login.h"
 #include "server/as_server.h"
 
 #include "vendor/PostgreSQL/openssl/evp.h"
 #include "vendor/pcg/pcg_basic.h"
+
+#include <assert.h>
 
 #define REQ_VERSION_MAJOR 13
 #define REQ_VERSION_MINOR 0

@@ -710,31 +710,6 @@ static boolean initialize()
 		ERROR("Failed to create servers.");
 		return FALSE;
 	}
-	/* This 'if (0)' can be toggled on 'if (1)' to 
-	 * create a test account.
-	 * 
-	 * Pay attention to not to use database connection 
-	 * outside of database task queue after it is 
-	 * set to non-blocking. */
-	if (0) {
-		struct as_account * account = as_account_new(g_AsAccount);
-		strcpy(account->account_id, "archer");
-		account->creation_date = time(NULL);
-		account->chantra_coins = 100000;
-		as_account_generate_salt(account->pw_salt, 
-			sizeof(account->pw_salt));
-		if (!as_account_hash_password("pwdpwd", 
-				account->pw_salt, sizeof(account->pw_salt), 
-				account->pw_hash, sizeof(account->pw_hash)) ||
-			!as_account_create_in_db(g_AsAccount, 
-				as_database_get_conn(g_AsDatabase), account) ||
-			!as_account_cache_id(g_AsAccount, account->account_id) ||
-			!as_account_cache(g_AsAccount, account, FALSE)) {
-			ERROR("Failed to create account (%s).", 
-				account->account_id);
-			return FALSE;
-		}
-	}
 	as_database_set_blocking(g_AsDatabase, FALSE);
 	INFO("Completed initialization.");
 	return TRUE;
