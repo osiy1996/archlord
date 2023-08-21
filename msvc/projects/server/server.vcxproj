@@ -173,6 +173,7 @@
     <ClInclude Include="..\..\..\source\public\ap_item_convert.h" />
     <ClInclude Include="..\..\..\source\public\ap_item_convert_internal.h" />
     <ClInclude Include="..\..\..\source\public\ap_item_internal.h" />
+    <ClInclude Include="..\..\..\source\public\ap_return_to_login.h" />
     <ClInclude Include="..\..\..\source\public\ap_ride.h" />
     <ClInclude Include="..\..\..\source\public\ap_service_npc.h" />
     <ClInclude Include="..\..\..\source\public\ap_login.h" />
@@ -310,6 +311,7 @@
     <ClCompile Include="..\..\..\source\public\ap_item_convert.c" />
     <ClCompile Include="..\..\..\source\public\ap_item_convert_io.c" />
     <ClCompile Include="..\..\..\source\public\ap_item_io.c" />
+    <ClCompile Include="..\..\..\source\public\ap_return_to_login.c" />
     <ClCompile Include="..\..\..\source\public\ap_ride.c" />
     <ClCompile Include="..\..\..\source\public\ap_service_npc.c" />
     <ClCompile Include="..\..\..\source\public\ap_login.c" />

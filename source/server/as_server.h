@@ -49,6 +49,7 @@ struct as_server_conn {
 	struct ring_buffer * recv_buffer;
 	struct ring_buffer * send_buffer;
 	struct au_blowfish blowfish;
+	uint64_t connection_tick;
 	uint64_t disconnect_tick;
 	uint32_t last_processed_frame_tick;
 };

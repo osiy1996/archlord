@@ -25,7 +25,9 @@
 #include "public/ap_party.h"
 #include "public/ap_private_trade.h"
 #include "public/ap_pvp.h"
+#include "public/ap_random.h"
 #include "public/ap_refinery.h"
+#include "public/ap_return_to_login.h"
 #include "public/ap_ride.h"
 #include "public/ap_skill.h"
 #include "public/ap_tick.h"
@@ -78,7 +80,9 @@ struct as_game_admin_module {
 	struct ap_party_module * ap_party;
 	struct ap_private_trade_module * ap_private_trade;
 	struct ap_pvp_module * ap_pvp;
+	struct ap_random_module * ap_random;
 	struct ap_refinery_module * ap_refinery;
+	struct ap_return_to_login_module * ap_return_to_login;
 	struct ap_ride_module * ap_ride;
 	struct ap_skill_module * ap_skill;
 	struct ap_tick_module * ap_tick;
@@ -519,6 +523,9 @@ static boolean cbreceive(struct as_game_admin_module * mod, void * data)
 		break;
 	case AP_REFINERY_PACKET_TYPE:
 		return ap_refinery_on_receive(mod->ap_refinery, d->data, d->length, ad->character);
+	case AP_RETURNTOLOGIN_PACKET_TYPE:
+		ap_return_to_login_on_receive(mod->ap_return_to_login, d->data, d->length, AP_RETURN_TO_LOGIN_DOMAIN_GAME, ad->character);
+		break;
 	case AP_SKILL_PACKET_TYPE:
 		return ap_skill_on_receive(mod->ap_skill, d->data, d->length, ad->character);
 	case AP_UISTATUS_PACKET_TYPE:
@@ -592,6 +599,42 @@ static boolean conndtor(struct as_game_admin_module * mod, void * data)
 	return TRUE;
 }
 
+static boolean cbreturntologinreceive(
+	struct as_game_admin_module * mod, 
+	struct ap_return_to_login_cb_receive * cb)
+{
+	struct ap_character * character;
+	if (cb->domain != AP_RETURN_TO_LOGIN_DOMAIN_GAME)
+		return TRUE;
+	character = cb->user_data;
+	switch (cb->type) {
+	case AP_RETURN_TO_LOGIN_PACKET_REQUEST: {
+		struct as_player_character * attachment = as_player_get_character_ad(
+			mod->as_player, character);
+		uint32_t authkey;
+		char addr[128];
+		uint64_t tick = ap_tick_get(mod->ap_tick);
+		if (tick < attachment->conn->connection_tick + 15000)
+			break;
+		if (tick < character->combat_end_tick)
+			break;
+		authkey = 1 + ap_random_get(mod->ap_random, UINT32_MAX);
+		snprintf(addr, sizeof(addr), "%s:%u", 
+			ap_config_get(mod->ap_config, "LoginServerIP"),
+			strtoul(ap_config_get(mod->ap_config, "LoginServerPort"), NULL, 10));
+		as_login_set_return_to_login_auth_key(mod->as_login, 
+			attachment->account->account_id, authkey);
+		ap_return_to_login_make_send_key_addr_packet(mod->ap_return_to_login,
+			character->id, addr, authkey);
+		as_server_send_packet(mod->as_server, attachment->conn);
+		as_server_disconnect_in(mod->as_server, 
+			attachment->conn, 5000);
+		break;
+	}
+	}
+	return TRUE;
+}
+
 static boolean onregister(
 	struct as_game_admin_module * mod,
 	struct ap_module_registry * registry)
@@ -616,7 +659,9 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_party, AP_PARTY_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_private_trade, AP_PRIVATE_TRADE_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_pvp, AP_PVP_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_random, AP_RANDOM_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_refinery, AP_REFINERY_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_return_to_login, AP_RETURN_TO_LOGIN_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_ride, AP_RIDE_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_skill, AP_SKILL_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_tick, AP_TICK_MODULE_NAME);
@@ -640,6 +685,7 @@ static boolean onregister(
 	as_server_add_callback(mod->as_server, AS_SERVER_CB_RECEIVE, mod, cbreceive);
 	as_server_add_callback(mod->as_server, AS_SERVER_CB_DISCONNECT, mod, cbdisconnect);
 	as_login_add_callback(mod->as_login, AS_LOGIN_CB_LOGGED_IN, mod, cblogin);
+	ap_return_to_login_add_callback(mod->ap_return_to_login, AP_RETURN_TO_LOGIN_CB_RECEIVE, mod, cbreturntologinreceive);
 	return TRUE;
 }
 

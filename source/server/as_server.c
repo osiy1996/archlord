@@ -97,15 +97,14 @@ static void poll_conn(
 				AS_SERVER_MDI_CONNECTION);
 			conn->id = e->id;
 			conn->server_type = srv->type;
+			conn->connection_tick = ap_tick_get(mod->ap_tick);
 			*conn_ptr = conn;
-			ap_module_enum_callback(mod, 
-				AS_SERVER_CB_CONNECT, conn);
+			ap_module_enum_callback(mod, AS_SERVER_CB_CONNECT, conn);
 			break;
 		}
 		case TCP_CONN_EVENT_DISCONNECTED: {
 			struct as_server_conn * conn = find_conn(srv, e->id);
-			/*INFO(
-				"Disconnected: Id = 0x%llx", e->id);*/
+			/*INFO("Disconnected: Id = 0x%llx", e->id);*/
 			if (!conn) {
 				/* It is possible for connection to have been 
 				 * removed prior to receiving a disconnect event 

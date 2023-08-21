@@ -60,6 +60,7 @@
 #include "public/ap_pvp.h"
 #include "public/ap_random.h"
 #include "public/ap_refinery.h"
+#include "public/ap_return_to_login.h"
 #include "public/ap_ride.h"
 #include "public/ap_service_npc.h"
 #include "public/ap_skill.h"
@@ -171,6 +172,7 @@ static struct ap_private_trade_module * g_ApPrivateTrade;
 static struct ap_pvp_module * g_ApPvP;
 static struct ap_random_module * g_ApRandom;
 static struct ap_refinery_module * g_ApRefinery;
+static struct ap_return_to_login_module * g_ApReturnToLogin;
 static struct ap_ride_module * g_ApRide;
 static struct ap_service_npc_module * g_ApServiceNpc;
 static struct ap_skill_module * g_ApSkill;
@@ -279,6 +281,7 @@ static struct module_desc g_Modules[] = {
 	{ AP_CHAT_MODULE_NAME, ap_chat_create_module, NULL, &g_ApChat },
 	{ AP_MAP_MODULE_NAME, ap_map_create_module, NULL, &g_ApMap },
 	{ AP_LOGIN_MODULE_NAME, ap_login_create_module, NULL, &g_ApLogin },
+	{ AP_RETURN_TO_LOGIN_MODULE_NAME, ap_return_to_login_create_module, NULL, &g_ApReturnToLogin },
 	{ AP_WORLD_MODULE_NAME, ap_world_create_module, NULL, &g_ApWorld },
 	/* Server modules. */
 	{ AS_HTTP_SERVER_MODULE_NAME, as_http_server_create_module, NULL, &g_AsHttpServer },

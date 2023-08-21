@@ -31,6 +31,7 @@ struct as_login_conn_ad {
 	struct as_account * account;
 	uint32_t character_count;
 	struct ap_character * characters[AS_ACCOUNT_MAX_CHARACTER];
+	boolean in_return_to_login_process;
 };
 
 struct as_login_cb_logged_in {
@@ -54,6 +55,11 @@ struct as_login_conn_ad * as_login_get_attached_conn_data(
 boolean as_login_confirm_auth_key(
 	struct as_login_module * mod,
 	const char * character_name,
+	uint32_t auth_key);
+
+void as_login_set_return_to_login_auth_key(
+	struct as_login_module * mod,
+	const char * account_id,
 	uint32_t auth_key);
 
 END_DECLS

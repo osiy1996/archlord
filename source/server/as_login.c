@@ -12,6 +12,7 @@
 #include "public/ap_item.h"
 #include "public/ap_item_convert.h"
 #include "public/ap_login.h"
+#include "public/ap_return_to_login.h"
 
 #include "server/as_account.h"
 #include "server/as_event_binding.h"
@@ -27,6 +28,8 @@
 #define ENCRYPT_STRING "12345678"
 #define ENCRYPT_STRING_LENGTH 8
 
+#define MAXRETURNTOLOGINAUTH 128
+
 struct deferred_login_data {
 	uint64_t conn_id;
 	char password[AP_LOGIN_MAX_PW_LENGTH + 1];
@@ -39,6 +42,11 @@ struct game_token {
 	time_t expire;
 };
 
+struct return_to_login_auth {
+	char account_id[AP_LOGIN_MAX_ID_LENGTH + 1];
+	uint32_t auth_key;
+};
+
 struct as_login_module {
 	struct ap_module_instance instance;
 	struct ap_character_module * ap_character;
@@ -46,6 +54,7 @@ struct as_login_module {
 	struct ap_item_module * ap_item;
 	struct ap_item_convert_module * ap_item_convert;
 	struct ap_login_module * ap_login;
+	struct ap_return_to_login_module * ap_return_to_login;
 	struct as_account_module * as_account;
 	struct as_character_module * as_character;
 	struct as_event_binding_module * as_event_binding;
@@ -54,6 +63,8 @@ struct as_login_module {
 	struct ap_character * char_create[9];
 	struct ap_admin token_admin;
 	pcg32_random_t token_rng;
+	struct return_to_login_auth return_to_login_auth[MAXRETURNTOLOGINAUTH];
+	uint32_t return_to_login_auth_count;
 };
 
 static boolean setspawnpos(
@@ -123,6 +134,26 @@ static void dcsameaccount(
 	}
 }
 
+static void handlesuccessfullogin(
+	struct as_login_module * mod,
+	struct as_server_conn * conn,
+	struct as_login_conn_ad * conn_login,
+	struct as_account * account)
+{
+	INFO("Login: AccountID = %s", account->account_id);
+	conn_login->stage = AS_LOGIN_STAGE_LOGGED_IN;
+	conn_login->account = as_account_copy_detached(mod->as_account, account);
+	as_account_reference(account);
+	ap_login_make_sign_on_packet(mod->ap_login, account->account_id, NULL);
+	as_server_send_packet(mod->as_server, conn);
+	if (conn_login->in_return_to_login_process) {
+		ap_return_to_login_make_end_process_packet(mod->ap_return_to_login);
+		as_server_send_packet(mod->as_server, conn);
+	}
+	init_login_from_db(mod, conn, conn_login);
+	dcsameaccount(mod, conn, account);
+}
+
 static void handle_login(
 	struct as_login_module * mod,
 	struct as_server_conn * conn,
@@ -142,14 +173,7 @@ static void handle_login(
 		as_server_send_packet(mod->as_server, conn);
 		return;
 	}
-	INFO("Login: AccountID = %s", account->account_id);
-	conn_login->stage = AS_LOGIN_STAGE_LOGGED_IN;
-	conn_login->account = as_account_copy_detached(mod->as_account, account);
-	as_account_reference(account);
-	ap_login_make_sign_on_packet(mod->ap_login, account->account_id, NULL);
-	as_server_send_packet(mod->as_server, conn);
-	init_login_from_db(mod, conn, conn_login);
-	dcsameaccount(mod, conn, account);
+	handlesuccessfullogin(mod, conn, conn_login, account);
 }
 
 static void deferred_login(
@@ -450,6 +474,56 @@ static boolean connctor(struct as_login_module * mod, void * data)
 	return TRUE;
 }
 
+static boolean consumereturntologinauth(
+	struct as_login_module * mod, 
+	const char * account_id,
+	uint32_t auth_key)
+{
+	uint32_t i;
+	for (i = 0; i < mod->return_to_login_auth_count; i++) {
+		if (strcmp(mod->return_to_login_auth[i].account_id, account_id) == 0) {
+			if (mod->return_to_login_auth[i].auth_key == auth_key) {
+				memcpy(&mod->return_to_login_auth[i],
+					&mod->return_to_login_auth[--mod->return_to_login_auth_count],
+					sizeof(mod->return_to_login_auth[0]));
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+	}
+	return FALSE;
+}
+
+static boolean cbreturntologinreceive(
+	struct as_login_module * mod, 
+	struct ap_return_to_login_cb_receive * cb)
+{
+	struct as_server_conn * conn;
+	if (cb->domain != AP_RETURN_TO_LOGIN_DOMAIN_LOGIN)
+		return TRUE;
+	conn = cb->user_data;
+	switch (cb->type) {
+	case AP_RETURN_TO_LOGIN_PACKET_RECONNECT_LOGIN_SERVER: {
+		struct as_login_conn_ad * attachment;
+		if (!consumereturntologinauth(mod, cb->account_id, cb->auth_key)) {
+			ap_login_make_login_result_packet(mod->ap_login,
+				AP_LOGIN_RESULT_INVALID_ACCOUNT, NULL);
+			as_server_send_packet(mod->as_server, conn);
+			return FALSE;
+		}
+		attachment = as_login_get_attached_conn_data(mod, conn);
+		attachment->in_return_to_login_process = TRUE;
+		attachment->stage = AS_LOGIN_STAGE_AWAIT_LOGIN;
+		ap_login_make_encrypt_code_packet(mod->ap_login, ENCRYPT_STRING);
+		as_server_send_packet(mod->as_server, conn);
+		return TRUE;
+	}
+	}
+	return FALSE;
+}
+
 static boolean onregister(
 	struct as_login_module * mod,
 	struct ap_module_registry * registry)
@@ -459,6 +533,7 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_item, AP_ITEM_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_item_convert, AP_ITEM_CONVERT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_login, AP_LOGIN_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_return_to_login, AP_RETURN_TO_LOGIN_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_account, AS_ACCOUNT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_character, AS_CHARACTER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_event_binding, AS_EVENT_BINDING_MODULE_NAME);
@@ -468,6 +543,7 @@ static boolean onregister(
 		AS_SERVER_MDI_CONNECTION, sizeof(struct as_login_conn_ad),
 		mod, connctor, NULL);
 	as_server_add_callback(mod->as_server, AS_SERVER_CB_DISCONNECT, mod, cbdisconnect);
+	ap_return_to_login_add_callback(mod->ap_return_to_login, AP_RETURN_TO_LOGIN_CB_RECEIVE, mod, cbreturntologinreceive);
 	return TRUE;
 }
 
@@ -563,4 +639,24 @@ boolean as_login_confirm_auth_key(
 	ap_admin_remove_object_by_name(&mod->token_admin,
 		character_name);
 	return TRUE;
+}
+
+void as_login_set_return_to_login_auth_key(
+	struct as_login_module * mod,
+	const char * account_id,
+	uint32_t auth_key)
+{
+	uint32_t i;
+	for (i = 0; i < mod->return_to_login_auth_count; i++) {
+		if (strcmp(mod->return_to_login_auth[i].account_id, account_id) == 0) {
+			mod->return_to_login_auth[i].auth_key = auth_key;
+			return;
+		}
+	}
+	if (mod->return_to_login_auth_count < MAXRETURNTOLOGINAUTH) {
+		uint32_t index = mod->return_to_login_auth_count++;
+		struct return_to_login_auth * auth = &mod->return_to_login_auth[index];
+		strlcpy(auth->account_id, account_id, sizeof(auth->account_id));
+		auth->auth_key = auth_key;
+	}
 }

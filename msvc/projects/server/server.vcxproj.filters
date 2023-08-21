@@ -447,6 +447,9 @@
     <ClInclude Include="..\..\..\source\server\as_auction_process.h">
       <Filter>server</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\public\ap_return_to_login.h">
+      <Filter>public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\vendor\pcg\pcg_basic.c">
@@ -844,6 +847,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\server\as_auction_process.c">
       <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\ap_return_to_login.c">
+      <Filter>public</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
