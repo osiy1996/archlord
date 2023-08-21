@@ -1691,8 +1691,7 @@ uint32_t ap_character_calc_physical_attack(
 	const struct ap_factor * cf = &character->factor;
 	const struct ap_factor * tf = &target->factor;
 	float defense = tf->defense.point.physical;
-	float resist = MIN(tf->defense.rate.physical, 80.f) - 
-		action->defense_penalty;
+	float resist = MIN(tf->defense.rate.physical, 80.f) - action->defense_penalty;
 	if (resist < 0.0f)
 		resist = 0.0f;
 	if (ap_character_is_pc(character)) {
@@ -2032,8 +2031,14 @@ boolean ap_character_attempt_attack(
 {
 	struct ap_character_cb_attempt_attack cb = { 
 		character, target, action };
-	return ap_module_enum_callback(&mod->instance.context, 
-		AP_CHARACTER_CB_ATTEMPT_ATTACK, &cb);
+	uint32_t id = AP_CHARACTER_CB_ATTEMPT_ATTACK;
+	uint32_t i;
+	uint32_t count = ap_module_get_callback_count(mod, id);
+	for (i = 0; i < count; i++) {
+		if (!ap_module_enum_callback_indexed(mod, id, &cb, i))
+			return FALSE;
+	}
+	return TRUE;
 }
 
 void ap_character_kill(

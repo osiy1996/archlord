@@ -1,4 +1,4 @@
-#include <assert.h>
+#include "server/as_character_process.h"
 
 #include "core/log.h"
 #include "core/malloc.h"
@@ -16,12 +16,13 @@
 #include "public/ap_skill.h"
 #include "public/ap_tick.h"
 
-#include "server/as_character_process.h"
 #include "server/as_event_binding.h"
 #include "server/as_item.h"
 #include "server/as_map.h"
 #include "server/as_player.h"
 #include "server/as_skill.h"
+
+#include <assert.h>
 
 struct as_character_process_module {
 	struct ap_module_instance instance;

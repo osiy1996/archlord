@@ -257,7 +257,7 @@ static uint32_t calcphysicalattack(
 				physical = (int)physicalmin;
 			else
 				physical = (int)ap_random_float(mod->ap_random, physicalmin, physicalmax);
-			action->info.target.dmg_normal = (physical < 0) ? physical : -1;
+			action->info.target.dmg_normal = (physical > 1) ? -physical : -1;
 			return -action->info.target.dmg_normal;
 		}
 		else {
@@ -799,6 +799,24 @@ static boolean cbcharprocess(
 	return TRUE;
 }
 
+static boolean cbcharattemptattack(
+	struct as_skill_process_module * mod,
+	struct ap_character_cb_attempt_attack * cb)
+{
+	struct ap_skill_character * attachment = ap_skill_get_character(mod->ap_skill, 
+		cb->target);
+	uint32_t i;
+	for (i = 0; i < attachment->buff_count; i++) {
+		struct ap_skill_buff_list * buff = &attachment->buff_list[i];
+		if (ap_skill_check_buff_condition(mod->ap_skill, buff) &&
+			CHECK_BIT(buff->temp->effect_type, AP_SKILL_EFFECT_REFLECT_DAMAGE_SHIELD)) {
+			cb->action->result = AP_CHARACTER_ACTION_RESULT_TYPE_BLOCK;
+			return FALSE;
+		}
+	}
+	return TRUE;
+}
+
 static boolean cbchardeath(
 	struct as_skill_process_module * mod,
 	struct ap_character_cb_death * cb)
@@ -910,6 +928,7 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_skill, AS_SKILL_MODULE_NAME);
 	ap_character_add_callback(mod->ap_character, AP_CHARACTER_CB_STOP_ACTION, mod, cbcharstopaction);
 	ap_character_add_callback(mod->ap_character, AP_CHARACTER_CB_PROCESS, mod, cbcharprocess);
+	ap_character_add_callback(mod->ap_character, AP_CHARACTER_CB_ATTEMPT_ATTACK, mod, cbcharattemptattack);
 	ap_character_add_callback(mod->ap_character, AP_CHARACTER_CB_DEATH, mod, cbchardeath);
 	ap_skill_add_callback(mod->ap_skill, AP_SKILL_CB_RECEIVE, mod, cbreceive);
 	ap_skill_add_callback(mod->ap_skill, AP_SKILL_CB_ADD_BUFF, mod, cbskilladdbuff);

@@ -6,6 +6,8 @@
 
 #include "utility/au_ini_manager.h"
 
+#include <assert.h>
+
 #define AP_MODULE_MAX_MODULE_NAME 40
 #define AP_MODULE_MAX_STREAM_DATA_COUNT 8
 #define AP_MODULE_MAX_MODULE_DATA_COUNT 8
@@ -158,6 +160,12 @@ boolean ap_module_enum_callback(
 	uint32_t id,
 	void * data);
 
+boolean ap_module_enum_callback_indexed(
+	ap_module_t module_,
+	uint32_t id,
+	void * data,
+	uint32_t callback_index);
+
 struct ap_module_stream * ap_module_stream_create();
 
 void ap_module_stream_destroy(struct ap_module_stream * stream);
@@ -281,6 +289,14 @@ void ap_module_stream_add_callback(
 	ap_module_t callback_module,
 	ap_module_stream_read_t read_cb,
 	ap_module_stream_write_t write_cb);
+
+static inline uint32_t ap_module_get_callback_count(
+	ap_module_t module_, 
+	uint32_t id)
+{
+	assert(id < AP_MODULE_MAX_CALLBACK_ID);
+	return ((struct ap_module *)module_)->callback_count[id];
+}
 
 END_DECLS
 

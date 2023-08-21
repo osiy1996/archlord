@@ -165,11 +165,23 @@ boolean ap_module_enum_callback(
 	struct ap_module * mod = module_;
 	uint32_t i;
 	boolean r = TRUE;
-	if (id >= AP_MODULE_MAX_CALLBACK_ID)
-		return FALSE;
+	assert(id < AP_MODULE_MAX_CALLBACK_ID);
 	for (i = 0; i < mod->callback_count[id]; i++)
 		r &= mod->callbacks[id][i](mod->callback_modules[id][i], data);
 	return r;
+}
+
+boolean ap_module_enum_callback_indexed(
+	ap_module_t module_,
+	uint32_t id,
+	void * data,
+	uint32_t callback_index)
+{
+	struct ap_module * mod = module_;
+	assert(id < AP_MODULE_MAX_CALLBACK_ID);
+	assert(callback_index < mod->callback_count[id]);
+	return mod->callbacks[id][callback_index](
+		mod->callback_modules[id][callback_index], data);
 }
 
 struct ap_module_stream * ap_module_stream_create()
