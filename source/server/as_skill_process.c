@@ -237,6 +237,10 @@ static inline void begincast(
 	as_map_broadcast(mod->as_map, c);
 	ap_character_update(mod->ap_character, c, 
 		AP_FACTORS_BIT_HP | AP_FACTORS_BIT_MP, FALSE);
+	if (ap_skill_is_offensive(skill)) {
+		ap_character_special_status_off(mod->ap_character, c, 
+			AP_CHARACTER_SPECIAL_STATUS_INVINCIBLE);
+	}
 }
 
 static uint32_t calcphysicalattack(
