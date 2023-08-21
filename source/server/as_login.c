@@ -13,9 +13,12 @@
 #include "public/ap_item_convert.h"
 #include "public/ap_login.h"
 #include "public/ap_return_to_login.h"
+#include "public/ap_skill.h"
+#include "public/ap_ui_status.h"
 
 #include "server/as_account.h"
 #include "server/as_event_binding.h"
+#include "server/as_item.h"
 #include "server/as_server.h"
 
 #include "vendor/PostgreSQL/openssl/evp.h"
@@ -47,6 +50,13 @@ struct return_to_login_auth {
 	uint32_t auth_key;
 };
 
+struct character_preset {
+	struct ap_character * character;
+	uint32_t item_tid[8];
+	uint32_t item_stack_count[8];
+	uint32_t item_count;
+};
+
 struct as_login_module {
 	struct ap_module_instance instance;
 	struct ap_character_module * ap_character;
@@ -55,12 +65,15 @@ struct as_login_module {
 	struct ap_item_convert_module * ap_item_convert;
 	struct ap_login_module * ap_login;
 	struct ap_return_to_login_module * ap_return_to_login;
+	struct ap_skill_module * ap_skill;
+	struct ap_ui_status_module * ap_ui_status;
 	struct as_account_module * as_account;
 	struct as_character_module * as_character;
 	struct as_event_binding_module * as_event_binding;
+	struct as_item_module * as_item;
 	struct as_server_module * as_server;
 	size_t conn_ad_offset;
-	struct ap_character * char_create[9];
+	struct character_preset presets[9];
 	struct ap_admin token_admin;
 	pcg32_random_t token_rng;
 	struct return_to_login_auth return_to_login_auth[MAXRETURNTOLOGINAUTH];
@@ -204,6 +217,46 @@ static void deferred_login(
 	handle_login(mod, conn, ad, account, d->password);
 }
 
+static void buildfrompreset(
+	struct as_login_module * mod, 
+	struct character_preset * preset, 
+	struct ap_character * character)
+{
+	struct ap_skill_template * temp = ap_skill_get_template(mod->ap_skill, 222);
+	uint32_t i;
+	struct ap_ui_status_character * uiattachment;
+	if (temp) {
+		struct ap_skill_character * attachment = ap_skill_get_character(
+			mod->ap_skill, character);
+		struct ap_skill * skill = ap_skill_new(mod->ap_skill);
+		uint32_t index;
+		skill->tid = temp->id;
+		skill->factor.dirt.skill_level = 1;
+		skill->factor.dirt.skill_point = 1;
+		skill->temp = temp;
+		skill->status = AP_SKILL_STATUS_NOT_CAST;
+		skill->is_temporary = FALSE;
+		index = attachment->skill_count++;
+		attachment->skill_id[index] = skill->id;
+		attachment->skill[index] = skill;
+	}
+	for (i = 0; i < preset->item_count; i++) {
+		struct ap_item * item = as_item_try_generate(mod->as_item, character, 
+			AP_ITEM_STATUS_INVENTORY, preset->item_tid[i]);
+		if (item)
+			ap_item_set_stack_count(item, preset->item_stack_count[i]);
+	}
+	uiattachment = ap_ui_status_get_character(mod->ap_ui_status, character);
+	uiattachment->items[0].base.type = AP_BASE_TYPE_SKILL;
+	uiattachment->items[0].base.id = 0;
+	uiattachment->items[0].tid = 222;
+	uiattachment->hp_potion_tid = 190;
+	uiattachment->mp_potion_tid = 193;
+	uiattachment->option_view_helmet = TRUE;
+	uiattachment->auto_use_hp_gauge = 50;
+	uiattachment->auto_use_mp_gauge = 50;
+}
+
 static boolean cb_receive(struct as_login_module * mod, void * data)
 {
 	struct ap_login_cb_receive * d = data;
@@ -341,7 +394,7 @@ static boolean cb_receive(struct as_login_module * mod, void * data)
 		uint8_t slot;
 		uint32_t i;
 		struct as_character_db * cdb;
-		struct ap_character * preset = NULL;
+		struct character_preset * preset = NULL;
 		struct ap_character * c = NULL;
 		struct as_account * cached;
 		if (ad->stage != AS_LOGIN_STAGE_LOGGED_IN || !d->char_info)
@@ -360,9 +413,9 @@ static boolean cb_receive(struct as_login_module * mod, void * data)
 			as_server_send_packet(mod->as_server, conn);
 			return TRUE;
 		}
-		for (i = 0; i < COUNT_OF(mod->char_create); i++) {
-			if (mod->char_create[i]->tid == d->char_info->tid) {
-				preset = mod->char_create[i];
+		for (i = 0; i < COUNT_OF(mod->presets); i++) {
+			if (mod->presets[i].character->tid == d->char_info->tid) {
+				preset = &mod->presets[i];
 				break;
 			}
 		}
@@ -399,17 +452,19 @@ static boolean cb_receive(struct as_login_module * mod, void * data)
 		strlcpy(cdb->name, d->char_info->char_name, sizeof(cdb->name));
 		cdb->creation_date = time(NULL);
 		cdb->slot = slot;
-		cdb->tid = preset->tid;
+		cdb->tid = preset->character->tid;
 		cdb->level = 1;
 		cdb->hp = 100;
 		cdb->mp = 100;
 		cdb->hair = d->char_info->hair_index;
 		cdb->face = d->char_info->face_index;
-		cdb->bound_region_id = preset->bound_region_id;
-		cdb->position = preset->pos;
-		/** \todo Add skills and setup quickbelt. */
+		cdb->bound_region_id = preset->character->bound_region_id;
+		cdb->position = preset->character->pos;
 		c = as_character_from_db(mod->as_character, cdb);
 		ad->characters[ad->character_count++] = c;
+		buildfrompreset(mod, preset, c);
+		/* Refresh database state before making a copy on cached account. */
+		as_character_reflect(mod->as_character, c);
 		cached->characters[cached->character_count++] = as_character_copy_database(
 			mod->as_character, cdb);
 		ap_login_make_new_char_name_packet(mod->ap_login, cdb->name, cdb->slot,
@@ -423,8 +478,8 @@ static boolean cb_receive(struct as_login_module * mod, void * data)
 	}
 	case AP_LOGIN_PACKET_RACE_BASE: {
 		uint32_t i;
-		for (i = 0; i < COUNT_OF(mod->char_create); i++) {
-			ap_character_make_add_packet(mod->ap_character, mod->char_create[i]);
+		for (i = 0; i < COUNT_OF(mod->presets); i++) {
+			ap_character_make_add_packet(mod->ap_character, mod->presets[i].character);
 			as_server_send_packet(mod->as_server, conn);
 		}
 		ap_login_make_packet(mod->ap_login, AP_LOGIN_PACKET_RACE_BASE);
@@ -534,9 +589,12 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_item_convert, AP_ITEM_CONVERT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_login, AP_LOGIN_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_return_to_login, AP_RETURN_TO_LOGIN_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_skill, AP_SKILL_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_ui_status, AP_UI_STATUS_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_account, AS_ACCOUNT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_character, AS_CHARACTER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_event_binding, AS_EVENT_BINDING_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_item, AS_ITEM_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_server, AS_SERVER_MODULE_NAME);
 	ap_login_add_callback(mod->ap_login, AP_LOGIN_CB_RECEIVE, mod, cb_receive);
 	mod->conn_ad_offset = as_server_attach_data(mod->as_server,
@@ -550,10 +608,10 @@ static boolean onregister(
 static void onclose(struct as_login_module * mod)
 {
 	uint32_t i;
-	for (i = 0; i < COUNT_OF(mod->char_create); i++) {
-		if (mod->char_create[i]) {
-			ap_character_free(mod->ap_character, mod->char_create[i]);
-			mod->char_create[i] = NULL;
+	for (i = 0; i < COUNT_OF(mod->presets); i++) {
+		if (mod->presets[i].character) {
+			ap_character_free(mod->ap_character, mod->presets[i].character);
+			mod->presets[i].character = NULL;
 		}
 	}
 }
@@ -578,10 +636,18 @@ boolean as_login_init_presets(struct as_login_module * mod)
 {
 	uint32_t i;
 	uint32_t tids[9] = { 96, 1, 6, 4, 8, 3, 377, 460, 9 };
+	uint32_t weapons[9] = { 11, 1, 12, 4, 6, 9, 4920, 2727, 2711 };
+	uint32_t extras[9] = { 0, 194, 0, 0, 238, 0, 5558, 0, 0 };
+	uint32_t extrascount[9] = { 0, 500, 0, 0, 500, 0, 1, 0, 0 };
+	uint32_t basic[3] = { 190, 193, 6393 };
+	uint32_t basiccount[3] = { 5, 3, 5 };
+	assert(COUNT_OF(tids) == COUNT_OF(mod->presets));
 	for (i = 0; i < COUNT_OF(tids); i++) {
+		struct character_preset * preset = &mod->presets[i];
 		struct ap_character_template * temp = 
 			ap_character_get_template(mod->ap_character, tids[i]);
 		struct ap_character * c;
+		uint32_t j;
 		if (!temp) {
 			ERROR("Invalid character preset (%u).", tids[i]);
 			return FALSE;
@@ -595,7 +661,22 @@ boolean as_login_init_presets(struct as_login_module * mod)
 			return FALSE;
 		}
 		c->login_status = AP_CHARACTER_STATUS_IN_GAME_WORLD;
-		mod->char_create[i] = c;
+		preset->character = c;
+		preset->item_tid[preset->item_count] = weapons[i];
+		preset->item_stack_count[preset->item_count++] = 1;
+		if (extras[i]) {
+			assert(extrascount[i] != 0);
+			assert(preset->item_count < COUNT_OF(preset->item_tid));
+			preset->item_tid[preset->item_count] = extras[i];
+			preset->item_stack_count[preset->item_count++] = extrascount[i];
+		}
+		for (j = 0; j < COUNT_OF(basic); j++) {
+			assert(basic[j] != 0);
+			assert(basiccount[j] != 0);
+			assert(preset->item_count < COUNT_OF(preset->item_tid));
+			preset->item_tid[preset->item_count] = basic[j];
+			preset->item_stack_count[preset->item_count++] = basiccount[j];
+		}
 	}
 	return TRUE;
 }
