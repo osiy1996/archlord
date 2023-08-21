@@ -9,6 +9,8 @@
 #include "public/ap_admin.h"
 #include "public/ap_character.h"
 #include "public/ap_config.h"
+#include "public/ap_item.h"
+#include "public/ap_item_convert.h"
 #include "public/ap_login.h"
 
 #include "server/as_account.h"
@@ -41,6 +43,8 @@ struct as_login_module {
 	struct ap_module_instance instance;
 	struct ap_character_module * ap_character;
 	struct ap_config_module * ap_config;
+	struct ap_item_module * ap_item;
+	struct ap_item_convert_module * ap_item_convert;
 	struct ap_login_module * ap_login;
 	struct as_account_module * as_account;
 	struct as_character_module * as_character;
@@ -245,8 +249,20 @@ static boolean cb_receive(struct as_login_module * mod, void * data)
 			return FALSE;
 		for (i = 0; i < ad->character_count; i++) {
 			struct ap_character * c = ad->characters[i];
+			struct ap_item_character * attachment = ap_item_get_character(mod->ap_item, c);
+			uint32_t j;
 			ap_character_make_add_packet(mod->ap_character, c);
 			as_server_send_packet(mod->as_server, conn);
+			for (j = 0; j  < attachment->equipment->grid_count; j++) {
+				struct ap_item * item = ap_grid_get_object_by_index(
+					attachment->equipment, j);
+				if (item) {
+					ap_item_make_add_packet(mod->ap_item, item);
+					as_server_send_packet(mod->as_server, conn);
+					ap_item_convert_make_add_packet(mod->ap_item_convert, item);
+					as_server_send_packet(mod->as_server, conn);
+				}
+			}
 		}
 		ap_login_make_packet(mod->ap_login, AP_LOGIN_PACKET_CHARACTER_INFO_FINISH);
 		as_server_send_packet(mod->as_server, conn);
@@ -440,6 +456,8 @@ static boolean onregister(
 {
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_character, AP_CHARACTER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_config, AP_CONFIG_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_item, AP_ITEM_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_item_convert, AP_ITEM_CONVERT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_login, AP_LOGIN_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_account, AS_ACCOUNT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_character, AS_CHARACTER_MODULE_NAME);
