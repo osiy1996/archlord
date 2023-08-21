@@ -189,6 +189,22 @@ static void informbufflist(
 	}
 }
 
+static void informskillcooldowns(
+	struct as_game_admin_module * mod,
+	struct ap_character * character)
+{
+	const struct ap_skill_character * attachment = 
+		ap_skill_get_character(mod->ap_skill, character);
+	uint32_t i;
+	for (i = 0; i < attachment->skill_count; i++) {
+		const struct ap_skill_buff_list * buff = &attachment->buff_list[i];
+		if (buff->temp->attribute & AP_SKILL_ATTRIBUTE_PASSIVE)
+			continue;
+		ap_skill_make_add_buffed_list_packet(mod->ap_skill, character, buff);
+		as_player_send_packet(mod->as_player, character);
+	}
+}
+
 static void constructbank(
 	struct as_game_admin_module * mod,
 	struct ap_character * character,
@@ -418,6 +434,8 @@ static boolean handle_ac_character(
 		informbufflist(mod, c);
 		ap_ui_status_make_add_packet(mod->ap_ui_status, c);
 		as_server_send_packet(mod->as_server, conn);
+		ap_character_make_update_gameplay_option_packet(mod->ap_character, c);
+		as_server_send_packet(mod->as_server, conn);
 		gc = ap_guild_get_character(mod->ap_guild, c);
 		if (gc->guild) {
 			ap_guild_make_add_packet(mod->ap_guild, gc->guild);
@@ -562,11 +580,8 @@ static boolean cbdisconnect(
 		 * Another example is the arena.
 		 * If client disconnects for any reason, we can 
 		 * retain the character in the world until the 
-		 * end of the arena game. 
-		 * 
-		 * For testing purposes, it is defaulted to retain 
-		 * the character in the world for the time being. */
-		if (FALSE)
+		 * end of the arena game. */
+		if (TRUE)
 			removeplayer(mod, c, account);
 	}
 	ad->stage = STAGE_DISCONNECTED;
@@ -628,7 +643,7 @@ static boolean cbreturntologinreceive(
 			character->id, addr, authkey);
 		as_server_send_packet(mod->as_server, attachment->conn);
 		as_server_disconnect_in(mod->as_server, 
-			attachment->conn, 5000);
+			attachment->conn, 2000);
 		break;
 	}
 	}
