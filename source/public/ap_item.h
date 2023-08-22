@@ -1361,6 +1361,11 @@ boolean ap_item_check_equip_restriction(
 	struct ap_item * item,
 	struct ap_character * character);
 
+boolean ap_item_check_equip_class_restriction(
+	struct ap_item_module * mod,
+	const struct ap_item_template * temp,
+	struct ap_character * character);
+
 /**
  * Retrieve other equipment to be unequiped 
  * together with target equipment.

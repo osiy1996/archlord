@@ -246,12 +246,6 @@ static boolean cbreadimport(
 	case AP_ITEM_DCID_DROPRANK:
 		attachment->drop_rank = strtol(value, NULL, 10);
 		break;
-	case AP_ITEM_DCID_GACHAMINLV:
-		attachment->gacha_level_min = strtol(value, NULL, 10);
-		break;
-	case AP_ITEM_DCID_GACHAMAXLV:
-		attachment->gacha_level_max = strtol(value, NULL, 10);
-		break;
 	default:
 		return TRUE;
 	}

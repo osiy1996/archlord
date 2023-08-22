@@ -84,6 +84,7 @@
 #include "server/as_drop_item_process.h"
 #include "server/as_event_bank_process.h"
 #include "server/as_event_binding.h"
+#include "server/as_event_gacha_process.h"
 #include "server/as_event_guild.h"
 #include "server/as_event_item_convert_process.h"
 #include "server/as_event_npc_dialog_process.h"
@@ -195,6 +196,7 @@ static ap_module_t g_AsDropItem;
 static ap_module_t g_AsDropItemProcess;
 static ap_module_t g_AsEventBankProcess;
 static ap_module_t g_AsEventBinding;
+static ap_module_t g_AsEventGachaProcess;
 static ap_module_t g_AsEventGuild;
 static ap_module_t g_AsEventItemConvertProcess;
 static ap_module_t g_AsEventNpcDialogProcess;
@@ -316,6 +318,7 @@ static struct module_desc g_Modules[] = {
 	{ AS_EVENT_BANK_PROCESS_MODULE_NAME, as_event_bank_process_create_module, NULL, &g_AsEventBankProcess },
 	{ AS_EVENT_ITEM_CONVERT_PROCESS_MODULE_NAME, as_event_item_convert_process_create_module, NULL, &g_AsEventItemConvertProcess },
 	{ AS_EVENT_REFINERY_PROCESS_MODULE_NAME, as_event_refinery_process_create_module, NULL, &g_AsEventRefineryProcess },
+	{ AS_EVENT_GACHA_PROCESS_MODULE_NAME, as_event_gacha_process_create_module, NULL, &g_AsEventGachaProcess },
 	{ AS_ITEM_PROCESS_MODULE_NAME, as_item_process_create_module, NULL, &g_AsItemProcess },
 	{ AS_ITEM_CONVERT_PROCESS_MODULE_NAME, as_item_convert_process_create_module, NULL, &g_AsItemConvertProcess },
 	{ AS_PRIVATE_TRADE_PROCESS_MODULE_NAME, as_private_trade_process_create_module, NULL, &g_AsPrivateTradeProcess },

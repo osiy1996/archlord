@@ -3212,6 +3212,35 @@ boolean ap_item_check_equip_restriction(
 	return TRUE;
 }
 
+boolean ap_item_check_equip_class_restriction(
+	struct ap_item_module * mod,
+	const struct ap_item_template * temp,
+	struct ap_character * character)
+{
+	const struct ap_factor * r = &temp->factor_restrict;
+	const struct ap_factor * c = &character->factor;
+	if (temp->type != AP_ITEM_TYPE_EQUIP) {
+		/* Not an equipment. */
+		return FALSE;
+	}
+	if (r->char_type.race &&
+		!(r->char_type.race & (1u << c->char_type.race))) {
+		/* Character race is does not meet requirements. */
+		return FALSE;
+	}
+	if (r->char_type.gender && 
+		c->char_type.gender != r->char_type.gender) {
+		/* Character gender is does not meet requirements. */
+		return FALSE;
+	}
+	if (r->char_type.cs &&
+		!(r->char_type.cs & (1u << c->char_type.cs))) {
+		/* Character class is does not meet requirements. */
+		return FALSE;
+	}
+	return TRUE;
+}
+
 struct ap_item * ap_item_to_be_unequiped_together(
 	struct ap_item_module * mod,
 	struct ap_character * character,

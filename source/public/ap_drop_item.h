@@ -73,8 +73,6 @@ struct ap_drop_item_template_attachment {
 	uint32_t group_id;
 	uint32_t suitable_level_min;
 	uint32_t suitable_level_max;
-	uint32_t gacha_level_min;
-	uint32_t gacha_level_max;
 	struct ap_drop_item_option_type_pool * type_pools;
 	uint32_t type_pool_count;
 	boolean is_droppable_unique_accessory;

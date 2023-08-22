@@ -10,6 +10,7 @@
 #include "public/ap_config.h"
 #include "public/ap_define.h"
 #include "public/ap_event_bank.h"
+#include "public/ap_event_gacha.h"
 #include "public/ap_event_guild.h"
 #include "public/ap_event_item_convert.h"
 #include "public/ap_event_npc_dialog.h"
@@ -66,6 +67,7 @@ struct as_game_admin_module {
 	struct ap_chat_module * ap_chat;
 	struct ap_config_module * ap_config;
 	struct ap_event_bank_module * ap_event_bank;
+	struct ap_event_gacha_module * ap_event_gacha;
 	struct ap_event_guild_module * ap_event_guild;
 	struct ap_event_item_convert_module * ap_event_item_convert;
 	struct ap_event_npc_dialog_module * ap_event_npc_dialog;
@@ -494,6 +496,9 @@ static boolean cbreceive(struct as_game_admin_module * mod, void * data)
 	case AP_EVENT_BANK_PACKET_TYPE:
 		ap_event_bank_on_receive(mod->ap_event_bank, d->data, d->length, ad->character);
 		break;
+	case AP_EVENT_GACHA_PACKET_TYPE:
+		ap_event_gacha_on_receive(mod->ap_event_gacha, d->data, d->length, ad->character);
+		break;
 	case AP_EVENT_GUILD_PACKET_TYPE:
 		ap_event_guild_on_receive(mod->ap_event_guild, d->data, d->length, ad->character);
 		break;
@@ -660,6 +665,7 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_chat, AP_CHAT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_config, AP_CONFIG_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_bank, AP_EVENT_BANK_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_gacha, AP_EVENT_GACHA_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_guild, AP_EVENT_GUILD_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_item_convert, AP_EVENT_ITEM_CONVERT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_npc_dialog, AP_EVENT_NPC_DIALOG_MODULE_NAME);

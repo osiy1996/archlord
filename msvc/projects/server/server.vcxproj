@@ -216,6 +216,7 @@
     <ClInclude Include="..\..\..\source\server\as_drop_item_process.h" />
     <ClInclude Include="..\..\..\source\server\as_event_bank_process.h" />
     <ClInclude Include="..\..\..\source\server\as_event_binding.h" />
+    <ClInclude Include="..\..\..\source\server\as_event_gacha_process.h" />
     <ClInclude Include="..\..\..\source\server\as_event_guild.h" />
     <ClInclude Include="..\..\..\source\server\as_event_item_convert_process.h" />
     <ClInclude Include="..\..\..\source\server\as_event_npc_dialog_process.h" />
@@ -352,6 +353,7 @@
     <ClCompile Include="..\..\..\source\server\as_database.c" />
     <ClCompile Include="..\..\..\source\server\as_drop_item.c" />
     <ClCompile Include="..\..\..\source\server\as_drop_item_process.c" />
+    <ClCompile Include="..\..\..\source\server\as_event_gacha_process.c" />
     <ClCompile Include="..\..\..\source\server\main.c" />
     <ClCompile Include="..\..\..\source\server\as_event_bank_process.c" />
     <ClCompile Include="..\..\..\source\server\as_event_binding.c" />

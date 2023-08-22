@@ -5,12 +5,16 @@
 #include "core/log.h"
 #include "core/malloc.h"
 #include "core/string.h"
+#include "core/vector.h"
 
 #include "public/ap_config.h"
 #include "public/ap_event_gacha.h"
 #include "public/ap_event_manager.h"
+#include "public/ap_item.h"
 #include "public/ap_object.h"
+#include "public/ap_packet.h"
 
+#include "utility/au_packet.h"
 #include "utility/au_table.h"
 
 #define STREAM_GACHA_START "GachaStart"
@@ -19,10 +23,15 @@
 
 #define MAXTYPEID 5
 
+size_t AP_EVENT_GACHA_ITEM_TEMPLATE_ATTACHMENT_OFFSET = SIZE_MAX;
+
 struct ap_event_gacha_module {
 	struct ap_module_instance instance;
 	struct ap_config_module * ap_config;
 	struct ap_event_manager_module * ap_event_manager;
+	struct ap_item_module * ap_item;
+	struct ap_packet_module * ap_packet;
+	struct au_packet packet;
 	struct ap_event_gacha_type type[MAXTYPEID];
 };
 
@@ -57,10 +66,16 @@ static boolean event_read(
 		const char * value_name = 
 			ap_module_stream_get_value_name(stream);
 		if (strcmp(value_name, STREAM_GACHA_TYPE) == 0) {
-			if (!ap_module_stream_get_i32(stream, &e->gacha_type)) {
+			int gachatype = 0;
+			if (!ap_module_stream_get_i32(stream, &gachatype)) {
 				ERROR("Failed to read event gacha type.");
 				return FALSE;
 			}
+			if (!gachatype || gachatype > MAXTYPEID) {
+				ERROR("Invalid gacha type (%d).", gachatype);
+				return FALSE;
+			}
+			e->type = &mod->type[gachatype - 1];
 		}
 		else if (strcmp(value_name, STREAM_GACHA_END) == 0) {
 			break;
@@ -79,8 +94,7 @@ static boolean event_write(
 {
 	struct ap_event_gacha_event * e = ap_event_gacha_get_event(data);
 	if (!ap_module_stream_write_i32(stream, STREAM_GACHA_START, 0) ||
-		!ap_module_stream_write_i32(stream, STREAM_GACHA_TYPE, 
-			e->gacha_type) ||
+		!ap_module_stream_write_i32(stream, STREAM_GACHA_TYPE, e->type->id) ||
 		!ap_module_stream_write_i32(stream, STREAM_GACHA_END, 0)) {
 		ERROR("Failed to write event gacha stream.");
 		return FALSE;
@@ -88,18 +102,46 @@ static boolean event_write(
 	return TRUE;
 }
 
+static boolean cbreadimport(
+	struct ap_event_gacha_module * mod,
+	struct ap_item_cb_read_import * cb)
+{
+	struct ap_item_template * temp = cb->temp;
+	struct ap_event_gacha_item_template_attachment * attachment = 
+		ap_event_gacha_get_item_template_attachment(temp);
+	const char * value = cb->value;
+	switch (cb->column_id) {
+	case AP_ITEM_DCID_GACHAMINLV:
+		attachment->gacha_level_min = strtol(value, NULL, 10);
+		break;
+	case AP_ITEM_DCID_GACHAMAXLV:
+		attachment->gacha_level_max = strtol(value, NULL, 10);
+		break;
+	default:
+		return TRUE;
+	}
+	return FALSE;
+}
+
 static boolean onregister(
 	struct ap_event_gacha_module * mod,
 	struct ap_module_registry * registry)
 {
-	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_manager, AP_EVENT_MANAGER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_config, AP_CONFIG_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_manager, AP_EVENT_MANAGER_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_item, AP_ITEM_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_packet, AP_PACKET_MODULE_NAME);
 	if (!ap_event_manager_register_event(mod->ap_event_manager,
 			AP_EVENT_MANAGER_FUNCTION_GACHA, 
 			mod, event_ctor, event_dtor, event_read, event_write, NULL)) {
 		ERROR("Failed to register event.");
 		return FALSE;
 	}
+	AP_EVENT_GACHA_ITEM_TEMPLATE_ATTACHMENT_OFFSET = ap_item_attach_data(
+		mod->ap_item, AP_ITEM_MDI_TEMPLATE, 
+		sizeof(struct ap_event_gacha_item_template_attachment), 
+		mod, NULL, NULL);
+	ap_item_add_callback(mod->ap_item, AP_ITEM_CB_READ_IMPORT, mod, cbreadimport);
 	return TRUE;
 }
 
@@ -107,7 +149,27 @@ struct ap_event_gacha_module * ap_event_gacha_create_module()
 {
 	struct ap_event_gacha_module * mod = ap_module_instance_new(AP_EVENT_GACHA_MODULE_NAME,
 		sizeof(*mod), onregister, NULL, NULL, NULL);
+	au_packet_init(&mod->packet, sizeof(uint16_t),
+		AU_PACKET_TYPE_INT8, 1, /* Packet Type */
+		AU_PACKET_TYPE_PACKET, 1, /* Event Base Packet */
+		AU_PACKET_TYPE_INT32, 1, /* CID */
+		AU_PACKET_TYPE_INT32, 1, /* Result */
+		AU_PACKET_TYPE_INT32, 1, /* Require Item TID */
+		AU_PACKET_TYPE_INT32, 1, /* Require Stack Count */
+		AU_PACKET_TYPE_INT32, 1, /* Require Gold */
+		AU_PACKET_TYPE_INT32, 1, /* Require Charisma */
+		AU_PACKET_TYPE_MEMORY_BLOCK, 1, /* List of Items */
+		AU_PACKET_TYPE_END);
 	return mod;
+}
+
+void ap_event_gacha_add_callback(
+	struct ap_event_gacha_module * mod,
+	enum ap_event_gacha_callback_id id,
+	ap_module_t callback_module,
+	ap_module_default_t callback)
+{
+	ap_module_add_callback(mod, id, callback_module, callback);
 }
 
 struct ap_event_gacha_event * ap_event_gacha_get_event(struct ap_event_manager_event * e)
@@ -289,4 +351,69 @@ boolean ap_event_gacha_read_types(
 	}
 	au_ini_mgr_destroy(ini);
 	return TRUE;
+}
+
+boolean ap_event_gacha_on_receive(
+	struct ap_event_gacha_module * mod,
+	const void * data,
+	uint16_t length,
+	void * user_data)
+{
+	struct ap_event_gacha_cb_receive cb = { 0 };
+	const void * basepacket = NULL;
+	struct ap_event_manager_base_packet event = { 0 };
+	const char * targetpointname = NULL;
+	if (!au_packet_get_field(&mod->packet, TRUE, data, length,
+			&cb.type, /* Packet Type */
+			&basepacket, /* Event Base Packet */
+			NULL, /* CID */
+			NULL, /* Result */
+			NULL, /* Require Item TID */
+			NULL, /* Require Stack Count */
+			NULL, /* Require Gold */
+			NULL, /* Require Charisma */
+			NULL, NULL)) { /* List of Items */
+		return FALSE;
+	}
+	if (basepacket) {
+		if (!ap_event_manager_get_base_packet(mod->ap_event_manager, basepacket, &event))
+			return FALSE;
+		cb.event = &event;
+	}
+	cb.user_data = user_data;
+	return ap_module_enum_callback(mod, AP_EVENT_GACHA_CB_RECEIVE, &cb);
+}
+
+void ap_event_gacha_make_grant_packet(
+	struct ap_event_gacha_module * mod,
+	struct ap_event_manager_event * event,
+	uint32_t character_id,
+	uint32_t character_level,
+	const uint32_t * item_list,
+	uint32_t item_count)
+{
+	uint8_t type = AP_EVENT_GACHA_PACKET_REQUESTGRANTED;
+	void * buffer = ap_packet_get_buffer(mod->ap_packet);
+	void * base = NULL;
+	uint16_t length = 0;
+	struct ap_event_gacha_event * e = ap_event_gacha_get_event(event);
+	struct ap_event_gacha_drop * drop = &e->type->drop_table[character_level - 1];
+	uint16_t listsize = (uint16_t)(item_count * sizeof(*item_list));
+	if (event) {
+		base = ap_packet_get_temp_buffer(mod->ap_packet);
+		ap_event_manager_make_base_packet(mod->ap_event_manager, event, base);
+	}
+	au_packet_make_packet(&mod->packet, buffer, 
+		TRUE, &length, AP_EVENT_GACHA_PACKET_TYPE,
+		&type, /* Packet Type */
+		base, /* Event Base Packet */
+		&character_id, /* CID */
+		NULL, /* Result */
+		&drop->require_item_tid, /* Require Item TID */
+		&drop->require_stack_count, /* Require Stack Count */
+		&drop->require_gold, /* Require Gold */
+		&drop->require_charisma, /* Require Charisma */
+		item_list, &listsize); /* List of Items */
+	ap_packet_set_length(mod->ap_packet, length);
+	ap_packet_reset_temp_buffers(mod->ap_packet);
 }
