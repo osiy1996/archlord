@@ -580,6 +580,14 @@ static boolean initialize()
 		ERROR("Failed to read refinery recipe table (%s).", path);
 		return FALSE;
 	}
+	if (!make_path(path, sizeof(path), "%s/gachatypetemplate.ini", inidir)) {
+		ERROR("Failed to create path (%s/gachatypetemplate.ini).", inidir);
+		return FALSE;
+	}
+	if (!ap_event_gacha_read_types(g_ApEventGacha, path)) {
+		ERROR("Failed to read gacha types (%s).", path);
+		return FALSE;
+	}
 	if (!make_path(path, sizeof(path), "%s/aidatatable.txt", inidir)) {
 		ERROR("Failed to create path (%s/aidatatable.txt).", inidir);
 		return FALSE;
