@@ -22,6 +22,16 @@ enum ap_event_gacha_packet_type {
 	AP_EVENT_GACHA_PACKET_RESULT,
 };
 
+enum ap_event_gacha_result {
+	AP_EVENT_GACHA_RESULT_OK,
+	AP_EVENT_GACHA_RESULT_NOT_ENOUGH_ITEM,
+	AP_EVENT_GACHA_RESULT_NOT_ENOUGH_MONEY,
+	AP_EVENT_GACHA_RESULT_NOT_ENOUGH_CHARISMA,
+	AP_EVENT_GACHA_RESULT_NOT_ENOUGH_INVENTORY,
+	AP_EVENT_GACHA_RESULT_GACHA_ERROR,
+	AP_EVENT_GACHA_RESULT_LEVEL_LIMIT,
+};
+
 enum ap_event_gacha_callback_id {
 	AP_EVENT_GACHA_CB_RECEIVE,
 };
@@ -88,6 +98,13 @@ void ap_event_gacha_make_grant_packet(
 	uint32_t character_level,
 	const uint32_t * item_list,
 	uint32_t item_count);
+
+void ap_event_gacha_make_result_packet(
+	struct ap_event_gacha_module * mod,
+	struct ap_event_manager_event * event,
+	enum ap_event_gacha_result result,
+	uint32_t character_id,
+	uint32_t * result_item_tid);
 
 static inline struct ap_event_gacha_item_template_attachment * ap_event_gacha_get_item_template_attachment(
 	struct ap_item_template * temp)

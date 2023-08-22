@@ -1315,6 +1315,22 @@ struct ap_item * ap_item_find_usable_item_without_status_flag(
 	uint32_t count, ...);
 
 /**
+ * Looks for items in character inventory with template id.
+ * \param[in] character   Character pointer.
+ * \param[in] item_tid    Item template id.
+ * \param[in] count       Number of valid item status.
+ * \param[in] ...         Enumeration of \ref enum ap_item_status.
+ *
+ * \return Returns item pointer if an item with a matching 
+ *         item id is found. Otherwise, returns NULL.
+ */
+struct ap_item * ap_item_find_item_by_template_id(
+	struct ap_item_module * mod,
+	struct ap_character * character,
+	uint32_t item_tid,
+	uint32_t count, ...);
+
+/**
  * Find grid matching with item status.
  * \param[in] character   Character pointer.
  * \param[in] item_status Item status.

@@ -749,6 +749,7 @@ struct ap_character * as_character_from_db(
 	c->login_status = AP_CHARACTER_STATUS_IN_LOGIN_PROCESS;
 	c->criminal_status = db->criminal_status;
 	c->inventory_gold = db->inventory_gold;
+	c->factor.char_status.cha = (float)db->charisma;
 	c->face_index = db->face;
 	c->hair_index = db->hair;
 	if (!ap_module_enum_callback(mod, AS_CHARACTER_CB_LOAD, &cb)) {
@@ -778,6 +779,7 @@ void as_character_reflect(
 		db->status &= ~AS_CHARACTER_STATUS_AUTO_ATTACK_AFTER_SKILL_CAST;
 	db->level = ap_character_get_absolute_level(character);
 	db->inventory_gold = character->inventory_gold;
+	db->charisma = (uint32_t)character->factor.char_status.cha;
 	db->villain_points = character->factor.char_status.murderer;
 	db->hp = character->factor.char_point.hp;
 	db->mp = character->factor.char_point.mp;

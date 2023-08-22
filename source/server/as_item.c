@@ -1004,3 +1004,53 @@ void as_item_consume(
 		as_item_delete(mod, character, item);
 	}
 }
+
+boolean as_item_consume_by_template_id(
+	struct as_item_module * mod,
+	struct ap_character * character,
+	uint32_t template_id,
+	uint32_t stack_count)
+{
+	const struct ap_item_template * temp = ap_item_get_template(mod->ap_item, 
+		template_id);
+	enum ap_item_status status[2] = { 0 };
+	uint32_t count = 0;
+	uint32_t i;
+	uint32_t stack = 0;
+	if (!temp)
+		return FALSE;
+	if (temp->cash_item_type != AP_ITEM_CASH_ITEM_TYPE_NONE) {
+		status[count++] = AP_ITEM_STATUS_CASH_INVENTORY;
+	}
+	else {
+		status[count++] = AP_ITEM_STATUS_INVENTORY;
+		status[count++] = AP_ITEM_STATUS_SUB_INVENTORY;
+	}
+	for (i = 0; i < count; i++) {
+		struct ap_grid * grid = ap_item_get_character_grid(mod->ap_item, 
+			character, status[i]);
+		uint32_t j;
+		for (j = 0; j < grid->grid_count; j++) {
+			struct ap_item * item = ap_grid_get_object_by_index(grid, j);
+			if (item && item->tid == template_id)
+				stack += item->stack_count;
+		}
+	}
+	if (stack < stack_count)
+		return FALSE;
+	for (i = 0; i < count && stack_count; i++) {
+		struct ap_grid * grid = ap_item_get_character_grid(mod->ap_item, 
+			character, status[i]);
+		uint32_t j;
+		for (j = 0; j < grid->grid_count && stack_count; j++) {
+			struct ap_item * item = ap_grid_get_object_by_index(grid, j);
+			if (item && item->tid == template_id) {
+				uint32_t consume = MIN(stack_count, item->stack_count);
+				as_item_consume(mod, character, item, consume);
+				stack_count -= consume;
+			}
+		}
+	}
+	assert(stack_count == 0);
+	return TRUE;
+}

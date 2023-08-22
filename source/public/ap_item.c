@@ -3092,6 +3092,35 @@ struct ap_item * ap_item_find_usable_item_without_status_flag(
 	return NULL;
 }
 
+struct ap_item * ap_item_find_item_by_template_id(
+	struct ap_item_module * mod,
+	struct ap_character * character,
+	uint32_t item_tid,
+	uint32_t count, ...)
+{
+	va_list args;
+	uint32_t i;
+	va_start(args, count);
+	for (i = 0; i < count; i++) {
+		enum ap_item_status st = va_arg(args, enum ap_item_status);
+		struct ap_grid * grid = ap_item_get_character_grid(mod, character, st);
+		uint32_t j;
+		if (!grid) {
+			assert(0);
+			continue;
+		}
+		for (j = 0; j < grid->grid_count; j++) {
+			struct ap_item * item = ap_grid_get_object_by_index(grid, j);
+			if (item && item->tid == item_tid) {
+				va_end(args);
+				return item;
+			}
+		}
+	}
+	va_end(args);
+	return NULL;
+}
+
 void ap_item_remove_from_grid(
 	struct ap_item_module * mod,
 	struct ap_character * character,

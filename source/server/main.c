@@ -196,7 +196,7 @@ static ap_module_t g_AsDropItem;
 static ap_module_t g_AsDropItemProcess;
 static ap_module_t g_AsEventBankProcess;
 static ap_module_t g_AsEventBinding;
-static ap_module_t g_AsEventGachaProcess;
+static struct as_event_gacha_process_module * g_AsEventGachaProcess;
 static ap_module_t g_AsEventGuild;
 static ap_module_t g_AsEventItemConvertProcess;
 static ap_module_t g_AsEventNpcDialogProcess;
@@ -801,6 +801,7 @@ int main(int argc, char * argv[])
 		as_ai2_process_end_frame(g_AsAI2Process);
 		as_map_clear_expired_item_drops(g_AsMap, tick);
 		as_http_server_poll_requests(g_AsHttpServer);
+		as_event_gacha_process_handle_pending_rolls(g_AsEventGachaProcess);
 		accum += dt;
 		while (accum >= STEPTIME) {
 			/* Fixed-step updates should be done here (i.e. character movement). */

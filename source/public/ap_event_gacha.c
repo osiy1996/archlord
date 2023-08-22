@@ -274,7 +274,6 @@ static boolean readtypetable(
 				break;
 			case TT_RANK3:
 				assert(AP_EVENT_GACHA_MAX_RANK > 2);
-				drop->require_charisma = strtoul(value, NULL, 10);
 				drop->rate[2] = strtoul(value, NULL, 10);
 				break;
 			case TT_RANK4:
@@ -414,6 +413,37 @@ void ap_event_gacha_make_grant_packet(
 		&drop->require_gold, /* Require Gold */
 		&drop->require_charisma, /* Require Charisma */
 		item_list, &listsize); /* List of Items */
+	ap_packet_set_length(mod->ap_packet, length);
+	ap_packet_reset_temp_buffers(mod->ap_packet);
+}
+
+void ap_event_gacha_make_result_packet(
+	struct ap_event_gacha_module * mod,
+	struct ap_event_manager_event * event,
+	enum ap_event_gacha_result result,
+	uint32_t character_id,
+	uint32_t * result_item_tid)
+{
+	uint8_t type = AP_EVENT_GACHA_PACKET_RESULT;
+	void * buffer = ap_packet_get_buffer(mod->ap_packet);
+	void * base = NULL;
+	uint16_t length = 0;
+	uint32_t zero = 0;
+	if (event) {
+		base = ap_packet_get_temp_buffer(mod->ap_packet);
+		ap_event_manager_make_base_packet(mod->ap_event_manager, event, base);
+	}
+	au_packet_make_packet(&mod->packet, buffer, 
+		TRUE, &length, AP_EVENT_GACHA_PACKET_TYPE,
+		&type, /* Packet Type */
+		base, /* Event Base Packet */
+		&character_id, /* CID */
+		result_item_tid, /* Result */
+		&result, /* Require Item TID */
+		&zero, /* Require Stack Count */
+		&zero, /* Require Gold */
+		&zero, /* Require Charisma */
+		NULL); /* List of Items */
 	ap_packet_set_length(mod->ap_packet, length);
 	ap_packet_reset_temp_buffers(mod->ap_packet);
 }

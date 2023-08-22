@@ -284,6 +284,12 @@ void as_item_consume(
 	struct ap_item * item,
 	uint32_t stack_count);
 
+boolean as_item_consume_by_template_id(
+	struct as_item_module * mod,
+	struct ap_character * character,
+	uint32_t template_id,
+	uint32_t stack_count);
+
 END_DECLS
 
 #endif /* _AS_ITEM_H_ */
