@@ -1170,7 +1170,7 @@ void ap_drop_item_generate_options_for_gacha(
 		uint32_t total = 0;
 		uint32_t rate = 0;
 		boolean done = FALSE;
-		struct option_pool * pool = &mod->option_gacha_pool[index][item_part];
+		struct option_pool * pool = &mod->option_gacha_pool[types[index]][item_part];
 		types[index] = types[--typecount];
 		for (i = 0; i < pool->count; i++) {
 			const struct ap_item_option_template * option = pool->options[i];
@@ -1186,7 +1186,7 @@ void ap_drop_item_generate_options_for_gacha(
 				continue;
 			total += option->probability;
 			if (rate < total) {
-				item->option_tid[item->option_count] = option->skill_tid;
+				item->option_tid[item->option_count] = option->id;
 				item->options[item->option_count++] = option;
 				option_count--;
 				break;

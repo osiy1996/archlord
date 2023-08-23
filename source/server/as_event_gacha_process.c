@@ -3,8 +3,10 @@
 #include "core/log.h"
 
 #include "public/ap_character.h"
+#include "public/ap_drop_item.h"
 #include "public/ap_event_gacha.h"
 #include "public/ap_event_manager.h"
+#include "public/ap_item_convert.h"
 #include "public/ap_optimized_packet2.h"
 #include "public/ap_tick.h"
 
@@ -33,9 +35,11 @@ struct pending_roll {
 struct as_event_gacha_process_module {
 	struct ap_module_instance instance;
 	struct ap_character_module * ap_character;
+	struct ap_drop_item_module * ap_drop_item;
 	struct ap_event_manager_module * ap_event_manager;
 	struct ap_event_gacha_module * ap_event_gacha;
 	struct ap_item_module * ap_item;
+	struct ap_item_convert_module * ap_item_convert;
 	struct ap_optimized_packet2_module * ap_optimized_packet2;
 	struct ap_tick_module * ap_tick;
 	struct as_character_module * as_character;
@@ -351,9 +355,11 @@ static boolean onregister(
 	struct ap_module_registry * registry)
 {
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_character, AP_CHARACTER_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_drop_item, AP_DROP_ITEM_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_gacha, AP_EVENT_GACHA_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_manager, AP_EVENT_MANAGER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_item, AP_ITEM_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_item_convert, AP_ITEM_CONVERT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_optimized_packet2, AP_OPTIMIZED_PACKET2_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_tick, AP_TICK_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_character, AS_CHARACTER_MODULE_NAME);
@@ -382,6 +388,45 @@ struct as_event_gacha_process_module * as_event_gacha_process_create_module()
 	return mod;
 }
 
+static struct ap_item * generateproduct(
+	struct as_event_gacha_process_module * mod, 
+	const struct ap_item_template * temp,
+	uint32_t stack_count,
+	void * user_data)
+{
+	struct ap_item * item = ap_item_create(mod->ap_item, temp->tid);
+	if (!item)
+		return NULL;
+	item->update_flags = AP_ITEM_UPDATE_ALL;
+	item->stack_count = stack_count;
+	if (temp->type == AP_ITEM_TYPE_EQUIP) {
+		struct ap_item_convert_item * attachment;
+		if (temp->option_count) {
+			uint32_t i;
+			item->option_count = temp->option_count;
+			for (i = 0; i < temp->option_count; i++) {
+				item->option_tid[i] = temp->option_tid[i];
+				item->options[i] = temp->options[i];
+			}
+		}
+		else if (temp->max_option_count) {
+			uint32_t count = temp->min_option_count + pcg32_boundedrand_r(&mod->rng,
+				(temp->max_option_count - temp->min_option_count) + 1);
+			if (count) {
+				ap_drop_item_generate_options_for_gacha(mod->ap_drop_item, 
+					item, count);
+			}
+		}
+		attachment = ap_item_convert_get_item(mod->ap_item_convert, item);
+		attachment->socket_count = temp->min_socket_count + pcg32_boundedrand_r(&mod->rng,
+			(temp->max_socket_count - temp->min_socket_count) + 1);
+		if (!attachment->socket_count)
+			attachment->socket_count = 1;
+		attachment->update_flags |= AP_ITEM_CONVERT_UPDATE_SOCKET_COUNT;
+	}
+	return item;
+}
+
 void as_event_gacha_process_handle_pending_rolls(
 	struct as_event_gacha_process_module * mod)
 {
@@ -393,11 +438,12 @@ void as_event_gacha_process_handle_pending_rolls(
 			struct ap_character * character = as_player_get_by_id(mod->as_player, 
 				roll->character_id);
 			if (character) {
-				as_drop_item_distribute(mod->as_drop_item, character, 
-					roll->item_tid, 1);
+				as_drop_item_distribute_custom(mod->as_drop_item, character, 
+					roll->item_tid, 1, mod, NULL, generateproduct);
 			}
-			memcpy(&mod->pending_rolls[i], &mod->pending_rolls[i + 1],
-				(size_t)--mod->pending_roll_count & sizeof(mod->pending_rolls[i]));
+			memmove(&mod->pending_rolls[i], 
+				&mod->pending_rolls[--mod->pending_roll_count],
+				sizeof(mod->pending_rolls[i]));
 		}
 		else {
 			i++;
