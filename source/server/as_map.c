@@ -1234,18 +1234,18 @@ static void setrect(
 	float width, 
 	float length)
 {
-	vec2 vec = { dst->x - src->x, dst->y - src->y };
+	vec2 vec = { dst->x - src->x, dst->z - src->z };
 	vec2 per = { vec[1], -1 * vec[0] };
 	float l = sqrtf(per[0] * per[0] + per[1] * per[1]);
 	vec2 per_norm = { per[0] / l, per[1] / l };
 	vec2 norm = { vec[0] / l, vec[1] / l };
-	vec2 end	= { src->x + (length * norm[0]), src->y + (length * norm[1]) };
+	vec2 end	= { src->x + (length * norm[0]), src->z + (length * norm[1]) };
 	float dx = per_norm[0] * width / 2;
 	float dy = per_norm[1] * width / 2;
 	rect->a[0] = src->x + dx;
-	rect->a[1] = src->y + dy;
+	rect->a[1] = src->z + dy;
 	rect->b[0] = src->x - dx;
-	rect->b[1] = src->y - dy;
+	rect->b[1] = src->z - dy;
 	rect->c[0] = end[0] - dx;
 	rect->c[1] = end[1] - dy;
 	rect->d[0] = end[0] + dx;
