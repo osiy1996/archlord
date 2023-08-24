@@ -157,7 +157,7 @@ static struct ap_item * cbgeneratereward(
 		attachment = ap_item_convert_get_item(mod->ap_item_convert, item);
 		attachment->socket_count = MAX(1, MIN(reward->socket_count, 
 			temp->max_socket_count));
-		attachment->update_flags |= AP_ITEM_CONVERT_UPDATE_SOCKET_COUNT;
+		attachment->update_flags = AP_ITEM_CONVERT_UPDATE_ALL;
 		for (i = 0; i < COUNT_OF(reward->convert_tid); i++) {
 			struct ap_item_template * converttemp;
 			uint32_t index;
