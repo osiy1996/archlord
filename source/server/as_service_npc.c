@@ -162,3 +162,15 @@ boolean as_service_npc_add_received_level_up_reward_milestone(
 	attachment->received_level_up_reward_milestones[i] = level;
 	return TRUE;
 }
+
+void as_service_npc_reset_received_level_up_rewards(
+	struct as_service_npc_module * mod,
+	struct ap_character * character)
+{
+	struct as_character * c = as_character_get(mod->as_character, character);
+	if (c->db) {
+		struct as_service_npc_character_database_attachment * attachment =
+			as_service_npc_get_character_database_attachment(mod, c->db);
+		attachment->received_level_up_reward_milestone_count = 0;
+	}
+}

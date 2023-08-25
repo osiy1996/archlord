@@ -2,6 +2,7 @@
 
 #include "core/log.h"
 
+#include "public/ap_chat.h"
 #include "public/ap_drop_item.h"
 #include "public/ap_event_manager.h"
 #include "public/ap_event_binding.h"
@@ -27,6 +28,7 @@
 struct as_service_npc_process_module {
 	struct ap_module_instance instance;
 	struct ap_character_module * ap_character;
+	struct ap_chat_module * ap_chat;
 	struct ap_drop_item_module * ap_drop_item;
 	struct ap_event_manager_module * ap_event_manager;
 	struct ap_event_npc_dialog_module * ap_event_npc_dialog;
@@ -345,11 +347,21 @@ static boolean cbcharinitstatic(
 	return TRUE;
 }
 
+static void cbchatresetleveluprewards(
+	struct as_service_npc_process_module * mod,
+	struct ap_character * c,
+	uint32_t argc,
+	const char * const * argv)
+{
+	as_service_npc_reset_received_level_up_rewards(mod->as_service_npc, c);
+}
+
 static boolean onregister(
 	struct as_service_npc_process_module * mod,
 	struct ap_module_registry * registry)
 {
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_character, AP_CHARACTER_MODULE_NAME);
+	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_chat, AP_CHAT_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_drop_item, AP_DROP_ITEM_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_manager, AP_EVENT_MANAGER_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->ap_event_npc_dialog, AP_EVENT_NPC_DIALOG_MODULE_NAME);
@@ -365,6 +377,7 @@ static boolean onregister(
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_service_npc, AS_SERVICE_NPC_MODULE_NAME);
 	AP_MODULE_INSTANCE_FIND_IN_REGISTRY(registry, mod->as_skill, AS_SKILL_MODULE_NAME);
 	ap_character_add_callback(mod->ap_character, AP_CHARACTER_CB_INIT_STATIC, mod, cbcharinitstatic);
+	ap_chat_add_command(mod->ap_chat, "/resetleveluprewards", mod, cbchatresetleveluprewards);
 	return TRUE;
 }
 

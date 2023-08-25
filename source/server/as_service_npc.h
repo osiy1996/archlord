@@ -51,6 +51,10 @@ boolean as_service_npc_add_received_level_up_reward_milestone(
 	struct ap_character * character,
 	uint32_t level);
 
+void as_service_npc_reset_received_level_up_rewards(
+	struct as_service_npc_module * mod,
+	struct ap_character * character);
+
 END_DECLS
 
 #endif /* _AS_SERVICE_NPC_H_ */
