@@ -838,6 +838,16 @@ static void cbchatsetlevel(
 	ap_character_set_level(mod->ap_character, target, level);
 }
 
+static void cbchatsetexprate(
+	struct as_character_process_module * mod,
+	struct ap_character * c,
+	uint32_t argc,
+	const char * const * argv)
+{
+	if (argc == 1)
+		mod->exp_rate = strtof(argv[0], NULL);
+}
+
 static boolean onregister(
 	struct as_character_process_module * mod,
 	struct ap_module_registry * registry)
@@ -877,6 +887,7 @@ static boolean onregister(
 	ap_chat_add_command(mod->ap_chat, "/move", mod, cbchatmove);
 	ap_chat_add_command(mod->ap_chat, "/pull", mod, cbchatpull);
 	ap_chat_add_command(mod->ap_chat, "/setlevel", mod, cbchatsetlevel);
+	ap_chat_add_command(mod->ap_chat, "/setexprate", mod, cbchatsetexprate);
 	mod->exp_rate = strtof(ap_config_get(mod->ap_config, "ExpRate"), NULL);
 	return TRUE;
 }
