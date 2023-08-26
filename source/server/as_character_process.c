@@ -325,8 +325,6 @@ static void processaction(
 		t->id, &action);
 	as_map_broadcast(mod->as_map, c);
 	if (killed) {
-		ap_character_stop_movement(mod->ap_character, t);
-		ap_character_stop_action(mod->ap_character, t);
 		ap_character_stop_action(mod->ap_character, c);
 		ap_character_kill(mod->ap_character, t, c, AP_CHARACTER_DEATH_BY_ATTACK);
 	}
@@ -551,6 +549,7 @@ static boolean cbcharstopaction(
 	struct ap_character * c = cb->character;
 	struct as_character * sc = as_character_get(mod->as_character, c);
 	sc->is_attacking = FALSE;
+	sc->attack_target_id = 0;
 	sc->next_attack_movement_tick = 0;
 	return TRUE;
 }

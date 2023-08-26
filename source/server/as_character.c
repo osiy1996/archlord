@@ -253,6 +253,8 @@ static boolean cbchardeath(
 	struct ap_character_cb_death * cb)
 {
 	struct ap_character * c = cb->character;
+	ap_character_stop_action(mod->ap_character, c);
+	ap_character_stop_movement(mod->ap_character, c);
 	if (c->factor.char_point.hp != 0) {
 		c->factor.char_point.hp = 0;
 		ap_character_update(mod->ap_character, c, AP_FACTORS_BIT_HP, FALSE);

@@ -131,7 +131,7 @@ static void make_attr_packet(
 		&converted[14]); /* Heroic_Magic */
 }
 
-static void make_packet(
+static uint32_t make_packet(
 	struct ap_factors_module * mod,
 	void * buffer, 
 	const struct ap_factor * f,
@@ -269,7 +269,7 @@ static void make_packet(
 			buffer, FALSE, NULL, 0,
 			dmin,
 			dmax);
-		break;
+		return 2;
 	}
 	case AP_FACTORS_TYPE_DEFENSE: {
 		void * point = ap_packet_get_temp_buffer(mod->ap_packet);
@@ -281,7 +281,7 @@ static void make_packet(
 			buffer, FALSE, NULL, 0,
 			point,
 			rate);
-		break;
+		return 2;
 	}
 	case AP_FACTORS_TYPE_ATTACK:
 		au_packet_make_packet(
@@ -356,6 +356,7 @@ static void make_packet(
 		assert(0);
 		break;
 	}
+	return 0;
 }
 
 static struct ap_factors_attribute * attr_from_detail(
@@ -1348,61 +1349,61 @@ void ap_factors_make_packet(
 	if (bits & AP_FACTORS_BIT_CHAR_STATUS) {
 		charstatus = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, charstatus, factor,
+		count += make_packet(mod, charstatus, factor,
 			AP_FACTORS_TYPE_CHAR_STATUS, bits);
 	}
 	if (bits & AP_FACTORS_BIT_CHAR_TYPE) {
 		chartype = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, chartype, factor,
+		count += make_packet(mod, chartype, factor,
 			AP_FACTORS_TYPE_CHAR_TYPE, bits);
 	}
 	if (bits & AP_FACTORS_BIT_CHAR_POINT) {
 		charpoint = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, charpoint, factor,
+		count += make_packet(mod, charpoint, factor,
 			AP_FACTORS_TYPE_CHAR_POINT, bits);
 	}
 	if (bits & AP_FACTORS_BIT_CHAR_POINT_MAX) {
 		charpointmax = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, charpointmax, factor,
+		count += make_packet(mod, charpointmax, factor,
 			AP_FACTORS_TYPE_CHAR_POINT_MAX, bits);
 	}
 	if (bits & AP_FACTORS_BIT_DAMAGE) {
 		damage = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, damage, factor,
+		count += make_packet(mod, damage, factor,
 			AP_FACTORS_TYPE_DAMAGE, bits);
 	}
 	if (bits & AP_FACTORS_BIT_DEFENSE) {
 		defense = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, defense, factor,
+		count += make_packet(mod, defense, factor,
 			AP_FACTORS_TYPE_DEFENSE, bits);
 	}
 	if (bits & AP_FACTORS_BIT_ATTACK) {
 		attack = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, attack, factor,
+		count += make_packet(mod, attack, factor,
 			AP_FACTORS_TYPE_ATTACK, bits);
 	}
 	if (bits & AP_FACTORS_BIT_ITEM) {
 		item = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, item, factor,
+		count += make_packet(mod, item, factor,
 			AP_FACTORS_TYPE_ITEM, bits);
 	}
 	if (bits & AP_FACTORS_BIT_PRICE) {
 		price = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, price, factor,
+		count += make_packet(mod, price, factor,
 			AP_FACTORS_TYPE_PRICE, bits);
 	}
 	if (bits & AP_FACTORS_BIT_DIRT) {
 		dirt = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, dirt, factor,
+		count += make_packet(mod, dirt, factor,
 			AP_FACTORS_TYPE_DIRT, bits);
 	}
 	au_packet_make_packet(&mod->packet, buffer,
@@ -1446,61 +1447,61 @@ void ap_factors_make_result_packet(
 	if (bits & AP_FACTORS_BIT_CHAR_STATUS) {
 		charstatus = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, charstatus, factor,
+		count += make_packet(mod, charstatus, factor,
 			AP_FACTORS_TYPE_CHAR_STATUS, bits);
 	}
 	if (bits & AP_FACTORS_BIT_CHAR_TYPE) {
 		chartype = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, chartype, factor,
+		count += make_packet(mod, chartype, factor,
 			AP_FACTORS_TYPE_CHAR_TYPE, bits);
 	}
 	if (bits & AP_FACTORS_BIT_CHAR_POINT) {
 		charpoint = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, charpoint, factor,
+		count += make_packet(mod, charpoint, factor,
 			AP_FACTORS_TYPE_CHAR_POINT, bits);
 	}
 	if (bits & AP_FACTORS_BIT_CHAR_POINT_MAX) {
 		charpointmax = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, charpointmax, factor,
+		count += make_packet(mod, charpointmax, factor,
 			AP_FACTORS_TYPE_CHAR_POINT_MAX, bits);
 	}
 	if (bits & AP_FACTORS_BIT_DAMAGE) {
 		damage = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, damage, factor,
+		count += make_packet(mod, damage, factor,
 			AP_FACTORS_TYPE_DAMAGE, bits);
 	}
 	if (bits & AP_FACTORS_BIT_DEFENSE) {
 		defense = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, defense, factor,
+		count += make_packet(mod, defense, factor,
 			AP_FACTORS_TYPE_DEFENSE, bits);
 	}
 	if (bits & AP_FACTORS_BIT_ATTACK) {
 		attack = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, attack, factor,
+		count += make_packet(mod, attack, factor,
 			AP_FACTORS_TYPE_ATTACK, bits);
 	}
 	if (bits & AP_FACTORS_BIT_ITEM) {
 		item = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, item, factor,
+		count += make_packet(mod, item, factor,
 			AP_FACTORS_TYPE_ITEM, bits);
 	}
 	if (bits & AP_FACTORS_BIT_PRICE) {
 		price = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, price, factor,
+		count += make_packet(mod, price, factor,
 			AP_FACTORS_TYPE_PRICE, bits);
 	}
 	if (bits & AP_FACTORS_BIT_DIRT) {
 		dirt = ap_packet_get_temp_buffer(mod->ap_packet);
 		count++;
-		make_packet(mod, dirt, factor,
+		count += make_packet(mod, dirt, factor,
 			AP_FACTORS_TYPE_DIRT, bits);
 	}
 	au_packet_make_packet(&mod->packet, result,
@@ -1547,6 +1548,7 @@ void ap_factors_make_char_view_packet(
 	void * charpoint = ap_packet_get_temp_buffer(mod->ap_packet);
 	void * charpointmax = ap_packet_get_temp_buffer(mod->ap_packet);
 	void * attack = ap_packet_get_temp_buffer(mod->ap_packet);
+	uint32_t buffercount = 6;
 	uint16_t length;
 	au_packet_make_packet(
 		&mod->factor_packets[AP_FACTORS_TYPE_CHAR_STATUS],
@@ -1564,13 +1566,13 @@ void ap_factors_make_char_view_packet(
 		NULL,
 		&factor->char_status.murderer,
 		NULL);
-	make_packet(mod, chartype, factor, 
+	buffercount += make_packet(mod, chartype, factor, 
 		AP_FACTORS_TYPE_CHAR_TYPE, -1);
-	make_packet(mod, charpoint, factor, 
+	buffercount += make_packet(mod, charpoint, factor, 
 		AP_FACTORS_TYPE_CHAR_POINT, -1);
-	make_packet(mod, charpointmax, factor, 
+	buffercount += make_packet(mod, charpointmax, factor, 
 		AP_FACTORS_TYPE_CHAR_POINT_MAX, -1);
-	make_packet(mod, attack, factor, 
+	buffercount += make_packet(mod, attack, factor, 
 		AP_FACTORS_TYPE_ATTACK, -1);
 	au_packet_make_packet(&mod->packet, result,
 		FALSE, NULL, 0,
@@ -1602,7 +1604,7 @@ void ap_factors_make_char_view_packet(
 		NULL, /* Item */
 		NULL, /* DIRT */
 		NULL); /* Price */
-	ap_packet_pop_temp_buffers(mod->ap_packet, 6);
+	ap_packet_pop_temp_buffers(mod->ap_packet, buffercount);
 }
 
 void ap_factors_make_damage_packet(

@@ -1222,7 +1222,7 @@ void as_map_get_characters_in_radius(
 	count = vec_count(mod->tmp_character_list);
 	for (i = 0; i < count; i++) {
 		struct ap_character * nearby = mod->tmp_character_list[i];
-		if (au_distance2d(pos, &nearby->pos) <= radius)
+		if (au_distance2d(pos, &nearby->pos) <= radius + nearby->factor.attack.hit_range)
 			vec_push_back((void **)list, &nearby);
 	}
 }
