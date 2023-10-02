@@ -88,3 +88,6 @@
 *.exe   binary
 *.out   binary
 *.app   binary
+
+# Mark content files as binary.
+content/** binary
