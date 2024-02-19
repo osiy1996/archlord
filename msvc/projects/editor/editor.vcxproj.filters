@@ -43,6 +43,12 @@
     <Filter Include="source\vendor\nvtt">
       <UniqueIdentifier>{13fe145a-05e1-48c7-a805-dec22ec3d3d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\vendor\cgltf">
+      <UniqueIdentifier>{28fd1a1c-b50e-4aa2-ad3f-864af7e843a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\vendor\parson">
+      <UniqueIdentifier>{a0c5853f-0196-4a74-afea-38bd4e2d8620}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\core\getopt.h">
@@ -438,6 +444,15 @@
     <ClInclude Include="..\..\..\source\editor\ae_transform_tool.h">
       <Filter>source\editor</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\cgltf\cgltf_write.h">
+      <Filter>source\vendor\cgltf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\vendor\cgltf\cgltf.h">
+      <Filter>source\vendor\cgltf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\ArchLord\third-party\parson\parson.h">
+      <Filter>source\vendor\parson</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\core\hash_map.c">
@@ -790,6 +805,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\editor\ae_transform_tool.cpp">
       <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\ArchLord\third-party\parson\parson.c">
+      <Filter>source\vendor\parson</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

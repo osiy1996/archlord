@@ -402,3 +402,6 @@ doc/html/
 
 # ImGui window configuration
 imgui.ini
+
+# Exports
+content/exports

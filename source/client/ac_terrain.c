@@ -2821,3 +2821,19 @@ void ac_terrain_commit_changes(struct ac_terrain_module * mod)
 {
 	create_sector_save_tasks(mod);
 }
+
+uint32_t ac_terrain_get_visible_sectors(
+	struct ac_terrain_module * mod, 
+	struct ac_terrain_sector ** list, 
+	uint32_t max_count)
+{
+	uint32_t i;
+	uint32_t count = vec_count(mod->visible_sectors);
+	uint32_t listcount = 0;
+	for (i = 0; i < count && listcount < count; i++) {
+		struct ap_scr_index * index = &mod->visible_sectors[i];
+		struct ac_terrain_sector * sector = &mod->sectors[index->x][index->z];
+		list[listcount++] = sector;
+	}
+	return listcount;
+}

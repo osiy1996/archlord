@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\ArchLord\third-party\parson\parson.h" />
     <ClInclude Include="..\..\..\source\client\ac_ambient_occlusion_map.h" />
     <ClInclude Include="..\..\..\source\client\ac_camera.h" />
     <ClInclude Include="..\..\..\source\client\ac_character.h" />
@@ -252,6 +253,8 @@
     <ClInclude Include="..\..\..\source\utility\au_table.h" />
     <ClInclude Include="..\..\..\source\vendor\aplib\aplib.h" />
     <ClInclude Include="..\..\..\source\vendor\bgfx\c99\bgfx.h" />
+    <ClInclude Include="..\..\..\source\vendor\cgltf\cgltf.h" />
+    <ClInclude Include="..\..\..\source\vendor\cgltf\cgltf_write.h" />
     <ClInclude Include="..\..\..\source\vendor\imgui\imconfig.h" />
     <ClInclude Include="..\..\..\source\vendor\imgui\imgui.h" />
     <ClInclude Include="..\..\..\source\vendor\imgui\imgui_internal.h" />
@@ -264,6 +267,7 @@
     <ClInclude Include="..\..\..\source\vendor\pcg\pcg_basic.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\ArchLord\third-party\parson\parson.c" />
     <ClCompile Include="..\..\..\source\client\ac_ambient_occlusion_map.c" />
     <ClCompile Include="..\..\..\source\client\ac_camera.c" />
     <ClCompile Include="..\..\..\source\client\ac_character.c" />

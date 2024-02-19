@@ -1,6 +1,8 @@
 #include <inttypes.h>
 #include <stdio.h>
 #include <time.h>
+#include <vector>
+#include <unordered_map>
 
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
@@ -14,7 +16,9 @@
 #include "core/core.h"
 #include "core/file_system.h"
 #include "core/log.h"
+#include "core/malloc.h"
 #include "core/os.h"
+#include "core/string.h"
 
 #include "task/task.h"
 
@@ -99,6 +103,8 @@
 #include "editor/ae_terrain.h"
 #include "editor/ae_texture.h"
 #include "editor/ae_transform_tool.h"
+
+#include "vendor/parson/parson.h"
 
 /* 20 FPS */
 #define STEPTIME (1.0f / 50.0f)
@@ -715,6 +721,154 @@ static void updatetick(uint64_t * last, float * dt)
 	*last = t;
 }
 
+void add_terrain_to_json(JSON_Object * json)
+{
+	struct ac_terrain_sector * list[512];
+	uint32_t count;
+	uint32_t splitid = 0;
+	uint32_t matid = 0;
+	uint32_t texid = 0;
+	count = ac_terrain_get_visible_sectors(g_AcTerrain, list, COUNT_OF(list));
+	for (uint32_t i = 0; i < count; i++) {
+		const struct ac_terrain_sector * s = list[i];
+		const struct ac_mesh_geometry * g;
+		if (!(s->flags & AC_TERRAIN_SECTOR_DETAIL_IS_LOADED)) {
+			continue;
+		}
+		g = s->geometry;
+		for (uint32_t j = 0; j < g->split_count; j++) {
+			const struct ac_mesh_split * split = &g->splits[j];
+			char name[128];
+			std::vector<uint32_t> vertices;
+			std::unordered_map<uint32_t, uint32_t> vertexmap;
+			uint32_t matindex = -1;
+			const struct ac_mesh_material * mat = &g->materials[split->material_index];
+			char splitpath[1024];
+			char proppath[1024];
+			JSON_Value * arrayvalue;
+			JSON_Array * arr;
+			snprintf(splitpath, sizeof(splitpath), "splits.%u", splitid++);
+			for (uint32_t k = 0; k < split->index_count; k++) {
+				uint32_t idx;
+				boolean add = TRUE;
+				uint32_t vertexidx = g->indices[split->index_offset + k];
+				for (idx = 0; idx < vertices.size(); idx++) {
+					if (vertices[idx] == vertexidx) {
+						break;
+					}
+				}
+				if (std::find(vertices.begin(), vertices.end(), vertexidx) == vertices.end()) {
+					vertexmap[vertexidx] = (uint32_t)vertices.size();
+					vertices.push_back(vertexidx);
+				}
+			}
+			arrayvalue = json_value_init_array();
+			arr = json_value_get_array(arrayvalue);
+			for (size_t k = 0; k < vertices.size(); k++) {
+				const struct ac_mesh_vertex * v = &g->vertices[vertices[k]];
+				JSON_Value * val = json_value_init_array();
+				JSON_Array * a = json_value_get_array(val);
+				json_array_append_number(a, v->position[0]);
+				json_array_append_number(a, v->position[1]);
+				json_array_append_number(a, v->position[2]);
+				json_array_append_value(arr, val);
+			}
+			snprintf(proppath, sizeof(proppath), "%s.vertices", splitpath);
+			json_object_dotset_value(json, proppath, arrayvalue);
+			arrayvalue = json_value_init_array();
+			arr = json_value_get_array(arrayvalue);
+			for (size_t k = 0; k < vertices.size(); k++) {
+				const struct ac_mesh_vertex * v = &g->vertices[vertices[k]];
+				JSON_Value * val = json_value_init_array();
+				JSON_Array * a = json_value_get_array(val);
+				json_array_append_number(a, v->normal[0]);
+				json_array_append_number(a, v->normal[1]);
+				json_array_append_number(a, v->normal[2]);
+				json_array_append_value(arr, val);
+			}
+			snprintf(proppath, sizeof(proppath), "%s.normals", splitpath);
+			json_object_dotset_value(json, proppath, arrayvalue);
+			arrayvalue = json_value_init_array();
+			arr = json_value_get_array(arrayvalue);
+			for (uint32_t k = 0; k < COUNT_OF(mat->tex_name); k++) {
+				if (!strisempty(mat->tex_name[k])) {
+					const char * layernames[] = { "Base", 
+						"BlendAlpha1", "BlendColor1",
+						"BlendAlpha2", "BlendColor2", "Invalid" };
+					snprintf(name, sizeof(name), "UV%s", layernames[k]);
+					if (k % 2 == 1) {
+						snprintf(name, sizeof(name), "%s.tif", mat->tex_name[k]);
+					}
+					else {
+						snprintf(name, sizeof(name), "%s.bmp", mat->tex_name[k]);
+					}
+					if (k % 2 == 1) {
+						snprintf(name, sizeof(name), "%s.tif", mat->tex_name[k]);
+					}
+					else {
+						snprintf(name, sizeof(name), "%s.bmp", mat->tex_name[k]);
+					}
+					json_array_append_string(arr, name);
+				}
+				else {
+					json_array_append_string(arr, "");
+				}
+			}
+			snprintf(proppath, sizeof(proppath), "%s.textures", splitpath);
+			json_object_dotset_value(json, proppath, arrayvalue);
+			for (uint32_t uv = 0; uv < 5; uv++) {
+				const char * uvnames[]= { "uvbase", "uvalpha1", "uvcolor1",
+					"uvalpha2", "uvcolor2" };
+				arrayvalue = json_value_init_array();
+				arr = json_value_get_array(arrayvalue);
+				for (uint32_t k = 0; k < vertices.size(); k++) {
+					const struct ac_mesh_vertex * v = &g->vertices[vertices[k]];
+					JSON_Value * val = json_value_init_array();
+					JSON_Array * a = json_value_get_array(val);
+					json_array_append_number(a, v->texcoord[uv][0]);
+					json_array_append_number(a, v->texcoord[uv][1]);
+					json_array_append_value(arr, val);
+				}
+				snprintf(proppath, sizeof(proppath), "%s.%s", splitpath, uvnames[uv]);
+				json_object_dotset_value(json, proppath, arrayvalue);
+			}
+			arrayvalue = json_value_init_array();
+			arr = json_value_get_array(arrayvalue);
+			for (uint32_t k = 0; k < split->index_count / 3; k++) {
+				JSON_Value * val = json_value_init_array();
+				JSON_Array * a = json_value_get_array(val);
+				for (uint32_t l = 0; l < 3; l++) {
+					uint32_t vertexidx = g->indices[split->index_offset + k * 3 + l];
+					uint32_t mapped = vertexmap[vertexidx];
+					json_array_append_number(a, mapped);
+				}
+				json_array_append_value(arr, val);
+			}
+			snprintf(proppath, sizeof(proppath), "%s.faces", splitpath);
+			json_object_dotset_value(json, proppath, arrayvalue);
+		}
+	}
+}
+
+void export_map_as_json()
+{
+	char path[512];
+	make_path(path, sizeof(path), "content/exports/Terrain%llu.json", 
+		ap_tick_get(g_ApTick));
+	file f = open_file(path, FILE_ACCESS_WRITE);
+	if (!f) {
+		ERROR("Failed to create file (%s).", path);
+		return;
+	}
+	JSON_Value * root_value = json_value_init_object();
+	JSON_Object * root_obj = json_value_get_object(root_value);
+	add_terrain_to_json(root_obj);
+	char * serialized_str = json_serialize_to_string_pretty(root_value);
+	write_file(f, serialized_str, strlen(serialized_str));
+	close_file(f);
+	json_value_free(root_value);
+}
+
 static void render(struct ac_camera * cam, float dt)
 {
 	static bool b = true;
@@ -731,6 +885,8 @@ static void render(struct ac_camera * cam, float dt)
 	if (ImGui::BeginMenu("File", true)) {
 		if (ImGui::Selectable("Save"))
 			ae_editor_action_commit_changes(g_AeEditorAction);
+		if (ImGui::Selectable("Export Map As JSON"))
+			export_map_as_json();
 		ImGui::EndMenu();
 	}
 	if (ImGui::BeginMenu("View", true)) {
