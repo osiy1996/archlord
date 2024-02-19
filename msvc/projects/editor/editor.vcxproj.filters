@@ -450,7 +450,7 @@
     <ClInclude Include="..\..\..\source\vendor\cgltf\cgltf.h">
       <Filter>source\vendor\cgltf</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ArchLord\third-party\parson\parson.h">
+    <ClInclude Include="..\..\..\source\vendor\parson\parson.h">
       <Filter>source\vendor\parson</Filter>
     </ClInclude>
   </ItemGroup>
@@ -806,7 +806,7 @@
     <ClCompile Include="..\..\..\source\editor\ae_transform_tool.cpp">
       <Filter>source\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ArchLord\third-party\parson\parson.c">
+    <ClCompile Include="..\..\..\source\vendor\parson\parson.c">
       <Filter>source\vendor\parson</Filter>
     </ClCompile>
   </ItemGroup>

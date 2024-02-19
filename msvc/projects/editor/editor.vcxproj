@@ -131,7 +131,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\ArchLord\third-party\parson\parson.h" />
     <ClInclude Include="..\..\..\source\client\ac_ambient_occlusion_map.h" />
     <ClInclude Include="..\..\..\source\client\ac_camera.h" />
     <ClInclude Include="..\..\..\source\client\ac_character.h" />
@@ -264,10 +263,10 @@
     <ClInclude Include="..\..\..\source\vendor\nvtt\nvtt.h" />
     <ClInclude Include="..\..\..\source\vendor\nvtt\nvtt_lowlevel.h" />
     <ClInclude Include="..\..\..\source\vendor\nvtt\nvtt_wrapper.h" />
+    <ClInclude Include="..\..\..\source\vendor\parson\parson.h" />
     <ClInclude Include="..\..\..\source\vendor\pcg\pcg_basic.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\ArchLord\third-party\parson\parson.c" />
     <ClCompile Include="..\..\..\source\client\ac_ambient_occlusion_map.c" />
     <ClCompile Include="..\..\..\source\client\ac_camera.c" />
     <ClCompile Include="..\..\..\source\client\ac_character.c" />
@@ -384,6 +383,7 @@
     <ClCompile Include="..\..\..\source\vendor\imgui\imgui_draw.cpp" />
     <ClCompile Include="..\..\..\source\vendor\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\..\..\source\vendor\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="..\..\..\source\vendor\parson\parson.c" />
     <ClCompile Include="..\..\..\source\vendor\pcg\pcg_basic.c" />
   </ItemGroup>
   <ItemGroup>
