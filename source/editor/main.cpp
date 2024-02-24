@@ -539,6 +539,14 @@ static boolean initialize()
 		ERROR("Failed to read refinery recipe table (%s).", path);
 		return FALSE;
 	}
+	if (!make_path(path, sizeof(path), "%s/gachatypetemplate.ini", inidir)) {
+		ERROR("Failed to create path (%s/gachatypetemplate.ini).", inidir);
+		return FALSE;
+	}
+	if (!ap_event_gacha_read_types(g_ApEventGacha, path)) {
+		ERROR("Failed to read gacha types (%s).", path);
+		return FALSE;
+	}
 	if (!make_path(path, sizeof(path), "%s/aidatatable.txt", inidir)) {
 		ERROR("Failed to create path (%s/aidatatable.txt).", inidir);
 		return FALSE;
@@ -841,162 +849,6 @@ void add_terrain_to_json(JSON_Object * json)
 	}
 }
 
-void add_object_geometry_to_json(
-	JSON_Object * json, 
-	struct ap_object * obj, 
-	struct ac_mesh_geometry * g)
-{
-	uint32_t splitid = 0;
-	for (uint32_t j = 0; j < g->split_count; j++) {
-		const struct ac_mesh_split * split = &g->splits[j];
-		char name[128];
-		std::vector<uint32_t> vertices;
-		std::unordered_map<uint32_t, uint32_t> vertexmap;
-		uint32_t matindex = -1;
-		const struct ac_mesh_material * mat = &g->materials[split->material_index];
-		char splitpath[1024];
-		char proppath[1024];
-		JSON_Value * arrayvalue;
-		JSON_Array * arr;
-		snprintf(splitpath, sizeof(splitpath), "object_splits.%u_%u", obj->object_id, splitid++);
-		for (uint32_t k = 0; k < split->index_count; k++) {
-			uint32_t idx;
-			boolean add = TRUE;
-			uint32_t vertexidx = g->indices[split->index_offset + k];
-			for (idx = 0; idx < vertices.size(); idx++) {
-				if (vertices[idx] == vertexidx) {
-					break;
-				}
-			}
-			if (std::find(vertices.begin(), vertices.end(), vertexidx) == vertices.end()) {
-				vertexmap[vertexidx] = (uint32_t)vertices.size();
-				vertices.push_back(vertexidx);
-			}
-		}
-		arrayvalue = json_value_init_array();
-		arr = json_value_get_array(arrayvalue);
-		for (size_t k = 0; k < vertices.size(); k++) {
-			const struct ac_mesh_vertex * v = &g->vertices[vertices[k]];
-			JSON_Value * val = json_value_init_array();
-			JSON_Array * a = json_value_get_array(val);
-			json_array_append_number(a, v->position[0]);
-			json_array_append_number(a, v->position[1]);
-			json_array_append_number(a, v->position[2]);
-			json_array_append_value(arr, val);
-		}
-		snprintf(proppath, sizeof(proppath), "%s.vertices", splitpath);
-		json_object_dotset_value(json, proppath, arrayvalue);
-		arrayvalue = json_value_init_array();
-		arr = json_value_get_array(arrayvalue);
-		for (size_t k = 0; k < vertices.size(); k++) {
-			const struct ac_mesh_vertex * v = &g->vertices[vertices[k]];
-			JSON_Value * val = json_value_init_array();
-			JSON_Array * a = json_value_get_array(val);
-			json_array_append_number(a, v->normal[0]);
-			json_array_append_number(a, v->normal[1]);
-			json_array_append_number(a, v->normal[2]);
-			json_array_append_value(arr, val);
-		}
-		snprintf(proppath, sizeof(proppath), "%s.normals", splitpath);
-		json_object_dotset_value(json, proppath, arrayvalue);
-		arrayvalue = json_value_init_array();
-		arr = json_value_get_array(arrayvalue);
-		for (uint32_t k = 0; k < COUNT_OF(mat->tex_name); k++) {
-			if (!strisempty(mat->tex_name[k])) {
-				snprintf(name, sizeof(name), "%s.png", mat->tex_name[k]);
-				json_array_append_string(arr, name);
-			}
-			else {
-				json_array_append_string(arr, "");
-			}
-		}
-		snprintf(proppath, sizeof(proppath), "%s.textures", splitpath);
-		json_object_dotset_value(json, proppath, arrayvalue);
-		for (uint32_t uv = 0; uv < 5; uv++) {
-			const char * uvnames[]= { "uvbase", "uvalpha1", "uvcolor1",
-				"uvalpha2", "uvcolor2" };
-			arrayvalue = json_value_init_array();
-			arr = json_value_get_array(arrayvalue);
-			for (uint32_t k = 0; k < vertices.size(); k++) {
-				const struct ac_mesh_vertex * v = &g->vertices[vertices[k]];
-				JSON_Value * val = json_value_init_array();
-				JSON_Array * a = json_value_get_array(val);
-				json_array_append_number(a, v->texcoord[uv][0]);
-				json_array_append_number(a, v->texcoord[uv][1]);
-				json_array_append_value(arr, val);
-			}
-			snprintf(proppath, sizeof(proppath), "%s.%s", splitpath, uvnames[uv]);
-			json_object_dotset_value(json, proppath, arrayvalue);
-		}
-		arrayvalue = json_value_init_array();
-		arr = json_value_get_array(arrayvalue);
-		for (uint32_t k = 0; k < split->index_count / 3; k++) {
-			JSON_Value * val = json_value_init_array();
-			JSON_Array * a = json_value_get_array(val);
-			for (uint32_t l = 0; l < 3; l++) {
-				uint32_t vertexidx = g->indices[split->index_offset + k * 3 + l];
-				uint32_t mapped = vertexmap[vertexidx];
-				json_array_append_number(a, mapped);
-			}
-			json_array_append_value(arr, val);
-		}
-		snprintf(proppath, sizeof(proppath), "%s.faces", splitpath);
-		json_object_dotset_value(json, proppath, arrayvalue);
-		arrayvalue = json_value_init_array();
-		arr = json_value_get_array(arrayvalue);
-		json_array_append_number(arr, obj->position.x);
-		json_array_append_number(arr, obj->position.y);
-		json_array_append_number(arr, obj->position.z);
-		snprintf(proppath, sizeof(proppath), "%s.position", splitpath);
-		json_object_dotset_value(json, proppath, arrayvalue);
-		snprintf(proppath, sizeof(proppath), "%s.faces", splitpath);
-		json_object_dotset_value(json, proppath, arrayvalue);
-		arrayvalue = json_value_init_array();
-		arr = json_value_get_array(arrayvalue);
-		json_array_append_number(arr, obj->scale.x);
-		json_array_append_number(arr, obj->scale.y);
-		json_array_append_number(arr, obj->scale.z);
-		snprintf(proppath, sizeof(proppath), "%s.scale", splitpath);
-		json_object_dotset_value(json, proppath, arrayvalue);
-		arrayvalue = json_value_init_array();
-		arr = json_value_get_array(arrayvalue);
-		json_array_append_number(arr, obj->rotation_x);
-		json_array_append_number(arr, obj->rotation_y);
-		snprintf(proppath, sizeof(proppath), "%s.rotation", splitpath);
-		json_object_dotset_value(json, proppath, arrayvalue);
-	}
-}
-
-void add_object_to_json(JSON_Object * json, struct ap_object * obj)
-{
-	struct ac_object * o = ac_object_get_object(g_AcObject, obj);
-	struct ac_object_template * temp = ac_object_get_template(obj->temp);
-	struct ac_object_template_group * grp;
-	grp = temp->group_list;
-	while (grp) {
-		if (grp->clump) {
-			struct ac_mesh_geometry * g = grp->clump->glist;
-			while (g) {
-				add_object_geometry_to_json(json, obj, g);
-				g = g->next;
-			}
-		}
-		grp = grp->next;
-	}
-}
-
-void add_objects_to_json(JSON_Object * json)
-{
-	struct ap_object ** list = 
-		(struct ap_object **)vec_new_reserved(sizeof(*list), 128);
-	ac_object_query_visible_objects(g_AcObject, &list);
-	uint32_t count = vec_count(list);
-	for (uint32_t i = 0; i < count; i++) {
-		add_object_to_json(json, list[i]);
-	}
-	vec_free(list);
-}
-
 void export_map_as_json()
 {
 	char path[512];
@@ -1010,11 +862,62 @@ void export_map_as_json()
 	JSON_Value * root_value = json_value_init_object();
 	JSON_Object * root_obj = json_value_get_object(root_value);
 	add_terrain_to_json(root_obj);
-	add_objects_to_json(root_obj);
+	ae_object_export_scene(g_AeObject, root_obj);
 	char * serialized_str = json_serialize_to_string_pretty(root_value);
 	write_file(f, serialized_str, strlen(serialized_str));
 	close_file(f);
 	json_value_free(root_value);
+}
+
+boolean cleanup_terrain(
+	char * current_dir,
+	size_t maxcount,
+	const char * name,
+	size_t size,
+	void * user_data)
+{
+	size_t len = strlen(name);
+	size_t i;
+	char ext[64];
+	for (i = 0; i < len && i < sizeof(ext) - 1; i++) {
+		if (name[len - i - 1] == '.') {
+			break;
+		}
+		ext[i] = name[len - i - 1];
+	}
+	ext[i] = '\0';
+	len = strlen(ext);
+	for (i = 0; i < len / 2; i++) {
+		char c = ext[len - i - 1];
+		ext[len - i - 1] = ext[i];
+		ext[i] = c;
+	}
+	if (strcasecmp(ext, "amf") == 0 || strcasecmp(ext, "dff") == 0) {
+		char path[1024];
+		if (make_path(path, sizeof(path), "%s/%s", current_dir, name)) {
+			if (!remove_file(path)) {
+				ERROR("Failed to cleanup terrain file: %s", path);
+			}
+		}
+	}
+	return TRUE;
+}
+
+void pack_terrain()
+{
+	char app[1024];
+	char cwd[1024];
+	if (!make_path(app, sizeof(app), "tools/msvc/mpack")) {
+		return;
+	}
+	if (!make_path(cwd, sizeof(cwd), "%s/world", 
+			ap_config_get(g_ApConfig, "ClientDir"))) {
+		return;
+	}
+	if (!create_process(app, "-p -d .", cwd)) {
+		return;
+	}
+	enum_dir(cwd, sizeof(cwd), FALSE, cleanup_terrain, NULL);
 }
 
 static void render(struct ac_camera * cam, float dt)
@@ -1031,10 +934,19 @@ static void render(struct ac_camera * cam, float dt)
 	ac_imgui_new_frame(g_AcImgui);
 	ImGui::BeginMainMenuBar();
 	if (ImGui::BeginMenu("File", true)) {
-		if (ImGui::Selectable("Save"))
+		if (ImGui::Selectable("Save")) {
 			ae_editor_action_commit_changes(g_AeEditorAction);
-		if (ImGui::Selectable("Export Map As JSON"))
-			export_map_as_json();
+			pack_terrain();
+		}
+		if (ImGui::BeginMenu("Export")) {
+			if (ImGui::Selectable("Map As JSON")) {
+				export_map_as_json();
+			}
+			if (ImGui::Selectable("Selected Object As JSON")) {
+				ae_object_export_active(g_AeObject);
+			}
+			ImGui::EndMenu();
+		}
 		ImGui::EndMenu();
 	}
 	if (ImGui::BeginMenu("View", true)) {

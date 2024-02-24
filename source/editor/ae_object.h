@@ -7,6 +7,7 @@
 #include "public/ap_module_instance.h"
 
 #include "vendor/bgfx/c99/bgfx.h"
+#include "vendor/parson/parson.h"
 
 #define AE_OBJECT_MODULE_NAME "AgemObject"
 
@@ -34,6 +35,10 @@ boolean ae_object_on_key_down(
 	uint32_t keycode);
 
 void ae_object_imgui(struct ae_object_module * mod);
+
+void ae_object_export_scene(struct ae_object_module * mod, JSON_Object * json);
+
+void ae_object_export_active(struct ae_object_module * mod);
 
 static inline struct ae_object_template * ae_object_get_template(
 	struct ap_object_template * temp)

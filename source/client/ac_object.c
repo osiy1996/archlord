@@ -514,9 +514,11 @@ static uint32_t get_unique_object_id(
 		uint32_t x;
 		uint32_t id = div_index | i;
 		boolean unique = TRUE;
-		for (x = sector_x; unique && x < sector_x + AP_SECTOR_DEFAULT_DEPTH; x++) {
+		uint32_t beginx = (sector_x / AP_SECTOR_DEFAULT_DEPTH) * AP_SECTOR_DEFAULT_DEPTH;
+		for (x = beginx; unique && x < beginx + AP_SECTOR_DEFAULT_DEPTH; x++) {
 			uint32_t z;
-			for (z = sector_z; unique && z < sector_z + AP_SECTOR_DEFAULT_DEPTH; z++) {
+			uint32_t beginz = (sector_z / AP_SECTOR_DEFAULT_DEPTH) * AP_SECTOR_DEFAULT_DEPTH;
+			for (z = beginz; unique && z < beginz + AP_SECTOR_DEFAULT_DEPTH; z++) {
 				uint32_t j;
 				uint32_t count;
 				struct ac_object_sector *s = &mod->sectors[x][z];

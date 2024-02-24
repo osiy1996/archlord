@@ -403,3 +403,8 @@ boolean replace_file(
 	return (ReplaceFileA(replaced, replacement, NULL, 0, 
 		NULL, NULL) != 0);
 }
+
+boolean remove_file(const char * path)
+{
+	return DeleteFileA(path);
+}

@@ -2670,7 +2670,7 @@ void ae_terrain_toolbar(struct ae_terrain_module * mod)
 		ImGui::SameLine();
 		ImGui::SetNextItemWidth(120.f);
 		ImGui::DragFloat("Radius",
-			&mod->height.size,
+			&mod->level.size,
 			0.01f, 1.0f, 1000.0f, "%g", 0);
 		ImGui::SameLine();
 		ImGui::SetNextItemWidth(120.f);

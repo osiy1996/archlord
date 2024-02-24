@@ -2,6 +2,9 @@
 #include "core/malloc.h"
 #include "core/internal.h"
 #include "core/string.h"
+
+#include <stdio.h>
+
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 
@@ -142,6 +145,26 @@ uint32_t get_cpu_core_count()
 	SYSTEM_INFO sysinfo;
 	GetSystemInfo(&sysinfo);
 	return (uint32_t)sysinfo.dwNumberOfProcessors;
+}
+
+boolean create_process(
+	const char * application_path, 
+	const char * command_line,
+	const char * current_dir)
+{
+	static char cmd[2048];
+	STARTUPINFO startup = { 0 };
+	PROCESS_INFORMATION proc = { 0 };
+	BOOL ret;
+	snprintf(cmd, sizeof(cmd), "\"%s\" %s", application_path, command_line);
+	ret = CreateProcessA(NULL, cmd, NULL, NULL, FALSE, CREATE_NO_WINDOW, NULL, 
+		current_dir, &startup, &proc);
+	if (!ret) {
+		return FALSE;
+	}
+	CloseHandle(proc.hThread);
+	CloseHandle(proc.hProcess);
+	return TRUE;
 }
 
 void sleep(uint32_t ms)

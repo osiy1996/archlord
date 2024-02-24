@@ -96,6 +96,11 @@ uint64_t get_current_thread_id();
  */
 uint32_t get_cpu_core_count();
 
+boolean create_process(
+	const char * application_path, 
+	const char * command_line,
+	const char * current_dir);
+
 /*
  * Suspends the execution of the current thread 
  * for at least until the time-out interval elapses.
