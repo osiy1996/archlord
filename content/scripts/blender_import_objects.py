@@ -56,7 +56,7 @@ def import_objects(filepath, texturedir, ignore_transform = False):
             obj.scale[1] = split['scale'][2]
             obj.scale[2] = split['scale'][1]
             obj.rotation_euler[0] = math.radians(split['rotation'][0])
-            obj.rotation_euler[2] = math.radians(-split['rotation'][1])
+            obj.rotation_euler[2] = math.radians(split['rotation'][1])
         
         # Create a new collection and add object
         collection.objects.link(obj)
@@ -161,4 +161,4 @@ def import_objects(filepath, texturedir, ignore_transform = False):
 
 # Usage:
 #import_objects("D:/ArchLord_Main/archlord-editor/content/exports/Object132646586.json", 
-#    "D:/ArchLord_Main/content/textures/object", True)
+#    "D:/ArchLord_Main/content/textures/object", False)
