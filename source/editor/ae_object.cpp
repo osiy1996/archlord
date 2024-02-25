@@ -928,5 +928,6 @@ void ae_object_export_active(struct ae_object_module * mod)
 	char * serialized_str = json_serialize_to_string_pretty(root_value);
 	write_file(f, serialized_str, strlen(serialized_str));
 	close_file(f);
+	json_free_serialized_string(serialized_str);
 	json_value_free(root_value);
 }

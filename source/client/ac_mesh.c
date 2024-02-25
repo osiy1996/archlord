@@ -1345,6 +1345,7 @@ void ac_mesh_destroy_geometry(
 		bgfx_destroy_vertex_buffer(g->vertex_buffer);
 	if (BGFX_HANDLE_IS_VALID(g->index_buffer))
 		bgfx_destroy_index_buffer(g->index_buffer);
+	dealloc(g->materials);
 	dealloc(g);
 }
 

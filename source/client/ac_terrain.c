@@ -2837,3 +2837,57 @@ uint32_t ac_terrain_get_visible_sectors(
 	}
 	return listcount;
 }
+
+struct ac_mesh_geometry ** ac_terrain_batch_load_detail(
+	struct ac_terrain_module * mod, 
+	uint32_t division_x,
+	uint32_t division_z)
+{
+	static void * workmem = NULL;
+	static size_t worksize = 0;
+	struct pack * pack;
+	struct ac_mesh_geometry ** list;
+	uint32_t i;
+	if (!unpack_terrain_file("%s/world/b00%02u%02ux.ma2",
+			FALSE, &pack, ap_config_get(mod->ap_config, "ClientDir"),
+			division_x, division_z)) {
+		/* This sector may be empty. */
+		return NULL;
+	}
+	list = vec_new_reserved(sizeof(*list), 256);
+	for (i = 0; i < COUNT_OF(pack->files); i++) {
+		struct bin_stream * stream;
+		boolean exists = FALSE;
+		struct ac_mesh_geometry * g;
+		if (!decompress_packed_file(&pack->files[i], &workmem, &worksize)) {
+			WARN("Failed to decompress sector.");
+			continue;
+		}
+		bstream_from_buffer(pack->files[i].data, (size_t)pack->files[i].size,
+			FALSE, &stream);
+		if (!bstream_read_i32(stream, &exists)) {
+			ERROR("Stream ended unexpectedly.");
+			bstream_destroy(stream);
+			continue;
+		}
+		if (!exists) {
+			bstream_destroy(stream);
+			continue;
+		}
+		if (!ac_renderware_find_chunk(stream, rwID_ATOMIC, NULL)) {
+			ERROR("Failed to find rwID_ATOMIC.");
+			bstream_destroy(stream);
+			continue;
+		}
+		ac_texture_set_dictionary(mod->ac_texture, AC_DAT_DIR_TEX_WORLD);
+		g = ac_mesh_read_rp_atomic(mod->ac_mesh, stream, NULL, 0);
+		bstream_destroy(stream);
+		if (!g) {
+			ERROR("Failed to read RpAtomic.");
+			continue;
+		}
+		vec_push_back((void **)&list, &g);
+	}
+	destroy_pack(pack);
+	return list;
+}
