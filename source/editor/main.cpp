@@ -991,6 +991,9 @@ static void render(struct ac_camera * cam, float dt)
 			if (ImGui::Selectable("Selected Object as JSON")) {
 				ae_object_export_active(g_AeObject);
 			}
+			if (ImGui::Selectable("All Objects as JSON")) {
+				ae_object_export_all(g_AeObject);
+			}
 			ImGui::EndMenu();
 		}
 		ImGui::EndMenu();

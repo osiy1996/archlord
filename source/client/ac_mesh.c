@@ -1228,6 +1228,9 @@ struct ac_mesh_clump * ac_mesh_read_rp_clump(
 	RwChunkHeaderInfo ch;
 	RwInt32 i;
 	struct ac_mesh_geometry ** gl;
+	struct ac_mesh_geometry * links[128];
+	uint32_t linkcount = 0;
+	struct ac_mesh_geometry * link;
 	if (!ac_renderware_find_chunk(stream, rwID_STRUCT, NULL)) {
 		ERROR("Failed to find rwID_STRUCT.");
 		return NULL;
@@ -1274,6 +1277,27 @@ struct ac_mesh_clump * ac_mesh_read_rp_clump(
 		c->glist = g;
 	}
 	arm_destroy_geometry_list(mod, gl, FALSE);
+	/* Fix recursive list. */
+	link = c->glist;
+	while (link) {
+		uint32_t j;
+		if (linkcount >= COUNT_OF(links)) {
+			WARN("Too many geometries in clump.");
+			break;
+		}
+		links[linkcount++] = link;
+		if (!link->next) {
+			break;
+		}
+		for (j = 0; j < linkcount; j++) {
+			if (link->next == links[j]) {
+				link->next = NULL;
+				TRACE("Cleared recursive clump.");
+				break;
+			}
+		}
+		link = link->next;
+	}
 	return c;
 }
 
@@ -1337,14 +1361,17 @@ void ac_mesh_destroy_geometry(
 		struct ac_mesh_material * m = &g->materials[i];
 		uint32_t j;
 		for (j = 0; j < COUNT_OF(m->tex_handle); j++) {
-			if (BGFX_HANDLE_IS_VALID(m->tex_handle[j]))
+			if (BGFX_HANDLE_IS_VALID(m->tex_handle[j])) {
 				ac_texture_release(mod->ac_texture, m->tex_handle[j]);
+			}
 		}
 	}
-	if (BGFX_HANDLE_IS_VALID(g->vertex_buffer))
+	if (BGFX_HANDLE_IS_VALID(g->vertex_buffer)) {
 		bgfx_destroy_vertex_buffer(g->vertex_buffer);
-	if (BGFX_HANDLE_IS_VALID(g->index_buffer))
+	}
+	if (BGFX_HANDLE_IS_VALID(g->index_buffer)) {
 		bgfx_destroy_index_buffer(g->index_buffer);
+	}
 	dealloc(g->materials);
 	dealloc(g);
 }

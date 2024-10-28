@@ -97,7 +97,6 @@ def import_objects(filepath, texturedir, ignore_transform = False):
         
         # Setup material nodes
         bsdf = mat.node_tree.nodes["Principled BSDF"]
-        bsdf.inputs["Specular"].default_value = 0.0
         
         # Create texture nodes
         texcount = 1

@@ -40,6 +40,8 @@ void ae_object_export_scene(struct ae_object_module * mod, JSON_Object * json);
 
 void ae_object_export_active(struct ae_object_module * mod);
 
+void ae_object_export_all(struct ae_object_module * mod);
+
 static inline struct ae_object_template * ae_object_get_template(
 	struct ap_object_template * temp)
 {
